@@ -11,34 +11,34 @@
       <label class="custom-control-label" [for]="name+ch.label">{{ch.label}}</label>
     </div>
   </div>
-  <div class="form-group" *ngSwitchCase="'file'" style="margin: 10px 0px 20px">
+<!--   <div class="form-group" *ngSwitchCase="'file'" style="margin: 10px 0px 20px">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
     <file-input [(ngModel)]="value" [extentions]="extentions"></file-input>
 
-  </div>
-  <div class="form-group" *ngSwitchCase="'selectApi'" style="margin: 10px 0px 20px">
+  </div> -->
+  <!-- <div class="form-group" *ngSwitchCase="'selectApi'" style="margin: 10px 0px 20px">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
     <my-select [field]="field" #ms="mySelect">
       <ng-select [placeholder]="title" [items]="ms.items" [bindLabel]="field.label" [bindValue]="field.value" [(ngModel)]="value" [multiple]="field.multiple" [virtualScroll]="true"></ng-select>
     </my-select>
-  </div>
-  <div class="form-group" *ngSwitchCase="'select'" style="margin: 10px 0px 20px">
+  </div> -->
+<!--   <div class="form-group" *ngSwitchCase="'select'" style="margin: 10px 0px 20px">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
     <ng-select [placeholder]="title" [items]="field.items" [bindLabel]="field.label" [bindValue]="field.value" [(ngModel)]="value" [multiple]="field.multiple" [virtualScroll]="true"></ng-select>
-  </div>
-  <div class="form-group" *ngSwitchCase="'selectWithData'" style="margin: 10px 0px 20px">
+  </div> -->
+  <!-- <div class="form-group" *ngSwitchCase="'selectWithData'" style="margin: 10px 0px 20px">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
     <select-with-data [field]="field" [(ngModel)]="value"></select-with-data>
-  </div>
-  <div class="form-group" *ngSwitchCase="'date'">
+  </div> -->
+  <!-- <div class="form-group" *ngSwitchCase="'date'">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
     <date-picker-component [(ngModel)]="value"></date-picker-component>
-  </div>
+  </div> -->
   <div class="form-group" *ngSwitchCase="'textArea'">
     <span *ngIf="icon!=''&& icon" [class]="icon"></span>
     <label [attr.for]="name">{{title}}</label>
