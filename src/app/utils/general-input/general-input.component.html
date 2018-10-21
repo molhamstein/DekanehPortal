@@ -1,0 +1,52 @@
+<div [ngSwitch]="type">
+  <div class="form-check" *ngSwitchCase="'checkbox'" style="margin: 10px 0px 20px">
+    <div class="custom-control custom-checkbox">
+      <input class="custom-control-input" type="checkbox" [(ngModel)]="value" value=""[id]="name">
+      <label class="custom-control-label" [for]="name">{{title}}</label>
+    </div>
+  </div>
+  <div  *ngSwitchCase="'radio'" style="margin: 10px 0px 20px">
+    <div *ngFor="let ch of field['choices']" class="custom-control custom-radio custom-control-inline">
+      <input type="radio" [id]="name+ch.label" [name]="name" [(ngModel)]="value" class="custom-control-input" [value]="ch.value">
+      <label class="custom-control-label" [for]="name+ch.label">{{ch.label}}</label>
+    </div>
+  </div>
+  <div class="form-group" *ngSwitchCase="'file'" style="margin: 10px 0px 20px">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <file-input [(ngModel)]="value" [extentions]="extentions"></file-input>
+
+  </div>
+  <div class="form-group" *ngSwitchCase="'selectApi'" style="margin: 10px 0px 20px">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <my-select [field]="field" #ms="mySelect">
+      <ng-select [placeholder]="title" [items]="ms.items" [bindLabel]="field.label" [bindValue]="field.value" [(ngModel)]="value" [multiple]="field.multiple" [virtualScroll]="true"></ng-select>
+    </my-select>
+  </div>
+  <div class="form-group" *ngSwitchCase="'select'" style="margin: 10px 0px 20px">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <ng-select [placeholder]="title" [items]="field.items" [bindLabel]="field.label" [bindValue]="field.value" [(ngModel)]="value" [multiple]="field.multiple" [virtualScroll]="true"></ng-select>
+  </div>
+  <div class="form-group" *ngSwitchCase="'selectWithData'" style="margin: 10px 0px 20px">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <select-with-data [field]="field" [(ngModel)]="value"></select-with-data>
+  </div>
+  <div class="form-group" *ngSwitchCase="'date'">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <date-picker-component [(ngModel)]="value"></date-picker-component>
+  </div>
+  <div class="form-group" *ngSwitchCase="'textArea'">
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <textarea style="margin: 2px; width: 100%;" [attr.type]="type" class="form-control" [attr.id]="name" [attr.placeholder]="title" [(ngModel)]="value"></textarea>
+  </div>
+  <div class="form-group" *ngSwitchDefault>
+    <span *ngIf="icon!=''&& icon" [class]="icon"></span>
+    <label [attr.for]="name">{{title}}</label>
+    <input [attr.type]="type" class="form-control" [attr.id]="name" [attr.placeholder]="title" [(ngModel)]="value">
+  </div>
+</div>

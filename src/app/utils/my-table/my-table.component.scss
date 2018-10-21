@@ -1,0 +1,38 @@
+th{
+  color:#000;
+}
+td{
+  color:#222;
+  //font-weight: normal;
+}
+.icon{
+  margin: 5px;
+}
+tr.selected{
+  background-color:  bisque !important;
+}
+
+thead {
+  background: #395870;
+}
+thead tr th{
+  border: black !important;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  color: #fff !important;
+  font-weight: normal !important;
+
+}
+
+table {
+  border:0 !important;
+  overflow: hidden !important;
+}
+tbody{
+  overflow: scroll !important;
+  max-height: 300px !important;
+}
+
+span.icon{
+  font-size:25px
+}

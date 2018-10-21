@@ -1,0 +1,61 @@
+<div style="max-height: 500px;overflow: scroll;" *ngIf="data?.length">
+  <table class="table table-bordered table-striped table-hover " >
+    <thead *ngIf="showHeader" [style.background]="headerColorValue">
+    <tr class=""  style="position: static;" (click)="selected=null">
+      <th *ngIf="showIndex">
+        Index
+      </th>
+      <ng-template ngFor [ngForOf]="cols" let-col >
+        <th *ngIf="fieldService.isReadable(col)">
+          {{col.title |translate}}
+        </th>
+      </ng-template>
+      <th *ngIf="actions?.length">actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of data; let i=index" [class.selected]="selected==i" (click)="selected=i">
+        <td *ngIf="showIndex">
+          {{i+1}}
+        </td>
+        <ng-template ngFor [ngForOf]="cols" let-col>
+          <td *ngIf="fieldService.isReadable(col) && !col.isInput">
+            {{row[col.name]}}
+          </td>
+          <td *ngIf="col.isInput">
+            <div class="row">
+              <div class="col-sm-12 col-lg-12 col-md-12">
+                <general-input [(ngModel)]="row[col.name]"
+                               [type]="col.type!=undefined? col.type:'temp'"
+                               [name]="row[col.name]"
+                               [icon]="col.icon!=undefined?col.icon:''"
+                               [value]="row[col.name]">
+                </general-input>
+              </div>
+            </div>
+          </td>
+        </ng-template>
+        <td *ngIf="actions?.length">
+          <span class="icon" title="title" *ngFor="let action of actions" [hidden]="action.hidden && action.hidden(row)">
+            <i [class]="action.class" *ngIf="action.priv!=undefined?privilege.isAuthorized(action.priv):true;" [title]="action.title" (click)="action.fun(row,i)" ></i>
+          </span>
+        </td>
+        <!-- <td *ngIf="buttons?.length">
+            <button type="button" class="btn btn-success" *ngFor="let action of actions" >active</button>
+        </td> -->
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div *ngIf="data && !data.length">
+  No Data Found
+</div>
+<div *ngIf="!data && loading">
+  Loading ....
+</div>
+
+
+

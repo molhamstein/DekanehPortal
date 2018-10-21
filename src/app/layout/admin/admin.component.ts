@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
 import {MenuItems} from '../../shared/menu-items/menu-items';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-admin',
@@ -102,19 +103,19 @@ export class AdminComponent implements OnInit {
 /*  @ViewChild('toggleButton') toggle_button: ElementRef;
   @ViewChild('sideMenu') side_menu: ElementRef;*/
 
-  constructor(public menuItems: MenuItems) {
+  constructor(public menuItems: MenuItems,public api:ApiService) {
     this.navType = 'st2';
     this.themeLayout = 'vertical';
     this.vNavigationView = 'view1';
-    this.verticalPlacement = 'left';
+    this.verticalPlacement = 'right';
     this.verticalLayout = 'wide';
     this.deviceType = 'desktop';
     this.verticalNavType = 'expanded';
     this.verticalEffect = 'shrink';
     this.pcodedHeaderPosition = 'fixed';
     this.pcodedSidebarPosition = 'fixed';
-    this.headerTheme = 'theme1';
-    this.logoTheme = 'theme1';
+    this.headerTheme = 'theme5';
+    this.logoTheme = 'theme5';
 
     this.toggleOn = true;
 
@@ -147,6 +148,10 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.setBackgroundPattern('pattern2');
+    // this.api.get();
+    // this.api.post();
+    // this.api.put();
+    // this.api.delete();
   }
 
   onResize(event) {

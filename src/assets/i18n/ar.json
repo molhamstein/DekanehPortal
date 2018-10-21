@@ -1,0 +1,15 @@
+{
+  "mainMenu":{
+    "main":"القائمة الرئيسية"
+  },
+  "logIn":{
+    "SignIn":"تسجيل الدخول",
+    "email":"البريد الالكتروني",
+    "password":"كلمة المرور",
+    "rememberMe":"تذكرني",
+    "Signin":"تسجيل الدخول"
+  },
+  "Manufacturers":{
+
+  }
+}

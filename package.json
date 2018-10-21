@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json --host 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
+    "@ngx-translate/core": "^7.2.2",
+    "@ngx-translate/http-loader": "^0.1.0",
     "@nicky-lenaers/ngx-scroll-to": "^0.4.0",
     "@swimlane/ngx-datatable": "^9.3.0",
     "angular-froala-wysiwyg": "^1.0.0",
