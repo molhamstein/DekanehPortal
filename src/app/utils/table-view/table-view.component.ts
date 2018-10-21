@@ -3,13 +3,11 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {MainService} from "../main.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpParams} from "@angular/common/http";
-import {ToastrService} from "ngx-toastr";
-import {PrivilegeService} from "../../../../../workflow/src/app/services/privilege/privilege.service";
+// import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'table-view',
   templateUrl: './table-view.component.html',
-  styleUrls: ['./table-view.component.scss'],
   exportAs:'view'
 })
 export class TableViewComponent implements OnInit {
@@ -20,6 +18,7 @@ export class TableViewComponent implements OnInit {
   pageSize=10;
   numberOfRows=30;
   showPages=false;
+
   @Input('afterGet')afterGet=(data)=>{return data}
   @Input() titleProperty;
   @Input() title;
@@ -36,7 +35,7 @@ export class TableViewComponent implements OnInit {
 
   modalTilte;
   @ViewChild('content') private content;
-  constructor(private modalService: NgbModal,private api:MainService,private router:Router,private route:ActivatedRoute,private toastr:ToastrService,public privilege:PrivilegeService) {
+  constructor(private modalService: NgbModal,private api:MainService,private router:Router,private route:ActivatedRoute,/**private toastr:ToastrService**/) {
     var actionEmitter=this.actionEmitter;
     this.actions=[{class:'ion-edit', fun:this.onUpdate(),title:'Edit'},
       {class:'ion-ios-trash', fun:this.onDelete(),title:'Delete'}];
@@ -67,10 +66,10 @@ export class TableViewComponent implements OnInit {
   }
   ngOnInit() {
     var actions=[]
-    if(this.updatePri && this.privilege.isAuthorized(this.updatePri) || !this.updatePri)
-      actions.push(this.actions[0])
-    if(this.deletePri && this.privilege.isAuthorized(this.deletePri) || !this.deletePri)
-      actions.push(this.actions[1])
+    // if(this.updatePri && this.privilege.isAuthorized(this.updatePri) || !this.updatePri)
+    //   actions.push(this.actions[0])
+    // if(this.deletePri && this.privilege.isAuthorized(this.deletePri) || !this.deletePri)
+    //   actions.push(this.actions[1])
 
     this.actions=actions
     if(this.addActions){
@@ -84,7 +83,7 @@ export class TableViewComponent implements OnInit {
     if(data.event==='delete')
     {
       this.api.delete(this.apiName+'/'+this.apiName,id).subscribe(()=>{
-        this.toastr.warning('deleted successfuly' ,'delete')
+        // this.toastr.warning('deleted successfuly' ,'delete')
         this.changePage(this.page);
       });
     }
@@ -98,10 +97,10 @@ export class TableViewComponent implements OnInit {
   changePage(number){
     var t=new HttpParams();
     for(var i=0;i<this.search.length;i++)
-    if(this.search[i]['value'])
-    {
-      t=t.set(this.search[i]['name'],this.search[i]['value']);
-    }
+      if(this.search[i]['value'])
+      {
+        t=t.set(this.search[i]['name'],this.search[i]['value']);
+      }
     if(this.query)
     {
       Object.keys(this.query).forEach((key)=>{
@@ -112,12 +111,12 @@ export class TableViewComponent implements OnInit {
     t=t.set('start',(this.pageSize*(number-1)).toString());
     this.api.get(this.apiName,t).subscribe(
       data => {
-      this.rows=data["data"];
-      this.rows=this.afterGet(this.rows)
-      this.numberOfRows=data['count'];
-      this.showPages=false;
-      if(this.numberOfRows/this.pageSize > 1)
-        this.showPages=true;
+        this.rows=data["data"];
+        this.rows=this.afterGet(this.rows)
+        this.numberOfRows=data['count'];
+        this.showPages=false;
+        if(this.numberOfRows/this.pageSize > 1)
+          this.showPages=true;
 
       });
   }

@@ -2,13 +2,13 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {field} from "./field.model";
 import { Validators} from "@angular/forms";
-import { environment} from "../../../../workflow/src/environments/environment";
+// import { environment} from "../../../../workflow/src/environments/environment";
 import {myValidators} from "./my.validators"
 
 
 @Injectable()
 export class MainService {
-  api=environment.api;
+  api="/server/";
   header=new HttpHeaders();
   constructor(private http: HttpClient) {
     if(localStorage.getItem('token'))

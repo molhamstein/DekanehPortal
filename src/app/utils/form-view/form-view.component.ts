@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MainService} from "../main.service";
 import {field} from "../field.model";
 import {FieldService} from "../field.service";
-import {ToastrService} from "ngx-toastr";
+// import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'form-view',
@@ -14,7 +14,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class FormViewComponent implements OnInit {
   constructor(private api:MainService,private router:Router,
-              private route:ActivatedRoute,private fieldService:FieldService,private toastr:ToastrService) {
+              private route:ActivatedRoute,private fieldService:FieldService/**,private toastr:ToastrService**/) {
     this.id=this.route.snapshot.paramMap.get('id')
   }
   fields:field[];
@@ -85,13 +85,13 @@ export class FormViewComponent implements OnInit {
       data[this.idProperty]=this.id;
       this.api.put(this.apiName,fd).subscribe(()=>{
         this.router.navigate(['../'],{relativeTo:this.route})
-        this.toastr.success("updated successfully",'update')
+        // this.toastr.success("updated successfully",'update')
 
       })
     }
     else
       this.api.post(this.apiName,fd).subscribe(()=>{
-        this.toastr.success("added successfully",'add')
+        // this.toastr.success("added successfully",'add')
         if(!isMultiple)
         {
           if(this.navigateAfterPostTo)

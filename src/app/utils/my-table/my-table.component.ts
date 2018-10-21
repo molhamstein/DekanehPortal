@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, HostBinding} from '@angular/core';
 import {FieldService} from "../field.service";
-import {PrivilegeService} from "../../../../../workflow/src/app/services/privilege/privilege.service";
+// import {PrivilegeService} from "../../../../../workflow/src/app/services/privilege/privilege.service";
 @Component({
   selector: 'my-table',
   templateUrl: './my-table.component.html',
@@ -9,7 +9,7 @@ import {PrivilegeService} from "../../../../../workflow/src/app/services/privile
 
 export class MyTableComponent implements OnInit {
 
-  constructor(private fieldService:FieldService, public privilege:PrivilegeService) {
+  constructor(private fieldService:FieldService) {
 
   }
   @Input()loading=true;

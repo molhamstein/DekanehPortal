@@ -1,8 +1,0 @@
-<div class="container">
-  <span *ngFor="let v of validators" >
-    <div *ngIf="control && control.errors && control.errors[v.name] && (control.touched || control.value)">
-       <small class="form-text text-muted text-danger">{{control.errors[v.name]['message']}}
-         {{v.message}}</small>
-    </div>
-  </span>
-</div>

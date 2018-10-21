@@ -19,6 +19,7 @@ import {FormsModule} from '@angular/forms';
 import {LogInModule} from './pages/auth/log-in.module';
 import {ApiService} from './services/api.service';
 import {ConstService} from './services/const.service';
+import {UtilsModule} from './utils/utils.module';
 
 
 // AoT requires an exported function for factories
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: Http) {
     ClickOutsideModule,
     SharedModule,
     HttpModule,
+    UtilsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {b} from "@angular/core/src/render3";
+// import {b} from "@angular/core/src/render3";
 
 @Pipe({
   name: 'removeSpaces'
