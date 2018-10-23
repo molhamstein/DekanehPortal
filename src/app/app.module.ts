@@ -20,6 +20,7 @@ import {LogInModule} from './pages/auth/log-in.module';
 import {ApiService} from './services/api.service';
 import {ConstService} from './services/const.service';
 import {UtilsModule} from './utils/utils.module';
+import {StaffModule} from './pages/staff/staff.module';
 
 
 // AoT requires an exported function for factories
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: Http) {
       }
     }),
     LogInModule,
+    StaffModule
   ],
   providers: [TranslateService,AuthGuardService,ApiService, ConstService],
   bootstrap: [AppComponent]

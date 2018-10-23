@@ -1,15 +1,27 @@
 {
-  "mainMenu":{
-    "main":"القائمة الرئيسية"
+  "mainMenu": {
+    "main": "القائمة الرئيسية"
   },
-  "logIn":{
-    "SignIn":"تسجيل الدخول",
-    "email":"البريد الالكتروني",
-    "password":"كلمة المرور",
-    "rememberMe":"تذكرني",
-    "Signin":"تسجيل الدخول"
+  "logIn": {
+    "SignIn": "تسجيل الدخول",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "rememberMe": "تذكرني",
+    "Signin": "تسجيل الدخول"
   },
-  "Manufacturers":{
-
+  "Manufacturers": {
+  },
+  "staff": {
+    "shopName": "اسم المحل",
+    "clientType": "النوع",
+    "location": "العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "userName": "اسم المستخدم",
+    "status": "الحالة",
+    "actions": "عمليات",
+    "buttons": {
+      "edit":"تعديل",
+      "delete":"حذف"
+    }
   }
 }
