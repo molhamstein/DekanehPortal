@@ -17,6 +17,7 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {ManufacturersComponent} from '../../pages/manufacturers/manufacturers.component';
 import {ViewManufacturersComponent} from '../../pages/manufacturers/view-manufacturers/view-manufacturers.component';
 import {AddManufacturerComponent} from '../../pages/manufacturers/add-manufacturer/add-manufacturer.component';
+import {StaffListComponent} from '../../pages/staff/staff-list/staff-list.component';
 const AppRoutes=[
   {path:'',
     component:AdminComponent,
@@ -38,7 +39,11 @@ const AppRoutes=[
             component:ViewManufacturersComponent,
           }
         ]
-      }
+      },
+      { path: 'staff',children:[
+        {path:"list",component:StaffListComponent,},
+        ],
+      },
     ],
     },
 ]

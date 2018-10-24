@@ -6,6 +6,7 @@ import {AdminComponent} from './layout/admin/admin.component';
 export const AppRoutes: Routes = [
   { path: 'auth',
     children:[
+
       {
         path:"login",
         component:LogInComponent,
@@ -19,6 +20,4 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuardService],
     canActivateChild:[AuthGuardService],
   },
-
-
 ];

@@ -12,6 +12,7 @@ import {SharedModule} from '../shared/shared.module';
 import {DataTableModule} from 'angular2-datatable';
 import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
+import {StaffModule} from './staff/staff.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {DataFilterPipe} from '../shared/element/data-filter.pipe';
     FormsModule,
     HttpModule,
     DataTableModule,
+    StaffModule,
   ],
   exports:[
     DataFilterPipe,

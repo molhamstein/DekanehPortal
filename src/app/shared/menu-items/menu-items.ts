@@ -111,7 +111,7 @@ export class MenuItems {
           ]
         },
         {
-          state: 'forms',
+          state: 'staff',
           short_label: 'F',
           name: 'mainMenu.Staff.main',
           type: 'sub',
@@ -122,7 +122,7 @@ export class MenuItems {
               name: 'mainMenu.Staff.add'
             },
             {
-              state: 'basic-elements',
+              state: 'list',
               name: 'mainMenu.Staff.viewAll'
             }
           ]

@@ -1,0 +1,39 @@
+<table class="table  table-striped ">
+  <thead>
+  <tr>
+    <th>
+      {{"staff.userName"|translate}}
+    </th>
+    <th>
+      {{"staff.shopName"|translate}}
+    </th>
+    <th>
+      {{"staff.clientType"|translate}}
+    </th>
+    <th>
+      {{"staff.location"|translate}}
+    </th>
+    <th>
+      {{"staff.phoneNumber"|translate}}
+    </th>
+    <th>
+      {{"staff.status"|translate}}
+    </th>
+    <th>
+      {{"staff.actions"|translate}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  *ngFor="let staff of allStaff">
+    <td>{{staff.username}}</td>
+    <td>{{staff.shopName}}</td>
+    <td><span class="badge " [ngClass]="staff.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{staff.clientType}}</span></td>
+    <td>{{staff.location}}</td>
+    <td>{{staff.phoneNumber}}</td>
+    <td><span class="badge " [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{staff.status}}</span></td>
+    <td><button type="button" class="btn btn-primary" (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}</button> <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">{{"staff.buttons.delete"|translate}}</button></td>
+  </tr>
+  <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
+  </tbody>
+</table>

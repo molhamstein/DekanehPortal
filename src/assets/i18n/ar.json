@@ -35,12 +35,12 @@
       "viewAll":"عرض جميع التقييمات"
     }
   },
-  "logIn":{
-    "SignIn":"تسجيل الدخول",
-    "email":"البريد الالكتروني",
-    "password":"كلمة المرور",
-    "rememberMe":"تذكرني",
-    "Signin":"تسجيل الدخول"
+  "logIn": {
+    "SignIn": "تسجيل الدخول",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "rememberMe": "تذكرني",
+    "Signin": "تسجيل الدخول"
   },
   "Dashboard":{
     "Main":" لوحة المراقبة",
@@ -52,7 +52,17 @@
     "last28Hours":"خلال ال 28 ساعة الفائتة",
     "Activites":"الاحداث الأخيرة"
   },
-  "Manufacturers":{
-
+  "staff": {
+    "shopName": "اسم المحل",
+    "clientType": "النوع",
+    "location": "العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "userName": "اسم المستخدم",
+    "status": "الحالة",
+    "actions": "عمليات",
+    "buttons": {
+      "edit":"تعديل",
+      "delete":"حذف"
+    }
   }
 }
