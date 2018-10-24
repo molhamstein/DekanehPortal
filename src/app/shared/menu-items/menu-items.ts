@@ -30,117 +30,119 @@ export interface Menu {
   label: string;
   main: MainMenuItems[];
 }
-
-const MENUITEMS = [
-  {
-    label: 'main menu',
-    main: [
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Manufacturers',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'Add new Manufacturer'
-          }, {
-            state: 'add-on',
-            name: 'View Manufacturers'
-          }
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Clients',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'Add new Client'
-          }, {
-            state: 'add-on',
-            name: 'View Clients'
-          }
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Orders',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'View Orders'
-          },
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Products',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'View Products'
-          }, {
-            state: 'add-on',
-            name: 'Create New Product'
-          }
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Categories',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'View Categories'
-          }
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Staff',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'List Staff'
-          }, {
-            state: 'add-on',
-            name: 'Create new staff member'
-          }
-        ]
-      },
-      {
-        state: 'forms',
-        short_label: 'F',
-        name: 'Ratings',
-        type: 'sub',
-        icon: 'ti-layers',
-        children: [
-          {
-            state: 'basic-elements',
-            name: 'View Ratings'
-          },
-        ]
-      },
-    ]
-  },
-];
+@Injectable()
+export class MenuItems {
+  MENUITEMS = [
+    {
+      label: 'mainMenu.main',
+      main: [
+        {
+          state: 'manufacturers',
+          short_label: 'M',
+          name: 'mainMenu.Manufacturers.main',
+          type: 'sub',
+          icon: 'ti-user',
+          children: [
+            {
+              state: 'add',
+              name: 'mainMenu.Manufacturers.add'
+            }, {
+              state: 'view',
+              name: 'mainMenu.Manufacturers.viewAll'
+            }
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Clients.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Clients.add'
+            }, {
+              state: 'add-on',
+              name: 'mainMenu.Clients.viewAll'
+            }
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Orders.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Orders.viewAll'
+            },
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Products.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Products.add'
+            }, {
+              state: 'add-on',
+              name: 'mainMenu.Products.viewAll'
+            }
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Categories.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Categories.viewAll'
+            }
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Staff.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'add-on',
+              name: 'mainMenu.Staff.add'
+            },
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Staff.viewAll'
+            }
+          ]
+        },
+        {
+          state: 'forms',
+          short_label: 'F',
+          name: 'mainMenu.Ratings.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'basic-elements',
+              name: 'mainMenu.Ratings.viewAll'
+            },
+          ]
+        },
+      ]
+    },
+  ];
 //   [
 //   {
 //     label: 'Navigation',
@@ -766,11 +768,9 @@ const MENUITEMS = [
 //   }
 // ];
 
-@Injectable()
-export class MenuItems {
   constructor(private constant:ConstService){}
   getAll(): Menu[] {
-    return MENUITEMS;
+    return this.MENUITEMS;
   }
 
   /*add(menu: Menu) {

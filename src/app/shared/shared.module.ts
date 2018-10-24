@@ -17,12 +17,13 @@ import {CardToggleDirective} from './card/card-toggle.directive';
 import {ModalAnimationComponent} from './modal-animation/modal-animation.component';
 import {ModalBasicComponent} from './modal-basic/modal-basic.component';
 import {DataFilterPipe} from "./element/data-filter.pipe";
+import {BootstrapPaginator} from 'angular2-datatable';
 
 @NgModule({
   imports: [
     CommonModule,
     ScrollModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   declarations: [
     AccordionAnchorDirective,
@@ -35,7 +36,7 @@ import {DataFilterPipe} from "./element/data-filter.pipe";
     CardComponent,
     ModalAnimationComponent,
     ModalBasicComponent,
-    DataFilterPipe
+    DataFilterPipe,
   ],
   exports: [
     AccordionAnchorDirective,

@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
 import {MenuItems} from '../../shared/menu-items/menu-items';
 import {ApiService} from '../../services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -103,7 +104,8 @@ export class AdminComponent implements OnInit {
 /*  @ViewChild('toggleButton') toggle_button: ElementRef;
   @ViewChild('sideMenu') side_menu: ElementRef;*/
 
-  constructor(public menuItems: MenuItems,public api:ApiService) {
+  constructor(public menuItems: MenuItems,public api:ApiService,private router:Router) {
+    this.menuItems
     this.navType = 'st2';
     this.themeLayout = 'vertical';
     this.vNavigationView = 'view1';
@@ -116,7 +118,6 @@ export class AdminComponent implements OnInit {
     this.pcodedSidebarPosition = 'fixed';
     this.headerTheme = 'theme5';
     this.logoTheme = 'theme5';
-
     this.toggleOn = true;
 
     this.headerFixedMargin = '80px';
@@ -256,7 +257,6 @@ export class AdminComponent implements OnInit {
   setBackgroundPattern(pattern) {
     document.querySelector('body').setAttribute('themebg-pattern', pattern);
   }
-
   setLayoutType(type: string) {
     this.layoutType = type;
     if (type === 'dark') {
@@ -278,5 +278,10 @@ export class AdminComponent implements OnInit {
     } else {
       this.navBarTheme = 'theme1';
     }
+  }
+
+  logout(){
+    localStorage.removeItem("token");
+    this.router.navigate(["auth","login"]);
   }
 }

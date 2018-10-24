@@ -4,22 +4,20 @@ import {RouterModule} from '@angular/router';
 
 import {AppRoutes} from './app.routing';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './layout/admin/admin.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BreadcrumbsComponent} from './layout/admin/breadcrumbs/breadcrumbs.component';
-import {TitleComponent} from './layout/admin/title/title.component';
 import {AuthComponent} from './layout/auth/auth.component';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {Http, HttpModule} from '@angular/http';
 import {AuthGuardService} from './services/auth-guard.service';
-import {FormsModule} from '@angular/forms';
-import {LogInModule} from './pages/auth/log-in.module';
 import {ApiService} from './services/api.service';
 import {ConstService} from './services/const.service';
 import {UtilsModule} from './utils/utils.module';
+import {AdminModule} from './layout/admin/admin.module';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import {PagesModule} from './pages/pages.module';
 
 
 // AoT requires an exported function for factories
@@ -29,10 +27,14 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
-    BreadcrumbsComponent,
-    TitleComponent,
     AuthComponent,
+    // ManufacturersComponent,
+    DashboardComponent,
+    // BreadcrumbsComponent,
+    // FormsModule,
+    // AdminComponent,
+    // TitleComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ export function HttpLoaderFactory(http: Http) {
         deps: [Http]
       }
     }),
-    LogInModule,
+    AdminModule,
+    PagesModule,
   ],
   providers: [TranslateService,AuthGuardService,ApiService, ConstService],
   bootstrap: [AppComponent]

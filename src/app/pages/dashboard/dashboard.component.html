@@ -1,0 +1,79 @@
+<div class="row">
+  <!-- Statistics card start -->
+  <div class="col-md-12 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div cclass="card-header-left f-left">
+          <h5 class="f-left">{{"Dashboard.Statistics"|translate}}</h5>
+          <br/>
+          <p class="f-left p-t-10 m-b-0 text-c-blue">{{"Dashboard.ComparedToLastWeek"|translate}}</p>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="icofont icofont-presentation-alt st-icon bg-c-blue"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">5,456</h3>
+          <i class="icofont icofont-long-arrow-up f-30 text-c-green"></i>
+          <span class="f-right">23%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Statistics card end -->
+  <!-- Statistics card start -->
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div class="card-header-left f-left">
+          <h5 class="f-left float-left">{{"Dashboard.newOrders"| translate}}</h5>
+          <br/>
+          <p class="f-left float-left p-t-10 m-b-0 text-c-yellow">54%  {{"Dashboard.fromLastWeek"| translate}}</p>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="icofont icofont-chart-line st-icon bg-c-yellow"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">5,456</h3>
+          <i class="icofont icofont-long-arrow-up text-c-green f-30 "></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Statistics card end -->
+
+
+  <!-- Statistics card start -->
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div class="card-header-left f-left">
+          <h5 class="f-left">{{"Dashboard.uniqueVisitors"| translate}}</h5>
+          <br/>
+          <p class="f-left p-t-10 m-b-0 text-c-pink">55% {{"Dashboard.last28Hours"| translate}}</p>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="icofont icofont-users-social st-icon bg-c-pink txt-lite-color"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">3,874</h3>
+          <i class="icofont icofont-long-arrow-down text-c-pink f-30 "></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Statistics card end -->
+  <div class="col-md-12 col-xl-12">
+    <app-card [title]="'Dashboard.Statistics'|translate">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="line-example">
+            <div id="statestics-chart" style=" height:300px;"></div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div id="invoice" style=" height:300px;"></div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
