@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TranslateModule} from '@ngx-translate/core';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
@@ -18,35 +18,47 @@ import {ManufacturersComponent} from '../../pages/manufacturers/manufacturers.co
 import {ViewManufacturersComponent} from '../../pages/manufacturers/view-manufacturers/view-manufacturers.component';
 import {AddManufacturerComponent} from '../../pages/manufacturers/add-manufacturer/add-manufacturer.component';
 import {StaffListComponent} from '../../pages/staff/staff-list/staff-list.component';
-const AppRoutes=[
-  {path:'',
-    component:AdminComponent,
-    children:[
+import {NewStaffComponent} from '../../pages/staff/new-staff/new-staff.component';
+
+const AppRoutes = [
+  {
+    path: '',
+    component: AdminComponent,
+    children: [
       {
-        path:'',
-        component:DashboardComponent,
+        path: '',
+        component: DashboardComponent,
       },
       {
-        path:"manufacturers",
-        component:ManufacturersComponent,
-        children:[
+        path: 'manufacturers',
+        component: ManufacturersComponent,
+        children: [
           {
-            path:"add",
-            component:AddManufacturerComponent,
+            path: 'add',
+            component: AddManufacturerComponent,
           },
           {
-            path:"view",
-            component:ViewManufacturersComponent,
+            path: 'view',
+            component: ViewManufacturersComponent,
           }
         ]
       },
-      { path: 'staff',children:[
-        {path:"list",component:StaffListComponent,},
+      {
+        path: 'staff', children: [
+          {
+            path: 'list',
+            component: StaffListComponent,
+          },
+          {
+            path: 'add-on',
+            component: NewStaffComponent,
+          },
         ],
       },
     ],
-    },
-]
+  },
+];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -61,6 +73,8 @@ const AppRoutes=[
     HttpModule,
     UtilsModule,
     PagesModule,
+
+
   ],
   declarations: [
     AdminComponent,

@@ -18,6 +18,7 @@ import {UtilsModule} from './utils/utils.module';
 import {AdminModule} from './layout/admin/admin.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {PagesModule} from './pages/pages.module';
+import {AgmCoreModule} from '@agm/core';
 
 
 // AoT requires an exported function for factories
@@ -53,6 +54,9 @@ export function HttpLoaderFactory(http: Http) {
     }),
     AdminModule,
     PagesModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
+    }),
   ],
   providers: [TranslateService,AuthGuardService,ApiService, ConstService],
   bootstrap: [AppComponent]

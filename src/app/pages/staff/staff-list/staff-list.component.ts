@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import {StaffUser} from '../StaffUser';
 import {StaffService} from '../staff.service';
 
@@ -35,7 +34,7 @@ export class StaffListComponent implements OnInit {
       .subscribe(staff => {
           this.staffToUpdate = staff;
           this.staffToUpdate.status = 'deactivated';
-          console.log(this.staffToUpdate);
+
           this.staffService.updateStaffUser(this.staffToUpdate).subscribe(
             successCode => {
               this.statusCode = 200;
@@ -49,13 +48,6 @@ export class StaffListComponent implements OnInit {
 
   }
 
-  // }
-  // setDeactivated(id:string){
-  //   this.http.put(this.api+'/'+id+'?access_token=' + localStorage.getItem('token'),).map((res: Response) => res.json()).subscribe((res) => {
-  //     this.allStaff = res;
-  //   });
-
-  // }
 
   ngOnInit() {
     this.getAllStaff();

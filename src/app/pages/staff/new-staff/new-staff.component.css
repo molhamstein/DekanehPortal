@@ -1,0 +1,12 @@
+.staffForm{
+  direction: rtl;
+  text-align: right;
+  font-size: 15px;
+}
+.form-check-input{
+  position: relative;
+  margin-left: 5px;
+}
+agm-map {
+  height: 400px;
+}

@@ -14,7 +14,9 @@ import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
 
+
 @NgModule({
+
   imports: [
     CommonModule,
     FormsModule,
@@ -27,6 +29,7 @@ import {StaffModule} from './staff/staff.module';
     HttpModule,
     DataTableModule,
     StaffModule,
+
   ],
   exports:[
     DataFilterPipe,

@@ -18,6 +18,7 @@ export class StaffUser {
   public locationPoint: any;
   public roleIds: string[];
   public privilegeIds: string[];
+  password: string;
 
   constructor() {
 
