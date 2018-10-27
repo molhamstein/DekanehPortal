@@ -53,6 +53,10 @@ const AppRoutes = [
             path: 'add-on',
             component: NewStaffComponent,
           },
+          {
+            path: 'edit/:id',
+            component: NewStaffComponent,
+          },
         ],
       },
     ],

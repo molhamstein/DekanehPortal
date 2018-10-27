@@ -19,7 +19,7 @@ export class StaffService {
     let cpHeaders = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:cpHeaders});
 
-    return this.http.get(this.api + '?filter[where][status][neq]=deactivated&access_token=' + localStorage.getItem('token') )
+    return this.http.get(this.api + '?filter={"where":{"and":[{"roleIds":"5bd3d18f694f5c6ce766145e"},{"roleIds":"5bd3d223694f5c6ce766145f"},{"status":{"neq":"deactivated"}}]}}&access_token=' + localStorage.getItem('token') )
       .map(this.extractData).catch(this.handleError);
 
   }
@@ -28,8 +28,7 @@ export class StaffService {
     let body = JSON.stringify( StaffUser );
     let cpHeaders = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: cpHeaders});
-    console.log(body);
-    console.log(StaffUser);
+    // console.log(StaffUser);
     return this.http.post(this.api+ '?access_token=' + localStorage.getItem('token'), body, options)
       .map(success => success.status)
       .catch(this.handleError);
@@ -38,7 +37,6 @@ export class StaffService {
   getStaffUserById(StaffUserId: string): Observable<StaffUser> {
     let cpHeaders = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: cpHeaders});
-    console.log(this.api + '/' + StaffUserId);
     return this.http.get(this.api + '/' + StaffUserId + '?access_token=' + localStorage.getItem('token'))
       .map(this.extractData)
       .catch(this.handleError);
@@ -51,6 +49,7 @@ export class StaffService {
       .map(this.extractData)
       .catch(this.handleError);
   }
+
 
   getStaffByUserName(StaffUserName: string): Observable<StaffUser> {
     let cpHeaders = new Headers({'Content-Type': 'application/json'});

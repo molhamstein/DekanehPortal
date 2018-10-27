@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup,Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MouseEvent} from '@agm/core';
 import {StaffUser} from '../StaffUser';
 import {StaffService} from '../staff.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Constants} from '../Constants';
+import {id} from '@swimlane/ngx-datatable/release/utils';
 
 
 @Component({
@@ -12,29 +14,68 @@ import {Router} from '@angular/router';
   styleUrls: ['./new-staff.component.css']
 })
 export class NewStaffComponent implements OnInit {
+  newUSer;
   nameError = false;
   emailError = false;
   phoneError = false;
+  private user: any;
+  id: string;
+  edituser:any;
+  constructor(private staffService: StaffService, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    if (this.id == undefined) {
+      this.user = new StaffUser();
+      this.lat = 33.5138;
+      this.lng = 36.2765;
+      this.locationPoint = {
+        lat: 33.5138,
+        lng: 36.2765
+      };
+      this.newUSer = true;
+    } else {
+      this.user = this.staffService.getStaffUserById(this.id).subscribe(staff => {
+        this.user = staff;
 
-  constructor(private staffService: StaffService, private router:Router) {
+        this.staffForm.removeControl('password');
+        this.staffForm.setValue({
+          username: staff.username,
+          phoneNumber: staff.phoneNumber,
+          email: staff.email,
+          location: staff.location,
+          notes: staff.notes,
+          ownerName: staff.ownerName,
+          shopName: staff.shopName
+        });
+        this.locationPoint = staff.locationPoint;
+        this.marker.lng = this.locationPoint.lng;
+        this.marker.lat = this.locationPoint.lat;
+        this.lat = this.locationPoint.lat;
+        this.lng = this.locationPoint.lng;
+        this.newUSer = false;
+        this.selectedSale = staff.clientType;
+
+      });
+    }
   }
 
   password = '';
-  passError
+  passError;
   statusCode: number;
   selectedSale = 'retailCostumer';
-  private user = new StaffUser();
-  lat: number = 33.5138;
-  lng: number = 36.2765;
-  locationPoint = {
-    lat: 33.5138,
-    lng: 36.2765
-  };
+  lat: number;
+  lng: number;
+  locationPoint: any;
   processValidation = false;
   requestProcessing = false;
   staffForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.compose(
+      [
+        Validators.pattern('^\\+?\\d+$'),
+        Validators.required
+      ])),
     email: new FormControl('', Validators.compose(
       [
         Validators.email,
@@ -51,13 +92,6 @@ export class NewStaffComponent implements OnInit {
           Validators.minLength(6),
         ])
     ),
-    // repassword: new FormControl('',
-    //   Validators.compose([
-    //     Validators.required,
-    //     Validators.minLength(6),
-    //
-    //   ]))
-
   });
 
   checkUserByEmail(event) {
@@ -134,27 +168,54 @@ export class NewStaffComponent implements OnInit {
   onStaffFormSubmit() {
     this.processValidation = true;
     if (this.staffForm.invalid || this.passError || this.phoneError || this.emailError || this.nameError) {
-console.log(this.passError);
+      console.log(this.passError);
       return;
     }
 
-    this.preProcessConfigurations();
-    this.user = this.staffForm.value;
-    this.user.clientType = this.selectedSale;
-    this.user.locationPoint = this.locationPoint;
-    this.staffService.createStaffUser(this.user).subscribe(successCode => {
-        this.statusCode = successCode;
-        this.router.navigate(['/staff/list']);
+      this.preProcessConfigurations();
 
-      },
-      errorCode => this.statusCode = errorCode
-    );
-    // console.log(this.user);
+    if (this.newUSer) {
+      this.user = this.staffForm.value;
+      this.user.clientType = this.selectedSale;
+      this.user.locationPoint = this.locationPoint;
+      this.user.roleIds = Constants.STAFF_ROLES;
+      this.staffService.createStaffUser(this.user).subscribe(successCode => {
+          this.statusCode = successCode;
+          this.router.navigate(['/staff/list']);
+        },
+        errorCode => this.statusCode = errorCode
+      );
+    } else {
+
+      this.user.ownerName=this.staffForm.get('ownerName').value;
+      this.user.username=this.staffForm.get('username').value;
+      this.user.email=this.staffForm.get('email').value;
+      this.user.notes=this.staffForm.get('notes').value;
+      this.user.shopName=this.staffForm.get('shopName').value;
+      this.user.phoneNumber=this.staffForm.get('phoneNumber').value;
+      this.user.location=this.staffForm.get('location').value;
+      this.user.clientType = this.selectedSale;
+      this.user.locationPoint = this.locationPoint;
+      this.staffService.updateStaffUser(this.user).subscribe(successCode => {
+          this.statusCode = successCode;
+          this.router.navigate(['/staff/list']);
+        },
+        errorCode => this.statusCode = errorCode
+      );
+      // console.log(this.user);
+
+    }
+
   }
 
-  comparePass(event){
-    this.passError=(this.password!=event.target.value);
+  setPass(event) {
+    this.password = event.target.value;
   }
+
+  comparePass(event) {
+    this.passError = (this.password != event.target.value);
+  }
+
   ngOnInit() {
   }
 

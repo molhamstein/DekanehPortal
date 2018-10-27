@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StaffUser} from '../StaffUser';
 import {StaffService} from '../staff.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'staff-list',
@@ -16,10 +17,12 @@ export class StaffListComponent implements OnInit {
   private api = 'http://104.217.253.15:3003/api/users';
   allStaff: StaffUser[];
 
-  constructor(private staffService: StaffService) {
+  constructor(private staffService: StaffService,private router:Router) {
 
   }
-
+editStaff(id:string){
+  this.router.navigate(['/staff/edit/'+id]);
+}
 
   getAllStaff() {
     this.staffService.getAllStaff()

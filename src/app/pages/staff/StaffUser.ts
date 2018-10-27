@@ -18,10 +18,11 @@ export class StaffUser {
   public locationPoint: any;
   public roleIds: string[];
   public privilegeIds: string[];
-  password: string;
-
+  public password: string;
+  public static foo = 123;
   constructor() {
 
   }
+
 
 }
