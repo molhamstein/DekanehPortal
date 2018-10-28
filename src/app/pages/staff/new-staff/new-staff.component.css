@@ -11,3 +11,17 @@ agm-map {
   height: 400px;
   margin-bottom: 20px;
 }
+.spinner-submit{
+  vertical-align: middle;
+  color: gray;
+}
+.submit-col{
+  text-align: center;
+}
+.form-control{
+  color: #565656;
+  border-color: #e9ecef;
+}
+button[disabled]{
+  cursor: not-allowed;
+}

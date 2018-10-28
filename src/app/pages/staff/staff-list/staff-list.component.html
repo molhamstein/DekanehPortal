@@ -17,7 +17,7 @@
       {{"staff.phoneNumber"|translate}}
     </th>
     <th>
-      {{"staff.status"|translate}}
+      {{"staff.statustext"|translate}}
     </th>
     <th>
       {{"staff.actions"|translate}}
@@ -28,10 +28,10 @@
   <tr  *ngFor="let staff of allStaff">
     <td>{{staff.username}}</td>
     <td>{{staff.shopName}}</td>
-    <td><span class="badge " [ngClass]="staff.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{staff.clientType}}</span></td>
+    <td><span class="badge " [ngClass]="staff.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"staff.form.controls."+staff.clientType|translate}}</span></td>
     <td>{{staff.location}}</td>
     <td>{{staff.phoneNumber}}</td>
-    <td><span class="badge " [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{staff.status}}</span></td>
+    <td><span class="badge " [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"staff.status."+staff.status|translate}}</span></td>
     <td><button type="button" class="btn btn-primary" (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}</button> <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">{{"staff.buttons.delete"|translate}}</button></td>
   </tr>
   <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->

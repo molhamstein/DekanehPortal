@@ -59,7 +59,7 @@ export class NewStaffComponent implements OnInit {
       });
     }
   }
-
+  submitted=false;
   password = '';
   passError;
   statusCode: number;
@@ -164,7 +164,10 @@ export class NewStaffComponent implements OnInit {
 
 
   }
+  goHome(){
+    this.router.navigate(['/staff/list']);
 
+  }
   onStaffFormSubmit() {
     this.processValidation = true;
     if (this.staffForm.invalid || this.passError || this.phoneError || this.emailError || this.nameError) {
@@ -172,8 +175,9 @@ export class NewStaffComponent implements OnInit {
       return;
     }
 
-      this.preProcessConfigurations();
 
+      this.preProcessConfigurations();
+this.submitted=true;
     if (this.newUSer) {
       this.user = this.staffForm.value;
       this.user.clientType = this.selectedSale;

@@ -26,7 +26,9 @@ editStaff(id:string){
 
   getAllStaff() {
     this.staffService.getAllStaff()
-      .subscribe(data => this.allStaff = data, errorCode => this.statusCode = errorCode);
+      .subscribe(data => this.allStaff = data.sort((a,b) => a.creationDate > b.creationDate ? -1 : 1)
+
+        , errorCode => this.statusCode = errorCode);
   }
 
 
