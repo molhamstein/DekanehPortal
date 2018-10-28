@@ -1,38 +1,53 @@
 <table class="table  table-striped ">
   <thead>
   <tr>
-    <th>
+    <th class="clickable-th" (click)="orderByName()">
       {{"staff.userName"|translate}}
     </th>
-    <th>
+    <th class="clickable-th" (click)="orderByShope()">
+
       {{"staff.shopName"|translate}}
     </th>
-    <th>
+    <th class="clickable-th" (click)="orderByType()">
+
       {{"staff.clientType"|translate}}
     </th>
-    <th>
+    <th class="clickable-th" (click)="orderByLocation()">
+
       {{"staff.location"|translate}}
     </th>
-    <th>
+    <th class="clickable-th" (click)="orderByPhone()">
+
       {{"staff.phoneNumber"|translate}}
     </th>
-    <th>
+    <th class="clickable-th" (click)="orderByStatus()">
+
       {{"staff.statustext"|translate}}
     </th>
     <th>
+
       {{"staff.actions"|translate}}
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr  *ngFor="let staff of allStaff">
+  <tr *ngFor="let staff of allStaff">
     <td>{{staff.username}}</td>
     <td>{{staff.shopName}}</td>
-    <td><span class="badge " [ngClass]="staff.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"staff.form.controls."+staff.clientType|translate}}</span></td>
+    <td><span class="badge " [ngClass]="staff.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"staff.form.controls."+staff.clientType|translate}}</span>
+    </td>
     <td>{{staff.location}}</td>
     <td>{{staff.phoneNumber}}</td>
-    <td><span class="badge " [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"staff.status."+staff.status|translate}}</span></td>
-    <td><button type="button" class="btn btn-primary" (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}</button> <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">{{"staff.buttons.delete"|translate}}</button></td>
+    <td><span class="badge "
+              [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"staff.status."+staff.status|translate}}</span>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}
+      </button>
+      <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">
+        {{"staff.buttons.delete"|translate}}
+      </button>
+    </td>
   </tr>
   <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
   </tbody>

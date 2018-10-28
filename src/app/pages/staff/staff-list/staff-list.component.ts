@@ -10,7 +10,12 @@ import {Router} from '@angular/router';
 })
 
 export class StaffListComponent implements OnInit {
-
+  nameOrderDir=false;
+  statusOrderDir=false;
+  shopNameOrderDir=false;
+  typeOrderDir=false;
+  phoneNumberOrderDir=false;
+  locationOrderDir=false;
   statusCode: number;
   requestProcess = false;
   staffToUpdate = null;
@@ -23,7 +28,66 @@ export class StaffListComponent implements OnInit {
 editStaff(id:string){
   this.router.navigate(['/staff/edit/'+id]);
 }
+orderByName(){
+    if(this.nameOrderDir){
+      this.allStaff.sort((a,b) => a.username < b.username? -1 : 1);
 
+    }else {
+      this.allStaff.sort((a,b) => a.username > b.username? -1 : 1);
+    }
+  this.nameOrderDir=!this.nameOrderDir;
+
+}
+  orderByLocation(){
+    if(this.locationOrderDir){
+      this.allStaff.sort((a,b) => a.location < b.location? -1 : 1);
+
+    }else {
+      this.allStaff.sort((a,b) => a.location > b.location? -1 : 1);
+    }
+    this.locationOrderDir=!this.locationOrderDir;
+
+  }
+  orderByPhone(){
+    if(this.phoneNumberOrderDir){
+      this.allStaff.sort((a,b) => a.phoneNumber < b.phoneNumber? -1 : 1);
+
+    }else {
+      this.allStaff.sort((a,b) => a.phoneNumber > b.phoneNumber? -1 : 1);
+    }
+    this.phoneNumberOrderDir=!this.phoneNumberOrderDir;
+
+  }
+  orderByType(){
+    if(this.typeOrderDir){
+      this.allStaff.sort((a,b) => a.clientType < b.clientType? -1 : 1);
+
+    }else {
+      this.allStaff.sort((a,b) => a.clientType > b.clientType? -1 : 1);
+    }
+    this.typeOrderDir=!this.typeOrderDir;
+
+  }
+  orderByStatus(){
+    if(this.statusOrderDir){
+      this.allStaff.sort((a,b) => a.status < b.status? -1 : 1);
+
+    }else {
+      this.allStaff.sort((a,b) => a.status > b.status? -1 : 1);
+    }
+    this.statusOrderDir=!this.statusOrderDir;
+
+  }
+  orderByShope(){
+    if(this.shopNameOrderDir){
+      this.allStaff.sort((a,b) => a.shopName < b.shopName? -1 : 1);
+
+    }else {
+      this.allStaff.sort((a,b) => a.shopName > b.shopName? -1 : 1);
+    }
+    this.shopNameOrderDir=!this.shopNameOrderDir;
+
+  }
   getAllStaff() {
     this.staffService.getAllStaff()
       .subscribe(data => this.allStaff = data.sort((a,b) => a.creationDate > b.creationDate ? -1 : 1)
