@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MouseEvent} from '@agm/core';
 import {StaffUser} from '../StaffUser';
-import {StaffService} from '../staff.service';
+import {StaffHandler} from '../staff.handler';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Constants} from '../Constants';
-import {id} from '@swimlane/ngx-datatable/release/utils';
+import {ConstService} from '../../../services/const.service';
 
 
 @Component({
@@ -21,7 +20,8 @@ export class NewStaffComponent implements OnInit {
   private user: any;
   id: string;
   edituser:any;
-  constructor(private staffService: StaffService, private router: Router, private route: ActivatedRoute) {
+
+  constructor(private staffHandler: StaffHandler, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -35,7 +35,7 @@ export class NewStaffComponent implements OnInit {
       };
       this.newUSer = true;
     } else {
-      this.user = this.staffService.getStaffUserById(this.id).subscribe(staff => {
+      this.user = this.staffHandler.getStaffUserById(this.id).subscribe(staff => {
         this.user = staff;
 
         this.staffForm.removeControl('password');
@@ -95,7 +95,8 @@ export class NewStaffComponent implements OnInit {
   });
 
   checkUserByEmail(event) {
-    this.staffService.getStaffByEmail(event.target.value).subscribe(data => {
+    this.staffHandler.getStaffByEmail(event.target.value).subscribe(data => {
+      console.log(data);
         if (data['count'] > 0) {
           this.emailError = true;
         } else {
@@ -107,7 +108,7 @@ export class NewStaffComponent implements OnInit {
   }
 
   checkUserByPhone(event) {
-    this.staffService.getStaffByPhone(event.target.value).subscribe(data => {
+    this.staffHandler.getStaffByPhone(event.target.value).subscribe(data => {
         if (data['count'] > 0) {
           this.phoneError = true;
         } else {
@@ -120,7 +121,7 @@ export class NewStaffComponent implements OnInit {
   }
 
   checkUserByName(event) {
-    this.staffService.getStaffByUserName(event.target.value).subscribe(data => {
+    this.staffHandler.getStaffByUserName(event.target.value).subscribe(data => {
         if (data['count'] > 0) {
           this.nameError = true;
         } else {
@@ -182,8 +183,8 @@ this.submitted=true;
       this.user = this.staffForm.value;
       this.user.clientType = this.selectedSale;
       this.user.locationPoint = this.locationPoint;
-      this.user.roleIds = Constants.STAFF_ROLES;
-      this.staffService.createStaffUser(this.user).subscribe(successCode => {
+      this.user.roleIds = ConstService.STAFF_ROLES;
+      this.staffHandler.createStaffUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
           this.router.navigate(['/staff/list']);
         },
@@ -200,7 +201,7 @@ this.submitted=true;
       this.user.location=this.staffForm.get('location').value;
       this.user.clientType = this.selectedSale;
       this.user.locationPoint = this.locationPoint;
-      this.staffService.updateStaffUser(this.user).subscribe(successCode => {
+      this.staffHandler.updateStaffUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
           this.router.navigate(['/staff/list']);
         },

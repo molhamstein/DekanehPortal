@@ -53,6 +53,7 @@
   },
   "staff": {
     "shopName": "اسم المتجر",
+    "search": "ابحث",
     "clientType": "النوع",
     "location": "العنوان",
     "phoneNumber": "رقم الهاتف",

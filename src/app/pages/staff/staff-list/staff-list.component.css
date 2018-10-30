@@ -18,3 +18,7 @@ td,th{
 .clickable-th{
   cursor:pointer ;
 }
+
+.search-box {
+  margin-bottom: 30px;
+}

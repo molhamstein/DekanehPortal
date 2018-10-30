@@ -3,7 +3,7 @@ import {Http,Headers} from '@angular/http';
 
 @Injectable()
 export class ApiService {
-  api="/server/";
+  api = 'http://104.217.253.15:3003/api';
   header=new Headers();
   constructor(private http: Http) {
     if(localStorage.getItem('token'))
@@ -19,12 +19,12 @@ export class ApiService {
     return this.http.get(this.api+name,{params:params,headers:this.header});
   }
 
-  post(name,data) {
-    return this.http.post(this.api+name,data,{headers:this.header});
+  post(name, data, options) {
+    return this.http.post(this.api + name, data, options);
   }
 
-  put(name,data) {
-    return this.http.put(this.api+name,data,{headers:this.header});
+  put(name, data, options) {
+    return this.http.put(this.api + name, data, options);
   }
 
   delete(name,id) {
