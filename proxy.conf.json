@@ -3,6 +3,7 @@
     "target": "http://104.217.253.15:3003/api",
     "secure": false,
     "logLevel": "debug",
-    "changeOrigin": true
+    "changeOrigin": true,
+    "pathRewrite": {"^/server" : ""}
   }
 }

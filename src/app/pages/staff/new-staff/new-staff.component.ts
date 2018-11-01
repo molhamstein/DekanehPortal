@@ -5,8 +5,6 @@ import {StaffUser} from '../StaffUser';
 import {StaffService} from '../staff.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Constants} from '../Constants';
-import {id} from '@swimlane/ngx-datatable/release/utils';
-
 
 @Component({
   selector: 'app-new-staff',

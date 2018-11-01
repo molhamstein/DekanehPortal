@@ -1,124 +1,79 @@
 {
-  "mainMenu": {
-    "main": "القائمة الرئيسية",
-    "Manufacturers": {
-      "main": "المصانع",
-      "add": "إضافة مصنع جديد",
-      "viewAll": "عرض جميع المصانع"
+  "mainMenu":{
+    "main":"القائمة الرئيسية",
+    "Manufacturers":{
+      "main":"المصانع",
+      "add":"إضافة مصنع جديد",
+      "viewAll":"عرض جميع المصانع"
     },
-    "Clients": {
-      "main": "الزبائن",
-      "add": "إضافة زبون جديد",
-      "viewAll": "عرض جميع الزبائن"
+    "Clients":{
+      "main":"الزبائن",
+      "add":"إضافة زبون جديد",
+      "viewAll":"عرض جميع الزبائن"
     },
-    "Orders": {
-      "main": "الطلبات",
-      "viewAll": "عرض جميع الطلبات"
+    "Orders":{
+      "main":"الطلبات",
+      "viewAll":"عرض جميع الطلبات"
     },
-    "Products": {
-      "main": "المنتجات",
-      "add": "إضافة منتج جديد",
-      "viewAll": "عرض جميع المنتجات"
+    "Products":{
+      "main":"المنتجات",
+      "add":"إضافة منتج جديد",
+      "viewAll":"عرض جميع المنتجات"
     },
-    "Categories": {
-      "main": "التصنيفات",
-      "add": "إضافة تصنيف جديد",
-      "viewAll": "عرض جميع التصنيفات"
+    "Categories":{
+      "main":"التصنيفات",
+      "add":"إضافة تصنيف جديد",
+      "viewAll":"عرض جميع التصنيفات"
     },
-    "Staff": {
-      "main": "الموظفون",
-      "add": "إضافةموظف جديد",
-      "viewAll": "عرض جميع الموظفين"
+    "Staff":{
+      "main":"الموظفون",
+      "add":"إضافةموظف جديد",
+      "viewAll":"عرض جميع الموظفين"
     },
-    "Ratings": {
-      "main": "التقييمات",
-      "viewAll": "عرض جميع التقييمات"
+    "Ratings":{
+      "main":"التقييمات",
+      "viewAll":"عرض جميع التقييمات"
     }
   },
   "logIn": {
     "SignIn": "تسجيل الدخول",
     "email": "البريد الالكتروني",
     "password": "كلمة المرور",
-    "rememberMe": "تذكرني"
+    "rememberMe": "تذكرني",
+    "Signin": "تسجيل الدخول"
   },
-  "Dashboard": {
-    "Main": " لوحة المراقبة",
-    "Statistics": "الاحصاءات",
-    "ComparedToLastWeek": "بالمقارنة مع الأسبوع الفائت",
-    "newOrders": "الطلبات الجديدة",
-    "fromLastWeek": "من الشهر الفائت",
-    "uniqueVisitors": "الزبائن المميزون",
-    "last28Hours": "خلال ال 28 ساعة الفائتة",
-    "Activites": "الاحداث الأخيرة"
+  "Dashboard":{
+    "Main":" لوحة المراقبة",
+    "Statistics":"الاحصاءات",
+    "ComparedToLastWeek":"بالمقارنة مع الأسبوع الفائت",
+    "newOrders":"الطلبات الجديدة",
+    "fromLastWeek":"من الشهر الفائت",
+    "uniqueVisitors":"الزبائن المميزون",
+    "last28Hours":"خلال ال 28 ساعة الفائتة",
+    "Activites":"الاحداث الأخيرة"
   },
+  "Manufactures":{
+    "main":"المصانع",
+    "addNew":"إضافة مصنع جديد",
+    "viewAll":"عرض جميع المصانع",
+    "form":{
+      "manufacturerAr":"الاسم العربي",
+      "manufacturerEn":"الاسم الانكليزي",
+      "CannotBeBlank":"الحقل مطلوب"
+    }
+  },
+
   "staff": {
-    "shopName": "اسم المتجر",
+    "shopName": "اسم المحل",
     "clientType": "النوع",
     "location": "العنوان",
     "phoneNumber": "رقم الهاتف",
     "userName": "اسم المستخدم",
-    "statustext": "الحالة",
+    "status": "الحالة",
     "actions": "عمليات",
     "buttons": {
-      "edit": "تعديل",
-      "delete": "حذف",
-      "add": "اضافة",
-      "back":"إلغاء"
-    },
-    "status":{
-      "pending":"معلق",
-      "activated":"مفعل",
-      "deactivated":"غير مفعل"
-    },
-    "form": {
-      "controls": {
-        "username": "الاسم ",
-        "email": "البريد الاكتروني",
-        "phone": "رقم الهاتف",
-        "clientType": "النوع",
-        "retailCostumer": "تاجر مفرق",
-        "wholesale": "تاجر جملة",
-        "ownerName": "اسم المالك",
-        "notes": "ملاحظات",
-        "location": "العنوان",
-        "shopName": "اسم المتجر",
-        "locationPoint": "الموقع الجغرافي",
-        "roles": "الادوار",
-        "privileges": "الصلاحيات",
-        "password": "كلمة المرور",
-        "repassword": "تأكيد كلمة المرور"
-      },
-      "hints": {
-        "roles": "تابع الضفط على زر الCtrl للاختيار المتعدد"
-      },
-      "placeholders": {
-        "username": "أدخل اسم الموظف",
-        "email": "أدخل البريد الاكتروني",
-        "phone": "أدخل رقم الهاتف",
-        "clientType": "ادخل النوع ",
-        "ownerName": "اسم المالك",
-        "notes": "أدخل الملاحظات",
-        "location": "ادخل العنوان",
-        "shopName": "ادخل اسم المتجر",
-        "locationPoint": "الموقع الجغرافي",
-        "roles": "الادوار",
-        "privileges": "الصلاحيات"
-      },
-      "validations": {
-        "username": "الرجاء ادخال اسم الموظف",
-        "email": "الرجاء ادخال بريد اكتروني صحيح",
-        "phone": "الرجاء ادخال رقم هاتف صحيح",
-        "phoneHint": "مثال : 999999999 - 09999999999 - 99999999999+",
-        "password": "الرجاء ادخال كلمة مرور اكبر من 6 محارف"
-      },
-      "errors": {
-        "username": "اسم المستخدم مستخدم مسبقاً",
-        "phone": "رقم الهاتف مستخدم مسبقاً",
-        "email": "البريد الالكتروني مستخدم مسبقاً",
-        "pass": "كلمة المرور غير مطابقة"
-      }
+      "edit":"تعديل",
+      "delete":"حذف"
     }
   }
 }
-
-

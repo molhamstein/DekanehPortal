@@ -1,3 +1,28 @@
-<p>
-  add-manufacturer works!
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Manufactures.addNew'|translate">
+      <form [formGroup]="manufacturerForm">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Manufactures.form.manufacturerAr'|translate}}</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control tooltip-form" id="manufacturerAr" formControlName="manufacturerAr" name="manufacturerAr" [placeholder]="'Manufactures.form.manufacturerAr'|translate">
+            <div class="messages text-danger " placement="top" ngbTooltip="Username can't be blank" *ngIf="manufacturerForm.controls['manufacturerAr'].errors"><i class="text-danger icofont icofont-close-circled"></i> <label>{{'Manufactures.form.CannotBeBlank'|translate}}</label></div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Manufactures.form.manufacturerEn'|translate}}</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control tooltip-form" id="manufacturerEn" formControlName="manufacturerAr" name="manufacturerEn" [placeholder]="'Manufactures.form.manufacturerEn'|translate">
+            <div class="messages text-danger " placement="top" ngbTooltip="Username can't be blank" *ngIf="manufacturerForm.controls['manufacturerEn'].errors"><i class="text-danger icofont icofont-close-circled"></i> <label>{{'Manufactures.form.CannotBeBlank'|translate}}</label></div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+            <button type="submit" (submit)="addManufactures()" class="btn btn-primary m-b-0" [disabled]="!manufacturerForm.valid">Submit</button>
+          </div>
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>

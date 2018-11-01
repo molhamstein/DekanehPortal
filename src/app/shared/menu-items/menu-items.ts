@@ -98,14 +98,14 @@ export class MenuItems {
           ]
         },
         {
-          state: 'forms',
+          state: 'categories',
           short_label: 'F',
           name: 'mainMenu.Categories.main',
           type: 'sub',
           icon: 'ti-layers',
           children: [
             {
-              state: 'basic-elements',
+              state: 'viewAll',
               name: 'mainMenu.Categories.viewAll'
             }
           ]

@@ -18,6 +18,7 @@ import {UtilsModule} from './utils/utils.module';
 import {AdminModule} from './layout/admin/admin.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {PagesModule} from './pages/pages.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 
 
@@ -41,6 +42,8 @@ export function HttpLoaderFactory(http: Http) {
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
+    ReactiveFormsModule,
+    FormsModule,
     ClickOutsideModule,
     SharedModule,
     HttpModule,
