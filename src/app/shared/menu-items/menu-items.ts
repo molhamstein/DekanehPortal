@@ -53,17 +53,17 @@ export class MenuItems {
           ]
         },
         {
-          state: 'forms',
+          state: 'client',
           short_label: 'F',
           name: 'mainMenu.Clients.main',
           type: 'sub',
           icon: 'ti-layers',
           children: [
             {
-              state: 'basic-elements',
+              state: 'new',
               name: 'mainMenu.Clients.add'
             }, {
-              state: 'add-on',
+              state: 'list',
               name: 'mainMenu.Clients.viewAll'
             }
           ]

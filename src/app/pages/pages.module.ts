@@ -13,6 +13,7 @@ import {DataTableModule} from 'angular2-datatable';
 import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
+import {ClientsModule} from './clients/clients.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {StaffModule} from './staff/staff.module';
     HttpModule,
     DataTableModule,
     StaffModule,
+    ClientsModule
 
   ],
   exports:[

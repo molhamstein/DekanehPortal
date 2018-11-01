@@ -19,6 +19,7 @@ import {AdminModule} from './layout/admin/admin.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {PagesModule} from './pages/pages.module';
 import {AgmCoreModule} from '@agm/core';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 
 // AoT requires an exported function for factories
@@ -54,6 +55,7 @@ export function HttpLoaderFactory(http: Http) {
     }),
     AdminModule,
     PagesModule,
+    PaginationModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
     }),

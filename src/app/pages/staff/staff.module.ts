@@ -7,6 +7,7 @@ import {StaffHandler} from './staff.handler';
 import {ReactiveFormsModule} from '@angular/forms';
 import { NewStaffComponent } from './new-staff/new-staff.component';
 import {AgmCoreModule} from '@agm/core';
+import {ClientsHandler} from '../clients/clients-handler';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {AgmCoreModule} from '@agm/core';
     NewStaffComponent,
   ],
   providers: [
-    StaffHandler
+    StaffHandler,
+
   ],
 })
 export class StaffModule {

@@ -19,6 +19,8 @@ import {ViewManufacturersComponent} from '../../pages/manufacturers/view-manufac
 import {AddManufacturerComponent} from '../../pages/manufacturers/add-manufacturer/add-manufacturer.component';
 import {StaffListComponent} from '../../pages/staff/staff-list/staff-list.component';
 import {NewStaffComponent} from '../../pages/staff/new-staff/new-staff.component';
+import {ClientListComponent} from '../../pages/clients/client-list/client-list.component';
+import {NewClientComponent} from '../../pages/clients/new-client/new-client.component';
 
 const AppRoutes = [
   {
@@ -56,6 +58,22 @@ const AppRoutes = [
           {
             path: 'edit/:id',
             component: NewStaffComponent,
+          },
+        ],
+      },
+      {
+        path: 'client', children: [
+          {
+            path: 'list',
+            component: ClientListComponent,
+          },
+          {
+            path: 'new',
+            component: NewClientComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewClientComponent,
           },
         ],
       },

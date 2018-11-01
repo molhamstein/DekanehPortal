@@ -77,8 +77,82 @@
         "email": "البريد الاكتروني",
         "phone": "رقم الهاتف",
         "clientType": "النوع",
-        "retailCostumer": "تاجر مفرق",
-        "wholesale": "تاجر جملة",
+        "retailCostumer": "زبون مفرق",
+        "horeca": "منشآت",
+        "wholesale": "دكانة",
+        "ownerName": "اسم المالك",
+        "notes": "ملاحظات",
+        "location": "العنوان",
+        "shopName": "اسم المتجر",
+        "locationPoint": "الموقع الجغرافي",
+        "roles": "الادوار",
+        "privileges": "الصلاحيات",
+        "password": "كلمة المرور",
+        "repassword": "تأكيد كلمة المرور"
+      },
+      "hints": {
+        "roles": "تابع الضفط على زر الCtrl للاختيار المتعدد"
+      },
+      "placeholders": {
+        "username": "أدخل اسم الموظف",
+        "email": "أدخل البريد الاكتروني",
+        "phone": "أدخل رقم الهاتف",
+        "clientType": "ادخل النوع ",
+        "ownerName": "اسم المالك",
+        "notes": "أدخل الملاحظات",
+        "location": "ادخل العنوان",
+        "shopName": "ادخل اسم المتجر",
+        "locationPoint": "الموقع الجغرافي",
+        "roles": "الادوار",
+        "privileges": "الصلاحيات"
+      },
+      "validations": {
+        "username": "الرجاء ادخال اسم الموظف",
+        "email": "الرجاء ادخال بريد اكتروني صحيح",
+        "phone": "الرجاء ادخال رقم هاتف صحيح",
+        "phoneHint": "مثال : 999999999 - 09999999999 - 99999999999+",
+        "password": "الرجاء ادخال كلمة مرور اكبر من 6 محارف"
+      },
+      "errors": {
+        "username": "اسم المستخدم مستخدم مسبقاً",
+        "phone": "رقم الهاتف مستخدم مسبقاً",
+        "email": "البريد الالكتروني مستخدم مسبقاً",
+        "pass": "كلمة المرور غير مطابقة"
+      }
+    }
+  },
+  "client": {
+    "perPage": "عدد العناصر في الصفحة",
+    "shopName": "اسم المتجر",
+    "search": "ابحث",
+    "area": "اسم المنطقة",
+    "clientType": "النوع",
+    "location": "العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "userName": "اسم المستخدم",
+    "statustext": "الحالة",
+    "actions": "عمليات",
+    "buttons": {
+      "edit": "تعديل",
+      "delete": "حذف",
+      "add": "اضافة",
+      "back": "إلغاء"
+    },
+    "status": {
+      "pending": "معلق",
+      "activated": "مفعل",
+      "deactivated": "غير مفعل"
+    },
+    "form": {
+      "controls": {
+        "area": "المنطقة",
+        "username": "الاسم ",
+        "email": "البريد الاكتروني",
+        "phone": "رقم الهاتف",
+        "clientType": "النوع",
+        "retailCostumer": "زبون مفرق",
+        "horeca": "منشآت",
+        "wholesale": "دكانة",
         "ownerName": "اسم المالك",
         "notes": "ملاحظات",
         "location": "العنوان",

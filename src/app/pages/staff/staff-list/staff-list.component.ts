@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StaffUser} from '../StaffUser';
 import {StaffHandler} from '../staff.handler';
 import {Router} from '@angular/router';
-import {asProviderData} from '@angular/core/src/view';
-import {field} from '../../../utils/field.model';
+import {UserModel} from '../../user-model';
 
 @Component({
   selector: 'staff-list',
@@ -21,7 +19,7 @@ export class StaffListComponent implements OnInit {
   statusCode: number;
   requestProcess = false;
   staffToUpdate = null;
-  allStaff: StaffUser[] = [];
+  allStaff: UserModel[] = [];
 
   constructor(private staffHandler: StaffHandler, private router: Router) {
 
@@ -130,7 +128,7 @@ export class StaffListComponent implements OnInit {
       this.getAllStaff();
 
     }
-    let as: StaffUser[] = [];
+    let as: UserModel[] = [];
     let fields = ['username', 'shopName', 'location', 'phoneNumber'];
     for (let field of fields) {
       for (let t of this.filterByfield(this.allStaff, field, value)) {
