@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {LogInComponent} from './auth/log-in/log-in.component';
 import {ChartModule} from 'angular2-chartjs';
@@ -14,28 +14,43 @@ import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
 import {ClientsModule} from './clients/clients.module';
+import { ViewSubCategoryComponent } from './categories/view-sub-category/view-sub-category.component';
+import {CategoriesComponent} from './categories/categories.component';
+import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 @NgModule({
 
   imports: [
+
+    BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forChild(),
     RouterModule,
     ChartModule,
     SharedModule,
-    CommonModule,
     FormsModule,
     HttpModule,
     DataTableModule,
     StaffModule,
-    ClientsModule
-
+    ClientsModule,
   ],
   exports:[
     DataFilterPipe,
   ],
-  declarations: [LogInComponent, ManufacturersComponent, AddManufacturerComponent, ViewManufacturersComponent,],
+  declarations: [
+    LogInComponent,
+    ManufacturersComponent,
+    AddManufacturerComponent,
+    ViewManufacturersComponent,
+    CategoriesComponent,
+    ViewAllCategoriesComponent,
+    DashboardComponent,
+    ViewSubCategoryComponent,
+  ],
 })
 export class PagesModule { }

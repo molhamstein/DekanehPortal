@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-sm-4">
+    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
+           placeholder="{{'Categories.search'|translate}}....">
+  </div>
+</div>
+<br/>
+<table class="table table-bordered table-striped ">
+  <thead>
+  <tr>
+    <th *ngFor="let col of cols" class="text-center clickable-th" (click)="orderBy(col)">
+      <label >{{"Categories."+col|translate}}</label>
+      <i [class]="'fa-sort fa '+ (orderDir[col]==0?'':orderDir[col]==-1?'fa-sort-desc' :'fa-sort-asc')"></i>
+    </th>
+    <th class="text-center ">
+      {{"Categories.actions"|translate}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let category of categories">
+    <tr  (click)="showSub(category)">
+      <td *ngFor="let col of cols">
+        {{category[col]}}
+      </td>
+      <td>
+        <i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>
+        <i class="ti-settings" [title]="'Categories.edit'|translate"></i>
+        <i class="ti-trash" [title]="'Categories.delete'|translate"></i>
+      </td>
+    </tr>
+    <ng-container *ngFor="let subCat of subCategories">
+      <tr *ngIf="subCat.visible&&subCat.parentId==category.id">
+        <table *ngIf="subCat.cols.length>0" class="width-100 table table-bordered table-striped ">
+          <thead>
+          <tr>
+            <th *ngFor="let col of subCat.cols" class="text-center">
+              <label >{{"Categories.sub."+col|translate}}</label>
+            </th>
+            <th class="text-center ">
+              {{"Categories.actions"|translate}}
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of subCat.value">
+              <td *ngFor="let col of subCat.cols">
+              {{r[col]}}
+              </td>
+              <td>
+                <i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>
+                <i class="ti-settings" [title]="'Categories.edit'|translate"></i>
+                <i class="ti-trash" [title]="'Categories.delete'|translate"></i>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+          <h3 class="text-center" *ngIf="subCat.cols.length==0" >{{"Categories.NoDataFound"|translate}}</h3>
+      </tr>
+    </ng-container>
+  </ng-container>
+
+  </tbody>
+</table>
+  <!--<div class="row">-->
+  <!--<pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">"-->
+  <!--[(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>-->
+  <!--<div class="per-page-sec">-->
+  <!--<span>{{"client.perPage"|translate}}</span>-->
+  <!--<input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">-->
+  <!--</div>-->
+
+  <!--</div>-->
+
+

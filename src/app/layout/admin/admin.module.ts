@@ -11,7 +11,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {UtilsModule} from '../../utils/utils.module';
-import {BrowserModule} from '@angular/platform-browser';
+// import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ManufacturersComponent} from '../../pages/manufacturers/manufacturers.component';
@@ -21,6 +21,11 @@ import {StaffListComponent} from '../../pages/staff/staff-list/staff-list.compon
 import {NewStaffComponent} from '../../pages/staff/new-staff/new-staff.component';
 import {ClientListComponent} from '../../pages/clients/client-list/client-list.component';
 import {NewClientComponent} from '../../pages/clients/new-client/new-client.component';
+import {CategoriesComponent} from '../../pages/categories/categories.component';
+import {ViewSubCategoryComponent} from '../../pages/categories/view-sub-category/view-sub-category.component';
+// import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
+// import {ViewCategoriesComponent} from '../../pages/categories-management/view-categories/view-categories.component';
+import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
 
 const AppRoutes = [
   {
@@ -30,6 +35,20 @@ const AppRoutes = [
       {
         path: '',
         component: DashboardComponent,
+      },
+      {
+        path: 'Categories',
+        component: CategoriesComponent,
+        children: [
+          {
+            path:"viewAll",
+            component:ViewAllCategoriesComponent,
+          },
+          {
+            path: 'category/:id/subCategories',
+            component: ViewSubCategoryComponent,
+          },
+        ],
       },
       {
         path: 'manufacturers',
@@ -89,14 +108,12 @@ const AppRoutes = [
     PagesModule,
     SharedModule,
     FormsModule,
-    BrowserModule,
+    // BrowserModule,
     BrowserAnimationsModule,
     ClickOutsideModule,
     HttpModule,
     UtilsModule,
     PagesModule,
-
-
   ],
   declarations: [
     AdminComponent,

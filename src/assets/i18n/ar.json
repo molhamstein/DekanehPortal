@@ -41,6 +41,37 @@
     "password": "كلمة المرور",
     "rememberMe": "تذكرني"
   },
+  "Manufactures": {
+    "addNew": "إضافة جديد",
+    "nameEn": "الاسم الانكليزي",
+    "nameAr": "الاسم العربي",
+    "cantBeEmpty": "لايمكن ان يكون فارغا",
+    "add": "إضافة",
+    "errorInForm": "خطأ في قيمة الحقول"
+  },
+  "Categories": {
+    "main": "التصنيفات",
+    "search": "بحث في التصنيفات",
+    "code": "الكود",
+    "titleAr": "الاسم العربي",
+    "titleEn": "الاسم الانكليزي",
+    "creationDate": "تاريخ الاضافة",
+    "icon": "الايقونة",
+    "id": "ID",
+    "actions": "عمليات",
+    "details": "التفاصيل",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "NoDataFound":"لا يوجد معطيات",
+    "sub": {
+      "code": "الكود",
+      "creationDate": "تاريخ الانشاء",
+      "id": "ID",
+      "parentCategoryId": "معرف الأب",
+      "titleAr": "العنوان العربي",
+      "titleEn": "العنوان الانكليزي"
+    }
+  },
   "Dashboard": {
     "Main": " لوحة المراقبة",
     "Statistics": "الاحصاءات",
@@ -64,12 +95,12 @@
       "edit": "تعديل",
       "delete": "حذف",
       "add": "اضافة",
-      "back":"إلغاء"
+      "back": "إلغاء"
     },
-    "status":{
-      "pending":"معلق",
-      "activated":"مفعل",
-      "deactivated":"غير مفعل"
+    "status": {
+      "pending": "معلق",
+      "activated": "مفعل",
+      "deactivated": "غير مفعل"
     },
     "form": {
       "controls": {
