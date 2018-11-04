@@ -47,7 +47,9 @@
     "nameAr": "الاسم العربي",
     "cantBeEmpty": "لايمكن ان يكون فارغا",
     "add": "إضافة",
-    "errorInForm": "خطأ في قيمة الحقول"
+    "errorInForm": "خطأ في قيمة الحقول",
+    "edit": "تعديل",
+    "delete": "حذف"
   },
   "Categories": {
     "main": "التصنيفات",
@@ -67,10 +69,11 @@
       "code": "الكود",
       "creationDate": "تاريخ الانشاء",
       "id": "ID",
-      "parentCategoryId": "معرف الأب",
-      "titleAr": "العنوان العربي",
-      "titleEn": "العنوان الانكليزي"
-    }
+      "parentCategoryId": "الأب",
+      "titleAr": "الاسم العربي",
+      "titleEn": "الاسم الانكليزي"
+    },
+    "newSubCat":"إضافة تصنيف فرعي جديد"
   },
   "Dashboard": {
     "Main": " لوحة المراقبة",

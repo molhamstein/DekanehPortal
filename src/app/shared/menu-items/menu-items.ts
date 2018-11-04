@@ -105,9 +105,13 @@ export class MenuItems {
           icon: 'ti-layers',
           children: [
             {
+              state: 'add',
+              name: 'mainMenu.Categories.add'
+            },
+            {
               state: 'viewAll',
               name: 'mainMenu.Categories.viewAll'
-            }
+            },
           ]
         },
         {

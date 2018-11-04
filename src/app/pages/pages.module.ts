@@ -14,11 +14,11 @@ import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
 import {ClientsModule} from './clients/clients.module';
-import { ViewSubCategoryComponent } from './categories/view-sub-category/view-sub-category.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserModule} from '@angular/platform-browser';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
 
 
 @NgModule({
@@ -50,7 +50,7 @@ import {BrowserModule} from '@angular/platform-browser';
     CategoriesComponent,
     ViewAllCategoriesComponent,
     DashboardComponent,
-    ViewSubCategoryComponent,
+    AddCategoryComponent,
   ],
 })
 export class PagesModule { }
