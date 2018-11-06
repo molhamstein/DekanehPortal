@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CustomValidators} from 'ng2-validation';
-=======
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../../services/api.service';
 import {TranslateService} from '@ngx-translate/core';
 import {ConstService} from '../../../services/const.service';
 import {ActivatedRoute, Router} from '@angular/router';
->>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
 
 @Component({
   selector: 'app-add-manufacturer',
@@ -17,16 +11,6 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./add-manufacturer.component.css']
 })
 export class AddManufacturerComponent implements OnInit {
-<<<<<<< HEAD
-  myForm: FormGroup;
-  mynumberForm: FormGroup;
-  mytooltipForm: FormGroup;
-  checkdropForm: FormGroup;
-  submitted: boolean;
-  manufacturerForm: FormGroup;
-  constructor() {
-
-=======
   manufacturerForm: FormGroup;
   submitted: boolean = false;
   id;
@@ -75,66 +59,7 @@ export class AddManufacturerComponent implements OnInit {
       }
     });
   }
->>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
 
-
-    const name = new FormControl('', Validators.required);
-    const password = new FormControl('', Validators.required);
-    const gender = new FormControl('', Validators.required);
-    const email = new FormControl('', [Validators.required, Validators.email]);
-
-    const rpassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
-    this.myForm = new FormGroup({
-      name: name,
-      email: email,
-      password: password,
-      rpassword: rpassword,
-      gender: gender
-    });
-    /*Basic validation end*/
-
-    /*number Validation start*/
-    // const integer = new FormControl('', [Validators.required, CustomValidators.digits]);
-    // const numeric = new FormControl('', [Validators.required, CustomValidators.number]);
-    // const greater = new FormControl('', [Validators.required, CustomValidators.gt(50)]);
-    // const less = new FormControl('', [Validators.required, CustomValidators.lt(50)]);
-    //
-    // this.mynumberForm = new FormGroup({
-    //   integer: integer,
-    //   numeric: numeric,
-    //   greater: greater,
-    //   less: less
-    // });
-    /*number validation end*/
-
-    /*Tooltip Validation Start*/
-    // const usernameP = new FormControl('', [Validators.required]);
-    // const EmailP = new FormControl('', [Validators.required, Validators.email]);
-    // this.mytooltipForm = new FormGroup({
-    //   usernameP: usernameP,
-    //   EmailP: EmailP,
-    // });
-    /*Tooltip Validation End*/
-    const nameP = new FormControl('', [Validators.required]);
-    this.manufacturerForm= new FormGroup({
-      manufacturerAr:nameP ,
-      manufacturerEn:nameP ,
-    })
-    /* component form */
-    // const area = new FormControl('', [Validators.required]);
-    // const job = new FormControl('', [Validators.required]);
-    // this.checkdropForm = new FormGroup({
-    //   area: area,
-    //   job: job,
-    // });
-    /* end component form */
-
-  }
-  addManufactures(){
-    this.submitted=true;
-    console.log(this.manufacturerForm.value);
-
-  }
   ngOnInit() {
     this.manufacturerForm = new FormGroup({
       nameAr: new FormControl('', [Validators.required,]),
@@ -143,14 +68,14 @@ export class AddManufacturerComponent implements OnInit {
     if (this.id != undefined) {
       this.api.get("/manufacturers").subscribe((data:any)=>{
         if(data.status==200)
-         JSON.parse(data._body).map((man:any)=>{
-           if(man.id==this.id){
-             this.manufacturerForm = new FormGroup({
-               nameAr: new FormControl(man.nameAr, [Validators.required,]),
-               nameEn: new FormControl(man.nameEn, [Validators.required,]),
-             });
-           }
-         });
+          JSON.parse(data._body).map((man:any)=>{
+            if(man.id==this.id){
+              this.manufacturerForm = new FormGroup({
+                nameAr: new FormControl(man.nameAr, [Validators.required,]),
+                nameEn: new FormControl(man.nameEn, [Validators.required,]),
+              });
+            }
+          });
         else
           console.log(data.statusText);
       });

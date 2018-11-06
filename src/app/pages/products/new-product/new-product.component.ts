@@ -150,6 +150,7 @@ export class NewProductComponent implements OnInit {
   }
 
   onProductFormSubmit() {
+    this.processValidation = true;
     if (!this.selectedFile) {
       this.imgBlankError = true;
       return;

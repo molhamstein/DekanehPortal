@@ -49,6 +49,7 @@ import {ProductsModule} from './products/products.module';
     LogInComponent,
     ManufacturersComponent,
     AddManufacturerComponent,
+    AddCategoryComponent,
     ViewManufacturersComponent,
     CategoriesComponent,
     ViewAllCategoriesComponent,
