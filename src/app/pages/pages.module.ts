@@ -19,6 +19,7 @@ import {CategoriesComponent} from './categories/categories.component';
 import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {ProductsModule} from './products/products.module';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {BrowserModule} from '@angular/platform-browser';
     DataTableModule,
     StaffModule,
     ClientsModule,
+    ProductsModule
   ],
   exports:[
     DataFilterPipe,

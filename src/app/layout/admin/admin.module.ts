@@ -26,6 +26,8 @@ import {ViewSubCategoryComponent} from '../../pages/categories/view-sub-category
 // import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
 // import {ViewCategoriesComponent} from '../../pages/categories-management/view-categories/view-categories.component';
 import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
+import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
+import {ProductListComponent} from '../../pages/products/product-list/product-list.component';
 
 const AppRoutes = [
   {
@@ -93,6 +95,22 @@ const AppRoutes = [
           {
             path: 'edit/:id',
             component: NewClientComponent,
+          },
+        ],
+      },
+      {
+        path: 'products', children: [
+          {
+            path: 'list',
+            component: ProductListComponent,
+          },
+          {
+            path: 'new',
+            component: NewProductComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewProductComponent,
           },
         ],
       },

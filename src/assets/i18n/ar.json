@@ -62,7 +62,7 @@
     "details": "التفاصيل",
     "edit": "تعديل",
     "delete": "حذف",
-    "NoDataFound":"لا يوجد معطيات",
+    "NoDataFound": "لا يوجد معطيات",
     "sub": {
       "code": "الكود",
       "creationDate": "تاريخ الانشاء",
@@ -222,6 +222,74 @@
         "phone": "رقم الهاتف مستخدم مسبقاً",
         "email": "البريد الالكتروني مستخدم مسبقاً",
         "pass": "كلمة المرور غير مطابقة"
+      }
+    }
+  },
+  "product": {
+    "addImg": "اختر صورة",
+    "status": {
+    },
+    "form": {
+      "controls": {
+        "prodName": "اسم المنتج",
+        "sku": "sku",
+        "code": "code",
+        "horecaPrice": "السعر للمنشأت",
+        "horecaPriceDiscount": "السعر للمنشأت بعد الخصم",
+        "wholeSalePrice": "السعر للدكاكين",
+        "wholeSalePriceDiscount": "السعر للدكاكين بعد الخصم",
+        "marketOfficialPrice": "السعر الرسمي",
+        "dockanBuyingPrice": "سعر شراء دكان",
+        "wholeSaleMarketPrice": "سعر السوق للجمله",
+        "offer": "عرض",
+        "retailCostumer": "زبون مفرق",
+        "horeca": "منشآت",
+        "wholesale": "دكانة",
+        "cat": "تصنيف",
+        "subcat": "تصنيف فرعي",
+        "man": "الشركة المصنعة",
+        "tags": "كلمات مفتاحية",
+        "both": "الكل",
+        "offerSource": "مصدر العرض",
+        "offers": "عروض",
+        "dockan": "دكان",
+        "company": "شركة",
+        "supplier": "موًرد",
+        "featured": "منتج مميز",
+        "status": "الحالة",
+        "offerMaxQuantity": "كمية العرض",
+        "availableTo": "التوافر",
+        "desc": "الوصف",
+        "available": "متوفر",
+        "unavailable": "غير متوفر",
+        "pack": "حزمة"
+      },
+      "hints": {
+        "pack": "حزمة"
+      },
+      "placeholders": {
+        "prodName": "ادخل اسم المنتج",
+        "sku": "sku",
+        "offerMaxQuantity": "ادخل كمية العرض",
+        "addTags": "اضف كلمات مفتاحية",
+        "addTag": "اضف المزيد",
+        "code": "code",
+        "horecaPrice": "ادخل السعر للمنشأت",
+        "horecaPriceDiscount": "ادخل السعر للمنشأت بعد الخصم",
+        "wholeSalePrice": "ادخل السعر للدكاكين",
+        "wholeSalePriceDiscount": "ادخل السعر للدكاكين بعد الخصم",
+        "marketOfficialPrice": "ادخل السعر الرسمي",
+        "dockanBuyingPrice": "ادخل سعر شراء دكان",
+        "wholeSaleMarketPrice": "ادخل سعر السوق للجمله",
+        "desc": "ادخل الوصف",
+        "pack": "ادخل الحزمة"
+      },
+      "validations": {
+        "blank": "هذا الحقل لا يجب ان يكون فارغاً",
+        "imgBlank": "الرجاء إضافة صورة"
+      },
+      "errors": {
+        "pack": "حزمة"
       }
     }
   }
