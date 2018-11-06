@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <app-card [title]="'Manufactures.addNew'|translate">
+<<<<<<< HEAD
       <form [formGroup]="manufacturerForm">
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">{{'Manufactures.form.manufacturerAr'|translate}}</label>
@@ -14,12 +15,49 @@
           <div class="col-sm-10">
             <input type="text" class="form-control tooltip-form" id="manufacturerEn" formControlName="manufacturerAr" name="manufacturerEn" [placeholder]="'Manufactures.form.manufacturerEn'|translate">
             <div class="messages text-danger " placement="top" ngbTooltip="Username can't be blank" *ngIf="manufacturerForm.controls['manufacturerEn'].errors"><i class="text-danger icofont icofont-close-circled"></i> <label>{{'Manufactures.form.CannotBeBlank'|translate}}</label></div>
+=======
+      <form (ngSubmit)="addManufactur()" [formGroup]="manufacturerForm ">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control tooltip-form" ([ngModel])="manufacturerForm.nameEn" id="nameEn"
+                   formControlName="nameEn" name="nameEn" [placeholder]="'Manufactures.nameEn'|translate">
+            <div class="messages text-danger " placement="top"
+                 [ngbTooltip]="('Manufactures.nameEn'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                 *ngIf="manufacturerForm.get('nameEn').invalid&&submitted">
+              <br/>
+              <i class="text-danger f-right icofont icofont-close-circled">
+                <label>{{'Manufactures.nameEn'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Manufactures.nameAr'|translate}}</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control tooltip-form" ([ngModel])="manufacturerForm.nameAr" id="nameEn"
+                   formControlName="nameAr" name="nameAr" [placeholder]="'Manufactures.nameAr'|translate">
+            <div class="messages text-danger " placement="top"
+                 [ngbTooltip]="('Manufactures.nameAr'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                 *ngIf="manufacturerForm.get('nameAr').invalid&&submitted">
+              <br/>
+              <i class="text-danger f-right icofont icofont-close-circled">
+                <label>{{'Manufactures.nameAr'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+              </i>
+            </div>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           </div>
         </div>
         <div class="row">
           <label class="col-sm-2"></label>
           <div class="col-sm-10">
+<<<<<<< HEAD
             <button type="submit" (submit)="addManufactures()" class="btn btn-primary m-b-0" [disabled]="!manufacturerForm.valid">Submit</button>
+=======
+            <button type="submit" class="btn btn-primary m-b-0">
+              {{'Manufactures.add'|translate}}
+            </button>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           </div>
         </div>
       </form>

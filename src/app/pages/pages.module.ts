@@ -13,25 +13,30 @@ import {DataTableModule} from 'angular2-datatable';
 import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
-import { CategoriesComponent } from './categories/categories.component';
-import { ViewAllCategoriesComponent } from './categories/view-all-categories/view-all-categories.component';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
+import {ClientsModule} from './clients/clients.module';
+import {CategoriesComponent} from './categories/categories.component';
+import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {BrowserModule} from '@angular/platform-browser';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
 @NgModule({
   imports: [
+
+    BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
     RouterModule,
     ChartModule,
     SharedModule,
-    CommonModule,
     FormsModule,
     HttpModule,
     DataTableModule,
     StaffModule,
-    NgxDatatableModule,
+    ClientsModule,
   ],
   exports:[
     DataFilterPipe,
@@ -43,6 +48,8 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     ViewManufacturersComponent,
     CategoriesComponent,
     ViewAllCategoriesComponent,
+    DashboardComponent,
+    AddCategoryComponent,
   ],
 })
 export class PagesModule { }

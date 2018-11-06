@@ -4,6 +4,8 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
-    "pathRewrite": {"^/server" : ""}
+    "pathRewrite": {
+      "^/server/": ""
+    }
   }
 }

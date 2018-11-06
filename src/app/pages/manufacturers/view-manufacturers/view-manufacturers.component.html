@@ -8,47 +8,28 @@
       </div>
       <!--<span class="m-b-20">use class <code>table table-striped table-bordered full-data-table</code> with table element</span><br><br>-->
       <div class="dt-responsive">
-        <!--<div class="row">-->
-          <!--<div class="col-xs-12 col-sm-12 col-sm-12 col-md-6">-->
-            <!--<div>-->
-              <!--<label class="label-control">Show-->
-                <!--<select class="form-control input-sm full-data-show-entry" [(ngModel)]="rowsOnPage">-->
-                  <!--<option [ngValue]="10">10</option>-->
-                  <!--<option [ngValue]="25">25</option>-->
-                  <!--<option [ngValue]="50">50</option>-->
-                  <!--<option [ngValue]="100">100</option>-->
-                <!--</select>-->
-                <!--entries-->
-              <!--</label>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
-            <!--<div style="text-align: right;">-->
-              <!--<label>Search:-->
-                <!--<input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Search name">-->
-              <!--</label>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!-- <div class="panel-heading">User information</div>-->
         <div class="table-responsive">
           <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" >
+          <!--<table class="table table-striped table-bordered full-data-table" >-->
             <thead>
             <tr>
-              <th>
-                <mfDefaultSorter  by="code">الكود</mfDefaultSorter>
+              <th class="text-center ">
+                <mfDefaultSorter by="code">الكود</mfDefaultSorter>
               </th>
-              <th>
-                <mfDefaultSorter  by="nameEn">الاسم الانكليزي</mfDefaultSorter>
+              <th class="text-center ">
+                <mfDefaultSorter by="nameEn">الاسم الانكليزي</mfDefaultSorter>
               </th>
-              <th>
+              <th class="text-center ">
                 <mfDefaultSorter by="nameAr">الاسم العربي</mfDefaultSorter>
               </th>
-              <th>
-                <mfDefaultSorter  by="creationDate">تاريخ الإضافة</mfDefaultSorter>
+              <th class="text-center ">
+                <mfDefaultSorter   by="creationDate">تاريخ الإضافة</mfDefaultSorter>
               </th>
-              <th>
-                <mfDefaultSorter  by="id">الرقم التسلسلي</mfDefaultSorter>
+              <th class="text-center " >
+                <mfDefaultSorter by="id">الرقم التسلسلي</mfDefaultSorter>
+              </th>
+              <th class="text-center">
+                <label >عمليات</label>
               </th>
             </tr>
             <tr>
@@ -61,22 +42,26 @@
               <td>{{item.nameAr}}</td>
               <td>{{item.creationDate}}</td>
               <td>{{item.id}}</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-              <th>code</th>
-              <th>nameEn</th>
-              <th>nameAr</th>
-              <th>creationDate</th>
-              <th>id</th>
-            </tr>
-            <tr>
-              <td colspan="6">
-                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+              <td>
+                <i class="ti-settings" (click)="editManufacturer(item)"  [title]="'Manufactures.edit'|translate"></i>
+                <i class="ti-trash" (click)="deleteManufacturer(item)" [title]="'Manufactures.delete'|translate"></i>
               </td>
             </tr>
-            </tfoot>
+            </tbody>
+            <!--<tfoot>-->
+            <!--<tr>-->
+            <!--<th>code</th>-->
+            <!--<th>nameEn</th>-->
+            <!--<th>nameAr</th>-->
+            <!--<th>creationDate</th>-->
+            <!--<th>id</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td colspan="6">-->
+            <!--<mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--</tfoot>-->
           </table>
         </div>
       </div>

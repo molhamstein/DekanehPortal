@@ -1,26 +1,25 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserModel} from '../../user-model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MouseEvent} from '@agm/core';
-import {StaffHandler} from '../staff.handler';
-import {ActivatedRoute, Router} from '@angular/router';
 import {ConstService} from '../../../services/const.service';
-import {UserModel} from '../../user-model';
+import {ClientsHandler} from '../clients-handler';
 
 @Component({
-  selector: 'app-new-staff',
-  templateUrl: './new-staff.component.html',
-  styleUrls: ['./new-staff.component.css']
+  selector: 'app-new-client',
+  templateUrl: './new-client.component.html',
+  styleUrls: ['./new-client.component.css']
 })
-export class NewStaffComponent implements OnInit {
+export class NewClientComponent implements OnInit {
   newUSer;
   nameError = false;
-  emailError = false;
   phoneError = false;
   private user: any;
   id: string;
 
 
-  constructor(private staffHandler: StaffHandler, private router: Router, private route: ActivatedRoute) {
+  constructor(private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -34,52 +33,59 @@ export class NewStaffComponent implements OnInit {
       };
       this.newUSer = true;
     } else {
-      this.user = this.staffHandler.getStaffUserById(this.id).subscribe(staff => {
-        this.user = staff;
+      this.user = this.ClientHandler.getClientUserById(this.id).subscribe(Client => {
+        this.user = Client;
 
-        this.staffForm.removeControl('password');
-        this.staffForm.setValue({
-          username: staff.username,
-          phoneNumber: staff.phoneNumber,
-          email: staff.email,
-          location: staff.location,
-          notes: staff.notes,
-          ownerName: staff.ownerName,
-          shopName: staff.shopName
+        this.ClientForm.removeControl('password');
+        this.ClientForm.setValue({
+          username: Client.username,
+          phoneNumber: Client.phoneNumber,
+          location: Client.location,
+          notes: Client.notes,
+          ownerName: Client.ownerName,
+          shopName: Client.shopName
         });
-        this.locationPoint = staff.locationPoint;
+        this.locationPoint = Client.locationPoint;
         this.marker.lng = this.locationPoint.lng;
         this.marker.lat = this.locationPoint.lat;
         this.lat = this.locationPoint.lat;
         this.lng = this.locationPoint.lng;
         this.newUSer = false;
-        this.selectedSale = staff.clientType;
-
+        this.selectedSale = Client.clientType;
+        this.areaId = Client.areaId;
       });
     }
+    this.getAreas();
   }
-  submitted=false;
+
+  getAreas() {
+    this.ClientHandler.getAllAreas().subscribe(data => {
+        this.areas = data;
+      }
+      , errorCode => this.statusCode = errorCode);
+
+  }
+
+  areas: any[];
+  submitted = false;
   password = '';
   passError;
   statusCode: number;
   selectedSale = 'retailCostumer';
   lat: number;
   lng: number;
+  areaId = '';
   locationPoint: any;
   processValidation = false;
   requestProcessing = false;
-  staffForm = new FormGroup({
+  ClientForm = new FormGroup({
     username: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.compose(
       [
         Validators.pattern('^\\+?\\d+$'),
         Validators.required
       ])),
-    email: new FormControl('', Validators.compose(
-      [
-        Validators.email,
-        Validators.required
-      ])),
+
     location: new FormControl(''),
     notes: new FormControl(''),
     ownerName: new FormControl(''),
@@ -93,21 +99,12 @@ export class NewStaffComponent implements OnInit {
     ),
   });
 
-  checkUserByEmail(event) {
-    this.staffHandler.getStaffByEmail(event.target.value).subscribe(data => {
-      console.log(data);
-        if (data['count'] > 0) {
-          this.emailError = true;
-        } else {
-          this.emailError = false;
-
-        }
-      }
-    );
+  setArea(event) {
+    this.areaId = event.target.value;
   }
 
   checkUserByPhone(event) {
-    this.staffHandler.getStaffByPhone(event.target.value).subscribe(data => {
+    this.ClientHandler.getClientByPhone(event.target.value).subscribe(data => {
         if (data['count'] > 0) {
           this.phoneError = true;
         } else {
@@ -120,7 +117,7 @@ export class NewStaffComponent implements OnInit {
   }
 
   checkUserByName(event) {
-    this.staffHandler.getStaffByUserName(event.target.value).subscribe(data => {
+    this.ClientHandler.getClientByUserName(event.target.value).subscribe(data => {
         if (data['count'] > 0) {
           this.nameError = true;
         } else {
@@ -164,49 +161,52 @@ export class NewStaffComponent implements OnInit {
 
 
   }
-  goHome(){
-    this.router.navigate(['/staff/list']);
+
+  goHome() {
+    this.router.navigate(['/client/list']);
 
   }
-  onStaffFormSubmit() {
+
+  onClientFormSubmit() {
     this.processValidation = true;
-    if (this.staffForm.invalid || this.passError || this.phoneError || this.emailError || this.nameError) {
-      console.log(this.passError);
+    if (this.ClientForm.invalid || this.passError || this.phoneError || this.nameError) {
       return;
     }
 
 
-      this.preProcessConfigurations();
-this.submitted=true;
+    this.preProcessConfigurations();
+    this.submitted = true;
     if (this.newUSer) {
-      this.user = this.staffForm.value;
+      this.user = this.ClientForm.value;
       this.user.clientType = this.selectedSale;
+      if (this.areaId == '') {
+        this.areaId = this.areas[0].id;
+      }
+      this.user.areaId = this.areaId;
       this.user.locationPoint = this.locationPoint;
-      this.user.roleIds = ConstService.STAFF_ROLES;
-      this.staffHandler.createStaffUser(this.user).subscribe(successCode => {
+      this.ClientHandler.createClientUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
-          this.router.navigate(['/staff/list']);
+          this.router.navigate(['/client/list']);
         },
         errorCode => this.statusCode = errorCode
       );
     } else {
 
-      this.user.ownerName=this.staffForm.get('ownerName').value;
-      this.user.username=this.staffForm.get('username').value;
-      this.user.email=this.staffForm.get('email').value;
-      this.user.notes=this.staffForm.get('notes').value;
-      this.user.shopName=this.staffForm.get('shopName').value;
-      this.user.phoneNumber=this.staffForm.get('phoneNumber').value;
-      this.user.location=this.staffForm.get('location').value;
+      this.user.ownerName = this.ClientForm.get('ownerName').value;
+      this.user.username = this.ClientForm.get('username').value;
+      this.user.notes = this.ClientForm.get('notes').value;
+      this.user.shopName = this.ClientForm.get('shopName').value;
+      this.user.phoneNumber = this.ClientForm.get('phoneNumber').value;
+      this.user.location = this.ClientForm.get('location').value;
       this.user.clientType = this.selectedSale;
+      this.user.areaId = this.areaId;
       this.user.locationPoint = this.locationPoint;
-      this.staffHandler.updateStaffUser(this.user).subscribe(successCode => {
+      this.ClientHandler.updateClientUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
-          this.router.navigate(['/staff/list']);
+          this.router.navigate(['/client/list']);
         },
         errorCode => this.statusCode = errorCode
       );
-      // console.log(this.user);
 
     }
 
@@ -233,3 +233,4 @@ interface marker {
   lng: number;
   draggable: boolean;
 }
+

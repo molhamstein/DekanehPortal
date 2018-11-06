@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a6f561f0-0a5c-43e1-ad3d-5eb928bfec06" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/proxy.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/proxy.conf.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
@@ -21,6 +22,17 @@
       <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.spec.ts" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/app/layout/admin/admin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout/admin/admin.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-sub-category/view-sub-category.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-sub-category/view-sub-category.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-sub-category/view-sub-category.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/categories/view-sub-category/view-sub-category.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html" afterDir="false" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
       <change beforePath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/pages.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/pages.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/staff/new-staff/new-staff.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/staff/new-staff/new-staff.component.ts" afterDir="false" />
@@ -66,16 +78,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="html" value="131" />
           <entry key="json" value="107" />
           <entry key="ts" value="504" />
+=======
+          <entry key="html" value="330" />
+          <entry key="json" value="63" />
+          <entry key="ts" value="1626" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="HTML" value="131" />
           <entry key="JSON" value="107" />
           <entry key="TypeScript" value="504" />
+=======
+          <entry key="HTML" value="330" />
+          <entry key="JSON" value="63" />
+          <entry key="TypeScript" value="1626" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -86,21 +110,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+<<<<<<< HEAD
           <entry key="html" value="8" />
           <entry key="json" value="9" />
           <entry key="ts" value="24" />
+=======
+          <entry key="html" value="18" />
+          <entry key="json" value="8" />
+          <entry key="ts" value="33" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
           <entry key="HTML" value="8" />
           <entry key="JSON" value="9" />
           <entry key="TypeScript" value="24" />
+=======
+          <entry key="HTML" value="18" />
+          <entry key="JSON" value="8" />
+          <entry key="TypeScript" value="33" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.6657754">
       <split-first>
         <leaf>
@@ -109,11 +146,22 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="54">
                   <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+=======
+    <splitter split-orientation="horizontal" split-proportion="0.71190673">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="182">
+                  <caret line="110" column="56" selection-start-line="110" selection-start-column="56" selection-end-line="110" selection-end-column="56" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
             <entry file="file://$PROJECT_DIR$/src/app/pages/auth/log-in/log-in.component.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="255">
@@ -139,6 +187,12 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="267">
                   <caret line="73" column="18" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="18" />
+=======
+            <entry file="file://$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="18">
+                  <caret line="20" column="19" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="19" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
                   <folding>
                     <element signature="e#0#50#0" expanded="true" />
                   </folding>
@@ -146,6 +200,7 @@
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/app/pages/pages.module.ts">
               <provider selected="true" editor-type-id="text-editor">
@@ -155,6 +210,8 @@
               </provider>
             </entry>
           </file>
+=======
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </leaf>
       </split-first>
       <split-second>
@@ -162,8 +219,21 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/assets/i18n/ar.json">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
                 <state relative-caret-position="272">
                   <caret line="61" column="20" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="20" />
+=======
+                <state relative-caret-position="306">
+                  <caret line="75" column="14" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="14" />
+                  <folding>
+                    <element signature="n#!!block;n#mainMenu#0;n#!!top" />
+                    <element signature="n#!!block;n#logIn#0;n#!!top" />
+                    <element signature="n#!!block;n#Manufactures#0;n#!!top" />
+                    <element signature="n#!!block;n#Dashboard#0;n#!!top" />
+                    <element signature="n#!!block;n#staff#0;n#!!top" />
+                    <element signature="n#!!block;n#client#0;n#!!top" />
+                  </folding>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
                 </state>
               </provider>
             </entry>
@@ -174,27 +244,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>animations</find>
-      <find>form mas</find>
-      <find>form components</find>
-      <find>d(</find>
-      <find>MENUITEMS</find>
-      <find>widget</find>
-      <find>menuitems</find>
-      <find>view</find>
-      <find>slimScrollDiv</find>
-      <find>header-notification lng-dropdown</find>
-      <find>.card-notification</find>
-      <find>col-md-12 col-xl-4</find>
-      <find>&lt;title</find>
-      <find>Guru able</find>
-      <find>title</find>
-      <find>log</find>
-      <find>AdminComponent</find>
-      <find>exclude</find>
-      <find>ex</find>
-      <find>logout</find>
-      <find>MenuItems</find>
       <find>const</find>
       <find>Manufacturer</find>
       <find>Manufacturers</find>
@@ -202,12 +251,39 @@
       <find>manufacturerComponent</find>
       <find>mfBootstrapPaginator</find>
       <find>data</find>
-      <find>menuItems</find>
       <find>staff</find>
+      <find>valid</find>
+      <find>navigate</find>
+      <find>DashboardComponent</find>
+      <find>browserMod</find>
+      <find>cat</find>
+      <find>menuItems</find>
+      <find>categoriesComponen</find>
+      <find>categories</find>
+      <find>material</find>
+      <find>mat</find>
+      <find>@angular/animations</find>
+      <find>dashboard</find>
+      <find>menu</find>
+      <find>params[</find>
+      <find>EditMan</find>
+      <find>table table-striped  table-bordered</find>
+      <find>ViewSu</find>
+      <find>menuIt</find>
+      <find>manufacturerForm</find>
+      <find>nameEn</find>
+      <find>nameAr</find>
+      <find>subCa</find>
     </findStrings>
     <dirStrings>
       <dir>F:\BrainSocket\Dekaneh\src\app</dir>
       <dir>F:\BrainSocket\Dekaneh\src</dir>
+      <dir>F:\BrainSocket\Dekaneh\src\app\services</dir>
+      <dir>F:\BrainSocket\Dekaneh\src\app\pages</dir>
+      <dir>F:\BrainSocket\Dekaneh\src\app\</dir>
+      <dir>F:\BrainSocket\Dekaneh\src\app\shared</dir>
+      <dir>D:\Dekaneh\src\app\</dir>
+      <dir>D:\Dekaneh\src\app\layout</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -225,10 +301,8 @@
         <option value="$PROJECT_DIR$/src/app/pages/auth/log-in/log-in.component.html" />
         <option value="$PROJECT_DIR$/src/app/pages/auth/log-in.module.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/auth/log-in/log-in.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/services/api.service.ts" />
         <option value="$PROJECT_DIR$/src/app/services/const.service.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/remove-spaces.pipe.ts" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/app/utils/table-view/table-view.component.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/form-view/form-view.component.ts" />
         <option value="$PROJECT_DIR$/src/app/utils/my-form/my-form.component.html" />
@@ -244,10 +318,10 @@
         <option value="$PROJECT_DIR$/src/app/shared/card/card.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/card/card.component.css" />
         <option value="$PROJECT_DIR$/src/app/pages/dashboard/dashboard.component.html" />
-        <option value="$PROJECT_DIR$/src/app/layout/admin/admin.component.html" />
         <option value="$PROJECT_DIR$/src/app/layout/admin/admin.component.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/manufacturers/manufacturers.component.html" />
         <option value="$PROJECT_DIR$/src/app/shared/shared.module.ts" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts" />
         <option value="$PROJECT_DIR$/src/app/layout/admin/admin.module.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/menu-items/menu-items.ts" />
@@ -260,6 +334,30 @@
         <option value="$PROJECT_DIR$/src/assets/i18n/ar.json" />
         <option value="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.html" />
+=======
+        <option value="$PROJECT_DIR$/src/app/app.routing.ts" />
+        <option value="$PROJECT_DIR$/proxy.conf.json" />
+        <option value="$PROJECT_DIR$/src/app/services/api.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.html" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/categories.component.html" />
+        <option value="$PROJECT_DIR$/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.css" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/app/pages/pages.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/layout/admin/admin.component.html" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/categories.component.css" />
+        <option value="$PROJECT_DIR$/src/app/pages/clients/client-list/client-list.component.html" />
+        <option value="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html" />
+        <option value="$PROJECT_DIR$/src/app/layout/admin/admin.module.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/menu-items/menu-items.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.html" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.ts" />
+        <option value="$PROJECT_DIR$/src/assets/i18n/ar.json" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.html" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
       </list>
     </option>
   </component>
@@ -322,7 +420,11 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="auth" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="categories" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
             </path>
             <path>
               <item name="Dekaneh" type="b2602c69:ProjectViewProjectNode" />
@@ -330,21 +432,39 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="auth" type="462c0819:PsiDirectoryNode" />
               <item name="log-in" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="categories" type="462c0819:PsiDirectoryNode" />
+              <item name="view-all-categories" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
             </path>
             <path>
               <item name="Dekaneh" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dekaneh" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="manufacturers" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
             </path>
             <path>
               <item name="Dekaneh" type="b2602c69:ProjectViewProjectNode" />
               <item name="Dekaneh" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="i18n" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="manufacturers" type="462c0819:PsiDirectoryNode" />
+              <item name="add-manufacturer" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
             </path>
           </expand>
           <select />
@@ -413,17 +533,28 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="102585000" />
+=======
+    <option name="totallyTimeSpent" value="146814000" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16517857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Messages" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.106398806" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290938" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.37201908" />
@@ -433,7 +564,11 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50073206" side_tool="true" weight="0.55325913" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49926794" visible="true" weight="0.12131148" />
+=======
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49926794" visible="true" weight="0.23770492" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -458,60 +593,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/manufacturers.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/auth/log-in.module.ts" />
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card/card.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@angular/router/router.metadata.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret column="10193" selection-start-column="10193" selection-end-column="10193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/spinner/spinner.component.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/spinner/spinner.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/title/title.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="51" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card/card.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/card/card.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -523,6 +608,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -533,41 +622,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/menu-items/menu-items.js">
+    <entry file="file://$PROJECT_DIR$/src/app/utils/utils.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="474" column="4" selection-start-line="474" selection-start-column="4" selection-end-line="474" selection-end-column="4" />
+        <state relative-caret-position="102">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/edit-manufacturer/edit-manufacturer.component.ts" />
     <entry file="file://$PROJECT_DIR$/src/favicon.ico">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/admin.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3502">
-          <caret line="222" column="23" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/dashboard/dashboard.component.css">
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/manufacturers.component.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/manufacturers.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/pages/dashboard/dashboard.component.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/angular2-datatable/src/BootstrapPaginator.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -598,9 +672,209 @@
           <caret line="16" column="20" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="20" />
         </state>
       </provider>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/angular2-datatable/src/DataTableModule.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-102" />
+=======
+        <state relative-caret-position="90">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.routing.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/manufacturers.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proxy.conf.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/new-client/new-client.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/new-client/new-client.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/api.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/const.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@angular/platform-browser/src/browser.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/menu-items/menu-items.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="935">
+          <caret line="55" column="40" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+=======
+        <state relative-caret-position="1547">
+          <caret line="91" column="41" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="41" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/categories.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/clients-handler.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/edit-manufacturer/edit-manufacturer.component.ts" />
+    <entry file="file://$PROJECT_DIR$/src/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/admin.component.html">
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/card/card-animation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/client-list/client-list.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="18" column="18" lean-forward="true" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/categories.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="152">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+=======
+        <state relative-caret-position="82">
+          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/categories.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/admin.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="219" column="27" selection-start-line="219" selection-start-column="27" selection-end-line="219" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/shared.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/node_modules/angular2-datatable/lib/DefaultSorter.metadata.json">
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/client-list/client-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/edit-manufacturer/edit-manufacturer.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/edit-manufacturer/edit-manufacturer.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/staff/new-staff/new-staff.component.ts">
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="103" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+<<<<<<< HEAD
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="20" />
+=======
+          <caret line="5" column="138" lean-forward="true" selection-start-line="5" selection-start-column="138" selection-end-line="5" selection-end-column="138" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="90">
           <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
         </state>
@@ -686,11 +960,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="13" />
+=======
+        <state relative-caret-position="158">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/pages/pages.module.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="119">
           <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
         </state>
@@ -700,12 +982,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
+=======
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/app/pages/staff/staff.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -720,12 +1007,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/clients/client-list/client-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/menu-items/menu-items.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="109" column="14" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/admin.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/layout/admin/admin.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="46" selection-end-column="12" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/proxy.conf.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -740,18 +1055,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="55" column="18" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/view-all-categories/view-all-categories.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="12">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+=======
+        <state relative-caret-position="51">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!block;n#deleteCat#0;n#ViewAllCategoriesComponent#0" />
+          </folding>
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/i18n/ar.json">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="272">
           <caret line="61" column="20" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="20" />
         </state>
@@ -763,24 +1107,51 @@
           <caret line="73" column="18" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="18" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+=======
+        <state relative-caret-position="306">
+          <caret line="75" column="14" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!block;n#mainMenu#0;n#!!top" />
+            <element signature="n#!!block;n#logIn#0;n#!!top" />
+            <element signature="n#!!block;n#Manufactures#0;n#!!top" />
+            <element signature="n#!!block;n#Dashboard#0;n#!!top" />
+            <element signature="n#!!block;n#staff#0;n#!!top" />
+            <element signature="n#!!block;n#client#0;n#!!top" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/app/pages/auth/log-in/log-in.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/app/pages/categories/add-category/add-category.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="110" column="56" selection-start-line="110" selection-start-column="56" selection-end-line="110" selection-end-column="56" />
+>>>>>>> 9ff6ff73332d2a19bef699ece47c614919ff06dd
         </state>
       </provider>
     </entry>

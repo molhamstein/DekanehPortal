@@ -1,31 +1,52 @@
-<table class="table  table-striped ">
+<div class="row">
+  <div class="col-sm-4">
+    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
+           placeholder="{{'staff.search'|translate}}....">
+  </div>
+</div>
+<table class="table table-bordered table-striped ">
+
   <thead>
   <tr>
     <th class="clickable-th" (click)="orderByName()">
       {{"staff.userName"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
     </th>
     <th class="clickable-th" (click)="orderByShope()">
-
       {{"staff.shopName"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+
     </th>
     <th class="clickable-th" (click)="orderByType()">
-
       {{"staff.clientType"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="typeOrderDir === undefined? '' : (typeOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
+
+
     </th>
     <th class="clickable-th" (click)="orderByLocation()">
-
       {{"staff.location"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="locationOrderDir === undefined? '' : (locationOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+
     </th>
     <th class="clickable-th" (click)="orderByPhone()">
-
       {{"staff.phoneNumber"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="phoneNumberOrderDir === undefined? '' : (phoneNumberOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
     </th>
     <th class="clickable-th" (click)="orderByStatus()">
-
       {{"staff.statustext"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
     </th>
     <th>
-
       {{"staff.actions"|translate}}
     </th>
   </tr>

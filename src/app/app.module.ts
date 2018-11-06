@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 
@@ -20,6 +20,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {PagesModule} from './pages/pages.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 // AoT requires an exported function for factories
@@ -31,7 +33,7 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent,
     AuthComponent,
     // ManufacturersComponent,
-    DashboardComponent,
+    // DashboardComponent,
     // BreadcrumbsComponent,
     // FormsModule,
     // AdminComponent,
@@ -57,6 +59,7 @@ export function HttpLoaderFactory(http: Http) {
     }),
     AdminModule,
     PagesModule,
+    PaginationModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
     }),

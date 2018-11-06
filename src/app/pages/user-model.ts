@@ -1,4 +1,4 @@
-export class StaffUser {
+export class UserModel {
   public id: string;
   public phoneNumber: string;
   public status: string;
@@ -23,6 +23,4 @@ export class StaffUser {
   constructor() {
 
   }
-
-
 }

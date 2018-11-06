@@ -1,28 +1,34 @@
-.staffForm{
+.ClientForm {
   direction: rtl;
   text-align: right;
   font-size: 15px;
 }
-.form-check-input{
+
+.form-check-input {
   position: relative;
   margin-left: 5px;
 }
+
 agm-map {
   height: 400px;
   margin-bottom: 20px;
 }
-.spinner-submit{
+
+.spinner-submit {
   vertical-align: middle;
   color: gray;
 }
-.submit-col{
+
+.submit-col {
   text-align: center;
 }
-.form-control{
+
+.form-control {
   color: #565656;
   border-color: #e9ecef;
 }
-button[disabled]{
+
+button[disabled] {
   cursor: not-allowed;
 }
 
