@@ -6,7 +6,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConstService} from '../../../services/const.service';
 import {UserModel} from '../../user-model';
 
-
 @Component({
   selector: 'app-new-staff',
   templateUrl: './new-staff.component.html',

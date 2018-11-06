@@ -98,16 +98,20 @@ export class MenuItems {
           ]
         },
         {
-          state: 'Categories',
+          state: 'categories',
           short_label: 'F',
           name: 'mainMenu.Categories.main',
           type: 'sub',
           icon: 'ti-layers',
           children: [
             {
+              state: 'add',
+              name: 'mainMenu.Categories.add'
+            },
+            {
               state: 'viewAll',
               name: 'mainMenu.Categories.viewAll'
-            }
+            },
           ]
         },
         {

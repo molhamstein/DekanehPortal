@@ -19,6 +19,7 @@ import {CategoriesComponent} from './categories/categories.component';
 import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserModule} from '@angular/platform-browser';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import {ProductsModule} from './products/products.module';
 
 
@@ -31,6 +32,7 @@ import {ProductsModule} from './products/products.module';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule.forChild(),
+    ReactiveFormsModule,
     RouterModule,
     ChartModule,
     SharedModule,

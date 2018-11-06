@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewSubCategoryComponent } from './view-sub-category.component';
+import { AddCategoryComponent } from './add-category.component';
 
-describe('ViewSubCategoryComponent', () => {
-  let component: ViewSubCategoryComponent;
-  let fixture: ComponentFixture<ViewSubCategoryComponent>;
+describe('AddCategoryComponent', () => {
+  let component: AddCategoryComponent;
+  let fixture: ComponentFixture<AddCategoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewSubCategoryComponent ]
+      declarations: [ AddCategoryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewSubCategoryComponent);
+    fixture = TestBed.createComponent(AddCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

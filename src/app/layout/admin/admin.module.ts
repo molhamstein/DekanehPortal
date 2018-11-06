@@ -8,7 +8,7 @@ import {PagesModule} from '../../pages/pages.module';
 import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
 import {TitleComponent} from './title/title.component';
 import {SharedModule} from '../../shared/shared.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {UtilsModule} from '../../utils/utils.module';
 // import {BrowserModule} from '@angular/platform-browser';
@@ -22,13 +22,13 @@ import {NewStaffComponent} from '../../pages/staff/new-staff/new-staff.component
 import {ClientListComponent} from '../../pages/clients/client-list/client-list.component';
 import {NewClientComponent} from '../../pages/clients/new-client/new-client.component';
 import {CategoriesComponent} from '../../pages/categories/categories.component';
-import {ViewSubCategoryComponent} from '../../pages/categories/view-sub-category/view-sub-category.component';
 // import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
 // import {ViewCategoriesComponent} from '../../pages/categories-management/view-categories/view-categories.component';
 import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
-import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
+import {AddCategoryComponent} from '../../pages/categories/add-category/add-category.component';
 import {ProductListComponent} from '../../pages/products/product-list/product-list.component';
-
+import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
+import {ViewSubCategoryComponent} from '../../pages/categories/view-sub-category/view-sub-category.component';
 const AppRoutes = [
   {
     path: '',
@@ -47,8 +47,12 @@ const AppRoutes = [
             component:ViewAllCategoriesComponent,
           },
           {
-            path: 'category/:id/subCategories',
-            component: ViewSubCategoryComponent,
+            path:'add',
+            component:AddCategoryComponent,
+          },
+          {
+            path: ':id/edit',
+            component:AddCategoryComponent,
           },
         ],
       },
@@ -115,9 +119,8 @@ const AppRoutes = [
         ],
       },
     ],
-  },
-];
-
+    },
+]
 @NgModule({
   imports: [
     CommonModule,
@@ -132,6 +135,7 @@ const AppRoutes = [
     HttpModule,
     UtilsModule,
     PagesModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminComponent,

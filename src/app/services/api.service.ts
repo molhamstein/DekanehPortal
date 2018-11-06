@@ -16,7 +16,7 @@ export class ApiService {
     if(params){
       return this.http.get(this.api+name,{params:params,headers:this.header});
     }
-    return this.http.get(this.api+name,{params:params,headers:this.header});
+    return this.http.get(this.api+name,{headers:this.header});
   }
 
   post(name, data, options?) {

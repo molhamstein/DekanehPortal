@@ -1,45 +1,46 @@
 {
-  "mainMenu": {
-    "main": "القائمة الرئيسية",
-    "Manufacturers": {
-      "main": "المصانع",
-      "add": "إضافة مصنع جديد",
-      "viewAll": "عرض جميع المصانع"
+  "mainMenu":{
+    "main":"القائمة الرئيسية",
+    "Manufacturers":{
+      "main":"المصانع",
+      "add":"إضافة مصنع جديد",
+      "viewAll":"عرض جميع المصانع"
     },
-    "Clients": {
-      "main": "الزبائن",
-      "add": "إضافة زبون جديد",
-      "viewAll": "عرض جميع الزبائن"
+    "Clients":{
+      "main":"الزبائن",
+      "add":"إضافة زبون جديد",
+      "viewAll":"عرض جميع الزبائن"
     },
-    "Orders": {
-      "main": "الطلبات",
-      "viewAll": "عرض جميع الطلبات"
+    "Orders":{
+      "main":"الطلبات",
+      "viewAll":"عرض جميع الطلبات"
     },
-    "Products": {
-      "main": "المنتجات",
-      "add": "إضافة منتج جديد",
-      "viewAll": "عرض جميع المنتجات"
+    "Products":{
+      "main":"المنتجات",
+      "add":"إضافة منتج جديد",
+      "viewAll":"عرض جميع المنتجات"
     },
-    "Categories": {
-      "main": "التصنيفات",
-      "add": "إضافة تصنيف جديد",
-      "viewAll": "عرض جميع التصنيفات"
+    "Categories":{
+      "main":"التصنيفات",
+      "add":"إضافة تصنيف جديد",
+      "viewAll":"عرض جميع التصنيفات"
     },
-    "Staff": {
-      "main": "الموظفون",
-      "add": "إضافةموظف جديد",
-      "viewAll": "عرض جميع الموظفين"
+    "Staff":{
+      "main":"الموظفون",
+      "add":"إضافةموظف جديد",
+      "viewAll":"عرض جميع الموظفين"
     },
-    "Ratings": {
-      "main": "التقييمات",
-      "viewAll": "عرض جميع التقييمات"
+    "Ratings":{
+      "main":"التقييمات",
+      "viewAll":"عرض جميع التقييمات"
     }
   },
   "logIn": {
     "SignIn": "تسجيل الدخول",
     "email": "البريد الالكتروني",
     "password": "كلمة المرور",
-    "rememberMe": "تذكرني"
+    "rememberMe": "تذكرني",
+    "Signin": "تسجيل الدخول"
   },
   "Manufactures": {
     "addNew": "إضافة جديد",
@@ -47,7 +48,9 @@
     "nameAr": "الاسم العربي",
     "cantBeEmpty": "لايمكن ان يكون فارغا",
     "add": "إضافة",
-    "errorInForm": "خطأ في قيمة الحقول"
+    "errorInForm": "خطأ في قيمة الحقول",
+    "edit": "تعديل",
+    "delete": "حذف"
   },
   "Categories": {
     "main": "التصنيفات",
@@ -67,10 +70,11 @@
       "code": "الكود",
       "creationDate": "تاريخ الانشاء",
       "id": "ID",
-      "parentCategoryId": "معرف الأب",
-      "titleAr": "العنوان العربي",
-      "titleEn": "العنوان الانكليزي"
-    }
+      "parentCategoryId": "الأب",
+      "titleAr": "الاسم العربي",
+      "titleEn": "الاسم الانكليزي"
+    },
+    "newSubCat":"إضافة تصنيف فرعي جديد"
   },
   "Dashboard": {
     "Main": " لوحة المراقبة",
@@ -82,6 +86,17 @@
     "last28Hours": "خلال ال 28 ساعة الفائتة",
     "Activites": "الاحداث الأخيرة"
   },
+  "Manufactures":{
+    "main":"المصانع",
+    "addNew":"إضافة مصنع جديد",
+    "viewAll":"عرض جميع المصانع",
+    "form":{
+      "manufacturerAr":"الاسم العربي",
+      "manufacturerEn":"الاسم الانكليزي",
+      "CannotBeBlank":"الحقل مطلوب"
+    }
+  },
+
   "staff": {
     "shopName": "اسم المتجر",
     "search": "ابحث",
@@ -161,7 +176,7 @@
     "location": "العنوان",
     "phoneNumber": "رقم الهاتف",
     "userName": "اسم المستخدم",
-    "statustext": "الحالة",
+    "status": "الحالة",
     "actions": "عمليات",
     "buttons": {
       "edit": "تعديل",
@@ -294,5 +309,3 @@
     }
   }
 }
-
-
