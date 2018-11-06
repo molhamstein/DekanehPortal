@@ -14,7 +14,6 @@ import {HttpModule} from '@angular/http';
 import {DataFilterPipe} from '../shared/element/data-filter.pipe';
 import {StaffModule} from './staff/staff.module';
 import {ClientsModule} from './clients/clients.module';
-import { ViewSubCategoryComponent } from './categories/view-sub-category/view-sub-category.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-all-categories.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -54,7 +53,6 @@ import {ProductsModule} from './products/products.module';
     CategoriesComponent,
     ViewAllCategoriesComponent,
     DashboardComponent,
-    ViewSubCategoryComponent,
   ],
 })
 export class PagesModule { }
