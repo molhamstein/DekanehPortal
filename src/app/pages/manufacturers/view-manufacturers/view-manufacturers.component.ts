@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../../services/api.service';
-import {json} from 'ng2-validation/dist/json';
 import {ConstService} from '../../../services/const.service';
 import {Router} from '@angular/router';
 
@@ -40,7 +39,6 @@ export class ViewManufacturersComponent implements OnInit {
       else
         alert("error in deletion");
     });
-
   }
   ngOnInit() {
   }

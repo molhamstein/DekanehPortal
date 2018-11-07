@@ -4,12 +4,14 @@ import {TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {DashboardComponent} from '../../pages/dashboard/dashboard.component';
+import {PagesModule} from '../../pages/pages.module';
 import {BreadcrumbsComponent} from './breadcrumbs/breadcrumbs.component';
 import {TitleComponent} from './title/title.component';
 import {SharedModule} from '../../shared/shared.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {UtilsModule} from '../../utils/utils.module';
+// import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ManufacturersComponent} from '../../pages/manufacturers/manufacturers.component';
@@ -20,10 +22,12 @@ import {NewStaffComponent} from '../../pages/staff/new-staff/new-staff.component
 import {ClientListComponent} from '../../pages/clients/client-list/client-list.component';
 import {NewClientComponent} from '../../pages/clients/new-client/new-client.component';
 import {CategoriesComponent} from '../../pages/categories/categories.component';
+// import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
+// import {ViewCategoriesComponent} from '../../pages/categories-management/view-categories/view-categories.component';
 import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-categories/view-all-categories.component';
-import {PagesModule} from '../../pages/pages.module';
 import {AddCategoryComponent} from '../../pages/categories/add-category/add-category.component';
-
+import {ProductListComponent} from '../../pages/products/product-list/product-list.component';
+import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
 const AppRoutes = [
   {
     path: '',
@@ -62,11 +66,7 @@ const AppRoutes = [
           {
             path: 'view',
             component: ViewManufacturersComponent,
-          },
-          {
-            path: ':id/edit',
-            component: AddManufacturerComponent,
-          },
+          }
         ]
       },
       {
@@ -101,10 +101,25 @@ const AppRoutes = [
           },
         ],
       },
+      {
+        path: 'products', children: [
+          {
+            path: 'list',
+            component: ProductListComponent,
+          },
+          {
+            path: 'new',
+            component: NewProductComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewProductComponent,
+          },
+        ],
+      },
     ],
-  },
-];
-
+    },
+]
 @NgModule({
   imports: [
     CommonModule,
@@ -118,6 +133,8 @@ const AppRoutes = [
     ClickOutsideModule,
     HttpModule,
     UtilsModule,
+    PagesModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdminComponent,

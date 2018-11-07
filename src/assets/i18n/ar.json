@@ -1,45 +1,46 @@
 {
-  "mainMenu": {
-    "main": "القائمة الرئيسية",
-    "Manufacturers": {
-      "main": "المصانع",
-      "add": "إضافة مصنع جديد",
-      "viewAll": "عرض جميع المصانع"
+  "mainMenu":{
+    "main":"القائمة الرئيسية",
+    "Manufacturers":{
+      "main":"المصانع",
+      "add":"إضافة مصنع جديد",
+      "viewAll":"عرض جميع المصانع"
     },
-    "Clients": {
-      "main": "الزبائن",
-      "add": "إضافة زبون جديد",
-      "viewAll": "عرض جميع الزبائن"
+    "Clients":{
+      "main":"الزبائن",
+      "add":"إضافة زبون جديد",
+      "viewAll":"عرض جميع الزبائن"
     },
-    "Orders": {
-      "main": "الطلبات",
-      "viewAll": "عرض جميع الطلبات"
+    "Orders":{
+      "main":"الطلبات",
+      "viewAll":"عرض جميع الطلبات"
     },
-    "Products": {
-      "main": "المنتجات",
-      "add": "إضافة منتج جديد",
-      "viewAll": "عرض جميع المنتجات"
+    "Products":{
+      "main":"المنتجات",
+      "add":"إضافة منتج جديد",
+      "viewAll":"عرض جميع المنتجات"
     },
-    "Categories": {
-      "main": "التصنيفات",
-      "add": "إضافة تصنيف جديد",
-      "viewAll": "عرض جميع التصنيفات"
+    "Categories":{
+      "main":"التصنيفات",
+      "add":"إضافة تصنيف جديد",
+      "viewAll":"عرض جميع التصنيفات"
     },
-    "Staff": {
-      "main": "الموظفون",
-      "add": "إضافةموظف جديد",
-      "viewAll": "عرض جميع الموظفين"
+    "Staff":{
+      "main":"الموظفون",
+      "add":"إضافةموظف جديد",
+      "viewAll":"عرض جميع الموظفين"
     },
-    "Ratings": {
-      "main": "التقييمات",
-      "viewAll": "عرض جميع التقييمات"
+    "Ratings":{
+      "main":"التقييمات",
+      "viewAll":"عرض جميع التقييمات"
     }
   },
   "logIn": {
     "SignIn": "تسجيل الدخول",
     "email": "البريد الالكتروني",
     "password": "كلمة المرور",
-    "rememberMe": "تذكرني"
+    "rememberMe": "تذكرني",
+    "Signin": "تسجيل الدخول"
   },
   "Manufactures": {
     "code":"الكود",
@@ -50,7 +51,13 @@
     "add": "إضافة",
     "errorInForm": "خطأ في قيمة الحقول",
     "edit": "تعديل",
-    "delete": "حذف"
+    "delete": "حذف",
+    "form":{
+      "manufacturerAr":"الاسم العربي",
+      "manufacturerEn":"الاسم الانكليزي",
+      "CannotBeBlank":"الحقل مطلوب"
+    }
+
   },
   "Categories": {
     "main": "التصنيفات",
@@ -65,7 +72,7 @@
     "details": "التفاصيل",
     "edit": "تعديل",
     "delete": "حذف",
-    "NoDataFound":"لا يوجد معطيات",
+    "NoDataFound": "لا يوجد معطيات",
     "sub": {
       "code": "الكود",
       "creationDate": "تاريخ الانشاء",
@@ -165,7 +172,7 @@
     "location": "العنوان",
     "phoneNumber": "رقم الهاتف",
     "userName": "اسم المستخدم",
-    "statustext": "الحالة",
+    "status": "الحالة",
     "actions": "عمليات",
     "buttons": {
       "edit": "تعديل",
@@ -228,7 +235,73 @@
         "pass": "كلمة المرور غير مطابقة"
       }
     }
+  },
+  "product": {
+    "addImg": "اختر صورة",
+    "status": {
+    },
+    "form": {
+      "controls": {
+        "prodName": "اسم المنتج",
+        "sku": "sku",
+        "code": "code",
+        "horecaPrice": "السعر للمنشأت",
+        "horecaPriceDiscount": "السعر للمنشأت بعد الخصم",
+        "wholeSalePrice": "السعر للدكاكين",
+        "wholeSalePriceDiscount": "السعر للدكاكين بعد الخصم",
+        "marketOfficialPrice": "السعر الرسمي",
+        "dockanBuyingPrice": "سعر شراء دكان",
+        "wholeSaleMarketPrice": "سعر السوق للجمله",
+        "offer": "عرض",
+        "retailCostumer": "زبون مفرق",
+        "horeca": "منشآت",
+        "wholesale": "دكانة",
+        "cat": "تصنيف",
+        "subcat": "تصنيف فرعي",
+        "man": "الشركة المصنعة",
+        "tags": "كلمات مفتاحية",
+        "both": "الكل",
+        "offerSource": "مصدر العرض",
+        "offers": "عروض",
+        "dockan": "دكان",
+        "company": "شركة",
+        "supplier": "موًرد",
+        "featured": "منتج مميز",
+        "status": "الحالة",
+        "offerMaxQuantity": "كمية العرض",
+        "availableTo": "التوافر",
+        "desc": "الوصف",
+        "available": "متوفر",
+        "unavailable": "غير متوفر",
+        "pack": "حزمة"
+      },
+      "hints": {
+        "pack": "حزمة"
+      },
+      "placeholders": {
+        "prodName": "ادخل اسم المنتج",
+        "sku": "sku",
+        "offerMaxQuantity": "ادخل كمية العرض",
+        "addTags": "اضف كلمات مفتاحية",
+        "addTag": "اضف المزيد",
+        "code": "code",
+        "horecaPrice": "ادخل السعر للمنشأت",
+        "horecaPriceDiscount": "ادخل السعر للمنشأت بعد الخصم",
+        "wholeSalePrice": "ادخل السعر للدكاكين",
+        "wholeSalePriceDiscount": "ادخل السعر للدكاكين بعد الخصم",
+        "marketOfficialPrice": "ادخل السعر الرسمي",
+        "dockanBuyingPrice": "ادخل سعر شراء دكان",
+        "wholeSaleMarketPrice": "ادخل سعر السوق للجمله",
+        "desc": "ادخل الوصف",
+        "pack": "ادخل الحزمة"
+      },
+      "validations": {
+        "blank": "هذا الحقل لا يجب ان يكون فارغاً",
+        "imgBlank": "الرجاء إضافة صورة"
+      },
+      "errors": {
+        "pack": "حزمة"
+      }
+    }
   }
 }
-
-

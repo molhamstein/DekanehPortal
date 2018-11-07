@@ -82,23 +82,23 @@ export class MenuItems {
           ]
         },
         {
-          state: 'forms',
+          state: 'products',
           short_label: 'F',
           name: 'mainMenu.Products.main',
           type: 'sub',
           icon: 'ti-layers',
           children: [
             {
-              state: 'basic-elements',
+              state: 'new',
               name: 'mainMenu.Products.add'
             }, {
-              state: 'add-on',
+              state: 'list',
               name: 'mainMenu.Products.viewAll'
             }
           ]
         },
         {
-          state: 'Categories',
+          state: 'categories',
           short_label: 'F',
           name: 'mainMenu.Categories.main',
           type: 'sub',

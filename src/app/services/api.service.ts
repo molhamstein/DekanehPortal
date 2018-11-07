@@ -16,15 +16,22 @@ export class ApiService {
     if(params){
       return this.http.get(this.api+name,{params:params,headers:this.header});
     }
-    return this.http.get(this.api+name,{params:params,headers:this.header});
+    return this.http.get(this.api+name,{headers:this.header});
   }
 
-  post(name, data, options) {
-    return this.http.post(this.api + name, data, options);
+  post(name, data, options?) {
+    if (options) {
+      return this.http.post(this.api + name, data, options);
+    }
+    return this.http.post(this.api + name, data);
+
   }
 
-  put(name, data, options) {
-    return this.http.put(this.api + name, data, options);
+  put(name, data, options?) {
+    if (options) {
+      return this.http.put(this.api + name, data, options);
+    }
+    return this.http.put(this.api + name, data);
   }
 
   delete(name,id) {

@@ -19,6 +19,7 @@ import {ViewAllCategoriesComponent} from './categories/view-all-categories/view-
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserModule} from '@angular/platform-browser';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
+import {ProductsModule} from './products/products.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
     FormsModule,
     ReactiveFormsModule,
     TranslateModule.forChild(),
+    ReactiveFormsModule,
     RouterModule,
     ChartModule,
     SharedModule,
@@ -38,6 +40,7 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
     DataTableModule,
     StaffModule,
     ClientsModule,
+    ProductsModule
   ],
   exports:[
     DataFilterPipe,
@@ -46,11 +49,11 @@ import { AddCategoryComponent } from './categories/add-category/add-category.com
     LogInComponent,
     ManufacturersComponent,
     AddManufacturerComponent,
+    AddCategoryComponent,
     ViewManufacturersComponent,
     CategoriesComponent,
     ViewAllCategoriesComponent,
     DashboardComponent,
-    AddCategoryComponent,
   ],
 })
 export class PagesModule { }
