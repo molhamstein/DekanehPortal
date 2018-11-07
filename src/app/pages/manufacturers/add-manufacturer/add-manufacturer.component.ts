@@ -64,18 +64,20 @@ export class AddManufacturerComponent implements OnInit {
     this.manufacturerForm = new FormGroup({
       nameAr: new FormControl('', [Validators.required,]),
       nameEn: new FormControl('', [Validators.required,]),
+      code: new FormControl('', [Validators.required,]),
     });
     if (this.id != undefined) {
       this.api.get("/manufacturers").subscribe((data:any)=>{
         if(data.status==200)
-         JSON.parse(data._body).map((man:any)=>{
-           if(man.id==this.id){
-             this.manufacturerForm = new FormGroup({
-               nameAr: new FormControl(man.nameAr, [Validators.required,]),
-               nameEn: new FormControl(man.nameEn, [Validators.required,]),
-             });
-           }
-         });
+          JSON.parse(data._body).map((man:any)=>{
+            if(man.id==this.id){
+              this.manufacturerForm = new FormGroup({
+                nameAr: new FormControl(man.nameAr, [Validators.required,]),
+                nameEn: new FormControl(man.nameEn, [Validators.required,]),
+                code: new FormControl(man.code, [Validators.required,]),
+              });
+            }
+          });
         else
           console.log(data.statusText);
       });

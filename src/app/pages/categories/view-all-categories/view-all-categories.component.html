@@ -21,7 +21,7 @@
   <ng-container *ngFor="let category of categories">
     <tr >
       <td (click)="showSub(category)" *ngFor="let col of cols">
-        {{category[col]}}
+        {{c.formatDate(category[col])}}
       </td>
       <td>
         <!--<i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>-->
@@ -46,7 +46,7 @@
             <tbody>
             <tr *ngFor="let r of subCat.value">
               <td *ngFor="let col of subCat.cols">
-                {{r[col]}}
+                {{c.formatDate(r[col])}}
               </td>
               <td>
                 <i class="ti-trash" [title]="'Categories.delete'|translate"></i>

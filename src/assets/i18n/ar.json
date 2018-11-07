@@ -42,6 +42,7 @@
     "rememberMe": "تذكرني"
   },
   "Manufactures": {
+    "code":"الكود",
     "addNew": "إضافة جديد",
     "nameEn": "الاسم الانكليزي",
     "nameAr": "الاسم العربي",

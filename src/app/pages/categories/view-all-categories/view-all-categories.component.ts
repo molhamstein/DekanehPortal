@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../services/api.service';
+import {ConstService} from '../../../services/const.service';
 
 @Component({
   selector: 'app-view-all-categories',
@@ -67,10 +68,10 @@ export class ViewAllCategoriesComponent implements OnInit {
         }
       }
     );
-    alert('DELETE ' + category.id);
+    // alert('DELETE ' + category.id);
   }
 
-  constructor(private router: Router, private api: ApiService) {
+  constructor(private router: Router, private api: ApiService, public c:ConstService) {
     this.orderDir = {'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0,};
     this.api.get('/categories').subscribe((data: any) => {
       if (data.ok) {

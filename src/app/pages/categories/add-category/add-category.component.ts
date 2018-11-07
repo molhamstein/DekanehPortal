@@ -35,7 +35,7 @@ export class AddCategoryComponent implements OnInit {
       }
     );
   }
-  addManufactur() {
+  addCategory() {
     this.submitted = true;
     let hasError: boolean;
     for (var key in this.categoriesForm.controls) {
@@ -52,7 +52,7 @@ export class AddCategoryComponent implements OnInit {
         this.api.post('/categories', this.categoriesForm.value, {}).subscribe((res) => {
           if (res.status == 200) {
             console.log(res);
-            // this.router.navigate(['Categories', 'viewAll']);
+            this.router.navigate(['Categories', 'viewAll']);
           } else {
             alert(res.statusText);
           }
@@ -61,7 +61,7 @@ export class AddCategoryComponent implements OnInit {
         this.api.put('/categories/'+this.id, this.categoriesForm.value, {}).subscribe((res) => {
           if (res.status == 200) {
             console.log(res);
-            this.router.navigate(['categories', 'viewAll']);
+            this.router.navigate(['Categories', 'viewAll']);
           } else {
             alert(res.statusText);
           }
@@ -80,7 +80,6 @@ export class AddCategoryComponent implements OnInit {
     });
   }
   addSubCategories(){
-
     let hasError: boolean;
     for (var key in this.subCategoriesForm.controls) {
       // check if the property/key is defined in the object itself, not in parent
@@ -119,10 +118,12 @@ export class AddCategoryComponent implements OnInit {
     this.subCategoriesForm=new FormGroup({
       titleAr: new FormControl('', [Validators.required,]),
       titleEn: new FormControl('', [Validators.required,]),
+      code: new FormControl('', [Validators.required,]),
     });
     this.categoriesForm = new FormGroup({
       titleAr: new FormControl('', [Validators.required,]),
       titleEn: new FormControl('', [Validators.required,]),
+      code: new FormControl('', [Validators.required,]),
     });
     if (this.id != undefined) {
       this.api.get("/categories").subscribe((data:any)=>{
@@ -132,6 +133,7 @@ export class AddCategoryComponent implements OnInit {
               this.categoriesForm = new FormGroup({
                 titleAr: new FormControl(man.titleAr, [Validators.required,]),
                 titleEn: new FormControl(man.titleEn, [Validators.required,]),
+                code: new FormControl(man.code, [Validators.required,]),
               });
             }
           });
