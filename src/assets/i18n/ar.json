@@ -265,7 +265,7 @@
         "wholeSalePriceDiscount": "السعر للدكاكين بعد الخصم",
         "marketOfficialPrice": "السعر الرسمي",
         "dockanBuyingPrice": "سعر شراء دكان",
-        "wholeSaleMarketPrice": "سعر السوق للجمله",
+        "wholeSaleMarketPrice": "سعر توزيع الشركه",
         "offer": "عرض",
         "retailCostumer": "زبون مفرق",
         "horeca": "منشآت",
@@ -282,7 +282,7 @@
         "supplier": "موًرد",
         "featured": "منتج مميز",
         "status": "الحالة",
-        "offerMaxQuantity": "كمية العرض",
+        "offerMaxQuantity": "كميه الطلب العظمى",
         "offerProducts": "منتجات العرض",
 
         "availableTo": "التوافر",
@@ -297,7 +297,7 @@
       "placeholders": {
         "prodName": "ادخل اسم المنتج",
         "sku": "sku",
-        "offerMaxQuantity": "ادخل كمية العرض",
+        "offerMaxQuantity": "كميه الطلب العظمى",
         "addTags": "اضف كلمات مفتاحية",
         "addTag": "اضف المزيد",
         "code": "code",
@@ -307,7 +307,7 @@
         "wholeSalePriceDiscount": "ادخل السعر للدكاكين بعد الخصم",
         "marketOfficialPrice": "ادخل السعر الرسمي",
         "dockanBuyingPrice": "ادخل سعر شراء دكان",
-        "wholeSaleMarketPrice": "ادخل سعر السوق للجمله",
+        "wholeSaleMarketPrice": "ادخل سعر توزيع الشركه",
         "desc": "ادخل الوصف",
         "pack": "ادخل الحزمة"
       },

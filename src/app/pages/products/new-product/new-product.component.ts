@@ -27,7 +27,7 @@ export class NewProductComponent implements OnInit {
   alloffers: ProductModel[];
   allStatus = ['available', 'unavailable'];
   offersIds = [];
-  availableList = ['both', 'retailCostumer', 'wholesale'];
+  availableList = ['both', 'retailCostumer', 'wholesale','horeca'];
   offerSourceList = ['dockan', 'company', 'supplier'];
   offerMaxQuantity = '';
   isOffer: boolean = false;
