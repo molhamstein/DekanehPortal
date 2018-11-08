@@ -238,7 +238,20 @@
   },
   "product": {
     "addImg": "اختر صورة",
+    "name": "الاسم",
+    "pack": "الحزمة",
+    "clientPrice": "السعر للدكاكين",
+    "retailer": "السعر للمنشأت",
+    "offer": "عرض",
+    "true": "نعم",
+    "false": "لا",
+    "image": "الصورة",
+    "statustext": "الحالة",
+
     "status": {
+      "available": "متوفر",
+      "unavailable": "غير متوفر"
+
     },
     "form": {
       "controls": {
@@ -269,6 +282,8 @@
         "featured": "منتج مميز",
         "status": "الحالة",
         "offerMaxQuantity": "كمية العرض",
+        "offerProducts": "منتجات العرض",
+
         "availableTo": "التوافر",
         "desc": "الوصف",
         "available": "متوفر",

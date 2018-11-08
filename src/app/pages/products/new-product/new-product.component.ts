@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProductModel} from '../product-model';
+import {Media, OfferProducts, ProductModel} from '../product-model';
 
 @Component({
   selector: 'app-new-product',
@@ -22,14 +22,13 @@ export class NewProductComponent implements OnInit {
     this.imgBlankError = false;
   }
 
-
+  submitted=false;
   imgBlankError = false;
   alloffers: ProductModel[];
   allStatus = ['available', 'unavailable'];
   offersIds = [];
   availableList = ['both', 'retailCostumer', 'wholesale'];
   offerSourceList = ['dockan', 'company', 'supplier'];
-  offerSource = '';
   offerMaxQuantity = '';
   isOffer: boolean = false;
   categoryId = '';
@@ -37,21 +36,27 @@ export class NewProductComponent implements OnInit {
   mans = [];
   man = '';
   tags = [];
+  id:string;
   subCategoryId = '';
-  status = 'available';
+  status = '';
+  availableTo = '';
+  offerSource = '';
+
+
   manufacturerId = '';
-  featured: boolean = false;
+  isFeatured: boolean = false;
   statusCode: number;
   requestProcess = false;
-  availableTo = 'both';
   cats = [];
   subcats = [];
+  newPro=true;
   media = {
     'url': '',
     'type': 'image',
     'thumbnail': '',
     'id': ''
   };
+
   processValidation = false;
   ProductForm = new FormGroup({
     nameAr: new FormControl('', Validators.required),
@@ -59,7 +64,7 @@ export class NewProductComponent implements OnInit {
     isOffer: new FormControl(''),
     offerSource: new FormControl(''),
     offerMaxQuantity: new FormControl(''),
-    featured: new FormControl(''),
+    isFeatured: new FormControl(''),
     manufacturerId: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),
     subCategoryId: new FormControl('', Validators.required),
@@ -73,6 +78,7 @@ export class NewProductComponent implements OnInit {
     marketOfficialPrice: new FormControl('', Validators.required),
     dockanBuyingPrice: new FormControl('', Validators.required),
     tagsIds: new FormControl(''),
+    offerProducts: new FormControl(''),
     horecaPriceDiscount: new FormControl('', Validators.required),
     wholeSalePriceDiscount: new FormControl('', Validators.required),
     code: new FormControl('', Validators.required),
@@ -108,6 +114,46 @@ export class NewProductComponent implements OnInit {
     this.getAllCats();
     this.getAllOffers();
     this.getAllMans();
+
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    if (this.id != undefined) {
+      this.newPro=false;
+      this.Handler.getProductById(this.id).subscribe(product=>{
+        this.product =new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.wholeSaleMarketPrice, product.marketOfficialPrice, product.dockanBuyingPrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts,product.manufacturerId);
+        this.product.creationDate=product.creationDate;
+        this.product.id=product.id;
+        this.subcats = this.cats.find(x => x.id === this.product.categoryId).subCategories;
+        this.subCategoryId=this.product.subCategoryId;
+        this.imgSrc=this.product.media.url;
+        // console.log(product);
+        this.status = this.product.status;
+        this.availableTo = this.product.availableTo;
+        this.offerSource = this.product.offerSource;
+        this.ProductForm.addControl('media',new FormControl(''));
+        this.ProductForm.addControl('nameEn',new FormControl(''));
+        this.ProductForm.addControl('creationDate',new FormControl(''));
+        this.ProductForm.addControl('id',new FormControl(''));
+        // if(product['media'])
+        // if(product['category'])
+        // this.ProductForm.addControl('category',new FormControl(''));
+        // if(product['subCategory'])
+        //   this.ProductForm.addControl('subCategory',new FormControl(''));
+        // if(product['manufacturer'])
+        //   this.ProductForm.addControl('manufacturer',new FormControl(''));
+        // console.log(product['featured']);
+        //   this.ProductForm.addControl('featured',new FormControl(''));
+        // if(product['products'])
+        //   this.ProductForm.addControl('products',new FormControl(''));
+
+        this.ProductForm.setValue(this.product);
+      });
+    }else{
+      this.status = 'available';
+      this.availableTo = 'both';
+      this.offerSource = 'dockan';
+    }
   }
 
   setCat(event) {
@@ -130,15 +176,18 @@ export class NewProductComponent implements OnInit {
       this.media.url = this.media.thumbnail = this.imgUrl;
       this.product.nameEn = this.product.nameAr;
       this.product.media = this.media;
+      this.product.offerProducts = [];
       let t = [];
       for (let tag of this.tags) {
         t.push(tag.value);
       }
       this.product.tagsIds = t;
-      this.product.offerSource = 'dockan';
+      console.log(this.product);
+
+      // this.product.offerSource = 'dockan';
       this.Handler.createProduct(this.product).subscribe(successCode => {
           this.statusCode = successCode;
-          this.router.navigate(['/products/list']);
+          // this.router.navigate(['/products/list']);
         },
         errorCode => this.statusCode = errorCode);
     }).subscribe(res => {
@@ -148,10 +197,41 @@ export class NewProductComponent implements OnInit {
     );
 
   }
+  updateProduct(withmedia?:boolean) {
+    let ctages=this.product.tagsIds
+    this.product = this.ProductForm.value;
 
+    if(withmedia){
+      this.media.url = this.media.thumbnail = this.imgUrl;
+      this.product.media = this.media;
+    }
+    this.product.nameEn = this.product.nameAr;
+    if(this.tags!=ctages){
+    let t = [];
+    for (let tag of this.tags) {
+      if(tag.value!=undefined){
+        t.push(tag.value);
+
+      }else{
+        t.push(tag);
+
+      }
+    }
+      this.product.tagsIds = t;
+    }
+    console.log(this.product);
+    this.Handler.updateProduct(this.product).subscribe(successCode => {
+        this.statusCode = successCode;
+        this.router.navigate(['/products/list']);
+      },
+      errorCode => this.statusCode = errorCode);
+
+
+
+  }
   onProductFormSubmit() {
     this.processValidation = true;
-    if (!this.selectedFile) {
+    if (this.imgSrc=='') {
       this.imgBlankError = true;
       return;
     }
@@ -159,8 +239,24 @@ export class NewProductComponent implements OnInit {
 
       return;
     }
+    if(this.id==undefined){
 
-    this.createProduct();
+      this.createProduct();
+    }else {
+      if(this.selectedFile==undefined){
+        this.updateProduct();
+      }else {
+        this.Handler.uploadImage(this.selectedFile).finally(() => {
+          this.updateProduct(true);
+        }).subscribe(res => {
+            this.imgUrl = res[0].url;
+          },
+          errorCode => console.log(errorCode)
+        );
+      }
+      // this.router.navigate(['/products/list']);
+
+    }
 
 
   }

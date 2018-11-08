@@ -3,7 +3,6 @@ import {Observable} from 'rxjs/Observable';
 import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
 import {ApiService} from '../../services/api.service';
 import {ProductModel} from './product-model';
-import {UserModel} from '../user-model';
 
 @Injectable()
 export class ProductHandler {
@@ -11,11 +10,21 @@ export class ProductHandler {
   constructor(private apiService: ApiService) {
   }
 
+  getAllProducts() {
+    return this.apiService.get('/products')
+      .map(this.extractData).catch(this.handleError);
+  }
+
   getAllCats(): Observable<any[]> {
     let param = new URLSearchParams();
     param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories"}');
     return this.apiService.get('/categories', param)
       .map(this.extractData).catch(this.handleError);
+  }
+  getProductById(id: string): Observable<any> {
+    return this.apiService.get('/products/' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   getAllMans(): Observable<any[]> {
@@ -47,8 +56,14 @@ export class ProductHandler {
     let body = JSON.stringify(Product);
     let cpHeaders = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: cpHeaders});
-    // console.log(StaffUser);
     return this.apiService.post('/products', body, options)
+      .map(success => success.status)
+      .catch(this.handleError);
+  }
+  updateProduct(product: ProductModel): Observable<number> {
+    let cpHeaders = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: cpHeaders});
+    return this.apiService.put('/products/' + product.id, product, options)
       .map(success => success.status)
       .catch(this.handleError);
   }

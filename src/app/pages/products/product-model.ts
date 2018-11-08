@@ -19,12 +19,43 @@ export class ProductModel {
   public code: string;
   public sku: string;
   public id: string;
+  public creationDate: string;
   public categoryId: string;
   public subCategoryId: string;
+  public manufacturerId: string;
   public offersIds: string[];
   public tagsIds: string[];
   public media: Media;
   public offerProducts: OfferProducts[];
+
+  constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, wholeSaleMarketPrice: number, marketOfficialPrice: number, dockanBuyingPrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[],manufacturerId:string) {
+    this.nameAr = nameAr;
+    this.nameEn = nameEn;
+    this.pack = pack;
+    this.description = description;
+    this.horecaPrice = horecaPrice;
+    this.wholeSalePrice = wholeSalePrice;
+    this.wholeSaleMarketPrice = wholeSaleMarketPrice;
+    this.marketOfficialPrice = marketOfficialPrice;
+    this.dockanBuyingPrice = dockanBuyingPrice;
+    this.horecaPriceDiscount = horecaPriceDiscount;
+    this.wholeSalePriceDiscount = wholeSalePriceDiscount;
+    this.isFeatured = isFeatured;
+    this.isOffer = isOffer;
+    this.availableTo = availableTo;
+    this.status = status;
+    this.offerSource = offerSource;
+    this.offerMaxQuantity = offerMaxQuantity;
+    this.code = code;
+    this.sku = sku;
+    this.categoryId = categoryId;
+    this.subCategoryId = subCategoryId;
+    this.offersIds = offersIds;
+    this.tagsIds = tagsIds;
+    this.media = media;
+    this.offerProducts = offerProducts;
+    this.manufacturerId = manufacturerId;
+  }
 }
 
 export class Media {

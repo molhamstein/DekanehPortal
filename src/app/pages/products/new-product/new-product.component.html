@@ -88,8 +88,8 @@
 
         </div>
         <div class="form-group">
-          <label for="manufacturer">{{'product.form.controls.man'|translate}}</label>
-          <select class="form-control" formControlName="manufacturerId" id="manufacturer" [(ngModel)]="manufacturerId">
+          <label for="manufacturerId">{{'product.form.controls.man'|translate}}</label>
+          <select class="form-control" formControlName="manufacturerId" id="manufacturerId" [(ngModel)]="manufacturerId">
             <option style="display: none" value="" disabled selected></option>
 
             <option *ngFor="let man of mans" [value]="man.id">
@@ -196,10 +196,10 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="featured">{{"product.form.controls.featured"|translate}}</label>
+                  <label for="isFeatured">{{"product.form.controls.featured"|translate}}</label>
                   <br>
                   <label class="switch">
-                    <input id="featured" formControlName="featured" [(ngModel)]="featured" type="checkbox">
+                    <input id="isFeatured" formControlName="isFeatured" [(ngModel)]="isFeatured" type="checkbox">
                     <span class="slider round"></span>
                   </label>
                 </div>
@@ -227,7 +227,14 @@
             <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
           </div>
+          <div class="form-group">
+            <label for="offerMaxQuantity">{{"product.form.controls.offerProducts"|translate}}</label>
+            <input type="number" formControlName="offerProducts" class="form-control"
+                   id="offerProducts" placeholder="{{'product.form.placeholders.offerProducts'|translate}}">
+            <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
+            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
+          </div>
         </div>
         <div class="form-group">
           <label for="description">{{"product.form.controls.desc"|translate}}</label>
@@ -239,16 +246,16 @@
     </div>
     <div class="row">
       <div class="col-sm submit-col">
-        <button type="submit" [disabled]="submitted" class="btn btn-success">
+        <button *ngIf="newPro" type="submit" [disabled]="submitted" class="btn btn-success">
           {{"staff.buttons.add"|translate}}
         </button>
-        <!--<i *ngIf="!ProductForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>-->
-        <!--<button type="submit" [disabled]="submitted" class=" btn btn-success" *ngIf="!newUSer">-->
-        <!--{{"product.buttons.edit"|translate}}-->
-        <!--</button>-->
-        <!--<button type="button" (click)="goHome()" [disabled]="submitted" class="btn btn-action" *ngIf="!newUSer">-->
-        <!--{{"product.buttons.back"|translate}}-->
-        <!--</button>-->
+        <i *ngIf="!ProductForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button type="submit" [disabled]="submitted" class=" btn btn-success" *ngIf="!newPro">
+        {{"staff.buttons.edit"|translate}}
+        </button>
+        <button type="button" routerLink="/products/list" [disabled]="submitted" class="btn btn-action" *ngIf="!newPro">
+        {{"staff.buttons.back"|translate}}
+        </button>
       </div>
     </div>
   </div>

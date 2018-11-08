@@ -1,3 +1,91 @@
-<p>
-  product-list works!
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
+           placeholder="{{'client.search'|translate}}....">
+  </div>
+</div>
+<table class="table table-bordered table-striped ">
+  <thead>
+  <tr>
+    <th>
+      {{"product.image"|translate}}
+      
+
+    </th>
+    <th class="clickable-th" (click)="orderByName()">
+      {{"product.name"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+    </th>
+    <th class="clickable-th" (click)="orderByPack()">
+      {{"product.pack"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="packOrderDir === undefined? '' : (packOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+    </th>
+    <th class="clickable-th" (click)="orderByClientPrice()">
+      {{"product.clientPrice"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="clientPriceOrderDir === undefined? '' : (clientPriceOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+
+    </th>
+    <th class="clickable-th" (click)="orderByRetailer()">
+      {{"product.retailer"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="retailerOrderDir === undefined? '' : (retailerOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
+
+
+    </th>
+    <th class="clickable-th" (click)="orderByOffer()">
+      {{"product.offer"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="offerOrderDir === undefined? '' : (offerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+    </th>
+
+    <th class="clickable-th" (click)="orderByStatus()">
+      {{"product.statustext"|translate}}
+      <i class="fa-sort fa "
+         [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+    </th>
+    <th>
+      <!--{{"product.actions"|translate}}-->#
+    </th>
+  </tr>
+  </thead>
+  <tbody *ngIf="returnedArray!=[]">
+
+  <tr *ngFor="let product of returnedArray  ">
+    <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
+    <td>{{product.nameAr}}</td>
+    <td>{{product.pack}}</td>
+    <td>{{product.wholeSalePriceDiscount}}</td>
+
+    <td>{{product.horecaPriceDiscount}}</td>
+    <td>{{"product."+product.isOffer|translate}}</td>
+    <td><span class="badge "
+              [ngClass]="product.status=='available'? 'badge-success' :  'badge-danger'">{{"product.status."+product.status|translate}}</span>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">{{"client.buttons.edit"|translate}}
+      </button>
+      <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
+        <!--{{"product.buttons.delete"|translate}}-->
+      <!--</button>-->
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="row">
+  <pagination [totalItems]="allProduct.length" [itemsPerPage]="pages" previousText="<" nextText=">"
+              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+
+</div>
+
+

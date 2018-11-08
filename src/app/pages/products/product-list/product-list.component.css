@@ -1,0 +1,44 @@
+table {
+  direction: rtl;
+}
+
+.btn {
+  padding: 5px 10px;
+}
+
+.btn:first-child {
+  margin-left: 15px;
+}
+
+td, th {
+  text-align: center;
+}
+
+.badge {
+  padding: 6px 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.clickable-th {
+  cursor: pointer;
+}
+
+.search-box {
+  margin-bottom: 30px;
+}
+
+.per-page-sec {
+  float: right;
+  margin-right: 20px;
+}
+
+#perpage {
+  display: inline-block;
+  width: 80px;
+  margin-right: 10px;
+}
+.product-img{
+  max-height:64px;
+  max-width: 90px;
+}
