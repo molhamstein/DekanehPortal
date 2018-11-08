@@ -38,7 +38,7 @@ const AppRoutes = [
         component: DashboardComponent,
       },
       {
-        path: 'Categories',
+        path: 'categories',
         component: CategoriesComponent,
         children: [
           {

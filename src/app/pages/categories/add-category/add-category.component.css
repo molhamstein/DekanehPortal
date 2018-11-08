@@ -1,0 +1,10 @@
+.img-uploader {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#preview > img {
+  /*width: 200px;*/
+  height: 200px;
+  margin-bottom: 15px;
+}

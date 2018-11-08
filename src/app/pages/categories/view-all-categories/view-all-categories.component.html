@@ -8,10 +8,14 @@
 <table class="table table-bordered table-striped ">
   <thead>
   <tr>
+    <th class="text-center ">
+      {{"Categories.image"|translate}}
+    </th>
     <th *ngFor="let col of cols" class="text-center clickable-th" (click)="orderBy(col)">
       <label >{{"Categories."+col|translate}}</label>
       <i [class]="'fa-sort fa '+ (orderDir[col]==0?'':orderDir[col]==-1?'fa-sort-desc' :'fa-sort-asc')"></i>
     </th>
+
     <th class="text-center ">
       {{"Categories.actions"|translate}}
     </th>
@@ -20,6 +24,7 @@
   <tbody>
   <ng-container *ngFor="let category of categories">
     <tr >
+      <td class="img-td"><img *ngIf="category.icon" class="cat-img" src="{{category.icon}}"></td>
       <td (click)="showSub(category)" *ngFor="let col of cols">
         {{c.formatDate(category[col])}}
       </td>

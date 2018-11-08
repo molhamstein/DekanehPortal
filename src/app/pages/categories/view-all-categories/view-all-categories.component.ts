@@ -35,7 +35,7 @@ export class ViewAllCategoriesComponent implements OnInit {
   }
 
   editCat(category) {
-    this.router.navigate(['Categories',category.id,'edit'])
+    this.router.navigate(['categories',category.id,'edit'])
   }
 
   deleteCat(category) {

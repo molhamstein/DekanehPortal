@@ -2,6 +2,17 @@
   <div class="col-sm-12">
     <app-card [title]="'Manufactures.addNew'|translate">
       <form [formGroup]="categoriesForm ">
+        <div class="img-uploader ">
+        <div id="preview">
+          <img [src]="imgSrc" alt="">
+        </div>
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        <button type="button" class="select-file btn btn-success" (click)="fileInput.click()">
+          {{'product.addImg'|translate}}
+        </button>
+        <br>
+        <!--<label *ngIf="imgBlankError" class="text-danger">{{'product.form.validations.imgBlank'|translate}}</label>-->
+        </div>
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
           <div class="col-sm-10">
