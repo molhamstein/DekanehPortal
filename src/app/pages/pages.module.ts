@@ -20,6 +20,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {BrowserModule} from '@angular/platform-browser';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import {ProductsModule} from './products/products.module';
+import {SelectModule} from 'ng-select';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {ProductsModule} from './products/products.module';
     DataTableModule,
     StaffModule,
     ClientsModule,
-    ProductsModule
+    ProductsModule,
+    SelectModule
   ],
   exports:[
     DataFilterPipe,

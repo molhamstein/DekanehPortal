@@ -8,6 +8,8 @@ import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PaginationModule} from 'ngx-bootstrap';
 import {TagInputModule} from 'ngx-chips';
+import {SelectModule} from 'ng-select';
+import {SelectOptionService} from '../../shared/element/select-option.service';
 
 @NgModule({
   imports: [
@@ -17,13 +19,14 @@ import {TagInputModule} from 'ngx-chips';
     ReactiveFormsModule,
     PaginationModule,
     FormsModule,
-    TagInputModule
+    TagInputModule,
+    SelectModule
   ],
   declarations: [
     NewProductComponent,
     ProductListComponent
   ], providers: [
-
+    SelectOptionService,
     ProductHandler,
 
   ],

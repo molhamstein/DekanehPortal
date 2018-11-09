@@ -22,6 +22,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {BrowserModule} from '@angular/platform-browser';
+import {SelectModule} from 'ng-select';
 
 
 // AoT requires an exported function for factories
@@ -58,6 +59,7 @@ export function HttpLoaderFactory(http: Http) {
       }
     }),
     AdminModule,
+    SelectModule,
     PagesModule,
     PaginationModule.forRoot(),
     AgmCoreModule.forRoot({

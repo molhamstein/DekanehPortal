@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Media, OfferProducts, ProductModel} from '../product-model';
+import {IOption} from 'ng-select';
+import {SelectOptionService} from '../../../shared/element/select-option.service';
 
 @Component({
   selector: 'app-new-product',
@@ -13,7 +15,11 @@ export class NewProductComponent implements OnInit {
   private product: ProductModel;
   selectedFile: File;
   imgSrc: string = '';
-
+  myOptions: Array<IOption> = [
+    {label: 'Belgium', value: 'BE'},
+    {label: 'Luxembourg', value: 'LU'},
+    {label: 'Netherlands', value: 'NL'}
+  ];
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     const reader = new FileReader();
@@ -56,7 +62,9 @@ export class NewProductComponent implements OnInit {
     'thumbnail': '',
     'id': ''
   };
-
+offers: Array<IOption>=[];
+t: Array<IOption>=[];
+IOoffers: Array<IOption>=[];
   processValidation = false;
   ProductForm = new FormGroup({
     nameAr: new FormControl('', Validators.required),
@@ -104,17 +112,24 @@ export class NewProductComponent implements OnInit {
 
   getAllOffers() {
     this.Handler.getOffers()
-      .subscribe(data =>
-          this.alloffers = data
-
+      .subscribe(data =>{
+          this.alloffers = data;
+          for(let offer of this.alloffers){
+            this.t.push({label: offer.nameAr, value: offer.id});
+            // if(this.product.offersIds.includes(offer.id)){
+            //   this.offers.push({label: offer.nameAr, value: offer.id})
+            // }
+          }
+        }
         , errorCode => this.statusCode = errorCode);
+
   }
 
-  constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute) {
-    this.getAllCats();
-    this.getAllOffers();
-    this.getAllMans();
+  constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute,private optionService: SelectOptionService) {
 
+    this.getAllOffers();
+    this.getAllCats();
+    this.getAllMans();
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -127,7 +142,9 @@ export class NewProductComponent implements OnInit {
         this.subcats = this.cats.find(x => x.id === this.product.categoryId).subCategories;
         this.subCategoryId=this.product.subCategoryId;
         this.imgSrc=this.product.media.url;
-        // console.log(product);
+        console.log(this.myOptions);
+
+        console.log(this.IOoffers);
         this.status = this.product.status;
         this.availableTo = this.product.availableTo;
         this.offerSource = this.product.offerSource;
@@ -163,6 +180,9 @@ export class NewProductComponent implements OnInit {
 
 
   ngOnInit() {
+    setTimeout(() => {
+      this.IOoffers = this.t;
+    }, 3000);
   }
 
   preConfig() {

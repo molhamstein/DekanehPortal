@@ -38,13 +38,18 @@
           <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
         </div>
+
         <div class="form-group">
+
           <label for="offers">{{'product.form.controls.offers'|translate}}</label>
-          <select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>
-            <option *ngFor="let option of alloffers" [value]="option.id">
-              {{option.nameAr}}
-            </option>
-          </select>
+          <ng-select id="offers" [options]="IOoffers" [multiple]="true" [(ngModel)]="offersIds" formControlName="offersIds" >
+          </ng-select>
+
+          <!--<select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>-->
+            <!--<option *ngFor="let option of alloffers" [value]="option.id">-->
+              <!--{{option.nameAr}}-->
+            <!--</option>-->
+          <!--</select>-->
         </div>
         <div class="form-group">
           <label for="availableTo">{{'product.form.controls.availableTo'|translate}}</label>
