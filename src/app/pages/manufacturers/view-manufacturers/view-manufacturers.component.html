@@ -3,13 +3,13 @@
     <app-card [title]="'Manufactures.viewAll'|translate">
       <div class="row">
         <div class="col-md-4 col-lg-2 col-sm-auto offset-lg-10">
-          <button type="button" class="btn btn-primary btn-print-invoice waves-effect waves-light m-b-10 btn-sm m-r-20"(click)="navigateTo('manufacturers/add')"><h6>{{"Manufactures.addNew"|translate}}</h6></button>
+          <!--<button type="button" class="btn btn-primary btn-print-invoice waves-effect waves-light m-b-10 btn-sm m-r-20"(click)="navigateTo('manufacturers/add')"><h6>{{"Manufactures.addNew"|translate}}</h6></button>-->
         </div>
       </div>
       <!--<span class="m-b-20">use class <code>table table-striped table-bordered full-data-table</code> with table element</span><br><br>-->
       <div class="dt-responsive">
         <div class="table-responsive">
-          <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" >
+          <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : ''" #mf="mfDataTable" >
           <!--<table class="table table-striped table-bordered full-data-table" >-->
             <thead>
             <tr>

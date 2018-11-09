@@ -19,6 +19,9 @@ export class AddCategoryComponent implements OnInit {
   subCategories;
   addSub: boolean = false;
   id;
+  titleAr='';
+  titleEn='';
+  code='';
   selectedFile: File;
   imgSrc: string = '';
   imgUrl: string = '';

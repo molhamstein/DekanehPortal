@@ -14,6 +14,9 @@ export class AddManufacturerComponent implements OnInit {
   manufacturerForm: FormGroup;
   submitted: boolean = false;
   id;
+  code='';
+  nameAr='';
+  nameEn='';
   // click:boolean=true:
   addManufactur() {
     this.submitted = true;
