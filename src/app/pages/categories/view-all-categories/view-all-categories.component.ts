@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../services/api.service';
 import {ConstService} from '../../../services/const.service';
+import {URLSearchParams} from '@angular/http';
 
 @Component({
   selector: 'app-view-all-categories',
@@ -61,6 +62,11 @@ export class ViewAllCategoriesComponent implements OnInit {
 
                 this.cols = Object.keys(this.categories[0]);
                 let index: number = this.cols.indexOf('icon');
+                let index2: number = this.cols.indexOf('subCategories');
+                if (index2 !== -1) {
+                  this.cols.splice(index2, 1);
+
+                }
                 if (index !== -1) {
                   this.cols.splice(index, 1);
                 }
@@ -79,7 +85,10 @@ export class ViewAllCategoriesComponent implements OnInit {
 
   constructor(private router: Router, private api: ApiService, public c:ConstService) {
     this.orderDir = {'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0,};
-    this.api.get('/categories').subscribe((data: any) => {
+    //
+    let param = new URLSearchParams();
+    param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories"}');
+    this.api.get('/categories', param).subscribe((data: any) => {
       if (data.ok) {
         this.categories = JSON.parse(data._body);
         this.subCategories=[];
@@ -97,6 +106,11 @@ export class ViewAllCategoriesComponent implements OnInit {
           console.log(this.cols);
           this.cols = Object.keys(this.categories[0]);
           let index: number = this.cols.indexOf('icon');
+          let index2: number = this.cols.indexOf('subCategories');
+          if (index2 !== -1) {
+            this.cols.splice(index2, 1);
+
+          }
           if (index !== -1) {
             this.cols.splice(index, 1);
           }
