@@ -105,14 +105,42 @@ export class AddCategoryComponent implements OnInit {
         );
 
       } else {
-        this.api.put('/categories/' + this.id, this.categoriesForm.value, {}).subscribe((res) => {
-          if (res.status == 200) {
-            console.log(res);
-            this.router.navigate(['categories', 'viewAll']);
-          } else {
-            alert(res.statusText);
-          }
-        });
+        if (this.selectedFile == undefined) {
+          this.api.put('/categories/' + this.id, this.categoriesForm.value, {}).subscribe((res) => {
+            if (res.status == 200) {
+              console.log(res);
+              this.router.navigate(['categories', 'viewAll']);
+            } else {
+              alert(res.statusText);
+            }
+          });
+        } else {
+          this.uploadImage(this.selectedFile).finally(() => {
+            let cat = {
+              'titleAr': '',
+              'titleEn': '',
+              'code': '',
+              'icon': ''
+            };
+            cat = this.categoriesForm.value;
+            cat.icon = this.imgUrl;
+            console.log(cat);
+            this.api.put('/categories/' + this.id, cat, {}).subscribe((res) => {
+              if (res.status == 200) {
+                console.log(res);
+                this.router.navigate(['categories', 'viewAll']);
+              } else {
+                alert(res.statusText);
+              }
+            });
+          }).subscribe(res => {
+              this.imgUrl = res[0].url;
+            },
+            errorCode => console.log(errorCode)
+          );
+
+        }
+
       }
     } else {
       alert(this.c.translateUtterance('Manufactures.errorInForm'));

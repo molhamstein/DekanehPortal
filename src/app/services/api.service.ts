@@ -3,7 +3,7 @@ import {Http,Headers} from '@angular/http';
 
 @Injectable()
 export class ApiService {
-  api = 'http://104.217.253.15:3003/api';
+  api = 'http://167.99.214.78/api';
   header=new Headers();
   constructor(private http: Http) {
     if(localStorage.getItem('token'))

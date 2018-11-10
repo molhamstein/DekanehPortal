@@ -8,3 +8,12 @@
   height: 200px;
   margin-bottom: 15px;
 }
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+.spinner-submit {
+  vertical-align: middle;
+  color: gray;
+}

@@ -57,7 +57,13 @@ export class ViewAllCategoriesComponent implements OnInit {
                 });
               });
               if (this.categories.length > 0) {
+                console.log(this.cols);
+
                 this.cols = Object.keys(this.categories[0]);
+                let index: number = this.cols.indexOf('icon');
+                if (index !== -1) {
+                  this.cols.splice(index, 1);
+                }
               } else {
                 alert('No data found');
               }
@@ -88,7 +94,13 @@ export class ViewAllCategoriesComponent implements OnInit {
           });
         });
         if (this.categories.length > 0) {
+          console.log(this.cols);
           this.cols = Object.keys(this.categories[0]);
+          let index: number = this.cols.indexOf('icon');
+          if (index !== -1) {
+            this.cols.splice(index, 1);
+          }
+
         } else {
           alert('No data found');
         }

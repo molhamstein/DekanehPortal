@@ -14,11 +14,6 @@ agm-map {
   margin-bottom: 20px;
 }
 
-.spinner-submit {
-  vertical-align: middle;
-  color: gray;
-}
-
 .submit-col {
   text-align: center;
 }
@@ -30,6 +25,11 @@ agm-map {
 
 button[disabled] {
   cursor: not-allowed;
+}
+
+.spinner-submit {
+  vertical-align: middle;
+  color: gray;
 }
 
 .form-check {

@@ -158,9 +158,10 @@
         <div class="row">
           <label class="col-sm-2"></label>
           <div class="col-sm-10">
-            <button (click)="addCategory()"  type="submit" class="btn btn-primary m-b-0">
+            <button (click)="addCategory()" [disabled]="submitted" type="submit" class="btn btn-primary m-b-0">
               {{'Manufactures.add'|translate}}
             </button>
+            <i *ngIf="!categoriesForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
           </div>
         </div>
       </form>
