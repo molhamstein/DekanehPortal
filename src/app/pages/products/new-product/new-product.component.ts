@@ -89,8 +89,8 @@ IOoffers: Array<IOption>=[];
     offerProducts: new FormControl(''),
     horecaPriceDiscount: new FormControl('', Validators.required),
     wholeSalePriceDiscount: new FormControl('', Validators.required),
-    code: new FormControl('', Validators.required),
-    sku: new FormControl('', Validators.required),
+    code: new FormControl(''),
+    sku: new FormControl(''),
 
   });
 

@@ -26,7 +26,7 @@
           <label for="sku">{{"product.form.controls.sku"|translate}}</label>
           <input type="text" formControlName="sku" class="form-control"
                  id="sku" placeholder="{{'product.form.placeholders.sku'|translate}}">
-          <label *ngIf="ProductForm.get('sku').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+          <!--<label *ngIf="ProductForm.get('sku').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
           <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
         </div>
@@ -34,7 +34,7 @@
           <label for="code">{{"product.form.controls.code"|translate}}</label>
           <input type="text" formControlName="code" class="form-control"
                  id="code" placeholder="{{'product.form.placeholders.code'|translate}}">
-          <label *ngIf="ProductForm.get('code').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+          <!--<label *ngIf="ProductForm.get('code').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
           <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
         </div>
