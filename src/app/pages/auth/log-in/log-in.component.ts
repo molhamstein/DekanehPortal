@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from '@angular/http';
 import {Router} from '@angular/router';
+import {environment} from '../../../../environments/environment';
+import {ApiService} from '../../../services/api.service';
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -8,12 +10,13 @@ import {Router} from '@angular/router';
 })
 export class LogInComponent implements OnInit {
 
-  constructor(private http:Http,private router:Router) { }
+  constructor(private api: ApiService, private router: Router) {
+  }
 
   ngOnInit() {
   }
   logIn(form){
-    this.http.post('http://167.99.214.78/api/users/staffLogin', form.value).subscribe((data) => {
+    this.api.post('/users/staffLogin', form.value).subscribe((data) => {
       localStorage.setItem('token',JSON.parse(data['_body']).id);
       this.router.navigate(['']);
     },(err)=>{

@@ -46,6 +46,13 @@ export class ProductHandler {
       .map(this.extractData).catch(this.handleError);
   }
 
+  getPureProducts(): Observable<ProductModel[]> {
+    let param = new URLSearchParams();
+    param.append('filter', '{"where":{"isOffer":false}}');
+    return this.apiService.get('/products', param)
+      .map(this.extractData).catch(this.handleError);
+  }
+
   uploadImage(image: File): Observable<any> {
     let formData = new FormData();
     formData.append('file', image);

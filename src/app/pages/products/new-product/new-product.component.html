@@ -105,12 +105,11 @@
 
         </div>
         <div class="form-group">
-          <label for="tags">{{'product.form.controls.tags'|translate}}</label>
-
-          <tag-input formControlName="tagsIds" id="tags" [(ngModel)]="tags"
-                     [placeholder]="'product.form.placeholders.addTag'|translate"
-                     [secondaryPlaceholder]="'product.form.placeholders.addTags'|translate"></tag-input>
+          <label for="description">{{"product.form.controls.desc"|translate}}</label>
+          <textarea class="form-control" id="description" formControlName="description" rows="4"
+                    placeholder="{{'product.form.placeholders.desc'|translate}}"></textarea>
         </div>
+
       </div>
       <div class="col-sm-6">
         <div class="col-sm-offset-3 img-uploader">
@@ -213,6 +212,15 @@
             </div>
 
           </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label for="tags">{{'product.form.controls.tags'|translate}}</label>
+
+              <tag-input formControlName="tagsIds" id="tags" [(ngModel)]="tags"
+                         [placeholder]="'product.form.placeholders.addTag'|translate"
+                         [secondaryPlaceholder]="'product.form.placeholders.addTags'|translate"></tag-input>
+            </div>
+          </div>
         </div>
         <div *ngIf="isOffer" class="offer-things">
           <div class="form-group">
@@ -234,18 +242,31 @@
           </div>
           <div class="form-group">
             <label for="offerMaxQuantity">{{"product.form.controls.offerProducts"|translate}}</label>
-            <input type="number" formControlName="offerProducts" class="form-control"
-                   id="offerProducts" placeholder="{{'product.form.placeholders.offerProducts'|translate}}">
-            <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
-            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
+            <ng-select id="offerProducts" (selected)="productSelected($event)" (deselected)="productDeSelected($event)"
+                       [options]="IOproducts" [multiple]="true" [(ngModel)]="selectedProductIds"
+                       [ngModelOptions]="{standalone: true}">
+            </ng-select>
+            <div class="row">
+              <div class="col-sm">
+                <table class="table  table-striped ">
+                  <tbody>
+                  <tr *ngFor="let product of offerProducts  ">
+                    <td style="width: 35px"><img *ngIf="findProduct(product.productId).media"
+                                                 style="max-width: 34px;max-height: 34px;"
+                                                 src="{{findProduct(product.productId).media.thumbnail}}"></td>
+                    <td>{{findProduct(product.productId).nameAr}}</td>
+                    <td style="text-align: center"><span>{{"product.form.controls.quantity"|translate}} </span><input
+                      style="max-width: 20%" type="number" [(ngModel)]="product.quantity"
+                      [ngModelOptions]="{standalone: true}"></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="description">{{"product.form.controls.desc"|translate}}</label>
-          <textarea class="form-control" id="description" formControlName="description" rows="4"
-                    placeholder="{{'product.form.placeholders.desc'|translate}}"></textarea>
-        </div>
+
       </div>
 
     </div>
