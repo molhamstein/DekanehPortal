@@ -20,6 +20,7 @@ export class StaffListComponent implements OnInit {
   requestProcess = false;
   staffToUpdate = null;
   allStaff: UserModel[] = [];
+  orginalStaff: UserModel[] = [];
 
   constructor(private staffHandler: StaffHandler, private router: Router) {
 
@@ -124,10 +125,7 @@ export class StaffListComponent implements OnInit {
 
   filterBox(event) {
     let value = event.target.value;
-    if (value == '') {
-      this.getAllStaff();
-
-    }
+    this.allStaff=this.orginalStaff;
     let as: UserModel[] = [];
     let fields = ['username', 'shopName', 'location', 'phoneNumber'];
     for (let field of fields) {
@@ -143,9 +141,10 @@ export class StaffListComponent implements OnInit {
 
   getAllStaff() {
     this.staffHandler.getAllStaff()
-      .subscribe(data =>
+      .subscribe(data =>{
           this.allStaff = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1)
-
+          this.orginalStaff=this.allStaff;
+        }
         , errorCode => this.statusCode = errorCode);
   }
 

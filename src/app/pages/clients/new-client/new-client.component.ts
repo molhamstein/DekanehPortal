@@ -17,8 +17,8 @@ export class NewClientComponent implements OnInit {
   phoneError = false;
   private user: any;
   id: string;
-
-
+  allStatus = ['pending', 'activated','deactivated'];
+  status='pending';
   constructor(private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -38,10 +38,10 @@ export class NewClientComponent implements OnInit {
 
         this.ClientForm.removeControl('password');
         this.ClientForm.setValue({
-          username: Client.username,
           phoneNumber: Client.phoneNumber,
           location: Client.location,
           notes: Client.notes,
+          status: Client.status,
           ownerName: Client.ownerName,
           shopName: Client.shopName
         });
@@ -53,6 +53,7 @@ export class NewClientComponent implements OnInit {
         this.newUSer = false;
         this.selectedSale = Client.clientType;
         this.areaId = Client.areaId;
+        this.status = Client.status;
       });
     }
     this.getAreas();
@@ -71,7 +72,7 @@ export class NewClientComponent implements OnInit {
   password = '';
   passError;
   statusCode: number;
-  selectedSale = 'retailCostumer';
+  selectedSale = 'wholesale';
   lat: number;
   lng: number;
   areaId = '';
@@ -79,7 +80,6 @@ export class NewClientComponent implements OnInit {
   processValidation = false;
   requestProcessing = false;
   ClientForm = new FormGroup({
-    username: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.compose(
       [
         Validators.pattern('^\\+?\\d+$'),
@@ -88,8 +88,9 @@ export class NewClientComponent implements OnInit {
 
     location: new FormControl(''),
     notes: new FormControl(''),
+    status: new FormControl(''),
     ownerName: new FormControl(''),
-    shopName: new FormControl(''),
+    shopName: new FormControl('',Validators.required),
     password: new FormControl('',
       Validators.compose(
         [
@@ -193,12 +194,12 @@ export class NewClientComponent implements OnInit {
     } else {
 
       this.user.ownerName = this.ClientForm.get('ownerName').value;
-      this.user.username = this.ClientForm.get('username').value;
       this.user.notes = this.ClientForm.get('notes').value;
       this.user.shopName = this.ClientForm.get('shopName').value;
       this.user.phoneNumber = this.ClientForm.get('phoneNumber').value;
       this.user.location = this.ClientForm.get('location').value;
       this.user.clientType = this.selectedSale;
+      this.user.status = this.status;
       this.user.areaId = this.areaId;
       this.user.locationPoint = this.locationPoint;
       this.ClientHandler.updateClientUser(this.user).subscribe(successCode => {

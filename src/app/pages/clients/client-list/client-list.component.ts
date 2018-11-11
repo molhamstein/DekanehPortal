@@ -25,6 +25,7 @@ export class ClientListComponent implements OnInit {
   currentPage = 4;
   page: number;
   returnedArray: UserModel[] = [];
+  currentArray: UserModel[] = [];
   pages = 10;
   areas: any[];
 
@@ -32,6 +33,7 @@ export class ClientListComponent implements OnInit {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.returnedArray = this.allClient.slice(startItem, endItem);
+    this.currentArray=this.returnedArray;
   }
 
   constructor(private clientHandler: ClientsHandler, private router: Router) {
@@ -39,8 +41,6 @@ export class ClientListComponent implements OnInit {
         this.areas = data;
       }
       , errorCode => this.statusCode = errorCode);
-
-
   }
 
   editClient(id: string) {
@@ -161,11 +161,7 @@ export class ClientListComponent implements OnInit {
 
   filterBox(event) {
     let value = event.target.value;
-    if (value == '') {
-
-      this.allClient = this.originalClients;
-      this.returnedArray = this.allClient.slice(0, this.pages);
-    }
+    this.returnedArray = this.currentArray;
     let as: UserModel[] = [];
     let fields = ['username', 'shopName', 'location', 'phoneNumber', 'areaId'];
     for (let field of fields) {
@@ -183,6 +179,7 @@ export class ClientListComponent implements OnInit {
     this.clientHandler.getAllClient()
       .finally(() => {
         this.returnedArray = this.allClient.slice(0, this.pages);
+        this.currentArray = this.returnedArray;
         console.log(this.returnedArray);
       })
       .subscribe(data => {
@@ -230,6 +227,12 @@ export class ClientListComponent implements OnInit {
   changepages(event) {
     this.pages = event.target.value;
     this.returnedArray = this.allClient.slice(0, this.pages);
+    this.currentArray=this.returnedArray;
+    setTimeout(()=> {
+      this.currentPage=1;
+    }, 50);
+
+
 
   }
 

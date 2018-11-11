@@ -8,13 +8,19 @@
     <div class="row">
       <div class="col-sm">
         <div class="form-group">
-          <label for="username">{{"client.form.controls.username"|translate}}</label>
-          <input (change)="checkUserByName($event)" type="text" formControlName="username" class="form-control"
-                 id="username" placeholder="{{'client.form.placeholders.username'|translate}}">
-          <label *ngIf="ClientForm.get('username').invalid && processValidation" class="text-danger">{{'client.form.validations.username'|translate}}</label>
-          <label *ngIf="nameError" [ngClass]="'text-danger'">{{'client.form.errors.username'|translate}}</label>
+          <label for="shopname">{{"client.form.controls.shopName"|translate}}</label>
+          <input type="text" formControlName="shopName" class="form-control" id="shopname"
+                 placeholder="{{'client.form.placeholders.shopName'|translate}}">
+          <label *ngIf="ClientForm.get('shopName').invalid && processValidation" class="text-danger">{{'client.form.validations.shopname'|translate}}</label>
 
         </div>
+        <!--<div class="form-group">-->
+          <!--<label for="username">{{"client.form.controls.username"|translate}}</label>-->
+          <!--<input (change)="checkUserByName($event)" type="text" formControlName="username" class="form-control"-->
+                 <!--id="username" placeholder="{{'client.form.placeholders.username'|translate}}">-->
+          <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'client.form.errors.username'|translate}}</label>-->
+
+        <!--</div>-->
         <div class="form-group">
           <label for="areas">{{'client.form.controls.area'|translate}}</label>
           <select class="form-control" id="areas" (change)="setArea($event)">
@@ -49,16 +55,24 @@
           <label *ngIf="passError" [ngClass]="'text-danger'">{{'client.form.errors.pass'|translate}}</label>
 
         </div>
+        <div class="form-group">
+          <label for="status">{{"client.statustext"|translate}}</label>
+          <select class="form-control" formControlName="status" id="status" [(ngModel)]="status">
+            <option *ngFor="let option of allStatus" [value]="option">
+              {{"client.status."+option|translate}}
+            </option>
+          </select>
+        </div>
         <fieldset class="form-group">
           <label>{{"client.form.controls.clientType"|translate}}</label>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" (change)="onSelectionChange('retailCostumer')" class="form-check-input"
-                     name="optionsRadios" id="retailCostumer" value="retailCostumer"
-                     [checked]="selectedSale=='retailCostumer'">
-              {{"client.form.controls.retailCostumer"|translate}}
-            </label>
-          </div>
+          <!--<div class="form-check">-->
+            <!--<label class="form-check-label">-->
+              <!--<input type="radio" (change)="onSelectionChange('retailCostumer')" class="form-check-input"-->
+                     <!--name="optionsRadios" id="retailCostumer" value="retailCostumer"-->
+                     <!--[checked]="selectedSale=='retailCostumer'">-->
+              <!--{{"client.form.controls.retailCostumer"|translate}}-->
+            <!--</label>-->
+          <!--</div>-->
           <div class="form-check">
             <label class="form-check-label">
               <input type="radio" class="form-check-input" (change)="onSelectionChange('wholesale')"
@@ -74,11 +88,7 @@
             </label>
           </div>
         </fieldset>
-        <div class="form-group">
-          <label for="shopname">{{"client.form.controls.shopName"|translate}}</label>
-          <input type="text" formControlName="shopName" class="form-control" id="shopname"
-                 placeholder="{{'client.form.placeholders.shopName'|translate}}">
-        </div>
+
       </div>
       <div class="col-sm">
         <agm-map (mapClick)="mapClicked($event)" [latitude]="lat" [longitude]="lng">

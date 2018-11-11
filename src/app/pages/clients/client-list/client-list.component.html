@@ -7,10 +7,11 @@
 <table class="table table-bordered table-striped ">
   <thead>
   <tr>
-    <th class="clickable-th" (click)="orderByName()">
-      {{"client.userName"|translate}}
+    <th class="clickable-th" (click)="orderByShope()">
+      {{"client.shopName"|translate}}
       <i class="fa-sort fa "
-         [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+         [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
 
     </th>
     <th class="clickable-th" (click)="orderByArea()">
@@ -19,13 +20,7 @@
          [ngClass]="areaOrderDir === undefined? '' : (areaOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
     </th>
-    <th class="clickable-th" (click)="orderByShope()">
-      {{"client.shopName"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-
-    </th>
     <th class="clickable-th" (click)="orderByType()">
       {{"client.clientType"|translate}}
       <i class="fa-sort fa "
@@ -58,9 +53,8 @@
   </thead>
   <tbody>
   <tr *ngFor="let client of returnedArray  ">
-    <td>{{client.username}}</td>
-    <td>{{client.areaId}}</td>
     <td>{{client.shopName}}</td>
+    <td>{{client.areaId}}</td>
     <td><span class="badge " [ngClass]="client.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."+client.clientType|translate}}</span>
     </td>
     <td>{{client.location}}</td>

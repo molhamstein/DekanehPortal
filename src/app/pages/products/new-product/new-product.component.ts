@@ -232,6 +232,9 @@ export class NewProductComponent implements OnInit {
       this.media.url = this.media.thumbnail = this.imgUrl;
       this.product.nameEn = this.product.nameAr;
       this.product.media = this.media;
+      if(this.product.offerSource==""){
+        this.product.offerSource=this.offerSource;
+      }
       this.product.offerProducts = this.offerProducts;
       let t = [];
       for (let tag of this.tags) {
