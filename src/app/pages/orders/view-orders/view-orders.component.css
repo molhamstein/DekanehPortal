@@ -1,0 +1,34 @@
+.side-right {
+    text-align: right;
+    font-size: 18px;
+}
+
+.marketing-header {
+    background-color: #f7f7f7;
+}
+
+.marketing-card .table tbody td .btn-action:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    left: 12px;
+    top: 10px;
+}
+
+.marketing-card .table tbody td .btn-action.btn-bg-c-yellow:after {
+    background-color: #ffb64d;
+}
+.marketing-card .table tbody td .btn-action.btn-bg-c-green:after {
+    background-color: #93be52;
+}
+.marketing-card .table tbody td .btn-action.btn-bg-c-red:after {
+    background-color: #f33024;
+}
+
+
+.marketing-card .table tbody td .btn-action {
+    position: relative;
+    padding: 6px 18px 6px 32px;
+}

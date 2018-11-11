@@ -69,14 +69,14 @@ export class MenuItems {
           ]
         },
         {
-          state: 'forms',
-          short_label: 'F',
+          state: 'orders',
+          short_label: 'O',
           name: 'mainMenu.Orders.main',
           type: 'sub',
           icon: 'ti-layers',
           children: [
             {
-              state: 'basic-elements',
+              state: 'view',
               name: 'mainMenu.Orders.viewAll'
             },
           ]

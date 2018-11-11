@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
@@ -21,6 +21,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import { AddCategoryComponent } from './categories/add-category/add-category.component';
 import {ProductsModule} from './products/products.module';
 import {SelectModule} from 'ng-select';
+import { OrdersComponent } from './orders/orders.component';
+import { ViewOrdersComponent } from './orders/view-orders/view-orders.component';
 
 
 @NgModule({
@@ -56,6 +58,9 @@ import {SelectModule} from 'ng-select';
     CategoriesComponent,
     ViewAllCategoriesComponent,
     DashboardComponent,
+    OrdersComponent,
+    ViewOrdersComponent
   ],
+  providers:[DatePipe]
 })
 export class PagesModule { }
