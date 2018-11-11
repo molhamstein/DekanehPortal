@@ -28,6 +28,8 @@ import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-catego
 import {AddCategoryComponent} from '../../pages/categories/add-category/add-category.component';
 import {ProductListComponent} from '../../pages/products/product-list/product-list.component';
 import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
+import { OrdersComponent } from '../../pages/orders/orders.component';
+import { ViewOrdersComponent } from '../../pages/orders/view-orders/view-orders.component';
 const AppRoutes = [
   {
     path: '',
@@ -116,6 +118,16 @@ const AppRoutes = [
             component: NewProductComponent,
           },
         ],
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+        children: [
+          {
+            path: 'view',
+            component: ViewOrdersComponent,
+          }
+        ]
       },
     ],
     },
