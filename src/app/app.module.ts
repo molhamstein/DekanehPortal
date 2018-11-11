@@ -23,6 +23,7 @@ import {AgmCoreModule} from '@agm/core';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {BrowserModule} from '@angular/platform-browser';
 import {SelectModule} from 'ng-select';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
 // AoT requires an exported function for factories
@@ -66,7 +67,14 @@ export function HttpLoaderFactory(http: Http) {
       apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
     }),
   ],
-  providers: [TranslateService,AuthGuardService,ApiService, ConstService],
+  providers: [
+    TranslateService,
+    AuthGuardService,
+    ApiService,
+    ConstService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
