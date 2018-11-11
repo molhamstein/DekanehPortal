@@ -6,8 +6,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {StaffHandler} from './staff.handler';
 import {ReactiveFormsModule} from '@angular/forms';
 import { NewStaffComponent } from './new-staff/new-staff.component';
-import {AgmCoreModule} from '@agm/core';
-import {ClientsHandler} from '../clients/clients-handler';
+import {SelectModule} from 'ng-select';
 
 @NgModule({
   imports: [
@@ -15,7 +14,7 @@ import {ClientsHandler} from '../clients/clients-handler';
     UtilsModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
-    AgmCoreModule
+    SelectModule
   ],
   declarations: [
     StaffListComponent,

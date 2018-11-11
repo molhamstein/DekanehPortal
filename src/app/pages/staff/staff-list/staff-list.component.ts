@@ -14,7 +14,7 @@ export class StaffListComponent implements OnInit {
   statusOrderDir;
   shopNameOrderDir;
   typeOrderDir;
-  phoneNumberOrderDir;
+  emailOrderDir;
   locationOrderDir;
   statusCode: number;
   requestProcess = false;
@@ -32,7 +32,8 @@ export class StaffListComponent implements OnInit {
 
   orderByName() {
     if (this.nameOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+      this.nameOrderDir = this.statusOrderDir = this.emailOrderDir;
+
 
     }
     if (this.nameOrderDir) {
@@ -47,7 +48,7 @@ export class StaffListComponent implements OnInit {
 
   orderByLocation() {
     if (this.locationOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.emailOrderDir = this.locationOrderDir = this.emailOrderDir = undefined;
 
     }
     if (this.locationOrderDir) {
@@ -60,23 +61,23 @@ export class StaffListComponent implements OnInit {
 
   }
 
-  orderByPhone() {
-    if (this.phoneNumberOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+  orderByEmail() {
+    if (this.emailOrderDir == undefined) {
+      this.nameOrderDir = this.statusOrderDir = this.emailOrderDir;
     }
-    if (this.phoneNumberOrderDir) {
-      this.allStaff.sort((a, b) => a.phoneNumber < b.phoneNumber ? -1 : 1);
+    if (this.emailOrderDir) {
+      this.allStaff.sort((a, b) => a.email < b.email ? -1 : 1);
 
     } else {
-      this.allStaff.sort((a, b) => a.phoneNumber > b.phoneNumber ? -1 : 1);
+      this.allStaff.sort((a, b) => a.email > b.email ? -1 : 1);
     }
-    this.phoneNumberOrderDir = !this.phoneNumberOrderDir;
+    this.emailOrderDir = !this.emailOrderDir;
 
   }
 
   orderByType() {
     if (this.typeOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.emailOrderDir = this.locationOrderDir = this.emailOrderDir = undefined;
     }
     if (this.typeOrderDir) {
       this.allStaff.sort((a, b) => a.clientType < b.clientType ? -1 : 1);
@@ -90,7 +91,7 @@ export class StaffListComponent implements OnInit {
 
   orderByStatus() {
     if (this.statusOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.emailOrderDir = this.locationOrderDir = this.emailOrderDir = undefined;
     }
     if (this.statusOrderDir) {
       this.allStaff.sort((a, b) => a.status < b.status ? -1 : 1);
@@ -104,7 +105,7 @@ export class StaffListComponent implements OnInit {
 
   orderByShope() {
     if (this.typeOrderDir == undefined) {
-      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.phoneNumberOrderDir = this.locationOrderDir = this.phoneNumberOrderDir = undefined;
+      this.nameOrderDir = this.statusOrderDir = this.typeOrderDir = this.emailOrderDir = this.locationOrderDir = this.emailOrderDir = undefined;
     }
     if (this.shopNameOrderDir) {
       this.allStaff.sort((a, b) => a.shopName.toLowerCase() < b.shopName.toLowerCase() ? -1 : 1);
@@ -127,7 +128,7 @@ export class StaffListComponent implements OnInit {
     let value = event.target.value;
     this.allStaff=this.orginalStaff;
     let as: UserModel[] = [];
-    let fields = ['username', 'shopName', 'location', 'phoneNumber'];
+    let fields = ['username', 'email'];
     for (let field of fields) {
       for (let t of this.filterByfield(this.allStaff, field, value)) {
         if (!as.includes(t)) {

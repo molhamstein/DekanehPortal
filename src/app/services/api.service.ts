@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  api = 'http://167.99.214.78/api';
+  api = environment.baseUrl;
   header=new Headers();
   constructor(private http: Http) {
     if(localStorage.getItem('token'))

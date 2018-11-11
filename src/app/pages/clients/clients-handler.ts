@@ -16,7 +16,7 @@ export class ClientsHandler {
     let param = new URLSearchParams();
     let rolesString = '';
 
-    param.append('filter', '{"where":{"and":[{"roleIds":{"eq":[]}},{"status":{"neq":"deactivated"}}]}}');
+    param.append('filter', '{"where":{"and":[{"roleIds":{"eq":[]}}]}}');
     return this.apiService.get('/users', param)
       .map(this.extractData).catch(this.handleError);
 

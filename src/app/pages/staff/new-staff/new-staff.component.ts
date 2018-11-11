@@ -5,6 +5,7 @@ import {StaffHandler} from '../staff.handler';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConstService} from '../../../services/const.service';
 import {UserModel} from '../../user-model';
+import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-new-staff',
@@ -13,25 +14,39 @@ import {UserModel} from '../../user-model';
 })
 export class NewStaffComponent implements OnInit {
   newUSer;
+  roles: any[];
+  status = 'pending';
+  allStatus = ['pending', 'activated', 'deactivated'];
+
+  roleIds: string[] = [];
+  IOroles: Array<IOption> = [];
+  t: Array<IOption> = [];
   nameError = false;
   emailError = false;
-  phoneError = false;
   private user: any;
   id: string;
 
+  getAllRoles() {
+    this.staffHandler.getAllRoles()
+      .subscribe(data => {
+          this.roles = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
+          for (let role of this.roles) {
+            if (role.nameAr != undefined && role.nameAr != '' && role.id != '') {
+              this.t.push({label: role.nameAr, value: role.id});
+            }
+          }
+        }
+        , errorCode => this.statusCode = errorCode);
+  }
 
   constructor(private staffHandler: StaffHandler, private router: Router, private route: ActivatedRoute) {
+    this.getAllRoles();
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     if (this.id == undefined) {
       this.user = new UserModel();
-      this.lat = 33.5138;
-      this.lng = 36.2765;
-      this.locationPoint = {
-        lat: 33.5138,
-        lng: 36.2765
-      };
+
       this.newUSer = true;
     } else {
       this.user = this.staffHandler.getStaffUserById(this.id).subscribe(staff => {
@@ -40,50 +55,34 @@ export class NewStaffComponent implements OnInit {
         this.staffForm.removeControl('password');
         this.staffForm.setValue({
           username: staff.username,
-          phoneNumber: staff.phoneNumber,
           email: staff.email,
-          location: staff.location,
-          notes: staff.notes,
-          ownerName: staff.ownerName,
-          shopName: staff.shopName
+          roleIds: staff.roleIds,
+          status: staff.status,
         });
-        this.locationPoint = staff.locationPoint;
-        this.marker.lng = this.locationPoint.lng;
-        this.marker.lat = this.locationPoint.lat;
-        this.lat = this.locationPoint.lat;
-        this.lng = this.locationPoint.lng;
         this.newUSer = false;
-        this.selectedSale = staff.clientType;
 
       });
     }
   }
-  submitted=false;
+
+  submitted = false;
   password = '';
   passError;
   statusCode: number;
-  selectedSale = 'retailCostumer';
-  lat: number;
-  lng: number;
-  locationPoint: any;
+  selectedSale = 'wholesale';
+
   processValidation = false;
   requestProcessing = false;
   staffForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.compose(
-      [
-        Validators.pattern('^\\+?\\d+$'),
-        Validators.required
-      ])),
     email: new FormControl('', Validators.compose(
       [
         Validators.email,
         Validators.required
       ])),
-    location: new FormControl(''),
-    notes: new FormControl(''),
-    ownerName: new FormControl(''),
-    shopName: new FormControl(''),
+
+    roleIds: new FormControl(''),
+    status: new FormControl(''),
     password: new FormControl('',
       Validators.compose(
         [
@@ -106,18 +105,6 @@ export class NewStaffComponent implements OnInit {
     );
   }
 
-  checkUserByPhone(event) {
-    this.staffHandler.getStaffByPhone(event.target.value).subscribe(data => {
-        if (data['count'] > 0) {
-          this.phoneError = true;
-        } else {
-          this.phoneError = false;
-
-        }
-
-      }
-    );
-  }
 
   checkUserByName(event) {
     this.staffHandler.getStaffByUserName(event.target.value).subscribe(data => {
@@ -133,56 +120,25 @@ export class NewStaffComponent implements OnInit {
 
   }
 
-  marker = {
-    lat: 33.5138,
-    lng: 36.2765,
-    draggable: true
-  };
 
-  onSelectionChange(entry) {
-    this.selectedSale = entry;
-  }
-
-  mapClicked($event: MouseEvent) {
-    this.marker.lat = $event.coords.lat;
-    this.marker.lng = $event.coords.lng;
-    this.marker.draggable = true;
-    this.changeLocationGeo($event);
-
-  }
-
-  markerDragEnd($event: MouseEvent) {
-    this.changeLocationGeo($event);
-  }
-
-  changeLocationGeo($event: MouseEvent) {
-    this.locationPoint = {
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-
-    };
-
-
-  }
-  goHome(){
+  goHome() {
     this.router.navigate(['/staff/list']);
 
   }
+
   onStaffFormSubmit() {
     this.processValidation = true;
-    if (this.staffForm.invalid || this.passError || this.phoneError || this.emailError || this.nameError) {
-      console.log(this.passError);
+    if (this.staffForm.invalid || this.passError || this.emailError || this.nameError) {
       return;
     }
 
 
-      this.preProcessConfigurations();
-this.submitted=true;
+    this.preProcessConfigurations();
+    this.submitted = true;
     if (this.newUSer) {
       this.user = this.staffForm.value;
       this.user.clientType = this.selectedSale;
-      this.user.locationPoint = this.locationPoint;
-      this.user.roleIds = ConstService.STAFF_ROLES;
+      this.user.roleIds = this.roleIds;
       this.staffHandler.createStaffUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
           this.router.navigate(['/staff/list']);
@@ -190,25 +146,21 @@ this.submitted=true;
         errorCode => this.statusCode = errorCode
       );
     } else {
-
-      this.user.ownerName=this.staffForm.get('ownerName').value;
-      this.user.username=this.staffForm.get('username').value;
-      this.user.email=this.staffForm.get('email').value;
-      this.user.notes=this.staffForm.get('notes').value;
-      this.user.shopName=this.staffForm.get('shopName').value;
-      this.user.phoneNumber=this.staffForm.get('phoneNumber').value;
-      this.user.location=this.staffForm.get('location').value;
+      this.user.roleIds = this.roleIds;
+      this.user.status = this.status;
+      this.user.username = this.staffForm.get('username').value;
+      this.user.email = this.staffForm.get('email').value;
       this.user.clientType = this.selectedSale;
-      this.user.locationPoint = this.locationPoint;
       this.staffHandler.updateStaffUser(this.user).subscribe(successCode => {
           this.statusCode = successCode;
           this.router.navigate(['/staff/list']);
         },
         errorCode => this.statusCode = errorCode
       );
-      // console.log(this.user);
 
     }
+    // console.log(this.user);
+
 
   }
 
@@ -221,6 +173,9 @@ this.submitted=true;
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.IOroles = this.t;
+    }, 3000);
   }
 
   preProcessConfigurations() {

@@ -36,73 +36,78 @@
           <label *ngIf="emailError" [ngClass] = "'text-danger'">{{'staff.form.errors.email'|translate}}</label>
 
         </div>
-        <div class="form-group">
-          <label for="phone">{{"staff.form.controls.phone"|translate}}</label>
-          <input (change)="checkUserByPhone($event)"   type="text" formControlName="phoneNumber" class="form-control" id="phone" placeholder="{{'staff.form.placeholders.phone'|translate}}">
-          <label *ngIf="staffForm.get('phoneNumber').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.phone'|translate}}</label>
-          <label *ngIf="phoneError" [ngClass] = "'text-danger'">{{'staff.form.errors.phone'|translate}}</label>
-          <small id="phoneHint" class="form-text text-muted">{{'staff.form.validations.phoneHint'|translate}}</small>
+        <!--<div class="form-group">-->
+        <!--<label for="phone">{{"staff.form.controls.phone"|translate}}</label>-->
+        <!--<input (change)="checkUserByPhone($event)"   type="text" formControlName="phoneNumber" class="form-control" id="phone" placeholder="{{'staff.form.placeholders.phone'|translate}}">-->
+        <!--<label *ngIf="staffForm.get('phoneNumber').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.phone'|translate}}</label>-->
+        <!--<label *ngIf="phoneError" [ngClass] = "'text-danger'">{{'staff.form.errors.phone'|translate}}</label>-->
+        <!--<small id="phoneHint" class="form-text text-muted">{{'staff.form.validations.phoneHint'|translate}}</small>-->
 
-        </div>
-        <div class="form-group">
-          <label for="ownerName">{{"staff.form.controls.ownerName"|translate}}</label>
-          <input type="text" formControlName="ownerName" class="form-control" id="ownerName"  placeholder="{{'staff.form.placeholders.ownerName'|translate}}">
-        </div>
+        <!--</div>-->
+        <!--<div class="form-group">-->
+        <!--<label for="ownerName">{{"staff.form.controls.ownerName"|translate}}</label>-->
+        <!--<input type="text" formControlName="ownerName" class="form-control" id="ownerName"  placeholder="{{'staff.form.placeholders.ownerName'|translate}}">-->
+
+
+        <!--<fieldset class="form-group">-->
+        <!--<label>{{"staff.form.controls.clientType"|translate}}</label>-->
+        <!--<div class="form-check">-->
+        <!--<label class="form-check-label">-->
+        <!--<input type="radio" (change)="onSelectionChange('retailCostumer')" class="form-check-input"-->
+        <!--name="optionsRadios" id="retailCostumer" value="retailCostumer"-->
+        <!--[checked]="selectedSale=='retailCostumer'">-->
+        <!--{{"staff.form.controls.retailCostumer"|translate}}-->
+        <!--</label>-->
+        <!--</div>-->
+        <!--<div class="form-check">-->
+        <!--<label class="form-check-label">-->
+        <!--<input type="radio" class="form-check-input" (change)="onSelectionChange('wholesale')"-->
+        <!--name="optionsRadios" id="wholesale" value="wholesale" [checked]="selectedSale=='wholesale'">-->
+        <!--{{"staff.form.controls.wholesale"|translate}}-->
+        <!--</label>-->
+        <!--</div>-->
+        <!--</fieldset>-->
+        <!--<div class="form-group">-->
+        <!--<label for="shopname">{{"staff.form.controls.shopName"|translate}}</label>-->
+        <!--<input type="text" formControlName="shopName" class="form-control" id="shopname"-->
+        <!--placeholder="{{'staff.form.placeholders.shopName'|translate}}">-->
+        <!--</div>-->
         <div class="form-group" *ngIf="newUSer">
           <label for="password">{{"staff.form.controls.password"|translate}}</label>
           <input type="password"  formControlName="password" class="form-control" id="password" [(ngModel)]="password" >
           <label *ngIf="staffForm.get('password').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.password'|translate}}</label>
-
         </div>
+      </div>
+      <div class="col-sm">
+        <!--</div>-->
+        <div class="form-group">
+          <label for="roleIds">{{"staff.form.controls.roles"|translate}}</label>
+
+          <ng-select id="roleIds" [options]="IOroles" [multiple]="true" [(ngModel)]="roleIds" formControlName="roleIds">
+          </ng-select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">{{"client.statustext"|translate}}</label>
+          <select class="form-control" formControlName="status" id="status" [(ngModel)]="status">
+            <option *ngFor="let option of allStatus" [value]="option">
+              {{"client.status."+option|translate}}
+            </option>
+          </select>
+        </div>
+
+        <!--<div class="form-group">-->
+        <!--<label for="notes">{{"staff.form.controls.notes"|translate}}</label>-->
+        <!--<textarea class="form-control" id="notes" formControlName="notes" rows="4"-->
+        <!--placeholder="{{'staff.form.placeholders.notes'|translate}}"></textarea>-->
+        <!--</div>-->
+
         <div class="form-group" *ngIf="newUSer">
           <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
           <input type="password" (keyup)="comparePass($event)" class="form-control" id="repassowrd">
           <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
 
         </div>
-        <fieldset class="form-group">
-          <label>{{"staff.form.controls.clientType"|translate}}</label>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" (change)="onSelectionChange('retailCostumer')" class="form-check-input"
-                     name="optionsRadios" id="retailCostumer" value="retailCostumer"
-                     [checked]="selectedSale=='retailCostumer'">
-              {{"staff.form.controls.retailCostumer"|translate}}
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" (change)="onSelectionChange('wholesale')"
-                     name="optionsRadios" id="wholesale" value="wholesale" [checked]="selectedSale=='wholesale'">
-              {{"staff.form.controls.wholesale"|translate}}
-            </label>
-          </div>
-        </fieldset>
-        <div class="form-group">
-          <label for="shopname">{{"staff.form.controls.shopName"|translate}}</label>
-          <input type="text" formControlName="shopName" class="form-control" id="shopname"
-                 placeholder="{{'staff.form.placeholders.shopName'|translate}}">
-        </div>
-      </div>
-      <div class="col-sm">
-        <agm-map (mapClick)="mapClicked($event)" [latitude]="lat" [longitude]="lng">
-          <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [markerDraggable]="true"
-                      (dragEnd)="markerDragEnd($event)"></agm-marker>
-        </agm-map>
-        <div class="form-group">
-
-          <label for="location">{{"staff.form.controls.location"|translate}}</label>
-          <input type="text" formControlName="location"  class="form-control" id="location"  placeholder="{{'staff.form.placeholders.location'|translate}}">
-        </div>
-
-
-        <div class="form-group">
-          <label for="notes">{{"staff.form.controls.notes"|translate}}</label>
-          <textarea class="form-control" id="notes" formControlName="notes" rows="4"
-                    placeholder="{{'staff.form.placeholders.notes'|translate}}"></textarea>
-        </div>
-
-
       </div>
 
     </div>

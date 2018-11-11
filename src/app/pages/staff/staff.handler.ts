@@ -23,12 +23,18 @@ export class StaffHandler {
     for (let role of this.roleIds) {
       rolesString = rolesString + '{"roleIds":"' + role + '"},';
     }
-    param.append('filter', '{"where":{"and":[' + rolesString + '{"status":{"neq":"deactivated"}}]}}');
+    param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
     return this.apiService.get('/users', param)
       .map(this.extractData).catch(this.handleError);
 
   }
 
+  getAllRoles(): Observable<any[]> {
+
+    return this.apiService.get('/roles')
+      .map(this.extractData).catch(this.handleError);
+
+  }
   createStaffUser(StaffUser: UserModel): Observable<number> {
     let body = JSON.stringify( StaffUser );
     let cpHeaders = new Headers({'Content-Type': 'application/json'});

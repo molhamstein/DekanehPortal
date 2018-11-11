@@ -241,13 +241,15 @@
 
           </div>
           <div class="form-group">
-            <label for="offerMaxQuantity">{{"product.form.controls.offerProducts"|translate}}</label>
+            <label for="offerProducts">{{"product.form.controls.offerProducts"|translate}}</label>
 
             <ng-select id="offerProducts" (selected)="productSelected($event)" (deselected)="productDeSelected($event)"
                        [options]="IOproducts" [multiple]="true" [(ngModel)]="selectedProductIds"
                        [ngModelOptions]="{standalone: true}">
             </ng-select>
-            <div class="row">
+          </div>
+
+          <div class="row">
               <div class="col-sm">
                 <table class="table  table-striped ">
                   <tbody>
@@ -264,7 +266,6 @@
                 </table>
               </div>
             </div>
-          </div>
         </div>
 
       </div>
