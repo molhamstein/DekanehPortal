@@ -115,6 +115,40 @@ export class MenuItems {
           ]
         },
         {
+          state: 'areas',
+          short_label: 'F',
+          name: 'mainMenu.areas.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'new',
+              name: 'mainMenu.areas.add'
+            },
+            {
+              state: 'list',
+              name: 'mainMenu.areas.viewAll'
+            },
+          ]
+        },
+        {
+          state: 'coupons',
+          short_label: 'F',
+          name: 'mainMenu.coupons.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'new',
+              name: 'mainMenu.coupons.add'
+            },
+            {
+              state: 'list',
+              name: 'mainMenu.coupons.viewAll'
+            },
+          ]
+        },
+        {
           state: 'staff',
           short_label: 'F',
           name: 'mainMenu.Staff.main',

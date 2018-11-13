@@ -23,6 +23,8 @@ import {ProductsModule} from './products/products.module';
 import {SelectModule} from 'ng-select';
 import { OrdersComponent } from './orders/orders.component';
 import { ViewOrdersComponent } from './orders/view-orders/view-orders.component';
+import {AreasModule} from './areas/areas.module';
+import {CouponsModule} from './coupons/coupons.module';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { ViewOrdersComponent } from './orders/view-orders/view-orders.component'
     StaffModule,
     ClientsModule,
     ProductsModule,
-    SelectModule
+    SelectModule,
+    AreasModule,
+    CouponsModule
   ],
   exports:[
     DataFilterPipe,

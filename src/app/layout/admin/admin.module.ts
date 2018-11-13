@@ -30,6 +30,12 @@ import {ProductListComponent} from '../../pages/products/product-list/product-li
 import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
 import { OrdersComponent } from '../../pages/orders/orders.component';
 import { ViewOrdersComponent } from '../../pages/orders/view-orders/view-orders.component';
+// import {ListAreasComponent} from '../../pages/areas/list-areas/list-areas.component';
+import {NewAreaComponent} from '../../pages/areas/new-area/new-area.component';
+// import {ListCouponsComponent} from '../../pages/coupons/list-coupons/list-coupons.component';
+import {NewCouponComponent} from '../../pages/coupons/new-coupon/new-coupon.component';
+import {ListAreasComponent} from '../../pages/areas/list-areas/list-areas.component';
+import {ListCouponsComponent} from '../../pages/coupons/list-coupons/list-coupons.component';
 const AppRoutes = [
   {
     path: '',
@@ -100,6 +106,38 @@ const AppRoutes = [
           {
             path: 'edit/:id',
             component: NewClientComponent,
+          },
+        ],
+      },
+      {
+        path: 'areas', children: [
+          {
+            path: 'list',
+            component: ListAreasComponent,
+          },
+          {
+            path: 'new',
+            component: NewAreaComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewAreaComponent,
+          },
+        ],
+      },
+      {
+        path: 'coupons', children: [
+          {
+            path: 'list',
+            component: ListCouponsComponent,
+          },
+          {
+            path: 'new',
+            component: NewCouponComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewCouponComponent,
           },
         ],
       },

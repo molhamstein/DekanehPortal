@@ -1,0 +1,41 @@
+<form class="AreaForm" [formGroup]="AreaForm" (ngSubmit)="onAreaFormSubmit()">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label for="nameAr">{{"area.nameAr"|translate}}</label>
+          <input type="text" formControlName="nameAr" class="form-control" id="nameAr"
+                 placeholder="{{'area.nameAr'|translate}}" [(ngModel)]="nameAr">
+          <label *ngIf="AreaForm.get('nameAr').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="nameEn">{{"area.nameEn"|translate}}</label>
+          <input type="text" formControlName="nameEn" class="form-control" id="nameEn"
+                 placeholder="{{'area.nameEn'|translate}}"  [(ngModel)]="nameEn">
+          <label *ngIf="AreaForm.get('nameEn').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button type="submit" [disabled]="submitted" class="btn btn-success" *ngIf="newArea">
+          {{"area.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!AreaForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button type="submit" [disabled]="submitted" class=" btn btn-success" *ngIf="!newArea">
+          {{"area.buttons.edit"|translate}}
+        </button>
+        <button type="button" (click)="goHome()" [disabled]="submitted" class="btn btn-action" *ngIf="!newArea">
+          {{"area.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
