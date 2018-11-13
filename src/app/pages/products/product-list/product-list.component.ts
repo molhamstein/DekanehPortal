@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
     this.returnedArray = this.allProduct.slice(startItem, endItem);
-    this.currentArray=this.returnedArray;
+    this.currentArray = this.returnedArray;
   }
 
   constructor(private productHandler: ProductHandler, private router: Router) {
@@ -141,31 +141,41 @@ export class ProductListComponent implements OnInit {
 
   filterBox(event) {
     let value = event.target.value;
-    this.returnedArray = this.currentArray;
-    let as: ProductModel[] = [];
-    let fields = ['nameAr', 'pack'];
-    for (let field of fields) {
-      for (let t of this.filterByfield(this.returnedArray, field, value)) {
-        if (!as.includes(t)) {
-          as.push(t);
-        }
-      }
-    }
-    this.returnedArray = as;
+    if (value == '') {
+      this.getAllProducts();
 
-    console.log(value);
+    } else {
+      let as: ProductModel[] = [];
+      this.productHandler.search(value).finally(() => {
+        this.allProduct = as;
+        this.returnedArray = as;
+
+      }).subscribe(data => {
+        as = data;
+      });
+    }
+    // this.returnedArray = this.currentArray;
+    // let fields = ['nameAr', 'pack'];
+    // for (let field of fields) {
+    //   for (let t of this.filterByfield(this.returnedArray, field, value)) {
+    //     if (!as.includes(t)) {
+    //       as.push(t);
+    //     }
+    //   }
+    // }
+
   }
 
   getAllProducts() {
     this.productHandler.getAllProducts()
       .finally(() => {
         this.returnedArray = this.allProduct.slice(0, this.pages);
-        this.currentArray=this.returnedArray;
+        this.currentArray = this.returnedArray;
 
 
       })
       .subscribe(data => {
-          this.allProduct = data.sort((a, b) => new Date(a.creationDate)> new Date(b.creationDate) ? -1 : 1);
+          this.allProduct = data.sort((a, b) => new Date(a.creationDate) > new Date(b.creationDate) ? -1 : 1);
         }
         , errorCode => this.statusCode = errorCode);
 
@@ -198,9 +208,9 @@ export class ProductListComponent implements OnInit {
 
     this.pages = event.target.value;
     this.returnedArray = this.allProduct.slice(0, this.pages);
-    this.currentArray=this.returnedArray;
-    setTimeout(()=> {
-      this.currentPage=1;
+    this.currentArray = this.returnedArray;
+    setTimeout(() => {
+      this.currentPage = 1;
     }, 50);
 
 

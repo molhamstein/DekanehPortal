@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Media, OfferProducts, ProductModel} from '../product-model';
@@ -146,7 +146,18 @@ export class NewProductComponent implements OnInit {
   }
 
   constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute, private optionService: SelectOptionService) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+    }
 
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        // trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+        // if you need to scroll back to top, here is the right place
+        window.scrollTo(0, 0);
+      }
+    });
     this.getAllOffers();
     this.getAllCats();
     this.getAllMans();
@@ -167,7 +178,6 @@ export class NewProductComponent implements OnInit {
         this.subcats = this.cats.find(x => x.id === this.product.categoryId).subCategories;
         this.subCategoryId = this.product.subCategoryId;
         this.imgSrc = this.product.media.url;
-
         this.status = this.product.status;
         this.availableTo = this.product.availableTo;
         this.offerSource = this.product.offerSource;
@@ -227,6 +237,7 @@ export class NewProductComponent implements OnInit {
   }
 
   createProduct() {
+
     this.Handler.uploadImage(this.selectedFile).finally(() => {
       this.product = this.ProductForm.value;
       this.media.url = this.media.thumbnail = this.imgUrl;
@@ -243,13 +254,20 @@ export class NewProductComponent implements OnInit {
       this.product.tagsIds = t;
       console.log(this.product);
 
+
       // this.product.offerSource = 'dockan';
-      this.Handler.createProduct(this.product).subscribe(successCode => {
+      this.Handler.createProduct(this.product).finally(() => {
+        this.router.navigate(['/products/new']);
+
+
+      })
+        .
+      subscribe(successCode => {
           this.statusCode = successCode;
-          // this.router.navigate(['/products/list']);
         },
         errorCode => this.statusCode = errorCode);
     }).subscribe(res => {
+
         this.imgUrl = res[0].url;
       },
       errorCode => console.log(errorCode)
@@ -300,9 +318,12 @@ export class NewProductComponent implements OnInit {
       return;
     }
     if (this.id == undefined) {
+      this.submitted=true;
 
       this.createProduct();
     } else {
+      this.submitted=true;
+
       if (this.selectedFile == undefined) {
         this.updateProduct();
       } else {
