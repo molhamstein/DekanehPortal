@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import { json } from 'ng2-validation/dist/json';
 import { DatePipe } from '@angular/common';
 
 @Component({
