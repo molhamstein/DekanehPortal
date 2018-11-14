@@ -3,7 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class ConstService {
-  private static _STAFF_ROLES = ['5bd3d18f694f5c6ce766145e', '5bd3d223694f5c6ce766145f'];
+  private static _STAFF_ROLES = ['5be62ecb744a6b07b29b4262'];
 
   public static get STAFF_ROLES(): string[] {
     return this._STAFF_ROLES;
@@ -22,7 +22,8 @@ export class ConstService {
       var day = date.getDate();
       var monthIndex = date.getMonth();
       var year = date.getFullYear();
-      return day + ' ' + monthNames[monthIndex] + ' ' + year;
+
+      return date.getUTCHours() +':'+date.getUTCMinutes()+ ' ' +day + ' ' + monthNames[monthIndex] + ' ' + year;
     }else{
       return str;
   }}

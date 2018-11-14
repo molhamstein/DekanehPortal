@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
   currentPage = 1;
   page: number;
   returnedArray: ProductModel[] = [];
-  pages = 100;
+  pages = 30;
   currentArray: ProductModel[] = [];
 
   pageChanged(event: any): void {

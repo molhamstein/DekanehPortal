@@ -16,7 +16,6 @@ import {ApiService} from './services/api.service';
 import {ConstService} from './services/const.service';
 import {UtilsModule} from './utils/utils.module';
 import {AdminModule} from './layout/admin/admin.module';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {PagesModule} from './pages/pages.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
@@ -24,9 +23,10 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {BrowserModule} from '@angular/platform-browser';
 import {SelectModule} from 'ng-select';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+// import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
-// AoT requires an exported function for factories
+
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
@@ -63,6 +63,7 @@ export function HttpLoaderFactory(http: Http) {
     SelectModule,
     PagesModule,
     PaginationModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
     }),

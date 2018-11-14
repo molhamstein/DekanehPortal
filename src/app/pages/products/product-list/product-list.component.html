@@ -79,8 +79,8 @@
   </tbody>
 </table>
 <div class="row">
-  <pagination [totalItems]="allProduct.length" [itemsPerPage]="pages" previousText="<" nextText=">"
-              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+  <pagination [totalItems]="allProduct.length" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false" [boundaryLinks]="true"></pagination>
   <div class="per-page-sec">
     <span>{{"client.perPage"|translate}}</span>
     <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
