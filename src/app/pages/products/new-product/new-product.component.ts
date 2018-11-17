@@ -144,23 +144,22 @@ export class NewProductComponent implements OnInit {
             }
             setTimeout(() => {
               this.IOproducts = this.tP;
-            }, 100);
+            }, 50);
+            this.pureProducts = data;
           }
           , errorCode => this.statusCode = errorCode);
     }
 
   }
 
-  constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute, private optionService: SelectOptionService) {
+  constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
 
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
-        // trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
-        // if you need to scroll back to top, here is the right place
         window.scrollTo(0, 0);
       }
     });
@@ -212,7 +211,7 @@ export class NewProductComponent implements OnInit {
   }
 
   productSelected(IOproduct) {
-    let product = this.pureProducts.find(x => x.id === IOproduct.value);
+    let product = this.findProduct(IOproduct.value);
     this.selectedProducts.push(product);
     this.offerProducts.push({
       'quantity': 0,

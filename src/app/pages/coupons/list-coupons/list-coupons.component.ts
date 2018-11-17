@@ -15,6 +15,7 @@ export class ListCouponsComponent implements OnInit {
   valueOrderDir;
   ownerOrderDir;
   expireOrderDir;
+  spinnerFlag: boolean;
   currentPage = 1;
   statusCode: number;
   requestProcess = false;
@@ -34,6 +35,7 @@ export class ListCouponsComponent implements OnInit {
   }
 
   pageChanged(event: any): void {
+
     setTimeout(() => {
       this.getCoupons();
 
@@ -158,8 +160,12 @@ export class ListCouponsComponent implements OnInit {
   }
 
   getCoupons() {
+    this.spinnerFlag = true;
+
     this.couponHandler.getCoupons(this.pages, this.currentPage).finally(() => {
       this.returnedArray = this.allCoupon;
+      this.spinnerFlag = false;
+
     })
       .subscribe(data => {
           let t: Coupon[] = [];

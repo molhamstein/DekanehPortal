@@ -82,3 +82,10 @@ button[disabled] {
   vertical-align: middle;
   color: gray;
 }
+
+@media (min-width: 768px) {
+  .products-div {
+    overflow-y: auto;
+    height: 200px;
+  }
+}

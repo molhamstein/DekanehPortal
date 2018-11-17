@@ -307,6 +307,7 @@
     "addImg": "اختر صورة",
     "name": "الاسم",
     "pack": "الحزمة",
+    "man": "المصنع",
     "clientPrice": "السعر للدكاكين",
     "retailer": "السعر للمنشأت",
     "offer": "عرض",
@@ -314,7 +315,8 @@
     "false": "لا",
     "image": "الصورة",
     "statustext": "الحالة",
-
+    "apply": "تطبيق",
+    "cancel": "تفريغ",
     "status": {
       "available": "متوفر",
       "unavailable": "غير متوفر"
@@ -334,6 +336,8 @@
         "dockanBuyingPrice": "سعر شراء دكان",
         "wholeSaleMarketPrice": "سعر توزيع الشركه",
         "offer": "عرض",
+        "offerOrProduct": "عرض / منتح",
+        "product": "منتج",
         "retailCostumer": "زبون مفرق",
         "horeca": "منشآت",
         "wholesale": "دكانة",

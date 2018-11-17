@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http,Headers} from '@angular/http';
-import {environment} from '../../environments/environment';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable()
 export class ApiService {

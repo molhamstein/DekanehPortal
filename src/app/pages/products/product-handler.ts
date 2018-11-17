@@ -15,11 +15,29 @@ export class ProductHandler {
       .map(this.extractData).catch(this.handleError);
   }
 
+  getManById(id: string): Observable<any> {
+    let param = new URLSearchParams();
+    return this.apiService.get('/manufacturers/' + id)
+      .map(this.extractData).catch(this.handleError);
+  }
   getProductsCount(): Observable<number> {
     return this.apiService.get('/products/count')
       .map(this.extractData).catch(this.handleError);
   }
 
+  getByFilters(filters: any[]) {
+    let param = new URLSearchParams();
+    let query = '';
+    for (let filter of filters) {
+      if (query != '') {
+        query = query + ',';
+      }
+      query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
+    }
+    param.append('filter', '{"where":{"and": [ ' + query + ']}}');
+    return this.apiService.get('/products', param)
+      .map(this.extractData).catch(this.handleError);
+  }
   getPerPageProducts(perPage: number, currentPage: number) {
     let param = new URLSearchParams();
     param.append('filter', '{"order": "creationDate<ASC>","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');

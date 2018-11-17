@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {ProductModel} from '../product-model';
 
@@ -9,21 +9,34 @@ import {ProductModel} from '../product-model';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  unpage = false;
+  spinnerFlag: boolean;
   nameOrderDir;
   packOrderDir;
+  cat;
+  subcat;
+  man;
+  availableTo;
+  isOffer;
+  availableList = ['both', 'retailCostumer', 'wholesale', 'horeca'];
+  offerList = ['both', 'product', 'offer'];
+  manOrderDir;
   statusOrderDir;
   retailerOrderDir;
   offerOrderDir;
+  cats: any[] = [];
+  mans: any[] = [];
+  subcats: any[] = [];
   clientPriceOrderDir;
   statusCode: number;
   requestProcess = false;
   allProduct: ProductModel[] = [];
   currentPage = 1;
   page: number;
-  returnedArray: ProductModel[] = [];
+  returnedArray: any[] = [];
   pages = 20;
   productsCount;
+
   pageChanged(event: any): void {
     setTimeout(() => {
       this.getAllProducts();
@@ -32,11 +45,18 @@ export class ProductListComponent implements OnInit {
   }
 
   constructor(private productHandler: ProductHandler, private router: Router) {
-    this.productHandler.getProductsCount().finally(()=>{
-      this.getAllProducts();
+    this.getAllCats();
+    this.getAllMans();
+    this.getAllProducts();
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
 
-    }).subscribe(c=>{
-      this.productsCount=c['count'];
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
     });
   }
 
@@ -46,7 +66,7 @@ export class ProductListComponent implements OnInit {
 
   orderByName() {
     if (this.nameOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.nameOrderDir) {
@@ -61,7 +81,7 @@ export class ProductListComponent implements OnInit {
 
   orderByPack() {
     if (this.packOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
     }
     if (this.packOrderDir) {
       this.returnedArray.sort((a, b) => a.pack.toLowerCase() < b.pack.toLowerCase() ? -1 : 1);
@@ -73,9 +93,23 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  orderByMan() {
+    if (this.manOrderDir == undefined) {
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+    }
+    if (this.manOrderDir) {
+      this.returnedArray.sort((a, b) => a.manufacturer.nameAr.toLowerCase() < b.manufacturer.nameAr.toLowerCase() ? -1 : 1);
+
+    } else {
+      this.returnedArray.sort((a, b) => a.manufacturer.nameAr.toLowerCase() > b.manufacturer.nameAr.toLowerCase() ? -1 : 1);
+    }
+    this.manOrderDir = !this.manOrderDir;
+
+  }
+
   orderByClientPrice() {
     if (this.clientPriceOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
 
 
     }
@@ -91,7 +125,7 @@ export class ProductListComponent implements OnInit {
 
   orderByRetailer() {
     if (this.retailerOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.retailerOrderDir) {
@@ -106,7 +140,7 @@ export class ProductListComponent implements OnInit {
 
   orderByOffer() {
     if (this.offerOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.offerOrderDir) {
@@ -121,7 +155,7 @@ export class ProductListComponent implements OnInit {
 
   orderByStatus() {
     if (this.statusOrderDir == undefined) {
-      this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.statusOrderDir) {
@@ -150,6 +184,7 @@ export class ProductListComponent implements OnInit {
     } else {
       let as: ProductModel[] = [];
       this.productHandler.search(value).finally(() => {
+        this.unpage = true;
         this.allProduct = as;
         this.returnedArray = as;
 
@@ -169,17 +204,111 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  getAllProducts() {
-    this.productHandler.getPerPageProducts(this.pages,this.currentPage)
-      .finally(() => {
-        this.returnedArray = this.allProduct;
+  getAllCats() {
+    this.productHandler.getAllCats()
+      .subscribe(data =>
+          this.cats = data
 
-
-      })
-      .subscribe(data => {
-          this.allProduct = data;
-        }
         , errorCode => this.statusCode = errorCode);
+  }
+
+  setOfferFilter(e) {
+    let value = e.target.value;
+    if (value == 'offer') {
+      this.isOffer = true;
+    } else if (value == 'product') {
+      this.isOffer = false;
+
+    } else {
+      this.isOffer = undefined;
+    }
+
+  }
+
+  setCatFilter(e) {
+    this.cat = e.target.value;
+  }
+
+  setSubCatFilter(e) {
+    this.subcat = e.target.value;
+  }
+
+  setManFilter(e) {
+    this.man = e.target.value;
+  }
+
+  setAvFilter(e) {
+    this.availableTo = e.target.value;
+  }
+
+  onCatChange(e) {
+    this.subcats = this.cats.find(x => x.id === e.target.value).subCategories;
+  }
+
+  setFilters() {
+    this.spinnerFlag = true;
+    let filters = [];
+    if (this.cat != undefined) {
+      filters.push({name: 'categoryId', value: this.cat});
+    }
+    if (this.subcat != undefined) {
+      filters.push({name: 'subCategoryId', value: this.subcat});
+    }
+    if (this.man != undefined) {
+      filters.push({name: 'manufacturerId', value: this.man});
+    }
+    if (this.availableTo != undefined) {
+      filters.push({name: 'availableTo', value: this.availableTo});
+    }
+    if (this.isOffer != undefined) {
+      filters.push({name: 'isOffer', value: this.isOffer});
+    }
+    if (filters != []) {
+      this.productHandler.getByFilters(filters).finally(() => {
+        this.returnedArray = this.allProduct;
+        this.spinnerFlag = false;
+        this.unpage = true;
+
+      }).subscribe(data => {
+
+        this.allProduct = data;
+
+      });
+    }
+  }
+
+  emptyFields() {
+    this.router.navigate(['/products/list']);
+  }
+
+  getAllMans() {
+    this.productHandler.getAllMans()
+      .subscribe(data =>
+          this.mans = data
+
+        , errorCode => this.statusCode = errorCode);
+  }
+
+  getAllProducts() {
+    this.spinnerFlag = true;
+    this.productHandler.getProductsCount().finally(() => {
+      this.productHandler.getPerPageProducts(this.pages, this.currentPage)
+        .finally(() => {
+          this.returnedArray = this.allProduct;
+          this.spinnerFlag = false;
+          this.unpage = false;
+
+
+        })
+        .subscribe(data => {
+            this.allProduct = data;
+
+          }
+          , errorCode => this.statusCode = errorCode);
+
+    }).subscribe(c => {
+      this.productsCount = c['count'];
+    });
 
 
   }

@@ -19,6 +19,7 @@ import {ModalBasicComponent} from './modal-basic/modal-basic.component';
 import {DataFilterPipe} from "./element/data-filter.pipe";
 import {BootstrapPaginator} from 'angular2-datatable';
 import {ParentRemoveDirective} from './element/parent-remove.directive';
+import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {ParentRemoveDirective} from './element/parent-remove.directive';
     ModalAnimationComponent,
     ModalBasicComponent,
     DataFilterPipe,
+    SecondarySpinnerComponent,
   ],
   exports: [
     AccordionAnchorDirective,
@@ -48,6 +50,7 @@ import {ParentRemoveDirective} from './element/parent-remove.directive';
     CardRefreshDirective,
     CardToggleDirective,
     ScrollModule,
+    SecondarySpinnerComponent,
     NgbModule,
     SpinnerComponent,
     CardComponent,

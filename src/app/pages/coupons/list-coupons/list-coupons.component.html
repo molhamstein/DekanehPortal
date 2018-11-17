@@ -63,7 +63,7 @@
   <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
   </tbody>
 </table>
-<div class="row">
+<div class="row" [hidden]="spinnerFlag">
   <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
               [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false" [boundaryLinks]="true"></pagination>
   <div class="per-page-sec">
