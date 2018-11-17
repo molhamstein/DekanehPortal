@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Media, OfferProducts, ProductModel} from '../product-model';
 import {IOption} from 'ng-select';
 import {SelectOptionService} from '../../../shared/element/select-option.service';
+
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
@@ -14,6 +15,7 @@ export class NewProductComponent implements OnInit {
   private product: ProductModel;
   selectedFile: File;
   imgSrc: string = '';
+
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     const reader = new FileReader();
@@ -24,7 +26,7 @@ export class NewProductComponent implements OnInit {
 
   submitted = false;
   imgBlankError = false;
-  alloffers: ProductModel[];
+
   pureProducts: ProductModel[];
   offerProducts: OfferProducts[];
   selectedProductIds: string[] = [];
@@ -100,27 +102,6 @@ export class NewProductComponent implements OnInit {
         , errorCode => this.statusCode = errorCode);
   }
 
-  getPureProducts() {
-    this.Handler.getPureProducts()
-      .subscribe(data => {
-          this.pureProducts = data;
-          for (let product of this.pureProducts) {
-            // let label='';
-            // if(product.media!=undefined){
-            //   label=`<img  class='product-img' style='margin-left: 10px;width: 34px' src='`+product.media.thumbnail+`'>`+product.nameAr;;
-            // }else {
-            //   label=product.nameAr;;
-            //
-            // }
-
-            this.tP.push({label: product.nameAr, value: product.id});
-            // if(this.product.offersIds.includes(offer.id)){
-            //   this.offers.push({label: offer.nameAr, value: offer.id})
-            // }
-          }
-        }
-        , errorCode => this.statusCode = errorCode);
-  }
 
   getAllMans() {
     this.Handler.getAllMans()
@@ -130,25 +111,50 @@ export class NewProductComponent implements OnInit {
         , errorCode => this.statusCode = errorCode);
   }
 
-  getAllOffers() {
-    this.Handler.getOffers()
-      .subscribe(data => {
-          this.alloffers = data;
-          for (let offer of this.alloffers) {
-            this.t.push({label: offer.nameAr, value: offer.id});
-            // if(this.product.offersIds.includes(offer.id)){
-            //   this.offers.push({label: offer.nameAr, value: offer.id})
-            // }
+  searchOffers(str) {
+    this.t = [];
+    if (str != '') {
+      this.Handler.searchByisOffer(str, true)
+        .subscribe(data => {
+            for (let offer of data) {
+              this.t.push({label: offer.nameAr, value: offer.id});
+              // if(this.product.offersIds.includes(offer.id)){
+              //   this.offers.push({label: offer.nameAr, value: offer.id})
+              // }
+            }
+            setTimeout(() => {
+              this.IOoffers = this.t;
+            }, 100);
           }
-        }
-        , errorCode => this.statusCode = errorCode);
+          , errorCode => this.statusCode = errorCode);
+    }
+
+  }
+
+  searchProducts(str) {
+    this.tP = [];
+    if (str != '') {
+      this.Handler.searchByisOffer(str, false)
+        .subscribe(data => {
+            for (let pro of data) {
+              this.tP.push({label: pro.nameAr, value: pro.id});
+              // if(this.product.offersIds.includes(offer.id)){
+              //   this.offers.push({label: offer.nameAr, value: offer.id})
+              // }
+            }
+            setTimeout(() => {
+              this.IOproducts = this.tP;
+            }, 100);
+          }
+          , errorCode => this.statusCode = errorCode);
+    }
 
   }
 
   constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute, private optionService: SelectOptionService) {
-    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
-    }
+    };
 
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
@@ -158,10 +164,10 @@ export class NewProductComponent implements OnInit {
         window.scrollTo(0, 0);
       }
     });
-    this.getAllOffers();
+
     this.getAllCats();
     this.getAllMans();
-    this.getPureProducts();
+
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -223,10 +229,7 @@ export class NewProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.IOoffers = this.t;
-      this.IOproducts = this.tP;
-    }, 3000);
+
     this.offerProducts = [];
 
   }
@@ -243,8 +246,8 @@ export class NewProductComponent implements OnInit {
       this.media.url = this.media.thumbnail = this.imgUrl;
       this.product.nameEn = this.product.nameAr;
       this.product.media = this.media;
-      if(this.product.offerSource==""){
-        this.product.offerSource=this.offerSource;
+      if (this.product.offerSource == '') {
+        this.product.offerSource = this.offerSource;
       }
       this.product.offerProducts = this.offerProducts;
       let t = [];
@@ -261,11 +264,10 @@ export class NewProductComponent implements OnInit {
 
 
       })
-        .
-      subscribe(successCode => {
-          this.statusCode = successCode;
-        },
-        errorCode => this.statusCode = errorCode);
+        .subscribe(successCode => {
+            this.statusCode = successCode;
+          },
+          errorCode => this.statusCode = errorCode);
     }).subscribe(res => {
 
         this.imgUrl = res[0].url;
@@ -318,11 +320,11 @@ export class NewProductComponent implements OnInit {
       return;
     }
     if (this.id == undefined) {
-      this.submitted=true;
+      this.submitted = true;
 
       this.createProduct();
     } else {
-      this.submitted=true;
+      this.submitted = true;
 
       if (this.selectedFile == undefined) {
         this.updateProduct();

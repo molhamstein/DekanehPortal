@@ -15,12 +15,25 @@ export class ProductHandler {
       .map(this.extractData).catch(this.handleError);
   }
 
+  getProductsCount(): Observable<number> {
+    return this.apiService.get('/products/count')
+      .map(this.extractData).catch(this.handleError);
+  }
+
+  getPerPageProducts(perPage: number, currentPage: number) {
+    let param = new URLSearchParams();
+    param.append('filter', '{"order": "creationDate<ASC>","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
+    return this.apiService.get('/products', param)
+      .map(this.extractData).catch(this.handleError);
+  }
+
   getAllCats(): Observable<any[]> {
     let param = new URLSearchParams();
     param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories"}');
     return this.apiService.get('/categories', param)
       .map(this.extractData).catch(this.handleError);
   }
+
   getProductById(id: string): Observable<any> {
     return this.apiService.get('/products/' + id)
       .map(this.extractData)
@@ -39,18 +52,22 @@ export class ProductHandler {
       .map(this.extractData).catch(this.handleError);
   }
 
-  getOffers(): Observable<ProductModel[]> {
+  searchByisOffer(para: string, isO: boolean): Observable<ProductModel[]> {
     let param = new URLSearchParams();
-    param.append('filter', '{"where":{"isOffer":true}}');
-    return this.apiService.get('/products', param)
+    param.append('string', para);
+    param.append('isOffer', String(isO));
+    param.append('limit', String(10));
+    return this.apiService.get('/products/search', param)
       .map(this.extractData).catch(this.handleError);
   }
-search(para:string): Observable<ProductModel[]>{
-  let param = new URLSearchParams();
-  param.append('string', para);
-  return this.apiService.get('/products/search', param)
-    .map(this.extractData).catch(this.handleError);
-}
+
+  search(para: string): Observable<ProductModel[]> {
+    let param = new URLSearchParams();
+    param.append('string', para);
+    return this.apiService.get('/products/search', param)
+      .map(this.extractData).catch(this.handleError);
+  }
+
   getPureProducts(): Observable<ProductModel[]> {
     let param = new URLSearchParams();
     param.append('filter', '{"where":{"isOffer":false}}');
@@ -72,6 +89,7 @@ search(para:string): Observable<ProductModel[]>{
       .map(success => success.status)
       .catch(this.handleError);
   }
+
   updateProduct(product: ProductModel): Observable<number> {
     let cpHeaders = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: cpHeaders});

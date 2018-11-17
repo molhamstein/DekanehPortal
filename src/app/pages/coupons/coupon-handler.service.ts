@@ -13,13 +13,18 @@ export class CouponHandlerService {
     
     
   }
-  getAllCoupons(): Observable<Coupon[]> {
-
-    return this.apiService.get('/coupons')
+  getCoupons(perPage: number, currentPage: number): Observable<Coupon[]> {
+    let param = new URLSearchParams();
+    let rolesString = '';
+    param.append('filter', '{"order": "creationDate<DESC>","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
+    return this.apiService.get('/coupons',param)
       .map(this.extractData).catch(this.handleError);
 
   }
-
+  getCouponCount(): Observable<number> {
+    return this.apiService.get('/coupons/count')
+      .map(this.extractData).catch(this.handleError);
+  }
   getUsersById(id:string): Observable<UserModel> {
   let uh =new ClientsHandler(this.apiService);
   return uh.getClientUserById(id);
@@ -30,6 +35,14 @@ export class CouponHandlerService {
     let rolesString = '';
     param.append('filter', '{"where":{"and":[{"roleIds":{"eq":[]}}, {"ownerName": {"like": "'+str+'"}}]},"limit":"10"}');
     return this.apiService.get('/users', param)
+      .map(this.extractData).catch(this.handleError);
+
+  }
+  searchCoupons(str:string){
+    let param = new URLSearchParams();
+    let rolesString = '';
+    param.append('filter', '{"where":{"and":[{"roleIds":{"eq":[]}}, {"ownerName": {"like": "'+str+'"}}]},"limit":"10"}');
+    return this.apiService.get('/coupons', param)
       .map(this.extractData).catch(this.handleError);
 
   }

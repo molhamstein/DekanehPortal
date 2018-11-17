@@ -42,7 +42,7 @@
         <div class="form-group">
 
           <label for="offers">{{'product.form.controls.offers'|translate}}</label>
-          <ng-select id="offers" [options]="IOoffers" [multiple]="true" [(ngModel)]="offersIds" formControlName="offersIds" >
+          <ng-select id="offers" [options]="IOoffers" (filterInputChanged)="searchOffers($event)" [multiple]="true" [(ngModel)]="offersIds" formControlName="offersIds" >
           </ng-select>
 
           <!--<select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>-->
@@ -243,7 +243,7 @@
           <div class="form-group">
             <label for="offerProducts">{{"product.form.controls.offerProducts"|translate}}</label>
 
-            <ng-select id="offerProducts" (selected)="productSelected($event)" (deselected)="productDeSelected($event)"
+            <ng-select id="offerProducts" (selected)="productSelected($event)" (filterInputChanged)="searchProducts($event)" (deselected)="productDeSelected($event)"
                        [options]="IOproducts" [multiple]="true" [(ngModel)]="selectedProductIds"
                        [ngModelOptions]="{standalone: true}">
             </ng-select>

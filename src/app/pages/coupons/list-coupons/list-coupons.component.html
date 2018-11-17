@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="col-sm-4">
-    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
-           placeholder="{{'staff.search'|translate}}....">
-  </div>
-</div>
+<!--<div class="row">-->
+  <!--<div class="col-sm-4">-->
+    <!--<input class="form-control search-box" type="text" (keyup)="filterBox($event)"-->
+           <!--placeholder="{{'staff.search'|translate}}....">-->
+  <!--</div>-->
+<!--</div>-->
 <table class="table table-bordered table-striped ">
 
   <thead>
@@ -63,3 +63,12 @@
   <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
   </tbody>
 </table>
+<div class="row">
+  <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false" [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+
+</div>

@@ -7,11 +7,13 @@ import {StaffHandler} from './staff.handler';
 import {ReactiveFormsModule} from '@angular/forms';
 import { NewStaffComponent } from './new-staff/new-staff.component';
 import {SelectModule} from 'ng-select';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     UtilsModule,
+    SharedModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
     SelectModule

@@ -18,23 +18,26 @@ export class ProductListComponent implements OnInit {
   clientPriceOrderDir;
   statusCode: number;
   requestProcess = false;
-  productToUpdate = null;
   allProduct: ProductModel[] = [];
   currentPage = 1;
   page: number;
   returnedArray: ProductModel[] = [];
-  pages = 30;
-  currentArray: ProductModel[] = [];
-
+  pages = 20;
+  productsCount;
   pageChanged(event: any): void {
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
-    this.returnedArray = this.allProduct.slice(startItem, endItem);
-    this.currentArray = this.returnedArray;
+    setTimeout(() => {
+      this.getAllProducts();
+
+    }, 50);
   }
 
   constructor(private productHandler: ProductHandler, private router: Router) {
-    this.getAllProducts();
+    this.productHandler.getProductsCount().finally(()=>{
+      this.getAllProducts();
+
+    }).subscribe(c=>{
+      this.productsCount=c['count'];
+    });
   }
 
   editProduct(id: string) {
@@ -167,15 +170,14 @@ export class ProductListComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productHandler.getAllProducts()
+    this.productHandler.getPerPageProducts(this.pages,this.currentPage)
       .finally(() => {
-        this.returnedArray = this.allProduct.slice(0, this.pages);
-        this.currentArray = this.returnedArray;
+        this.returnedArray = this.allProduct;
 
 
       })
       .subscribe(data => {
-          this.allProduct = data.sort((a, b) => new Date(a.creationDate) > new Date(b.creationDate) ? -1 : 1);
+          this.allProduct = data;
         }
         , errorCode => this.statusCode = errorCode);
 
@@ -207,11 +209,10 @@ export class ProductListComponent implements OnInit {
   changepages(event) {
 
     this.pages = event.target.value;
-    this.returnedArray = this.allProduct.slice(0, this.pages);
-    this.currentArray = this.returnedArray;
     setTimeout(() => {
       this.currentPage = 1;
     }, 50);
+    this.getAllProducts();
 
 
   }

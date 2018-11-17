@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {CouponHandlerService} from '../coupon-handler.service';
 import {Coupon} from '../coupon';
@@ -16,13 +15,39 @@ export class ListCouponsComponent implements OnInit {
   valueOrderDir;
   ownerOrderDir;
   expireOrderDir;
+  currentPage = 1;
   statusCode: number;
   requestProcess = false;
-  couponToUpdate = null;
+  page: number;
+  pages = 2;
+  couponCount;
   allCoupon: Coupon[] = [];
   orginalCoupon: Coupon[] = [];
+  returnedArray: Coupon[] = [];
 
-  constructor(private couponHandler: CouponHandlerService, private router: Router,public c:ConstService) {
+  constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService) {
+    this.couponHandler.getCouponCount().finally(() => {
+      this.getCoupons();
+    }).subscribe(co => {
+      this.couponCount = co['count'];
+    });
+  }
+
+  pageChanged(event: any): void {
+    setTimeout(() => {
+      this.getCoupons();
+
+
+    }, 50);
+
+  }
+
+  changepages(event) {
+
+    this.pages = event.target.value;
+
+    this.getCoupons();
+
 
   }
 
@@ -32,7 +57,7 @@ export class ListCouponsComponent implements OnInit {
 
   orderByCode() {
     if (this.codeOrderDir == undefined) {
-      this.codeOrderDir = this.statusOrderDir =this.expireOrderDir= this.valueOrderDir =this.ownerOrderDir= undefined;
+      this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
     }
     if (this.codeOrderDir) {
       this.allCoupon.sort((a, b) => a.code.toLowerCase() < b.code.toLowerCase() ? -1 : 1);
@@ -43,9 +68,10 @@ export class ListCouponsComponent implements OnInit {
     this.codeOrderDir = !this.codeOrderDir;
 
   }
+
   orderByOwner() {
     if (this.ownerOrderDir == undefined) {
-      this.codeOrderDir = this.statusOrderDir =this.expireOrderDir= this.valueOrderDir =this.ownerOrderDir= undefined;
+      this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
 
     }
@@ -61,7 +87,7 @@ export class ListCouponsComponent implements OnInit {
 
   orderByExpire() {
     if (this.expireOrderDir == undefined) {
-      this.codeOrderDir = this.statusOrderDir =this.expireOrderDir= this.valueOrderDir =this.ownerOrderDir= undefined;
+      this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
 
     }
@@ -77,7 +103,7 @@ export class ListCouponsComponent implements OnInit {
 
   orderByValue() {
     if (this.valueOrderDir == undefined) {
-      this.codeOrderDir = this.statusOrderDir =this.expireOrderDir= this.valueOrderDir =this.ownerOrderDir= undefined;
+      this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
     }
     if (this.valueOrderDir) {
@@ -90,10 +116,10 @@ export class ListCouponsComponent implements OnInit {
 
   }
 
-  
+
   orderByStatus() {
     if (this.statusOrderDir == undefined) {
-      this.codeOrderDir = this.statusOrderDir =this.expireOrderDir= this.valueOrderDir =this.ownerOrderDir= undefined;
+      this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
     }
     if (this.statusOrderDir) {
@@ -106,7 +132,7 @@ export class ListCouponsComponent implements OnInit {
 
   }
 
- 
+
   filterByfield(set: any[], field: string, value: string) {
 
     let f = set.filter(it => it[field].toLowerCase().includes(value));
@@ -116,38 +142,40 @@ export class ListCouponsComponent implements OnInit {
 
   filterBox(event) {
     let value = event.target.value;
-    this.allCoupon=this.orginalCoupon;
-    let as: Coupon[] = [];
-    let fields = ['code','userId'];
-    for (let field of fields) {
-      for (let t of this.filterByfield(this.allCoupon, field, value)) {
-        if (!as.includes(t)) {
-          as.push(t);
-        }
-      }
-    }
-    this.allCoupon = as;
+    if (value == '') {
+      this.getCoupons();
 
+    } else {
+      let as: Coupon[] = [];
+      this.couponHandler.searchCoupons(value).finally(() => {
+        this.allCoupon = as;
+        this.returnedArray = as;
+
+      }).subscribe(data => {
+        as = data;
+      });
+    }
   }
 
-  getAllCoupons() {
-    this.couponHandler.getAllCoupons()
-      .subscribe(data =>{
-        let t :Coupon[]=[];
-        for(let c of data){
-          if(c.userId!=undefined&&c.userId!=''){
-            // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
-            this.couponHandler.getUsersById(c.userId).finally(()=>{
+  getCoupons() {
+    this.couponHandler.getCoupons(this.pages, this.currentPage).finally(() => {
+      this.returnedArray = this.allCoupon;
+    })
+      .subscribe(data => {
+          let t: Coupon[] = [];
+          for (let c of data) {
+            if (c.userId != undefined && c.userId != '') {
+              // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
+              this.couponHandler.getUsersById(c.userId).finally(() => {
+                t.push(c);
+              }).subscribe(data => {
+                c.userId = data.ownerName;
+              });
+            } else {
               t.push(c);
-            }).subscribe(data=>{
-              c.userId=data.ownerName;
-            });
-          }else {
-            t.push(c);
+            }
           }
-        }
-          this.allCoupon = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1)
-          this.orginalCoupon=this.allCoupon;
+          this.allCoupon = data;
         }
         , errorCode => this.statusCode = errorCode);
   }
@@ -164,7 +192,7 @@ export class ListCouponsComponent implements OnInit {
   //         this.couponHandler.updateCoupon(this.couponToUpdate).subscribe(
   //           successCode => {
   //             this.statusCode = 200;
-  //             this.getAllCoupons();
+  //             this.getCoupons();
   //             // this.backToCreateArticle();
   //           },
   //           errorCode => this.statusCode = errorCode
@@ -176,7 +204,7 @@ export class ListCouponsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getAllCoupons();
+    this.getCoupons();
   }
 
   preConfig() {
