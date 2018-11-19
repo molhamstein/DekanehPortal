@@ -15,7 +15,6 @@ import {CardToggleDirective} from './card/card-toggle.directive';
 import {ModalAnimationComponent} from './modal-animation/modal-animation.component';
 import {ModalBasicComponent} from './modal-basic/modal-basic.component';
 import {DataFilterPipe} from "./element/data-filter.pipe";
-import {BootstrapPaginator} from 'angular2-datatable';
 import {ParentRemoveDirective} from './element/parent-remove.directive';
 import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.component';
 
