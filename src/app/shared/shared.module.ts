@@ -40,7 +40,6 @@ import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.c
     ModalAnimationComponent,
     ModalBasicComponent,
     DataFilterPipe,
-    SecondarySpinnerComponent,
   ],
   exports: [
     AccordionAnchorDirective,
