@@ -5,10 +5,8 @@ import {ToggleFullscreenDirective} from './fullscreen/toggle-fullscreen.directiv
 import {AccordionAnchorDirective} from './accordion/accordionanchor.directive';
 import {AccordionLinkDirective} from './accordion/accordionlink.directive';
 import {AccordionDirective} from './accordion/accordion.directive';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ScrollModule} from './scroll/scroll.module';
-
 import {MenuItems} from './menu-items/menu-items';
 import {SpinnerComponent} from './spinner/spinner.component';
 import {CardComponent} from './card/card.component';
@@ -40,6 +38,7 @@ import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.c
     ModalAnimationComponent,
     ModalBasicComponent,
     DataFilterPipe,
+    SecondarySpinnerComponent,
   ],
   exports: [
     AccordionAnchorDirective,
