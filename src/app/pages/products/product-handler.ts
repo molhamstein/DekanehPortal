@@ -79,7 +79,7 @@ export class ProductHandler {
       .map(this.extractData).catch(this.handleError);
   }
 
-  search(para: string): Observable<ProductModel[]> {
+  search(para: string): Observable<any[]> {
     let param = new URLSearchParams();
     param.append('string', para);
     return this.apiService.get('/products/search', param)

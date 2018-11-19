@@ -25,6 +25,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { ViewOrdersComponent } from './orders/view-orders/view-orders.component';
 import {AreasModule} from './areas/areas.module';
 import {CouponsModule} from './coupons/coupons.module';
+import {TopSliderModule} from './top-slider/top-slider.module';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {CouponsModule} from './coupons/coupons.module';
     ProductsModule,
     SelectModule,
     AreasModule,
+    TopSliderModule,
     CouponsModule
   ],
   exports:[

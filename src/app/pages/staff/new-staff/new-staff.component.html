@@ -15,20 +15,6 @@
 
         </div>
 
-
-
-        <!--<div class="form-group" *ngIf="!newUSer">-->
-          <!--<label for="editPassword">{{"staff.form.controls.password"|translate}}</label>-->
-          <!--<input type="password" (change)="setPass($event)" class="form-control" id="editPassword" >-->
-          <!--&lt;!&ndash;<label *ngIf="passError" [ngClass] = "'text-danger'">{{'staff.form.errors.pass'|translate}}</label>&ndash;&gt;-->
-
-        <!--</div>-->
-        <!--<div class="form-group" *ngIf="!newUSer">-->
-          <!--<label for="editRepassowrd">{{"staff.form.controls.repassword"|translate}}</label>-->
-          <!--<input type="password" (keyup)="comparePass($event)" class="form-control" id="editRepassowrd" >-->
-          <!--<label *ngIf="passError" [ngClass] = "'text-danger'">{{'staff.form.errors.pass'|translate}}</label>-->
-
-        <!--</div>-->
         <div class="form-group">
           <label for="email">{{"staff.form.controls.email"|translate}}</label>
           <input (change)="checkUserByEmail($event)"   type="email" formControlName="email" class="form-control" id="email"placeholder="{{'staff.form.placeholders.email'|translate}}">
@@ -36,42 +22,6 @@
           <label *ngIf="emailError" [ngClass] = "'text-danger'">{{'staff.form.errors.email'|translate}}</label>
 
         </div>
-        <!--<div class="form-group">-->
-        <!--<label for="phone">{{"staff.form.controls.phone"|translate}}</label>-->
-        <!--<input (change)="checkUserByPhone($event)"   type="text" formControlName="phoneNumber" class="form-control" id="phone" placeholder="{{'staff.form.placeholders.phone'|translate}}">-->
-        <!--<label *ngIf="staffForm.get('phoneNumber').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.phone'|translate}}</label>-->
-        <!--<label *ngIf="phoneError" [ngClass] = "'text-danger'">{{'staff.form.errors.phone'|translate}}</label>-->
-        <!--<small id="phoneHint" class="form-text text-muted">{{'staff.form.validations.phoneHint'|translate}}</small>-->
-
-        <!--</div>-->
-        <!--<div class="form-group">-->
-        <!--<label for="ownerName">{{"staff.form.controls.ownerName"|translate}}</label>-->
-        <!--<input type="text" formControlName="ownerName" class="form-control" id="ownerName"  placeholder="{{'staff.form.placeholders.ownerName'|translate}}">-->
-
-
-        <!--<fieldset class="form-group">-->
-        <!--<label>{{"staff.form.controls.clientType"|translate}}</label>-->
-        <!--<div class="form-check">-->
-        <!--<label class="form-check-label">-->
-        <!--<input type="radio" (change)="onSelectionChange('retailCostumer')" class="form-check-input"-->
-        <!--name="optionsRadios" id="retailCostumer" value="retailCostumer"-->
-        <!--[checked]="selectedSale=='retailCostumer'">-->
-        <!--{{"staff.form.controls.retailCostumer"|translate}}-->
-        <!--</label>-->
-        <!--</div>-->
-        <!--<div class="form-check">-->
-        <!--<label class="form-check-label">-->
-        <!--<input type="radio" class="form-check-input" (change)="onSelectionChange('wholesale')"-->
-        <!--name="optionsRadios" id="wholesale" value="wholesale" [checked]="selectedSale=='wholesale'">-->
-        <!--{{"staff.form.controls.wholesale"|translate}}-->
-        <!--</label>-->
-        <!--</div>-->
-        <!--</fieldset>-->
-        <!--<div class="form-group">-->
-        <!--<label for="shopname">{{"staff.form.controls.shopName"|translate}}</label>-->
-        <!--<input type="text" formControlName="shopName" class="form-control" id="shopname"-->
-        <!--placeholder="{{'staff.form.placeholders.shopName'|translate}}">-->
-        <!--</div>-->
         <div class="form-group" *ngIf="newUSer">
           <label for="password">{{"staff.form.controls.password"|translate}}</label>
           <input type="password"  formControlName="password" class="form-control" id="password" [(ngModel)]="password" >
@@ -95,14 +45,7 @@
             </option>
           </select>
         </div>
-
-        <!--<div class="form-group">-->
-        <!--<label for="notes">{{"staff.form.controls.notes"|translate}}</label>-->
-        <!--<textarea class="form-control" id="notes" formControlName="notes" rows="4"-->
-        <!--placeholder="{{'staff.form.placeholders.notes'|translate}}"></textarea>-->
-        <!--</div>-->
-
-        <div class="form-group" *ngIf="newUSer">
+     <div class="form-group" *ngIf="newUSer">
           <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
           <input type="password" (keyup)="comparePass($event)" class="form-control" id="repassowrd">
           <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
@@ -111,15 +54,7 @@
       </div>
 
     </div>
-    <!--<div class="row">-->
-      <!--<div class="col-sm">-->
 
-        <!--<div class="form-group">-->
-          <!--<label for="notes">{{"staff.form.controls.notes"|translate}}</label>-->
-          <!--<textarea class="form-control" id="notes" formControlName="notes"  rows="2" placeholder="{{'staff.form.placeholders.notes'|translate}}"></textarea>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
     <div class="row">
       <div class="col-sm submit-col">
         <button type="submit" [disabled]="submitted" class="btn btn-success"*ngIf="newUSer">{{"staff.buttons.add"|translate}}</button>
@@ -129,12 +64,4 @@
       </div>
     </div>
   </div>
-
-
-
-   <!--<input formControlName="title">-->
-      <!--<label *ngIf="staffForm.get('title').invalid && processValidation" [ngClass] = "'error'"> Title is required. </label>-->
- <!--<input formControlName="category">-->
-      <!--<label *ngIf="staffForm.get('category').invalid && processValidation" [ngClass] = "'error'"> Category is required. </label>-->
-
 </form>

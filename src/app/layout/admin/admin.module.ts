@@ -36,6 +36,8 @@ import {NewAreaComponent} from '../../pages/areas/new-area/new-area.component';
 import {NewCouponComponent} from '../../pages/coupons/new-coupon/new-coupon.component';
 import {ListAreasComponent} from '../../pages/areas/list-areas/list-areas.component';
 import {ListCouponsComponent} from '../../pages/coupons/list-coupons/list-coupons.component';
+import {SlideListingComponent} from '../../pages/top-slider/slide-listing/slide-listing.component';
+import {NewSlideComponent} from '../../pages/top-slider/new-slide/new-slide.component';
 const AppRoutes = [
   {
     path: '',
@@ -76,6 +78,22 @@ const AppRoutes = [
             component: ViewManufacturersComponent,
           }
         ]
+      },
+      {
+        path: 'topSlider', children: [
+          {
+            path: 'list',
+            component: SlideListingComponent,
+          },
+          {
+            path: 'new',
+            component: NewSlideComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewSlideComponent,
+          },
+        ],
       },
       {
         path: 'staff', children: [

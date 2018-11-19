@@ -23,6 +23,7 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {BrowserModule} from '@angular/platform-browser';
 import {SelectModule} from 'ng-select';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {TooltipModule} from 'ngx-bootstrap';
 // import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: Http) {
     SharedModule,
     HttpModule,
     UtilsModule,
+    TooltipModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -53,6 +53,22 @@ export class MenuItems {
           ]
         },
         {
+          state: 'topSlider',
+          short_label: 'F',
+          name: 'mainMenu.topSlider.main',
+          type: 'sub',
+          icon: 'ti-layers',
+          children: [
+            {
+              state: 'new',
+              name: 'mainMenu.topSlider.add'
+            }, {
+              state: 'list',
+              name: 'mainMenu.topSlider.viewAll'
+            }
+          ]
+        },
+        {
           state: 'client',
           short_label: 'F',
           name: 'mainMenu.Clients.main',

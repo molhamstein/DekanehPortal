@@ -4,7 +4,6 @@ import {ProductHandler} from '../product-handler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Media, OfferProducts, ProductModel} from '../product-model';
 import {IOption} from 'ng-select';
-import {SelectOptionService} from '../../../shared/element/select-option.service';
 
 @Component({
   selector: 'app-new-product',
