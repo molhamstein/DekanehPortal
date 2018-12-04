@@ -1,91 +1,100 @@
-<form class="CouponForm" [formGroup]="CouponForm" (ngSubmit)="onCouponFormSubmit()">
-  <div class="container">
+<form (ngSubmit)="onCouponFormSubmit()" [formGroup]="CouponForm" class="CouponForm">
+    <div class="container">
 
-    <div class="row">
-      <div class="col-sm">
+        <div class="row">
+            <div class="col-sm">
 
-        <div class="form-group">
-          <label for="type">{{'coupon.form.controls.type'|translate}}</label>
-          <select class="form-control" id="type" formControlName="type" [(ngModel)]="coupon.type">
-            <option *ngFor="let t of types" [value]="t" [selected]="">
-              {{'coupon.type.'+t|translate}}
+                <div class="form-group">
+                    <label for="type">{{'coupon.form.controls.type'|translate}}</label>
+                    <select [(ngModel)]="coupon.type" class="form-control" formControlName="type" id="type">
+                        <option *ngFor="let t of types" [selected]="" [value]="t">
+                            {{'coupon.type.' + t|translate}}
 
-            </option>
-          </select>
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="value">{{"coupon.form.controls.value"|translate}}</label>
+                    <input [(ngModel)]="coupon.value" class="form-control" formControlName="value" id="value"
+                           placeholder="{{'coupon.form.placeholders.value'|translate}}"
+                           type="number">
+                    <label *ngIf="CouponForm.get('value').invalid && processValidation"
+                           class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+                    <label *ngIf="valuePerError"
+                           class="text-danger">{{'coupon.form.validations.maxmin'|translate}}</label>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label for="code">{{"coupon.form.controls.code"|translate}}</label>-->
+                <!--<input type="text" formControlName="code" class="form-control" id="code" [(ngModel)]="coupon.code"-->
+                <!--placeholder="{{'coupon.form.placeholders.code'|translate}}">-->
+                <!--<label *ngIf="CouponForm.get('code').invalid && processValidation" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
+                    <input [(ngModel)]="coupon.expireDate" class="form-control" formControlName="expireDate" id="expireDate"
+                           placeholder="{{'coupon.form.placeholders.expireDate'|translate}}"
+                           type="datetime-local">
+                    <label *ngIf="CouponForm.get('expireDate').invalid && processValidation"
+                           class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="userId">{{'coupon.form.controls.owner'|translate}}</label>
+                    <ng-select #select (filterInputChanged)="searchUsers($event)" [(ngModel)]="coupon.userId" [multiple]="false"
+                               [options]="IOusers" formControlName="userId" id="userId">
+                    </ng-select>
+
+                </div>
+            </div>
+
+            <div class="col-sm">
+
+                <div class="form-group">
+                    <label for="status">{{'coupon.form.controls.status'|translate}}</label>
+                    <select [(ngModel)]="coupon.status" class="form-control" formControlName="status" id="status">
+                        <option *ngFor="let s of statusOptions" [selected]="" [value]="s">
+                            {{'coupon.status.' + s|translate}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="numberOfTimes">{{"coupon.form.controls.numberOfTimes"|translate}}</label>
+                    <input [(ngModel)]="coupon.numberOfTimes" class="form-control" formControlName="numberOfTimes" id="numberOfTimes"
+                           placeholder="{{'coupon.form.placeholders.numberOfTimes'|translate}}"
+                           type="number">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="numberOfUsed">{{"coupon.form.controls.numberOfUsed"|translate}}</label>
+                    <input [(ngModel)]="coupon.numberOfUsed" class="form-control" formControlName="numberOfUsed" id="numberOfUsed"
+                           placeholder="{{'coupon.form.placeholders.numberOfUsed'|translate}}"
+                           type="number">
+
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="value">{{"coupon.form.controls.value"|translate}}</label>
-          <input type="number" formControlName="value" class="form-control" id="value" [(ngModel)]="coupon.value"
-                 placeholder="{{'coupon.form.placeholders.value'|translate}}">
-          <label *ngIf="CouponForm.get('value').invalid && processValidation" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-          <label *ngIf="valuePerError" class="text-danger">{{'coupon.form.validations.maxmin'|translate}}</label>
+
+
+        <div class="row">
+            <div class="col-sm submit-col">
+                <button *ngIf="newCoupon" [disabled]="submitted" class="btn btn-success" type="submit">
+                    {{"client.buttons.add"|translate}}
+                </button>
+                <i *ngIf="!CouponForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+                <button *ngIf="!newCoupon" [disabled]="submitted" class=" btn btn-success" type="submit">
+                    {{"client.buttons.edit"|translate}}
+                </button>
+                <button (click)="goHome()" *ngIf="!newCoupon" [disabled]="submitted" class="btn btn-action"
+                        type="button">
+                    {{"client.buttons.back"|translate}}
+                </button>
+            </div>
         </div>
-        <!--<div class="form-group">-->
-          <!--<label for="code">{{"coupon.form.controls.code"|translate}}</label>-->
-          <!--<input type="text" formControlName="code" class="form-control" id="code" [(ngModel)]="coupon.code"-->
-                 <!--placeholder="{{'coupon.form.placeholders.code'|translate}}">-->
-          <!--<label *ngIf="CouponForm.get('code').invalid && processValidation" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>-->
-        <!--</div>-->
-
-        <div class="form-group">
-          <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
-          <input type="datetime-local"  formControlName="expireDate" class="form-control" id="expireDate"
-                 placeholder="{{'coupon.form.placeholders.expireDate'|translate}}" [(ngModel)]="coupon.expireDate">
-          <label *ngIf="CouponForm.get('expireDate').invalid && processValidation" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-
-        </div>
-
-        <div class="form-group">
-
-          <label for="userId">{{'coupon.form.controls.owner'|translate}}</label>
-          <ng-select #select  id="userId" (filterInputChanged)="searchUsers($event)" [options]="IOusers" [multiple]="false" [(ngModel)]="coupon.userId" formControlName="userId" >
-          </ng-select>
-
-        </div>
-      </div>
-
-      <div class="col-sm">
-
-        <div class="form-group">
-        <label for="status">{{'coupon.form.controls.status'|translate}}</label>
-        <select class="form-control" id="status" formControlName="status" [(ngModel)]="coupon.status">
-          <option *ngFor="let s of statusOptions" [value]="s" [selected]="">
-            {{'coupon.status.'+s|translate}}
-          </option>
-        </select>
-        </div>
-
-        <div class="form-group">
-          <label for="numberOfTimes">{{"coupon.form.controls.numberOfTimes"|translate}}</label>
-          <input type="number"  formControlName="numberOfTimes" class="form-control" id="numberOfTimes"
-                 placeholder="{{'coupon.form.placeholders.numberOfTimes'|translate}}" [(ngModel)]="coupon.numberOfTimes">
-
-        </div>
-
-        <div class="form-group">
-          <label for="numberOfUsed">{{"coupon.form.controls.numberOfUsed"|translate}}</label>
-          <input type="number"  formControlName="numberOfUsed" class="form-control" id="numberOfUsed" [(ngModel)]="coupon.numberOfUsed"
-                 placeholder="{{'coupon.form.placeholders.numberOfUsed'|translate}}">
-
-        </div>
-      </div>
     </div>
-
-
-    <div class="row">
-      <div class="col-sm submit-col">
-        <button type="submit" [disabled]="submitted" class="btn btn-success" *ngIf="newCoupon">
-          {{"client.buttons.add"|translate}}
-        </button>
-        <i *ngIf="!CouponForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
-        <button type="submit" [disabled]="submitted" class=" btn btn-success" *ngIf="!newCoupon">
-          {{"client.buttons.edit"|translate}}
-        </button>
-        <button type="button" (click)="goHome()" [disabled]="submitted" class="btn btn-action" *ngIf="!newCoupon">
-          {{"client.buttons.back"|translate}}
-        </button>
-      </div>
-    </div>
-  </div>
 
 </form>

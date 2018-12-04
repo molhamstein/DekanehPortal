@@ -1,50 +1,48 @@
-import {
-  Directive, HostBinding, Inject, Input, OnInit, OnDestroy
-} from '@angular/core';
+import {Directive, HostBinding, Inject, Input, OnDestroy, OnInit} from '@angular/core';
 
-import { AccordionDirective } from './accordion.directive';
+import {AccordionDirective} from './accordion.directive';
 
 @Directive({
-  selector: '[appAccordionLink]'
+    selector: '[appAccordionLink]'
 })
 export class AccordionLinkDirective implements OnInit, OnDestroy {
 
-  @Input() public group: any;
+    @Input() public group: any;
+    protected nav: AccordionDirective;
 
-  @HostBinding('class.pcoded-trigger')
-  @Input()
-  get open(): boolean {
-    return this._open;
-  }
-
-  set open(value: boolean) {
-    this._open = value;
-    /*for slimscroll on and off*/
-    document.querySelector('.pcoded-inner-navbar').classList.toggle('scroll-sidebar');
-    if (value) {
-        this.nav.closeOtherLinks(this);
+    constructor(@Inject(AccordionDirective) nav: AccordionDirective) {
+        this.nav = nav;
     }
-  }
 
-  protected _open: boolean;
-  protected nav: AccordionDirective;
+    protected _open: boolean;
 
-  constructor(@Inject(AccordionDirective) nav: AccordionDirective) {
-    this.nav = nav;
-  }
+    @HostBinding('class.pcoded-trigger')
+    @Input()
+    get open(): boolean {
+        return this._open;
+    }
 
-  ngOnInit(): any {
-    this.nav.addLink(this);
-  }
+    set open(value: boolean) {
+        this._open = value;
+        /*for slimscroll on and off*/
+        document.querySelector('.pcoded-inner-navbar').classList.toggle('scroll-sidebar');
+        if (value) {
+            this.nav.closeOtherLinks(this);
+        }
+    }
 
-  ngOnDestroy(): any {
-    this.nav.removeGroup(this);
-  }
+    ngOnInit(): any {
+        this.nav.addLink(this);
+    }
 
-  toggle(): any {
-    /*for slimscroll on and off*/
-    document.querySelector('.pcoded-inner-navbar').classList.add('scroll-sidebar');
+    ngOnDestroy(): any {
+        this.nav.removeGroup(this);
+    }
 
-    this.open = !this.open;
-  }
+    toggle(): any {
+        /*for slimscroll on and off*/
+        document.querySelector('.pcoded-inner-navbar').classList.add('scroll-sidebar');
+
+        this.open = !this.open;
+    }
 }

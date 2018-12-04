@@ -1,64 +1,65 @@
 <div class="row">
-  <div class="col-sm-4">
-    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
-           placeholder="{{'client.search'|translate}}....">
-  </div>
+    <div class="col-sm-4">
+        <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'client.search'|translate}}...."
+               type="text">
+    </div>
 </div>
 <table class="table table-bordered table-striped ">
-  <thead>
-  <tr>
-    <th>id</th>
+    <thead>
+    <tr>
+        <th>id</th>
 
-    <th class="clickable-th" (click)="orderByNameAr()">
-      {{"area.nameAr"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="nameArOrderDir === undefined? '' : (nameArOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-
-    </th>
-    <th class="clickable-th" (click)="orderByNameEn()">
-      {{"area.nameEn"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="nameEnOrderDir === undefined? '' : (nameEnOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-    </th>
-
-    <th class="clickable-th" (click)="orderByCreatedAt()">
-      {{"area.createdAt"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="createdAtOrderDir === undefined? '' : (createdAtOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
+        <th class="clickable-th" (click)="orderByNameAr()">
+            {{"area.nameAr"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="nameArOrderDir === undefined? '' : (nameArOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
 
-    </th>
+        </th>
+        <th class="clickable-th" (click)="orderByNameEn()">
+            {{"area.nameEn"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="nameEnOrderDir === undefined? '' : (nameEnOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-    <th>
-      {{"area.actions"|translate}}
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let area of returnedArray  ">
-    <td>{{area.id}}</td>
-    <td>{{area.nameAr}}</td>
-    <td>{{area.nameEn}}</td>
-    <td>{{area.creationDate}}</td>
-    <td>
-      <button type="button" class="btn btn-primary" (click)="editArea(area.id)">{{"client.buttons.edit"|translate}}
-      </button>
-      <!--<button class="btn btn-danger" type="button" (click)="deleteArea(area.id)">-->
-        <!--{{"client.buttons.delete"|translate}}-->
-      <!--</button>-->
-    </td>
-  </tr>
-  </tbody>
+        </th>
+
+        <th class="clickable-th" (click)="orderByCreatedAt()">
+            {{"area.createdAt"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="createdAtOrderDir === undefined? '' : (createdAtOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
+
+
+        </th>
+
+        <th>
+            {{"area.actions"|translate}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let area of returnedArray  ">
+        <td>{{area.id}}</td>
+        <td>{{area.nameAr}}</td>
+        <td>{{area.nameEn}}</td>
+        <td>{{area.creationDate}}</td>
+        <td>
+            <button type="button" class="btn btn-primary"
+                    (click)="editArea(area.id)">{{"client.buttons.edit"|translate}}
+            </button>
+            <!--<button class="btn btn-danger" type="button" (click)="deleteArea(area.id)">-->
+            <!--{{"client.buttons.delete"|translate}}-->
+            <!--</button>-->
+        </td>
+    </tr>
+    </tbody>
 </table>
 <div class="row">
-  <pagination [totalItems]="allAreas.length" [itemsPerPage]="pages" previousText="<" nextText=">"
-              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-  <div class="per-page-sec">
-    <span>{{"client.perPage"|translate}}</span>
-    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-  </div>
+    <pagination [totalItems]="allAreas.length" [itemsPerPage]="pages" previousText="<" nextText=">"
+                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+    <div class="per-page-sec">
+        <span>{{"client.perPage"|translate}}</span>
+        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+    </div>
 
 </div>
 

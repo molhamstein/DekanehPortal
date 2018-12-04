@@ -28,8 +28,8 @@ import {ViewAllCategoriesComponent} from '../../pages/categories/view-all-catego
 import {AddCategoryComponent} from '../../pages/categories/add-category/add-category.component';
 import {ProductListComponent} from '../../pages/products/product-list/product-list.component';
 import {NewProductComponent} from '../../pages/products/new-product/new-product.component';
-import { OrdersComponent } from '../../pages/orders/orders.component';
-import { ViewOrdersComponent } from '../../pages/orders/view-orders/view-orders.component';
+import {OrdersComponent} from '../../pages/orders/orders.component';
+import {ViewOrdersComponent} from '../../pages/orders/view-orders/view-orders.component';
 // import {ListAreasComponent} from '../../pages/areas/list-areas/list-areas.component';
 import {NewAreaComponent} from '../../pages/areas/new-area/new-area.component';
 // import {ListCouponsComponent} from '../../pages/coupons/list-coupons/list-coupons.component';
@@ -38,179 +38,199 @@ import {ListAreasComponent} from '../../pages/areas/list-areas/list-areas.compon
 import {ListCouponsComponent} from '../../pages/coupons/list-coupons/list-coupons.component';
 import {SlideListingComponent} from '../../pages/top-slider/slide-listing/slide-listing.component';
 import {NewSlideComponent} from '../../pages/top-slider/new-slide/new-slide.component';
+import {RatesListComponent} from '../../pages/ratings/rates-list/rates-list.component';
+import {OrdersManageComponent} from '../../pages/orders/orders-manage/orders-manage.component';
+
 const AppRoutes = [
-  {
-    path: '',
-    component: AdminComponent,
-    children: [
-      {
+    {
         path: '',
-        component: DashboardComponent,
-      },
-      {
-        path: 'categories',
-        component: CategoriesComponent,
+        component: AdminComponent,
         children: [
-          {
-            path:"viewAll",
-            component:ViewAllCategoriesComponent,
-          },
-          {
-            path:'add',
-            component:AddCategoryComponent,
-          },
-          {
-            path: ':id/edit',
-            component:AddCategoryComponent,
-          },
+            {
+                path: '',
+                component: DashboardComponent,
+            },
+            {
+                path: 'categories',
+                component: CategoriesComponent,
+                children: [
+                    {
+                        path: 'viewAll',
+                        component: ViewAllCategoriesComponent,
+                    },
+                    {
+                        path: 'add',
+                        component: AddCategoryComponent,
+                    },
+                    {
+                        path: ':id/edit',
+                        component: AddCategoryComponent,
+                    },
+                ],
+            },
+            {
+                path: 'manufacturers',
+                component: ManufacturersComponent,
+                children: [
+                    {
+                        path: 'add',
+                        component: AddManufacturerComponent,
+                    },
+                    {
+                        path: ':id/edit',
+                        component: AddManufacturerComponent,
+                    },
+                    {
+                        path: 'view',
+                        component: ViewManufacturersComponent,
+                    }
+                ]
+            },
+            {
+                path: 'topSlider', children: [
+                    {
+                        path: 'list',
+                        component: SlideListingComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewSlideComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewSlideComponent,
+                    },
+                ],
+            },
+            {
+                path: 'staff', children: [
+                    {
+                        path: 'list',
+                        component: StaffListComponent,
+                    },
+                    {
+                        path: 'add-on',
+                        component: NewStaffComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewStaffComponent,
+                    },
+                ],
+            },
+            {
+                path: 'client', children: [
+                    {
+                        path: 'list',
+                        component: ClientListComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewClientComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewClientComponent,
+                    },
+                ],
+            },
+            {
+                path: 'areas', children: [
+                    {
+                        path: 'list',
+                        component: ListAreasComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewAreaComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewAreaComponent,
+                    },
+                ],
+            },
+            {
+                path: 'coupons', children: [
+                    {
+                        path: 'list',
+                        component: ListCouponsComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewCouponComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewCouponComponent,
+                    },
+                ],
+            },
+            {
+                path: 'products', children: [
+                    {
+                        path: 'list',
+                        component: ProductListComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewProductComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewProductComponent,
+                    },
+                ],
+            },
+            {
+                path: 'ratings', children: [
+                    {
+                        path: 'list',
+                        component: RatesListComponent,
+                    },
+                ],
+            },
+            {
+                path: 'orders',
+                component: OrdersComponent,
+                children: [
+                    {
+                        path: 'view',
+                        component: ViewOrdersComponent,
+                    },
+                    {
+                        path: 'management',
+                        component: OrdersManageComponent,
+                    }
+                ]
+            },
         ],
-      },
-      {
-        path: 'manufacturers',
-        component: ManufacturersComponent,
-        children: [
-          {
-            path: 'add',
-            component: AddManufacturerComponent,
-          },
-          {
-            path: 'view',
-            component: ViewManufacturersComponent,
-          }
-        ]
-      },
-      {
-        path: 'topSlider', children: [
-          {
-            path: 'list',
-            component: SlideListingComponent,
-          },
-          {
-            path: 'new',
-            component: NewSlideComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewSlideComponent,
-          },
-        ],
-      },
-      {
-        path: 'staff', children: [
-          {
-            path: 'list',
-            component: StaffListComponent,
-          },
-          {
-            path: 'add-on',
-            component: NewStaffComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewStaffComponent,
-          },
-        ],
-      },
-      {
-        path: 'client', children: [
-          {
-            path: 'list',
-            component: ClientListComponent,
-          },
-          {
-            path: 'new',
-            component: NewClientComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewClientComponent,
-          },
-        ],
-      },
-      {
-        path: 'areas', children: [
-          {
-            path: 'list',
-            component: ListAreasComponent,
-          },
-          {
-            path: 'new',
-            component: NewAreaComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewAreaComponent,
-          },
-        ],
-      },
-      {
-        path: 'coupons', children: [
-          {
-            path: 'list',
-            component: ListCouponsComponent,
-          },
-          {
-            path: 'new',
-            component: NewCouponComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewCouponComponent,
-          },
-        ],
-      },
-      {
-        path: 'products', children: [
-          {
-            path: 'list',
-            component: ProductListComponent,
-          },
-          {
-            path: 'new',
-            component: NewProductComponent,
-          },
-          {
-            path: 'edit/:id',
-            component: NewProductComponent,
-          },
-        ],
-      },
-      {
-        path: 'orders',
-        component: OrdersComponent,
-        children: [
-          {
-            path: 'view',
-            component: ViewOrdersComponent,
-          }
-        ]
-      },
-    ],
     },
-]
+];
+
 @NgModule({
-  imports: [
-    CommonModule,
-    TranslateModule.forRoot(),
-    RouterModule.forChild(AppRoutes),
-    PagesModule,
-    SharedModule,
-    FormsModule,
-    // BrowserModule,
-    BrowserAnimationsModule,
-    ClickOutsideModule,
-    HttpModule,
-    UtilsModule,
-    PagesModule,
-    ReactiveFormsModule
-  ],
-  declarations: [
-    AdminComponent,
-    BreadcrumbsComponent,
-    // AddManufacturerComponent,
-    // AuthComponent,
-    TitleComponent,
-  ],
+    imports: [
+        CommonModule,
+        TranslateModule.forRoot(),
+        RouterModule.forChild(AppRoutes),
+        PagesModule,
+        SharedModule,
+        FormsModule,
+        // BrowserModule,
+        BrowserAnimationsModule,
+        ClickOutsideModule,
+        HttpModule,
+        UtilsModule,
+        PagesModule,
+        ReactiveFormsModule
+    ],
+    declarations: [
+        AdminComponent,
+        BreadcrumbsComponent,
+        // AddManufacturerComponent,
+        // AuthComponent,
+        TitleComponent,
+    ],
 })
 export class AdminModule {
 

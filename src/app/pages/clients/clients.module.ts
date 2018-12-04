@@ -10,18 +10,18 @@ import {ClientsHandler} from './clients-handler';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    UtilsModule,
-    TranslateModule.forChild(),
-    ReactiveFormsModule,
-    AgmCoreModule,
-    PaginationModule,
-    FormsModule
-  ], providers: [
-    ClientsHandler
-  ],
-  declarations: [NewClientComponent, ClientListComponent]
+    imports: [
+        CommonModule,
+        UtilsModule,
+        TranslateModule.forChild(),
+        ReactiveFormsModule,
+        AgmCoreModule,
+        PaginationModule,
+        FormsModule
+    ], providers: [
+        ClientsHandler
+    ],
+    declarations: [NewClientComponent, ClientListComponent]
 })
 export class ClientsModule {
 }

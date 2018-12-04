@@ -1,27 +1,30 @@
-
 <h6 class="card-title">{{title}}</h6>
 <div class="form-group row">
-  <a  *ngIf="createUrl!==false && (createPri && true || !createPri)" class="btn btn-sm btn-success col-sm-1" (click)="goToCreate()" style="margin-left: 20px">Add</a>
-  <input *ngFor="let s of search" type="text" [(ngModel)]="s['value']" class="form-control col-sm-8 align-self-end" id="" aria-describedby="" (input)="onSearch()" [attr.placeholder]="s.Title" style="margin:auto">
+    <a *ngIf="createUrl!==false && (createPri && true || !createPri)" class="btn btn-sm btn-success col-sm-1"
+       (click)="goToCreate()" style="margin-left: 20px">Add</a>
+    <input *ngFor="let s of search" type="text" [(ngModel)]="s['value']" class="form-control col-sm-8 align-self-end"
+           id="" aria-describedby="" (input)="onSearch()" [attr.placeholder]="s.Title" style="margin:auto">
 </div>
 <div class="container" style="margin: 10px 0px 10px; padding: 0px">
-  <ng-content select="my-table"></ng-content>
-  <ngb-pagination *ngIf="showPages" class="d-flex justify-content-center" [boundaryLinks]="true" [directionLinks]="true" [maxSize]="5" [collectionSize]="numberOfRows"(pageChange)="changePage($event)" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
+    <ng-content select="my-table"></ng-content>
+    <ngb-pagination *ngIf="showPages" class="d-flex justify-content-center" [boundaryLinks]="true"
+                    [directionLinks]="true" [maxSize]="5" [collectionSize]="numberOfRows"
+                    (pageChange)="changePage($event)" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
 </div>
 
 
 <!--<ng-template #content let-c="close" let-d="dismiss">-->
-  <!--<div class="modal-header">-->
-    <!--<h4 class="modal-title">delete {{modalTilte}}</h4>-->
-    <!--<button type="button" class="close" aria-label="Close" (click)="d()">-->
-      <!--<span aria-hidden="true">&times;</span>-->
-    <!--</button>-->
-  <!--</div>-->
-  <!--<div class="modal-body">-->
-    <!--<p>Are you sure ?</p>-->
-  <!--</div>-->
-  <!--<div class="modal-footer">-->
-    <!--<button type="button" class="btn btn-info" (click)="c(true)">OK</button>-->
-    <!--<button type="button" class="btn btn-warning" (click)="c(false)">Cancel</button>-->
-  <!--</div>-->
+<!--<div class="modal-header">-->
+<!--<h4 class="modal-title">delete {{modalTilte}}</h4>-->
+<!--<button type="button" class="close" aria-label="Close" (click)="d()">-->
+<!--<span aria-hidden="true">&times;</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<p>Are you sure ?</p>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn btn-info" (click)="c(true)">OK</button>-->
+<!--<button type="button" class="btn btn-warning" (click)="c(false)">Cancel</button>-->
+<!--</div>-->
 <!--</ng-template>-->

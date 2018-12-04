@@ -1,4 +1,4 @@
-import {trigger, state, style, AUTO_STYLE, transition, animate} from '@angular/animations';
+import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
 
 export const cardToggle = trigger('cardToggle', [
     state('collapsed, void',
@@ -25,5 +25,5 @@ export const cardClose = trigger('cardClose', [
         opacity: 0,
         display: 'none'
     })),
-    transition('open <=> closed', animate( '400ms' )),
+    transition('open <=> closed', animate('400ms')),
 ]);

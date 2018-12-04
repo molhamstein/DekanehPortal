@@ -1,15 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { SlideHandlerService } from './slide-handler.service';
+import {SlideHandlerService} from './slide-handler.service';
 
 describe('SlideHandlerService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [SlideHandlerService]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [SlideHandlerService]
+        });
     });
-  });
 
-  it('should be created', inject([SlideHandlerService], (service: SlideHandlerService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([SlideHandlerService], (service: SlideHandlerService) => {
+        expect(service).toBeTruthy();
+    }));
 });

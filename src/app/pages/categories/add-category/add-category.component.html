@@ -1,170 +1,178 @@
 <div class="row">
-  <div class="col-sm-12">
-    <app-card [title]="'Manufactures.addNew'|translate">
-      <form [formGroup]="categoriesForm ">
-        <div class="img-uploader ">
-        <div id="preview">
-          <img [src]="imgSrc" alt="">
-        </div>
-        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-        <button type="button" class="select-file btn btn-success" (click)="fileInput.click()">
-          {{'product.addImg'|translate}}
-        </button>
-        <br>
-        <!--<label *ngIf="imgBlankError" class="text-danger">{{'product.form.validations.imgBlank'|translate}}</label>-->
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control tooltip-form" ([ngModel])="titleEn" id="titleEn"
-                   formControlName="titleEn" name="titleEn" [placeholder]="'Manufactures.nameEn'|translate">
-            <div class="messages text-danger " placement="top"
-                 [ngbTooltip]="('Manufactures.nameEn'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                 *ngIf="categoriesForm.get('titleEn').invalid&&submitted">
-              <br/>
-              <i class="text-danger f-right icofont icofont-close-circled">
-                <label>{{'Manufactures.nameEn'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-              </i>
-            </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">{{'Manufactures.nameAr'|translate}}</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control tooltip-form" ([ngModel])="titleAr" id="titleAr"
-                   formControlName="titleAr" name="titleAr" [placeholder]="'Manufactures.nameAr'|translate">
-            <div class="messages text-danger " placement="top"
-                 [ngbTooltip]="('Manufactures.nameAr'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                 *ngIf="categoriesForm.get('titleAr').invalid&&submitted">
-              <br/>
-              <i class="text-danger f-right icofont icofont-close-circled">
-                <label>{{'Manufactures.nameAr'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-              </i>
-            </div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">{{'Categories.sub.code'|translate}}</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control tooltip-form" ([ngModel])="code"
-                   formControlName="code" name="code" [placeholder]="'Categories.code'|translate">
-            <div class="messages text-danger " placement="top"
-                 [ngbTooltip]="('Categories.code'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                 *ngIf="categoriesForm.get('code').invalid&&submitted">
-              <br/>
-              <i class="text-danger f-right icofont icofont-close-circled">
-                <label>{{'Categories.code'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-              </i>
-            </div>
-          </div>
-        </div>
-        <div *ngIf="id">
-          <div class="row">
-            <label class="col-sm-2"></label>
-            <div class="col-sm-10">
-              <button (click)="addSub=true" class="btn btn-primary m-b-0">
-                {{'Categories.newSubCat'|translate}}
-              </button>
-            </div>
-          </div>
-          <div class="card " *ngIf="addSub">
-            <div class="card-header">
-              <h3>
-                {{"Categories.newSubCat"|translate}}
-              </h3>
-            </div>
-            <div class="card-body">
-              <form (ngSubmit)="addSubCategories()" [formGroup]="subCategoriesForm ">
-                <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control tooltip-form" ([ngModel])="subCategoriesForm.titleEn"
-                           formControlName="titleEn" name="titleEn" [placeholder]="'Manufactures.nameEn'|translate">
-                    <div class="messages text-danger " placement="top"
-                         [ngbTooltip]="('Manufactures.nameEn'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                         *ngIf="subCategoriesForm.get('titleEn').invalid&&submitted">
-                      <br/>
-                      <i class="text-danger f-right icofont icofont-close-circled">
-                        <label>{{'Manufactures.nameEn'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-                      </i>
+    <div class="col-sm-12">
+        <app-card [title]="'Manufactures.addNew'|translate">
+            <form [formGroup]="categoriesForm ">
+                <div class="img-uploader ">
+                    <div id="preview">
+                        <img [src]="imgSrc" alt="">
                     </div>
-                  </div>
+                    <input #fileInput (change)="onFileChanged($event)" style="display: none" type="file">
+                    <button (click)="fileInput.click()" class="select-file btn btn-success" type="button">
+                        {{'product.addImg'|translate}}
+                    </button>
+                    <br>
+                    <!--<label *ngIf="imgBlankError" class="text-danger">{{'product.form.validations.imgBlank'|translate}}</label>-->
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">{{'Manufactures.nameAr'|translate}}</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control tooltip-form" ([ngModel])="subCategoriesForm.titleAr"
-                           formControlName="titleAr" name="titleAr" [placeholder]="'Manufactures.nameAr'|translate">
-                    <div class="messages text-danger " placement="top"
-                         [ngbTooltip]="('Manufactures.nameAr'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                         *ngIf="subCategoriesForm.get('titleAr').invalid&&submitted">
-                      <br/>
-                      <i class="text-danger f-right icofont icofont-close-circled">
-                        <label>{{'Manufactures.nameAr'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-                      </i>
+                    <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
+                    <div class="col-sm-10">
+                        <input ([ngModel])="titleEn" [placeholder]="'Manufactures.nameEn'|translate" class="form-control tooltip-form" formControlName="titleEn"
+                               id="titleEn" name="titleEn" type="text">
+                        <div *ngIf="categoriesForm.get('titleEn').invalid&&submitted" [ngbTooltip]="('Manufactures.nameEn'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                             class="messages text-danger "
+                             placement="top">
+                            <br/>
+                            <i class="text-danger f-right icofont icofont-close-circled">
+                                <label>{{'Manufactures.nameEn'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                            </i>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">{{'Categories.sub.code'|translate}}</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control tooltip-form" ([ngModel])="subCategoriesForm.code"
-                           formControlName="code" name="code" [placeholder]="'Categories.code'|translate">
-                    <div class="messages text-danger " placement="top"
-                         [ngbTooltip]="('Categories.code'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
-                         *ngIf="subCategoriesForm.get('code').invalid&&submitted">
-                      <br/>
-                      <i class="text-danger f-right icofont icofont-close-circled">
-                        <label>{{'Categories.code'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
-                      </i>
+                    <label class="col-sm-2 col-form-label">{{'Manufactures.nameAr'|translate}}</label>
+                    <div class="col-sm-10">
+                        <input ([ngModel])="titleAr" [placeholder]="'Manufactures.nameAr'|translate" class="form-control tooltip-form" formControlName="titleAr"
+                               id="titleAr" name="titleAr" type="text">
+                        <div *ngIf="categoriesForm.get('titleAr').invalid&&submitted" [ngbTooltip]="('Manufactures.nameAr'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                             class="messages text-danger "
+                             placement="top">
+                            <br/>
+                            <i class="text-danger f-right icofont icofont-close-circled">
+                                <label>{{'Manufactures.nameAr'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                            </i>
+                        </div>
                     </div>
-                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">{{'Categories.sub.code'|translate}}</label>
+                    <div class="col-sm-10">
+                        <input ([ngModel])="code" [placeholder]="'Categories.code'|translate" class="form-control tooltip-form"
+                               formControlName="code" name="code" type="text">
+                        <div *ngIf="categoriesForm.get('code').invalid&&submitted" [ngbTooltip]="('Categories.code'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                             class="messages text-danger "
+                             placement="top">
+                            <br/>
+                            <i class="text-danger f-right icofont icofont-close-circled">
+                                <label>{{'Categories.code'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="id">
+                    <div class="row">
+                        <label class="col-sm-2"></label>
+                        <div class="col-sm-10">
+                            <button (click)="addSub=true" class="btn btn-primary m-b-0">
+                                {{'Categories.newSubCat'|translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="addSub" class="card ">
+                        <div class="card-header">
+                            <h3>
+                                {{"Categories.newSubCat"|translate}}
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <form (ngSubmit)="addSubCategories()" [formGroup]="subCategoriesForm ">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">{{'Manufactures.nameEn'|translate}}</label>
+                                    <div class="col-sm-10">
+                                        <input ([ngModel])="subCategoriesForm.titleEn" [placeholder]="'Manufactures.nameEn'|translate"
+                                               class="form-control tooltip-form"
+                                               formControlName="titleEn" name="titleEn"
+                                               type="text">
+                                        <div *ngIf="subCategoriesForm.get('titleEn').invalid&&submitted" [ngbTooltip]="('Manufactures.nameEn'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                                             class="messages text-danger "
+                                             placement="top">
+                                            <br/>
+                                            <i class="text-danger f-right icofont icofont-close-circled">
+                                                <label>{{'Manufactures.nameEn'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">{{'Manufactures.nameAr'|translate}}</label>
+                                    <div class="col-sm-10">
+                                        <input ([ngModel])="subCategoriesForm.titleAr" [placeholder]="'Manufactures.nameAr'|translate"
+                                               class="form-control tooltip-form"
+                                               formControlName="titleAr" name="titleAr"
+                                               type="text">
+                                        <div *ngIf="subCategoriesForm.get('titleAr').invalid&&submitted" [ngbTooltip]="('Manufactures.nameAr'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                                             class="messages text-danger "
+                                             placement="top">
+                                            <br/>
+                                            <i class="text-danger f-right icofont icofont-close-circled">
+                                                <label>{{'Manufactures.nameAr'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">{{'Categories.sub.code'|translate}}</label>
+                                    <div class="col-sm-10">
+                                        <input ([ngModel])="subCategoriesForm.code" [placeholder]="'Categories.code'|translate"
+                                               class="form-control tooltip-form"
+                                               formControlName="code" name="code"
+                                               type="text">
+                                        <div *ngIf="subCategoriesForm.get('code').invalid&&submitted" [ngbTooltip]="('Categories.code'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                                             class="messages text-danger "
+                                             placement="top">
+                                            <br/>
+                                            <i class="text-danger f-right icofont icofont-close-circled">
+                                                <label>{{'Categories.code'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-10">
+                                        <button class="btn btn-primary m-b-0" type="submit">
+                                            {{'Manufactures.add'|translate}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br/>
+                    <table *ngIf="subCategories?.cols?.length>0" class="width-100 table table-bordered table-striped ">
+                        <thead>
+                        <tr>
+                            <th *ngFor="let col of subCategories.cols" class="text-center">
+                                <label>{{"Categories.sub." + col|translate}}</label>
+                            </th>
+                            <th class="text-center ">
+                                {{"Categories.actions"|translate}}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let r of subCategories.value">
+                            <td *ngFor="let col of subCategories.cols">
+                                {{r[col]}}
+                            </td>
+                            <td>
+                                <i (click)="deleteSub(r)" [title]="'Categories.delete'|translate" class="ti-trash"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2"></label>
-                  <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary m-b-0">
-                      {{'Manufactures.add'|translate}}
-                    </button>
-                  </div>
+                    <label class="col-sm-2"></label>
+                    <div class="col-sm-10">
+                        <button (click)="addCategory()" [disabled]="submitted" class="btn btn-primary m-b-0"
+                                type="submit">
+                            {{'Manufactures.add'|translate}}
+                        </button>
+                        <i *ngIf="!categoriesForm.invalid&&submitted"
+                           class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+                    </div>
                 </div>
-              </form>
-            </div>
-          </div>
-          <br/>
-          <table *ngIf="subCategories?.cols?.length>0" class="width-100 table table-bordered table-striped ">
-            <thead>
-            <tr>
-              <th *ngFor="let col of subCategories.cols" class="text-center">
-                <label>{{"Categories.sub."+col|translate}}</label>
-              </th>
-              <th class="text-center ">
-                {{"Categories.actions"|translate}}
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let r of subCategories.value">
-              <td *ngFor="let col of subCategories.cols">
-                {{r[col]}}
-              </td>
-              <td>
-                <i class="ti-trash" (click)="deleteSub(r)" [title]="'Categories.delete'|translate"></i>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="row">
-          <label class="col-sm-2"></label>
-          <div class="col-sm-10">
-            <button (click)="addCategory()" [disabled]="submitted" type="submit" class="btn btn-primary m-b-0">
-              {{'Manufactures.add'|translate}}
-            </button>
-            <i *ngIf="!categoriesForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
-          </div>
-        </div>
-      </form>
-    </app-card>
-  </div>
+            </form>
+        </app-card>
+    </div>
 </div>

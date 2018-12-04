@@ -18,7 +18,8 @@
     },
     "Orders": {
       "main": "الطلبات",
-      "viewAll": "عرض جميع الطلبات"
+      "viewAll": "عرض جميع الطلبات",
+      "Management": "إدارة الطلبات"
     },
     "Products": {
       "main": "المنتجات",
@@ -109,16 +110,16 @@
     "Activites": "الاحداث الأخيرة"
   },
   "slide": {
-    "type":"النوع",
+    "type": "النوع",
     "status": {
       "activated": "مفعل",
       "deactivated": "غير مفعل"
     },
-    "listing":{
-      "target":"الرابط/المنتج",
-      "type":"النوع",
-      "image":"الصورة",
-      "status":"الحالة"
+    "listing": {
+      "target": "الرابط/المنتج",
+      "type": "النوع",
+      "image": "الصورة",
+      "status": "الحالة"
     },
     "types": {
       "product": "منتج",
@@ -126,15 +127,15 @@
     },
     "form": {
       "controls": {
-        "image":"رابط الاعلان",
-        "product":"المنتج"
+        "image": "رابط الاعلان",
+        "product": "المنتج"
       },
-      "placeholders":{
-        "image":"ادخل رابط الاعلان"
+      "placeholders": {
+        "image": "ادخل رابط الاعلان"
       },
       "validations": {
-        "image":"الرجاء ادخال رابط صحيح للاعلان",
-        "product":"الرجاء اختيار المنتج"
+        "image": "الرجاء ادخال رابط صحيح للاعلان",
+        "product": "الرجاء اختيار المنتج"
       }
     }
   },
@@ -334,6 +335,18 @@
       }
     }
   },
+  "ratings": {
+    "rateValue": "التقييم",
+    "process": "معالجة",
+    "userArea": "المنطقة",
+    "userName": "المستخدم",
+    "orderId": "الطلب",
+    "rates": {
+      "normal": "عادي",
+      "happy": "جيد",
+      "sad": "سيئ"
+    }
+  },
   "product": {
     "addImg": "اختر صورة",
     "name": "الاسم",
@@ -418,6 +431,42 @@
       "errors": {
         "pack": "حزمة"
       }
+    }
+  },
+  "orders": {
+    "buttons": {
+      "edit": "تعديل",
+      "delete": "حذف",
+      "add": "اضافة",
+      "back": "إلغاء"
+    },
+    "new": {
+      "products": "المنتجات",
+      "shopeName": "المتجر",
+      "coupon": "القسيمة",
+      "couponPlaceHolder": "ادخل رمز القسيمة",
+      "client": "الزبون"
+    },
+    "table": {
+      "delStatus": {
+        "pending": "قيد المعالجة",
+        "inDelivery": "جاري التوصيل",
+        "delivered": "تم التوصيل",
+        "canceled": "ملغاة"
+      },
+      "total": "القيمة الإجمالية",
+      "product": "المنتج",
+      "count":"الكمية",
+      "price":"السعر",
+      "userTap": "الزبون",
+      "code": "الكود",
+      "productsTap": "المنتجات",
+      "deliveredTap": "معلومات التوصيل",
+      "coupon": "قسيمة",
+      "status": "الحالة",
+      "dates": "تاريخ انشاء الطلب"
+    },
+    "form": {
     }
   }
 }

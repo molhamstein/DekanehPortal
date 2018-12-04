@@ -12,24 +12,25 @@ import {SelectOptionService} from '../../shared/element/select-option.service';
 import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    TranslateModule.forChild(),
-    ReactiveFormsModule,
-    PaginationModule,
-    FormsModule,
-    TagInputModule,
-    SelectModule
-  ],
-  declarations: [
-    NewProductComponent,
-    ProductListComponent
-  ], providers: [
-    SelectOptionService,
-    ProductHandler,
+    imports: [
+        CommonModule,
+        SharedModule,
+        TranslateModule.forChild(),
+        ReactiveFormsModule,
+        PaginationModule,
+        FormsModule,
+        TagInputModule,
+        SelectModule
 
-  ],
+    ],
+    declarations: [
+        NewProductComponent,
+        ProductListComponent
+    ], providers: [
+        SelectOptionService,
+        ProductHandler,
+
+    ],
 })
 export class ProductsModule {
 }

@@ -1,9 +1,9 @@
 // import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 import {AppRoutes} from './app.routing';
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,60 +24,62 @@ import {BrowserModule} from '@angular/platform-browser';
 import {SelectModule} from 'ng-select';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {TooltipModule} from 'ngx-bootstrap';
+
 // import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
-
 export function HttpLoaderFactory(http: Http) {
-  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent,
-    // ManufacturersComponent,
-    // DashboardComponent,
-    // BreadcrumbsComponent,
-    // FormsModule,
-    // AdminComponent,
-    // TitleComponent,
+    declarations: [
+        AppComponent,
+        AuthComponent,
+        // ManufacturersComponent,
+        // DashboardComponent,
+        // BreadcrumbsComponent,
+        // FormsModule,
+        // AdminComponent,
+        // TitleComponent,
 
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes),
-    ReactiveFormsModule,
-    FormsModule,
-    ClickOutsideModule,
-    SharedModule,
-    HttpModule,
-    UtilsModule,
-    TooltipModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [Http]
-      }
-    }),
-    AdminModule,
-    SelectModule,
-    PagesModule,
-    PaginationModule.forRoot(),
-    // BsDatepickerModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
-    }),
-  ],
-  providers: [
-    TranslateService,
-    AuthGuardService,
-    ApiService,
-    ConstService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot(AppRoutes),
+        ReactiveFormsModule,
+        FormsModule,
+        ClickOutsideModule,
+        SharedModule,
+        HttpModule,
+        UtilsModule,
+        TooltipModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [Http]
+            }
+        }),
+        AdminModule,
+        SelectModule,
+        PagesModule,
+        PaginationModule.forRoot(),
+        // BsDatepickerModule.forRoot(),
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyArvKKYtpC6C6khvDPT_HAWG5hXMiKwakk'
+        }),
+    ],
+    providers: [
+        TranslateService,
+        AuthGuardService,
+        ApiService,
+        ConstService,
+        {provide: LocationStrategy, useClass: HashLocationStrategy}
 
-  ],
-  bootstrap: [AppComponent]
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

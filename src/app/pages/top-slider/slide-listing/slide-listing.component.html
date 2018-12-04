@@ -1,32 +1,38 @@
 <table class="table table-bordered table-striped ">
 
-  <thead>
-  <tr>
-    <th>{{"slide.listing.image"|translate}}</th>
-    <th>{{"slide.listing.type"|translate}}</th>
-    <th>{{"slide.listing.target"|translate}}</th>
-    <th>{{"slide.listing.status"|translate}}</th>
-    <th>#</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let slide of allSlides">
-    <td><img class="slide-img" [src]="slide.image"></td>
-    <td><span class="badge "
-              [ngClass]="slide.type=='external'? 'badge-info' : 'badge-warning'">{{"slide.types."+slide.type|translate}}</span></td>
-    <td style="direction: ltr" *ngIf="slide.type=='external'"><a class="external-link" *ngIf="slide.target!=undefined" [tooltip]="slide.target" [href]="slide.target" target="_blank"> {{ (slide.target.length>50)? (slide.target | slice:0:50)+'...':(slide.target) }}</a></td>
-    <td *ngIf="slide.type=='product'">{{slide.target.nameAr}}
+    <thead>
+    <tr>
+        <th>{{"slide.listing.image"|translate}}</th>
+        <th>{{"slide.listing.type"|translate}}</th>
+        <th>{{"slide.listing.target"|translate}}</th>
+        <th>{{"slide.listing.status"|translate}}</th>
+        <th>#</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let slide of allSlides">
+        <td><img [src]="slide.image" class="slide-img"></td>
+        <td><span [ngClass]="slide.type=='external'? 'badge-info' : 'badge-warning'"
+                  class="badge ">{{"slide.types." + slide.type|translate}}</span>
+        </td>
+        <td *ngIf="slide.type=='external'" style="direction: ltr"><a *ngIf="slide.target!=undefined"
+                                                                     [href]="slide.target"
+                                                                     [tooltip]="slide.target" class="external-link"
+                                                                     target="_blank"> {{ (slide.target.length > 50) ? (slide.target | slice:0:50) + '...' : (slide.target) }}</a>
+        </td>
+        <td *ngIf="slide.type=='product'">{{slide.target.nameAr}}
 
-    </td>
-    <td><span class="badge "
-              [ngClass]="slide.status=='activated'? 'badge-success' : 'badge-danger'">{{"slide.status."+slide.status|translate}}</span>
-    </td>
-    <td>
-      <button type="button" class="btn btn-primary" (click)="editSlid(slide.id)">{{"staff.buttons.edit"|translate}}
-      </button>
+        </td>
+        <td><span [ngClass]="slide.status=='activated'? 'badge-success' : 'badge-danger'"
+                  class="badge ">{{"slide.status." + slide.status|translate}}</span>
+        </td>
+        <td>
+            <button (click)="editSlid(slide.id)" class="btn btn-primary"
+                    type="button">{{"staff.buttons.edit"|translate}}
+            </button>
 
-    </td>
-  </tr>
-  <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
-  </tbody>
+        </td>
+    </tr>
+    <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
+    </tbody>
 </table>

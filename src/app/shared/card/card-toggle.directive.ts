@@ -4,7 +4,8 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
     selector: '[cardToggleEvent]'
 })
 export class CardToggleDirective {
-    constructor(private el: ElementRef) { }
+    constructor(private el: ElementRef) {
+    }
 
     @HostListener('click', ['$event'])
     onToggle($event: any) {

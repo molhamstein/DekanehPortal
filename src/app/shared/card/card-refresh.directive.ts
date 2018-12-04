@@ -1,11 +1,13 @@
-import {Directive, HostListener, ElementRef} from '@angular/core';
+import {Directive, ElementRef, HostListener} from '@angular/core';
 
 @Directive({
     selector: '[cardRefresh]'
 })
 export class CardRefreshDirective {
 
-    constructor(private el: ElementRef) {}
+    constructor(private el: ElementRef) {
+    }
+
     @HostListener('mouseenter') open() {
         this.el.nativeElement.classList.add('rotate-refresh');
     }

@@ -2,201 +2,206 @@ import {Injectable} from '@angular/core';
 import {ConstService} from '../../services/const.service';
 
 export interface BadgeItem {
-  type: string;
-  value: string;
+    type: string;
+    value: string;
 }
 
 export interface ChildrenItems {
-  state: string;
-  target?: boolean;
-  name: string;
-  type?: string;
-  children?: ChildrenItems[];
+    state: string;
+    target?: boolean;
+    name: string;
+    type?: string;
+    children?: ChildrenItems[];
 }
 
 export interface MainMenuItems {
-  state: string;
-  short_label?: string;
-  main_state?: string;
-  target?: boolean;
-  name: string;
-  type: string;
-  icon: string;
-  badge?: BadgeItem[];
-  children?: ChildrenItems[];
+    state: string;
+    short_label?: string;
+    main_state?: string;
+    target?: boolean;
+    name: string;
+    type: string;
+    icon: string;
+    badge?: BadgeItem[];
+    children?: ChildrenItems[];
 }
 
 export interface Menu {
-  label: string;
-  main: MainMenuItems[];
+    label: string;
+    main: MainMenuItems[];
 }
+
 @Injectable()
 export class MenuItems {
-  MENUITEMS = [
-    {
-      label: 'mainMenu.main',
-      main: [
+    MENUITEMS = [
         {
-          state: 'manufacturers',
-          short_label: 'M',
-          name: 'mainMenu.Manufacturers.main',
-          type: 'sub',
-          icon: 'ti-user',
-          children: [
-            {
-              state: 'add',
-              name: 'mainMenu.Manufacturers.add'
-            }, {
-              state: 'view',
-              name: 'mainMenu.Manufacturers.viewAll'
-            }
-          ]
+            label: 'mainMenu.main',
+            main: [
+                {
+                    state: 'manufacturers',
+                    short_label: 'M',
+                    name: 'mainMenu.Manufacturers.main',
+                    type: 'sub',
+                    icon: 'ti-user',
+                    children: [
+                        {
+                            state: 'add',
+                            name: 'mainMenu.Manufacturers.add'
+                        }, {
+                            state: 'view',
+                            name: 'mainMenu.Manufacturers.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'topSlider',
+                    short_label: 'F',
+                    name: 'mainMenu.topSlider.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.topSlider.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.topSlider.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'client',
+                    short_label: 'F',
+                    name: 'mainMenu.Clients.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.Clients.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.Clients.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'orders',
+                    short_label: 'O',
+                    name: 'mainMenu.Orders.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'view',
+                            name: 'mainMenu.Orders.viewAll'
+                        },
+                        {
+                            state: 'management',
+                            name: 'mainMenu.Orders.Management'
+                        }
+                    ]
+                },
+                {
+                    state: 'products',
+                    short_label: 'F',
+                    name: 'mainMenu.Products.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.Products.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.Products.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'categories',
+                    short_label: 'F',
+                    name: 'mainMenu.Categories.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'add',
+                            name: 'mainMenu.Categories.add'
+                        },
+                        {
+                            state: 'viewAll',
+                            name: 'mainMenu.Categories.viewAll'
+                        },
+                    ]
+                },
+                {
+                    state: 'areas',
+                    short_label: 'F',
+                    name: 'mainMenu.areas.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.areas.add'
+                        },
+                        {
+                            state: 'list',
+                            name: 'mainMenu.areas.viewAll'
+                        },
+                    ]
+                },
+                {
+                    state: 'coupons',
+                    short_label: 'F',
+                    name: 'mainMenu.coupons.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.coupons.add'
+                        },
+                        {
+                            state: 'list',
+                            name: 'mainMenu.coupons.viewAll'
+                        },
+                    ]
+                },
+                {
+                    state: 'staff',
+                    short_label: 'F',
+                    name: 'mainMenu.Staff.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'add-on',
+                            name: 'mainMenu.Staff.add'
+                        },
+                        {
+                            state: 'list',
+                            name: 'mainMenu.Staff.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'ratings',
+                    short_label: 'F',
+                    name: 'mainMenu.Ratings.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'list',
+                            name: 'mainMenu.Ratings.viewAll'
+                        },
+                    ]
+                },
+            ]
         },
-        {
-          state: 'topSlider',
-          short_label: 'F',
-          name: 'mainMenu.topSlider.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'new',
-              name: 'mainMenu.topSlider.add'
-            }, {
-              state: 'list',
-              name: 'mainMenu.topSlider.viewAll'
-            }
-          ]
-        },
-        {
-          state: 'client',
-          short_label: 'F',
-          name: 'mainMenu.Clients.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'new',
-              name: 'mainMenu.Clients.add'
-            }, {
-              state: 'list',
-              name: 'mainMenu.Clients.viewAll'
-            }
-          ]
-        },
-        {
-          state: 'orders',
-          short_label: 'O',
-          name: 'mainMenu.Orders.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'view',
-              name: 'mainMenu.Orders.viewAll'
-            },
-          ]
-        },
-        {
-          state: 'products',
-          short_label: 'F',
-          name: 'mainMenu.Products.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'new',
-              name: 'mainMenu.Products.add'
-            }, {
-              state: 'list',
-              name: 'mainMenu.Products.viewAll'
-            }
-          ]
-        },
-        {
-          state: 'categories',
-          short_label: 'F',
-          name: 'mainMenu.Categories.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'add',
-              name: 'mainMenu.Categories.add'
-            },
-            {
-              state: 'viewAll',
-              name: 'mainMenu.Categories.viewAll'
-            },
-          ]
-        },
-        {
-          state: 'areas',
-          short_label: 'F',
-          name: 'mainMenu.areas.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'new',
-              name: 'mainMenu.areas.add'
-            },
-            {
-              state: 'list',
-              name: 'mainMenu.areas.viewAll'
-            },
-          ]
-        },
-        {
-          state: 'coupons',
-          short_label: 'F',
-          name: 'mainMenu.coupons.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'new',
-              name: 'mainMenu.coupons.add'
-            },
-            {
-              state: 'list',
-              name: 'mainMenu.coupons.viewAll'
-            },
-          ]
-        },
-        {
-          state: 'staff',
-          short_label: 'F',
-          name: 'mainMenu.Staff.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'add-on',
-              name: 'mainMenu.Staff.add'
-            },
-            {
-              state: 'list',
-              name: 'mainMenu.Staff.viewAll'
-            }
-          ]
-        },
-        {
-          state: 'forms',
-          short_label: 'F',
-          name: 'mainMenu.Ratings.main',
-          type: 'sub',
-          icon: 'ti-layers',
-          children: [
-            {
-              state: 'basic-elements',
-              name: 'mainMenu.Ratings.viewAll'
-            },
-          ]
-        },
-      ]
-    },
-  ];
+    ];
 //   [
 //   {
 //     label: 'Navigation',
@@ -822,12 +827,14 @@ export class MenuItems {
 //   }
 // ];
 
-  constructor(private constant:ConstService){}
-  getAll(): Menu[] {
-    return this.MENUITEMS;
-  }
+    constructor(private constant: ConstService) {
+    }
 
-  /*add(menu: Menu) {
-    MENUITEMS.push(menu);
-  }*/
+    getAll(): Menu[] {
+        return this.MENUITEMS;
+    }
+
+    /*add(menu: Menu) {
+      MENUITEMS.push(menu);
+    }*/
 }

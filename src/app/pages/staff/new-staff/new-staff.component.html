@@ -1,67 +1,79 @@
-<form class="staffForm" [formGroup]="staffForm" (ngSubmit)="onStaffFormSubmit()">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
+<form (ngSubmit)="onStaffFormSubmit()" [formGroup]="staffForm" class="staffForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
 
-      </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="username">{{"staff.form.controls.username"|translate}}</label>
+                    <input (change)="checkUserByName($event)" class="form-control" formControlName="username"
+                           id="username" placeholder="{{'staff.form.placeholders.username'|translate}}"
+                           type="text">
+                    <label *ngIf="staffForm.get('username').invalid && processValidation"
+                           class="text-danger">{{'staff.form.validations.username'|translate}}</label>
+                    <label *ngIf="nameError"
+                           [ngClass]="'text-danger'">{{'staff.form.errors.username'|translate}}</label>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="email">{{"staff.form.controls.email"|translate}}</label>
+                    <input (change)="checkUserByEmail($event)" class="form-control" formControlName="email" id="email"
+                           placeholder="{{'staff.form.placeholders.email'|translate}}" type="email">
+                    <label *ngIf="staffForm.get('email').invalid && processValidation"
+                           [ngClass]="'text-danger'">{{'staff.form.validations.email'|translate}}</label>
+                    <label *ngIf="emailError" [ngClass]="'text-danger'">{{'staff.form.errors.email'|translate}}</label>
+
+                </div>
+                <div *ngIf="newUSer" class="form-group">
+                    <label for="password">{{"staff.form.controls.password"|translate}}</label>
+                    <input [(ngModel)]="password" class="form-control" formControlName="password" id="password"
+                           type="password">
+                    <label *ngIf="staffForm.get('password').invalid && processValidation"
+                           [ngClass]="'text-danger'">{{'staff.form.validations.password'|translate}}</label>
+                </div>
+            </div>
+            <div class="col-sm">
+                <!--</div>-->
+                <div class="form-group">
+                    <label for="roleIds">{{"staff.form.controls.roles"|translate}}</label>
+
+                    <ng-select [(ngModel)]="roleIds" [multiple]="true" [options]="IOroles" formControlName="roleIds"
+                               id="roleIds">
+                    </ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">{{"client.statustext"|translate}}</label>
+                    <select [(ngModel)]="status" class="form-control" formControlName="status" id="status">
+                        <option *ngFor="let option of allStatus" [value]="option">
+                            {{"client.status." + option|translate}}
+                        </option>
+                    </select>
+                </div>
+                <div *ngIf="newUSer" class="form-group">
+                    <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
+                    <input (keyup)="comparePass($event)" class="form-control" id="repassowrd" type="password">
+                    <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm submit-col">
+                <button *ngIf="newUSer" [disabled]="submitted" class="btn btn-success"
+                        type="submit">{{"staff.buttons.add"|translate}}</button>
+                <i *ngIf="!staffForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+                <button *ngIf="!newUSer" [disabled]="submitted" class=" btn btn-success"
+                        type="submit">{{"staff.buttons.edit"|translate}}</button>
+                <button (click)="goHome()" *ngIf="!newUSer" [disabled]="submitted" class="btn btn-action"
+                        type="button">{{"staff.buttons.back"|translate}}</button>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="username">{{"staff.form.controls.username"|translate}}</label>
-          <input (change)="checkUserByName($event)"  type="text" formControlName="username" class="form-control" id="username" placeholder="{{'staff.form.placeholders.username'|translate}}">
-          <label *ngIf="staffForm.get('username').invalid && processValidation" class="text-danger">{{'staff.form.validations.username'|translate}}</label>
-          <label *ngIf="nameError" [ngClass] = "'text-danger'">{{'staff.form.errors.username'|translate}}</label>
-
-        </div>
-
-        <div class="form-group">
-          <label for="email">{{"staff.form.controls.email"|translate}}</label>
-          <input (change)="checkUserByEmail($event)"   type="email" formControlName="email" class="form-control" id="email"placeholder="{{'staff.form.placeholders.email'|translate}}">
-          <label *ngIf="staffForm.get('email').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.email'|translate}}</label>
-          <label *ngIf="emailError" [ngClass] = "'text-danger'">{{'staff.form.errors.email'|translate}}</label>
-
-        </div>
-        <div class="form-group" *ngIf="newUSer">
-          <label for="password">{{"staff.form.controls.password"|translate}}</label>
-          <input type="password"  formControlName="password" class="form-control" id="password" [(ngModel)]="password" >
-          <label *ngIf="staffForm.get('password').invalid && processValidation" [ngClass] = "'text-danger'">{{'staff.form.validations.password'|translate}}</label>
-        </div>
-      </div>
-      <div class="col-sm">
-        <!--</div>-->
-        <div class="form-group">
-          <label for="roleIds">{{"staff.form.controls.roles"|translate}}</label>
-
-          <ng-select id="roleIds" [options]="IOroles" [multiple]="true" [(ngModel)]="roleIds" formControlName="roleIds">
-          </ng-select>
-        </div>
-
-        <div class="form-group">
-          <label for="status">{{"client.statustext"|translate}}</label>
-          <select class="form-control" formControlName="status" id="status" [(ngModel)]="status">
-            <option *ngFor="let option of allStatus" [value]="option">
-              {{"client.status."+option|translate}}
-            </option>
-          </select>
-        </div>
-     <div class="form-group" *ngIf="newUSer">
-          <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
-          <input type="password" (keyup)="comparePass($event)" class="form-control" id="repassowrd">
-          <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row">
-      <div class="col-sm submit-col">
-        <button type="submit" [disabled]="submitted" class="btn btn-success"*ngIf="newUSer">{{"staff.buttons.add"|translate}}</button>
-        <i *ngIf="!staffForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit" ></i>
-        <button type="submit" [disabled]="submitted" class=" btn btn-success" *ngIf="!newUSer">{{"staff.buttons.edit"|translate}}</button>
-        <button type="button" (click)="goHome()" [disabled]="submitted" class="btn btn-action" *ngIf="!newUSer">{{"staff.buttons.back"|translate}}</button>
-      </div>
-    </div>
-  </div>
 </form>

@@ -20,9 +20,11 @@
 .marketing-card .table tbody td .btn-action.btn-bg-c-yellow:after {
     background-color: #ffb64d;
 }
+
 .marketing-card .table tbody td .btn-action.btn-bg-c-green:after {
     background-color: #93be52;
 }
+
 .marketing-card .table tbody td .btn-action.btn-bg-c-red:after {
     background-color: #f33024;
 }

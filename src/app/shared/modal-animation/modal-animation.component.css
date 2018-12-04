@@ -15,7 +15,7 @@
     overflow: hidden;
 }
 
-.md-perspective body  {
+.md-perspective body {
     background: #222;
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
@@ -259,7 +259,7 @@
 }
 
 /* Effect 7:  slide and stick to top */
-.md-effect-7{
+.md-effect-7 {
     top: 0;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -453,18 +453,39 @@
 }
 
 @-webkit-keyframes slit {
-    50% { -webkit-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -webkit-animation-timing-function: ease-out;}
-    100% { -webkit-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+    50% {
+        -webkit-transform: translateZ(-250px) rotateY(89deg);
+        opacity: .5;
+        -webkit-animation-timing-function: ease-out;
+    }
+    100% {
+        -webkit-transform: translateZ(0) rotateY(0deg);
+        opacity: 1;
+    }
 }
 
 @-moz-keyframes slit {
-    50% { -moz-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -moz-animation-timing-function: ease-out;}
-    100% { -moz-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+    50% {
+        -moz-transform: translateZ(-250px) rotateY(89deg);
+        opacity: .5;
+        -moz-animation-timing-function: ease-out;
+    }
+    100% {
+        -moz-transform: translateZ(0) rotateY(0deg);
+        opacity: 1;
+    }
 }
 
 @keyframes slit {
-    50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
-    100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+    50% {
+        transform: translateZ(-250px) rotateY(89deg);
+        opacity: 1;
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateZ(0) rotateY(0deg);
+        opacity: 1;
+    }
 }
 
 /* Effect 14:  3D Rotate from bottom */
@@ -533,7 +554,7 @@
 
 /* Effect 16:  Blur */
 .md-show.md-effect-16 ~ .md-overlay {
-    background: rgba(180,46,32,0.5);
+    background: rgba(180, 46, 32, 0.5);
 }
 
 .md-show.md-effect-16 ~ .container {
@@ -575,7 +596,7 @@
 }
 
 .md-show.md-effect-17 ~ .container,
-.md-show.md-effect-17 ~ .md-overlay  {
+.md-show.md-effect-17 ~ .md-overlay {
     -webkit-transform: rotateX(-2deg);
     -moz-transform: rotateX(-2deg);
     -ms-transform: rotateX(-2deg);
@@ -614,7 +635,7 @@
 }
 
 .md-show.md-effect-18 ~ .md-overlay {
-    background: rgba(143,27,15,0.8);
+    background: rgba(143, 27, 15, 0.8);
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
@@ -634,18 +655,33 @@
 }
 
 @-webkit-keyframes rotateRightSideFirst {
-    50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
-    100% { -webkit-transform: translateZ(-200px); }
+    50% {
+        -webkit-transform: translateZ(-50px) rotateY(5deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+    100% {
+        -webkit-transform: translateZ(-200px);
+    }
 }
 
 @-moz-keyframes rotateRightSideFirst {
-    50% { -moz-transform: translateZ(-50px) rotateY(5deg); -moz-animation-timing-function: ease-out; }
-    100% { -moz-transform: translateZ(-200px); }
+    50% {
+        -moz-transform: translateZ(-50px) rotateY(5deg);
+        -moz-animation-timing-function: ease-out;
+    }
+    100% {
+        -moz-transform: translateZ(-200px);
+    }
 }
 
 @keyframes rotateRightSideFirst {
-    50% { transform: translateZ(-50px) rotateY(5deg); animation-timing-function: ease-out; }
-    100% { transform: translateZ(-200px); }
+    50% {
+        transform: translateZ(-50px) rotateY(5deg);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translateZ(-200px);
+    }
 }
 
 .md-effect-18 .md-content {
@@ -733,5 +769,7 @@
 }
 
 @media screen and (max-width: 32em) {
-    body { font-size: 75%; }
+    body {
+        font-size: 75%;
+    }
 }

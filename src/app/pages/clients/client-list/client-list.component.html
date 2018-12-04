@@ -1,85 +1,85 @@
 <div class="row">
-  <div class="col-sm-4">
-    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
-           placeholder="{{'client.search'|translate}}....">
-  </div>
+    <div class="col-sm-4">
+        <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'client.search'|translate}}...."
+               type="text">
+    </div>
 </div>
 <table class="table table-bordered table-striped ">
-  <thead>
-  <tr>
-    <th class="clickable-th" (click)="orderByShope()">
-      {{"client.shopName"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+    <thead>
+    <tr>
+        <th class="clickable-th" (click)="orderByShope()">
+            {{"client.shopName"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
 
-    </th>
-    <th class="clickable-th" (click)="orderByArea()">
-      {{"client.area"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="areaOrderDir === undefined? '' : (areaOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByArea()">
+            {{"client.area"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="areaOrderDir === undefined? '' : (areaOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-    </th>
+        </th>
 
-    <th class="clickable-th" (click)="orderByType()">
-      {{"client.clientType"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="typeOrderDir === undefined? '' : (typeOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
-
-
-    </th>
-    <th class="clickable-th" (click)="orderByLocation()">
-      {{"client.location"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="locationOrderDir === undefined? '' : (locationOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        <th class="clickable-th" (click)="orderByType()">
+            {{"client.clientType"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="typeOrderDir === undefined? '' : (typeOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
 
 
-    </th>
-    <th class="clickable-th" (click)="orderByPhone()">
-      {{"client.phoneNumber"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="phoneNumberOrderDir === undefined? '' : (phoneNumberOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-    </th>
-    <th class="clickable-th" (click)="orderByStatus()">
-      {{"client.statustext"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByLocation()">
+            {{"client.location"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="locationOrderDir === undefined? '' : (locationOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-    </th>
-    <th>
-      {{"client.actions"|translate}}
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let client of returnedArray  ">
-    <td>{{client.shopName}}</td>
-    <td>{{client.areaId}}</td>
-    <td><span class="badge " [ngClass]="client.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."+client.clientType|translate}}</span>
-    </td>
-    <td>{{client.location}}</td>
-    <td>{{client.phoneNumber}}</td>
-    <td><span class="badge "
-              [ngClass]="client.status=='activated'? 'badge-success' : (client.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"client.status."+client.status|translate}}</span>
-    </td>
-    <td>
-      <button type="button" class="btn btn-primary" (click)="editClient(client.id)">{{"client.buttons.edit"|translate}}
-      </button>
-      <button class="btn btn-danger" type="button" (click)="deleteClient(client.id)">
-        {{"client.buttons.delete"|translate}}
-      </button>
-    </td>
-  </tr>
-  </tbody>
+
+        </th>
+        <th class="clickable-th" (click)="orderByPhone()">
+            {{"client.phoneNumber"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="phoneNumberOrderDir === undefined? '' : (phoneNumberOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByStatus()">
+            {{"client.statustext"|translate}}
+            <i class="fa-sort fa "
+               [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th>
+            {{"client.actions"|translate}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of returnedArray  ">
+        <td>{{client.shopName}}</td>
+        <td>{{client.areaId}}</td>
+        <td><span class="badge "
+                  [ngClass]="client.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + client.clientType|translate}}</span>
+        </td>
+        <td>{{client.location}}</td>
+        <td>{{client.phoneNumber}}</td>
+        <td><span class="badge "
+                  [ngClass]="client.status=='activated'? 'badge-success' : (client.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"client.status." + client.status|translate}}</span>
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary"
+                    (click)="editClient(client.id)">{{"client.buttons.edit"|translate}}
+            </button>
+            <button class="btn btn-danger" type="button" (click)="deleteClient(client.id)">
+                {{"client.buttons.delete"|translate}}
+            </button>
+        </td>
+    </tr>
+    </tbody>
 </table>
 <div class="row">
-  <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">"
-              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-  <div class="per-page-sec">
-    <span>{{"client.perPage"|translate}}</span>
-    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-  </div>
-
+    <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">"
+                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+    <div class="per-page-sec">
+        <span>{{"client.perPage"|translate}}</span>
+        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+    </div>
 </div>
 
 

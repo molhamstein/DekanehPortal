@@ -1,70 +1,70 @@
 <div class="row">
-  <div class="col-sm-4">
-    <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
-           placeholder="{{'Categories.search'|translate}}....">
-  </div>
+    <div class="col-sm-4">
+        <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'Categories.search'|translate}}...."
+               type="text">
+    </div>
 </div>
 <br/>
 <table class="table table-bordered table-striped ">
-  <thead>
-  <tr>
-    <th class="text-center ">
-      {{"Categories.image"|translate}}
-    </th>
-    <th *ngFor="let col of cols" class="text-center clickable-th" (click)="orderBy(col)">
-      <label >{{"Categories."+col|translate}}</label>
-      <i [class]="'fa-sort fa '+ (orderDir[col]==0?'':orderDir[col]==-1?'fa-sort-desc' :'fa-sort-asc')"></i>
-    </th>
+    <thead>
+    <tr>
+        <th class="text-center ">
+            {{"Categories.image"|translate}}
+        </th>
+        <th *ngFor="let col of cols" class="text-center clickable-th" (click)="orderBy(col)">
+            <label>{{"Categories." + col|translate}}</label>
+            <i [class]="'fa-sort fa '+ (orderDir[col]==0?'':orderDir[col]==-1?'fa-sort-desc' :'fa-sort-asc')"></i>
+        </th>
 
-    <th class="text-center ">
-      {{"Categories.actions"|translate}}
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <ng-container *ngFor="let category of categories">
-    <tr >
-      <td class="img-td"><img *ngIf="category.icon" class="cat-img" src="{{category.icon}}"></td>
-      <td (click)="showSub(category)" *ngFor="let col of cols">
-        {{c.formatDate(category[col])}}
-      </td>
-      <td>
-        <!--<i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>-->
-        <i class="ti-settings" (click)="editCat(category)"  [title]="'Categories.edit'|translate"></i>
-        <i class="ti-trash" (click)="deleteCat(category)"  [title]="'Categories.delete'|translate"></i>
-      </td>
+        <th class="text-center ">
+            {{"Categories.actions"|translate}}
+        </th>
     </tr>
-    <ng-container *ngFor="let subCat of subCategories">
-      <tr *ngIf="subCat.visible&&subCat.parentId==category.id">
-        <td colspan="6" >
-          <table *ngIf="subCat.cols.length>0" class="width-100 table table-bordered table-striped ">
-            <thead>
-            <tr>
-              <th *ngFor="let col of subCat.cols" class="text-center">
-                <label >{{"Categories.sub."+col|translate}}</label>
-              </th>
-              <th class="text-center ">
-                {{"Categories.actions"|translate}}
-              </th>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let category of categories">
+        <tr>
+            <td class="img-td"><img *ngIf="category.icon" class="cat-img" src="{{category.icon}}"></td>
+            <td (click)="showSub(category)" *ngFor="let col of cols">
+                {{c.formatDate(category[col])}}
+            </td>
+            <td>
+                <!--<i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>-->
+                <i class="ti-settings" (click)="editCat(category)" [title]="'Categories.edit'|translate"></i>
+                <i class="ti-trash" (click)="deleteCat(category)" [title]="'Categories.delete'|translate"></i>
+            </td>
+        </tr>
+        <ng-container *ngFor="let subCat of subCategories">
+            <tr *ngIf="subCat.visible&&subCat.parentId==category.id">
+                <td colspan="6">
+                    <table *ngIf="subCat.cols.length>0" class="width-100 table table-bordered table-striped ">
+                        <thead>
+                        <tr>
+                            <th *ngFor="let col of subCat.cols" class="text-center">
+                                <label>{{"Categories.sub." + col|translate}}</label>
+                            </th>
+                            <th class="text-center ">
+                                {{"Categories.actions"|translate}}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let r of subCat.value">
+                            <td *ngFor="let col of subCat.cols">
+                                {{c.formatDate(r[col])}}
+                            </td>
+                            <td>
+                                <i class="ti-trash" [title]="'Categories.delete'|translate"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="text-center" *ngIf="subCat.cols.length==0">{{"Categories.NoDataFound"|translate}}</h3>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let r of subCat.value">
-              <td *ngFor="let col of subCat.cols">
-                {{c.formatDate(r[col])}}
-              </td>
-              <td>
-                <i class="ti-trash" [title]="'Categories.delete'|translate"></i>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <h3 class="text-center" *ngIf="subCat.cols.length==0" >{{"Categories.NoDataFound"|translate}}</h3>
-        </td>
-      </tr>
+        </ng-container>
     </ng-container>
-  </ng-container>
-  </tbody>
+    </tbody>
 </table>
 <!--<div class="row">-->
 <!--<pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">"-->

@@ -1,10 +1,13 @@
-import {ElementRef, Directive, HostListener} from "@angular/core";
+import {Directive, ElementRef, HostListener} from '@angular/core';
+
 @Directive({
     selector: '[parentRemove]'
 })
 export class ParentRemoveDirective {
     alert_parent: any;
-    constructor(private elements: ElementRef) {}
+
+    constructor(private elements: ElementRef) {
+    }
 
     @HostListener('click', ['$event'])
     onToggle($event: any) {

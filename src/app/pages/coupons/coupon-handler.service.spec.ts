@@ -1,15 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { CouponHandlerService } from './coupon-handler.service';
+import {CouponHandlerService} from './coupon-handler.service';
 
 describe('CouponHandlerService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [CouponHandlerService]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [CouponHandlerService]
+        });
     });
-  });
 
-  it('should be created', inject([CouponHandlerService], (service: CouponHandlerService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([CouponHandlerService], (service: CouponHandlerService) => {
+        expect(service).toBeTruthy();
+    }));
 });

@@ -1,74 +1,77 @@
 <!--<div class="row">-->
-  <!--<div class="col-sm-4">-->
-    <!--<input class="form-control search-box" type="text" (keyup)="filterBox($event)"-->
-           <!--placeholder="{{'staff.search'|translate}}....">-->
-  <!--</div>-->
+<!--<div class="col-sm-4">-->
+<!--<input class="form-control search-box" type="text" (keyup)="filterBox($event)"-->
+<!--placeholder="{{'staff.search'|translate}}....">-->
+<!--</div>-->
 <!--</div>-->
 <table class="table table-bordered table-striped ">
 
-  <thead>
-  <tr>
-    <th>id</th>
-    <th class="clickable-th" (click)="orderByCode()">
-      {{"coupon.form.controls.code"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="codeOrderDir === undefined? '' : (codeOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-    </th>
-    <th class="clickable-th" (click)="orderByOwner()">
-      {{"coupon.form.controls.owner"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="ownerOrderDir === undefined? '' : (ownerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-    </th>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th (click)="orderByCode()" class="clickable-th">
+            {{"coupon.form.controls.code"|translate}}
+            <i [ngClass]="codeOrderDir === undefined? '' : (codeOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
+               class="fa-sort fa "></i>
+        </th>
+        <th (click)="orderByOwner()" class="clickable-th">
+            {{"coupon.form.controls.owner"|translate}}
+            <i [ngClass]="ownerOrderDir === undefined? '' : (ownerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
+               class="fa-sort fa "></i>
+        </th>
 
-    <th class="clickable-th" (click)="orderByValue()">
-      {{"coupon.form.controls.value"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="valueOrderDir === undefined? '' : (valueOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-    </th>
-    <th class="clickable-th" (click)="orderByExpire()">
-      {{"coupon.form.controls.expireDate"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="expireOrderDir === undefined? '' : (expireOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-    </th>
-    <th class="clickable-th" (click)="orderByStatus()">
-      {{"coupon.form.controls.status"|translate}}
-      <i class="fa-sort fa "
-         [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        <th (click)="orderByValue()" class="clickable-th">
+            {{"coupon.form.controls.value"|translate}}
+            <i [ngClass]="valueOrderDir === undefined? '' : (valueOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
+               class="fa-sort fa "></i>
+        </th>
+        <th (click)="orderByExpire()" class="clickable-th">
+            {{"coupon.form.controls.expireDate"|translate}}
+            <i [ngClass]="expireOrderDir === undefined? '' : (expireOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
+               class="fa-sort fa "></i>
+        </th>
+        <th (click)="orderByStatus()" class="clickable-th">
+            {{"coupon.form.controls.status"|translate}}
+            <i [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
+               class="fa-sort fa "></i>
 
-    </th>
-    <th>
-      {{"staff.actions"|translate}}
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let coupon of allCoupon">
-    <td>{{coupon.id}}</td>
-    <td>{{coupon.code}}</td>
-    <td>{{coupon.userId}}</td>
-    <td>{{coupon.value}}<span *ngIf="coupon.type=='percent'">%</span></td>
-    <td>{{c.formatDate(coupon.expireDate)}}</td>
+        </th>
+        <th>
+            {{"staff.actions"|translate}}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let coupon of allCoupon">
+        <td>{{coupon.id}}</td>
+        <td>{{coupon.code}}</td>
+        <td>{{coupon.userId}}</td>
+        <td>{{coupon.value}}<span *ngIf="coupon.type=='percent'">%</span></td>
+        <td>{{c.formatDate(coupon.expireDate)}}</td>
 
-    <td><span class="badge "
-              [ngClass]="coupon.status=='available'? 'badge-success' : 'badge-danger'">{{"coupon.status."+coupon.status|translate}}</span>
-    </td>
-    <td>
-      <button type="button" class="btn btn-primary" (click)="editCoupon(coupon.id)">{{"staff.buttons.edit"|translate}}
-      </button>
-      <!--<button class="btn btn-danger" type="button" (click)="deleteCoupon(coupon.id)">-->
-      <!--{{"coupon.buttons.delete"|translate}}-->
-      <!--</button>-->
-    </td>
-  </tr>
-  <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
-  </tbody>
+        <td><span [ngClass]="coupon.status=='available'? 'badge-success' : 'badge-danger'"
+                  class="badge ">{{"coupon.status." + coupon.status|translate}}</span>
+        </td>
+        <td>
+            <button (click)="editCoupon(coupon.id)" class="btn btn-primary"
+                    type="button">{{"staff.buttons.edit"|translate}}
+            </button>
+            <!--<button class="btn btn-danger" type="button" (click)="deleteCoupon(coupon.id)">-->
+            <!--{{"coupon.buttons.delete"|translate}}-->
+            <!--</button>-->
+        </td>
+    </tr>
+    <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
+    </tbody>
 </table>
 <div class="row" [hidden]="spinnerFlag">
-  <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
-              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false" [boundaryLinks]="true"></pagination>
-  <div class="per-page-sec">
-    <span>{{"client.perPage"|translate}}</span>
-    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-  </div>
+    <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+                firstText="&laquo;" lastText="&raquo;"
+                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+                [boundaryLinks]="true"></pagination>
+    <div class="per-page-sec">
+        <span>{{"client.perPage"|translate}}</span>
+        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+    </div>
 
 </div>

@@ -1,25 +1,26 @@
-import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'app-modal-animation',
-  templateUrl: './modal-animation.component.html',
-  styleUrls: ['./modal-animation.component.css'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-modal-animation',
+    templateUrl: './modal-animation.component.html',
+    styleUrls: ['./modal-animation.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ModalAnimationComponent implements OnInit {
 
-  @Input() modalClass: string;
-  @Input() contentClass: string;
-  @Input() modalID: string;
-  @Input() backDrop = false;
+    @Input() modalClass: string;
+    @Input() contentClass: string;
+    @Input() modalID: string;
+    @Input() backDrop = false;
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
-  }
+    }
 
-  close(event) {
-    document.querySelector('#' + event).classList.remove('md-show');
-  }
+    close(event) {
+        document.querySelector('#' + event).classList.remove('md-show');
+    }
 }

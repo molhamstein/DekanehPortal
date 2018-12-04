@@ -1,70 +1,73 @@
 <div class="row">
-  <div class="col-sm-12">
-    <app-card [title]="'Manufactures.viewAll'|translate">
-      <div class="row">
-        <div class="col-md-4 col-lg-2 col-sm-auto offset-lg-10">
-          <!--<button type="button" class="btn btn-primary btn-print-invoice waves-effect waves-light m-b-10 btn-sm m-r-20"(click)="navigateTo('manufacturers/add')"><h6>{{"Manufactures.addNew"|translate}}</h6></button>-->
-        </div>
-      </div>
-      <!--<span class="m-b-20">use class <code>table table-striped table-bordered full-data-table</code> with table element</span><br><br>-->
-      <div class="dt-responsive">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : ''" #mf="mfDataTable" >
-          <!--<table class="table table-striped table-bordered full-data-table" >-->
-            <thead>
-            <tr>
-              <th class="text-center ">
-                <mfDefaultSorter by="code">الكود</mfDefaultSorter>
-              </th>
-              <th class="text-center ">
-                <mfDefaultSorter by="nameEn">الاسم الانكليزي</mfDefaultSorter>
-              </th>
-              <th class="text-center ">
-                <mfDefaultSorter by="nameAr">الاسم العربي</mfDefaultSorter>
-              </th>
-              <th class="text-center ">
-                <mfDefaultSorter   by="creationDate">تاريخ الإضافة</mfDefaultSorter>
-              </th>
-              <th class="text-center " >
-                <mfDefaultSorter by="id">الرقم التسلسلي</mfDefaultSorter>
-              </th>
-              <th class="text-center">
-                <label >عمليات</label>
-              </th>
-            </tr>
-            <tr>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of data ">
-              <td>{{item.code}}</td>
-              <td>{{item.nameEn}}</td>
-              <td>{{item.nameAr}}</td>
-              <td>{{item.creationDate}}</td>
-              <td>{{item.id}}</td>
-              <td>
-                <i class="ti-settings" (click)="editManufacturer(item)"  [title]="'Manufactures.edit'|translate"></i>
-                <i class="ti-trash" (click)="deleteManufacturer(item)" [title]="'Manufactures.delete'|translate"></i>
-              </td>
-            </tr>
-            </tbody>
-            <!--<tfoot>-->
-            <!--<tr>-->
-            <!--<th>code</th>-->
-            <!--<th>nameEn</th>-->
-            <!--<th>nameAr</th>-->
-            <!--<th>creationDate</th>-->
-            <!--<th>id</th>-->
-            <!--</tr>-->
-            <!--<tr>-->
-            <!--<td colspan="6">-->
-            <!--<mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>-->
-            <!--</td>-->
-            <!--</tr>-->
-            <!--</tfoot>-->
-          </table>
-        </div>
-      </div>
-    </app-card>
-  </div>
+    <div class="col-sm-12">
+        <app-card [title]="'Manufactures.viewAll'|translate">
+            <div class="row">
+                <div class="col-md-4 col-lg-2 col-sm-auto offset-lg-10">
+                    <!--<button type="button" class="btn btn-primary btn-print-invoice waves-effect waves-light m-b-10 btn-sm m-r-20"(click)="navigateTo('manufacturers/add')"><h6>{{"Manufactures.addNew"|translate}}</h6></button>-->
+                </div>
+            </div>
+            <!--<span class="m-b-20">use class <code>table table-striped table-bordered full-data-table</code> with table element</span><br><br>-->
+            <div class="dt-responsive">
+                <div class="table-responsive">
+                    <table #mf="mfDataTable" [mfData]="data | dataFilter : ''"
+                           class="table table-striped table-bordered full-data-table">
+                        <!--<table class="table table-striped table-bordered full-data-table" >-->
+                        <thead>
+                        <tr>
+                            <th class="text-center ">
+                                <mfDefaultSorter by="code">الكود</mfDefaultSorter>
+                            </th>
+                            <th class="text-center ">
+                                <mfDefaultSorter by="nameEn">الاسم الانكليزي</mfDefaultSorter>
+                            </th>
+                            <th class="text-center ">
+                                <mfDefaultSorter by="nameAr">الاسم العربي</mfDefaultSorter>
+                            </th>
+                            <th class="text-center ">
+                                <mfDefaultSorter by="creationDate">تاريخ الإضافة</mfDefaultSorter>
+                            </th>
+                            <th class="text-center ">
+                                <mfDefaultSorter by="id">الرقم التسلسلي</mfDefaultSorter>
+                            </th>
+                            <th class="text-center">
+                                <label>عمليات</label>
+                            </th>
+                        </tr>
+                        <tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of data ">
+                            <td>{{item.code}}</td>
+                            <td>{{item.nameEn}}</td>
+                            <td>{{item.nameAr}}</td>
+                            <td>{{item.creationDate}}</td>
+                            <td>{{item.id}}</td>
+                            <td>
+                                <i (click)="editManufacturer(item)" [title]="'Manufactures.edit'|translate"
+                                   class="ti-settings"></i>
+                                <i (click)="deleteManufacturer(item)" [title]="'Manufactures.delete'|translate"
+                                   class="ti-trash"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <!--<tfoot>-->
+                        <!--<tr>-->
+                        <!--<th>code</th>-->
+                        <!--<th>nameEn</th>-->
+                        <!--<th>nameAr</th>-->
+                        <!--<th>creationDate</th>-->
+                        <!--<th>id</th>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td colspan="6">-->
+                        <!--<mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>-->
+                        <!--</td>-->
+                        <!--</tr>-->
+                        <!--</tfoot>-->
+                    </table>
+                </div>
+            </div>
+        </app-card>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", {value: true});
 var animations_1 = require("@angular/animations");
 exports.cardToggle = animations_1.trigger('cardToggle', [
     animations_1.state('collapsed, void', animations_1.style({

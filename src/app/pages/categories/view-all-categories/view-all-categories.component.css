@@ -1,20 +1,22 @@
 table {
-  width: 100%;
+    width: 100%;
 }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 100%;
+    font-size: 14px;
+    width: 100%;
 }
 
 td, th {
-  vertical-align: middle;
-  width: 25%;
+    vertical-align: middle;
+    width: 25%;
 }
-.cat-img{
-  max-height:64px;
-  max-width: 90px;
+
+.cat-img {
+    max-height: 64px;
+    max-width: 90px;
 }
-.img-td{
-  text-align: center;
+
+.img-td {
+    text-align: center;
 }

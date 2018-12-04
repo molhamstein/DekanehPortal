@@ -1,15 +1,15 @@
-import {TestBed, inject} from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
 import {ProductHandler} from './product-handler';
 
 describe('ProductHandler', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [ProductHandler]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [ProductHandler]
+        });
     });
-  });
 
-  it('should be created', inject([ProductHandler], (service: ProductHandler) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([ProductHandler], (service: ProductHandler) => {
+        expect(service).toBeTruthy();
+    }));
 });

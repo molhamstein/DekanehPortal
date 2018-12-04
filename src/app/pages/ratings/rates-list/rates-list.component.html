@@ -1,0 +1,51 @@
+<!--<div class="row">-->
+<!--</div>-->
+<div class="row">
+    <div class="col-sm-3">
+        <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'client.search'|translate}}...."
+               type="text">
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped ">
+        <thead>
+        <tr>
+            <th>{{"ratings.userName"|translate}}</th>
+            <th>{{"ratings.userArea"|translate}}</th>
+            <th>{{"ratings.orderId"|translate}}</th>
+            <th>{{"ratings.rateValue"|translate}}</th>
+            <th>#</th>
+        </tr>
+        </thead>
+        <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
+
+        <tr *ngFor="let rate of returnedArray  ">
+            <td>{{rate.user.username}}</td>
+            <td>{{rate.user.areaId}}</td>
+            <td>{{rate.orderId}}</td>
+            <td><span class="badge "
+                      [ngClass]="rate.rate=='happy'? 'badge-success' : (rate.rate=='normal' ? 'badge-warning' : 'badge-danger')">{{"ratings.rates." + rate.rate|translate}}</span>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary"
+                        (click)="processRate(rate.id)">{{"ratings.process"|translate}}
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<div [hidden]="spinnerFlag||unpage" class="row">
+    <!--<pagination [totalItems]="ratesCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"-->
+    <!--firstText="&laquo;" lastText="&raquo;"-->
+    <!--[(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"-->
+    <!--[boundaryLinks]="true"></pagination>-->
+    <!--<div class="per-page-sec">-->
+    <!--<span>{{"client.perPage"|translate}}</span>-->
+    <!--<input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">-->
+    <!--</div>-->
+</div>
+
+
+

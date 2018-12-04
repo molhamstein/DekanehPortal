@@ -1,6 +1,7 @@
 .card-header-right {
     z-index: 999;
 }
-.card .card-header .card-header-right{
-  right: 90px;
+
+.card .card-header .card-header-right {
+    right: 90px;
 }

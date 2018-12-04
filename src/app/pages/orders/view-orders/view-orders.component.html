@@ -1,184 +1,186 @@
 <div class="row">
-  <div class="col-sm-12">
-    <app-card [title]="'عرض جميع الطلبات'" class="marketing-card">
+    <div class="col-sm-12">
+        <app-card [title]="'عرض جميع الطلبات'" class="marketing-card">
 
-      <!-- <div class="dt-responsive">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" >
-            <thead>
-            <tr>
-              <th>
-                <mfDefaultSorter class="side-right"  by="code">الحالة</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter class="side-right" by="nameEn">التاريخ</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter class="side-right" by="nameAr">الاجمالي</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter class="side-right" by="creationDate">اسم المستخدم</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter class="side-right" by="id">البريد الالكروني</mfDefaultSorter>
-              </th>
-            </tr>
-            <tr>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of data ">
-              <td>{{item.status}}</td>
-              <td>{{item.orderDate}}</td>
-              <td>{{item.totalPrice}}</td>
-              <td>{{item.client.ownerName}}</td>
-              <td>{{item.client.email}}</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-              <th>status</th>
-              <th>orderDate</th>
-              <th>totalPrice</th>
-              <th>OwnerName</th>
-              <th>Email</th>
-            </tr>
-            <tr>
-              <td colspan="6">
-                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
-              </td>
-            </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div> -->
+            <!-- <div class="dt-responsive">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery" #mf="mfDataTable" >
+                  <thead>
+                  <tr>
+                    <th>
+                      <mfDefaultSorter class="side-right"  by="code">الحالة</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter class="side-right" by="nameEn">التاريخ</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter class="side-right" by="nameAr">الاجمالي</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter class="side-right" by="creationDate">اسم المستخدم</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter class="side-right" by="id">البريد الالكروني</mfDefaultSorter>
+                    </th>
+                  </tr>
+                  <tr>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of data ">
+                    <td>{{item.status}}</td>
+                    <td>{{item.orderDate}}</td>
+                    <td>{{item.totalPrice}}</td>
+                    <td>{{item.client.ownerName}}</td>
+                    <td>{{item.client.email}}</td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>status</th>
+                    <th>orderDate</th>
+                    <th>totalPrice</th>
+                    <th>OwnerName</th>
+                    <th>Email</th>
+                  </tr>
+                  <tr>
+                    <td colspan="6">
+                      <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div> -->
 
-      <div *ngIf="tableData" class="table-responsive">
-        <table class="table table-hover table-bordered full-data-table" [mfData]="tableData" #mf="mfDataTable"
-          [mfRowsOnPage]="rowsOnPage">
-          <thead>
-            <tr>
-              <th class="side-right">اسم الزبون</th>
-              <th class="side-right">عنوان الزبون</th>
-              <th class="side-right">نوع الزبون</th>
-              <th class="side-right">التاريخ</th>
-              <th class="side-right">الاجمالي</th>
-              <th class="side-right">الحالة</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let item of tableData">
-            <tr>
-              <td colspan="6" class="marketing-header">{{item.date}}</td>
-            </tr>
-            <tr *ngFor="let o of item.orderData">
-              <td>
-                {{o.client.ownerName}}
-                <!-- <a href="javascript:"><i class="icofont icofont-social-facebook bg-facebook social-icon"></i></a>
-              <div class="table-contain">
-                <h6>Face Book ads</h6>
-                <p class="text-muted">6:00am- 8:00am</p>
-              </div> -->
-              </td>
-              <td>
-                {{o.client.email}}
-                <!-- <p class="text-muted">Softtech</p> -->
-              </td>
-              <td>
-                {{o.clientType}}
-                <!-- <i class="icofont icofont-bird text-c-green"></i>
-              <p class="m-l-10 text-c-green">6.45%</p> -->
-              </td>
-              <td>
-                <!-- <span>$5645</span> -->
-                {{o.orderDate}}
-              </td>
-              <td>
-                {{o.totalPrice}}
-                <!-- <div ngbDropdown class="dropdown-primary dropdown open">
-                <button ngbDropdownToggle class="btn btn-light dropdown-toggle" type="button" id="dropdown-1" data-toggle="dropdown"><i class="icofont icofont-brand-flikr text-muted"></i></button>
-                <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="dropdown-1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Insert</a>
-                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Update</a>
-                  <a class="dropdown-item waves-light waves-effect" href="javascript:">Delete</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item waves-light waves-effect" href="javascript:">disable</a>
-                </div>
-              </div> -->
-              </td>
-              <td>
-                <button [class.btn-bg-c-green]="o.status == 'delivered'" [class.btn-bg-c-yellow]="o.status == 'pending'"
-                  [class.btn-bg-c-red]="o.status == 'canceled'" class="btn btn-default  btn-outline-default btn-round btn-action">{{o.status}}</button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th class="side-right">الحالة</th>
-              <th class="side-right">التاريخ</th>
-              <th class="side-right">الاجمالي</th>
-              <th class="side-right">اسم المستخدم</th>
-              <th class="side-right">البريد الالكروني</th>
-            </tr>
-            <tr>
-              <td colspan="6">
-                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+            <div *ngIf="tableData" class="table-responsive">
+                <table #mf="mfDataTable" [mfData]="tableData" [mfRowsOnPage]="rowsOnPage"
+                       class="table table-hover table-bordered full-data-table">
+                    <thead>
+                    <tr>
+                        <th class="side-right">اسم الزبون</th>
+                        <th class="side-right">عنوان الزبون</th>
+                        <th class="side-right">نوع الزبون</th>
+                        <th class="side-right">التاريخ</th>
+                        <th class="side-right">الاجمالي</th>
+                        <th class="side-right">الحالة</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let item of tableData">
+                    <tr>
+                        <td class="marketing-header" colspan="6">{{item.date}}</td>
+                    </tr>
+                    <tr *ngFor="let o of item.orderData">
+                        <td>
+                            {{o.client.ownerName}}
+                            <!-- <a href="javascript:"><i class="icofont icofont-social-facebook bg-facebook social-icon"></i></a>
+                          <div class="table-contain">
+                            <h6>Face Book ads</h6>
+                            <p class="text-muted">6:00am- 8:00am</p>
+                          </div> -->
+                        </td>
+                        <td>
+                            {{o.client.email}}
+                            <!-- <p class="text-muted">Softtech</p> -->
+                        </td>
+                        <td>
+                            {{o.clientType}}
+                            <!-- <i class="icofont icofont-bird text-c-green"></i>
+                          <p class="m-l-10 text-c-green">6.45%</p> -->
+                        </td>
+                        <td>
+                            <!-- <span>$5645</span> -->
+                            {{o.orderDate}}
+                        </td>
+                        <td>
+                            {{o.totalPrice}}
+                            <!-- <div ngbDropdown class="dropdown-primary dropdown open">
+                            <button ngbDropdownToggle class="btn btn-light dropdown-toggle" type="button" id="dropdown-1" data-toggle="dropdown"><i class="icofont icofont-brand-flikr text-muted"></i></button>
+                            <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="dropdown-1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                              <a class="dropdown-item waves-light waves-effect" href="javascript:">Insert</a>
+                              <a class="dropdown-item waves-light waves-effect" href="javascript:">Update</a>
+                              <a class="dropdown-item waves-light waves-effect" href="javascript:">Delete</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item waves-light waves-effect" href="javascript:">disable</a>
+                            </div>
+                          </div> -->
+                        </td>
+                        <td>
+                            <button [class.btn-bg-c-green]="o.status == 'delivered'"
+                                    [class.btn-bg-c-red]="o.status == 'canceled'"
+                                    [class.btn-bg-c-yellow]="o.status == 'pending'"
+                                    class="btn btn-default  btn-outline-default btn-round btn-action">{{o.status}}</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th class="side-right">الحالة</th>
+                        <th class="side-right">التاريخ</th>
+                        <th class="side-right">الاجمالي</th>
+                        <th class="side-right">اسم المستخدم</th>
+                        <th class="side-right">البريد الالكروني</th>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
 
-      <!-- <div class="table-responsive">
-        <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery"
-          #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-          <thead>
-            <tr>
-              <th>
-                <mfDefaultSorter by="name">Name</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter by="position">Position</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter by="office">Office</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter by="age">Age</mfDefaultSorter>
-              </th>
-              <th>
-                <mfDefaultSorter by="start-date">Start date</mfDefaultSorter>
-              </th>
-            </tr>
-            <tr>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of data">
-              <td>{{item.status}}</td>
-              <td>{{item.orderDate}}</td>
-              <td>{{item.totalPrice}}</td>
-              <td>{{item.client.ownerName}}</td>
-              <td>{{item.client.email}}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Office</th>
-              <th>Age</th>
-              <th>Start date</th>
-            </tr>
-            <tr>
-              <td colspan="6">
-                <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div> -->
+            <!-- <div class="table-responsive">
+              <table class="table table-striped table-bordered full-data-table" [mfData]="data | dataFilter : filterQuery"
+                #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+                <thead>
+                  <tr>
+                    <th>
+                      <mfDefaultSorter by="name">Name</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter by="position">Position</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter by="office">Office</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter by="age">Age</mfDefaultSorter>
+                    </th>
+                    <th>
+                      <mfDefaultSorter by="start-date">Start date</mfDefaultSorter>
+                    </th>
+                  </tr>
+                  <tr>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.status}}</td>
+                    <td>{{item.orderDate}}</td>
+                    <td>{{item.totalPrice}}</td>
+                    <td>{{item.client.ownerName}}</td>
+                    <td>{{item.client.email}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                  </tr>
+                  <tr>
+                    <td colspan="6">
+                      <mfBootstrapPaginator class="pagination-main f-right"></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div> -->
 
 
-    </app-card>
-  </div>
+        </app-card>
+    </div>
 </div>
