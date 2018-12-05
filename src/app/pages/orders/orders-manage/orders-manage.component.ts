@@ -57,7 +57,7 @@ export class OrdersManageComponent implements OnInit {
     users: UserModel[];
     // clientTypeList=['retailCostumer', 'wholesale', 'horeca'];
     selectedProducts: OrderProduct[] = [];
-    selectedEditProducts: OrderProduct[] = [];
+    selectedEditProducts = [];
     selectedEditProductsIds: string[];
     statusCode: number;
     orderForm = new FormGroup({
@@ -78,6 +78,7 @@ export class OrdersManageComponent implements OnInit {
         });
         this.orders = [];
         this.Handler.getOrders().subscribe(data => {
+            console.log(data);
             this.orders = data;
             // this.orders.push(data.find(x => x.id == '5be858848bb84360696cf967'));
         });
@@ -88,6 +89,8 @@ export class OrdersManageComponent implements OnInit {
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
             this.editProducts=this.OrderToEdit.products;
+            this.totalPrice=this.OrderToEdit.totalPrice;
+            this.editIndex = index;
 
         }).subscribe(data => {
                 this.ul = [];
@@ -133,10 +136,11 @@ export class OrdersManageComponent implements OnInit {
         }
 
 
+
         setTimeout(() => {
             this.IOproducts = this.tP;
         }, 50);
-        this.editIndex = index;
+
 
     }
 
@@ -172,15 +176,26 @@ export class OrdersManageComponent implements OnInit {
         }
     }
     cancelOrder(){
-        this.OrderToEdit=this.delMan=this.selectedEditProductsIds=this.editProducts=undefined;
+        this.OrderToEdit=this.delMan=this.selectedEditProductsIds=this.editProducts=this.couponOrder=undefined;
         this.selectedEditProducts=[];
+        this.editIndex=undefined;
+
     }
     checkCoupon(e) {
         let value = e.target.value;
         this.CouponHandler.getCouponByCode(value).subscribe(c => {
-            this.couponOrder = c[0];
+
             this.newOrder.couponId = this.couponOrder.id;
             this.totalPriceCalculate(this.selectedProducts);
+        });
+    }
+
+    checkEditCoupon(e) {
+        let value = e.target.value;
+        this.CouponHandler.getCouponByCode(value).subscribe(c => {
+            this.couponOrder = c[0];
+            this.OrderToEdit.couponId = this.couponOrder;
+            this.totalPriceCalculate(this.selectedEditProducts);
         });
     }
 
@@ -288,7 +303,6 @@ export class OrdersManageComponent implements OnInit {
                 this.totalPrice = this.totalPrice - (this.couponOrder.value * this.totalPrice / 100);
             }
         }
-        this.totalPrice;
     }
 
     userSelected(u, order) {
@@ -369,6 +383,7 @@ export class OrdersManageComponent implements OnInit {
     }
     createOrder() {
         this.newOrder.totalPrice=this.totalPrice;
+        console.log(this.newOrder);
         this.Handler.createOrder(this.newOrder).finally(()=>{
             this.router.navigate(['/orders/management']);
         }).subscribe();
@@ -377,11 +392,11 @@ export class OrdersManageComponent implements OnInit {
     editOrderApi(order) {
         order.products=this.selectedEditProducts;
         order.totalPrice=this.totalPrice;
-        this.Handler.updateOrder(order).finally(()=>{
-            this.cancelOrder();
-            this.editIndex=undefined;
-            // this.
-            }).subscribe();
+        console.log(order);
+        //
+        // this.Handler.updateOrder(order).finally(()=>{
+        //     this.cancelOrder();
+        //     }).subscribe();
     }
     onOrderFormSubmit() {
         this.isSubmitted = true;

@@ -45,7 +45,7 @@
                                     <span>{{"orders.table.count"|translate}} </span><input
                                         (change)="priceCalculate(product.productId,product.count)"
                                         [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
-                                        style="max-width: 20%"
+                                        style="max-width: 60%"
                                         type="number"></td>
                                 <td style="text-align: center">
                                     <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
@@ -135,6 +135,8 @@
             </th>
         </tr>
         </thead>
+
+
         <tbody>
         <ng-container *ngFor="let order of orders; let index=index">
             <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
@@ -239,11 +241,11 @@
 
                                             </td>
                                             <td>{{findEditProduct(product.productId).nameAr}}</td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: center;">
                                                 <span>{{"orders.table.count"|translate}} </span><input
                                                     (change)="priceEditCalculate(product.productId,product.count)"
                                                     [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
-                                                    style="max-width: 20%"
+                                                    style="width: 49px"
                                                     type="number"></td>
                                             <td style="text-align: center">
                                                 <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
@@ -276,9 +278,11 @@
                         </ul>
                     </td>
                     <td>
+                        <input style="width: 85px" (change)="checkEditCoupon($event)" class="form-control"
+                               placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
+                               type="text" [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
 
-        <span *ngIf="OrderToEdit.coupon">{{OrderToEdit.coupon.value}}<span
-                *ngIf="OrderToEdit.coupon.type=='percent'">%</span></span>
+
                     </td>
                     <td>
                         <select [(ngModel)]="OrderToEdit.status" class="form-control" id="status">
@@ -286,6 +290,7 @@
                                 {{"orders.table.delStatus." + option|translate}}
                             </option>
                         </select>
+
                     </td>
                     <td class="no-padding-td">
                         <ul class="list-group table-ul">
