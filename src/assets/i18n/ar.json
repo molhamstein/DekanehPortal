@@ -434,6 +434,7 @@
     }
   },
   "orders": {
+    "searchPro": "ابحث عن منتج",
     "buttons": {
       "edit": "تعديل",
       "delete": "حذف",

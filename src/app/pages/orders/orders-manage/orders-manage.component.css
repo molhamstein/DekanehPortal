@@ -247,3 +247,13 @@ button[disabled] {
     text-align: center;
     display: inline-flex;
 }
+.per-page-sec {
+    float: right;
+    margin-right: 20px;
+}
+
+#perpage {
+    display: inline-block;
+    width: 80px;
+    margin-right: 10px;
+}

@@ -23,10 +23,12 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="products">{{"orders.new.products"|translate}}</label>
-                    <ng-select (deselected)="productDeSelected($event)" (filterInputChanged)="searchProducts($event)"
+                    <ng-select (filterInputChanged)="searchProducts($event)"
                                (selected)="productSelected($event)"
                                [disabled]="orderUser==undefined"
                                [multiple]="true" [options]="IOproducts"
+                               [placeholder]="'orders.searchPro'|translate"
+                               [(ngModel)]="selectedProductsIds" [ngModelOptions]="{standalone: true}"
                                id="products">
                     </ng-select>
                 </div>
@@ -45,10 +47,13 @@
                                     <span>{{"orders.table.count"|translate}} </span><input
                                         (change)="priceCalculate(product.productId,product.count)"
                                         [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
-                                        style="max-width: 60%"
+                                        style="width: 49px"
                                         type="number"></td>
                                 <td style="text-align: center">
                                     <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                                </td>
+                                <td style="text-align: center">
+                                    <span class="functions-btn text-danger"(click)="productDeSelected(product.productId)" ><i class="fa fa-remove fa-lg"></i></span>
                                 </td>
                             </tr>
                             </tbody>
@@ -222,7 +227,7 @@
                                 <!--<label for="products">{{"orders.new.products"|translate}}</label>-->
                                 <ng-select (filterInputChanged)="searchEditProducts($event)"
                                            (selected)="productEditSelected($event)"
-                                           (deselected)="productEditDeSelected($event)"
+                                           [placeholder]="'orders.searchPro'|translate"
 
                                            [multiple]="true" [options]="IOproducts"
                                            [(ngModel)]="selectedEditProductsIds"
@@ -238,7 +243,6 @@
                                                     *ngIf="findEditProduct(product.productId).media!=undefined"
                                                     [src]="findEditProduct(product.productId).media.thumbnail"
                                                     style="max-width: 34px;max-height: 34px;">
-
                                             </td>
                                             <td>{{findEditProduct(product.productId).nameAr}}</td>
                                             <td style="text-align: center;">
@@ -249,6 +253,9 @@
                                                     type="number"></td>
                                             <td style="text-align: center">
                                                 <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <span class="functions-btn text-danger"(click)="productEditDeSelected(product.productId)" ><i class="fa fa-remove fa-lg"></i></span>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -292,6 +299,7 @@
                         </select>
 
                     </td>
+
                     <td class="no-padding-td">
                         <ul class="list-group table-ul">
                             <li>
@@ -305,13 +313,21 @@
                             <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>
                         </ul>
                     </td>
-
                 </tr>
-
             </ng-container>
         </ng-container>
         </tbody>
-
     </table>
 </div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<div [hidden]="spinnerFlag||unpage" class="row">
+    <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+                firstText="&laquo;" lastText="&raquo;"
+                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+                [boundaryLinks]="true"></pagination>
+    <div class="per-page-sec">
+        <span>{{"client.perPage"|translate}}</span>
+        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+    </div>
 
+</div>

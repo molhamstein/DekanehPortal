@@ -42,7 +42,7 @@ export class ProductHandler {
 
     getPerPageProducts(perPage: number, currentPage: number) {
         let param = new URLSearchParams();
-        param.append('filter', '{"order": "creationDate<ASC>","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
+        param.append('filter', '{"order": "creationDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
         return this.apiService.get('/products', param)
             .map(this.extractData).catch(this.handleError);
     }

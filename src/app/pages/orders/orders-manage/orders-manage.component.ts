@@ -35,8 +35,12 @@ import {StaffHandler} from '../../staff/staff.handler';
 export class OrdersManageComponent implements OnInit {
     orders: any[];
     totalPrice = 0;
-    editProducts:any[];
+    editProducts: any[];
     orderUser: UserModel;
+    spinnerFlag: boolean;
+    unpage = false;
+    productsCount;
+    pages = 20;
     onEdit = false;
     IOproducts: Array<IOption> = [];
     IOusers: Array<IOption> = [];
@@ -44,10 +48,12 @@ export class OrdersManageComponent implements OnInit {
     tP: Array<IOption> = [];
     ul: Array<IOption> = [];
     deul: Array<IOption> = [];
-    products: any[];
+    products: any[]=[];
+    newProducts: any[]=[];
     delMan: any;
     isSubmitted = false;
     couponOrder: Coupon;
+    currentPage = 1;
     editIndex;
     couponNotfound: boolean;
     hoveredIndex;
@@ -59,6 +65,7 @@ export class OrdersManageComponent implements OnInit {
     selectedProducts: OrderProduct[] = [];
     selectedEditProducts = [];
     selectedEditProductsIds: string[];
+    selectedProductsIds: string[];
     statusCode: number;
     orderForm = new FormGroup({
         clientId: new FormControl('', Validators.required),
@@ -77,19 +84,34 @@ export class OrdersManageComponent implements OnInit {
             }
         });
         this.orders = [];
-        this.Handler.getOrders().subscribe(data => {
-            console.log(data);
-            this.orders = data;
-            // this.orders.push(data.find(x => x.id == '5be858848bb84360696cf967'));
-        });
+        this.getOrders();
         this.newOrder = new Order();
+    }
+
+    getOrders() {
+        this.spinnerFlag = true;
+        this.Handler.getOrdersCount().finally(() => {
+            this.Handler.getOrders(this.pages, this.currentPage)
+                .finally(() => {
+                    this.spinnerFlag = false;
+                    this.unpage = false;
+                })
+                .subscribe(data => {
+                        this.orders = data;
+                        console.log(data.find(x=>x.id=='5c0293e444e1e86995a57732'));
+                    }
+                    , errorCode => this.statusCode = errorCode);
+
+        }).subscribe(c => {
+            this.productsCount = c['count'];
+        });
     }
 
     editOrder(order, index) {
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
-            this.editProducts=this.OrderToEdit.products;
-            this.totalPrice=this.OrderToEdit.totalPrice;
+            this.editProducts = this.OrderToEdit.products;
+            this.totalPrice = this.OrderToEdit.totalPrice;
             this.editIndex = index;
 
         }).subscribe(data => {
@@ -125,7 +147,6 @@ export class OrdersManageComponent implements OnInit {
         this.selectedProducts = [];
         for (let pro of order.products) {
             this.tP.push({label: pro.nameAr, value: pro.productId});
-            this.selectedEditProductsIds.push(pro.productId);
             this.selectedEditProducts.push({
                 'count': pro.count,
                 'price': pro.price,
@@ -136,7 +157,6 @@ export class OrdersManageComponent implements OnInit {
         }
 
 
-
         setTimeout(() => {
             this.IOproducts = this.tP;
         }, 50);
@@ -145,26 +165,28 @@ export class OrdersManageComponent implements OnInit {
     }
 
     productSelected(IOproduct) {
-        let product = this.findProduct(IOproduct.value);
+        let product = this.products.find(x=>x._id===IOproduct.value);
+        this.newProducts.push(product);
+
         this.selectedProducts.push({
             'count': 0,
             'price': 0,
             'productId': product._id,
         });
         this.newOrder.products = this.selectedProducts;
+        this.selectedProductsIds=[];
+
         this.productCheck();
     }
+
     productEditSelected(IOproduct) {
         let product = this.findEditProduct(IOproduct.value);
-
-
         this.selectedEditProducts.push({
             'count': 0,
             'price': 0,
             'productId': product._id,
         });
-        console.log(this.selectedEditProducts);
-
+this.selectedEditProductsIds=[];
     }
 
     productCheck() {
@@ -175,12 +197,14 @@ export class OrdersManageComponent implements OnInit {
 
         }
     }
-    cancelOrder(){
-        this.OrderToEdit=this.delMan=this.selectedEditProductsIds=this.editProducts=this.couponOrder=undefined;
-        this.selectedEditProducts=[];
-        this.editIndex=undefined;
+
+    cancelOrder() {
+        this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
+        this.selectedEditProducts = [];
+        this.editIndex = undefined;
 
     }
+
     checkCoupon(e) {
         let value = e.target.value;
         this.CouponHandler.getCouponByCode(value).subscribe(c => {
@@ -199,34 +223,47 @@ export class OrdersManageComponent implements OnInit {
         });
     }
 
+    pageChanged(event: any): void {
+        setTimeout(() => {
+            this.getOrders();
+        }, 50);
+    }
+
+    changepages(event) {
+        this.pages = event.target.value;
+        setTimeout(() => {
+            this.currentPage = 1;
+        }, 50);
+        this.getOrders();
+    }
+
     findProduct(id) {
-        return this.products.find(x => x._id === id);
+        return this.newProducts.find(x => x._id === id);
     }
+
     findEditProduct(id) {
-                if(this.editProducts.find(x => x.productId === id)==undefined){
-                    return this.editProducts.find(x => x._id === id)
+        if (this.editProducts.find(x => x.productId === id) == undefined) {
+            return this.editProducts.find(x => x._id === id);
 
-                }else{
-                    return this.editProducts.find(x => x.productId === id)
+        } else {
+            return this.editProducts.find(x => x.productId === id);
 
-                }
+        }
     }
 
-    productDeSelected(IOproduct) {
-        let product = this.products.find(x => x._id === IOproduct.value);
-        this.selectedProducts.splice(this.selectedProducts.indexOf(this.selectedProducts.find(x => x.productId === IOproduct.value)), 1);
+    productDeSelected(id) {
+        let product = this.products.find(x => x._id === id);
+        this.selectedProducts.splice(this.selectedProducts.indexOf(this.selectedProducts.find(x => x.productId === id)), 1);
         this.newOrder.products = this.selectedProducts;
         this.productCheck();
     }
-    productEditDeSelected(IOproduct) {
 
-
-        let product = this.findEditProduct(IOproduct.value)
-        this.selectedEditProducts.splice(this.selectedEditProducts.indexOf(this.selectedEditProducts.find(x => x.productId === IOproduct.value)), 1);
+    productEditDeSelected(id) {
+        let product = this.findEditProduct(id);
+        this.selectedEditProducts.splice(this.selectedEditProducts.indexOf(this.selectedEditProducts.find(x => x.productId === id)), 1);
         this.OrderToEdit.products = this.selectedEditProducts;
-        // this.productCheck();
-        console.log(this.IOproducts);
     }
+
     findUser(id) {
         return this.users.find(x => x.id === id);
     }
@@ -254,39 +291,35 @@ export class OrdersManageComponent implements OnInit {
 
     }
 
-    priceEditCalculate(id,count) {
+    priceEditCalculate(id, count) {
 
         let price: number;
 
-            this.productHandler.getProductById(id).subscribe(p=>{
+        this.productHandler.getProductById(id).subscribe(p => {
 
 
-                if (this.OrderToEdit.clientType == 'horeca') {
-                    if (p.horecaPriceDiscount != 0) {
-                        price = p.horecaPriceDiscount * count;
+            if (this.OrderToEdit.clientType == 'horeca') {
+                if (p.horecaPriceDiscount != 0) {
+                    price = p.horecaPriceDiscount * count;
 
-                    } else {
-                        price = p.horecaPrice * count;
-
-                    }
-                } else if (this.OrderToEdit.clientType == 'wholesale' || this.orderUser.clientType == 'retailCostumer') {
-                    if (p.wholeSalePriceDiscount != 0) {
-                        price =p.wholeSalePriceDiscount*count ;
-                        console.log(price);
-
-                    } else {
-                        price = p.wholeSalePrice * count;
-                    }
+                } else {
+                    price = p.horecaPrice * count;
 
                 }
-                this.selectedEditProducts.find(x => x.productId == id).price = price;
-                this.totalPriceCalculate(this.selectedEditProducts);
+            } else if (this.OrderToEdit.clientType == 'wholesale' || this.orderUser.clientType == 'retailCostumer') {
+                if (p.wholeSalePriceDiscount != 0) {
+                    price = p.wholeSalePriceDiscount * count;
+                    console.log(price);
 
-            });
+                } else {
+                    price = p.wholeSalePrice * count;
+                }
 
+            }
+            this.selectedEditProducts.find(x => x.productId == id).price = price;
+            this.totalPriceCalculate(this.selectedEditProducts);
 
-
-
+        });
 
 
     }
@@ -312,7 +345,7 @@ export class OrdersManageComponent implements OnInit {
     }
 
     DeuserSelected(u, order) {
-                order.status = 'inDelivery';
+        order.status = 'inDelivery';
     }
 
     searchUsers(str) {
@@ -357,12 +390,13 @@ export class OrdersManageComponent implements OnInit {
                         setTimeout(() => {
                             this.IOproducts = this.tP;
                         }, 50);
-                        this.products = data;
+                        this.products=this.products.concat(data);
                     }
                     , errorCode => this.statusCode = errorCode);
         }
 
     }
+
     searchEditProducts(str) {
         this.tP = [];
         if (str != '') {
@@ -381,23 +415,23 @@ export class OrdersManageComponent implements OnInit {
         }
 
     }
+
     createOrder() {
-        this.newOrder.totalPrice=this.totalPrice;
+        this.newOrder.totalPrice = this.totalPrice;
         console.log(this.newOrder);
-        this.Handler.createOrder(this.newOrder).finally(()=>{
+        this.Handler.createOrder(this.newOrder).finally(() => {
             this.router.navigate(['/orders/management']);
         }).subscribe();
     }
 
     editOrderApi(order) {
-        order.products=this.selectedEditProducts;
-        order.totalPrice=this.totalPrice;
-        console.log(order);
-        //
-        // this.Handler.updateOrder(order).finally(()=>{
-        //     this.cancelOrder();
-        //     }).subscribe();
+        order.products = this.selectedEditProducts;
+        order.totalPrice = this.totalPrice;
+        this.Handler.updateOrder(order).finally(() => {
+            this.cancelOrder();
+        }).subscribe();
     }
+
     onOrderFormSubmit() {
         this.isSubmitted = true;
 
