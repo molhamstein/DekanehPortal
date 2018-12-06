@@ -6,7 +6,7 @@
                     <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
                     <ng-select #select (filterInputChanged)="searchUsers($event)"
                                (selected)="userSelected($event,newOrder)"
-                               [(ngModel)]="newOrder.clientId" [multiple]="true"
+                               [(ngModel)]="newOrder.clientId" [multiple]="false"
                                [options]="IOusers" formControlName="clientId" id="clientId">
                     </ng-select>
 
