@@ -346,16 +346,18 @@ this.selectedEditProductsIds=[];
     }
 
     searchUsers(str) {
-
+        console.log(str);
         this.CouponHandler.getUsersByShope(str).subscribe(data => {
                 this.ul = [];
                 for (let u of data) {
                     this.ul.push({label: u.shopName, value: u.id});
                 }
                 this.users = data;
-                setTimeout(() => {
+                console.log(data);
+
+            setTimeout(() => {
                     this.IOusers = this.ul;
-                }, 100);
+                }, 50);
             }
         );
     }
