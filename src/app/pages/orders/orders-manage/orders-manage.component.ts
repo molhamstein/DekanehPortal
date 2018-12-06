@@ -98,7 +98,6 @@ export class OrdersManageComponent implements OnInit {
                 })
                 .subscribe(data => {
                         this.orders = data;
-                        console.log(data.find(x=>x.id=='5c0293e444e1e86995a57732'));
                     }
                     , errorCode => this.statusCode = errorCode);
 
@@ -126,7 +125,6 @@ export class OrdersManageComponent implements OnInit {
             }
         );
         if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
-            console.log(order.deliveryMemberId);
 
             this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
 
@@ -309,7 +307,6 @@ this.selectedEditProductsIds=[];
             } else if (this.OrderToEdit.clientType == 'wholesale' || this.orderUser.clientType == 'retailCostumer') {
                 if (p.wholeSalePriceDiscount != 0) {
                     price = p.wholeSalePriceDiscount * count;
-                    console.log(price);
 
                 } else {
                     price = p.wholeSalePrice * count;
@@ -350,7 +347,7 @@ this.selectedEditProductsIds=[];
 
     searchUsers(str) {
 
-        this.CouponHandler.getUsersByString(str).subscribe(data => {
+        this.CouponHandler.getUsersByShope(str).subscribe(data => {
                 this.ul = [];
                 for (let u of data) {
                     this.ul.push({label: u.shopName, value: u.id});
@@ -418,7 +415,6 @@ this.selectedEditProductsIds=[];
 
     createOrder() {
         this.newOrder.totalPrice = this.totalPrice;
-        console.log(this.newOrder);
         this.Handler.createOrder(this.newOrder).finally(() => {
             this.router.navigate(['/orders/management']);
         }).subscribe();
@@ -438,7 +434,6 @@ this.selectedEditProductsIds=[];
         if (this.orderForm.invalid || this.productError) {
             return;
         }
-        console.log(this.newOrder);
         this.createOrder();
     }
 }

@@ -41,6 +41,13 @@ export class CouponHandlerService {
         return this.apiService.get('/users', param)
             .map(this.extractData).catch(this.handleError);
     }
+    getUsersByShope(str: string): Observable<UserModel[]> {
+        let param = new URLSearchParams();
+        let rolesString = '';
+        param.append('filter', '{"where":{"and":[{"roleIds":{"eq":[]}}, {"shopName": {"like": "' + str + '"}}]},"limit":"10"}');
+        return this.apiService.get('/users', param)
+            .map(this.extractData).catch(this.handleError);
+    }
 
     searchCoupons(str: string) {
         let param = new URLSearchParams();
