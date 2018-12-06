@@ -6,16 +6,13 @@
                     <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
                     <ng-select #select (filterInputChanged)="searchUsers($event)"
                                (selected)="userSelected($event,newOrder)"
-                               [(ngModel)]="newOrder.clientId" [multiple]="false"
+                               [(ngModel)]="newOrder.clientId" [multiple]="true"
                                [options]="IOusers" formControlName="clientId" id="clientId">
                     </ng-select>
 
                     <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
                            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
                 </div>
-                <input (change)="searchUsers($event)" class="form-control"
-                       placeholder="search users and check console"
-                       type="text">
                 <div class="form-group">
                     <label for="couponId">{{"orders.new.coupon"|translate}}</label>
                     <input (change)="checkCoupon($event)" class="form-control" id="couponId"
