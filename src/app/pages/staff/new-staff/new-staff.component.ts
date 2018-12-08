@@ -15,7 +15,7 @@ export class NewStaffComponent implements OnInit {
     roles: any[];
     status = 'pending';
     allStatus = ['pending', 'activated', 'deactivated'];
-
+    phoneError = false;
     roleIds: string[] = [];
     IOroles: Array<IOption> = [];
     t: Array<IOption> = [];
@@ -36,7 +36,11 @@ export class NewStaffComponent implements OnInit {
                 Validators.email,
                 Validators.required
             ])),
-
+        phoneNumber: new FormControl('', Validators.compose(
+            [
+                Validators.pattern('^\\+?\\d+$'),
+                Validators.required
+            ])),
         roleIds: new FormControl(''),
         status: new FormControl(''),
         password: new FormControl('',
@@ -68,6 +72,7 @@ export class NewStaffComponent implements OnInit {
                     email: staff.email,
                     roleIds: staff.roleIds,
                     status: staff.status,
+                    phoneNumber: staff.phoneNumber,
                 });
                 this.newUSer = false;
 
@@ -102,6 +107,18 @@ export class NewStaffComponent implements OnInit {
     }
 
 
+    checkUserByPhone(event) {
+        this.staffHandler.getStaffByPhone(event.target.value).subscribe(data => {
+                if (data['count'] > 0) {
+                    this.phoneError = true;
+                } else {
+                    this.phoneError = false;
+
+                }
+
+            }
+        );
+    }
     checkUserByName(event) {
         this.staffHandler.getStaffByUserName(event.target.value).subscribe(data => {
                 if (data['count'] > 0) {
@@ -124,7 +141,7 @@ export class NewStaffComponent implements OnInit {
 
     onStaffFormSubmit() {
         this.processValidation = true;
-        if (this.staffForm.invalid || this.passError || this.emailError || this.nameError) {
+        if (this.staffForm.invalid || this.passError || this.emailError || this.nameError || this.phoneError) {
             return;
         }
 
@@ -146,6 +163,7 @@ export class NewStaffComponent implements OnInit {
             this.user.status = this.status;
             this.user.username = this.staffForm.get('username').value;
             this.user.email = this.staffForm.get('email').value;
+            this.user.phoneNumber = this.staffForm.get('phoneNumber').value;
             this.user.clientType = this.selectedSale;
             this.staffHandler.updateStaffUser(this.user).subscribe(successCode => {
                     this.statusCode = successCode;

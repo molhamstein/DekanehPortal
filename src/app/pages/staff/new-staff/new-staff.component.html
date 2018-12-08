@@ -35,9 +35,27 @@
                     <label *ngIf="staffForm.get('password').invalid && processValidation"
                            [ngClass]="'text-danger'">{{'staff.form.validations.password'|translate}}</label>
                 </div>
+                <div *ngIf="newUSer" class="form-group">
+                    <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
+                    <input (keyup)="comparePass($event)" class="form-control" id="repassowrd" type="password">
+                    <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
+
+                </div>
             </div>
             <div class="col-sm">
                 <!--</div>-->
+                <div class="form-group">
+                    <label for="phone">{{"staff.form.controls.phone"|translate}}</label>
+                    <input (change)="checkUserByPhone($event)" class="form-control" formControlName="phoneNumber"
+                           id="phone"
+                           placeholder="{{'staff.form.placeholders.phone'|translate}}" type="text">
+                    <label *ngIf="staffForm.get('phoneNumber').invalid && processValidation"
+                           [ngClass]="'text-danger'">{{'staff.form.validations.phone'|translate}}</label>
+                    <label *ngIf="phoneError" [ngClass]="'text-danger'">{{'staff.form.errors.phone'|translate}}</label>
+                    <small class="form-text text-muted"
+                           id="phoneHint">{{'staff.form.validations.phoneHint'|translate}}</small>
+
+                </div>
                 <div class="form-group">
                     <label for="roleIds">{{"staff.form.controls.roles"|translate}}</label>
 
@@ -54,12 +72,7 @@
                         </option>
                     </select>
                 </div>
-                <div *ngIf="newUSer" class="form-group">
-                    <label for="repassowrd">{{"staff.form.controls.repassword"|translate}}</label>
-                    <input (keyup)="comparePass($event)" class="form-control" id="repassowrd" type="password">
-                    <label *ngIf="passError" [ngClass]="'text-danger'">{{'staff.form.errors.pass'|translate}}</label>
 
-                </div>
             </div>
 
         </div>

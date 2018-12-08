@@ -13,7 +13,6 @@
                            placeholder="{{'product.form.placeholders.prodName'|translate}}" type="text">
                     <label *ngIf="ProductForm.get('nameAr').invalid && processValidation"
                            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                    <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
                 </div>
                 <div class="form-group">
                     <label for="pack">{{"product.form.controls.pack"|translate}}</label>
@@ -21,8 +20,6 @@
                            placeholder="{{'product.form.placeholders.pack'|translate}}" type="text">
                     <label *ngIf="ProductForm.get('pack').invalid && processValidation"
                            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                    <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
                 </div>
                 <div class="form-group">
                     <label for="sku">{{"product.form.controls.sku"|translate}}</label>
