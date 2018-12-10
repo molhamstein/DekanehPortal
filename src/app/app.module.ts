@@ -24,6 +24,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {SelectModule} from 'ng-select';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {TooltipModule} from 'ngx-bootstrap';
+import {AlertService} from './services/alert.service';
 
 // import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: Http) {
         TranslateService,
         AuthGuardService,
         ApiService,
+        AlertService,
         ConstService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}
 

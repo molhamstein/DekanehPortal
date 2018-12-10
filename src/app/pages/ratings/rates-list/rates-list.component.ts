@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RateHandlerService} from '../rate-handler.service';
 import {Area} from '../../areas/area';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-rates-list',
@@ -13,7 +14,7 @@ export class RatesListComponent implements OnInit {
     returnedArray = [];
     spinnerFlag: boolean;
 
-    constructor(private Handler: RateHandlerService) {
+    constructor(private Handler: RateHandlerService,private alert:AlertService) {
         this.spinnerFlag = true;
         this.getAllRatings();
     }
@@ -28,7 +29,9 @@ export class RatesListComponent implements OnInit {
 
         return f;
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     filterBox(event) {
         let value = event.target.value;
         this.returnedArray = this.ratings;
@@ -61,7 +64,7 @@ export class RatesListComponent implements OnInit {
                 this.ratings = this.returnedArray;
                 this.spinnerFlag = false;
 
-            });
+            },errorCode => this.showError());
         });
     }
 

@@ -7,6 +7,8 @@ import {ProductHandler} from '../../products/product-handler';
 import {IOption} from 'ng-select';
 import {Http} from '@angular/http';
 import {DomSanitizer} from '@angular/platform-browser';
+import {OrdersHandlerService} from '../../orders/orders-handler.service';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-slide',
@@ -36,8 +38,18 @@ export class NewSlideComponent implements OnInit {
     selectedFile: any;
     imgSrc: string = '';
     imgBlankError = false;
-
-    constructor(private http: Http, private sanitizer: DomSanitizer, private Handler: SlideHandlerService, private productHandler: ProductHandler, private router: Router, private route: ActivatedRoute) {
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
+    constructor(
+        private http: Http,
+        private alert:AlertService, 
+        private sanitizer: DomSanitizer, 
+        private Handler: SlideHandlerService, 
+        private productHandler: ProductHandler, 
+        private router: Router, 
+        private route: ActivatedRoute
+    ) {
         this.slide = new Slide();
 
         this.route.params.subscribe(params => {
@@ -58,7 +70,7 @@ export class NewSlideComponent implements OnInit {
 
                         }).subscribe(data => {
                             this.searchProducts(data.nameAr);
-                        });
+                        },errorCode => this.showError());
                     }
 
                     this.SlideForm.setValue({
@@ -113,7 +125,7 @@ export class NewSlideComponent implements OnInit {
                         }, 50);
                         this.products = data;
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
         }
 
     }
@@ -131,19 +143,19 @@ export class NewSlideComponent implements OnInit {
 
 
             this.Handler.createSlide(this.slide).finally(() => {
-                // this.router.navigate(['/topSlider/list']);
+                this.router.navigate(['/topSlider/list']);
 
 
             })
                 .subscribe(successCode => {
                         this.statusCode = successCode;
                     },
-                    errorCode => this.statusCode = errorCode);
+                    errorCode => this.showError());
         }).subscribe(res => {
 
                 this.imgUrl = res[0].url;
             },
-            errorCode => console.log(errorCode)
+            errorCode => this.showError()
         );
 
     }
@@ -160,7 +172,7 @@ export class NewSlideComponent implements OnInit {
             .subscribe(successCode => {
                     this.statusCode = successCode;
                 },
-                errorCode => this.statusCode = errorCode);
+                errorCode => this.showError());
     }
 
     onSlideFormSubmit() {
@@ -187,7 +199,7 @@ export class NewSlideComponent implements OnInit {
                 }).subscribe(res => {
                         this.imgUrl = res[0].url;
                     },
-                    errorCode => console.log(errorCode)
+                    errorCode => this.showError()
                 );
             }
         }

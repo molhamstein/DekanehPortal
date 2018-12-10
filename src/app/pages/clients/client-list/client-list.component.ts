@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserModel} from '../../user-model';
 import {Router} from '@angular/router';
 import {ClientsHandler} from '../clients-handler';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-client-list',
@@ -29,13 +30,15 @@ export class ClientListComponent implements OnInit {
     pages = 10;
     areas: any[];
 
-    constructor(private clientHandler: ClientsHandler, private router: Router) {
+    constructor(private clientHandler: ClientsHandler, private router: Router,private alert:AlertService) {
         this.clientHandler.getAllAreas().finally(() => this.getAllClient()).subscribe(data => {
                 this.areas = data;
             }
-            , errorCode => this.statusCode = errorCode);
+            , errorCode => this.showError());
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     pageChanged(event: any): void {
         const startItem = (event.page - 1) * event.itemsPerPage;
         const endItem = event.page * event.itemsPerPage;
@@ -197,7 +200,7 @@ export class ClientListComponent implements OnInit {
                     this.allClient = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
                     this.originalClients = this.allClient;
                 }
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
 
 
     }
@@ -217,10 +220,10 @@ export class ClientListComponent implements OnInit {
                             this.allClient = this.originalClients;
                             // this.backToCreateArticle();
                         },
-                        errorCode => this.statusCode = errorCode
+                        errorCode => this.showError()
                     );
                 },
-                errorCode => this.statusCode = errorCode);
+                errorCode => this.showError());
 
     }
 

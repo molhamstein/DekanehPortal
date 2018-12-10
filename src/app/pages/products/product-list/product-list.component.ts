@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {ProductModel} from '../product-model';
+import {OrdersHandlerService} from '../../orders/orders-handler.service';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-product-list',
@@ -36,8 +38,10 @@ export class ProductListComponent implements OnInit {
     returnedArray: any[] = [];
     pages = 20;
     productsCount;
-
-    constructor(private productHandler: ProductHandler, private router: Router) {
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
+    constructor(private productHandler: ProductHandler, private router: Router,private alert:AlertService) {
         this.getAllCats();
         this.getAllMans();
         this.getAllProducts();
@@ -190,7 +194,7 @@ export class ProductListComponent implements OnInit {
 
             }).subscribe(data => {
                 as = data;
-            });
+            },errorCode => this.showError());
         }
         // this.returnedArray = this.currentArray;
         // let fields = ['nameAr', 'pack'];
@@ -209,7 +213,7 @@ export class ProductListComponent implements OnInit {
             .subscribe(data =>
                     this.cats = data
 
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
     setOfferFilter(e) {
@@ -273,7 +277,7 @@ export class ProductListComponent implements OnInit {
 
                 this.allProduct = data;
 
-            });
+            },errorCode => this.showError());
         }
     }
 
@@ -286,7 +290,7 @@ export class ProductListComponent implements OnInit {
             .subscribe(data =>
                     this.mans = data
 
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
     getAllProducts() {
@@ -304,11 +308,11 @@ export class ProductListComponent implements OnInit {
                         this.allProduct = data;
 
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
 
         }).subscribe(c => {
             this.productsCount = c['count'];
-        });
+        },errorCode => this.showError());
 
 
     }
@@ -328,10 +332,10 @@ export class ProductListComponent implements OnInit {
     //             this.allProduct = this.originalProducts;
     //             // this.backToCreateArticle();
     //           },
-    //           errorCode => this.statusCode = errorCode
+    //           errorCode => this.showError()
     //         );
     //       },
-    //       errorCode => this.statusCode = errorCode);
+    //       errorCode => this.showError());
     //
     // }
 

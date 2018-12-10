@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Area} from '../area';
 import {AreaHandlerService} from '../area-handler.service';
 import {Router} from '@angular/router';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-list-areas',
@@ -25,7 +26,7 @@ export class ListAreasComponent implements OnInit {
     currentArray: Area[] = [];
     pages = 10;
 
-    constructor(private areaHandler: AreaHandlerService, private router: Router) {
+    constructor(private areaHandler: AreaHandlerService, private router: Router,private alert:AlertService) {
         this.getAllArea();
     }
 
@@ -132,11 +133,13 @@ export class ListAreasComponent implements OnInit {
                     this.allAreas = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
                     this.originalAreas = this.allAreas;
                 }
-                , errorCode => this.creationDateCode = errorCode);
+                , errorCode => this.showError());
 
 
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     //
     // deleteArea(id: string) {
     //
@@ -152,10 +155,10 @@ export class ListAreasComponent implements OnInit {
     //             this.allAreas = this.originalAreas;
     //             // this.backToCreateArticle();
     //           },
-    //           errorCode => this.creationDateCode = errorCode
+    //           errorCode => this.showError()
     //         );
     //       },
-    //       errorCode => this.creationDateCode = errorCode);
+    //       errorCode => this.showError());
     //
     // }
 

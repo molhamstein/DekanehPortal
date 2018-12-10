@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StaffHandler} from '../staff.handler';
 import {Router} from '@angular/router';
 import {UserModel} from '../../user-model';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'staff-list',
@@ -22,14 +23,16 @@ export class StaffListComponent implements OnInit {
     allStaff: UserModel[] = [];
     orginalStaff: UserModel[] = [];
 
-    constructor(private staffHandler: StaffHandler, private router: Router) {
+    constructor(private staffHandler: StaffHandler, private router: Router,private alert:AlertService) {
 
     }
 
     editStaff(id: string) {
         this.router.navigate(['/staff/edit/' + id]);
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     orderByName() {
         if (this.nameOrderDir == undefined) {
             this.nameOrderDir = this.statusOrderDir = this.emailOrderDir;
@@ -146,7 +149,7 @@ export class StaffListComponent implements OnInit {
                     this.allStaff = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
                     this.orginalStaff = this.allStaff;
                 }
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
 
@@ -164,10 +167,10 @@ export class StaffListComponent implements OnInit {
                             this.getAllStaff();
                             // this.backToCreateArticle();
                         },
-                        errorCode => this.statusCode = errorCode
+                        errorCode => this.showError()
                     );
                 },
-                errorCode => this.statusCode = errorCode);
+                errorCode => this.showError());
 
     }
 

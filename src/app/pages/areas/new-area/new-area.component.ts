@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AreaHandlerService} from '../area-handler.service';
 import {Area} from '../area';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-area',
@@ -27,7 +28,7 @@ export class NewAreaComponent implements OnInit {
 
     });
 
-    constructor(private AreaHandler: AreaHandlerService, private router: Router, private route: ActivatedRoute) {
+    constructor(private AreaHandler: AreaHandlerService, private router: Router, private route: ActivatedRoute,private alert:AlertService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -47,7 +48,9 @@ export class NewAreaComponent implements OnInit {
 
         }
     }
-
+    showError(){
+        this.alert.showToast.next({type: "error"});
+    }
     creatNewArea() {
         this.area = this.AreaForm.value;
         this.AreaHandler.createArea(this.area).subscribe(
@@ -55,7 +58,7 @@ export class NewAreaComponent implements OnInit {
                 this.statusCode = successCode;
                 this.router.navigate(['/areas/list']);
             },
-            errorCode => this.statusCode = errorCode
+            errorCode => this.showError()
         );
     }
 
@@ -66,7 +69,7 @@ export class NewAreaComponent implements OnInit {
                 this.statusCode = successCode;
                 this.router.navigate(['/areas/list']);
             },
-            errorCode => this.statusCode = errorCode
+            errorCode => this.showError()
         );
     }
 

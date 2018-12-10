@@ -4,6 +4,7 @@ import {UserModel} from '../../user-model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MouseEvent} from '@agm/core';
 import {ClientsHandler} from '../clients-handler';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-client',
@@ -56,7 +57,8 @@ export class NewClientComponent implements OnInit {
     };
     private user: any;
 
-    constructor(private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute) {
+    constructor(private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute, private alert:AlertService) {
+
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -74,8 +76,12 @@ export class NewClientComponent implements OnInit {
                 this.user = Client;
                 let loc;
                 let notes;
+                let owner;
+                let shop;
                 Client.location==undefined ? loc='': loc=Client.location;
                 Client.notes==undefined ? notes='': notes=Client.notes;
+                Client.ownerName==undefined ? owner='': owner=Client.ownerName;
+                Client.shopName==undefined ? shop='': shop=Client.shopName;
 
                 this.ClientForm.removeControl('password');
                 this.ClientForm.setValue({
@@ -83,8 +89,8 @@ export class NewClientComponent implements OnInit {
                     location: loc,
                     notes: notes,
                     status: Client.status,
-                    ownerName: Client.ownerName,
-                    shopName: Client.shopName
+                    ownerName: owner,
+                    shopName: shop
                 });
                 this.locationPoint = Client.locationPoint;
                 if(this.locationPoint==undefined){
@@ -93,7 +99,6 @@ export class NewClientComponent implements OnInit {
                         lng: 36.2765
                     };
                 }
-                console.log(Client.locationPoint)
                 this.marker.lng = this.locationPoint.lng;
                 this.marker.lat = this.locationPoint.lat;
                 this.lat = this.locationPoint.lat;
@@ -107,11 +112,14 @@ export class NewClientComponent implements OnInit {
         this.getAreas();
     }
 
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     getAreas() {
         this.ClientHandler.getAllAreas().subscribe(data => {
                 this.areas = data;
             }
-            , errorCode => this.statusCode = errorCode);
+            , errorCode => this.showError());
 
     }
 
@@ -198,7 +206,7 @@ export class NewClientComponent implements OnInit {
                     this.statusCode = successCode;
                     this.router.navigate(['/client/list']);
                 },
-                errorCode => this.statusCode = errorCode
+                errorCode => this.showError()
             );
         } else {
 
@@ -215,7 +223,7 @@ export class NewClientComponent implements OnInit {
                     this.statusCode = successCode;
                     this.router.navigate(['/client/list']);
                 },
-                errorCode => this.statusCode = errorCode
+                errorCode => this.showError()
             );
 
         }

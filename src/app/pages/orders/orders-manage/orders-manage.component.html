@@ -12,7 +12,6 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-
                     <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
                     <ng-select (filterInputChanged)="searchUsers($event)"
                                (selected)="userSelected($event,newOrder)"
@@ -133,11 +132,11 @@
             </tr>
             <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
                 <td class="no-padding-td">
-                    <ul class="list-group table-ul">
-                        <li class="list-group-item ">
+                    <ul class="table-ul">
+                        <li class="table-li">
                             <span>{{order.client.shopName}}</span>
                         </li>
-                        <li class="list-group-item ">
+                        <li class="table-li">
                         <span class="badge client-type"
                               [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + order.clientType|translate}}</span>
                         </li>

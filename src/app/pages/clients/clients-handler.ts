@@ -24,7 +24,6 @@ export class ClientsHandler {
 
     getAllAreas(): Observable<any[]> {
 
-
         return this.apiService.get('/areas')
             .map(this.extractData).catch(this.handleError);
 
@@ -92,7 +91,6 @@ export class ClientsHandler {
     }
 
     private handleError(error: Response | any) {
-        console.error(error.message || error);
         return Observable.throw(error.status);
     }
 }

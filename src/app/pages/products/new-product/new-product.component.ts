@@ -4,6 +4,8 @@ import {ProductHandler} from '../product-handler';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OfferProducts, ProductModel} from '../product-model';
 import {IOption} from 'ng-select';
+import {OrdersHandlerService} from '../../orders/orders-handler.service';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-product',
@@ -83,7 +85,7 @@ export class NewProductComponent implements OnInit {
     });
     private product: ProductModel;
 
-    constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute) {
+    constructor(private Handler: ProductHandler, private router: Router, private route: ActivatedRoute,private alert:AlertService) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
@@ -93,7 +95,7 @@ export class NewProductComponent implements OnInit {
                 this.router.navigated = false;
                 window.scrollTo(0, 0);
             }
-        });
+        },errorCode => this.showError());
 
         this.getAllCats();
         this.getAllMans();
@@ -122,7 +124,7 @@ export class NewProductComponent implements OnInit {
                 this.ProductForm.addControl('creationDate', new FormControl(''));
                 this.ProductForm.addControl('id', new FormControl(''));
                 this.ProductForm.setValue(this.product);
-            });
+            },errorCode => this.showError());
         } else {
             this.status = 'available';
             this.availableTo = 'both';
@@ -131,7 +133,9 @@ export class NewProductComponent implements OnInit {
 
         }
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     onFileChanged(event) {
         this.selectedFile = event.target.files[0];
         const reader = new FileReader();
@@ -145,7 +149,7 @@ export class NewProductComponent implements OnInit {
             .subscribe(data =>
                     this.cats = data
 
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
     getAllMans() {
@@ -153,7 +157,7 @@ export class NewProductComponent implements OnInit {
             .subscribe(data =>
                     this.mans = data
 
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
     searchOffers(str) {
@@ -171,7 +175,7 @@ export class NewProductComponent implements OnInit {
                             this.IOoffers = this.t;
                         }, 100);
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
         }
 
     }
@@ -192,7 +196,7 @@ export class NewProductComponent implements OnInit {
                         }, 50);
                         this.pureProducts = data;
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
         }
 
     }
@@ -262,12 +266,11 @@ export class NewProductComponent implements OnInit {
                 .subscribe(successCode => {
                         this.statusCode = successCode;
                     },
-                    errorCode => this.statusCode = errorCode);
+                    errorCode => this.showError());
         }).subscribe(res => {
 
                 this.imgUrl = res[0].url;
-            },
-            errorCode => console.log(errorCode)
+            } ,errorCode => this.showError()
         );
 
     }
@@ -299,7 +302,7 @@ export class NewProductComponent implements OnInit {
                 this.statusCode = successCode;
                 this.router.navigate(['/products/list']);
             },
-            errorCode => this.statusCode = errorCode);
+            errorCode => this.showError());
 
 
     }
@@ -328,8 +331,7 @@ export class NewProductComponent implements OnInit {
                     this.updateProduct(true);
                 }).subscribe(res => {
                         this.imgUrl = res[0].url;
-                    },
-                    errorCode => console.log(errorCode)
+                    } ,errorCode => this.showError()
                 );
             }
             // this.router.navigate(['/products/list']);

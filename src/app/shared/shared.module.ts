@@ -17,12 +17,16 @@ import {ModalBasicComponent} from './modal-basic/modal-basic.component';
 import {DataFilterPipe} from './element/data-filter.pipe';
 import {ParentRemoveDirective} from './element/parent-remove.directive';
 import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.component';
+import { ErrorHandlingComponent } from './error-handling/error-handling.component';
+import {ToastyModule} from 'ng2-toasty';
+import {AlertService} from '../services/alert.service';
 
 @NgModule({
     imports: [
         CommonModule,
         ScrollModule,
         NgbModule.forRoot(),
+        ToastyModule.forRoot(),
     ],
     declarations: [
         AccordionAnchorDirective,
@@ -38,6 +42,7 @@ import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.c
         ModalBasicComponent,
         DataFilterPipe,
         SecondarySpinnerComponent,
+        ErrorHandlingComponent,
     ],
     exports: [
         AccordionAnchorDirective,
@@ -53,10 +58,11 @@ import {SecondarySpinnerComponent} from './secondary-spinner/secondary-spinner.c
         CardComponent,
         ModalAnimationComponent,
         ModalBasicComponent,
+        ErrorHandlingComponent,
         DataFilterPipe
     ],
     providers: [
-        MenuItems
+        MenuItems,
     ]
 })
 export class SharedModule {

@@ -13,6 +13,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {StaffHandler} from '../../staff/staff.handler';
 import {DatePipe} from '@angular/common';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-orders-manage',
@@ -29,8 +30,7 @@ import {DatePipe} from '@angular/common';
                     animate('300ms', style({transform: 'translateY(100%)', opacity: 0}))
                 ])
             ]
-
-        ),trigger(
+        ), trigger(
             'rightEnterLeftLeaveAnimation', [
                 transition(':enter', [
                     style({transform: 'translateX(100%)', opacity: 0}),
@@ -41,16 +41,15 @@ import {DatePipe} from '@angular/common';
                     animate('300ms', style({transform: 'translateX(-100%)', opacity: 0}))
                 ])
             ]
-
         )
     ],
     styleUrls: ['./orders-manage.component.css']
 })
 export class OrdersManageComponent implements OnInit {
-    showNewBtn=true;
+    showNewBtn = true;
     orders: any[];
     todayIndex: number;
-    addNew=false;
+    addNew = false;
     toDay = this.datFormater(new Date());
     totalPrice = 0;
     dateIndexes: any[];
@@ -92,7 +91,17 @@ export class OrdersManageComponent implements OnInit {
     });
     delstatus = ['pending', 'inDelivery', 'delivered', 'canceled'];
 
-    constructor(private datePipe: DatePipe, private Handler: OrdersHandlerService, private userHandler: StaffHandler, private productHandler: ProductHandler, public c: ConstService, private CouponHandler: CouponHandlerService, private router: Router, private route: ActivatedRoute) {
+    constructor(
+        private datePipe: DatePipe,
+        private Handler: OrdersHandlerService,
+        private userHandler: StaffHandler,
+        private productHandler: ProductHandler,
+        public c: ConstService,
+        private CouponHandler: CouponHandlerService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private alert: AlertService
+    ) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
@@ -102,10 +111,14 @@ export class OrdersManageComponent implements OnInit {
                 this.router.navigated = false;
                 window.scrollTo(0, 0);
             }
-        });
+        }, errorCode => this.showError());
         this.orders = [];
         this.getOrders();
         this.newOrder = new Order();
+    }
+
+    showError() {
+        this.alert.showToast.next({type: 'error'});
     }
 
     datFormater(date) {
@@ -117,7 +130,7 @@ export class OrdersManageComponent implements OnInit {
         if (obj == undefined) {
             return obj;
         } else {
-            this.viewDate=obj.date;
+            this.viewDate = obj.date;
             return this.viewDate;
 
         }
@@ -147,15 +160,15 @@ export class OrdersManageComponent implements OnInit {
                         console.log(this.toDay == this.datFormater(this.orders[0].orderDate));
 
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
 
         }).subscribe(c => {
             this.productsCount = c['count'];
-        });
+        }, errorCode => this.showError());
     }
 
     editOrder(order, index) {
-        this.addNew=false;
+        this.addNew = false;
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
             this.editProducts = this.OrderToEdit.products;
@@ -171,7 +184,7 @@ export class OrdersManageComponent implements OnInit {
                 setTimeout(() => {
                     this.IOusers = this.ul;
                 }, 100);
-            }
+            }, errorCode => this.showError()
         );
         if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
 
@@ -185,9 +198,9 @@ export class OrdersManageComponent implements OnInit {
                         setTimeout(() => {
                             this.IOdeusers = this.deul;
                         }, 100);
-                    }
+                    }, errorCode => this.showError()
                 );
-            }).subscribe(d => this.delMan = d);
+            }).subscribe(d => this.delMan = d, errorCode => this.showError());
         }
         this.tP = [];
         this.selectedEditProductsIds = [];
@@ -248,7 +261,7 @@ export class OrdersManageComponent implements OnInit {
     cancelOrder() {
         this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
         this.selectedEditProducts = [];
-        this.totalPrice=0;
+        this.totalPrice = 0;
         this.editIndex = undefined;
 
     }
@@ -259,7 +272,7 @@ export class OrdersManageComponent implements OnInit {
 
             this.newOrder.couponId = this.couponOrder.id;
             this.totalPriceCalculate(this.selectedProducts);
-        });
+        }, errorCode => this.showError());
     }
 
     checkEditCoupon(e) {
@@ -268,7 +281,7 @@ export class OrdersManageComponent implements OnInit {
             this.couponOrder = c[0];
             this.OrderToEdit.couponId = this.couponOrder;
             this.totalPriceCalculate(this.selectedEditProducts);
-        });
+        }, errorCode => this.showError());
     }
 
     pageChanged(event: any): void {
@@ -367,7 +380,7 @@ export class OrdersManageComponent implements OnInit {
             this.selectedEditProducts.find(x => x.productId == id).price = price;
             this.totalPriceCalculate(this.selectedEditProducts);
 
-        });
+        }, errorCode => this.showError());
 
 
     }
@@ -408,7 +421,7 @@ export class OrdersManageComponent implements OnInit {
                 setTimeout(() => {
                     this.IOusers = this.ul;
                 }, 50);
-            }
+            }, errorCode => this.showError()
         );
     }
 
@@ -421,7 +434,7 @@ export class OrdersManageComponent implements OnInit {
                 setTimeout(() => {
                     this.IOdeusers = this.deul;
                 }, 100);
-            }
+            }, errorCode => this.showError()
         );
     }
 
@@ -441,7 +454,7 @@ export class OrdersManageComponent implements OnInit {
                         }, 50);
                         this.products = this.products.concat(data);
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
         }
 
     }
@@ -460,18 +473,19 @@ export class OrdersManageComponent implements OnInit {
                         }, 50);
 
                     }
-                    , errorCode => this.statusCode = errorCode);
+                    , errorCode => this.showError());
         }
 
     }
 
     createOrder() {
         this.newOrder.totalPrice = this.totalPrice;
-        this.addNew=!this.addNew;
+        this.addNew = !this.addNew;
 
         this.Handler.createOrder(this.newOrder).finally(() => {
             this.router.navigate(['/orders/management']);
-        }).subscribe();
+        }).subscribe(data => {
+        }, errorCode => this.showError());
     }
 
     editOrderApi(order) {
@@ -479,7 +493,8 @@ export class OrdersManageComponent implements OnInit {
         order.totalPrice = this.totalPrice;
         this.Handler.updateOrder(order).finally(() => {
             this.cancelOrder();
-        }).subscribe();
+        }).subscribe(data => {
+        }, errorCode => this.showError());
     }
 
     onOrderFormSubmit() {

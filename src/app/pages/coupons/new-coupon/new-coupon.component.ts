@@ -5,6 +5,7 @@ import {CouponHandlerService} from '../coupon-handler.service';
 import {Coupon} from '../coupon';
 import {IOption} from 'ng-select';
 import {UserModel} from '../../user-model';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-coupon',
@@ -38,7 +39,7 @@ export class NewCouponComponent implements OnInit {
 
     });
 
-    constructor(private CouponHandler: CouponHandlerService, private router: Router, private route: ActivatedRoute) {
+    constructor(private CouponHandler: CouponHandlerService, private router: Router, private route: ActivatedRoute,private alert:AlertService) {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         });
@@ -67,17 +68,19 @@ export class NewCouponComponent implements OnInit {
 
                 }).subscribe(user => {
                     u = user;
-                });
+                }, errorCode => this.showError());
                 console.log(this.coupon);
             }).subscribe(data => {
                 this.coupon = data;
 
-            });
+            }, errorCode => this.showError());
 
 
         }
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     typeCheck() {
         if (this.coupon.type == 'percent' && (this.coupon.value > 100 || this.coupon.value < 0)) {
             this.valuePerError = true;
@@ -95,7 +98,7 @@ export class NewCouponComponent implements OnInit {
                 this.router.navigate(['/coupons/list']);
                 console.log(this.statusCode);
             },
-            errorCode => this.statusCode = errorCode
+            errorCode => this.showError()
         );
     }
 
@@ -105,7 +108,7 @@ export class NewCouponComponent implements OnInit {
                 this.statusCode = successCode;
                 this.router.navigate(['/coupons/list']);
             },
-            errorCode => this.statusCode = errorCode
+            errorCode => this.showError()
         );
     }
 
@@ -124,7 +127,7 @@ export class NewCouponComponent implements OnInit {
                 setTimeout(() => {
                     this.IOusers = this.t;
                 }, 100);
-            }
+            }, errorCode => this.showError()
         );
     }
 

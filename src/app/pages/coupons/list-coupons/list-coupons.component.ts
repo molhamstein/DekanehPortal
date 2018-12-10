@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {CouponHandlerService} from '../coupon-handler.service';
 import {Coupon} from '../coupon';
 import {ConstService} from '../../../services/const.service';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-list-coupons',
@@ -26,12 +27,12 @@ export class ListCouponsComponent implements OnInit {
     orginalCoupon: Coupon[] = [];
     returnedArray: Coupon[] = [];
 
-    constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService) {
+    constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService,private alert:AlertService) {
         this.couponHandler.getCouponCount().finally(() => {
             this.getCoupons();
         }).subscribe(co => {
             this.couponCount = co['count'];
-        });
+        } , errorCode => this.showError());
     }
 
     pageChanged(event: any): void {
@@ -43,7 +44,9 @@ export class ListCouponsComponent implements OnInit {
         }, 50);
 
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     changepages(event) {
 
         this.pages = event.target.value;
@@ -155,7 +158,7 @@ export class ListCouponsComponent implements OnInit {
 
             }).subscribe(data => {
                 as = data;
-            });
+            }, errorCode => this.showError());
         }
     }
 
@@ -176,14 +179,14 @@ export class ListCouponsComponent implements OnInit {
                                 t.push(c);
                             }).subscribe(data => {
                                 c.userId = data.ownerName;
-                            });
+                            }, errorCode => this.showError());
                         } else {
                             t.push(c);
                         }
                     }
                     this.allCoupon = data;
                 }
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
 
@@ -201,10 +204,10 @@ export class ListCouponsComponent implements OnInit {
     //             this.getCoupons();
     //             // this.backToCreateArticle();
     //           },
-    //           errorCode => this.statusCode = errorCode
+    //           errorCode => this.showError()
     //         );
     //       },
-    //       errorCode => this.statusCode = errorCode);
+    //       errorCode => this.showError());
 
     // }
 

@@ -4,6 +4,7 @@ import {StaffHandler} from '../staff.handler';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserModel} from '../../user-model';
 import {IOption} from 'ng-select';
+import {AlertService} from '../../../services/alert.service';
 
 @Component({
     selector: 'app-new-staff',
@@ -54,7 +55,7 @@ export class NewStaffComponent implements OnInit {
     });
     private user: any;
 
-    constructor(private staffHandler: StaffHandler, private router: Router, private route: ActivatedRoute) {
+    constructor(private staffHandler: StaffHandler, private router: Router, private route: ActivatedRoute,private alert:AlertService) {
         this.getAllRoles();
         this.route.params.subscribe(params => {
             this.id = params['id'];
@@ -77,7 +78,7 @@ export class NewStaffComponent implements OnInit {
                 });
                 this.newUSer = false;
 
-            });
+            },errorCode => this.showError());
         }
     }
 
@@ -91,7 +92,7 @@ export class NewStaffComponent implements OnInit {
                         }
                     }
                 }
-                , errorCode => this.statusCode = errorCode);
+                , errorCode => this.showError());
     }
 
     checkUserByEmail(event) {
@@ -103,7 +104,7 @@ export class NewStaffComponent implements OnInit {
                     this.emailError = false;
 
                 }
-            }
+            },errorCode => this.showError()
         );
     }
 
@@ -117,7 +118,7 @@ export class NewStaffComponent implements OnInit {
 
                 }
 
-            }
+            },errorCode => this.showError()
         );
     }
     checkUserByName(event) {
@@ -129,7 +130,7 @@ export class NewStaffComponent implements OnInit {
 
                 }
 
-            }
+            },errorCode => this.showError()
         );
 
     }
@@ -139,7 +140,9 @@ export class NewStaffComponent implements OnInit {
         this.router.navigate(['/staff/list']);
 
     }
-
+    showError() {
+        this.alert.showToast.next({type: 'error'});
+    }
     onStaffFormSubmit() {
         this.processValidation = true;
         if (this.staffForm.invalid || this.passError || this.emailError || this.nameError || this.phoneError) {
@@ -157,7 +160,7 @@ export class NewStaffComponent implements OnInit {
                     this.statusCode = successCode;
                     this.router.navigate(['/staff/list']);
                 },
-                errorCode => this.statusCode = errorCode
+                errorCode => this.showError()
             );
         } else {
             this.user.roleIds = this.roleIds;
@@ -170,7 +173,7 @@ export class NewStaffComponent implements OnInit {
                     this.statusCode = successCode;
                     this.router.navigate(['/staff/list']);
                 },
-                errorCode => this.statusCode = errorCode
+                errorCode => this.showError()
             );
 
         }
