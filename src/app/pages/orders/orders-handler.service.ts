@@ -26,13 +26,32 @@ export class OrdersHandlerService {
 
     getOrders(perPage: number, currentPage: number): Observable<Order[]> {
         let param = new URLSearchParams();
-        // param.append('filter', '{"include":"coupon","order":"orderDate<DESC>"}');
         param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
         return this.apiService.get('/orders', param).map(this.extractData).catch(this.handleError);
     }
 
     getOrdersCount(): Observable<number> {
         return this.apiService.get('/orders/count')
+            .map(this.extractData).catch(this.handleError);
+    }
+    getNewOrdersCount(): Observable<number> {
+        let param = new URLSearchParams();
+        param.append('where', '{"status":"pending"}');
+
+        return this.apiService.get('/orders/count',param)
+            .map(this.extractData).catch(this.handleError);
+    }
+    getSucceededOrdersCount(): Observable<number> {
+        let param = new URLSearchParams();
+        param.append('where', '{"status":"delivered"}');
+
+        return this.apiService.get('/orders/count',param)
+            .map(this.extractData).catch(this.handleError);
+    }
+    getInDeliveryOrdersCount(): Observable<number> {
+        let param = new URLSearchParams();
+        param.append('where', '{"status":"inDelivery"}');
+        return this.apiService.get('/orders/count',param)
             .map(this.extractData).catch(this.handleError);
     }
 

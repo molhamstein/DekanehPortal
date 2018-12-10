@@ -6,23 +6,26 @@ import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../../shared/shared.module';
 import {SelectModule} from 'ng-select';
-import {PaginationModule} from 'ngx-bootstrap';
+import {PaginationModule, TooltipModule} from 'ngx-bootstrap';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        TranslateModule.forRoot(),
+        TranslateModule.forChild(),
         ReactiveFormsModule,
         FormsModule,
         PaginationModule,
         SharedModule,
+        TooltipModule,
         SelectModule
 
     ], providers: [
         OrdersHandlerService
     ],
     declarations: [
-        OrdersManageComponent]
+        OrdersManageComponent,
+        StatisticsComponent]
 })
 export class OrdersModule {
 }

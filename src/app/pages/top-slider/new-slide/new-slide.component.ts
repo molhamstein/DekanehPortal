@@ -29,10 +29,7 @@ export class NewSlideComponent implements OnInit {
     imgUrl: string;
     SlideForm = new FormGroup({
         type: new FormControl(''),
-        target: new FormControl('', Validators.compose(
-            [
-                Validators.required
-            ])),
+        target: new FormControl(''),
         status: new FormControl(''),
 
     });
@@ -91,11 +88,9 @@ export class NewSlideComponent implements OnInit {
         this.slide.target = '';
         if (this.slide.type == 'external') {
             this.SlideForm.get('target').clearValidators();
-            this.SlideForm.get('target').setValidators([Validators.pattern('https?://.+'), Validators.required]);
+            this.SlideForm.get('target').setValidators([Validators.pattern('https?://.+')]);
         } else if (this.slide.type == 'product') {
             this.SlideForm.get('target').clearValidators();
-            this.SlideForm.get('target').setValidators([Validators.required]);
-
         }
     }
 

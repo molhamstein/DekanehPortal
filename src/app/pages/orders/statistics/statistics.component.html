@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-12 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div cclass="card-header-left f-left">
+          <h5 class="f-left">{{"orders.statistics.new"|translate}}</h5>
+          <br/>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="fa fa-lg  fa-shopping-cart st-icon bg-c-yellow"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">{{newCount}}</h3>
+          <span class="f-right percent-new">{{newCount*100/totalCount|number:'1.0-0'}}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div class="card-header-left f-left">
+          <h5 class="f-left">{{"orders.statistics.inDelivery"| translate}}</h5>
+          <br/>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="fa fa-lg fa-truck st-icon bg-c-blue"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">{{inDCount}}</h3>
+          <span class="f-right ">{{inDCount*100/totalCount|number:'1.0-0'}}%</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-statstic-card">
+      <div class="card-header">
+        <div class="card-header-left f-left">
+          <h5 class="f-left float-left">{{"orders.statistics.succeed"| translate}}</h5>
+          <br/>
+        </div>
+      </div>
+      <div class="card-block">
+        <i class="fa fa-lg fa-flag-checkered st-icon bg-c-green"></i>
+        <div class="text-left">
+          <h3 class="d-inline-block">{{sucCount}}</h3>
+          <span class="f-right percent-suc">{{sucCount*100/totalCount|number:'1.0-0'}}%</span>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

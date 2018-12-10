@@ -1,15 +1,24 @@
-<div id="new-order">
+<app-orders-statistics></app-orders-statistics>
+<div class="row">
+    <div class="col-sm-12 center-div">
+        <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();" class="btn btn-icon btn-info add-order-btn"
+                [tooltip]="'orders.new.btn'|translate"
+                placement="bottom"><i class="fa fa-plus fa-2x"></i></button>
+    </div>
+</div>
+<div *ngIf="addNew" id="new-order" [@rightEnterLeftLeaveAnimation]
+     (@rightEnterLeftLeaveAnimation.done)="showNewBtn=!showNewBtn">
     <form (ngSubmit)="onOrderFormSubmit()" [formGroup]="orderForm" class="CouponForm">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
+
                     <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
-                    <ng-select #select (filterInputChanged)="searchUsers($event)"
+                    <ng-select (filterInputChanged)="searchUsers($event)"
                                (selected)="userSelected($event,newOrder)"
                                [(ngModel)]="newOrder.clientId" [multiple]="false"
                                [options]="IOusers" formControlName="clientId" id="clientId">
                     </ng-select>
-
                     <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
                            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
                 </div>
@@ -20,9 +29,8 @@
                            type="text">
                 </div>
             </div>
-
             <div class="col-sm-6">
-                <div class="form-group">
+                <div class="form-group no-margin">
                     <label for="products">{{"orders.new.products"|translate}}</label>
                     <ng-select (filterInputChanged)="searchProducts($event)"
                                (selected)="productSelected($event)"
@@ -33,11 +41,12 @@
                                id="products">
                     </ng-select>
                 </div>
+
                 <div class="row">
                     <div class="col-sm products-div">
-                        <table class="table  table-striped ">
+                        <table class="table table-striped add-order-tabel">
                             <tbody>
-                            <tr *ngFor="let product of selectedProducts  ">
+                            <tr *ngFor="let product of selectedProducts">
                                 <td style="width: 35px"><img *ngIf="findProduct(product.productId).media!=undefined"
                                                              src="{{findProduct(product.productId).media.thumbnail}}"
                                                              style="max-width: 34px;max-height: 34px;">
@@ -54,20 +63,27 @@
                                     <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
                                 </td>
                                 <td style="text-align: center">
-                                    <span class="functions-btn text-danger"(click)="productDeSelected(product.productId)" ><i class="fa fa-remove fa-lg"></i></span>
+                                    <span class="functions-btn text-danger"
+                                          (click)="productDeSelected(product.productId)"><i
+                                            class="fa fa-remove fa-lg"></i></span>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <p class="total-price bg-primary text-white">
+                        <p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">
                             {{"orders.table.total"|translate}} : {{totalPrice}}
                         </p>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-sm submit-col">
+                <button [disabled]="orderForm.invalid==false&&isSubmitted==true" (click)="addNew=!addNew"
+                        class="btn btn-action" type="button">
+                    {{"client.buttons.back"|translate}}
+                </button>
                 <button [disabled]="orderForm.invalid==false&&isSubmitted==true" class="btn btn-success" type="submit">
                     {{"client.buttons.add"|translate}}
                 </button>
@@ -77,43 +93,6 @@
         </div>
     </form>
 </div>
-<!--<div class="statistics-container">-->
-<!--<ul class="cards">-->
-<!--<li class="card">-->
-<!--<div class="card__flipper">-->
-<!--<div class="card__front">-->
-<!--<p class="card__name"><span>طلبات قيد التوصيل</span><br><i class="fa fa-lg fa-truck"></i></p>-->
-<!--<p class="card__num">9</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</li>-->
-<!--<li class="card">-->
-<!--<div class="card__flipper">-->
-<!--<div class="card__front">-->
-<!--<p class="card__name"><span>طلبات تم توصيلها</span><br><i class="fa fa-lg fa-flag-checkered"></i>-->
-<!--</p>-->
-<!--<p class="card__num">12</p>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</li>-->
-<!--<li class="card">-->
-<!--<div class="card__flipper">-->
-<!--<div class="card__front">-->
-<!--<p class="card__name"><span>مجموع الطلبات</span><br><i class="fa fa-lg fa-shopping-cart"></i></p>-->
-
-<!--<p class="card__num">27</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</li>-->
-<!--</ul>-->
-<!--<div class="col-sm-4">-->
-<!--</div>-->
-<!--<div class="col-sm-4">-->
-<!--</div>-->
-<!--<div class="col-sm-4">-->
-<!--</div>-->
-<!--</div>-->
 <div class="table-responsive">
     <table class="table table-bordered " (mouseleave)="hoveredIndex=null">
         <thead>
@@ -144,7 +123,14 @@
 
 
         <tbody>
-        <ng-container *ngFor="let order of orders; let index=index">
+        <ng-container *ngFor="let order of orders; let index=index;">
+            <tr class="group-row" *ngIf="findDateByIndex(index)!=undefined ">
+
+                <td *ngIf="viewDate==toDay" align="center" colspan="7">{{"orders.table.today"|translate}}</td>
+
+                <td *ngIf="viewDate!=toDay" align="center"
+                    colspan="7">{{c.formatDate(findDateByIndex(index), 'nohours')}}</td>
+            </tr>
             <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
                 <td class="no-padding-td">
                     <ul class="list-group table-ul">
@@ -256,7 +242,9 @@
                                                 <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
                                             </td>
                                             <td style="text-align: center">
-                                                <span class="functions-btn text-danger"(click)="productEditDeSelected(product.productId)" ><i class="fa fa-remove fa-lg"></i></span>
+                                                <span class="functions-btn text-danger"
+                                                      (click)="productEditDeSelected(product.productId)"><i
+                                                        class="fa fa-remove fa-lg"></i></span>
                                             </td>
                                         </tr>
                                         </tbody>

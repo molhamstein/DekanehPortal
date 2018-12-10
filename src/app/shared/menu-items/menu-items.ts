@@ -92,10 +92,10 @@ export class MenuItems {
                     type: 'sub',
                     icon: 'ti-layers',
                     children: [
-                        {
-                            state: 'view',
-                            name: 'mainMenu.Orders.viewAll'
-                        },
+                        // {
+                        //     state: 'view',
+                        //     name: 'mainMenu.Orders.viewAll'
+                        // },
                         {
                             state: 'management',
                             name: 'mainMenu.Orders.Management'

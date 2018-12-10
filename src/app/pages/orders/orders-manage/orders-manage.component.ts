@@ -12,6 +12,7 @@ import {Coupon} from '../../coupons/coupon';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {StaffHandler} from '../../staff/staff.handler';
+import {DatePipe} from '@angular/common';
 
 @Component({
     selector: 'app-orders-manage',
@@ -28,19 +29,38 @@ import {StaffHandler} from '../../staff/staff.handler';
                     animate('300ms', style({transform: 'translateY(100%)', opacity: 0}))
                 ])
             ]
+
+        ),trigger(
+            'rightEnterLeftLeaveAnimation', [
+                transition(':enter', [
+                    style({transform: 'translateX(100%)', opacity: 0}),
+                    animate('300ms', style({transform: 'translateX(0)', opacity: 1}))
+                ]),
+                transition(':leave', [
+                    style({transform: 'translateX(0)', opacity: 1}),
+                    animate('300ms', style({transform: 'translateX(-100%)', opacity: 0}))
+                ])
+            ]
+
         )
     ],
     styleUrls: ['./orders-manage.component.css']
 })
 export class OrdersManageComponent implements OnInit {
+    showNewBtn=true;
     orders: any[];
+    todayIndex: number;
+    addNew=false;
+    toDay = this.datFormater(new Date());
     totalPrice = 0;
+    dateIndexes: any[];
     editProducts: any[];
     orderUser: UserModel;
     spinnerFlag: boolean;
     unpage = false;
     productsCount;
     pages = 20;
+    viewDate;
     onEdit = false;
     IOproducts: Array<IOption> = [];
     IOusers: Array<IOption> = [];
@@ -48,8 +68,8 @@ export class OrdersManageComponent implements OnInit {
     tP: Array<IOption> = [];
     ul: Array<IOption> = [];
     deul: Array<IOption> = [];
-    products: any[]=[];
-    newProducts: any[]=[];
+    products: any[] = [];
+    newProducts: any[] = [];
     delMan: any;
     isSubmitted = false;
     couponOrder: Coupon;
@@ -72,7 +92,7 @@ export class OrdersManageComponent implements OnInit {
     });
     delstatus = ['pending', 'inDelivery', 'delivered', 'canceled'];
 
-    constructor(private Handler: OrdersHandlerService, private userHandler: StaffHandler, private productHandler: ProductHandler, public c: ConstService, private CouponHandler: CouponHandlerService, private router: Router, private route: ActivatedRoute) {
+    constructor(private datePipe: DatePipe, private Handler: OrdersHandlerService, private userHandler: StaffHandler, private productHandler: ProductHandler, public c: ConstService, private CouponHandler: CouponHandlerService, private router: Router, private route: ActivatedRoute) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
@@ -88,16 +108,44 @@ export class OrdersManageComponent implements OnInit {
         this.newOrder = new Order();
     }
 
+    datFormater(date) {
+        return this.datePipe.transform(date, 'yyyy-MM-dd');
+    }
+
+    findDateByIndex(index) {
+        let obj = this.dateIndexes.find(x => x.index == index);
+        if (obj == undefined) {
+            return obj;
+        } else {
+            this.viewDate=obj.date;
+            return this.viewDate;
+
+        }
+    }
+
     getOrders() {
         this.spinnerFlag = true;
         this.Handler.getOrdersCount().finally(() => {
             this.Handler.getOrders(this.pages, this.currentPage)
                 .finally(() => {
+                    this.dateIndexes = [];
+                    let d = this.datFormater(this.orders[0].orderDate);
+                    this.dateIndexes.push({date: d, index: 0});
+                    for (let o of this.orders) {
+                        if (this.datFormater(o.orderDate) != this.datFormater(d)) {
+                            d = this.datFormater(o.orderDate);
+                            this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
+                        }
+                    }
+                    console.log(this.dateIndexes);
                     this.spinnerFlag = false;
                     this.unpage = false;
                 })
                 .subscribe(data => {
                         this.orders = data;
+
+                        console.log(this.toDay == this.datFormater(this.orders[0].orderDate));
+
                     }
                     , errorCode => this.statusCode = errorCode);
 
@@ -107,6 +155,7 @@ export class OrdersManageComponent implements OnInit {
     }
 
     editOrder(order, index) {
+        this.addNew=false;
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
             this.editProducts = this.OrderToEdit.products;
@@ -163,7 +212,7 @@ export class OrdersManageComponent implements OnInit {
     }
 
     productSelected(IOproduct) {
-        let product = this.products.find(x=>x._id===IOproduct.value);
+        let product = this.products.find(x => x._id === IOproduct.value);
         this.newProducts.push(product);
 
         this.selectedProducts.push({
@@ -172,7 +221,7 @@ export class OrdersManageComponent implements OnInit {
             'productId': product._id,
         });
         this.newOrder.products = this.selectedProducts;
-        this.selectedProductsIds=[];
+        this.selectedProductsIds = [];
 
         this.productCheck();
     }
@@ -184,7 +233,7 @@ export class OrdersManageComponent implements OnInit {
             'price': 0,
             'productId': product._id,
         });
-this.selectedEditProductsIds=[];
+        this.selectedEditProductsIds = [];
     }
 
     productCheck() {
@@ -199,6 +248,7 @@ this.selectedEditProductsIds=[];
     cancelOrder() {
         this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
         this.selectedEditProducts = [];
+        this.totalPrice=0;
         this.editIndex = undefined;
 
     }
@@ -253,6 +303,7 @@ this.selectedEditProductsIds=[];
         let product = this.products.find(x => x._id === id);
         this.selectedProducts.splice(this.selectedProducts.indexOf(this.selectedProducts.find(x => x.productId === id)), 1);
         this.newOrder.products = this.selectedProducts;
+        this.totalPriceCalculate(this.selectedProducts);
         this.productCheck();
     }
 
@@ -346,7 +397,6 @@ this.selectedEditProductsIds=[];
     }
 
     searchUsers(str) {
-        console.log(str);
         this.CouponHandler.getUsersByShope(str).subscribe(data => {
                 this.ul = [];
                 for (let u of data) {
@@ -355,7 +405,7 @@ this.selectedEditProductsIds=[];
                 this.users = data;
                 console.log(data);
 
-            setTimeout(() => {
+                setTimeout(() => {
                     this.IOusers = this.ul;
                 }, 50);
             }
@@ -389,7 +439,7 @@ this.selectedEditProductsIds=[];
                         setTimeout(() => {
                             this.IOproducts = this.tP;
                         }, 50);
-                        this.products=this.products.concat(data);
+                        this.products = this.products.concat(data);
                     }
                     , errorCode => this.statusCode = errorCode);
         }
@@ -417,6 +467,8 @@ this.selectedEditProductsIds=[];
 
     createOrder() {
         this.newOrder.totalPrice = this.totalPrice;
+        this.addNew=!this.addNew;
+
         this.Handler.createOrder(this.newOrder).finally(() => {
             this.router.navigate(['/orders/management']);
         }).subscribe();

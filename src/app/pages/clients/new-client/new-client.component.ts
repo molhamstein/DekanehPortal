@@ -72,17 +72,28 @@ export class NewClientComponent implements OnInit {
         } else {
             this.user = this.ClientHandler.getClientUserById(this.id).subscribe(Client => {
                 this.user = Client;
+                let loc;
+                let notes;
+                Client.location==undefined ? loc='': loc=Client.location;
+                Client.notes==undefined ? notes='': notes=Client.notes;
 
                 this.ClientForm.removeControl('password');
                 this.ClientForm.setValue({
                     phoneNumber: Client.phoneNumber,
-                    location: Client.location,
-                    notes: Client.notes,
+                    location: loc,
+                    notes: notes,
                     status: Client.status,
                     ownerName: Client.ownerName,
                     shopName: Client.shopName
                 });
                 this.locationPoint = Client.locationPoint;
+                if(this.locationPoint==undefined){
+                    this.locationPoint = {
+                        lat: 33.5138,
+                        lng: 36.2765
+                    };
+                }
+                console.log(Client.locationPoint)
                 this.marker.lng = this.locationPoint.lng;
                 this.marker.lat = this.locationPoint.lat;
                 this.lat = this.locationPoint.lat;

@@ -12,7 +12,7 @@ export class ConstService {
         return this._STAFF_ROLES;
     }
 
-    formatDate(str) {
+    formatDate(str,hours?) {
         if (!isNaN(Date.parse(str)) && isNaN(Number(str))) {
             let date = new Date(str);
             var monthNames = [
@@ -25,7 +25,12 @@ export class ConstService {
             var monthIndex = date.getMonth();
             var year = date.getFullYear();
 
+            if(hours=='nohours'){
+                return day + ' ' + monthNames[monthIndex] + ' ' + year;
+
+            }else {
             return date.getUTCHours() + ':' + date.getUTCMinutes() + ' ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
+            }
         } else {
             return str;
         }

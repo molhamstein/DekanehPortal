@@ -13,6 +13,7 @@ import {IOption} from 'ng-select';
 export class NewStaffComponent implements OnInit {
     newUSer;
     roles: any[];
+
     status = 'pending';
     allStatus = ['pending', 'activated', 'deactivated'];
     phoneError = false;
