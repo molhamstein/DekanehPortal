@@ -72,10 +72,9 @@ export class AdminComponent implements OnInit {
     pcodedSidebarPosition: string; /* fixed(default), absolute*/
     headerTheme: string; /* theme1(default), theme2, theme3, theme4, theme5, theme6 */
     logoTheme: string; /* theme1(default), theme2, theme3, theme4, theme5, theme6 */
-
     innerHeight: string;
     windowWidth: number;
-
+    username = '';
     toggleOn: boolean;
 
     headerFixedMargin: string;
@@ -149,6 +148,8 @@ export class AdminComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.username = localStorage.getItem('username');
+
         this.setBackgroundPattern('pattern2');
         // this.api.get();
         // this.api.post();
@@ -284,6 +285,7 @@ export class AdminComponent implements OnInit {
 
     logout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
         this.router.navigate(['auth', 'login']);
     }
 }

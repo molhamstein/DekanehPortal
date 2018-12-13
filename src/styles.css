@@ -24300,6 +24300,9 @@ body.dark #styleSelector .form-control {
     }
 }
 
+.modal-confirm {
+    margin-right: 10px;
+}
 /* by amit */
 #real-time-update, #real-time-update canvas {
     width: 100% !important;

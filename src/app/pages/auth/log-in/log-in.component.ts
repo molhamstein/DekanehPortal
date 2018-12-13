@@ -17,9 +17,12 @@ export class LogInComponent implements OnInit {
 
     logIn(form) {
         this.api.post('/users/staffLogin', form.value).subscribe((data) => {
+
+            localStorage.setItem('username', JSON.parse(data['_body']).user.username);
             localStorage.setItem('token', JSON.parse(data['_body']).id);
             this.router.navigate(['']);
         }, (err) => {
+
             console.log('ERR');
         });
     }

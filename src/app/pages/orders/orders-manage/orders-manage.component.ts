@@ -117,6 +117,19 @@ export class OrdersManageComponent implements OnInit {
         this.newOrder = new Order();
     }
 
+    getTimer(date) {
+        let nowDate = new Date().getTime();
+
+        let time = ((new Date(date).getTime() + 60 * 60 * 24 * 1000) - nowDate) / (60 * 60 * 1000);
+        if (time > 0) {
+            let hours = Math.floor(time);
+            let minuets = Math.floor((time - hours) * 60);
+            let seconeds = Math.floor(((time - hours) * 60 - minuets) * 60);
+            return seconeds + ' : ' + minuets + ' : ' + hours;
+
+        } else return 'done';
+    }
+
     showError() {
         this.alert.showToast.next({type: 'error'});
     }

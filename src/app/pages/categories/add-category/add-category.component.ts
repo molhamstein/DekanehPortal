@@ -5,7 +5,7 @@ import {ConstService} from '../../../services/const.service';
 import {ApiService} from '../../../services/api.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs/Observable';
-import {Response} from '@angular/http';
+import {Headers, RequestOptions, Response} from '@angular/http';
 
 @Component({
     selector: 'app-add-category',
@@ -119,7 +119,7 @@ export class AddCategoryComponent implements OnInit {
 
             } else {
                 if (this.selectedFile == undefined) {
-                    this.api.put('/categories/' + this.id, this.categoriesForm.value, {}).subscribe((res) => {
+                    this.api.put('/categories/' + this.id, this.categoriesForm.value, new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})})).subscribe((res) => {
                         if (res.status == 200) {
                             console.log(res);
                             this.router.navigate(['categories', 'viewAll']);
@@ -138,7 +138,7 @@ export class AddCategoryComponent implements OnInit {
                         cat = this.categoriesForm.value;
                         cat.icon = this.imgUrl;
                         console.log(cat);
-                        this.api.put('/categories/' + this.id, cat, {}).subscribe((res) => {
+                        this.api.put('/categories/' + this.id, cat, new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})})).subscribe((res) => {
                             if (res.status == 200) {
                                 console.log(res);
                                 this.router.navigate(['categories', 'viewAll']);

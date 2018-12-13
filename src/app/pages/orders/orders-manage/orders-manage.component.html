@@ -18,6 +18,7 @@
                                [(ngModel)]="newOrder.clientId" [multiple]="false"
                                [options]="IOusers" formControlName="clientId" id="clientId">
                     </ng-select>
+
                     <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
                            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
                 </div>
@@ -140,9 +141,13 @@
                         <span class="badge client-type"
                               [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + order.clientType|translate}}</span>
                         </li>
+                        <li>
+                            <span style="font-size: 14px" class="badge badge-dark"
+                                  *ngIf="getTimer(order.orderDate)!='done'">{{getTimer(order.orderDate)}}</span>
+                        </li>
+
                     </ul>
                 </td>
-
                 <td class="no-padding-td">
                     <ul class="list-group table-ul">
                         <li *ngFor="let product of order.products" class="list-group-item ">
@@ -155,7 +160,6 @@
                             : </strong>{{order.totalPrice}}</li>
                     </ul>
                 </td>
-
                 <td>
                     {{order.code}}
                 </td>

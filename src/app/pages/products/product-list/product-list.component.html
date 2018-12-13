@@ -6,30 +6,32 @@
         <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
                placeholder="{{'client.search'|translate}}....">
     </div>
+
     <div class="col-sm-9">
         <div class="filter-btns">
-            <select class="btn btn-action" (change)="onCatChange($event)" (change)="setCatFilter($event)">
-                <option value="" disabled selected>{{'product.form.controls.cat'|translate}}</option>
+            <select class="btn btn-action" (change)="setCatFilter($event)" [(ngModel)]="cat">
+                <option value='1' disabled style="display: none"
+                        selected>{{'product.form.controls.cat'|translate}}</option>
                 <option *ngFor="let cat of cats" [value]="cat.id">
                     {{cat.titleAr}}
                 </option>
             </select>
 
-            <select class="btn btn-action" (change)="setSubCatFilter($event)">
-                <option value="" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
+            <select class="btn btn-action" [(ngModel)]="subcat">
+                <option value="1" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
                 <option *ngFor="let sub of subcats" [value]="sub.id">
                     {{sub.titleAr}}
                 </option>
             </select>
 
-            <select class="btn btn-action" (change)="setManFilter($event)">
-                <option value="" disabled selected>{{'product.form.controls.man'|translate}}</option>
+            <select class="btn btn-action" [(ngModel)]="man">
+                <option value="1" disabled selected>{{'product.form.controls.man'|translate}}</option>
                 <option *ngFor="let man of mans" [value]="man.id">
                     {{man.nameAr}}
                 </option>
             </select>
-            <select class="btn btn-action" id="availableTo" (change)="setAvFilter($event)">
-                <option value="" disabled selected>{{'product.form.controls.availableTo'|translate}}</option>
+            <select class="btn btn-action" id="availableTo" [(ngModel)]="availableTo">
+                <option value="1" disabled selected>{{'product.form.controls.availableTo'|translate}}</option>
                 <option *ngFor="let option of availableList" [value]="option">
                     {{"product.form.controls." + option|translate}}
                 </option>

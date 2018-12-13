@@ -28,6 +28,7 @@ import {CouponsModule} from './coupons/coupons.module';
 import {TopSliderModule} from './top-slider/top-slider.module';
 import {RatingsModule} from './ratings/ratings.module';
 import {OrdersModule} from './orders/orders.module';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
     imports: [
@@ -43,6 +44,7 @@ import {OrdersModule} from './orders/orders.module';
         FormsModule,
         HttpModule,
         DataTableModule,
+        ModalModule.forRoot(),
         StaffModule,
         ClientsModule,
         RatingsModule,

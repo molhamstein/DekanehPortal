@@ -1,1 +1,11 @@
+.actions-td {
+    text-align: center;
+}
 
+.actions-td > i:hover {
+    cursor: pointer;
+}
+
+.actions-td > i:first-child {
+    margin-right: 10px;
+}

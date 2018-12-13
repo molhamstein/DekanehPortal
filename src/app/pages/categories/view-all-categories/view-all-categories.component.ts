@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../services/api.service';
 import {ConstService} from '../../../services/const.service';
 import {URLSearchParams} from '@angular/http';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-view-all-categories',
@@ -14,8 +15,10 @@ export class ViewAllCategoriesComponent implements OnInit {
     cols: any[];
     orderDir: any;
     subCategories: any[];
+    modalRef: BsModalRef;
+    catTodelete: string;
 
-    constructor(private router: Router, private api: ApiService, public c: ConstService) {
+    constructor(private router: Router, private api: ApiService, public c: ConstService, private modalService: BsModalService) {
         this.orderDir = {'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0,};
         //
         let param = new URLSearchParams();
@@ -61,6 +64,18 @@ export class ViewAllCategoriesComponent implements OnInit {
         });
     }
 
+    openModal(template: TemplateRef<any>, category) {
+        this.catTodelete = category;
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
+    confirm(): void {
+        this.deleteCat(this.catTodelete);
+    }
+
+    decline(): void {
+        this.modalRef.hide();
+    }
     orderBy(col) {
         for (var ord in this.orderDir) {
             if (this.orderDir.hasOwnProperty(ord)) {

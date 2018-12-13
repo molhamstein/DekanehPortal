@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {UserModel} from '../../user-model';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {ClientsHandler} from '../clients-handler';
 import {AlertService} from '../../../services/alert.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-client-list',
@@ -10,6 +11,8 @@ import {AlertService} from '../../../services/alert.service';
     styleUrls: ['./client-list.component.css']
 })
 export class ClientListComponent implements OnInit {
+    idTodelete;
+    modalRef: BsModalRef;
 
     nameOrderDir;
     areaOrderDir;
@@ -30,14 +33,37 @@ export class ClientListComponent implements OnInit {
     pages = 10;
     areas: any[];
 
-    constructor(private clientHandler: ClientsHandler, private router: Router,private alert:AlertService) {
+    constructor(private modalService: BsModalService, private clientHandler: ClientsHandler, private router: Router, private alert: AlertService) {
         this.clientHandler.getAllAreas().finally(() => this.getAllClient()).subscribe(data => {
                 this.areas = data;
             }
             , errorCode => this.showError());
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
+
+        this.router.events.subscribe((evt) => {
+            if (evt instanceof NavigationEnd) {
+                this.router.navigated = false;
+                window.scrollTo(0, 0);
+            }
+        }, errorCode => this.showError());
     }
     showError() {
         this.alert.showToast.next({type: 'error'});
+    }
+
+    openModal(template: TemplateRef<any>, id) {
+        this.idTodelete = id;
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
+    confirm(): void {
+        this.deleteClient(this.idTodelete);
+    }
+
+    decline(): void {
+        this.modalRef.hide();
     }
     pageChanged(event: any): void {
         const startItem = (event.page - 1) * event.itemsPerPage;
@@ -209,7 +235,11 @@ export class ClientListComponent implements OnInit {
     deleteClient(id: string) {
 
         this.preConfig();
-        this.clientHandler.getClientUserById(id)
+        this.clientHandler.getClientUserById(id).finally(() => {
+            this.modalRef.hide();
+            this.router.navigate(['/client/list']);
+
+        })
             .subscribe(client => {
                     this.clientToUpdate = client;
                     this.clientToUpdate.status = 'deactivated';

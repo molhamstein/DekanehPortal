@@ -20,3 +20,15 @@ td, th {
 .img-td {
     text-align: center;
 }
+
+.actions-td {
+    text-align: center;
+}
+
+.actions-td > i:first-child {
+    margin-right: 10px;
+}
+
+.actions-td > i:hover {
+    cursor: pointer;
+}

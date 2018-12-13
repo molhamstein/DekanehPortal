@@ -28,10 +28,10 @@
             <td (click)="showSub(category)" *ngFor="let col of cols">
                 {{c.formatDate(category[col])}}
             </td>
-            <td>
+            <td class="actions-td">
                 <!--<i class="ti-arrow-circle-right" [title]="'Categories.details'|translate" ></i>-->
                 <i class="ti-settings" (click)="editCat(category)" [title]="'Categories.edit'|translate"></i>
-                <i class="ti-trash" (click)="deleteCat(category)" [title]="'Categories.delete'|translate"></i>
+                <i class="ti-trash" (click)="openModal(template,category)" [title]="'Categories.delete'|translate"></i>
             </td>
         </tr>
         <ng-container *ngFor="let subCat of subCategories">
@@ -75,3 +75,12 @@
 <!--</div>-->
 
 <!--</div>-->
+<!--confirmation modal-->
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.message'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>

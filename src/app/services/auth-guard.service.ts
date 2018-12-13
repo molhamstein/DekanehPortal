@@ -11,11 +11,10 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         return this.canActivate(childRoute, state);
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (!!localStorage.getItem('token'))
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+        if (localStorage.getItem('token'))
             return true;
         this.router.navigate(['auth/login']);
-
         return false;
 
 

@@ -3,6 +3,7 @@
         <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'client.search'|translate}}...."
                type="text">
     </div>
+
 </div>
 <table class="table table-bordered table-striped ">
     <thead>
@@ -66,7 +67,7 @@
             <button type="button" class="btn btn-primary"
                     (click)="editClient(client.id)">{{"client.buttons.edit"|translate}}
             </button>
-            <button class="btn btn-danger" type="button" (click)="deleteClient(client.id)">
+            <button class="btn btn-danger" type="button" (click)="openModal(template,client.id)">
                 {{"client.buttons.delete"|translate}}
             </button>
         </td>
@@ -81,5 +82,14 @@
         <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
     </div>
 </div>
+<!--modal section-->
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.message'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>
 
 

@@ -14,17 +14,18 @@ export class StatisticsComponent implements OnInit {
     inDCount = 0;
 
     constructor(private api: OrdersHandlerService,private alert:AlertService) {
-
+        this.api.getOrdersCount().subscribe(d => this.totalCount = d['count'],errorCode => this.showError());
+        this.api.getSucceededOrdersCount().subscribe(d => this.sucCount = d['count'],errorCode => this.showError());
+        this.api.getNewOrdersCount().subscribe(d => this.newCount = d['count'],errorCode => this.showError());
+        this.api.getInDeliveryOrdersCount().subscribe(d => this.inDCount = d['count'],errorCode => this.showError());
     }
 
     showError() {
         this.alert.showToast.next({type: 'error'});
     }
+
     ngOnInit() {
-        this.api.getOrdersCount().subscribe(d => this.totalCount = d['count'],errorCode => this.showError());
-        this.api.getSucceededOrdersCount().subscribe(d => this.sucCount = d['count'],errorCode => this.showError());
-        this.api.getNewOrdersCount().subscribe(d => this.newCount = d['count'],errorCode => this.showError());
-        this.api.getInDeliveryOrdersCount().subscribe(d => this.inDCount = d['count'],errorCode => this.showError());
+
 
     }
 

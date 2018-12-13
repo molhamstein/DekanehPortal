@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 import {ClientsHandler} from './clients-handler';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {SharedModule} from '../../shared/shared.module';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
     imports: [
@@ -17,7 +19,9 @@ import {PaginationModule} from 'ngx-bootstrap/pagination';
         ReactiveFormsModule,
         AgmCoreModule,
         PaginationModule,
-        FormsModule
+        FormsModule,
+        ModalModule,
+        SharedModule
     ], providers: [
         ClientsHandler
     ],

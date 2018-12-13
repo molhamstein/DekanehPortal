@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {ProductModel} from '../product-model';
-import {OrdersHandlerService} from '../../orders/orders-handler.service';
 import {AlertService} from '../../../services/alert.service';
 
 @Component({
@@ -15,10 +14,10 @@ export class ProductListComponent implements OnInit {
     spinnerFlag: boolean;
     nameOrderDir;
     packOrderDir;
-    cat;
-    subcat;
-    man;
-    availableTo;
+    cat = '1';
+    subcat = '1';
+    man = '1';
+    availableTo = '1';
     isOffer;
     availableList = ['both', 'retailCostumer', 'wholesale', 'horeca'];
     offerList = ['both', 'product', 'offer'];
@@ -38,13 +37,15 @@ export class ProductListComponent implements OnInit {
     returnedArray: any[] = [];
     pages = 20;
     productsCount;
+
     showError() {
         this.alert.showToast.next({type: 'error'});
     }
-    constructor(private productHandler: ProductHandler, private router: Router,private alert:AlertService) {
+
+    constructor(private productHandler: ProductHandler, private router: Router, private alert: AlertService) {
         this.getAllCats();
-        this.getAllMans();
-        this.getAllProducts();
+        // this.getAllMans();
+
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
@@ -194,7 +195,7 @@ export class ProductListComponent implements OnInit {
 
             }).subscribe(data => {
                 as = data;
-            },errorCode => this.showError());
+            }, errorCode => this.showError());
         }
         // this.returnedArray = this.currentArray;
         // let fields = ['nameAr', 'pack'];
@@ -209,7 +210,9 @@ export class ProductListComponent implements OnInit {
     }
 
     getAllCats() {
-        this.productHandler.getAllCats()
+        this.productHandler.getAllCats().finally(() => {
+            this.getAllMans();
+        })
             .subscribe(data =>
                     this.cats = data
 
@@ -230,7 +233,7 @@ export class ProductListComponent implements OnInit {
     }
 
     setCatFilter(e) {
-        this.cat = e.target.value;
+        this.onCatChange();
     }
 
     setSubCatFilter(e) {
@@ -245,29 +248,34 @@ export class ProductListComponent implements OnInit {
         this.availableTo = e.target.value;
     }
 
-    onCatChange(e) {
-        this.subcats = this.cats.find(x => x.id === e.target.value).subCategories;
+    onCatChange() {
+        if (this.cat != '1') {
+            this.subcats = this.cats.find(x => x.id === this.cat).subCategories;
+        }
     }
 
     setFilters() {
         this.spinnerFlag = true;
         let filters = [];
-        if (this.cat != undefined) {
+
+
+        if (this.cat != '1') {
             filters.push({name: 'categoryId', value: this.cat});
         }
-        if (this.subcat != undefined) {
+        if (this.subcat != '1') {
             filters.push({name: 'subCategoryId', value: this.subcat});
         }
-        if (this.man != undefined) {
+        if (this.man != '1') {
             filters.push({name: 'manufacturerId', value: this.man});
         }
-        if (this.availableTo != undefined) {
+        if (this.availableTo != '1') {
             filters.push({name: 'availableTo', value: this.availableTo});
         }
         if (this.isOffer != undefined) {
             filters.push({name: 'isOffer', value: this.isOffer});
         }
-        if (filters != []) {
+        localStorage.setItem('filters', JSON.stringify(filters));
+        if (filters != [] && filters.length != 0) {
             this.productHandler.getByFilters(filters).finally(() => {
                 this.returnedArray = this.allProduct;
                 this.spinnerFlag = false;
@@ -277,16 +285,40 @@ export class ProductListComponent implements OnInit {
 
                 this.allProduct = data;
 
-            },errorCode => this.showError());
+            }, errorCode => this.showError());
+        } else {
+            this.getAllProducts();
         }
     }
 
     emptyFields() {
+        localStorage.removeItem('filters');
         this.router.navigate(['/products/list']);
     }
 
     getAllMans() {
-        this.productHandler.getAllMans()
+        this.productHandler.getAllMans().finally(() => {
+            if (localStorage.getItem('filters')) {
+                let tem = JSON.parse(localStorage.getItem('filters'));
+                if (tem.find(x => x.name == 'categoryId')) {
+                    this.cat = tem.find(x => x.name == 'categoryId').value;
+                    this.onCatChange();
+                }
+                if (tem.find(x => x.name == 'subCategoryId')) {
+                    this.subcat = tem.find(x => x.name == 'subCategoryId').value;
+                }
+                if (tem.find(x => x.name == 'manufacturerId')) {
+                    this.man = tem.find(x => x.name == 'manufacturerId').value;
+                }
+                if (tem.find(x => x.name == 'availableTo')) {
+                    this.availableTo = tem.find(x => x.name == 'availableTo').value;
+                }
+                if (tem.find(x => x.name == 'isOffer')) {
+                    this.isOffer = tem.find(x => x.name == 'isOffer').value;
+                }
+            }
+            this.setFilters();
+        })
             .subscribe(data =>
                     this.mans = data
 
@@ -306,13 +338,12 @@ export class ProductListComponent implements OnInit {
                 })
                 .subscribe(data => {
                         this.allProduct = data;
-
                     }
                     , errorCode => this.showError());
 
         }).subscribe(c => {
             this.productsCount = c['count'];
-        },errorCode => this.showError());
+        }, errorCode => this.showError());
 
 
     }
