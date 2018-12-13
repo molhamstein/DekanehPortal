@@ -74,7 +74,7 @@ export function HttpLoaderFactory(http: Http) {
     ],
     providers: [
         TranslateService,
-        AuthGuardService,
+        // AuthGuardService,
         ApiService,
         AlertService,
         ConstService,

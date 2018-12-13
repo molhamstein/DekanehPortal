@@ -40,11 +40,14 @@ import {SlideListingComponent} from '../../pages/top-slider/slide-listing/slide-
 import {NewSlideComponent} from '../../pages/top-slider/new-slide/new-slide.component';
 import {RatesListComponent} from '../../pages/ratings/rates-list/rates-list.component';
 import {OrdersManageComponent} from '../../pages/orders/orders-manage/orders-manage.component';
+import {AuthGuardService} from '../../services/auth-guard.service';
 
 const AppRoutes = [
     {
         path: '',
         component: AdminComponent,
+        canActivate: [AuthGuardService],
+        canActivateChild: [AuthGuardService],
         children: [
             {
                 path: '',
@@ -230,7 +233,7 @@ const AppRoutes = [
         // AddManufacturerComponent,
         // AuthComponent,
         TitleComponent,
-    ],
+    ], providers: [AuthGuardService]
 })
 export class AdminModule {
 

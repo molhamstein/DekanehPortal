@@ -18,8 +18,8 @@ export const AppRoutes: Routes = [
         path: '',
         // loadChildren: 'app/modules/main.module#MainModule' ,
         component: AdminComponent,
-        loadChildren: 'app/layout/admin/admin.module#AdminModule',
-        canActivate: [AuthGuardService],
-        canActivateChild: [AuthGuardService],
+        // loadChildren: 'app/layout/admin/admin.module#AdminModule',
+        // canActivate: [AuthGuardService],
+        // canActivateChild: [AuthGuardService],
     },
 ];
