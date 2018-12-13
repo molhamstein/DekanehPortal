@@ -16,10 +16,10 @@ export class AppComponent {
 
     selfGuard() {
         let route = this.router.url;
-        if (!localStorage.getItem('token') && route != 'auth/login') {
+        if (!localStorage.getItem('token') && route != '/auth/login') {
             this.router.navigate(['auth/login']);
         }
-        if (localStorage.getItem('token') && route == 'auth/login') {
+        if (localStorage.getItem('token') && route == '/auth/login') {
             this.router.navigate(['']);
 
         }
