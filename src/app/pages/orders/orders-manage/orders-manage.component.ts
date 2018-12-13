@@ -163,7 +163,7 @@ export class OrdersManageComponent implements OnInit {
                             this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
                         }
                     }
-                    console.log(this.dateIndexes);
+                    console.log(this.orders);
                     this.spinnerFlag = false;
                     this.unpage = false;
                 })
@@ -184,7 +184,8 @@ export class OrdersManageComponent implements OnInit {
         this.addNew = false;
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
-            this.editProducts = this.OrderToEdit.products;
+            console.log(this.OrderToEdit);
+            this.editProducts = this.OrderToEdit.orderProducts;
             this.totalPrice = this.OrderToEdit.totalPrice;
             this.editIndex = index;
 
@@ -218,7 +219,7 @@ export class OrdersManageComponent implements OnInit {
         this.tP = [];
         this.selectedEditProductsIds = [];
         this.selectedProducts = [];
-        for (let pro of order.products) {
+        for (let pro of order.orderProducts) {
             this.tP.push({label: pro.nameAr, value: pro.productId});
             this.selectedEditProducts.push({
                 'count': pro.count,
@@ -246,7 +247,7 @@ export class OrdersManageComponent implements OnInit {
             'price': 0,
             'productId': product._id,
         });
-        this.newOrder.products = this.selectedProducts;
+        this.newOrder.orderProducts = this.selectedProducts;
         this.selectedProductsIds = [];
 
         this.productCheck();
@@ -263,7 +264,7 @@ export class OrdersManageComponent implements OnInit {
     }
 
     productCheck() {
-        if (this.newOrder.products == [] || this.newOrder.products == undefined) {
+        if (this.newOrder.orderProducts == [] || this.newOrder.orderProducts == undefined) {
             this.productError = true;
         } else {
             this.productError = false;
@@ -328,7 +329,7 @@ export class OrdersManageComponent implements OnInit {
     productDeSelected(id) {
         let product = this.products.find(x => x._id === id);
         this.selectedProducts.splice(this.selectedProducts.indexOf(this.selectedProducts.find(x => x.productId === id)), 1);
-        this.newOrder.products = this.selectedProducts;
+        this.newOrder.orderProducts = this.selectedProducts;
         this.totalPriceCalculate(this.selectedProducts);
         this.productCheck();
     }
@@ -336,7 +337,7 @@ export class OrdersManageComponent implements OnInit {
     productEditDeSelected(id) {
         let product = this.findEditProduct(id);
         this.selectedEditProducts.splice(this.selectedEditProducts.indexOf(this.selectedEditProducts.find(x => x.productId === id)), 1);
-        this.OrderToEdit.products = this.selectedEditProducts;
+        this.OrderToEdit.orderProducts = this.selectedEditProducts;
     }
 
     findUser(id) {
@@ -502,7 +503,7 @@ export class OrdersManageComponent implements OnInit {
     }
 
     editOrderApi(order) {
-        order.products = this.selectedEditProducts;
+        order.orderProducts = this.selectedEditProducts;
         order.totalPrice = this.totalPrice;
         this.Handler.updateOrder(order).finally(() => {
             this.cancelOrder();

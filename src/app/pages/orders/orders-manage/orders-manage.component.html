@@ -5,6 +5,7 @@
                 [tooltip]="'orders.new.btn'|translate"
                 placement="bottom"><i class="fa fa-plus fa-2x"></i></button>
     </div>
+
 </div>
 <div *ngIf="addNew" id="new-order" [@rightEnterLeftLeaveAnimation]
      (@rightEnterLeftLeaveAnimation.done)="showNewBtn=!showNewBtn">
@@ -150,7 +151,7 @@
                 </td>
                 <td class="no-padding-td">
                     <ul class="list-group table-ul">
-                        <li *ngFor="let product of order.products" class="list-group-item ">
+                        <li *ngFor="let product of order.orderProducts" class="list-group-item ">
                             {{"orders.table.product"|translate}} :
                             <span>{{product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
                             <strong>{{product.count}}</strong>

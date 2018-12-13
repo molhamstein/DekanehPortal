@@ -7,7 +7,7 @@ export class Order {
     totalPrice: number;
     clientType: string;
     coupon: Coupon;
-    products:OrderProduct[];
+    orderProducts: OrderProduct[];
     assignedDate: string;
     deliveredDate: string;
     id: string;
