@@ -4,8 +4,12 @@ body {
     overflow-x: hidden;
     color: #353c4e;
     font-family: "Open Sans", sans-serif;
+    scroll-behavior: smooth;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 *:focus {
     outline: none;
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {ProductHandler} from '../product-handler';
 import {ProductModel} from '../product-model';
@@ -42,7 +42,9 @@ export class ProductListComponent implements OnInit {
         this.alert.showToast.next({type: 'error'});
     }
 
-    constructor(private productHandler: ProductHandler, private router: Router, private alert: AlertService) {
+    private eventOptions: boolean | { capture?: boolean, passive?: boolean };
+
+    constructor(private productHandler: ProductHandler, private router: Router, private alert: AlertService, private ngZone: NgZone) {
         this.getAllCats();
         // this.getAllMans();
 
@@ -56,6 +58,7 @@ export class ProductListComponent implements OnInit {
                 window.scrollTo(0, 0);
             }
         });
+
     }
 
     pageChanged(event: any): void {
@@ -280,7 +283,12 @@ export class ProductListComponent implements OnInit {
                 this.returnedArray = this.allProduct;
                 this.spinnerFlag = false;
                 this.unpage = true;
+                if (localStorage.getItem('productsScreenY')) {
+                    setTimeout(() => {
+                        window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
 
+                    }, 1000);
+                }
             }).subscribe(data => {
 
                 this.allProduct = data;
@@ -334,6 +342,12 @@ export class ProductListComponent implements OnInit {
                     this.spinnerFlag = false;
                     this.unpage = false;
 
+                    if (localStorage.getItem('productsScreenY')) {
+                        setTimeout(() => {
+                            window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+
+                        }, 100);
+                    }
 
                 })
                 .subscribe(data => {
@@ -382,9 +396,17 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        window.addEventListener('scroll', this.scroll, true); //third parameter
     }
 
+    ngOnDestroy() {
+        window.removeEventListener('scroll', this.scroll, true);
+    }
+
+    scroll = (): void => {
+
+        localStorage.setItem('productsScreenY', window.pageYOffset.toString());
+    };
     preConfig() {
         this.statusCode = null;
         this.requestProcess = true;

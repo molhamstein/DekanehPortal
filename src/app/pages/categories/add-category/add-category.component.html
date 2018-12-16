@@ -155,7 +155,8 @@
                                 {{r[col]}}
                             </td>
                             <td>
-                                <i (click)="deleteSub(r)" [title]="'Categories.delete'|translate" class="ti-trash"></i>
+                                <i (click)="openModal(template,r)" [title]="'Categories.delete'|translate"
+                                   class="ti-trash"></i>
                             </td>
                         </tr>
                         </tbody>
@@ -176,3 +177,11 @@
         </app-card>
     </div>
 </div>
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.message'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>

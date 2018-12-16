@@ -101,7 +101,9 @@ export class ViewAllCategoriesComponent implements OnInit {
     }
 
     deleteCat(category) {
-        this.api.delete('/categories', category.id,).subscribe(
+        this.api.delete('/categories', category.id,).finally(() => {
+            this.modalRef.hide();
+        }).subscribe(
             (res: any) => {
                 if (res.ok) {
                     this.api.get('/categories').subscribe((data: any) => {

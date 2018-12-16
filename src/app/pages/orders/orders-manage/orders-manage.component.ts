@@ -163,14 +163,19 @@ export class OrdersManageComponent implements OnInit {
                             this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
                         }
                     }
-                    console.log(this.orders);
                     this.spinnerFlag = false;
                     this.unpage = false;
+                    if (localStorage.getItem('ordersScreenY')) {
+                        setTimeout(() => {
+                            window.scrollTo(0, Number(localStorage.getItem('ordersScreenY')));
+
+                        }, 100);
+                    }
+
                 })
                 .subscribe(data => {
                         this.orders = data;
 
-                        console.log(this.toDay == this.datFormater(this.orders[0].orderDate));
 
                     }
                     , errorCode => this.showError());
@@ -184,7 +189,6 @@ export class OrdersManageComponent implements OnInit {
         this.addNew = false;
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
             this.OrderToEdit = order;
-            console.log(this.OrderToEdit);
             this.editProducts = this.OrderToEdit.orderProducts;
             this.totalPrice = this.OrderToEdit.totalPrice;
             this.editIndex = index;
@@ -430,7 +434,6 @@ export class OrdersManageComponent implements OnInit {
                     this.ul.push({label: u.shopName, value: u.id});
                 }
                 this.users = data;
-                console.log(data);
 
                 setTimeout(() => {
                     this.IOusers = this.ul;
@@ -453,7 +456,16 @@ export class OrdersManageComponent implements OnInit {
     }
 
     ngOnInit() {
+        window.addEventListener('scroll', this.scroll, true); //third parameter
     }
+
+    ngOnDestroy() {
+        window.removeEventListener('scroll', this.scroll, true);
+    }
+
+    scroll = (): void => {
+        localStorage.setItem('ordersScreenY', window.pageYOffset.toString());
+    };
 
     searchProducts(str) {
         this.tP = [];

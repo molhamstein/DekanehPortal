@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConstService} from '../../../services/const.service';
@@ -6,6 +6,7 @@ import {ApiService} from '../../../services/api.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable} from 'rxjs/Observable';
 import {Headers, RequestOptions, Response} from '@angular/http';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-add-category',
@@ -26,8 +27,10 @@ export class AddCategoryComponent implements OnInit {
     imgSrc: string = '';
     imgUrl: string = '';
     imgBlankError: boolean;
+    modalRef: BsModalRef;
+    catTodelete: string;
 
-    constructor(private route: ActivatedRoute, private c: ConstService, private router: Router, private api: ApiService, public translate: TranslateService) {
+    constructor(private modalService: BsModalService, private route: ActivatedRoute, private c: ConstService, private router: Router, private api: ApiService, public translate: TranslateService) {
         this.route.params.subscribe(params => {
             if (params['id'] != undefined) {
                 this.id = params['id'];
@@ -35,6 +38,18 @@ export class AddCategoryComponent implements OnInit {
         });
     }
 
+    openModal(template: TemplateRef<any>, category) {
+        this.catTodelete = category;
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
+    confirm(): void {
+        this.deleteSub(this.catTodelete);
+    }
+
+    decline(): void {
+        this.modalRef.hide();
+    }
     onFileChanged(event) {
         this.selectedFile = event.target.files[0];
         const reader = new FileReader();
@@ -57,7 +72,9 @@ export class AddCategoryComponent implements OnInit {
 
     // click:boolean=true:[
     deleteSub(subCat) {
-        this.api.delete('/categories/' + this.id + '/subCategories', subCat.id).subscribe(
+        this.api.delete('/categories/' + this.id + '/subCategories', subCat.id).finally(() => {
+            this.modalRef.hide();
+        }).subscribe(
             (res) => {
                 if (res.ok) {
                     this.api.get('/categories/' + this.id + '/subCategories').subscribe((data: any) => {
@@ -172,7 +189,7 @@ export class AddCategoryComponent implements OnInit {
             }
         }
         if (!hasError) {
-            this.api.post('/categories/' + this.id + '/subCategories', this.subCategoriesForm.value, {}).subscribe((res) => {
+            this.api.post('/categories/' + this.id + '/subCategories', this.subCategoriesForm.value).subscribe((res) => {
                 if (res.status == 200) {
                     this.api.get('/categories/' + this.id + '/subCategories').subscribe((data: any) => {
                         if (data.ok) {

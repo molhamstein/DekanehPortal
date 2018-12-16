@@ -40,7 +40,7 @@ td, th {
 }
 
 .product-img {
-    max-height: 64px;
+    height: 64px;
     max-width: 90px;
 }
 
