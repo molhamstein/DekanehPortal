@@ -41,6 +41,7 @@ import {NewSlideComponent} from '../../pages/top-slider/new-slide/new-slide.comp
 import {RatesListComponent} from '../../pages/ratings/rates-list/rates-list.component';
 import {OrdersManageComponent} from '../../pages/orders/orders-manage/orders-manage.component';
 import {AuthGuardService} from '../../services/auth-guard.service';
+import {NotificationsService} from '../../services/notifications.service';
 
 const AppRoutes = [
     {
@@ -214,7 +215,7 @@ const AppRoutes = [
 @NgModule({
     imports: [
         CommonModule,
-        TranslateModule.forRoot(),
+        TranslateModule.forChild(),
         RouterModule.forChild(AppRoutes),
         PagesModule,
         SharedModule,
@@ -233,7 +234,7 @@ const AppRoutes = [
         // AddManufacturerComponent,
         // AuthComponent,
         TitleComponent,
-    ], providers: [AuthGuardService]
+    ], providers: [AuthGuardService, NotificationsService]
 })
 export class AdminModule {
 

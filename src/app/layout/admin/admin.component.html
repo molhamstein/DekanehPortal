@@ -15,7 +15,8 @@
              class="navbar header-navbar pcoded-header">
             <div class="navbar-wrapper">
                 <div [attr.logo-theme]="logoTheme" class="navbar-logo">
-                    <a (click)="toggleOpened()" (clickOutside)="onClickedOutside($event)" [exclude]="'#main_navbar'" class="mobile-menu"
+                    <a (click)="toggleOpened()" (clickOutside)="onClickedOutside($event)" [exclude]="'#main_navbar'"
+                       class="mobile-menu"
                        href="javascript:;" id="mobile-collapse">
                         <i class="ti-menu"></i>
                     </a>
@@ -26,7 +27,6 @@
                         <i class="ti-more"></i>
                     </a>
                 </div>
-
                 <div class="navbar-container">
                     <div>
                         <ul class="nav-left">
@@ -158,53 +158,42 @@
                             <!--</ul>-->
                             <!--</li>-->
                         </ul>
-                        <ul [@mobileMenuTop]="isCollapsedMobile" [ngClass]="isCollapsedMobile" class="nav-right">
-                            <!--<li class="header-notification">-->
-                            <!--<a href="javascript:;">-->
-                            <!--<i class="ti-bell"></i>-->
-                            <!--<span class="badge bg-c-pink"></span>-->
-                            <!--</a>-->
-                            <!--<ul class="show-notification">-->
-                            <!--<li>-->
-                            <!--<h6>Notifications</h6>-->
-                            <!--<label class="label label-danger">New</label>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<div class="media">-->
-                            <!--<img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">-->
-                            <!--<div class="media-body">-->
-                            <!--<h5 class="notification-user">John Doe</h5>-->
-                            <!--<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>-->
-                            <!--<span class="notification-time">30 minutes ago</span>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<div class="media">-->
-                            <!--<img class="d-flex align-self-center img-radius" src="assets/images/avatar-3.jpg" alt="Generic placeholder image">-->
-                            <!--<div class="media-body">-->
-                            <!--<h5 class="notification-user">Joseph William</h5>-->
-                            <!--<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>-->
-                            <!--<span class="notification-time">30 minutes ago</span>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<div class="media">-->
-                            <!--<img class="d-flex align-self-center img-radius" src="assets/images/avatar-5.jpg" alt="Generic placeholder image">-->
-                            <!--<div class="media-body">-->
-                            <!--<h5 class="notification-user">Sara Soudein</h5>-->
-                            <!--<p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>-->
-                            <!--<span class="notification-time">30 minutes ago</span>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-                            <!--</li>-->
+
+                        <ul [@mobileMenuTop]="isCollapsedMobile" [ngClass]="isCollapsedMobile" class="nav-right"
+                            (mouseleave)="seeMePlz()">
+                            <li class="header-notification">
+                                <a href="javascript:;">
+                                    <i class="ti-bell"></i>
+                                    <span class="badge bg-c-pink">{{notiCount}}</span>
+                                </a>
+                                <ul class="show-notification">
+                                    <li>
+                                        <h6>{{"notifications.title"|translate}}</h6>
+                                    </li>
+                                    <li *ngFor="let noty of newNoti" (click)="goToHell(noty)" class="clickable-li"
+                                        [ngClass]="!noty.isSeen ? 'new': ''">
+                                        <div class="media">
+                                            <i class="d-flex align-self-center ti-info-alt"></i>
+                                            <div class="media-body">
+                                                <p class="notification-msg">{{"notifications.messages." + noty.type|translate}}&nbsp;<span
+                                                        *ngIf="noty.type=='order'">{{noty.order?.client?.shopName}}</span><span
+                                                        *ngIf="noty.type=='client'">{{noty.client?.shopName}}</span><span
+                                                        *ngIf="noty.type=='rate'">{{noty.rate?.client?.shopName}}</span>
+                                                </p>
+                                                <span class="notification-time">{{c.formatDate(noty.createdAt)}}</span><label
+                                                    *ngIf="!noty.isSeen"
+                                                    class="label label-danger">{{"notifications.new"|translate}}</label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                             <!--<li class="header-notification">-->
                             <!--<a href="javascript:;" (click)="toggleChat()" class="displayChatbox">-->
                             <!--<i class="ti-comments"></i>-->
-                            <!--<span class="badge bg-c-green"></span>-->
+                            <!--<span class="badge bg-c-orenge">1</span>-->
                             <!--</a>-->
                             <!--</li>-->
                             <li class="user-profile header-notification">
@@ -220,7 +209,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a (click)="logout()">
+                                        <a class="logout-btn" (click)="logout()">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
@@ -240,7 +229,8 @@
                     <div class="user-box">
                         <div class="card-body">
                             <div class="right-icon-control">
-                                <input #searchFriends (keyup)="searchFriendList($event)" class="form-control search-text"
+                                <input #searchFriends (keyup)="searchFriendList($event)"
+                                       class="form-control search-text"
                                        id="search-friends" placeholder="Search Friend">
                                 <div class="form-icon">
                                     <i class="icofont icofont-search"></i>
@@ -250,7 +240,8 @@
                         </div>
                         <div class="main-friend-list scroll-window" color="rgb(27, 139, 249)" opacity="0.4" size="7px"
                              slimScroll width="100%">
-                            <div (click)="toggleChatInner()" class="media userlist-box" data-id="1" ngbTooltip="Josephin Doe"
+                            <div (click)="toggleChatInner()" class="media userlist-box" data-id="1"
+                                 ngbTooltip="Josephin Doe"
                                  placement="left">
                                 <a class="media-left" href="javascript:;">
                                     <img alt="Generic placeholder image" class="media-object "
@@ -372,8 +363,10 @@
 
         <div [style.margin-top]="headerFixedMargin" class="pcoded-main-container">
             <div class="pcoded-wrapper">
-                <nav (clickOutside)="onClickedOutside($event)" [attr.active-item-theme]="activeItemTheme" [attr.navbar-theme]="navBarTheme"
-                     [attr.pcoded-header-position]="pcodedHeaderPosition" [attr.pcoded-navbar-position]="pcodedSidebarPosition"
+                <nav (clickOutside)="onClickedOutside($event)" [attr.active-item-theme]="activeItemTheme"
+                     [attr.navbar-theme]="navBarTheme"
+                     [attr.pcoded-header-position]="pcodedHeaderPosition"
+                     [attr.pcoded-navbar-position]="pcodedSidebarPosition"
                      [exclude]="'#mobile-collapse'" active-item-style="style0"
                      class=" pcoded-navbar" id="main_navbar"
                      sub-item-theme="theme2">
@@ -391,7 +384,8 @@
                                     <li *ngIf="asideItem.type === 'external'" [routerLinkActive]="['active']"
                                         appAccordionLink group="{{asideItem.state}}">
                                         <a appAccordionToggle
-                                           href="{{asideItem.external}}" target="{{asideItem.target ? '_blank' : '_self'}}">
+                                           href="{{asideItem.external}}"
+                                           target="{{asideItem.target ? '_blank' : '_self'}}">
                                             <span class="pcoded-micon"><i
                                                     class="{{ asideItem.icon }}"></i><b>{{ asideItem.short_label }}</b></span>
                                             <span class="pcoded-mtext">{{ asideItem.name|translate }}</span>
@@ -404,7 +398,8 @@
                                     <li *ngIf="asideItem.type === 'link'" [routerLinkActive]="['active']"
                                         appAccordionLink group="{{asideItem.state}}">
                                         <a *ngIf="asideItem.main_state; else mainContent"
-                                           [routerLink]="['/', asideItem.main_state, asideItem.state]" appAccordionToggle
+                                           [routerLink]="['/', asideItem.main_state, asideItem.state]"
+                                           appAccordionToggle
                                            target="{{asideItem.target ? '_blank' : '_self'}}">
                                             <span class="pcoded-micon"><i
                                                     class="{{ asideItem.icon }}"></i><b>{{ asideItem.short_label }}</b></span>
@@ -450,7 +445,8 @@
                                                     </a>
                                                 </li>
 
-                                                <li *ngIf="asideChildren.type === 'sub'" [attr.dropdown-icon]="dropDownIcon"
+                                                <li *ngIf="asideChildren.type === 'sub'"
+                                                    [attr.dropdown-icon]="dropDownIcon"
                                                     [attr.subitem-icon]="subItemIcon"
                                                     [routerLinkActive]="['active']"
                                                     appAccordionLink class="pcoded-hasmenu"
@@ -464,7 +460,8 @@
                                                         <span class="pcoded-mcaret"></span>
                                                     </a>
                                                     <ul class="pcoded-submenu">
-                                                        <ng-template [ngForOf]="asideChildren.children" let-asideChildrenSub
+                                                        <ng-template [ngForOf]="asideChildren.children"
+                                                                     let-asideChildrenSub
                                                                      ngFor>
                                                             <li [routerLinkActive]="['active']">
                                                                 <a [routerLink]="['/', asideItem.state, asideChildren.state, asideChildrenSub.state]"

@@ -24311,3 +24311,39 @@ body.dark #styleSelector .form-control {
 #real-time-update, #real-time-update canvas {
     width: 100% !important;
 }
+
+.show-notification {
+    direction: rtl;
+    text-align: right;
+}
+
+.show-notification li:first-child label, .show-notification li .label {
+    float: left !important;
+}
+
+.show-notification li.new {
+    background: #f1f1f1;
+}
+
+.show-notification li i {
+    margin-left: 10px;
+    margin-right: 0px;
+    width: 40px;
+    -ms-flex-item-align: start !important;
+    align-self: flex-start !important;
+    font-size: 29px;
+}
+
+.logout-btn:hover, .clickable-li {
+    cursor: pointer;
+}
+
+.show-notification {
+    /*padding;*/
+    padding-inline-start: 0px;
+}
+
+.show-notification {
+    overflow-y: auto;
+    max-height: 500px;
+}

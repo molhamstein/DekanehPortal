@@ -142,7 +142,7 @@
                         </li>
                         <li>
                             <span style="font-size: 14px" class="badge badge-dark"
-                                  *ngIf="getTimer(order.orderDate)!='done'">{{getTimer(order.orderDate)}}</span>
+                                  *ngIf="getTimer(order.orderDate)!=undefined">{{getTimer(order.orderDate)}}</span>
                         </li>
 
                     </ul>
@@ -183,7 +183,8 @@
                         <li><p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
                         <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
                                 class="fa fa-edit fa-lg"></i></span>
-                            <span class="functions-btn text-danger"><i class="fa fa-remove fa-lg"></i></span>
+                            <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
+                                    class="fa fa-remove fa-lg"></i></span>
                         </p>
                             <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p></li>
                     </ul>
@@ -324,3 +325,11 @@
     </div>
 
 </div>
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.message'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>

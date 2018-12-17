@@ -3,6 +3,11 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/a
 import {MenuItems} from '../../shared/menu-items/menu-items';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+import {NotificationsService} from '../../services/notifications.service';
+import {ConstService} from '../../services/const.service';
+import {not} from 'rxjs/util/not';
 
 @Component({
     selector: 'app-admin',
@@ -59,6 +64,7 @@ import {Router} from '@angular/router';
 
 
 export class AdminComponent implements OnInit {
+    subscr: Subscription;
     navType: string; /* st1, st2(default), st3, st4 */
     themeLayout: string; /* vertical(default) */
     layoutType: string; /* dark, light */
@@ -83,7 +89,8 @@ export class AdminComponent implements OnInit {
 
     isCollapsedMobile: string;
     isCollapsedSideBar: string;
-
+    notiCount = 0;
+    newNoti: any[];
     chatToggle: string;
     chatToggleInverse: string;
     chatInnerToggle: string;
@@ -104,7 +111,11 @@ export class AdminComponent implements OnInit {
     /*  @ViewChild('toggleButton') toggle_button: ElementRef;
       @ViewChild('sideMenu') side_menu: ElementRef;*/
 
-    constructor(public menuItems: MenuItems, public api: ApiService, private router: Router) {
+    constructor(public menuItems: MenuItems, public api: ApiService, private router: Router, private NotiHandler: NotificationsService, private c: ConstService) {
+        this.getNewNotiCount();
+        this.getNewNoti().subscribe(data => {
+            this.newNoti = data;
+        });
         this.menuItems;
         this.navType = 'st2';
         this.themeLayout = 'vertical';
@@ -119,7 +130,6 @@ export class AdminComponent implements OnInit {
         this.headerTheme = 'theme5';
         this.logoTheme = 'theme5';
         this.toggleOn = true;
-
         this.headerFixedMargin = '80px';
         this.navBarTheme = 'themelight1';
         this.activeItemTheme = 'theme4';
@@ -147,16 +157,48 @@ export class AdminComponent implements OnInit {
         this.setMenuAttributes(this.windowWidth);
     }
 
+    getNewNotiCount() {
+        return this.NotiHandler.getNewNotiCount().subscribe(data => {
+            this.notiCount = data['count'];
+        });
+    }
+
+    getNewNoti() {
+        return this.NotiHandler.getNewNoti();
+
+    }
     ngOnInit() {
         this.username = localStorage.getItem('username');
 
         this.setBackgroundPattern('pattern2');
-        // this.api.get();
-        // this.api.post();
-        // this.api.put();
-        // this.api.delete();
+        this.subscr = Observable.interval(30000)
+            .flatMap(() => this.getNewNoti())
+            .subscribe(data => {
+                this.newNoti = data;
+                this.getNewNotiCount();
+            });
+
     }
 
+    seeMePlz() {
+        this.NotiHandler.makeSeeAll().finally(() => {
+        }).subscribe(() => {
+            this.notiCount = 0;
+        });
+    }
+
+    goToHell(noty) {
+        if (noty.type == 'order') {
+            this.router.navigate(['/orders/management']);
+
+        } else if (noty.type == 'client') {
+            this.router.navigate(['/client/edit/' + noty.clientId]);
+
+        } else if (noty.type == 'rate') {
+            this.router.navigate(['/ratings/list']);
+
+        }
+    }
     onResize(event) {
         this.innerHeight = event.target.innerHeight + 'px';
         /* menu responsive */

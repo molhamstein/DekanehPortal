@@ -1,7 +1,3 @@
-<div (scroll)="tef($event)">
-    <div class="row">
-
-</div>
 <div class="row">
     <div class="col-sm-3">
         <input class="form-control search-box" type="text" (keyup)="filterBox($event)"
@@ -118,7 +114,6 @@
             <td>{{product.pack}}</td>
             <td>{{product.manufacturer.nameAr}}</td>
             <td>{{product.wholeSalePriceDiscount}}</td>
-
             <td>{{product.horecaPriceDiscount}}</td>
             <td>{{"product." + product.isOffer|translate}}</td>
             <td><span class="badge "
@@ -150,4 +145,3 @@
 </div>
 
 
-</div>

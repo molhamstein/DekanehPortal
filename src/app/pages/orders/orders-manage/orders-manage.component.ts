@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {OrdersHandlerService} from '../orders-handler.service';
 import {Order, OrderProduct} from '../order';
 import {ConstService} from '../../../services/const.service';
@@ -14,6 +14,7 @@ import {animate, style, transition, trigger} from '@angular/animations';
 import {StaffHandler} from '../../staff/staff.handler';
 import {DatePipe} from '@angular/common';
 import {AlertService} from '../../../services/alert.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-orders-manage',
@@ -60,6 +61,7 @@ export class OrdersManageComponent implements OnInit {
     productsCount;
     pages = 20;
     viewDate;
+    orderTodelete;
     onEdit = false;
     IOproducts: Array<IOption> = [];
     IOusers: Array<IOption> = [];
@@ -74,6 +76,7 @@ export class OrdersManageComponent implements OnInit {
     couponOrder: Coupon;
     currentPage = 1;
     editIndex;
+    modalRef: BsModalRef;
     couponNotfound: boolean;
     hoveredIndex;
     OrderToEdit: any;
@@ -91,16 +94,16 @@ export class OrdersManageComponent implements OnInit {
     });
     delstatus = ['pending', 'inDelivery', 'delivered', 'canceled'];
 
-    constructor(
-        private datePipe: DatePipe,
-        private Handler: OrdersHandlerService,
-        private userHandler: StaffHandler,
-        private productHandler: ProductHandler,
-        public c: ConstService,
-        private CouponHandler: CouponHandlerService,
-        private router: Router,
-        private route: ActivatedRoute,
-        private alert: AlertService
+    constructor(private modalService: BsModalService,
+                private datePipe: DatePipe,
+                private Handler: OrdersHandlerService,
+                private userHandler: StaffHandler,
+                private productHandler: ProductHandler,
+                public c: ConstService,
+                private CouponHandler: CouponHandlerService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private alert: AlertService
     ) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
@@ -127,7 +130,7 @@ export class OrdersManageComponent implements OnInit {
             let seconeds = Math.floor(((time - hours) * 60 - minuets) * 60);
             return seconeds + ' : ' + minuets + ' : ' + hours;
 
-        } else return 'done';
+        } else return undefined;
     }
 
     showError() {
@@ -176,7 +179,6 @@ export class OrdersManageComponent implements OnInit {
                 .subscribe(data => {
                         this.orders = data;
 
-
                     }
                     , errorCode => this.showError());
 
@@ -185,6 +187,30 @@ export class OrdersManageComponent implements OnInit {
         }, errorCode => this.showError());
     }
 
+    deleteOrder(id) {
+        this.Handler.deleteOrder(id).finally(() => {
+
+            this.modalRef.hide();
+            this.router.navigate(['/orders/management']);
+
+
+        }).subscribe(() => {
+        }, errorCode => this.showError());
+
+    }
+
+    openModal(template: TemplateRef<any>, orderId) {
+        this.orderTodelete = orderId;
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
+    confirm(): void {
+        this.deleteOrder(this.orderTodelete);
+    }
+
+    decline(): void {
+        this.modalRef.hide();
+    }
     editOrder(order, index) {
         this.addNew = false;
         this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
@@ -205,13 +231,13 @@ export class OrdersManageComponent implements OnInit {
             }, errorCode => this.showError()
         );
         if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
-
+            order.status = 'inDelivery';
             this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
 
-                this.CouponHandler.getUsersByString(this.delMan.ownerName).subscribe(data => {
+                this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
                         this.deul = [];
                         for (let u of data) {
-                            this.deul.push({label: u.ownerName, value: u.id});
+                            this.deul.push({label: u.username, value: u.id});
                         }
                         setTimeout(() => {
                             this.IOdeusers = this.deul;
@@ -443,10 +469,11 @@ export class OrdersManageComponent implements OnInit {
     }
 
     searchDeUsers(str) {
-        this.CouponHandler.getUsersByString(str).subscribe(data => {
+        this.Handler.getٍStaffByString(str).subscribe(data => {
+            console.log(data);
                 this.deul = [];
                 for (let u of data) {
-                    this.deul.push({label: u.ownerName, value: u.id});
+                    this.deul.push({label: u.username, value: u.id});
                 }
                 setTimeout(() => {
                     this.IOdeusers = this.deul;
@@ -517,6 +544,7 @@ export class OrdersManageComponent implements OnInit {
     editOrderApi(order) {
         order.orderProducts = this.selectedEditProducts;
         order.totalPrice = this.totalPrice;
+        console.log(order);
         this.Handler.updateOrder(order).finally(() => {
             this.cancelOrder();
         }).subscribe(data => {

@@ -3,12 +3,15 @@ import {ApiService} from '../../services/api.service';
 import {Order} from './order';
 import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {UserModel} from '../user-model';
+import {ConstService} from '../../services/const.service';
 
 @Injectable()
 export class OrdersHandlerService {
     constructor(private apiService: ApiService) {
     }
 
+    roleIds = ConstService.STAFF_ROLES;
     createOrder(order: Order) {
         let body = JSON.stringify(order);
         let cpHeaders = new Headers({'Content-Type': 'application/json'});
@@ -24,6 +27,25 @@ export class OrdersHandlerService {
             .catch(this.handleError);
     }
 
+    deleteOrder(id) {
+        // let cpHeaders = new Headers({'Content-Type': 'application/json'});
+        // let options = new RequestOptions({headers: cpHeaders});
+        return this.apiService.delete('/orders', id)
+            .map(success => success.status)
+            .catch(this.handleError);
+    }
+
+    getٍStaffByString(str: string): Observable<UserModel[]> {
+        let param = new URLSearchParams();
+        let rolesString = '';
+        for (let role of this.roleIds) {
+            rolesString = rolesString + '{"roleIds":"' + role + '"},';
+        }
+        // param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
+        param.append('filter', '{"where":{"and":[' + rolesString + ' {"username": {"like": "' + str + '"}}]},"limit":"10"}');
+        return this.apiService.get('/users', param)
+            .map(this.extractData).catch(this.handleError);
+    }
     getOrders(perPage: number, currentPage: number): Observable<Order[]> {
         let param = new URLSearchParams();
         param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');

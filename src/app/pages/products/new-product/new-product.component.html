@@ -305,7 +305,7 @@
                 <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
                     {{"staff.buttons.edit"|translate}}
                 </button>
-                <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" routerLink="/products/list"
+                <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()"
                         type="button">
                     {{"staff.buttons.back"|translate}}
                 </button>

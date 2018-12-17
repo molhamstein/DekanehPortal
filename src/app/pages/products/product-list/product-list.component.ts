@@ -55,7 +55,6 @@ export class ProductListComponent implements OnInit {
         this.router.events.subscribe((evt) => {
             if (evt instanceof NavigationEnd) {
                 this.router.navigated = false;
-                window.scrollTo(0, 0);
             }
         });
 
@@ -396,7 +395,7 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit() {
-        window.addEventListener('scroll', this.scroll, true); //third parameter
+        window.addEventListener('scroll', this.scroll, true);
     }
 
     ngOnDestroy() {
@@ -404,8 +403,10 @@ export class ProductListComponent implements OnInit {
     }
 
     scroll = (): void => {
+        if (window.pageYOffset.toString() != '0') {
+            localStorage.setItem('productsScreenY', window.pageYOffset.toString());
 
-        localStorage.setItem('productsScreenY', window.pageYOffset.toString());
+        }
     };
     preConfig() {
         this.statusCode = null;

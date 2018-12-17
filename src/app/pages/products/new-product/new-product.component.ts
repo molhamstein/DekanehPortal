@@ -334,10 +334,12 @@ export class NewProductComponent implements OnInit {
                     } ,errorCode => this.showError()
                 );
             }
-            // this.router.navigate(['/products/list']);
 
         }
+    }
 
+    goProducts() {
+        this.router.navigate(['/products/list']);
 
     }
 }
