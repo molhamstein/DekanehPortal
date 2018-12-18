@@ -23,7 +23,7 @@ export class NotificationsService {
 
     getNewNoti(): Observable<any[]> {
         let param = new URLSearchParams();
-        param.append('filter', '{"order": "createdAt DESC"}');
+        param.append('filter', '{"order": "createdAt DESC","limit":100}');
         return this.api.get('/notifications', param)
             .map(this.extractData).catch(this.handleError);
     }

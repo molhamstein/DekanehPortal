@@ -3,6 +3,7 @@ import {Area} from '../area';
 import {AreaHandlerService} from '../area-handler.service';
 import {Router} from '@angular/router';
 import {AlertService} from '../../../services/alert.service';
+import {ConstService} from '../../../services/const.service';
 
 @Component({
     selector: 'app-list-areas',
@@ -26,7 +27,7 @@ export class ListAreasComponent implements OnInit {
     currentArray: Area[] = [];
     pages = 10;
 
-    constructor(private areaHandler: AreaHandlerService, private router: Router,private alert:AlertService) {
+    constructor(private areaHandler: AreaHandlerService, private router: Router, private alert: AlertService, private c: ConstService) {
         this.getAllArea();
     }
 

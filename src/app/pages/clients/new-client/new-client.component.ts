@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserModel} from '../../user-model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MouseEvent} from '@agm/core';
 import {ClientsHandler} from '../clients-handler';
 import {AlertService} from '../../../services/alert.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-new-client',
@@ -27,9 +28,11 @@ export class NewClientComponent implements OnInit {
     lat: number;
     lng: number;
     areaId = '';
+    passSubmitted = false;
     locationPoint: any;
     processValidation = false;
     requestProcessing = false;
+    modalRef: BsModalRef;
     ClientForm = new FormGroup({
         phoneNumber: new FormControl('', Validators.compose(
             [
@@ -50,6 +53,16 @@ export class NewClientComponent implements OnInit {
                 ])
         ),
     });
+    PassForm = new FormGroup({
+
+        password: new FormControl('',
+            Validators.compose(
+                [
+                    Validators.required,
+                    Validators.minLength(6),
+                ])
+        ),
+    });
     marker = {
         lat: 33.5138,
         lng: 36.2765,
@@ -57,7 +70,7 @@ export class NewClientComponent implements OnInit {
     };
     private user: any;
 
-    constructor(private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute, private alert:AlertService) {
+    constructor(private modalService: BsModalService, private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute, private alert: AlertService) {
 
         this.route.params.subscribe(params => {
             this.id = params['id'];
@@ -127,6 +140,17 @@ export class NewClientComponent implements OnInit {
         this.areaId = event.target.value;
     }
 
+    showPasswordModal(template: TemplateRef<any>) {
+
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
+    // confirm(): void {
+    //     // this.deleteOrder(this.orderTodelete);
+    // }
+    decline(): void {
+        this.modalRef.hide();
+    }
     checkUserByPhone(event) {
         this.ClientHandler.getClientByPhone(event.target.value).subscribe(data => {
                 if (data['count'] > 0) {
@@ -185,6 +209,18 @@ export class NewClientComponent implements OnInit {
 
     }
 
+    onPassFormSubmit() {
+        if (this.PassForm.invalid || this.passError) {
+            return;
+        }
+        this.passSubmitted = true;
+        let passBody = {'id': this.id, 'password': this.PassForm.get('password').value};
+        this.ClientHandler.changePass(passBody).finally(() => {
+            this.passSubmitted = false;
+            this.modalRef.hide();
+        }).subscribe(data => console.log(data), errorCode => this.showError());
+
+    }
     onClientFormSubmit() {
         this.processValidation = true;
         if (this.ClientForm.invalid || this.passError || this.phoneError || this.nameError) {
@@ -209,7 +245,6 @@ export class NewClientComponent implements OnInit {
                 errorCode => this.showError()
             );
         } else {
-
             this.user.ownerName = this.ClientForm.get('ownerName').value;
             this.user.notes = this.ClientForm.get('notes').value;
             this.user.shopName = this.ClientForm.get('shopName').value;

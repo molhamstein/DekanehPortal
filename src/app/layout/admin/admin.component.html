@@ -31,6 +31,7 @@
                     <div>
                         <ul class="nav-left">
                             <li>
+
                                 <div class="sidebar_toggle"><a (click)="toggleOpened()" href="javascript:;"><i
                                         class="ti-menu f-18"></i></a></div>
                             </li>
@@ -161,6 +162,7 @@
 
                         <ul [@mobileMenuTop]="isCollapsedMobile" [ngClass]="isCollapsedMobile" class="nav-right"
                             (mouseleave)="seeMePlz()">
+
                             <li class="header-notification">
                                 <a href="javascript:;">
                                     <i class="ti-bell"></i>
@@ -179,6 +181,7 @@
                                                         *ngIf="noty.type=='order'">{{noty.order?.client?.shopName}}</span><span
                                                         *ngIf="noty.type=='client'">{{noty.client?.shopName}}</span><span
                                                         *ngIf="noty.type=='rate'">{{noty.rate?.client?.shopName}}</span>
+                                                    <span *ngIf="noty.type=='forgetPassword'">{{noty.client?.shopName}}</span>
                                                 </p>
                                                 <span class="notification-time">{{c.formatDate(noty.createdAt)}}</span><label
                                                     *ngIf="!noty.isSeen"
@@ -186,6 +189,7 @@
                                             </div>
                                         </div>
                                     </li>
+
 
                                 </ul>
                             </li>

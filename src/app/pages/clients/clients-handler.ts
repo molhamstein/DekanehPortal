@@ -46,6 +46,15 @@ export class ClientsHandler {
             .catch(this.handleError);
     }
 
+    changePass(passForm: any): Observable<string> {
+        let body = JSON.stringify(passForm);
+        let cpHeaders = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: cpHeaders});
+        return this.apiService.post('/users/resetPassword', body, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+    }
+
     getClientUserById(ClientUserId: string): Observable<UserModel> {
         return this.apiService.get('/users/' + ClientUserId)
             .map(this.extractData)
