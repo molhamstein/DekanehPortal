@@ -167,7 +167,7 @@
                     <ul class="list-group table-ul">
                         <li><span class="list-group-item ">{{c.formatDate(order.deliveredDate)}}</span></li>
                         <li><span class="list-group-item ">{{c.formatDate(order.assignedDate)}}</span></li>
-                        <li><span class="list-group-item ">{{order.deliveryMember?.ownerName}}</span></li>
+                        <li><span class="list-group-item ">{{order.deliveryMember?.username}}</span></li>
                     </ul>
                 </td>
                 <td>
@@ -181,10 +181,14 @@
                 <td class="no-padding-td">
                     <ul class="list-group table-ul">
                         <li><p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
-                        <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
+                        <span *ngIf="order?.status=='inDelivery'" class="functions-btn text-success"
+                              (click)="openDeliveredModal(tawseel,order)"><i
+                                class="fa fa-check-circle fa-lg"></i></span>
+                            <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
                                 class="fa fa-edit fa-lg"></i></span>
                             <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
                                     class="fa fa-remove fa-lg"></i></span>
+
                         </p>
                             <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p></li>
                     </ul>
@@ -330,6 +334,14 @@
         <p>{{'system.modal.message'|translate}}</p>
         <button type="button" class="btn btn-danger modal-confirm"
                 (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>
+<ng-template #tawseel>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.delivered'|translate}}</p>
+        <button type="button" class="btn btn-success modal-confirm"
+                (click)="confirmDelivered()">{{'system.modal.confirm'|translate}}</button>
         <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
     </div>
 </ng-template>

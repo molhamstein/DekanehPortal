@@ -27,6 +27,20 @@ export class OrdersHandlerService {
             .catch(this.handleError);
     }
 
+    assignDelivery(user, orderId) {
+        let body = JSON.stringify(user);
+        let cpHeaders = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: cpHeaders});
+        return this.apiService.post('/orders/' + orderId + '/assignDelivery', body, options).map(this.extractData).catch(this.handleError);
+    }
+
+    SetDelivered(orderId) {
+
+        let cpHeaders = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: cpHeaders});
+        return this.apiService.post('/orders/' + orderId + '/delivered', options).map(this.extractData).catch(this.handleError);
+    }
+
     deleteOrder(id) {
         // let cpHeaders = new Headers({'Content-Type': 'application/json'});
         // let options = new RequestOptions({headers: cpHeaders});

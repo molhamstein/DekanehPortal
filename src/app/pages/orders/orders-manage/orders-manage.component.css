@@ -62,7 +62,13 @@ button[disabled] {
     vertical-align: middle;
     color: gray;
 }
-.functions-btn:first-child{
+
+.functions-btn:last-child {
+    margin-left: 0px;
+
+}
+
+.functions-btn {
     margin-left: 10px;
 }
 .functions-btn:hover{

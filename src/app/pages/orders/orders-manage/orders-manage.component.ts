@@ -62,6 +62,7 @@ export class OrdersManageComponent implements OnInit {
     pages = 20;
     viewDate;
     orderTodelete;
+    orderTodeliver;
     onEdit = false;
     IOproducts: Array<IOption> = [];
     IOusers: Array<IOption> = [];
@@ -92,7 +93,7 @@ export class OrdersManageComponent implements OnInit {
     orderForm = new FormGroup({
         clientId: new FormControl('', Validators.required),
     });
-    delstatus = ['pending', 'inDelivery', 'delivered', 'canceled'];
+    delstatus = ['pending', 'canceled'];
 
     constructor(private modalService: BsModalService,
                 private datePipe: DatePipe,
@@ -204,8 +205,17 @@ export class OrdersManageComponent implements OnInit {
         this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
     }
 
+    openDeliveredModal(template: TemplateRef<any>, order) {
+        this.orderTodeliver = order;
+        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    }
+
     confirm(): void {
         this.deleteOrder(this.orderTodelete);
+    }
+
+    confirmDelivered(): void {
+        this.setDeliverd(this.orderTodeliver);
     }
 
     decline(): void {
@@ -231,7 +241,7 @@ export class OrdersManageComponent implements OnInit {
             }, errorCode => this.showError()
         );
         if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
-            order.status = 'inDelivery';
+
             this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
 
                 this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
@@ -451,6 +461,7 @@ export class OrdersManageComponent implements OnInit {
 
     DeuserSelected(u, order) {
         order.status = 'inDelivery';
+
     }
 
     searchUsers(str) {
@@ -512,6 +523,14 @@ export class OrdersManageComponent implements OnInit {
 
     }
 
+    setDeliverd(order) {
+        this.Handler.SetDelivered(order.id).finally(() => {
+            order.status = 'delivered';
+            this.modalRef.hide();
+
+        }).subscribe(() => {
+        }, errorCode => this.showError());
+    }
     searchEditProducts(str) {
         this.tP = [];
         if (str != '') {
@@ -546,6 +565,10 @@ export class OrdersManageComponent implements OnInit {
         order.totalPrice = this.totalPrice;
         console.log(order);
         this.Handler.updateOrder(order).finally(() => {
+            if (order.status == 'inDelivery') {
+                this.Handler.assignDelivery({'userId': order.deliveryMemberId}, order.id).subscribe(() => {
+                }, errorCode => this.showError());
+            }
             this.cancelOrder();
         }).subscribe(data => {
         }, errorCode => this.showError());
