@@ -8,6 +8,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {SelectModule} from 'ng-select';
 import {PaginationModule, TooltipModule} from 'ngx-bootstrap';
 import { StatisticsComponent } from './statistics/statistics.component';
+import {OrdersFromSuppliersComponent} from './orders-from-suppliers/orders-from-suppliers.component';
+import {SuppliersService} from './orders-from-suppliers/suppliers.service';
 
 @NgModule({
     imports: [
@@ -21,11 +23,14 @@ import { StatisticsComponent } from './statistics/statistics.component';
         SelectModule
 
     ], providers: [
-        OrdersHandlerService
-    ],
+    OrdersHandlerService,
+    SuppliersService
+
+  ],
     declarations: [
         OrdersManageComponent,
-        StatisticsComponent]
+      StatisticsComponent,
+      OrdersFromSuppliersComponent]
 })
 export class OrdersModule {
 }

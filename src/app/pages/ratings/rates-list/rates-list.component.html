@@ -20,7 +20,7 @@
         <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
 
         <tr *ngFor="let rate of returnedArray  ">
-            <td>{{rate.user.username}}</td>
+          <td>{{rate.user.ownerName}}</td>
             <td>{{rate.user.areaId}}</td>
             <td>{{rate.orderId}}</td>
             <td><span class="badge "

@@ -42,6 +42,7 @@ import {RatesListComponent} from '../../pages/ratings/rates-list/rates-list.comp
 import {OrdersManageComponent} from '../../pages/orders/orders-manage/orders-manage.component';
 import {AuthGuardService} from '../../services/auth-guard.service';
 import {NotificationsService} from '../../services/notifications.service';
+import {OrdersFromSuppliersComponent} from '../../pages/orders/orders-from-suppliers/orders-from-suppliers.component';
 
 const AppRoutes = [
     {
@@ -199,8 +200,8 @@ const AppRoutes = [
                 component: OrdersComponent,
                 children: [
                     {
-                        path: 'view',
-                        component: ViewOrdersComponent,
+                      path: 'from-supplier',
+                      component: OrdersFromSuppliersComponent,
                     },
                     {
                         path: 'management',

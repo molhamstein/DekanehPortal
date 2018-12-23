@@ -29,6 +29,7 @@
     "Orders": {
       "main": "الطلبات",
       "viewAll": "عرض جميع الطلبات",
+      "fromSupplier": "طلبات من المورد",
       "Management": "إدارة الطلبات"
     },
     "Products": {
@@ -448,6 +449,7 @@
     "searchPro": "ابحث عن منتج",
     "buttons": {
       "edit": "تعديل",
+      "archive": "ترحيل",
       "delete": "حذف",
       "add": "اضافة",
       "back": "إلغاء"
@@ -490,12 +492,29 @@
     "form": {
     }
   },
+  "suppliersOrders": {
+    "searchSup": "ابحث عن المورد",
+    "todayTitle": "طلبات اليوم",
+    "archivedTitle": "طلبات تم ترحيلها",
+    "table": {
+      "orderTotal": "العدد الكلي للطلبات",
+      "productsTap": "قائمة المنتجات",
+      "staffUser": "الموظف",
+      "status": "الحالة",
+      "supplier": "المورد",
+      "creationDate": "تاريخ الانشاء"
+    },
+    "status": {
+      "pending": "انتظار",
+      "cashed": "مدفوع"
+
+    }
+  },
   "notifications": {
     "title": "الاشعارات",
     "new": "جديد",
     "messages": {
-      "rate": "تم اضافة تقيم جديد من قبل ",
-      "forgetPassword": "تم اضافة طلب تغير كلمة مرور من قبل ",
+      "rating": "تم اضافة تقيم جديد من قبل ",
       "forgetPassword": "تم اضافة طلب تغير كلمة مرور من قبل ",
       "order": "تم اضافة طلب جدبد ل ",
       "client": "تم اضافة زبون جديد "

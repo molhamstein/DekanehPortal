@@ -1,0 +1,106 @@
+<div class="table-responsive today-table">
+  <table class="table table-bordered ">
+    <thead>
+    <tr class="bg-danger">
+      <td class="title-td" align="center" colspan="2">{{'suppliersOrders.todayTitle'|translate}}</td>
+    </tr>
+    <tr>
+      <th>
+        {{'suppliersOrders.table.productsTap'|translate}}
+      </th>
+      <th>
+        {{"orders.buttons.archive"|translate}}
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="no-padding-td ">
+        <ul class="list-group table-ul">
+          <li *ngFor="let obj of todayOFS.data" class="list-group-item align-right">
+            <span><img [src]="obj.product.media?.thumbnail" alt="" style="max-width: 34px;max-height: 34px;"></span>
+            <span>{{obj.product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+            <strong>{{obj.count}}</strong>
+            {{"orders.table.price"|translate}} : <strong>{{obj.price}}</strong>
+          </li>
+          <li class="list-group-item list-group-item-info"><span>{{"orders.table.total"|translate}}
+            : </span><strong>{{todayOFS.total}}</strong></li>
+        </ul>
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="setArchive()" type="button">
+          {{"orders.buttons.archive"|translate}}
+        </button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+
+
+    <thead>
+    <tr class="bg-primary">
+      <td class="title-td" align="center" colspan="5">{{'suppliersOrders.archivedTitle'|translate}}</td>
+    </tr>
+    <tr>
+      <th>
+        {{'suppliersOrders.table.supplier'|translate}}
+      </th>
+
+      <th>
+        {{'suppliersOrders.table.productsTap'|translate}}
+      </th>
+      <th>
+        {{'suppliersOrders.table.orderTotal'|translate}}
+      </th>
+      <th>
+        {{'suppliersOrders.table.staffUser'|translate}}
+      </th>
+
+      <th>
+        {{'suppliersOrders.table.status'|translate}}
+      </th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let sup of OFS">
+      <td>
+        {{sup.supplier.titleAr}}
+      </td>
+
+      <td class="no-padding-td">
+        <ul class="list-group table-ul">
+          <li *ngFor="let product of sup.products" class="list-group-item ">
+            {{"orders.table.product"|translate}} :
+            <span>{{product.product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+            <strong>{{product.count}}</strong>
+            {{"orders.table.price"|translate}} : <strong>{{product.price}}</strong>
+          </li>
+          <li class="list-group-item list-group-item-info"><span>{{"orders.table.total"|translate}}
+            : </span><strong>{{sup.total}}</strong></li>
+        </ul>
+      </td>
+      <td>
+        {{sup.orders.length}}
+
+      </td>
+      <td>
+        {{sup.staff.username != undefined && sup.staff.username != '' ? sup.staff.username : sup.staff.ownerName }}
+
+      </td>
+
+      <td>
+        <span class="badge "
+              [ngClass]="sup.status=='pending' ? 'badge-warning':'badge-success'">{{'suppliersOrders.status.' + sup.status|translate}}</span>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

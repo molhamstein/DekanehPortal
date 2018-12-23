@@ -1,0 +1,43 @@
+table {
+  direction: rtl;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-ul {
+  padding: 0px;
+}
+
+.table-li {
+  padding: 10px;
+}
+
+.no-padding-td {
+  padding: 0px;
+}
+
+.badge {
+  padding: 6px 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.today-table {
+  margin-bottom: 80px;
+}
+
+.title-td {
+  font-size: 15px;
+  font-weight: 600;
+}

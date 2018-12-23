@@ -194,8 +194,11 @@ export class AdminComponent implements OnInit {
         } else if (noty.type == 'client') {
             this.router.navigate(['/client/edit/' + noty.clientId]);
 
-        } else if (noty.type == 'rate') {
+        } else if (noty.type == 'rating') {
             this.router.navigate(['/ratings/list']);
+
+        } else if (noty.type == 'forgetPassword') {
+          this.router.navigate(['/client/edit/' + noty.clientId]);
 
         }
     }

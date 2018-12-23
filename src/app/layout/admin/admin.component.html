@@ -143,7 +143,7 @@
                             <!--</div>-->
                             <!--</div>-->
                             <!--<div class="form-group row">-->
-                            <!--<label for="example-search-input-content" class="col-3 col-form-label">Contact</label>-->
+                          <!--<label for="example-search-input-content" class="col-ngFor3 col-form-label">Contact</label>-->
                             <!--<div class="col-9">-->
                             <!--<input class="form-control" type="number" placeholder="+91-9898989898" id="example-search-input-content">-->
                             <!--</div>-->
@@ -166,7 +166,7 @@
                             <li class="header-notification">
                                 <a href="javascript:;">
                                     <i class="ti-bell"></i>
-                                    <span class="badge bg-c-pink">{{notiCount}}</span>
+                                  <span *ngIf="notiCount!=0" class="badge bg-c-pink">{{notiCount}}</span>
                                 </a>
                                 <ul class="show-notification">
                                     <li>
@@ -180,7 +180,7 @@
                                                 <p class="notification-msg">{{"notifications.messages." + noty.type|translate}}&nbsp;<span
                                                         *ngIf="noty.type=='order'">{{noty.order?.client?.shopName}}</span><span
                                                         *ngIf="noty.type=='client'">{{noty.client?.shopName}}</span><span
-                                                        *ngIf="noty.type=='rate'">{{noty.rate?.client?.shopName}}</span>
+                                                  *ngIf="noty.type=='rating'">{{noty.rating?.user?.shopName}}</span>
                                                     <span *ngIf="noty.type=='forgetPassword'">{{noty.client?.shopName}}</span>
                                                 </p>
                                                 <span class="notification-time">{{c.formatDate(noty.createdAt)}}</span><label
@@ -189,8 +189,6 @@
                                             </div>
                                         </div>
                                     </li>
-
-
                                 </ul>
                             </li>
 
