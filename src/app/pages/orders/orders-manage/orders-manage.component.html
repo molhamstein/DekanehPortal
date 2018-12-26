@@ -108,9 +108,10 @@
                      [(ngModel)]="delMemFilter"
                      [ngModelOptions]="{standalone: true}"
                      [multiple]="false"
-                     (selected)="filterByDel($event)"
-                     [options]="IOdeusers">
+                     [options]="IOdeusers"
+                     (selected)="filterByDel()">
           </ng-select>
+
           <button *ngIf="delMemFilter!=undefined" type="button" (click)="emptyFilter()"
                   class="btn btn-danger empty-filter">
             {{"product.cancel"|translate}}
@@ -119,10 +120,9 @@
       </td>
     </tr>
     <tr>
-      sacsacsac
-      asc
       <th>
         {{'orders.table.userTap'|translate}}
+
       </th>
       <th>
         {{'orders.table.productsTap'|translate}}
