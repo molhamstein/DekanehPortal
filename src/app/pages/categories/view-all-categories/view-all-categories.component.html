@@ -35,7 +35,7 @@
             </td>
         </tr>
         <ng-container *ngFor="let subCat of subCategories">
-            <tr *ngIf="subCat.visible&&subCat.parentId==category.id">
+          <tr *ngIf="subCat.visible&&subCat.parentId==category.id" [@enterAnimation]>
               <td colspan="8">
                     <table *ngIf="subCat.cols.length>0" class="width-100 table table-bordered table-striped ">
                         <thead>
