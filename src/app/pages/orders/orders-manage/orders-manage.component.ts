@@ -60,6 +60,7 @@ export class OrdersManageComponent implements OnInit {
     unpage = false;
     productsCount;
     pages = 20;
+  delMemFilter;
     viewDate;
     orderTodelete;
     orderTodeliver;
@@ -121,6 +122,10 @@ export class OrdersManageComponent implements OnInit {
         this.newOrder = new Order();
     }
 
+  emptyFilter() {
+    this.delMemFilter = undefined;
+    this.getOrders();
+  }
     getTimer(date) {
         let nowDate = new Date().getTime();
 
@@ -153,28 +158,37 @@ export class OrdersManageComponent implements OnInit {
         }
     }
 
-    getOrders() {
-        this.spinnerFlag = true;
-        this.Handler.getOrdersCount().finally(() => {
-            this.Handler.getOrders(this.pages, this.currentPage)
-                .finally(() => {
-                    this.dateIndexes = [];
-                    let d = this.datFormater(this.orders[0].orderDate);
-                    this.dateIndexes.push({date: d, index: 0});
-                    for (let o of this.orders) {
-                        if (this.datFormater(o.orderDate) != this.datFormater(d)) {
-                            d = this.datFormater(o.orderDate);
-                            this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
-                        }
-                    }
-                    this.spinnerFlag = false;
-                    this.unpage = false;
-                    if (localStorage.getItem('ordersScreenY')) {
-                        setTimeout(() => {
-                            window.scrollTo(0, Number(localStorage.getItem('ordersScreenY')));
+  filterByDel() {
+    this.getOrders();
+  }
 
-                        }, 100);
-                    }
+  getOrdersFinilaize() {
+    this.dateIndexes = [];
+    let d = this.datFormater(this.orders[0].orderDate);
+    this.dateIndexes.push({date: d, index: 0});
+    for (let o of this.orders) {
+      if (this.datFormater(o.orderDate) != this.datFormater(d)) {
+        d = this.datFormater(o.orderDate);
+        this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
+      }
+    }
+    this.spinnerFlag = false;
+    this.unpage = false;
+    // if (localStorage.getItem('ordersScreenY')) {
+    //   setTimeout(() => {
+    //     window.scrollTo(0, Number(localStorage.getItem('ordersScreenY')));
+    //
+    //   }, 100);
+    // }
+  }
+
+  getOrders() {
+    this.spinnerFlag = true;
+    this.orders = [];
+    this.Handler.getOrdersCount(this.delMemFilter).finally(() => {
+      this.Handler.getOrders(this.pages, this.currentPage, this.delMemFilter)
+        .finally(() => {
+          this.getOrdersFinilaize();
 
                 })
                 .subscribe(data => {
@@ -481,7 +495,6 @@ export class OrdersManageComponent implements OnInit {
 
     searchDeUsers(str) {
         this.Handler.getٍStaffByString(str).subscribe(data => {
-            console.log(data);
                 this.deul = [];
                 for (let u of data) {
                     this.deul.push({label: u.username, value: u.id});
@@ -493,7 +506,8 @@ export class OrdersManageComponent implements OnInit {
         );
     }
 
-    ngOnInit() {
+
+  ngOnInit() {
         window.addEventListener('scroll', this.scroll, true); //third parameter
     }
 

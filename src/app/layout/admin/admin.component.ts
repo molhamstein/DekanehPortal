@@ -112,10 +112,6 @@ export class AdminComponent implements OnInit {
       @ViewChild('sideMenu') side_menu: ElementRef;*/
 
     constructor(public menuItems: MenuItems, public api: ApiService, private router: Router, private NotiHandler: NotificationsService, private c: ConstService) {
-        this.getNewNotiCount();
-        this.getNewNoti().subscribe(data => {
-            this.newNoti = data;
-        });
         this.menuItems;
         this.navType = 'st2';
         this.themeLayout = 'vertical';
@@ -155,6 +151,12 @@ export class AdminComponent implements OnInit {
         this.innerHeight = scrollHeight + 'px';
         this.windowWidth = window.innerWidth;
         this.setMenuAttributes(this.windowWidth);
+      setTimeout(() => {
+        this.getNewNotiCount();
+        this.getNewNoti().subscribe(data => {
+          this.newNoti = data;
+        });
+      }, 5000);
     }
 
     getNewNotiCount() {
@@ -171,7 +173,7 @@ export class AdminComponent implements OnInit {
         this.username = localStorage.getItem('username');
 
         this.setBackgroundPattern('pattern2');
-        this.subscr = Observable.interval(30000)
+      this.subscr = Observable.interval(40000)
             .flatMap(() => this.getNewNoti())
             .subscribe(data => {
                 this.newNoti = data;

@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
     returnedArray: any[] = [];
     pages = 20;
     productsCount;
-
+  searchString = '';
     showError() {
         this.alert.showToast.next({type: 'error'});
     }
@@ -187,30 +187,44 @@ export class ProductListComponent implements OnInit {
         let value = event.target.value;
         if (value == '') {
             this.getAllProducts();
+          localStorage.removeItem('search');
 
         } else {
-            let as: ProductModel[] = [];
-            this.productHandler.search(value).finally(() => {
-                this.unpage = true;
-                this.allProduct = as;
-                this.returnedArray = as;
+          localStorage.setItem('search', value);
+          localStorage.removeItem('filters');
+          this.searchProducts(value);
 
-            }).subscribe(data => {
-                as = data;
-            }, errorCode => this.showError());
         }
-        // this.returnedArray = this.currentArray;
-        // let fields = ['nameAr', 'pack'];
-        // for (let field of fields) {
-        //   for (let t of this.filterByfield(this.returnedArray, field, value)) {
-        //     if (!as.includes(t)) {
-        //       as.push(t);
-        //     }
-        //   }
-        // }
+      // this.returnedArray = this.currentArray;
+      // let fields = ['nameAr', 'pack'];
+      // for (let field of fields) {
+      //   for (let t of this.filterByfield(this.returnedArray, field, value)) {
+      //     if (!as.includes(t)) {
+      //       as.push(t);
+      //     }
+      //   }
+      // }
 
     }
 
+  searchProducts(str) {
+    let as: ProductModel[] = [];
+    this.productHandler.search(str).finally(() => {
+      this.unpage = true;
+      this.allProduct = as;
+      this.returnedArray = as;
+
+    }).finally(() => {
+      if (localStorage.getItem('productsScreenY')) {
+        setTimeout(() => {
+          window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+
+        }, 1000);
+      }
+    }).subscribe(data => {
+      as = data;
+    }, errorCode => this.showError());
+  }
     getAllCats() {
         this.productHandler.getAllCats().finally(() => {
             this.getAllMans();
@@ -277,6 +291,7 @@ export class ProductListComponent implements OnInit {
             filters.push({name: 'isOffer', value: this.isOffer});
         }
         localStorage.setItem('filters', JSON.stringify(filters));
+      localStorage.removeItem('search');
         if (filters != [] && filters.length != 0) {
             this.productHandler.getByFilters(filters).finally(() => {
                 this.returnedArray = this.allProduct;
@@ -300,31 +315,38 @@ export class ProductListComponent implements OnInit {
 
     emptyFields() {
         localStorage.removeItem('filters');
+      localStorage.removeItem('search');
         this.router.navigate(['/products/list']);
     }
 
     getAllMans() {
         this.productHandler.getAllMans().finally(() => {
+          if (localStorage.getItem('search')) {
+            this.searchProducts(localStorage.getItem('search'));
+            this.searchString = localStorage.getItem('search');
+          } else {
             if (localStorage.getItem('filters')) {
-                let tem = JSON.parse(localStorage.getItem('filters'));
-                if (tem.find(x => x.name == 'categoryId')) {
-                    this.cat = tem.find(x => x.name == 'categoryId').value;
-                    this.onCatChange();
-                }
-                if (tem.find(x => x.name == 'subCategoryId')) {
-                    this.subcat = tem.find(x => x.name == 'subCategoryId').value;
-                }
-                if (tem.find(x => x.name == 'manufacturerId')) {
-                    this.man = tem.find(x => x.name == 'manufacturerId').value;
-                }
-                if (tem.find(x => x.name == 'availableTo')) {
-                    this.availableTo = tem.find(x => x.name == 'availableTo').value;
-                }
-                if (tem.find(x => x.name == 'isOffer')) {
-                    this.isOffer = tem.find(x => x.name == 'isOffer').value;
-                }
+              let tem = JSON.parse(localStorage.getItem('filters'));
+              if (tem.find(x => x.name == 'categoryId')) {
+                this.cat = tem.find(x => x.name == 'categoryId').value;
+                this.onCatChange();
+              }
+              if (tem.find(x => x.name == 'subCategoryId')) {
+                this.subcat = tem.find(x => x.name == 'subCategoryId').value;
+              }
+              if (tem.find(x => x.name == 'manufacturerId')) {
+                this.man = tem.find(x => x.name == 'manufacturerId').value;
+              }
+              if (tem.find(x => x.name == 'availableTo')) {
+                this.availableTo = tem.find(x => x.name == 'availableTo').value;
+              }
+              if (tem.find(x => x.name == 'isOffer')) {
+                this.isOffer = tem.find(x => x.name == 'isOffer').value;
+              }
             }
             this.setFilters();
+          }
+
         })
             .subscribe(data =>
                     this.mans = data

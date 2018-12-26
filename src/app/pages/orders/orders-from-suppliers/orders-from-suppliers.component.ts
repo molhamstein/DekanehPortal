@@ -11,7 +11,7 @@ import {NavigationEnd, Router} from '@angular/router';
 export class OrdersFromSuppliersComponent implements OnInit {
   supplierToFilter = '';
   OFS = [];
-  todayOFS = [];
+  todayOFS = {data: [], total: 0};
   IOSuppliers: Array<IOption> = [];
 
   getTodayOrders() {
@@ -24,7 +24,7 @@ export class OrdersFromSuppliersComponent implements OnInit {
 
   setArchive() {
     this.Handler.archiveAll().finally(() => this.router.navigate(['/orders/from-supplier'])
-    ).subscribe(data => data = data);
+    ).subscribe(data => data);
   }
 
   constructor(private Handler: SuppliersService, private router: Router) {

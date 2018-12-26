@@ -60,13 +60,26 @@ export class OrdersHandlerService {
         return this.apiService.get('/users', param)
             .map(this.extractData).catch(this.handleError);
     }
-    getOrders(perPage: number, currentPage: number): Observable<Order[]> {
+
+  getOrders(perPage: number, currentPage: number, delMemID?): Observable<Order[]> {
         let param = new URLSearchParams();
-        param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
+    if (delMemID != undefined) {
+      param.append('filter', '{"where":{"deliveryMemberId":"' + delMemID + '"},"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
+
+    } else {
+      param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
+
+    }
         return this.apiService.get('/orders', param).map(this.extractData).catch(this.handleError);
     }
 
-    getOrdersCount(): Observable<number> {
+  getOrdersCount(delMemID?): Observable<number> {
+    if (delMemID != undefined) {
+      let param = new URLSearchParams();
+      param.append('where', '{"deliveryMemberId":"' + delMemID + '"}');
+      return this.apiService.get('/orders/count', param)
+        .map(this.extractData).catch(this.handleError);
+    }
         return this.apiService.get('/orders/count')
             .map(this.extractData).catch(this.handleError);
     }

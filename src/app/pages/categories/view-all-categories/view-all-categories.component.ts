@@ -22,7 +22,7 @@ export class ViewAllCategoriesComponent implements OnInit {
         this.orderDir = {'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0,};
         //
         let param = new URLSearchParams();
-        param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories"}');
+      param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories","order": "creationDate DESC"}');
         this.api.get('/categories', param).subscribe((data: any) => {
             if (data.ok) {
                 this.categories = JSON.parse(data._body);

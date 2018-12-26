@@ -3,6 +3,7 @@ import {ApiService} from '../../../services/api.service';
 import {ConstService} from '../../../services/const.service';
 import {Router} from '@angular/router';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {URLSearchParams} from '@angular/http';
 
 @Component({
     selector: 'app-view-manufacturers',
@@ -14,8 +15,10 @@ export class ViewManufacturersComponent implements OnInit {
     modalRef: BsModalRef;
     manTodelete: string;
 
-    constructor(private  api: ApiService, private router: Router, private constants: ConstService, private modalService: BsModalService) {
-        this.api.get('/manufacturers').subscribe((data: any) => {
+  constructor(private  api: ApiService, private router: Router, private constants: ConstService, private modalService: BsModalService, private c: ConstService) {
+    let param = new URLSearchParams();
+    param.append('filter', '{"order": "creationDate DESC"}');
+    this.api.get('/manufacturers', param).subscribe((data: any) => {
             if (data.status == 200)
                 this.data = JSON.parse(data._body);
             else
@@ -44,7 +47,9 @@ export class ViewManufacturersComponent implements OnInit {
         this.api.delete('/manufacturers', item.id).subscribe((res: any) => {
             if (res.status == 200) {
                 // alert("success");
-                this.api.get('/manufacturers').subscribe((data: any) => {
+              let param = new URLSearchParams();
+              param.append('filter', '{"order": "creationDate DESC"}');
+              this.api.get('/manufacturers', param).subscribe((data: any) => {
                     if (data.status == 200) {
                         this.data = JSON.parse(data._body);
                         this.data = [...this.data];

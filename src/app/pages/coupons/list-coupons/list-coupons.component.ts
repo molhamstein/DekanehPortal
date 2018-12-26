@@ -21,7 +21,7 @@ export class ListCouponsComponent implements OnInit {
     statusCode: number;
     requestProcess = false;
     page: number;
-    pages = 2;
+  pages = 20;
     couponCount;
     allCoupon: Coupon[] = [];
     orginalCoupon: Coupon[] = [];

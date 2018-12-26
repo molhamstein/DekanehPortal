@@ -70,7 +70,10 @@
     "Signin": "تسجيل الدخول"
   },
   "Manufactures": {
+    "creationDate": "تاريخ الاضافة",
+    "viewAll": "كل الصانعين",
     "code": "الكود",
+    "id": "id",
     "addNew": "إضافة جديد",
     "nameEn": "الاسم الانكليزي",
     "nameAr": "الاسم العربي",
@@ -89,6 +92,7 @@
     "main": "التصنيفات",
     "search": "بحث في التصنيفات",
     "code": "الكود",
+    "priority": "أولوية",
     "titleAr": "الاسم العربي",
     "titleEn": "الاسم الانكليزي",
     "creationDate": "تاريخ الاضافة",
@@ -106,6 +110,7 @@
       "id": "ID",
       "parentCategoryId": "الأب",
       "titleAr": "الاسم العربي",
+      "priority": "أولوية",
       "titleEn": "الاسم الانكليزي"
     },
     "newSubCat": "إضافة تصنيف فرعي جديد"
@@ -446,6 +451,7 @@
     }
   },
   "orders": {
+    "deliveryFilter": "فلترة حسب موظف التوصيل",
     "searchPro": "ابحث عن منتج",
     "buttons": {
       "edit": "تعديل",

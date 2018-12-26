@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <app-card [title]="'Manufactures.addNew'|translate">
             <form [formGroup]="categoriesForm ">
-                <div class="img-uploader ">
+              <div *ngIf="parrent==undefined" class="img-uploader ">
                     <div id="preview">
                         <img [src]="imgSrc" alt="">
                     </div>
@@ -138,7 +138,8 @@
                         </div>
                     </div>
                     <br/>
-                    <table *ngIf="subCategories?.cols?.length>0" class="width-100 table table-bordered table-striped ">
+                  <div class="table-responsive">
+                    <table *ngIf="subCategories?.cols?.length>0" class="table table-bordered table-striped ">
                         <thead>
                         <tr>
                             <th *ngFor="let col of subCategories.cols" class="text-center">
@@ -152,23 +153,31 @@
                         <tbody>
                         <tr *ngFor="let r of subCategories.value">
                             <td *ngFor="let col of subCategories.cols">
-                                {{r[col]}}
+                              {{c.formatDate(r[col])}}
                             </td>
                             <td>
+                              <i class="ti-settings" (click)="editCat(r)" [title]="'Categories.edit'|translate"></i>
                                 <i (click)="openModal(template,r)" [title]="'Categories.delete'|translate"
                                    class="ti-trash"></i>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                  </div>
                 </div>
                 <div class="row">
                     <label class="col-sm-2"></label>
                     <div class="col-sm-10">
-                        <button (click)="addCategory()" [disabled]="submitted" class="btn btn-primary m-b-0"
-                                type="submit">
+                      <button *ngIf="id==undefined" (click)="addCategory()" [disabled]="submitted"
+                              class="btn btn-primary m-b-0"
+                              type="submit">
                             {{'Manufactures.add'|translate}}
-                        </button>
+                      </button>
+                      <button *ngIf="id!=undefined" (click)="addCategory()" [disabled]="submitted"
+                              class="btn btn-primary m-b-0"
+                              type="submit">
+                        {{'Manufactures.edit'|translate}}
+                      </button>
                         <i *ngIf="!categoriesForm.invalid&&submitted"
                            class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
                     </div>

@@ -14,19 +14,20 @@
                         <thead>
                         <tr>
                             <th class="text-center ">
-                                <mfDefaultSorter by="code">الكود</mfDefaultSorter>
+                              <mfDefaultSorter by="code">{{"Manufactures.code"|translate}}</mfDefaultSorter>
                             </th>
                             <th class="text-center ">
-                                <mfDefaultSorter by="nameEn">الاسم الانكليزي</mfDefaultSorter>
+                              <mfDefaultSorter by="nameEn">{{"Manufactures.nameEn"|translate}}</mfDefaultSorter>
                             </th>
                             <th class="text-center ">
-                                <mfDefaultSorter by="nameAr">الاسم العربي</mfDefaultSorter>
+                              <mfDefaultSorter by="nameAr">{{"Manufactures.nameAr"|translate}}</mfDefaultSorter>
                             </th>
                             <th class="text-center ">
-                                <mfDefaultSorter by="creationDate">تاريخ الإضافة</mfDefaultSorter>
+                              <mfDefaultSorter
+                                by="creationDate">{{"Manufactures.creationDate"|translate}}</mfDefaultSorter>
                             </th>
                             <th class="text-center ">
-                                <mfDefaultSorter by="id">الرقم التسلسلي</mfDefaultSorter>
+                              <mfDefaultSorter by="id">{{"Manufactures.id"|translate}}</mfDefaultSorter>
                             </th>
                             <th class="text-center">
                                 <label>عمليات</label>
@@ -40,7 +41,7 @@
                             <td>{{item.code}}</td>
                             <td>{{item.nameEn}}</td>
                             <td>{{item.nameAr}}</td>
-                            <td>{{item.creationDate}}</td>
+                          <td>{{c.formatDate(item.creationDate)}}</td>
                             <td>{{item.id}}</td>
                             <td class="actions-td">
                                 <i (click)="editManufacturer(item)" [title]="'Manufactures.edit'|translate"

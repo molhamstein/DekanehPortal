@@ -98,3 +98,18 @@ button[disabled] {
     background: #e9ecef;
     font-weight: 600;
 }
+
+/*.filter-sec{*/
+/*display: flex;*/
+/*margin-bottom: 10px;*/
+/*}*/
+#delFilter {
+  max-width: 200px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.empty-filter {
+  padding: 6px 19px;
+}

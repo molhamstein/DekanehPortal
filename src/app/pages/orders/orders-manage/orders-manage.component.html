@@ -1,347 +1,372 @@
 <app-orders-statistics></app-orders-statistics>
 <div class="row">
-    <div class="col-sm-12 center-div">
-        <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();" class="btn btn-icon btn-info add-order-btn"
-                [tooltip]="'orders.new.btn'|translate"
-                placement="bottom"><i class="fa fa-plus fa-2x"></i></button>
-    </div>
+  <div class="col-sm-12 center-div">
+    <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();"
+            class="btn btn-icon btn-info add-order-btn"
+            [tooltip]="'orders.new.btn'|translate"
+            placement="bottom"><i class="fa fa-plus fa-2x"></i></button>
+  </div>
 </div>
 <div *ngIf="addNew" id="new-order" [@rightEnterLeftLeaveAnimation]
      (@rightEnterLeftLeaveAnimation.done)="showNewBtn=!showNewBtn">
-    <form (ngSubmit)="onOrderFormSubmit()" [formGroup]="orderForm" class="CouponForm">
+  <form (ngSubmit)="onOrderFormSubmit()" [formGroup]="orderForm" class="CouponForm">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
+          <ng-select (filterInputChanged)="searchUsers($event)"
+                     (selected)="userSelected($event,newOrder)"
+                     [(ngModel)]="newOrder.clientId" [multiple]="false"
+                     [options]="IOusers" formControlName="clientId" id="clientId">
+          </ng-select>
+
+          <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
+                 class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+        </div>
+        <div class="form-group">
+          <label for="couponId">{{"orders.new.coupon"|translate}}</label>
+          <input (change)="checkCoupon($event)" class="form-control" id="couponId"
+                 placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
+                 type="text">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group no-margin">
+          <label for="products">{{"orders.new.products"|translate}}</label>
+          <ng-select (filterInputChanged)="searchProducts($event)"
+                     (selected)="productSelected($event)"
+                     [disabled]="orderUser==undefined"
+                     [multiple]="true" [options]="IOproducts"
+                     [placeholder]="'orders.searchPro'|translate"
+                     [(ngModel)]="selectedProductsIds" [ngModelOptions]="{standalone: true}"
+                     id="products">
+          </ng-select>
+        </div>
+
         <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
-                    <ng-select (filterInputChanged)="searchUsers($event)"
-                               (selected)="userSelected($event,newOrder)"
-                               [(ngModel)]="newOrder.clientId" [multiple]="false"
-                               [options]="IOusers" formControlName="clientId" id="clientId">
-                    </ng-select>
+          <div class="col-sm products-div">
+            <table class="table table-striped add-order-tabel">
+              <tbody>
+              <tr *ngFor="let product of selectedProducts">
+                <td style="width: 35px"><img *ngIf="findProduct(product.productId).media!=undefined"
+                                             src="{{findProduct(product.productId).media.thumbnail}}"
+                                             style="max-width: 34px;max-height: 34px;">
 
-                    <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
-                           class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-                </div>
-                <div class="form-group">
-                    <label for="couponId">{{"orders.new.coupon"|translate}}</label>
-                    <input (change)="checkCoupon($event)" class="form-control" id="couponId"
-                           placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
-                           type="text">
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group no-margin">
-                    <label for="products">{{"orders.new.products"|translate}}</label>
-                    <ng-select (filterInputChanged)="searchProducts($event)"
-                               (selected)="productSelected($event)"
-                               [disabled]="orderUser==undefined"
-                               [multiple]="true" [options]="IOproducts"
-                               [placeholder]="'orders.searchPro'|translate"
-                               [(ngModel)]="selectedProductsIds" [ngModelOptions]="{standalone: true}"
-                               id="products">
-                    </ng-select>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm products-div">
-                        <table class="table table-striped add-order-tabel">
-                            <tbody>
-                            <tr *ngFor="let product of selectedProducts">
-                                <td style="width: 35px"><img *ngIf="findProduct(product.productId).media!=undefined"
-                                                             src="{{findProduct(product.productId).media.thumbnail}}"
-                                                             style="max-width: 34px;max-height: 34px;">
-
-                                </td>
-                                <td>{{findProduct(product.productId).nameAr}}</td>
-                                <td style="text-align: center">
-                                    <span>{{"orders.table.count"|translate}} </span><input
-                                        (change)="priceCalculate(product.productId,product.count)"
-                                        [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
-                                        style="width: 49px"
-                                        type="number"></td>
-                                <td style="text-align: center">
-                                    <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
-                                </td>
-                                <td style="text-align: center">
+                </td>
+                <td>{{findProduct(product.productId).nameAr}}</td>
+                <td style="text-align: center">
+                  <span>{{"orders.table.count"|translate}} </span><input
+                  (change)="priceCalculate(product.productId,product.count)"
+                  [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
+                  style="width: 49px"
+                  type="number"></td>
+                <td style="text-align: center">
+                  <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                </td>
+                <td style="text-align: center">
                                     <span class="functions-btn text-danger"
                                           (click)="productDeSelected(product.productId)"><i
-                                            class="fa fa-remove fa-lg"></i></span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">
-                            {{"orders.table.total"|translate}} : {{totalPrice}}
-                        </p>
-                    </div>
-                </div>
-            </div>
+                                      class="fa fa-remove fa-lg"></i></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">
+              {{"orders.table.total"|translate}} : {{totalPrice}}
+            </p>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-sm submit-col">
-                <button [disabled]="orderForm.invalid==false&&isSubmitted==true" (click)="addNew=!addNew"
-                        class="btn btn-action" type="button">
-                    {{"client.buttons.back"|translate}}
-                </button>
-                <button [disabled]="orderForm.invalid==false&&isSubmitted==true" class="btn btn-success" type="submit">
-                    {{"client.buttons.add"|translate}}
-                </button>
-                <i *ngIf="!orderForm.invalid&&isSubmitted"
-                   class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
-            </div>
-        </div>
-    </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true" (click)="addNew=!addNew"
+                class="btn btn-action" type="button">
+          {{"client.buttons.back"|translate}}
+        </button>
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true" class="btn btn-success" type="submit">
+          {{"client.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!orderForm.invalid&&isSubmitted"
+           class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row">
+
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered " (mouseleave)="hoveredIndex=null">
-        <thead>
-        <tr>
-            <th>
-                {{'orders.table.userTap'|translate}}
-            </th>
-            <th>
-                {{'orders.table.productsTap'|translate}}
-            </th>
-            <th>
-                {{'orders.table.code'|translate}}
-            </th>
-            <th>
-                {{'orders.table.deliveredTap'|translate}}
-            </th>
-            <th>
-                {{'orders.table.coupon'|translate}}
-            </th>
-            <th>
-                {{'orders.table.status'|translate}}
-            </th>
-            <th>
-                {{'orders.table.dates'|translate}}
-            </th>
-        </tr>
-        </thead>
+  <table class="table table-bordered " (mouseleave)="hoveredIndex=null">
+    <thead>
+    <tr class="">
+      <td class="title-td" align="center" colspan="7">
+        <div class="filter-sec">
+          <span>{{"orders.deliveryFilter"|translate}}</span>
+
+          <ng-select id="delFilter" (filterInputChanged)="searchDeUsers($event)"
+                     [(ngModel)]="delMemFilter"
+                     [ngModelOptions]="{standalone: true}"
+                     [multiple]="false"
+                     (selected)="filterByDel($event)"
+                     [options]="IOdeusers">
+          </ng-select>
+          <button *ngIf="delMemFilter!=undefined" type="button" (click)="emptyFilter()"
+                  class="btn btn-danger empty-filter">
+            {{"product.cancel"|translate}}
+          </button>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      sacsacsac
+      asc
+      <th>
+        {{'orders.table.userTap'|translate}}
+      </th>
+      <th>
+        {{'orders.table.productsTap'|translate}}
+      </th>
+      <th>
+        {{'orders.table.code'|translate}}
+      </th>
+      <th>
+        {{'orders.table.deliveredTap'|translate}}
+      </th>
+      <th>
+        {{'orders.table.coupon'|translate}}
+      </th>
+      <th>
+        {{'orders.table.status'|translate}}
+      </th>
+      <th>
+        {{'orders.table.dates'|translate}}
+      </th>
+    </tr>
+    </thead>
 
 
-        <tbody>
-        <ng-container *ngFor="let order of orders; let index=index;">
-            <tr class="group-row" *ngIf="findDateByIndex(index)!=undefined ">
+    <tbody>
+    <ng-container *ngFor="let order of orders; let index=index;">
+      <tr class="group-row" *ngIf="findDateByIndex(index)!=undefined ">
 
-                <td *ngIf="viewDate==toDay" align="center" colspan="7">{{"orders.table.today"|translate}}</td>
+        <td *ngIf="viewDate==toDay" align="center" colspan="7">{{"orders.table.today"|translate}}</td>
 
-                <td *ngIf="viewDate!=toDay" align="center"
-                    colspan="7">{{c.formatDate(findDateByIndex(index), 'nohours')}}</td>
-            </tr>
-            <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
-                <td class="no-padding-td">
-                    <ul class="table-ul">
-                        <li class="table-li">
-                            <span>{{order.client.shopName}}</span>
-                        </li>
-                        <li class="table-li">
+        <td *ngIf="viewDate!=toDay" align="center"
+            colspan="7">{{c.formatDate(findDateByIndex(index), 'nohours')}}</td>
+      </tr>
+      <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
+        <td class="no-padding-td">
+          <ul class="table-ul">
+            <li class="table-li">
+              <span>{{order.client.shopName}}</span>
+            </li>
+            <li class="table-li">
                         <span class="badge client-type"
                               [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + order.clientType|translate}}</span>
-                        </li>
-                        <li>
+            </li>
+            <li>
                             <span style="font-size: 14px" class="badge badge-dark"
-                                  *ngIf="getTimer(order.orderDate)!=undefined">{{getTimer(order.orderDate)}}</span>
-                        </li>
+                                  *ngIf="getTimer(order.orderDate)!=undefined&&order.status!='delivered'">{{getTimer(order.orderDate)}}</span>
+            </li>
 
-                    </ul>
-                </td>
-                <td class="no-padding-td">
-                    <ul class="list-group table-ul">
-                        <li *ngFor="let product of order.orderProducts" class="list-group-item ">
-                            {{"orders.table.product"|translate}} :
-                            <span>{{product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
-                            <strong>{{product.count}}</strong>
-                            {{"orders.table.price"|translate}} : <strong>{{product.price}}</strong>
-                        </li>
-                        <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
-                            : </strong>{{order.totalPrice}}</li>
-                    </ul>
-                </td>
-                <td>
-                    {{order.code}}
-                </td>
+          </ul>
+        </td>
+        <td class="no-padding-td">
+          <ul class="list-group table-ul">
+            <li *ngFor="let product of order.orderProducts" class="list-group-item ">
+              {{"orders.table.product"|translate}} :
+              <span>{{product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+              <strong>{{product.count}}</strong>
+              {{"orders.table.price"|translate}} : <strong>{{product.price}}</strong>
+            </li>
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
+              : </strong>{{order.totalPrice}}</li>
+          </ul>
+        </td>
+        <td>
+          {{order.code}}
+        </td>
 
-                <td class="no-padding-td">
-                    <ul class="list-group table-ul">
-                        <li><span class="list-group-item ">{{c.formatDate(order.deliveredDate)}}</span></li>
-                        <li><span class="list-group-item ">{{c.formatDate(order.assignedDate)}}</span></li>
-                        <li><span class="list-group-item ">{{order.deliveryMember?.username}}</span></li>
-                    </ul>
-                </td>
-                <td>
+        <td class="no-padding-td">
+          <ul class="list-group table-ul">
+            <li><span class="list-group-item ">{{c.formatDate(order.deliveredDate)}}</span></li>
+            <li><span class="list-group-item ">{{c.formatDate(order.assignedDate)}}</span></li>
+            <li><span class="list-group-item ">{{order.deliveryMember?.username}}</span></li>
+          </ul>
+        </td>
+        <td>
                 <span *ngIf="order.coupon">{{order.coupon.value}}<span
-                        *ngIf="order.coupon.type=='percent'">%</span></span>
-                </td>
-                <td>
+                  *ngIf="order.coupon.type=='percent'">%</span></span>
+        </td>
+        <td>
                 <span class="badge"
                       [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus." + order.status|translate}}</span>
-                </td>
-                <td class="no-padding-td">
-                    <ul class="list-group table-ul">
-                        <li><p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
+        </td>
+        <td class="no-padding-td">
+          <ul class="list-group table-ul">
+            <li><p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
                         <span *ngIf="order?.status=='inDelivery'" class="functions-btn text-success"
                               (click)="openDeliveredModal(tawseel,order)"><i
-                                class="fa fa-check-circle fa-lg"></i></span>
-                            <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
-                                class="fa fa-edit fa-lg"></i></span>
-                            <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
-                                    class="fa fa-remove fa-lg"></i></span>
+                          class="fa fa-check-circle fa-lg"></i></span>
+              <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
+                class="fa fa-edit fa-lg"></i></span>
+              <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
+                class="fa fa-remove fa-lg"></i></span>
 
-                        </p>
-                            <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p></li>
-                    </ul>
-                </td>
-            </tr>
+            </p>
+              <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p></li>
+          </ul>
+        </td>
+      </tr>
 
-            <!--edit section-->
-            <ng-container *ngIf="OrderToEdit!=undefined&&index==editIndex">
-                <tr>
-                    <td class="no-padding-td">
-                        <ul class="list-group table-ul">
-                            <li class="list-group-item ">
-                                <ng-select #select (filterInputChanged)="searchUsers($event)"
-                                           [(ngModel)]="OrderToEdit.clientId" [ngModelOptions]="{standalone: true}"
-                                           [multiple]="false" (selected)="userSelected($event,OrderToEdit)"
-                                           [options]="IOusers">
+      <!--edit section-->
+      <ng-container *ngIf="OrderToEdit!=undefined&&index==editIndex">
+        <tr>
+          <td class="no-padding-td">
+            <ul class="list-group table-ul">
+              <li class="list-group-item ">
+                <ng-select #select (filterInputChanged)="searchUsers($event)"
+                           [(ngModel)]="OrderToEdit.clientId" [ngModelOptions]="{standalone: true}"
+                           [multiple]="false" (selected)="userSelected($event,OrderToEdit)"
+                           [options]="IOusers">
 
-                                </ng-select>
-                            </li>
+                </ng-select>
+              </li>
 
-                            <li class="list-group-item ">
+              <li class="list-group-item ">
         <span class="badge client-type"
               [ngClass]="OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + OrderToEdit.clientType|translate}}</span>
-                            </li>
-                        </ul>
-                    </td>
+              </li>
+            </ul>
+          </td>
 
-                    <td class="no-padding-td">
-                        <div>
-                            <div>
-                                <!--<label for="products">{{"orders.new.products"|translate}}</label>-->
-                                <ng-select (filterInputChanged)="searchEditProducts($event)"
-                                           (selected)="productEditSelected($event)"
-                                           [placeholder]="'orders.searchPro'|translate"
+          <td class="no-padding-td">
+            <div>
+              <div>
+                <!--<label for="products">{{"orders.new.products"|translate}}</label>-->
+                <ng-select (filterInputChanged)="searchEditProducts($event)"
+                           (selected)="productEditSelected($event)"
+                           [placeholder]="'orders.searchPro'|translate"
 
-                                           [multiple]="true" [options]="IOproducts"
-                                           [(ngModel)]="selectedEditProductsIds"
-                                           [ngModelOptions]="{standalone: true}">
-                                </ng-select>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm products-div">
-                                    <table class="table table-striped ">
-                                        <tbody>
+                           [multiple]="true" [options]="IOproducts"
+                           [(ngModel)]="selectedEditProductsIds"
+                           [ngModelOptions]="{standalone: true}">
+                </ng-select>
+              </div>
+              <div class="row">
+                <div class="col-sm products-div">
+                  <table class="table table-striped ">
+                    <tbody>
 
-                                        <tr *ngFor="let product of selectedEditProducts">
-                                            <td style="width: 35px"><img
-                                                    *ngIf="findEditProduct(product.productId).media!=undefined"
-                                                    [src]="findEditProduct(product.productId).media.thumbnail"
-                                                    style="max-width: 34px;max-height: 34px;">
-                                            </td>
-                                            <td>{{findEditProduct(product.productId).nameAr}}</td>
-                                            <td style="text-align: center;">
-                                                <span>{{"orders.table.count"|translate}} </span><input
-                                                    (change)="priceEditCalculate(product.productId,product.count)"
-                                                    [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
-                                                    style="width: 49px"
-                                                    type="number"></td>
-                                            <td style="text-align: center">
-                                                <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
-                                            </td>
-                                            <td style="text-align: center">
+                    <tr *ngFor="let product of selectedEditProducts">
+                      <td style="width: 35px"><img
+                        *ngIf="findEditProduct(product.productId).media!=undefined"
+                        [src]="findEditProduct(product.productId).media.thumbnail"
+                        style="max-width: 34px;max-height: 34px;">
+                      </td>
+                      <td>{{findEditProduct(product.productId).nameAr}}</td>
+                      <td style="text-align: center;">
+                        <span>{{"orders.table.count"|translate}} </span><input
+                        (change)="priceEditCalculate(product.productId,product.count)"
+                        [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}"
+                        style="width: 49px"
+                        type="number"></td>
+                      <td style="text-align: center">
+                        <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                      </td>
+                      <td style="text-align: center">
                                                 <span class="functions-btn text-danger"
                                                       (click)="productEditDeSelected(product.productId)"><i
-                                                        class="fa fa-remove fa-lg"></i></span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <p class="total-price bg-primary text-white">
-                                        {{"orders.table.total"|translate}} : {{totalPrice}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        {{OrderToEdit.code}}
-                    </td>
-                    <td class="no-padding-td">
-                        <ul class="list-group table-ul">
-                            <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>
-                            <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>
-                            <li><span class="list-group-item "> <ng-select #select
-                                                                           (filterInputChanged)="searchDeUsers($event)"
-                                                                           [(ngModel)]="OrderToEdit.deliveryMemberId"
-                                                                           [ngModelOptions]="{standalone: true}"
-                                                                           [multiple]="false"
-                                                                           (selected)="DeuserSelected($event,OrderToEdit)"
-                                                                           [options]="IOdeusers">
+                                                  class="fa fa-remove fa-lg"></i></span>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <p class="total-price bg-primary text-white">
+                    {{"orders.table.total"|translate}} : {{totalPrice}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{OrderToEdit.code}}
+          </td>
+          <td class="no-padding-td">
+            <ul class="list-group table-ul">
+              <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>
+              <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>
+              <li><span class="list-group-item "> <ng-select #select
+                                                             (filterInputChanged)="searchDeUsers($event)"
+                                                             [(ngModel)]="OrderToEdit.deliveryMemberId"
+                                                             [ngModelOptions]="{standalone: true}"
+                                                             [multiple]="false"
+                                                             (selected)="DeuserSelected($event,OrderToEdit)"
+                                                             [options]="IOdeusers">
                             </ng-select></span></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <input style="width: 85px" (change)="checkEditCoupon($event)" class="form-control"
-                               placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
-                               type="text" [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
+            </ul>
+          </td>
+          <td>
+            <input style="width: 85px" (change)="checkEditCoupon($event)" class="form-control"
+                   placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
+                   type="text" [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
 
 
-                    </td>
-                    <td>
-                        <select [(ngModel)]="OrderToEdit.status" class="form-control" id="status">
-                            <option *ngFor="let option of delstatus" [value]="option">
-                                {{"orders.table.delStatus." + option|translate}}
-                            </option>
-                        </select>
+          </td>
+          <td>
+            <select [(ngModel)]="OrderToEdit.status" class="form-control" id="status">
+              <option *ngFor="let option of delstatus" [value]="option">
+                {{"orders.table.delStatus." + option|translate}}
+              </option>
+            </select>
 
-                    </td>
+          </td>
 
-                    <td class="no-padding-td">
-                        <ul class="list-group table-ul">
-                            <li>
-                                <p *ngIf="OrderToEdit!=undefined" [@enterAnimation]>
+          <td class="no-padding-td">
+            <ul class="list-group table-ul">
+              <li>
+                <p *ngIf="OrderToEdit!=undefined" [@enterAnimation]>
                         <span (click)="editOrderApi(OrderToEdit)" class="functions-btn text-info"><i
-                                class="fa fa-check-circle fa-lg"></i></span>
-                                    <span class="functions-btn text-danger" (click)="cancelOrder()"><i
-                                            class="fa fa-remove fa-lg"></i></span>
-                                </p>
-                            </li>
-                            <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>
-                        </ul>
-                    </td>
-                </tr>
-            </ng-container>
-        </ng-container>
-        </tbody>
-    </table>
+                          class="fa fa-check-circle fa-lg"></i></span>
+                  <span class="functions-btn text-danger" (click)="cancelOrder()"><i
+                    class="fa fa-remove fa-lg"></i></span>
+                </p>
+              </li>
+              <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>
+            </ul>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </table>
 </div>
 <app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
 <div [hidden]="spinnerFlag||unpage" class="row">
-    <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
-                firstText="&laquo;" lastText="&raquo;"
-                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
-                [boundaryLinks]="true"></pagination>
-    <div class="per-page-sec">
-        <span>{{"client.perPage"|translate}}</span>
-        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-    </div>
+  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+              firstText="&laquo;" lastText="&raquo;"
+              [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+              [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
 
 </div>
 <ng-template #template>
-    <div class="modal-body text-center">
-        <p>{{'system.modal.message'|translate}}</p>
-        <button type="button" class="btn btn-danger modal-confirm"
-                (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
-    </div>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.message'|translate}}</p>
+    <button type="button" class="btn btn-danger modal-confirm"
+            (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
 </ng-template>
 <ng-template #tawseel>
-    <div class="modal-body text-center">
-        <p>{{'system.modal.delivered'|translate}}</p>
-        <button type="button" class="btn btn-success modal-confirm"
-                (click)="confirmDelivered()">{{'system.modal.confirm'|translate}}</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
-    </div>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.delivered'|translate}}</p>
+    <button type="button" class="btn btn-success modal-confirm"
+            (click)="confirmDelivered()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
 </ng-template>

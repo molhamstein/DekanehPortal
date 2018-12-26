@@ -11,9 +11,9 @@ export class SuppliersService {
   }
 
   getOedersFromSuppliers() {
-    // let param = new URLSearchParams();
-    // param.append('filter', '{"where": {"titleAr": {"like": "' + str + '"}},"limit":"10"}');
-    return this.api.get('/ordersFromSuppliers')
+    let param = new URLSearchParams();
+    param.append('filter', '{"order": "creationDate DESC"}');
+    return this.api.get('/ordersFromSuppliers', param)
       .map(this.extractData).catch(this.handleError);
   }
 
