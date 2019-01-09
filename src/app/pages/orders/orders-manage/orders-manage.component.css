@@ -99,6 +99,10 @@ button[disabled] {
     font-weight: 600;
 }
 
+.note-row {
+  background: #ffffff;
+}
+
 /*.filter-sec{*/
 /*display: flex;*/
 /*margin-bottom: 10px;*/

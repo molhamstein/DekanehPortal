@@ -88,6 +88,14 @@ export class ProductHandler {
             .map(this.extractData).catch(this.handleError);
     }
 
+  newSearch(para: string, id: string): Observable<any[]> {
+    let param = new URLSearchParams();
+    param.append('string', para);
+    param.append('limit', '10');
+    return this.apiService.get('/products/searchClient/' + id, param)
+      .map(this.extractData).catch(this.handleError);
+  }
+
     getPureProducts(): Observable<ProductModel[]> {
         let param = new URLSearchParams();
         param.append('filter', '{"where":{"isOffer":false}}');

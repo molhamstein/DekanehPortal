@@ -265,8 +265,7 @@
 
                         <ng-select (deselected)="productDeSelected($event)" (filterInputChanged)="searchProducts($event)"
                                    (selected)="productSelected($event)"
-                                   [(ngModel)]="selectedProductIds"
-                                   [multiple]="true" [ngModelOptions]="{standalone: true}" [options]="IOproducts"
+                                   [multiple]="false" [options]="IOproducts"
                                    id="offerProducts">
                         </ng-select>
                     </div>
@@ -276,15 +275,22 @@
                             <table class="table  table-striped ">
                                 <tbody>
                                 <tr *ngFor="let product of offerProducts  ">
-                                    <td style="width: 35px"><img *ngIf="findProduct(product.productId).media"
-                                                                 src="{{findProduct(product.productId).media.thumbnail}}"
-                                                                 style="max-width: 34px;max-height: 34px;">
+                                  <td style="width: 35px"><img *ngIf="findselecttedProduct(product.productId)?.media"
+                                                               src="{{findselecttedProduct(product.productId)?.media.thumbnail}}"
+                                                               style="max-width: 34px;max-height: 34px;">
                                     </td>
-                                    <td>{{findProduct(product.productId).nameAr}}</td>
+                                  <td>{{findselecttedProduct(product.productId).nameAr}}</td>
                                     <td style="text-align: center">
                                         <span>{{"product.form.controls.quantity"|translate}} </span><input
-                                            [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" style="max-width: 20%"
-                                            type="number"></td>
+                                      [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" style="max-width: 20%"
+                                      type="number">
+                                      <span class="functions-btn pull-left text-danger"
+                                            (click)="productDeSelected(product.productId)"><i
+                                        class="fa fa-remove fa-lg"></i></span>
+                                    </td>
+                                  <!--<td style="text-align: center">-->
+                                  <!---->
+                                  <!--</td>-->
                                 </tr>
                                 </tbody>
                             </table>

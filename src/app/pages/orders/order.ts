@@ -5,6 +5,7 @@ export class Order {
     orderDate: string;
     status: string;
     totalPrice: number;
+  note: string;
     clientType: string;
     coupon: Coupon;
     orderProducts: OrderProduct[];

@@ -29,11 +29,16 @@
                  placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
                  type="text">
         </div>
+        <div class="form-group">
+          <label for="couponId">{{"staff.form.controls.notes"|translate}}</label>
+          <textarea class="form-control" id="notes" [(ngModel)]="newOrder.note"
+                    [ngModelOptions]="{standalone: true}"></textarea>
+        </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group no-margin">
           <label for="products">{{"orders.new.products"|translate}}</label>
-          <ng-select (filterInputChanged)="searchProducts($event)"
+          <ng-select (filterInputChanged)="searchProducts($event,newOrder.clientId)"
                      (selected)="productSelected($event)"
                      [disabled]="orderUser==undefined"
                      [multiple]="true" [options]="IOproducts"
@@ -218,6 +223,10 @@
               <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p></li>
           </ul>
         </td>
+      </tr>
+      <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null ">
+
+        <td align="center" colspan="7">{{"staff.form.controls.notes"|translate}} : {{order.note}}</td>
       </tr>
 
       <!--edit section-->

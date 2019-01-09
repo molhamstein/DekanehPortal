@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {OfferProducts, ProductModel} from '../product-model';
 import {IOption} from 'ng-select';
 import {AlertService} from '../../../services/alert.service';
+import {IOptions} from 'tslint';
 
 @Component({
   selector: 'app-new-product',
@@ -115,7 +116,12 @@ export class NewProductComponent implements OnInit {
         for (let p of this.offerProducts) {
           this.selectedProductIds.push(p.productId);
         }
-        this.subcats = this.cats.find(x => x.id === this.product.categoryId).subCategories;
+        if (product.offerProducts != undefined) {
+          this.setSelectedProducts(product.products);
+
+        }
+
+        this.subcats = this.cats.find(x => x.id == this.product.categoryId).subCategories;
         this.subCategoryId = this.product.subCategoryId;
         this.imgSrc = this.product.media.url;
         this.status = this.product.status;
@@ -133,6 +139,14 @@ export class NewProductComponent implements OnInit {
       this.offerSource = 'dockan';
       this.offerProducts = [];
 
+    }
+  }
+
+  setSelectedProducts(products) {
+    this.selectedProducts = [];
+    for (let pro of products) {
+      // this.IOproducts.push({label: pro.product.nameAr, value: pro.product.id})
+      this.selectedProducts.push(pro.product);
     }
   }
 
@@ -196,9 +210,12 @@ export class NewProductComponent implements OnInit {
               // }
             }
             setTimeout(() => {
+              console.log(this.tP);
               this.IOproducts = this.tP;
             }, 50);
             this.pureProducts = data;
+            console.log(this.pureProducts);
+
           }
           , errorCode => this.showError());
     }
@@ -214,6 +231,9 @@ export class NewProductComponent implements OnInit {
     return this.pureProducts.find(x => x.id === id);
   }
 
+  findselecttedProduct(id) {
+    return this.selectedProducts.find(x => x.id === id);
+  }
   productSelected(IOproduct) {
     let product = this.findProduct(IOproduct.value);
     this.selectedProducts.push(product);
@@ -224,11 +244,11 @@ export class NewProductComponent implements OnInit {
     });
   }
 
-  productDeSelected(IOproduct) {
-    let product = this.pureProducts.find(x => x.id === IOproduct.value);
+  productDeSelected(id) {
+    let product = this.selectedProducts.find(x => x.id === id);
 
     this.selectedProducts.splice(this.selectedProducts.indexOf(product), 1);
-    this.offerProducts.splice(this.offerProducts.indexOf(this.offerProducts.find(x => x.id === IOproduct.value)), 1);
+    this.offerProducts.splice(this.offerProducts.indexOf(this.offerProducts.find(x => x.id === id)), 1);
   }
 
   ngOnInit() {
@@ -273,7 +293,7 @@ export class NewProductComponent implements OnInit {
     }).subscribe(res => {
 
         this.imgUrl = res[0].url;
-        this.thumbUrl = res[0].thumbUrl;
+      this.thumbUrl = res[0].thumbnail;
         this.jpgUrl = res[0].jpgUrl;
 
       }, errorCode => this.showError()
@@ -305,7 +325,6 @@ export class NewProductComponent implements OnInit {
       }
       this.product.tagsIds = t;
     }
-    console.log(this.product);
     this.Handler.updateProduct(this.product).subscribe(successCode => {
         this.statusCode = successCode;
         this.router.navigate(['/products/list']);
@@ -339,7 +358,7 @@ export class NewProductComponent implements OnInit {
           this.updateProduct(true);
         }).subscribe(res => {
             this.imgUrl = res[0].url;
-            this.thumbUrl = res[0].thumbUrl;
+          this.thumbUrl = res[0].thumbnail;
             this.jpgUrl = res[0].jpgUrl;
           }, errorCode => this.showError()
         );

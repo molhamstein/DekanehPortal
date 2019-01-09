@@ -60,7 +60,7 @@ export class ProductModel {
 
 export class Media {
     public url: string;
-    // type: image;
+  public jpgUrl: string;
     public thumbnail: string;
     public id: string;
 }

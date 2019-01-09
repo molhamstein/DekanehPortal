@@ -189,11 +189,8 @@ export class OrdersManageComponent implements OnInit {
       this.Handler.getOrders(this.pages, this.currentPage, this.delMemFilter)
         .finally(() => {
           this.getOrdersFinilaize();
-
-                })
-                .subscribe(data => {
+        }).subscribe(data => {
                         this.orders = data;
-
                     }
                     , errorCode => this.showError());
 
@@ -519,7 +516,7 @@ export class OrdersManageComponent implements OnInit {
         localStorage.setItem('ordersScreenY', window.pageYOffset.toString());
     };
 
-    searchProducts(str) {
+  searchProducts(str, id) {
         this.tP = [];
         if (str != '') {
             this.productHandler.search(str)
