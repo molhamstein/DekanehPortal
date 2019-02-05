@@ -38,6 +38,18 @@
                     {{"product.form.controls." + option|translate}}
                 </option>
             </select>
+          <select class="btn btn-action" id="isFeatured" (change)="setFeaturedFilter($event)">
+            <option value="" disabled selected>{{'product.form.controls.featuredOrNot'|translate}}</option>
+            <option *ngFor="let option of featuredList" [value]="option">
+              {{"product.form.controls." + option|translate}}
+            </option>
+          </select>
+          <select class="btn btn-action" id="status" [(ngModel)]="status">
+            <option value="1" disabled selected>{{'product.form.controls.status'|translate}}</option>
+            <option *ngFor="let option of statusList" [value]="option">
+              {{"product.status." + option|translate}}
+            </option>
+          </select>
             <button type="button" (click)="setFilters()" class="btn btn-success">
                 {{"product.apply"|translate}}
             </button>

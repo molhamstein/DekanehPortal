@@ -6,6 +6,7 @@ import {OfferProducts, ProductModel} from '../product-model';
 import {IOption} from 'ng-select';
 import {AlertService} from '../../../services/alert.service';
 import {IOptions} from 'tslint';
+import {getProdConfig} from '@angular/cli/models/webpack-configs';
 
 @Component({
   selector: 'app-new-product',
@@ -21,7 +22,7 @@ export class NewProductComponent implements OnInit {
   offerProducts: OfferProducts[];
   selectedProductIds: string[] = [];
   selectedProducts: ProductModel[] = [];
-  allStatus = ['available', 'unavailable'];
+  allStatus = ['available', 'unavailable', 'pending'];
   offersIds = [];
   availableList = ['both', 'retailCostumer', 'wholesale', 'horeca'];
   offerSourceList = ['dockan', 'company', 'supplier'];
@@ -38,6 +39,7 @@ export class NewProductComponent implements OnInit {
   subCategoryId = '';
   status = '';
   availableTo = '';
+  offersTable = [];
   offerSource = '';
   manufacturerId = '';
   isFeatured: boolean = false;
@@ -120,7 +122,7 @@ export class NewProductComponent implements OnInit {
           this.setSelectedProducts(product.products);
 
         }
-
+        this.getOffers(product);
         this.subcats = this.cats.find(x => x.id == this.product.categoryId).subCategories;
         this.subCategoryId = this.product.subCategoryId;
         this.imgSrc = this.product.media.url;
@@ -142,6 +144,21 @@ export class NewProductComponent implements OnInit {
     }
   }
 
+  removeOffer(id) {
+    this.product.offersIds.splice(this.product.offersIds.indexOf(id), 1);
+    this.offersTable.splice(this.offersTable.indexOf(this.offersTable.find(x => x.id === id)), 1);
+  }
+
+  getOffers(product) {
+
+    for (let id of product.offersIds) {
+      this.Handler.getProductById(id).subscribe(
+        data => {
+          this.offersTable.push(data);
+        }
+      );
+    }
+  }
   setSelectedProducts(products) {
     this.selectedProducts = [];
     for (let pro of products) {

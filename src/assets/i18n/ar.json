@@ -90,6 +90,7 @@
     }
   },
   "Categories": {
+    "back": "عودة",
     "main": "التصنيفات",
     "search": "بحث في التصنيفات",
     "code": "الكود",
@@ -315,7 +316,8 @@
   "coupon": {
     "status": {
       "available": "متوفر",
-      "unavailable": "غير متوفر"
+      "unavailable": "غير متوفر",
+      "used": "مستخدم"
     },
     "type": {
       "fixed": "ثابت",
@@ -380,6 +382,7 @@
     "apply": "تطبيق",
     "cancel": "تفريغ",
     "status": {
+      "pending": "معلق",
       "available": "متوفر",
       "unavailable": "غير متوفر"
     },
@@ -398,6 +401,7 @@
         "wholeSaleMarketPrice": "سعر توزيع الشركه",
         "offer": "عرض",
         "offerOrProduct": "عرض / منتح",
+        "featuredOrNot": "منتج مميز",
         "product": "منتج",
         "retailCostumer": "زبون مفرق",
         "horeca": "منشآت",
@@ -407,6 +411,8 @@
         "man": "الشركة المصنعة",
         "tags": "كلمات مفتاحية",
         "both": "الكل",
+        "isFeatured": "مميز",
+        "notFeatured": "غير مميز",
         "offerSource": "مصدر العرض",
         "offers": "عروض",
         "dockan": "دكان",
@@ -477,6 +483,7 @@
       "client": "الزبون"
     },
     "table": {
+      "usernotes": "ملاحظات عن الزبون",
       "today": "اليوم",
       "delStatus": {
         "pending": "قيد المعالجة",

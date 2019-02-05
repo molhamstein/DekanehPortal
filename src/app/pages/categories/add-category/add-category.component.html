@@ -58,6 +58,24 @@
                         </div>
                     </div>
                 </div>
+
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">{{'Categories.sub.priority'|translate}}</label>
+                <div class="col-sm-10">
+                  <input ([ngModel])="priority" [placeholder]="'Categories.priority'|translate"
+                         class="form-control tooltip-form"
+                         formControlName="priority" name="priority" type="text">
+                  <div *ngIf="categoriesForm.get('priority').invalid&&submitted"
+                       [ngbTooltip]="('Categories.priority'|translate )+' '+('Manufactures.cantBeEmpty'|translate)"
+                       class="messages text-danger "
+                       placement="top">
+                    <br/>
+                    <i class="text-danger f-right icofont icofont-close-circled">
+                      <label>{{'Categories.priority'|translate}} {{'Manufactures.cantBeEmpty'|translate}} </label>
+                    </i>
+                  </div>
+                </div>
+              </div>
                 <div *ngIf="id">
                     <div class="row">
                         <label class="col-sm-2"></label>
@@ -177,6 +195,11 @@
                               class="btn btn-primary m-b-0"
                               type="submit">
                         {{'Manufactures.edit'|translate}}
+                      </button>
+                      <button *ngIf="id!=undefined" (click)="goHome()" [disabled]="submitted"
+                              class="btn btn-action m-b-0"
+                              type="submit">
+                        {{'Categories.back'|translate}}
                       </button>
                         <i *ngIf="!categoriesForm.invalid&&submitted"
                            class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>

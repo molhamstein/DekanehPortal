@@ -114,7 +114,6 @@ export class OrdersManageComponent implements OnInit {
         this.router.events.subscribe((evt) => {
             if (evt instanceof NavigationEnd) {
                 this.router.navigated = false;
-                window.scrollTo(0, 0);
             }
         }, errorCode => this.showError());
         this.orders = [];
@@ -174,12 +173,12 @@ export class OrdersManageComponent implements OnInit {
     }
     this.spinnerFlag = false;
     this.unpage = false;
-    // if (localStorage.getItem('ordersScreenY')) {
-    //   setTimeout(() => {
-    //     window.scrollTo(0, Number(localStorage.getItem('ordersScreenY')));
-    //
-    //   }, 100);
-    // }
+    if (localStorage.getItem('ordersScreenY')) {
+      setTimeout(() => {
+        window.scrollTo(0, Number(localStorage.getItem('ordersScreenY')));
+
+      }, 100);
+    }
   }
 
   getOrders() {
@@ -513,9 +512,11 @@ export class OrdersManageComponent implements OnInit {
     }
 
     scroll = (): void => {
+      if (window.pageYOffset.toString() != '0') {
         localStorage.setItem('ordersScreenY', window.pageYOffset.toString());
-    };
 
+      }
+    };
   searchProducts(str, id) {
         this.tP = [];
         if (str != '') {
@@ -580,7 +581,8 @@ export class OrdersManageComponent implements OnInit {
                 this.Handler.assignDelivery({'userId': order.deliveryMemberId}, order.id).subscribe(() => {
                 }, errorCode => this.showError());
             }
-            this.cancelOrder();
+          // this.cancelOrder();
+          this.router.navigate(['/orders/management']);
         }).subscribe(data => {
         }, errorCode => this.showError());
     }

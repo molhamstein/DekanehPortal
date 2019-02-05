@@ -146,7 +146,6 @@ export class AdminComponent implements OnInit {
         this.dropDownIcon = 'style1';
         this.isSidebarChecked = true;
         this.isHeaderChecked = true;
-
         const scrollHeight = window.screen.height - 150;
         this.innerHeight = scrollHeight + 'px';
         this.windowWidth = window.innerWidth;
@@ -156,12 +155,16 @@ export class AdminComponent implements OnInit {
         this.getNewNoti().subscribe(data => {
           this.newNoti = data;
         });
-      }, 5000);
+      }, 100);
     }
 
-    getNewNotiCount() {
+  getNewNotiCount(sound?) {
         return this.NotiHandler.getNewNotiCount().subscribe(data => {
+          if ((this.notiCount < data['count'])) {
+            this.playAudio();
+          }
             this.notiCount = data['count'];
+
         });
     }
 
@@ -169,15 +172,23 @@ export class AdminComponent implements OnInit {
         return this.NotiHandler.getNewNoti();
 
     }
+
+  playAudio() {
+    let audio = new Audio();
+    audio.src = '../../../assets/audio/noty.mp3';
+    audio.load();
+    audio.play();
+  }
     ngOnInit() {
         this.username = localStorage.getItem('username');
 
         this.setBackgroundPattern('pattern2');
-      this.subscr = Observable.interval(40000)
+      this.subscr = Observable.interval(30000)
             .flatMap(() => this.getNewNoti())
             .subscribe(data => {
                 this.newNoti = data;
-                this.getNewNotiCount();
+              this.getNewNotiCount(true);
+
             });
 
     }

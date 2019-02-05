@@ -44,7 +44,30 @@
                     <ng-select (filterInputChanged)="searchOffers($event)" [(ngModel)]="offersIds" [multiple]="true"
                                [options]="IOoffers" formControlName="offersIds" id="offers">
                     </ng-select>
+                  <div class="row">
+                    <div class="col-sm">
+                      <table class="table  table-striped ">
+                        <tbody>
+                        <tr *ngFor="let off of offersTable  ">
+                          <td style="width: 35px">
+                            <img *ngIf="off.media" src="{{off.media.thumbnail}}"
+                                 style="max-width: 34px;max-height: 34px;">
+                          </td>
+                          <td>{{off.nameAr}}</td>
+                          <td style="text-align: center">
 
+                            <span class="functions-btn pull-left text-danger"
+                                  (click)="removeOffer(off.id)"><i
+                              class="fa fa-remove fa-lg"></i></span>
+                          </td>
+                          <!--<td style="text-align: center">-->
+                          <!---->
+                          <!--</td>-->
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                     <!--<select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>-->
                     <!--<option *ngFor="let option of alloffers" [value]="option.id">-->
                     <!--{{option.nameAr}}-->
@@ -65,7 +88,7 @@
                     <label for="status">{{"product.form.controls.status"|translate}}</label>
                     <select [(ngModel)]="status" class="form-control" formControlName="status" id="status">
                         <option *ngFor="let option of allStatus" [value]="option">
-                            {{"product.form.controls." + option|translate}}
+                          {{"product.status." + option|translate}}
                         </option>
                     </select>
                 </div>

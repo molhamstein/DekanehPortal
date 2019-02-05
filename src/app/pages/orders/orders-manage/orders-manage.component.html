@@ -166,6 +166,12 @@
             <li class="table-li">
               <span>{{order.client.shopName}}</span>
             </li>
+            <!--<li class="table-li">-->
+            <!--<span class="badge badge-light">{{order.client.area}}</span>-->
+            <!--</li>  -->
+            <li class="table-li">
+              <span class="badge badge-danger" style="font-size: 14px">{{order.client.ownerName}}</span>
+            </li>
             <li class="table-li">
                         <span class="badge client-type"
                               [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls." + order.clientType|translate}}</span>
@@ -224,7 +230,12 @@
           </ul>
         </td>
       </tr>
-      <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null ">
+      <tr class="note-row"
+          *ngIf="order.client.notes!=undefined&&order.client.notes!=''&&order.client.notes!=null&&index!=editIndex">
+
+        <td align="center" colspan="7">{{"orders.table.usernotes"|translate}} : {{order.client.notes}}</td>
+      </tr>
+      <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null&&index!=editIndex">
 
         <td align="center" colspan="7">{{"staff.form.controls.notes"|translate}} : {{order.note}}</td>
       </tr>
@@ -344,6 +355,17 @@
               </li>
               <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>
             </ul>
+          </td>
+        </tr>
+        <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null ">
+
+          <td align="center" colspan="7">
+            <div class="form-group">
+              <label for="notes">{{"client.form.controls.notes"|translate}}</label>
+              <textarea class="form-control" id="edit_notes" [(ngModel)]="OrderToEdit.note"
+                        placeholder="{{'client.form.placeholders.notes'|translate}}"
+                        rows="4"></textarea>
+            </div>
           </td>
         </tr>
       </ng-container>

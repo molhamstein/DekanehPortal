@@ -24,6 +24,7 @@ export class AddCategoryComponent implements OnInit {
   titleEn = '';
   parrent;
   code = '';
+  priority = '';
   selectedFile: File;
   imgSrc: string = '';
   imgUrl: string = '';
@@ -133,12 +134,13 @@ export class AddCategoryComponent implements OnInit {
             'titleAr': '',
             'titleEn': '',
             'code': '',
+            'priority': '',
             'icon': ''
           };
           cat = this.categoriesForm.value;
           cat.icon = this.imgUrl;
           console.log(cat);
-          this.api.post('/categories', cat, {}).subscribe((res) => {
+          this.api.post('/categories', cat).subscribe((res) => {
             if (res.status == 200) {
               console.log(res);
               this.router.navigate(['categories', 'viewAll']);
@@ -161,7 +163,10 @@ export class AddCategoryComponent implements OnInit {
                 this.router.navigate(['categories', 'viewAll']);
 
               } else {
-                this.router.navigate(['/categories/' + this.parrent + '/edit']);
+                if (this.parrent != undefined)
+                  this.router.navigate(['/categories/' + this.parrent + '/edit']);
+                else
+                  this.router.navigate(['/categories/' + this.id + '/edit']);
 
               }
             } else {
@@ -174,6 +179,7 @@ export class AddCategoryComponent implements OnInit {
               'titleAr': '',
               'titleEn': '',
               'code': '',
+              'priority': '',
               'icon': ''
             };
             cat = this.categoriesForm.value;
@@ -199,6 +205,11 @@ export class AddCategoryComponent implements OnInit {
     } else {
       alert(this.c.translateUtterance('Manufactures.errorInForm'));
     }
+  }
+
+  goHome() {
+    this.router.navigate(['categories', 'viewAll']);
+
   }
 
   addSubCategories() {
@@ -247,11 +258,13 @@ export class AddCategoryComponent implements OnInit {
       titleAr: new FormControl('', [Validators.required,]),
       titleEn: new FormControl('', [Validators.required,]),
       code: new FormControl('', [Validators.required,]),
+      priority: new FormControl('', [Validators.required,]),
     });
     this.categoriesForm = new FormGroup({
       titleAr: new FormControl('', [Validators.required,]),
       titleEn: new FormControl('', [Validators.required,]),
       code: new FormControl('', [Validators.required,]),
+      priority: new FormControl('', [Validators.required,]),
     });
     if (this.id != undefined) {
       this.api.get('/categories').subscribe((data: any) => {
@@ -264,6 +277,7 @@ export class AddCategoryComponent implements OnInit {
                 titleAr: new FormControl(man.titleAr, [Validators.required,]),
                 titleEn: new FormControl(man.titleEn, [Validators.required,]),
                 code: new FormControl(man.code, [Validators.required,]),
+                priority: new FormControl(man.priority, [Validators.required,]),
               });
             }
           });

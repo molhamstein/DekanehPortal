@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RateHandlerService} from '../rate-handler.service';
 import {Area} from '../../areas/area';
 import {AlertService} from '../../../services/alert.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-rates-list',
@@ -14,7 +15,7 @@ export class RatesListComponent implements OnInit {
     returnedArray = [];
     spinnerFlag: boolean;
 
-    constructor(private Handler: RateHandlerService,private alert:AlertService) {
+  constructor(private Handler: RateHandlerService, private alert: AlertService, private router: Router) {
         this.spinnerFlag = true;
         this.getAllRatings();
     }
@@ -47,6 +48,10 @@ export class RatesListComponent implements OnInit {
         this.returnedArray = as;
     }
 
+  nGoToPage(id) {
+    this.router.navigate(['/client/edit/' + id]);
+
+  }
     getAllRatings() {
         this.Handler.getAllAreas().subscribe(as => {
             this.areas = as;
