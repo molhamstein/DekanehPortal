@@ -141,11 +141,14 @@
     },
     "types": {
       "product": "منتج",
-      "external": "رابط خارجي"
+      "external": "رابط خارجي",
+      "manufacturer": "مصنع"
     },
     "form": {
       "controls": {
         "image": "رابط الاعلان",
+        "manufacturer": "المصنع",
+
         "product": "المنتج"
       },
       "placeholders": {

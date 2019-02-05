@@ -76,9 +76,9 @@
               </tr>
               </tbody>
             </table>
-            <p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">
-              {{"orders.table.total"|translate}} : {{totalPrice}}
-            </p>
+            <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
+            <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
+            <!--</p>-->
           </div>
         </div>
       </div>
@@ -303,9 +303,9 @@
                     </tr>
                     </tbody>
                   </table>
-                  <p class="total-price bg-primary text-white">
-                    {{"orders.table.total"|translate}} : {{totalPrice}}
-                  </p>
+                  <!--<p class="total-price bg-primary text-white">-->
+                  <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
+                  <!--</p>-->
                 </div>
               </div>
             </div>
@@ -349,7 +349,7 @@
                 <p *ngIf="OrderToEdit!=undefined" [@enterAnimation]>
                         <span (click)="editOrderApi(OrderToEdit)" class="functions-btn text-info"><i
                           class="fa fa-check-circle fa-lg"></i></span>
-                  <span class="functions-btn text-danger" (click)="cancelOrder()"><i
+                  <span class="functions-btn text-danger" (click)="cancelOrder(true)"><i
                     class="fa fa-remove fa-lg"></i></span>
                 </p>
               </li>
@@ -357,7 +357,7 @@
             </ul>
           </td>
         </tr>
-        <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null ">
+        <tr class="note-row">
 
           <td align="center" colspan="7">
             <div class="form-group">

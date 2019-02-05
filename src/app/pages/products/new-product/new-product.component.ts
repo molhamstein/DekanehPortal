@@ -66,7 +66,7 @@ export class NewProductComponent implements OnInit {
     pack: new FormControl('', Validators.required),
     isOffer: new FormControl(''),
     offerSource: new FormControl(''),
-    offerMaxQuantity: new FormControl(''),
+    offerMaxQuantity: new FormControl(0),
     isFeatured: new FormControl(''),
     manufacturerId: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),

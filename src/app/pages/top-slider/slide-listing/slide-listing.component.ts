@@ -24,13 +24,20 @@ export class SlideListingComponent implements OnInit {
         this.allSlides = [];
         this.Handler.getAllSlides().finally(() => {
             for (let s of t) {
-                if (s.type == 'product') {
-                    this.producHandler.getProductById(s.target).subscribe(p => {
-                        s.target = p;
-                        this.allSlides.push(s);
-                    },errorCode => this.showError());
-                } else {
-                    this.allSlides.push(s);
+              this.allSlides.push(s);
+
+              if (s.type == 'product') {
+                // this.producHandler.getProductById(s.target).subscribe(p => {
+                //     s.target = p;
+                //     this.allSlides.push(s);
+                // },errorCode => this.showError());
+              } else if (s.type == 'manufacturer') {
+                // this.Handler.getManById(s.target).subscribe(
+                //   p => {
+                //     s.target = p;
+                //     this.allSlides.push(s);
+                //   },errorCode => this.showError());
+              } else {
                 }
             }
 

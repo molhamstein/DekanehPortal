@@ -27,8 +27,9 @@
                       [ngClass]="rate.rate=='happy'? 'badge-success' : (rate.rate=='normal' ? 'badge-warning' : 'badge-danger')">{{"ratings.rates." + rate.rate|translate}}</span>
             </td>
             <td>
-                <button type="button" class="btn btn-primary"
-                        (click)="processRate(rate.id)">{{"ratings.process"|translate}}
+              <button type="button" class="btn " [disabled]="rate.status=='processed'"
+                      [ngClass]="rate.status=='processed'?'btn-disabled':'btn-primary'"
+                      (click)="processRate(rate)">{{"ratings.process"|translate}}
                 </button>
             </td>
         </tr>

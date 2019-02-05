@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions, Response} from '@angular/http';
+import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
 import {Slide} from './slide';
+import {UserModel} from '../user-model';
 
 @Injectable()
 export class SlideHandlerService {
@@ -11,6 +12,20 @@ export class SlideHandlerService {
 
     }
 
+  getManByString(str: string): Observable<any[]> {
+    let param = new URLSearchParams();
+    let rolesString = '';
+    // param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
+    param.append('filter', '{"where":{"nameAr": {"like": "' + str + '"}}}');
+    return this.apiService.get('/manufacturers', param)
+      .map(this.extractData).catch(this.handleError);
+  }
+
+  getManById(id: string): Observable<any> {
+    return this.apiService.get('/manufacturers/' + id)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
     getAllSlides(): Observable<Slide[]> {
         return this.apiService.get('/topSliders')
             .map(this.extractData)

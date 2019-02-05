@@ -20,8 +20,8 @@ export class RatesListComponent implements OnInit {
         this.getAllRatings();
     }
 
-    processRate(Id) {
-
+  processRate(rate) {
+    this.Handler.processRate(rate).subscribe();
     }
 
     filterByfield(set: any[], field: string, value: string) {

@@ -3,6 +3,7 @@ import {ApiService} from '../../services/api.service';
 import {Observable} from 'rxjs/Observable';
 import {Response, URLSearchParams} from '@angular/http';
 import {Area} from '../areas/area';
+import {Rate} from './rate';
 
 @Injectable()
 export class RateHandlerService {
@@ -16,6 +17,13 @@ export class RateHandlerService {
         param.append('filter', '{"include":"user"}');
         return this.api.get('/ratings', param).map(this.extractData).catch(this.handleError);
     }
+
+  processRate(rate: Rate) {
+    let param = new URLSearchParams();
+    param.append('filter', '{"include":"user"}');
+    rate.status = 'processed';
+    return this.api.put('/ratings/' + rate.id, rate).map(this.extractData).catch(this.handleError);
+  }
 
     getAllAreas(): Observable<Area[]> {
 

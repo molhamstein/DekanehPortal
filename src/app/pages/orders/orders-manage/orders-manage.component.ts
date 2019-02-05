@@ -322,11 +322,13 @@ export class OrdersManageComponent implements OnInit {
         }
     }
 
-    cancelOrder() {
+  cancelOrder(full?) {
         this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
         this.selectedEditProducts = [];
         this.totalPrice = 0;
         this.editIndex = undefined;
+    if (full)
+      this.router.navigate(['/orders/management']);
 
     }
 

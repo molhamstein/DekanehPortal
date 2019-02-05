@@ -12,16 +12,16 @@
     <tbody>
     <tr *ngFor="let slide of allSlides">
         <td><img [src]="slide.image" class="slide-img"></td>
-        <td><span [ngClass]="slide.type=='external'? 'badge-info' : 'badge-warning'"
-                  class="badge ">{{"slide.types." + slide.type|translate}}</span>
+      <td><span [ngClass]="slide.type=='external'? 'badge-info' : (slide.type=='product'?'badge-warning':'badge-light')"
+                class="badge ">{{"slide.types." + slide.type|translate}}</span>
         </td>
         <td *ngIf="slide.type=='external'" style="direction: ltr"><a *ngIf="slide.target!=undefined"
                                                                      [href]="slide.target"
                                                                      [tooltip]="slide.target" class="external-link"
                                                                      target="_blank"> {{ (slide.target.length > 50) ? (slide.target | slice:0:50) + '...' : (slide.target) }}</a>
         </td>
-        <td *ngIf="slide.type=='product'">{{slide.target.nameAr}}
-
+      <td *ngIf="slide.type=='product'">{{slide.target}}
+      <td *ngIf="slide.type=='manufacturer'">{{slide.target}}
         </td>
         <td><span [ngClass]="slide.status=='activated'? 'badge-success' : 'badge-danger'"
                   class="badge ">{{"slide.status." + slide.status|translate}}</span>

@@ -261,6 +261,15 @@
                                        formControlName="tagsIds"
                                        id="tags"></tag-input>
                         </div>
+                      <div class="form-group">
+                        <label for="offerMaxQuantity">{{"product.form.controls.offerMaxQuantity"|translate}}</label>
+                        <input class="form-control" formControlName="offerMaxQuantity" id="offerMaxQuantity"
+                               placeholder="{{'product.form.placeholders.offerMaxQuantity'|translate}}"
+                               type="number">
+                        <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
+                        <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+
+                      </div>
                     </div>
                 </div>
                 <div *ngIf="isOffer" class="offer-things">
@@ -274,15 +283,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="offerMaxQuantity">{{"product.form.controls.offerMaxQuantity"|translate}}</label>
-                        <input class="form-control" formControlName="offerMaxQuantity" id="offerMaxQuantity"
-                               placeholder="{{'product.form.placeholders.offerMaxQuantity'|translate}}"
-                               type="number">
-                        <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
-                        <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
 
-                    </div>
                     <div class="form-group">
                         <label for="offerProducts">{{"product.form.controls.offerProducts"|translate}}</label>
 
