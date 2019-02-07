@@ -203,6 +203,7 @@ export class AddCategoryComponent implements OnInit {
 
       }
     } else {
+      console.log('meee');
       alert(this.c.translateUtterance('Manufactures.errorInForm'));
     }
   }
@@ -248,6 +249,8 @@ export class AddCategoryComponent implements OnInit {
         }
       });
     } else {
+      console.log(this.subCategoriesForm.value);
+
       alert(this.c.translateUtterance('Manufactures.errorInForm'));
     }
 
