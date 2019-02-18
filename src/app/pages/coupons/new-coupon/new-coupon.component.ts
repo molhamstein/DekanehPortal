@@ -20,7 +20,7 @@ export class NewCouponComponent implements OnInit {
     t: Array<IOption> = [];
     id;
     valuePerError = false;
-    statusOptions: string[] = ['available', 'unavailable'];
+  statusOptions: string[] = ['available', 'deactivated'];
     expireDate: Date;
     statusCode: number;
     processValidation = false;

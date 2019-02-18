@@ -24,6 +24,8 @@ export class AddCategoryComponent implements OnInit {
   titleEn = '';
   parrent;
   code = '';
+  codeError;
+  subcodeError;
   priority = '';
   selectedFile: File;
   imgSrc: string = '';
@@ -147,6 +149,11 @@ export class AddCategoryComponent implements OnInit {
             } else {
               alert(res.statusText);
             }
+          }, errorCodes => {
+            if (errorCodes['status'] == 422) {
+              this.codeError = true;
+
+            }
           });
         }).subscribe(res => {
             this.imgUrl = res[0].url;
@@ -171,6 +178,10 @@ export class AddCategoryComponent implements OnInit {
               }
             } else {
               alert(res.statusText);
+            }
+          }, errorCodes => {
+            if (errorCodes['status'] == 422) {
+              this.codeError = true;
             }
           });
         } else {
@@ -203,7 +214,6 @@ export class AddCategoryComponent implements OnInit {
 
       }
     } else {
-      console.log('meee');
       alert(this.c.translateUtterance('Manufactures.errorInForm'));
     }
   }
@@ -236,6 +246,7 @@ export class AddCategoryComponent implements OnInit {
                 'visible': false,
                 'cols': res.length > 0 ? Object.keys(res[0]) : []
               };
+              this.router.navigate(['/categories/' + this.id + '/edit']);
               this.subCategories = temp;
             }
           });
@@ -246,6 +257,10 @@ export class AddCategoryComponent implements OnInit {
           });
         } else {
           alert(res.statusText);
+        }
+      }, errorCode => {
+        if (errorCode == 422) {
+          this.subcodeError = true;
         }
       });
     } else {

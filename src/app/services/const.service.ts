@@ -29,7 +29,7 @@ export class ConstService {
                 return day + ' ' + monthNames[monthIndex] + ' ' + year;
 
             }else {
-            return date.getUTCHours() + ':' + date.getUTCMinutes() + ' ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
+              return date.getHours() + ':' + date.getMinutes() + ' ' + day + ' ' + monthNames[monthIndex] + ' ' + year;
             }
         } else {
             return str;

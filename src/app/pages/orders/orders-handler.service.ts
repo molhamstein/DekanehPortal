@@ -22,7 +22,7 @@ export class OrdersHandlerService {
     updateOrder(order: Order) {
         let cpHeaders = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: cpHeaders});
-        return this.apiService.put('/orders/' + order.id, order, options)
+      return this.apiService.put('/orders/' + order.id + '/editOrder', order, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
@@ -61,6 +61,11 @@ export class OrdersHandlerService {
             .map(this.extractData).catch(this.handleError);
     }
 
+  cancelOrder(id: string) {
+    let cpHeaders = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: cpHeaders});
+    return this.apiService.post('/orders/' + id + '/assignCancel', {}, options).map(this.extractData).catch(this.handleError);
+  }
   getOrders(perPage: number, currentPage: number, delMemID?): Observable<Order[]> {
         let param = new URLSearchParams();
     if (delMemID != undefined) {

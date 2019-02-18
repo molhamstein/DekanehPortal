@@ -76,6 +76,10 @@
               </tr>
               </tbody>
             </table>
+            <p *ngIf="addError" class="text-danger">
+              {{"orders.table.totalError"|translate}}
+
+            </p>
             <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
             <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
             <!--</p>-->
@@ -85,14 +89,15 @@
     </div>
     <div class="row">
       <div class="col-sm submit-col">
-        <button [disabled]="orderForm.invalid==false&&isSubmitted==true" (click)="addNew=!addNew"
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" (click)="addNew=!addNew"
                 class="btn btn-action" type="button">
           {{"client.buttons.back"|translate}}
         </button>
-        <button [disabled]="orderForm.invalid==false&&isSubmitted==true" class="btn btn-success" type="submit">
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" class="btn btn-success"
+                type="submit">
           {{"client.buttons.add"|translate}}
         </button>
-        <i *ngIf="!orderForm.invalid&&isSubmitted"
+        <i *ngIf="!orderForm.invalid&&isSubmitted&&!addError"
            class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
       </div>
     </div>
@@ -193,6 +198,7 @@
             </li>
             <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
               : </strong>{{order.totalPrice}}</li>
+
           </ul>
         </td>
         <td>
@@ -303,6 +309,10 @@
                     </tr>
                     </tbody>
                   </table>
+                  <p *ngIf="editError" class="text-danger">
+                    {{"orders.table.totalError"|translate}}
+
+                  </p>
                   <!--<p class="total-price bg-primary text-white">-->
                   <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
                   <!--</p>-->

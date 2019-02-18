@@ -74,7 +74,7 @@
     </tr>
     </tbody>
 </table>
-<div class="row">
+<div class="row" *ngIf="pageShow">
     <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">"
                 [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
     <div class="per-page-sec">

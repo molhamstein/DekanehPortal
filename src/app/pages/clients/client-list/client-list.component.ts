@@ -19,7 +19,9 @@ export class ClientListComponent implements OnInit {
     statusOrderDir;
     shopNameOrderDir;
     typeOrderDir;
-    phoneNumberOrderDir;
+  pageShow = true;
+
+  phoneNumberOrderDir;
     locationOrderDir;
     statusCode: number;
     requestProcess = false;
@@ -190,18 +192,24 @@ export class ClientListComponent implements OnInit {
 
     filterBox(event) {
         let value = event.target.value;
+      this.pageShow = false;
+      if (value.length == 0) {
+        this.getAllClient();
+        this.pageShow = true;
+
+      } else {
         this.returnedArray = this.currentArray;
         let as: UserModel[] = [];
-        let fields = ['username', 'shopName', 'location', 'phoneNumber', 'areaId'];
+        let fields = ['shopName', 'areaId'];
         for (let field of fields) {
-            for (let t of this.filterByfield(this.returnedArray, field, value)) {
-                if (!as.includes(t)) {
-                    as.push(t);
-                }
+          for (let t of this.filterByfield(this.originalClients, field, value)) {
+            if (!as.includes(t)) {
+              as.push(t);
             }
+          }
         }
         this.returnedArray = as;
-
+      }
     }
 
     getAllClient() {

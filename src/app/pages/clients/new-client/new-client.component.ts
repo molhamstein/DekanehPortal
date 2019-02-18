@@ -86,6 +86,7 @@ export class NewClientComponent implements OnInit {
             this.newUSer = true;
         } else {
             this.user = this.ClientHandler.getClientUserById(this.id).subscribe(Client => {
+              console.log(Client);
                 this.user = Client;
                 let loc;
                 let notes;
