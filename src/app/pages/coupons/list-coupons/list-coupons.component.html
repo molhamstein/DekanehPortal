@@ -6,72 +6,68 @@
 <!--</div>-->
 <table class="table table-bordered table-striped ">
 
-    <thead>
+  <thead>
     <tr>
-        <th>id</th>
-        <th (click)="orderByCode()" class="clickable-th">
-            {{"coupon.form.controls.code"|translate}}
-            <i [ngClass]="codeOrderDir === undefined? '' : (codeOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
-               class="fa-sort fa "></i>
-        </th>
-        <th (click)="orderByOwner()" class="clickable-th">
-            {{"coupon.form.controls.owner"|translate}}
-            <i [ngClass]="ownerOrderDir === undefined? '' : (ownerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
-               class="fa-sort fa "></i>
-        </th>
+      <th (click)="orderByShomeName()" class="clickable-th">
+        {{"coupon.form.controls.shopName"|translate}}
+        <i [ngClass]="shopNameOrderDir === undefined? '' : (shopNameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
+      </th>
+      <th (click)="orderByCode()" class="clickable-th">
+        {{"coupon.form.controls.code"|translate}}
+        <i [ngClass]="codeOrderDir === undefined? '' : (codeOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
+      </th>
+      <th (click)="orderByOwner()" class="clickable-th">
+        {{"coupon.form.controls.owner"|translate}}
+        <i [ngClass]="ownerOrderDir === undefined? '' : (ownerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
+      </th>
 
-        <th (click)="orderByValue()" class="clickable-th">
-            {{"coupon.form.controls.value"|translate}}
-            <i [ngClass]="valueOrderDir === undefined? '' : (valueOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
-               class="fa-sort fa "></i>
-        </th>
-        <th (click)="orderByExpire()" class="clickable-th">
-            {{"coupon.form.controls.expireDate"|translate}}
-            <i [ngClass]="expireOrderDir === undefined? '' : (expireOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
-               class="fa-sort fa "></i>
-        </th>
-        <th (click)="orderByStatus()" class="clickable-th">
-            {{"coupon.form.controls.status"|translate}}
-            <i [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"
-               class="fa-sort fa "></i>
+      <th (click)="orderByValue()" class="clickable-th">
+        {{"coupon.form.controls.value"|translate}}
+        <i [ngClass]="valueOrderDir === undefined? '' : (valueOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
+      </th>
+      <th (click)="orderByExpire()" class="clickable-th">
+        {{"coupon.form.controls.expireDate"|translate}}
+        <i [ngClass]="expireOrderDir === undefined? '' : (expireOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
+      </th>
+      <th (click)="orderByStatus()" class="clickable-th">
+        {{"coupon.form.controls.status"|translate}}
+        <i [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')" class="fa-sort fa "></i>
 
-        </th>
-        <th>
-            {{"staff.actions"|translate}}
-        </th>
+      </th>
+      <th>
+        {{"staff.actions"|translate}}
+      </th>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
     <tr *ngFor="let coupon of allCoupon">
-        <td>{{coupon.id}}</td>
-        <td>{{coupon.code}}</td>
-        <td>{{coupon.userId}}</td>
-        <td>{{coupon.value}}<span *ngIf="coupon.type=='percent'">%</span></td>
-        <td>{{c.formatDate(coupon.expireDate)}}</td>
+      <td>{{coupon.shopName}}</td>
+      <td>{{coupon.code}}</td>
+      <td>{{coupon.userId}}</td>
+      <td>{{coupon.value}}<span *ngIf="coupon.type=='percent'">%</span></td>
+      <td>{{c.formatDate(coupon.expireDate)}}</td>
 
-        <td><span [ngClass]="coupon.status=='available'? 'badge-success' : 'badge-danger'"
-                  class="badge ">{{"coupon.status." + coupon.status|translate}}</span>
-        </td>
-        <td>
-            <button (click)="editCoupon(coupon.id)" class="btn btn-primary"
-                    type="button">{{"staff.buttons.edit"|translate}}
-            </button>
-            <!--<button class="btn btn-danger" type="button" (click)="deleteCoupon(coupon.id)">-->
-            <!--{{"coupon.buttons.delete"|translate}}-->
-            <!--</button>-->
-        </td>
+      <td><span [ngClass]="coupon.status=='available'? 'badge-success' : 'badge-danger'" class="badge ">{{"coupon.status."
+          + coupon.status|translate}}</span>
+      </td>
+      <td>
+        <button (click)="editCoupon(coupon.id)" class="btn btn-primary" type="button">{{"staff.buttons.edit"|translate}}
+        </button>
+        <!--<button class="btn btn-danger" type="button" (click)="deleteCoupon(coupon.id)">-->
+        <!--{{"coupon.buttons.delete"|translate}}-->
+        <!--</button>-->
+      </td>
     </tr>
     <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
-    </tbody>
+  </tbody>
 </table>
 <div class="row" [hidden]="spinnerFlag">
-    <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
-                firstText="&laquo;" lastText="&raquo;"
-                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
-                [boundaryLinks]="true"></pagination>
-    <div class="per-page-sec">
-        <span>{{"client.perPage"|translate}}</span>
-        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-    </div>
+  <pagination [totalItems]="couponCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+    lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+    [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
 
 </div>

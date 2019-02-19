@@ -60,6 +60,10 @@
     "Ratings": {
       "main": "التقييمات",
       "viewAll": "عرض جميع التقييمات"
+    },
+    "Notifications": {
+      "main": "التنبيهات",
+      "viewAll": "إضافة تنبيه خاص"
     }
   },
   "logIn": {
@@ -68,6 +72,21 @@
     "password": "كلمة المرور",
     "rememberMe": "تذكرني",
     "Signin": "تسجيل الدخول"
+  },
+  "Notifications": {
+    "addNew": "إضافة إشعار جديد",
+    "title": "العنوان",
+    "cantBeEmpty": "لايمكن ان يكون فارغا",
+    "message": "الرسالة",
+    "send": "إرسال",
+    "users": "أختر المستخدمين (الأفتراضي كل المستخدمين)"
+  },
+  "modal": {
+    "addNote": "إضافة ملاحظة",
+    "close": "إغلاق",
+    "add": "إضافة",
+    "note": "ملاحظة",
+    "createdAt": "تاريخ الانشاء"
   },
   "Manufactures": {
     "creationDate": "تاريخ الاضافة",
@@ -259,6 +278,7 @@
       "passReset": "تعديل كلمة المرور",
       "delete": "حذف",
       "add": "اضافة",
+      "addNote": "اضافة ملاحظة",
       "back": "إلغاء"
     },
     "status": {
@@ -331,6 +351,7 @@
       "controls": {
         "value": "القيمة",
         "code": "الكود",
+        "shopName": "اسم المحل",
         "expireDate": "تاريخ الانتهاء",
         "status": "الحالة",
         "numberOfTimes": "عدد المرات",
@@ -498,8 +519,8 @@
       "total": "القيمة الإجمالية",
       "totalError": "الحد الادنى للقيمة الاجمالية هو 20000",
       "product": "المنتج",
-      "count":"الكمية",
-      "price":"السعر",
+      "count": "الكمية",
+      "price": "السعر",
       "userTap": "الزبون",
       "code": "الكود",
       "productsTap": "المنتجات",
@@ -508,8 +529,7 @@
       "status": "الحالة",
       "dates": "تاريخ انشاء الطلب"
     },
-    "form": {
-    }
+    "form": {}
   },
   "suppliersOrders": {
     "searchSup": "ابحث عن المورد",

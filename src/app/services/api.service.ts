@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http';
-import {environment} from '../../environments/environment.prod';
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions } from '@angular/http';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class ApiService {
@@ -15,9 +15,9 @@ export class ApiService {
     }
     get(name, params?: URLSearchParams) {
         if (params) {
-            return this.http.get(this.api + name, {params: params, headers: this.header});
+            return this.http.get(this.api + name, { params: params, headers: this.header });
         }
-        return this.http.get(this.api + name, {headers: this.header});
+        return this.http.get(this.api + name, { headers: this.header });
     }
 
     post(name, data, options?) {
@@ -25,7 +25,7 @@ export class ApiService {
             options.headers.append('authorization', localStorage.getItem('token'));
             return this.http.post(this.api + name, data, options);
         }
-        return this.http.post(this.api + name, data,{headers: this.header});
+        return this.http.post(this.api + name, data, { headers: this.header });
 
     }
 
@@ -35,11 +35,11 @@ export class ApiService {
             options.headers.append('authorization', localStorage.getItem('token'));
             return this.http.put(this.api + name, data, options);
         }
-        return this.http.put(this.api + name, data,{headers: this.header});
+        return this.http.put(this.api + name, data, { headers: this.header });
     }
 
     delete(name, id) {
-        return this.http.delete(this.api + name + '\\' + id, {headers: this.header});
+        return this.http.delete(this.api + name + '\\' + id, { headers: this.header });
     }
 
 }

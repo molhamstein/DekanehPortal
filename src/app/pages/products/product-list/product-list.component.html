@@ -1,158 +1,149 @@
 <div class="row">
-    <div class="col-sm-3">
-      <input class="form-control search-box" type="text" [value]="searchString" (keyup)="filterBox($event)"
-             placeholder="{{'client.search'|translate}}....">
-    </div>
-    <div class="col-sm-9">
-        <div class="filter-btns">
-            <select class="btn btn-action" (change)="setCatFilter($event)" [(ngModel)]="cat">
-                <option value='1' disabled style="display: none"
-                        selected>{{'product.form.controls.cat'|translate}}</option>
-                <option *ngFor="let cat of cats" [value]="cat.id">
-                    {{cat.titleAr}}
-                </option>
-            </select>
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" [value]="searchString" (keyup)="filterBox($event)" placeholder="{{'client.search'|translate}}....">
+  </div>
+  <div class="col-sm-9">
+    <div class="filter-btns">
+      <select class="btn btn-action" (change)="setCatFilter($event)" [(ngModel)]="cat">
+        <option value='1' disabled style="display: none" selected>{{'product.form.controls.cat'|translate}}</option>
+        <option *ngFor="let cat of cats" [value]="cat.id">
+          {{cat.titleAr}}
+        </option>
+      </select>
 
-            <select class="btn btn-action" [(ngModel)]="subcat">
-                <option value="1" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
-                <option *ngFor="let sub of subcats" [value]="sub.id">
-                    {{sub.titleAr}}
-                </option>
-            </select>
+      <select class="btn btn-action" [(ngModel)]="subcat">
+        <option value="1" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
+        <option *ngFor="let sub of subcats" [value]="sub.id">
+          {{sub.titleAr}}
+        </option>
+      </select>
 
-            <select class="btn btn-action" [(ngModel)]="man">
-                <option value="1" disabled selected>{{'product.form.controls.man'|translate}}</option>
-                <option *ngFor="let man of mans" [value]="man.id">
-                    {{man.nameAr}}
-                </option>
-            </select>
-            <select class="btn btn-action" id="availableTo" [(ngModel)]="availableTo">
-                <option value="1" disabled selected>{{'product.form.controls.availableTo'|translate}}</option>
-                <option *ngFor="let option of availableList" [value]="option">
-                    {{"product.form.controls." + option|translate}}
-                </option>
-            </select>
-            <select class="btn btn-action" id="isoffer" (change)="setOfferFilter($event)">
-                <option value="" disabled selected>{{'product.form.controls.offerOrProduct'|translate}}</option>
-                <option *ngFor="let option of offerList" [value]="option">
-                    {{"product.form.controls." + option|translate}}
-                </option>
-            </select>
-          <select class="btn btn-action" id="isFeatured" (change)="setFeaturedFilter($event)">
-            <option value="" disabled selected>{{'product.form.controls.featuredOrNot'|translate}}</option>
-            <option *ngFor="let option of featuredList" [value]="option">
-              {{"product.form.controls." + option|translate}}
-            </option>
-          </select>
-          <select class="btn btn-action" id="status" [(ngModel)]="status">
-            <option value="1" disabled selected>{{'product.form.controls.status'|translate}}</option>
-            <option *ngFor="let option of statusList" [value]="option">
-              {{"product.status." + option|translate}}
-            </option>
-          </select>
-            <button type="button" (click)="setFilters()" class="btn btn-success">
-                {{"product.apply"|translate}}
-            </button>
-            <button type="button" (click)="emptyFields()" class="btn btn-danger">
-                {{"product.cancel"|translate}}
-            </button>
-        </div>
+      <select class="btn btn-action" [(ngModel)]="man">
+        <option value="1" disabled selected>{{'product.form.controls.man'|translate}}</option>
+        <option *ngFor="let man of mans" [value]="man.id">
+          {{man.nameAr}}
+        </option>
+      </select>
+      <select class="btn btn-action" id="availableTo" [(ngModel)]="availableTo">
+        <option value="1" disabled selected>{{'product.form.controls.availableTo'|translate}}</option>
+        <option *ngFor="let option of availableList" [value]="option">
+          {{"product.form.controls." + option|translate}}
+        </option>
+      </select>
+      <select class="btn btn-action" id="isoffer" (change)="setOfferFilter($event)">
+        <option value="" disabled selected>{{'product.form.controls.offerOrProduct'|translate}}</option>
+        <option *ngFor="let option of offerList" [value]="option">
+          {{"product.form.controls." + option|translate}}
+        </option>
+      </select>
+      <select class="btn btn-action" id="isFeatured" (change)="setFeaturedFilter($event)">
+        <option value="" disabled selected>{{'product.form.controls.featuredOrNot'|translate}}</option>
+        <option *ngFor="let option of featuredList" [value]="option">
+          {{"product.form.controls." + option|translate}}
+        </option>
+      </select>
+      <select class="btn btn-action" id="status" [(ngModel)]="status">
+        <option value="1" disabled selected>{{'product.form.controls.status'|translate}}</option>
+        <option *ngFor="let option of statusList" [value]="option">
+          {{"product.status." + option|translate}}
+        </option>
+      </select>
+      <button type="button" (click)="setFilters()" class="btn btn-success">
+        {{"product.apply"|translate}}
+      </button>
+      <button type="button" (click)="emptyFields()" class="btn btn-danger">
+        {{"product.cancel"|translate}}
+      </button>
     </div>
+  </div>
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered table-striped ">
-        <thead>
-        <tr>
-            <th>
-                {{"product.image"|translate}}
+  <table class="table table-bordered table-striped ">
+    <thead>
+      <tr>
+        <th>
+          {{"product.image"|translate}}
 
 
-            </th>
-            <th class="clickable-th" (click)="orderByName()">
-                {{"product.name"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByName()">
+          {{"product.name"|translate}}
+          <i class="fa-sort fa " [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-            </th>
-            <th class="clickable-th" (click)="orderByPack()">
-                {{"product.pack"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="packOrderDir === undefined? '' : (packOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByPack()">
+          {{"product.pack"|translate}}
+          <i class="fa-sort fa " [ngClass]="packOrderDir === undefined? '' : (packOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-            </th>
-            <th class="clickable-th" (click)="orderByMan()">
-                {{"product.man"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByMan()">
+          {{"product.man"|translate}}
+          <i class="fa-sort fa " [ngClass]="manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-            </th>
-            <th class="clickable-th" (click)="orderByClientPrice()">
-                {{"product.clientPrice"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="clientPriceOrderDir === undefined? '' : (clientPriceOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByClientPrice()">
+          {{"product.clientPrice"|translate}}
+          <i class="fa-sort fa " [ngClass]="clientPriceOrderDir === undefined? '' : (clientPriceOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
 
-            </th>
-            <th class="clickable-th" (click)="orderByRetailer()">
-                {{"product.retailer"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="retailerOrderDir === undefined? '' : (retailerOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
+        </th>
+        <th class="clickable-th" (click)="orderByRetailer()">
+          {{"product.retailer"|translate}}
+          <i class="fa-sort fa " [ngClass]="retailerOrderDir === undefined? '' : (retailerOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
 
 
-            </th>
-            <th class="clickable-th" (click)="orderByOffer()">
-                {{"product.offer"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="offerOrderDir === undefined? '' : (offerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-            </th>
+        </th>
+        <th class="clickable-th" (click)="orderByOffer()">
+          {{"product.offer"|translate}}
+          <i class="fa-sort fa " [ngClass]="offerOrderDir === undefined? '' : (offerOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        </th>
 
-            <th class="clickable-th" (click)="orderByStatus()">
-                {{"product.statustext"|translate}}
-                <i class="fa-sort fa "
-                   [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+        <th class="clickable-th" (click)="orderByStatus()">
+          {{"product.statustext"|translate}}
+          <i class="fa-sort fa " [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-            </th>
-            <th>
-                <!--{{"product.actions"|translate}}-->#
-            </th>
-        </tr>
-        </thead>
-        <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
+        </th>
+        <th>
+          <!--{{"product.actions"|translate}}-->#
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
 
-        <tr *ngFor="let product of returnedArray  ">
-            <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
-            <td>{{product.nameAr}}</td>
-            <td>{{product.pack}}</td>
-            <td>{{product.manufacturer.nameAr}}</td>
-            <td>{{product.wholeSalePriceDiscount}}</td>
-            <td>{{product.horecaPriceDiscount}}</td>
-            <td>{{"product." + product.isOffer|translate}}</td>
-            <td><span class="badge "
-                      [ngClass]="product.status=='available'? 'badge-success' :  'badge-danger'">{{"product.status." + product.status|translate}}</span>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
-                    {{"client.buttons.edit"|translate}}
-                </button>
-                <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
-                <!--{{"product.buttons.delete"|translate}}-->
-                <!--</button>-->
-            </td>
-        </tr>
-        </tbody>
-    </table>
+      <tr *ngFor="let product of returnedArray  ">
+        <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
+        <td>{{product.nameAr}}</td>
+        <td>{{product.pack}}</td>
+        <td>{{product.manufacturer.nameAr}}</td>
+        <td>{{product.wholeSalePriceDiscount}}</td>
+        <td>{{product.horecaPriceDiscount}}</td>
+        <td>{{"product." + product.isOffer|translate}}</td>
+        <td><span class="badge " [ngClass]="[product.status=='available' ? 'badge-success' : '',  product.status=='unavailable' ? 'badge-danger' : '',  product.status=='pending' ? 'badge-warning' : '']">{{"product.status."
+            + product.status|translate}}</span>
+        </td>
+        <!-- ng-class="{badge-success : product.status=='available', badge-danger : product.status=='unavailable'}" -->
+        <!-- [ngClass]="? 'badge-success' :  'badge-danger'"
+            badge-warning -->
+        <td>
+          <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
+            {{"client.buttons.edit"|translate}}
+          </button>
+          <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
+          <!--{{"product.buttons.delete"|translate}}-->
+          <!--</button>-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
 <div [hidden]="spinnerFlag||unpage" class="row">
-    <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
-                firstText="&laquo;" lastText="&raquo;"
-                [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
-                [boundaryLinks]="true"></pagination>
-    <div class="per-page-sec">
-        <span>{{"client.perPage"|translate}}</span>
-        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-    </div>
+  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+    lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
+    [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
 
 </div>
-
-

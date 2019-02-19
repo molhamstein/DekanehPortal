@@ -1,14 +1,25 @@
-import {ApiService} from '../../services/api.service';
-import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {UserModel} from '../user-model';
-import {Injectable} from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { Observable } from 'rxjs/Observable';
+import { Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { UserModel } from '../user-model';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ClientsHandler {
     constructor(private apiService: ApiService) {
+
+    }
+
+
+    addNote(data) {
+        let body = JSON.stringify(data);
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/userNots', body, options)
+            .map(success => success.status)
+            .catch(this.handleError);
 
     }
 
@@ -38,8 +49,8 @@ export class ClientsHandler {
 
     createClientUser(ClientUser: UserModel): Observable<number> {
         let body = JSON.stringify(ClientUser);
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         // console.log(ClientUser);
         return this.apiService.post('/users', body, options)
             .map(success => success.status)
@@ -48,13 +59,26 @@ export class ClientsHandler {
 
     changePass(passForm: any): Observable<string> {
         let body = JSON.stringify(passForm);
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/users/resetPassword', body, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
 
+    getNotClientUserById(ClientUserId: string) {
+        var filter = { "where": { "userId": ClientUserId }, "order": 'createdAt DESC' }
+        return this.apiService.get('/userNots?filter=' + JSON.stringify(filter))
+            .map(this.extractData)
+            .catch(this.handleError);
+
+    }
+
+    deleteNote(noteId) {
+        return this.apiService.delete('/userNots', noteId)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
     getClientUserById(ClientUserId: string): Observable<UserModel> {
         return this.apiService.get('/users/' + ClientUserId)
             .map(this.extractData)
@@ -87,8 +111,8 @@ export class ClientsHandler {
     }
 
     updateClientUser(ClientUser: UserModel): Observable<number> {
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.put('/users/' + ClientUser.id, ClientUser, options)
             .map(success => success.status)
             .catch(this.handleError);

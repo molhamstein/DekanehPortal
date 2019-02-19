@@ -1,9 +1,10 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {UserModel} from '../../user-model';
-import {NavigationEnd, Router} from '@angular/router';
-import {ClientsHandler} from '../clients-handler';
-import {AlertService} from '../../../services/alert.service';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { UserModel } from '../../user-model';
+import { NavigationEnd, Router } from '@angular/router';
+import { ClientsHandler } from '../clients-handler';
+import { AlertService } from '../../../services/alert.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-client-list',
@@ -19,9 +20,9 @@ export class ClientListComponent implements OnInit {
     statusOrderDir;
     shopNameOrderDir;
     typeOrderDir;
-  pageShow = true;
+    pageShow = true;
 
-  phoneNumberOrderDir;
+    phoneNumberOrderDir;
     locationOrderDir;
     statusCode: number;
     requestProcess = false;
@@ -37,8 +38,8 @@ export class ClientListComponent implements OnInit {
 
     constructor(private modalService: BsModalService, private clientHandler: ClientsHandler, private router: Router, private alert: AlertService) {
         this.clientHandler.getAllAreas().finally(() => this.getAllClient()).subscribe(data => {
-                this.areas = data;
-            }
+            this.areas = data;
+        }
             , errorCode => this.showError());
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
@@ -51,13 +52,45 @@ export class ClientListComponent implements OnInit {
             }
         }, errorCode => this.showError());
     }
+
+
+    clientIdAddNote;
+    submiteddAddNote;
+    userNotForm = new FormGroup({
+        createdAt: new FormControl(new Date(), Validators.required),
+        note: new FormControl("", Validators.required),
+    });
+    open(modal, id) {
+        this.userNotForm = new FormGroup({
+            createdAt: new FormControl(new Date, Validators.required),
+            note: new FormControl("", Validators.required),
+        });
+        this.clientIdAddNote = id
+        modal.show()
+    }
+
+    addNote(modal) {
+        if (this.userNotForm.valid == false) {
+            this.submiteddAddNote = true;
+            return
+        }
+        var data = this.userNotForm.value;
+        data["userId"] = this.clientIdAddNote;
+        this.clientHandler.addNote(data).subscribe(
+            successCode => {
+                modal.hide();
+            },
+            errorCode => this.showError()
+        )
+    }
+
     showError() {
-        this.alert.showToast.next({type: 'error'});
+        this.alert.showToast.next({ type: 'error' });
     }
 
     openModal(template: TemplateRef<any>, id) {
         this.idTodelete = id;
-        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
     }
 
     confirm(): void {
@@ -192,24 +225,24 @@ export class ClientListComponent implements OnInit {
 
     filterBox(event) {
         let value = event.target.value;
-      this.pageShow = false;
-      if (value.length == 0) {
-        this.getAllClient();
-        this.pageShow = true;
+        this.pageShow = false;
+        if (value.length == 0) {
+            this.getAllClient();
+            this.pageShow = true;
 
-      } else {
-        this.returnedArray = this.currentArray;
-        let as: UserModel[] = [];
-        let fields = ['shopName', 'areaId'];
-        for (let field of fields) {
-          for (let t of this.filterByfield(this.originalClients, field, value)) {
-            if (!as.includes(t)) {
-              as.push(t);
+        } else {
+            this.returnedArray = this.currentArray;
+            let as: UserModel[] = [];
+            let fields = ['shopName', 'areaId'];
+            for (let field of fields) {
+                for (let t of this.filterByfield(this.originalClients, field, value)) {
+                    if (!as.includes(t)) {
+                        as.push(t);
+                    }
+                }
             }
-          }
+            this.returnedArray = as;
         }
-        this.returnedArray = as;
-      }
     }
 
     getAllClient() {
@@ -220,20 +253,20 @@ export class ClientListComponent implements OnInit {
                 console.log(this.returnedArray);
             })
             .subscribe(data => {
-                    for (let user of data) {
-                        if (user.areaId != undefined) {
-                            let uid = user.areaId;
-                            user.areaId = this.areas.find(x => x.id === uid).nameAr;
+                for (let user of data) {
+                    if (user.areaId != undefined) {
+                        let uid = user.areaId;
+                        user.areaId = this.areas.find(x => x.id === uid).nameAr;
 
-                        } else {
-                            user.areaId = '';
-                        }
-
+                    } else {
+                        user.areaId = '';
                     }
 
-                    this.allClient = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
-                    this.originalClients = this.allClient;
                 }
+
+                this.allClient = data.sort((a, b) => a.creationDate > b.creationDate ? -1 : 1);
+                this.originalClients = this.allClient;
+            }
                 , errorCode => this.showError());
 
 
@@ -249,18 +282,18 @@ export class ClientListComponent implements OnInit {
 
         })
             .subscribe(client => {
-                    this.clientToUpdate = client;
-                    this.clientToUpdate.status = 'deactivated';
+                this.clientToUpdate = client;
+                this.clientToUpdate.status = 'deactivated';
 
-                    this.clientHandler.updateClientUser(this.clientToUpdate).subscribe(
-                        successCode => {
-                            this.statusCode = 200;
-                            this.allClient = this.originalClients;
-                            // this.backToCreateArticle();
-                        },
-                        errorCode => this.showError()
-                    );
-                },
+                this.clientHandler.updateClientUser(this.clientToUpdate).subscribe(
+                    successCode => {
+                        this.statusCode = 200;
+                        this.allClient = this.originalClients;
+                        // this.backToCreateArticle();
+                    },
+                    errorCode => this.showError()
+                );
+            },
                 errorCode => this.showError());
 
     }

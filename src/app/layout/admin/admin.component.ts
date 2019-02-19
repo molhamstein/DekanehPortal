@@ -155,7 +155,7 @@ export class AdminComponent implements OnInit {
         this.getNewNoti().subscribe(data => {
           this.newNoti = data;
         });
-      }, 100);
+      }, 3000);
     }
 
   getNewNotiCount(sound?) {

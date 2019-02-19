@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Notifications.addNew'|translate">
+      <form (ngSubmit)="submitNot()" [formGroup]="notificationForm">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Notifications.title'|translate}}</label>
+          <div class="col-sm-10">
+            <input ([ngModel])="title" (ngModelChange)="submitted=false" [placeholder]="'Notifications.title'|translate"
+              class="form-control tooltip-form" formControlName="title" id="title" name="title" type="text">
+            <div *ngIf="notificationForm.get('title').invalid&&submitted" [ngbTooltip]="('Notifications.title'|translate )+' '+('Notifications.cantBeEmpty'|translate)"
+              class="messages text-danger " placement="top">
+              <br />
+              <i class="text-danger f-right icofont icofont-close-circled">
+                <label>{{'Notifications.title'|translate}} {{'Notifications.cantBeEmpty'|translate}} </label>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">{{'Notifications.message'|translate}}</label>
+          <div class="col-sm-10">
+            <input ([ngModel])="message" (ngModelChange)="submitted=false" [placeholder]="'Notifications.message'|translate" class="form-control tooltip-form"
+              formControlName="message" id="message" name="message" type="text">
+            <div *ngIf="notificationForm.get('message').invalid&&submitted" [ngbTooltip]="('Notifications.message'|translate )+' '+('Notifications.cantBeEmpty'|translate)"
+              class="messages text-danger " placement="top">
+              <br />
+              <i class="text-danger f-right icofont icofont-close-circled">
+                <label>{{'Notifications.message'|translate}} {{'Notifications.cantBeEmpty'|translate}} </label>
+              </i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+
+          <label class="col-sm-2 col-form-label">{{'product.form.controls.offers'|translate}}</label>
+          <ng-select class="col-sm-10" [placeholder]="'Notifications.users'|translate" [(ngModel)]="userIds" [multiple]="true"
+            [options]="IOoffers" formControlName="userIds" id="offers">
+          </ng-select>
+
+          <div class="row">
+            <div class="col-sm">
+              <table class="table  table-striped ">
+                <tbody>
+                  <tr *ngFor="let off of offersTable  ">
+                    <td style="width: 35px">
+                      <img *ngIf="off.media" src="{{off.media.thumbnail}}" style="max-width: 34px;max-height: 34px;">
+                    </td>
+                    <td>{{off.nameAr}}</td>
+                    <td style="text-align: center">
+
+                      <span class="functions-btn pull-left text-danger" (click)="removeOffer(off.id)"><i class="fa fa-remove fa-lg"></i></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+            <button class="btn btn-primary m-b-0" type="submit">
+              {{'Notifications.send'|translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>

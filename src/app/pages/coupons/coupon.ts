@@ -9,5 +9,6 @@ export class Coupon {
     creationDate: string;
     id: string;
     userId: string;
+    shopName:string;
 }
 

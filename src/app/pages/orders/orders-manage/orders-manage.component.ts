@@ -1,20 +1,21 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {OrdersHandlerService} from '../orders-handler.service';
-import {Order, OrderProduct} from '../order';
-import {ConstService} from '../../../services/const.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {IOption} from 'ng-select';
-import {ProductHandler} from '../../products/product-handler';
-import {ProductModel} from '../../products/product-model';
-import {CouponHandlerService} from '../../coupons/coupon-handler.service';
-import {UserModel} from '../../user-model';
-import {Coupon} from '../../coupons/coupon';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {animate, style, transition, trigger} from '@angular/animations';
-import {StaffHandler} from '../../staff/staff.handler';
-import {DatePipe} from '@angular/common';
-import {AlertService} from '../../../services/alert.service';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { OrdersHandlerService } from '../orders-handler.service';
+import { Order, OrderProduct } from '../order';
+import { ConstService } from '../../../services/const.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IOption } from 'ng-select';
+import { ProductHandler } from '../../products/product-handler';
+import { ProductModel } from '../../products/product-model';
+import { CouponHandlerService } from '../../coupons/coupon-handler.service';
+import { UserModel } from '../../user-model';
+import { Coupon } from '../../coupons/coupon';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { StaffHandler } from '../../staff/staff.handler';
+import { DatePipe } from '@angular/common';
+import { AlertService } from '../../../services/alert.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-orders-manage',
@@ -23,23 +24,23 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
     trigger(
       'enterAnimation', [
         transition(':enter', [
-          style({transform: 'translateY(100%)', opacity: 0}),
-          animate('300ms', style({transform: 'translateY(0)', opacity: 1}))
+          style({ transform: 'translateY(100%)', opacity: 0 }),
+          animate('300ms', style({ transform: 'translateY(0)', opacity: 1 }))
         ]),
         transition(':leave', [
-          style({transform: 'translateY(0)', opacity: 1}),
-          animate('300ms', style({transform: 'translateY(100%)', opacity: 0}))
+          style({ transform: 'translateY(0)', opacity: 1 }),
+          animate('300ms', style({ transform: 'translateY(100%)', opacity: 0 }))
         ])
       ]
     ), trigger(
       'rightEnterLeftLeaveAnimation', [
         transition(':enter', [
-          style({transform: 'translateX(100%)', opacity: 0}),
-          animate('300ms', style({transform: 'translateX(0)', opacity: 1}))
+          style({ transform: 'translateX(100%)', opacity: 0 }),
+          animate('300ms', style({ transform: 'translateX(0)', opacity: 1 }))
         ]),
         transition(':leave', [
-          style({transform: 'translateX(0)', opacity: 1}),
-          animate('300ms', style({transform: 'translateX(-100%)', opacity: 0}))
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate('300ms', style({ transform: 'translateX(-100%)', opacity: 0 }))
         ])
       ]
     )
@@ -99,15 +100,15 @@ export class OrdersManageComponent implements OnInit {
   delstatus = ['pending', 'canceled'];
 
   constructor(private modalService: BsModalService,
-              private datePipe: DatePipe,
-              private Handler: OrdersHandlerService,
-              private userHandler: StaffHandler,
-              private productHandler: ProductHandler,
-              public c: ConstService,
-              private CouponHandler: CouponHandlerService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private alert: AlertService
+    private datePipe: DatePipe,
+    private Handler: OrdersHandlerService,
+    private userHandler: StaffHandler,
+    private productHandler: ProductHandler,
+    public c: ConstService,
+    private CouponHandler: CouponHandlerService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private alert: AlertService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -121,6 +122,39 @@ export class OrdersManageComponent implements OnInit {
     this.orders = [];
     this.getOrders();
     this.newOrder = new Order();
+  }
+
+  orderIdAddNote;
+  clientIdAddNote;
+  submiteddAddNote;
+  userNotForm = new FormGroup({
+    createdAt: new FormControl(new Date(), Validators.required),
+    note: new FormControl("", Validators.required),
+  });
+  open(modal, id, clientId) {
+    this.userNotForm = new FormGroup({
+      createdAt: new FormControl(new Date, Validators.required),
+      note: new FormControl("", Validators.required),
+    });
+    this.orderIdAddNote = id;
+    this.clientIdAddNote = clientId
+    modal.show()
+  }
+
+  addNote(modal) {
+    if (this.userNotForm.valid == false) {
+      this.submiteddAddNote = true;
+      return
+    }
+    var data = this.userNotForm.value;
+    data["userId"] = this.clientIdAddNote;
+    data["orderId"] = this.orderIdAddNote;
+    this.Handler.addNote(data).subscribe(
+      successCode => {
+        modal.hide();
+      },
+      errorCode => this.showError()
+    )
   }
 
   emptyFilter() {
@@ -142,7 +176,7 @@ export class OrdersManageComponent implements OnInit {
   }
 
   showError() {
-    this.alert.showToast.next({type: 'error'});
+    this.alert.showToast.next({ type: 'error' });
   }
 
   datFormater(date) {
@@ -167,11 +201,11 @@ export class OrdersManageComponent implements OnInit {
   getOrdersFinilaize() {
     this.dateIndexes = [];
     let d = this.datFormater(this.orders[0].orderDate);
-    this.dateIndexes.push({date: d, index: 0});
+    this.dateIndexes.push({ date: d, index: 0 });
     for (let o of this.orders) {
       if (this.datFormater(o.orderDate) != this.datFormater(d)) {
         d = this.datFormater(o.orderDate);
-        this.dateIndexes.push({date: d, index: this.orders.indexOf(o)});
+        this.dateIndexes.push({ date: d, index: this.orders.indexOf(o) });
       }
     }
     this.spinnerFlag = false;
@@ -194,7 +228,7 @@ export class OrdersManageComponent implements OnInit {
         }).subscribe(data => {
           this.orders = data;
         }
-        , errorCode => this.showError());
+          , errorCode => this.showError());
 
     }).subscribe(c => {
       this.productsCount = c['count'];
@@ -215,12 +249,12 @@ export class OrdersManageComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, orderId) {
     this.orderTodelete = orderId;
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
   }
 
   openDeliveredModal(template: TemplateRef<any>, order) {
     this.orderTodeliver = order;
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
   }
 
   confirm(): void {
@@ -247,29 +281,29 @@ export class OrdersManageComponent implements OnInit {
       this.editIndex = index;
 
     }).subscribe(data => {
-        this.ul = [];
-        for (let u of data) {
-          this.ul.push({label: u.shopName, value: u.id});
-        }
-        this.users = data;
-        setTimeout(() => {
-          this.IOusers = this.ul;
-        }, 100);
-      }, errorCode => this.showError()
+      this.ul = [];
+      for (let u of data) {
+        this.ul.push({ label: u.shopName, value: u.id });
+      }
+      this.users = data;
+      setTimeout(() => {
+        this.IOusers = this.ul;
+      }, 100);
+    }, errorCode => this.showError()
     );
     if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
 
       this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
 
         this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
-            this.deul = [];
-            for (let u of data) {
-              this.deul.push({label: u.username, value: u.id});
-            }
-            setTimeout(() => {
-              this.IOdeusers = this.deul;
-            }, 100);
-          }, errorCode => this.showError()
+          this.deul = [];
+          for (let u of data) {
+            this.deul.push({ label: u.username, value: u.id });
+          }
+          setTimeout(() => {
+            this.IOdeusers = this.deul;
+          }, 100);
+        }, errorCode => this.showError()
         );
       }).subscribe(d => this.delMan = d, errorCode => this.showError());
     }
@@ -278,7 +312,7 @@ export class OrdersManageComponent implements OnInit {
     this.selectedEditProductsIds = [];
     this.selectedProducts = [];
     for (let pro of order.orderProducts) {
-      this.tP.push({label: pro.nameAr, value: pro.productId});
+      this.tP.push({ label: pro.nameAr, value: pro.productId });
       this.selectedEditProducts.push({
         'count': pro.count,
         'price': pro.price,
@@ -488,29 +522,29 @@ export class OrdersManageComponent implements OnInit {
 
   searchUsers(str) {
     this.CouponHandler.getUsersByShope(str).subscribe(data => {
-        this.ul = [];
-        for (let u of data) {
-          this.ul.push({label: u.shopName, value: u.id});
-        }
-        this.users = data;
+      this.ul = [];
+      for (let u of data) {
+        this.ul.push({ label: u.shopName, value: u.id });
+      }
+      this.users = data;
 
-        setTimeout(() => {
-          this.IOusers = this.ul;
-        }, 50);
-      }, errorCode => this.showError()
+      setTimeout(() => {
+        this.IOusers = this.ul;
+      }, 50);
+    }, errorCode => this.showError()
     );
   }
 
   searchDeUsers(str) {
     this.Handler.getٍStaffByString(str).subscribe(data => {
-        this.deul = [];
-        for (let u of data) {
-          this.deul.push({label: u.username, value: u.id});
-        }
-        setTimeout(() => {
-          this.IOdeusers = this.deul;
-        }, 100);
-      }, errorCode => this.showError()
+      this.deul = [];
+      for (let u of data) {
+        this.deul.push({ label: u.username, value: u.id });
+      }
+      setTimeout(() => {
+        this.IOdeusers = this.deul;
+      }, 100);
+    }, errorCode => this.showError()
     );
   }
 
@@ -535,14 +569,14 @@ export class OrdersManageComponent implements OnInit {
     if (str != '') {
       this.productHandler.search(str)
         .subscribe(data => {
-            for (let pro of data) {
-              this.tP.push({label: pro.nameAr, value: pro._id});
-            }
-            setTimeout(() => {
-              this.IOproducts = this.tP;
-            }, 50);
-            this.products = this.products.concat(data);
+          for (let pro of data) {
+            this.tP.push({ label: pro.nameAr, value: pro._id });
           }
+          setTimeout(() => {
+            this.IOproducts = this.tP;
+          }, 50);
+          this.products = this.products.concat(data);
+        }
           , errorCode => this.showError());
     }
 
@@ -562,15 +596,15 @@ export class OrdersManageComponent implements OnInit {
     if (str != '') {
       this.productHandler.search(str)
         .subscribe(data => {
-            for (let pro of data) {
-              this.tP.push({label: pro.nameAr, value: pro._id});
-              this.editProducts.push(pro);
-            }
-            setTimeout(() => {
-              this.IOproducts = this.tP;
-            }, 50);
-
+          for (let pro of data) {
+            this.tP.push({ label: pro.nameAr, value: pro._id });
+            this.editProducts.push(pro);
           }
+          setTimeout(() => {
+            this.IOproducts = this.tP;
+          }, 50);
+
+        }
           , errorCode => this.showError());
     }
 
@@ -603,7 +637,7 @@ export class OrdersManageComponent implements OnInit {
       this.editError = false;
       this.Handler.updateOrder(order).finally(() => {
         if (order.status == 'inDelivery') {
-          this.Handler.assignDelivery({'userId': order.deliveryMemberId}, order.id).subscribe(() => {
+          this.Handler.assignDelivery({ 'userId': order.deliveryMemberId }, order.id).subscribe(() => {
           }, errorCode => this.showError());
         }
         // this.cancelOrder();

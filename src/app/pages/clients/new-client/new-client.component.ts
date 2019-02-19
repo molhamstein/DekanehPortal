@@ -1,11 +1,11 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserModel} from '../../user-model';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MouseEvent} from '@agm/core';
-import {ClientsHandler} from '../clients-handler';
-import {AlertService} from '../../../services/alert.service';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserModel } from '../../user-model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MouseEvent } from '@agm/core';
+import { ClientsHandler } from '../clients-handler';
+import { AlertService } from '../../../services/alert.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
     selector: 'app-new-client',
@@ -14,6 +14,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 })
 export class NewClientComponent implements OnInit {
     newUSer;
+    notes = [];
     nameError = false;
     phoneError = false;
     id: string;
@@ -85,17 +86,20 @@ export class NewClientComponent implements OnInit {
             };
             this.newUSer = true;
         } else {
+            this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
+                this.notes = notes
+            })
             this.user = this.ClientHandler.getClientUserById(this.id).subscribe(Client => {
-              console.log(Client);
+                console.log(Client);
                 this.user = Client;
                 let loc;
                 let notes;
                 let owner;
                 let shop;
-                Client.location==undefined ? loc='': loc=Client.location;
-                Client.notes==undefined ? notes='': notes=Client.notes;
-                Client.ownerName==undefined ? owner='': owner=Client.ownerName;
-                Client.shopName==undefined ? shop='': shop=Client.shopName;
+                Client.location == undefined ? loc = '' : loc = Client.location;
+                Client.notes == undefined ? notes = '' : notes = Client.notes;
+                Client.ownerName == undefined ? owner = '' : owner = Client.ownerName;
+                Client.shopName == undefined ? shop = '' : shop = Client.shopName;
 
                 this.ClientForm.removeControl('password');
                 this.ClientForm.setValue({
@@ -107,7 +111,7 @@ export class NewClientComponent implements OnInit {
                     shopName: shop
                 });
                 this.locationPoint = Client.locationPoint;
-                if(this.locationPoint==undefined){
+                if (this.locationPoint == undefined) {
                     this.locationPoint = {
                         lat: 33.5138,
                         lng: 36.2765
@@ -126,13 +130,59 @@ export class NewClientComponent implements OnInit {
         this.getAreas();
     }
 
+
+    deleteNote(id, index) {
+        this.ClientHandler.deleteNote(id).subscribe(res => {
+            this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
+                this.notes = notes
+            })
+
+        })
+
+    }
+
+
+    clientIdAddNote;
+    submiteddAddNote;
+    userNotForm = new FormGroup({
+        createdAt: new FormControl(new Date(), Validators.required),
+        note: new FormControl("", Validators.required),
+    });
+    open(modal, id) {
+        this.userNotForm = new FormGroup({
+            createdAt: new FormControl(new Date, Validators.required),
+            note: new FormControl("", Validators.required),
+        });
+        this.clientIdAddNote = id
+        modal.show()
+    }
+
+    addNote(modal) {
+        if (this.userNotForm.valid == false) {
+            this.submiteddAddNote = true;
+            return
+        }
+        var data = this.userNotForm.value;
+        data["userId"] = this.id;
+        this.ClientHandler.addNote(data).subscribe(
+            successCode => {
+                modal.hide();
+                this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
+                    this.notes = notes
+                })
+            },
+            errorCode => this.showError()
+        )
+    }
+
+
     showError() {
-        this.alert.showToast.next({type: 'error'});
+        this.alert.showToast.next({ type: 'error' });
     }
     getAreas() {
         this.ClientHandler.getAllAreas().subscribe(data => {
-                this.areas = data;
-            }
+            this.areas = data;
+        }
             , errorCode => this.showError());
 
     }
@@ -143,7 +193,7 @@ export class NewClientComponent implements OnInit {
 
     showPasswordModal(template: TemplateRef<any>) {
 
-        this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
     }
 
     // confirm(): void {
@@ -154,27 +204,27 @@ export class NewClientComponent implements OnInit {
     }
     checkUserByPhone(event) {
         this.ClientHandler.getClientByPhone(event.target.value).subscribe(data => {
-                if (data['count'] > 0) {
-                    this.phoneError = true;
-                } else {
-                    this.phoneError = false;
-
-                }
+            if (data['count'] > 0) {
+                this.phoneError = true;
+            } else {
+                this.phoneError = false;
 
             }
+
+        }
         );
     }
 
     checkUserByName(event) {
         this.ClientHandler.getClientByUserName(event.target.value).subscribe(data => {
-                if (data['count'] > 0) {
-                    this.nameError = true;
-                } else {
-                    this.nameError = false;
-
-                }
+            if (data['count'] > 0) {
+                this.nameError = true;
+            } else {
+                this.nameError = false;
 
             }
+
+        }
         );
 
     }
@@ -215,7 +265,7 @@ export class NewClientComponent implements OnInit {
             return;
         }
         this.passSubmitted = true;
-        let passBody = {'id': this.id, 'password': this.PassForm.get('password').value};
+        let passBody = { 'id': this.id, 'password': this.PassForm.get('password').value };
         this.ClientHandler.changePass(passBody).finally(() => {
             this.passSubmitted = false;
             this.modalRef.hide();
@@ -240,9 +290,9 @@ export class NewClientComponent implements OnInit {
             this.user.areaId = this.areaId;
             this.user.locationPoint = this.locationPoint;
             this.ClientHandler.createClientUser(this.user).subscribe(successCode => {
-                    this.statusCode = successCode;
-                    this.router.navigate(['/client/list']);
-                },
+                this.statusCode = successCode;
+                this.router.navigate(['/client/list']);
+            },
                 errorCode => this.showError()
             );
         } else {
@@ -256,9 +306,9 @@ export class NewClientComponent implements OnInit {
             this.user.areaId = this.areaId;
             this.user.locationPoint = this.locationPoint;
             this.ClientHandler.updateClientUser(this.user).subscribe(successCode => {
-                    this.statusCode = successCode;
-                    this.router.navigate(['/client/list']);
-                },
+                this.statusCode = successCode;
+                this.router.navigate(['/client/list']);
+            },
                 errorCode => this.showError()
             );
 

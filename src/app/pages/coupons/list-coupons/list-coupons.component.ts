@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {CouponHandlerService} from '../coupon-handler.service';
-import {Coupon} from '../coupon';
-import {ConstService} from '../../../services/const.service';
-import {AlertService} from '../../../services/alert.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CouponHandlerService } from '../coupon-handler.service';
+import { Coupon } from '../coupon';
+import { ConstService } from '../../../services/const.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
     selector: 'app-list-coupons',
@@ -12,6 +12,7 @@ import {AlertService} from '../../../services/alert.service';
 })
 export class ListCouponsComponent implements OnInit {
     codeOrderDir;
+    shopNameOrderDir;
     statusOrderDir;
     valueOrderDir;
     ownerOrderDir;
@@ -21,18 +22,18 @@ export class ListCouponsComponent implements OnInit {
     statusCode: number;
     requestProcess = false;
     page: number;
-  pages = 20;
+    pages = 20;
     couponCount;
     allCoupon: Coupon[] = [];
     orginalCoupon: Coupon[] = [];
     returnedArray: Coupon[] = [];
 
-    constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService,private alert:AlertService) {
+    constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService, private alert: AlertService) {
         this.couponHandler.getCouponCount().finally(() => {
             this.getCoupons();
         }).subscribe(co => {
             this.couponCount = co['count'];
-        } , errorCode => this.showError());
+        }, errorCode => this.showError());
     }
 
     pageChanged(event: any): void {
@@ -45,7 +46,7 @@ export class ListCouponsComponent implements OnInit {
 
     }
     showError() {
-        this.alert.showToast.next({type: 'error'});
+        this.alert.showToast.next({ type: 'error' });
     }
     changepages(event) {
 
@@ -60,9 +61,24 @@ export class ListCouponsComponent implements OnInit {
         this.router.navigate(['/coupons/edit/' + id]);
     }
 
+    orderByShomeName() {
+        if (this.shopNameOrderDir == undefined) {
+            this.shopNameOrderDir = this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+
+
+        }
+        if (this.shopNameOrderDir) {
+            this.allCoupon.sort((a, b) => a.shopName.toLowerCase() < b.shopName.toLowerCase() ? -1 : 1);
+
+        } else {
+            this.allCoupon.sort((a, b) => a.shopName.toLowerCase() > b.shopName.toLowerCase() ? -1 : 1);
+        }
+        this.shopNameOrderDir = !this.shopNameOrderDir;
+    }
+
     orderByCode() {
         if (this.codeOrderDir == undefined) {
-            this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+            this.codeOrderDir = this.shopNameOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
         }
         if (this.codeOrderDir) {
             this.allCoupon.sort((a, b) => a.code.toLowerCase() < b.code.toLowerCase() ? -1 : 1);
@@ -76,7 +92,7 @@ export class ListCouponsComponent implements OnInit {
 
     orderByOwner() {
         if (this.ownerOrderDir == undefined) {
-            this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+            this.codeOrderDir = this.statusOrderDir = this.shopNameOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
 
         }
@@ -92,7 +108,7 @@ export class ListCouponsComponent implements OnInit {
 
     orderByExpire() {
         if (this.expireOrderDir == undefined) {
-            this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+            this.codeOrderDir = this.statusOrderDir = this.shopNameOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
 
         }
@@ -108,7 +124,7 @@ export class ListCouponsComponent implements OnInit {
 
     orderByValue() {
         if (this.valueOrderDir == undefined) {
-            this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+            this.codeOrderDir = this.statusOrderDir = this.shopNameOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
         }
         if (this.valueOrderDir) {
@@ -124,7 +140,7 @@ export class ListCouponsComponent implements OnInit {
 
     orderByStatus() {
         if (this.statusOrderDir == undefined) {
-            this.codeOrderDir = this.statusOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
+            this.codeOrderDir = this.statusOrderDir = this.shopNameOrderDir = this.expireOrderDir = this.valueOrderDir = this.ownerOrderDir = undefined;
 
         }
         if (this.statusOrderDir) {
@@ -171,21 +187,22 @@ export class ListCouponsComponent implements OnInit {
 
         })
             .subscribe(data => {
-                    let t: Coupon[] = [];
-                    for (let c of data) {
-                        if (c.userId != undefined && c.userId != '') {
-                            // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
-                            this.couponHandler.getUsersById(c.userId).finally(() => {
-                                t.push(c);
-                            }).subscribe(data => {
-                                c.userId = data.ownerName;
-                            }, errorCode => this.showError());
-                        } else {
+                let t: Coupon[] = [];
+                for (let c of data) {
+                    if (c.userId != undefined && c.userId != '') {
+                        // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
+                        this.couponHandler.getUsersById(c.userId).finally(() => {
                             t.push(c);
-                        }
+                        }).subscribe(data => {
+                            c.userId = data.ownerName;
+                            c.shopName = data.shopName;
+                        }, errorCode => this.showError());
+                    } else {
+                        t.push(c);
                     }
-                    this.allCoupon = data;
                 }
+                this.allCoupon = data;
+            }
                 , errorCode => this.showError());
     }
 
