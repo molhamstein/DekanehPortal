@@ -32,9 +32,15 @@ export class OrdersHandlerService {
     updateOrder(order: Order) {
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.put('/orders/' + order.id + '/editOrder', order, options)
+        return this.apiService.put('/orders/' + order.id + '/editOrder', { "data": order }, options)
             .map(success => success.status)
             .catch(this.handleError);
+    }
+
+    downloadBill(orderId) {
+
+        return this.apiService.get('/orders/' + orderId + '/printInvoice').map(this.extractData).catch(this.handleError);
+
     }
 
     assignDelivery(user, orderId) {

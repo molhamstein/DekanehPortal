@@ -141,6 +141,18 @@ export class OrdersManageComponent implements OnInit {
     modal.show()
   }
 
+  download(orederId) {
+    this.Handler.downloadBill(orederId).subscribe(
+      successCode => {
+        console.log(successCode);
+        var win = window.open(successCode['path'], '_blank');
+        win.focus();
+
+      },
+      errorCode => this.showError()
+    )
+  }
+
   addNote(modal) {
     if (this.userNotForm.valid == false) {
       this.submiteddAddNote = true;
