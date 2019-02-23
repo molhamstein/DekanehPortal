@@ -17,6 +17,9 @@ export class AddNotificationsComponent implements OnInit {
     t: Array<IOption> = [];
     userIds = [];
     submitted = false;
+    title = "";
+    message = "";
+    offersTable = [];
     constructor(private Handler: NotificationHandlerService, private alert: AlertService, private router: Router) {
         this.spinnerFlag = true;
     }
