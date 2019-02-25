@@ -13,10 +13,11 @@ export class OrdersHandlerService {
 
     roleIds = ConstService.STAFF_ROLES;
     createOrder(order: Order) {
-        let body = JSON.stringify(order);
+        let body = order;
+        body["isAdmin"] = true
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/orders', body, options).map(this.extractData).catch(this.handleError);
+        return this.apiService.post('/orders', JSON.stringify(body), options).map(this.extractData).catch(this.handleError);
     }
 
     addNote(data) {
@@ -30,9 +31,11 @@ export class OrdersHandlerService {
     }
 
     updateOrder(order: Order) {
+        let body = order;
+        body["isAdmin"] = true
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.put('/orders/' + order.id + '/editOrder', { "data": order }, options)
+        return this.apiService.put('/orders/' + order.id + '/editOrder', { "data": body }, options)
             .map(success => success.status)
             .catch(this.handleError);
     }

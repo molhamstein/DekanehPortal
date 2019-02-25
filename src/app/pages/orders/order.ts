@@ -1,11 +1,11 @@
-import {Coupon} from '../coupons/coupon';
+import { Coupon } from '../coupons/coupon';
 
 export class Order {
     code: string;
     orderDate: string;
     status: string;
     totalPrice: number;
-  note: string;
+    note: string;
     clientType: string;
     coupon: Coupon;
     orderProducts: OrderProduct[];
@@ -15,6 +15,7 @@ export class Order {
     clientId: string;
     deliveryMemberId: string;
     couponId: string;
+    couponCode: string
 
     constructor() {
 
@@ -22,7 +23,7 @@ export class Order {
 }
 export class OrderProduct {
     count: number;
-    price:number;
+    price: number;
 
     productId: string
 }

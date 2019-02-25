@@ -53,7 +53,7 @@
         </div>
         <div class="form-group">
           <label for="couponId">{{"orders.new.coupon"|translate}}</label>
-          <input (change)="checkCoupon($event)" class="form-control" id="couponId" placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
+          <input class="form-control" [(ngModel)]="newOrder.couponCode" [ngModelOptions]="{standalone: true}" id="couponId" placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
             type="text">
         </div>
         <div class="form-group">
@@ -333,7 +333,7 @@
               </ul>
             </td>
             <td>
-              <input style="width: 85px" (change)="checkEditCoupon($event)" class="form-control" placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
+              <input style="width: 85px" [(ngModel)]="OrderToEdit.couponCode" class="form-control" placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
                 type="text" [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
 
 
