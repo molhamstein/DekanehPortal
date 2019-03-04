@@ -27,9 +27,21 @@ export class ListCouponsComponent implements OnInit {
     allCoupon: Coupon[] = [];
     orginalCoupon: Coupon[] = [];
     returnedArray: Coupon[] = [];
+    statuesFilter = ""
+    statues = [{ "value": "", "view": "coupon.status.all" }, { "value": "available", "view": "coupon.status.available" }, { "value": "used", "view": "coupon.status.used" }, { "value": "deactivated", "view": "coupon.status.deactivated" }]
 
+    setState(event) {
+        this.statuesFilter = event.target.value
+        this.currentPage = 1;
+        this.couponHandler.getCouponCount(this.statuesFilter).finally(() => {
+            this.getCoupons();
+        }).subscribe(co => {
+            this.couponCount = co['count'];
+        }, errorCode => this.showError());
+
+    }
     constructor(private couponHandler: CouponHandlerService, private router: Router, public c: ConstService, private alert: AlertService) {
-        this.couponHandler.getCouponCount().finally(() => {
+        this.couponHandler.getCouponCount(this.statuesFilter).finally(() => {
             this.getCoupons();
         }).subscribe(co => {
             this.couponCount = co['count'];
@@ -181,7 +193,7 @@ export class ListCouponsComponent implements OnInit {
     getCoupons() {
         this.spinnerFlag = true;
 
-        this.couponHandler.getCoupons(this.pages, this.currentPage).finally(() => {
+        this.couponHandler.getCoupons(this.statuesFilter, this.pages, this.currentPage).finally(() => {
             this.returnedArray = this.allCoupon;
             this.spinnerFlag = false;
 

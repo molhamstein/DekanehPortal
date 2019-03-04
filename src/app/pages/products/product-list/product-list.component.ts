@@ -1,8 +1,8 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
-import {ProductHandler} from '../product-handler';
-import {ProductModel} from '../product-model';
-import {AlertService} from '../../../services/alert.service';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { ProductHandler } from '../product-handler';
+import { ProductModel } from '../product-model';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-product-list',
@@ -33,6 +33,7 @@ export class ProductListComponent implements OnInit {
   mans: any[] = [];
   subcats: any[] = [];
   clientPriceOrderDir;
+  officialPriceOrderDir
   statusCode: number;
   requestProcess = false;
   allProduct: ProductModel[] = [];
@@ -44,7 +45,7 @@ export class ProductListComponent implements OnInit {
   searchString = '';
 
   showError() {
-    this.alert.showToast.next({type: 'error'});
+    this.alert.showToast.next({ type: 'error' });
   }
 
   private eventOptions: boolean | { capture?: boolean, passive?: boolean };
@@ -78,7 +79,7 @@ export class ProductListComponent implements OnInit {
 
   orderByName() {
     if (this.nameOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.nameOrderDir) {
@@ -93,7 +94,7 @@ export class ProductListComponent implements OnInit {
 
   orderByPack() {
     if (this.packOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
     }
     if (this.packOrderDir) {
       this.returnedArray.sort((a, b) => a.pack.toLowerCase() < b.pack.toLowerCase() ? -1 : 1);
@@ -107,7 +108,7 @@ export class ProductListComponent implements OnInit {
 
   orderByMan() {
     if (this.manOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
     }
     if (this.manOrderDir) {
       this.returnedArray.sort((a, b) => a.manufacturer.nameAr.toLowerCase() < b.manufacturer.nameAr.toLowerCase() ? -1 : 1);
@@ -121,7 +122,7 @@ export class ProductListComponent implements OnInit {
 
   orderByClientPrice() {
     if (this.clientPriceOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.officialPriceOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
 
     }
@@ -135,9 +136,25 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  orderByOfficialPrice() {
+    if (this.officialPriceOrderDir == undefined) {
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir =this.clientPriceOrderDir= this.officialPriceOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
+
+
+    }
+    if (this.officialPriceOrderDir) {
+      this.returnedArray.sort((a, b) => a.marketOfficialPrice < b.marketOfficialPrice ? -1 : 1);
+
+    } else {
+      this.returnedArray.sort((a, b) => a.marketOfficialPrice > b.marketOfficialPrice ? -1 : 1);
+    }
+    this.officialPriceOrderDir = !this.officialPriceOrderDir;
+
+  }
+
   orderByRetailer() {
     if (this.retailerOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.retailerOrderDir) {
@@ -152,7 +169,7 @@ export class ProductListComponent implements OnInit {
 
   orderByOffer() {
     if (this.offerOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.offerOrderDir) {
@@ -167,7 +184,7 @@ export class ProductListComponent implements OnInit {
 
   orderByStatus() {
     if (this.statusOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
     }
     if (this.statusOrderDir) {
@@ -194,7 +211,7 @@ export class ProductListComponent implements OnInit {
       this.getAllProducts();
       localStorage.removeItem('search');
 
-    } else {
+    } else if (value.length > 2) {
       localStorage.setItem('search', value);
       localStorage.removeItem('filters');
       this.searchProducts(value);
@@ -236,7 +253,7 @@ export class ProductListComponent implements OnInit {
       this.getAllMans();
     })
       .subscribe(data =>
-          this.cats = data
+        this.cats = data
 
         , errorCode => this.showError());
   }
@@ -293,25 +310,25 @@ export class ProductListComponent implements OnInit {
 
 
     if (this.cat != '1') {
-      filters.push({name: 'categoryId', value: this.cat});
+      filters.push({ name: 'categoryId', value: this.cat });
     }
     if (this.subcat != '1') {
-      filters.push({name: 'subCategoryId', value: this.subcat});
+      filters.push({ name: 'subCategoryId', value: this.subcat });
     }
     if (this.man != '1') {
-      filters.push({name: 'manufacturerId', value: this.man});
+      filters.push({ name: 'manufacturerId', value: this.man });
     }
     if (this.availableTo != '1') {
-      filters.push({name: 'availableTo', value: this.availableTo});
+      filters.push({ name: 'availableTo', value: this.availableTo });
     }
     if (this.status != '1') {
-      filters.push({name: 'status', value: this.status});
+      filters.push({ name: 'status', value: this.status });
     }
     if (this.isOffer != undefined) {
-      filters.push({name: 'isOffer', value: this.isOffer});
+      filters.push({ name: 'isOffer', value: this.isOffer });
     }
     if (this.isFeatured != undefined) {
-      filters.push({name: 'isFeatured', value: this.isFeatured});
+      filters.push({ name: 'isFeatured', value: this.isFeatured });
     }
     localStorage.setItem('filters', JSON.stringify(filters));
     localStorage.removeItem('search');
@@ -378,7 +395,7 @@ export class ProductListComponent implements OnInit {
 
     })
       .subscribe(data =>
-          this.mans = data
+        this.mans = data
 
         , errorCode => this.showError());
   }
@@ -401,8 +418,8 @@ export class ProductListComponent implements OnInit {
 
         })
         .subscribe(data => {
-            this.allProduct = data;
-          }
+          this.allProduct = data;
+        }
           , errorCode => this.showError());
 
     }).subscribe(c => {

@@ -87,6 +87,12 @@
 
 
         </th>
+        <th class="clickable-th" (click)="orderByOfficialPrice()">
+          {{"product.officialPrice"|translate}}
+          <i class="fa-sort fa " [ngClass]="officialPriceOrderDir === undefined? '' : (officialPriceOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+
+        </th>
         <th class="clickable-th" (click)="orderByRetailer()">
           {{"product.retailer"|translate}}
           <i class="fa-sort fa " [ngClass]="retailerOrderDir === undefined? '' : (retailerOrderDir ? 'fa-sort-asc' : 'fa-sort-desc')"></i>
@@ -116,6 +122,7 @@
         <td>{{product.pack}}</td>
         <td>{{product.manufacturer.nameAr}}</td>
         <td>{{product.wholeSalePriceDiscount}}</td>
+        <td>{{product.marketOfficialPrice}}</td>
         <td>{{product.horecaPriceDiscount}}</td>
         <td>{{"product." + product.isOffer|translate}}</td>
         <td><span class="badge " [ngClass]="[product.status=='available' ? 'badge-success' : '',  product.status=='unavailable' ? 'badge-danger' : '',  product.status=='pending' ? 'badge-warning' : '']">{{"product.status."

@@ -50,6 +50,8 @@ import { element } from 'protractor';
 export class OrdersManageComponent implements OnInit {
   showNewBtn = true;
   orders: any[];
+  viewProduct = []
+  CountProduct = [];
   todayIndex: number;
   addNew = false;
   toDay = this.datFormater(new Date());
@@ -239,6 +241,13 @@ export class OrdersManageComponent implements OnInit {
           this.getOrdersFinilaize();
         }).subscribe(data => {
           this.orders = data;
+          for (var i = 0; i < data.length; ++i) {
+            this.viewProduct[i] = false;
+            this.CountProduct[i] = 0;
+            data[i].orderProducts.forEach(element => {
+              this.CountProduct[i] += element.count
+            });
+          }
         }
           , errorCode => this.showError());
 
@@ -579,7 +588,7 @@ export class OrdersManageComponent implements OnInit {
   searchProducts(str, id) {
     this.tP = [];
     if (str != '') {
-      this.productHandler.search(str)
+      this.productHandler.searchByUser(str, this.orderUser.clientType)
         .subscribe(data => {
           for (let pro of data) {
             this.tP.push({ label: pro.nameAr, value: pro._id });

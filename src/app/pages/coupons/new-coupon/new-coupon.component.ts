@@ -122,7 +122,7 @@ export class NewCouponComponent implements OnInit {
         this.CouponHandler.getUsersByString(str).subscribe(data => {
                 this.t = [];
                 for (let u of data) {
-                    this.t.push({label: u.ownerName, value: u.id});
+                    this.t.push({label: u.ownerName + " - " + u.shopName, value: u.id});
                 }
                 setTimeout(() => {
                     this.IOusers = this.t;

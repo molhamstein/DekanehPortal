@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {ApiService} from '../../services/api.service';
-import {ProductModel} from './product-model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { ApiService } from '../../services/api.service';
+import { ProductModel } from './product-model';
 
 @Injectable()
 export class ProductHandler {
@@ -84,17 +84,29 @@ export class ProductHandler {
     search(para: string): Observable<any[]> {
         let param = new URLSearchParams();
         param.append('string', para);
+        param.append('limit', String(50));
         return this.apiService.get('/products/search', param)
             .map(this.extractData).catch(this.handleError);
     }
 
-  newSearch(para: string, id: string): Observable<any[]> {
-    let param = new URLSearchParams();
-    param.append('string', para);
-    param.append('limit', '10');
-    return this.apiService.get('/products/searchClient/' + id, param)
-      .map(this.extractData).catch(this.handleError);
-  }
+
+
+    searchByUser(para: string, clientType: string): Observable<any[]> {
+        let param = new URLSearchParams();
+        param.append('string', para);
+        param.append('limit', String(50));
+        param.append('clientType', clientType);
+        return this.apiService.get('/products/search', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
+    newSearch(para: string, id: string): Observable<any[]> {
+        let param = new URLSearchParams();
+        param.append('string', para);
+        param.append('limit', '10');
+        return this.apiService.get('/products/searchClient/' + id, param)
+            .map(this.extractData).catch(this.handleError);
+    }
 
     getPureProducts(): Observable<ProductModel[]> {
         let param = new URLSearchParams();
@@ -111,16 +123,16 @@ export class ProductHandler {
 
     createProduct(Product: ProductModel): Observable<number> {
         let body = JSON.stringify(Product);
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/products', body, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
 
     updateProduct(product: ProductModel): Observable<number> {
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.put('/products/' + product.id, product, options)
             .map(success => success.status)
             .catch(this.handleError);

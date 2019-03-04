@@ -130,6 +130,9 @@
       "code": "الكود",
       "creationDate": "تاريخ الانشاء",
       "id": "ID",
+      "status": "الحالة",
+      "active": "مفعل",
+      "inactive": "غير مفعل",
       "parentCategoryId": "الأب",
       "titleAr": "الاسم العربي",
       "priority": "أولوية",
@@ -341,7 +344,8 @@
     "status": {
       "available": "متوفر",
       "deactivated": "غير مفعل",
-      "used": "مستخدم"
+      "used": "مستخدم",
+      "all": "الكل"
     },
     "type": {
       "fixed": "ثابت",
@@ -398,6 +402,7 @@
     "pack": "الحزمة",
     "man": "المصنع",
     "clientPrice": "السعر للدكاكين",
+    "officialPrice": "السعر للمستهلك",
     "retailer": "السعر للمنشأت",
     "offer": "عرض",
     "true": "نعم",
@@ -516,6 +521,7 @@
         "delivered": "تم التوصيل",
         "canceled": "ملغاة"
       },
+      "countTotal": "العدد الكلي للمنتجات",
       "total": "القيمة الإجمالية",
       "totalError": "الحد الادنى للقيمة الاجمالية هو 20000",
       "product": "المنتج",

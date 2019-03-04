@@ -7,6 +7,18 @@
 <table class="table table-bordered table-striped ">
 
   <thead>
+    <tr class="">
+      <td class="title-td" align="center" colspan="7">
+        <div class="filter-sec">
+          <select (change)="setState($event)" class="form-control" id="areas">
+            <option *ngFor="let oneState of statues" [selected]="oneState.value == statuesFilter" [value]="oneState.value">
+              {{oneState.view|translate}}
+            </option>
+          </select>
+
+        </div>
+      </td>
+    </tr>
     <tr>
       <th (click)="orderByShomeName()" class="clickable-th">
         {{"coupon.form.controls.shopName"|translate}}

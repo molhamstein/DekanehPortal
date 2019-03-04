@@ -1,102 +1,124 @@
 table {
-    direction: rtl;
+  direction: rtl;
 }
 
 th {
-    text-align: center;
+  text-align: center;
 }
 
 td {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.productCol {
+  display: none;
 }
 
 .table-ul {
-    padding: 0px;
-}
-.table-li{
-    padding: 10px;
-}
-.no-padding-td {
-    padding: 0px;
-}
-.add-order-btn{
-    width: 60px;
-    height: 60px;
-    line-height: 0px;
-    margin-bottom: 20px;
-}
-.add-order-tabel{
-    margin-bottom: 0px;
-}
-.add-order-btn > i {
-    margin: 0px;
-}.no-margin{
-    margin: 0px;
- }
-.center-div{
-    text-align: center;
-}
-.client-type {
-    font-size: 16px;
+  padding: 0px;
 }
 
-.new-order, .form-group {
-    direction: rtl;
-    text-align: right;
+.table-li {
+  padding: 10px;
+}
+
+.no-padding-td {
+  padding: 0px;
+}
+
+.add-order-btn {
+  width: 60px;
+  height: 60px;
+  line-height: 0px;
+  margin-bottom: 20px;
+}
+
+.add-order-tabel {
+  margin-bottom: 0px;
+}
+
+.add-order-btn>i {
+  margin: 0px;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.center-div {
+  text-align: center;
+}
+
+.client-type {
+  font-size: 16px;
+}
+
+.new-order,
+.form-group {
+  direction: rtl;
+  text-align: right;
 }
 
 .total-price {
-    padding: 10px 0px;
-    text-align: center;
+  padding: 10px 0px;
+  text-align: center;
 }
+
 .submit-col {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
+
 button[disabled] {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .spinner-submit {
-    vertical-align: middle;
-    color: gray;
+  vertical-align: middle;
+  color: gray;
 }
 
 .functions-btn:last-child {
-    margin-left: 0px;
+  margin-left: 0px;
 
 }
 
 .functions-btn {
-    margin-left: 10px;
+  margin-left: 10px;
 }
-.functions-btn:hover{
-    cursor: pointer;
+
+.functions-btn:hover {
+  cursor: pointer;
 }
-.functions-btn{
-    font-size: 14px;
+
+.functions-btn {
+  font-size: 14px;
 }
-.edit-order-btn:first-child{
-    margin-left: 50px;
+
+.edit-order-btn:first-child {
+  margin-left: 50px;
 }
-.edit-order-div{
-    text-align: center;
-    display: inline-flex;
+
+.edit-order-div {
+  text-align: center;
+  display: inline-flex;
 }
+
 .per-page-sec {
-    float: right;
-    margin-right: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 #perpage {
-    display: inline-block;
-    width: 80px;
-    margin-right: 10px;
+  display: inline-block;
+  width: 80px;
+  margin-right: 10px;
 }
-.group-row{
-    background: #e9ecef;
-    font-weight: 600;
+
+.group-row {
+  background: #e9ecef;
+  font-weight: 600;
 }
 
 .note-row {

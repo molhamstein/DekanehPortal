@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {ProductHandler} from '../product-handler';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {OfferProducts, ProductModel} from '../product-model';
-import {IOption} from 'ng-select';
-import {AlertService} from '../../../services/alert.service';
-import {IOptions} from 'tslint';
-import {getProdConfig} from '@angular/cli/models/webpack-configs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ProductHandler } from '../product-handler';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OfferProducts, ProductModel } from '../product-model';
+import { IOption } from 'ng-select';
+import { AlertService } from '../../../services/alert.service';
+import { IOptions } from 'tslint';
+import { getProdConfig } from '@angular/cli/models/webpack-configs';
 
 @Component({
   selector: 'app-new-product',
@@ -40,6 +40,7 @@ export class NewProductComponent implements OnInit {
   status = '';
   availableTo = '';
   offersTable = [];
+  selectedOffers = []
   offerSource = '';
   manufacturerId = '';
   isFeatured: boolean = false;
@@ -55,7 +56,7 @@ export class NewProductComponent implements OnInit {
     'jpgUrl': '',
     'id': ''
   };
-  offers: Array<IOption> = [];
+  offers = [];
   t: Array<IOption> = [];
   tP: Array<IOption> = [];
   IOoffers: Array<IOption> = [];
@@ -123,7 +124,13 @@ export class NewProductComponent implements OnInit {
 
         }
         this.getOffers(product);
-        this.subcats = this.cats.find(x => x.id == this.product.categoryId).subCategories;
+        this.subcats = []
+        var allSubcats = this.cats.find(x => x.id === this.product.categoryId).subCategories;
+        allSubcats.forEach(element => {
+          if (element.status == "active")
+            this.subcats.push(element);
+        });
+
         this.subCategoryId = this.product.subCategoryId;
         this.imgSrc = this.product.media.url;
         this.status = this.product.status;
@@ -168,7 +175,7 @@ export class NewProductComponent implements OnInit {
   }
 
   showError() {
-    this.alert.showToast.next({type: 'error'});
+    this.alert.showToast.next({ type: 'error' });
   }
 
   onFileChanged(event) {
@@ -182,7 +189,7 @@ export class NewProductComponent implements OnInit {
   getAllCats() {
     this.Handler.getAllCats()
       .subscribe(data =>
-          this.cats = data
+        this.cats = data
 
         , errorCode => this.showError());
   }
@@ -190,26 +197,27 @@ export class NewProductComponent implements OnInit {
   getAllMans() {
     this.Handler.getAllMans()
       .subscribe(data =>
-          this.mans = data
+        this.mans = data
 
         , errorCode => this.showError());
   }
 
   searchOffers(str) {
+    this.offers = []
     this.t = [];
     if (str != '') {
       this.Handler.searchByisOffer(str, true)
         .subscribe(data => {
-            for (let offer of data) {
-              this.t.push({label: offer.nameAr, value: offer.id});
-              // if(this.product.offersIds.includes(offer.id)){
-              //   this.offers.push({label: offer.nameAr, value: offer.id})
-              // }
-            }
-            setTimeout(() => {
-              this.IOoffers = this.t;
-            }, 100);
+          for (let offer of data) {
+            this.t.push({ label: offer.nameAr, value: offer.id });
+            // if (this.product.offersIds.includes(offer.id)) {
+            this.offers.push({ label: offer.nameAr, value: offer.id, media: offer.media })
+            // }
           }
+          setTimeout(() => {
+            this.IOoffers = this.t;
+          }, 100);
+        }
           , errorCode => this.showError());
     }
 
@@ -220,28 +228,34 @@ export class NewProductComponent implements OnInit {
     if (str != '') {
       this.Handler.searchByisOffer(str, false)
         .subscribe(data => {
-            for (let pro of data) {
-              this.tP.push({label: pro.nameAr, value: pro.id});
-              // if(this.product.offersIds.includes(offer.id)){
-              //   this.offers.push({label: offer.nameAr, value: offer.id})
-              // }
-            }
-            setTimeout(() => {
-              console.log(this.tP);
-              this.IOproducts = this.tP;
-            }, 50);
-            this.pureProducts = data;
-            console.log(this.pureProducts);
-
+          for (let pro of data) {
+            this.tP.push({ label: pro.nameAr, value: pro.id });
+            // if(this.product.offersIds.includes(offer.id)){
+            //   this.offers.push({label: offer.nameAr, value: offer.id})
+            // }
           }
+          setTimeout(() => {
+            console.log(this.tP);
+            this.IOproducts = this.tP;
+          }, 50);
+          this.pureProducts = data;
+          console.log(this.pureProducts);
+
+        }
           , errorCode => this.showError());
     }
 
   }
 
   setCat(event) {
+    this.subcats = []
     this.categoryId = event.target.value;
-    this.subcats = this.cats.find(x => x.id === this.categoryId).subCategories;
+    var allSubcats = this.cats.find(x => x.id === this.categoryId).subCategories;
+    allSubcats.forEach(element => {
+      if (element.status == "active")
+        this.subcats.push(element);
+    });
+
   }
 
   findProduct(id) {
@@ -282,6 +296,7 @@ export class NewProductComponent implements OnInit {
   createProduct() {
 
     this.Handler.uploadImage(this.selectedFile).finally(() => {
+
       this.product = this.ProductForm.value;
       this.media.url = this.imgUrl;
       this.media.thumbnail = this.thumbUrl;
@@ -297,6 +312,11 @@ export class NewProductComponent implements OnInit {
         t.push(tag.value);
       }
       this.product.tagsIds = t;
+      this.product.offersIds = []
+      this.offersTable.forEach(element => {
+        this.product.offersIds.push(element.id)
+      });
+      this.product.offersIds
       // this.product.offerSource = 'dockan';
       this.Handler.createProduct(this.product).finally(() => {
         this.router.navigate(['/products/new']);
@@ -304,16 +324,16 @@ export class NewProductComponent implements OnInit {
 
       })
         .subscribe(successCode => {
-            this.statusCode = successCode;
-          },
+          this.statusCode = successCode;
+        },
           errorCode => this.showError());
     }).subscribe(res => {
 
-        this.imgUrl = res[0].url;
+      this.imgUrl = res[0].url;
       this.thumbUrl = res[0].thumbnail;
-        this.jpgUrl = res[0].jpgUrl;
+      this.jpgUrl = res[0].jpgUrl;
 
-      }, errorCode => this.showError()
+    }, errorCode => this.showError()
     );
 
   }
@@ -342,12 +362,33 @@ export class NewProductComponent implements OnInit {
       }
       this.product.tagsIds = t;
     }
+    this.offersTable.forEach(element => {
+      this.product.offersIds.push(element.id)
+    });
     this.Handler.updateProduct(this.product).subscribe(successCode => {
-        this.statusCode = successCode;
-        this.router.navigate(['/products/list']);
-      },
+      this.statusCode = successCode;
+      this.router.navigate(['/products/list']);
+    },
       errorCode => this.showError());
 
+
+  }
+
+  offerSelected(IOproduct) {
+    let offer = this.offers.find(x => x.value === IOproduct.value);
+    console.log("offer")
+    console.log(offer)
+    // // this.newOffer.push(product);
+
+    this.offersTable.push({
+      "nameAr": offer.label,
+      "id": offer.value,
+      "media": offer.media
+    });
+    // this.newOrder.orderProducts = this.selectedProducts;
+    this.offersIds = [];
+
+    // this.productCheck();
 
   }
 
@@ -374,10 +415,10 @@ export class NewProductComponent implements OnInit {
         this.Handler.uploadImage(this.selectedFile).finally(() => {
           this.updateProduct(true);
         }).subscribe(res => {
-            this.imgUrl = res[0].url;
+          this.imgUrl = res[0].url;
           this.thumbUrl = res[0].thumbnail;
-            this.jpgUrl = res[0].jpgUrl;
-          }, errorCode => this.showError()
+          this.jpgUrl = res[0].jpgUrl;
+        }, errorCode => this.showError()
         );
       }
 

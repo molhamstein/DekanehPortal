@@ -1,12 +1,12 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {ConstService} from '../../../services/const.service';
-import {ApiService} from '../../../services/api.service';
-import {TranslateService} from '@ngx-translate/core';
-import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions, Response} from '@angular/http';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ConstService } from '../../../services/const.service';
+import { ApiService } from '../../../services/api.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs/Observable';
+import { Headers, RequestOptions, Response } from '@angular/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-add-category',
@@ -27,12 +27,14 @@ export class AddCategoryComponent implements OnInit {
   codeError;
   subcodeError;
   priority = '';
+  status = "";
   selectedFile: File;
   imgSrc: string = '';
   imgUrl: string = '';
   imgBlankError: boolean;
   modalRef: BsModalRef;
   catTodelete: string;
+  statues = [{ "value": "active", "view": "Categories.sub.active" }, { "value": "inactive", "view": "Categories.sub.inactive" }]
 
 
   constructor(private modalService: BsModalService, private route: ActivatedRoute, private c: ConstService, private router: Router, private api: ApiService, public translate: TranslateService) {
@@ -59,7 +61,7 @@ export class AddCategoryComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, category) {
     this.catTodelete = category;
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
   }
 
   confirm(): void {
@@ -136,6 +138,7 @@ export class AddCategoryComponent implements OnInit {
             'titleEn': '',
             'code': '',
             'priority': '',
+            'status': '',
             'icon': ''
           };
           cat = this.categoriesForm.value;
@@ -155,14 +158,14 @@ export class AddCategoryComponent implements OnInit {
             }
           });
         }).subscribe(res => {
-            this.imgUrl = res[0].url;
-          },
+          this.imgUrl = res[0].url;
+        },
           errorCode => console.log(errorCode)
         );
 
       } else {
         if (this.selectedFile == undefined) {
-          this.api.put('/categories/' + this.id, this.categoriesForm.value, new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})})).subscribe((res) => {
+          this.api.put('/categories/' + this.id, this.categoriesForm.value, new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json' }) })).subscribe((res) => {
             if (res.status == 200) {
               console.log(res);
               if (this.id == undefined) {
@@ -189,13 +192,14 @@ export class AddCategoryComponent implements OnInit {
               'titleAr': '',
               'titleEn': '',
               'code': '',
+              'status': '',
               'priority': '',
               'icon': ''
             };
             cat = this.categoriesForm.value;
             cat.icon = this.imgUrl;
             console.log(cat);
-            this.api.put('/categories/' + this.id, cat, new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})})).subscribe((res) => {
+            this.api.put('/categories/' + this.id, cat, new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json' }) })).subscribe((res) => {
               if (res.status == 200) {
                 console.log(res);
                 this.router.navigate(['categories', 'viewAll']);
@@ -204,8 +208,8 @@ export class AddCategoryComponent implements OnInit {
               }
             });
           }).subscribe(res => {
-              this.imgUrl = res[0].url;
-            },
+            this.imgUrl = res[0].url;
+          },
             errorCode => console.log(errorCode)
           );
 
@@ -253,6 +257,7 @@ export class AddCategoryComponent implements OnInit {
           this.subCategoriesForm = new FormGroup({
             titleAr: new FormControl('', [Validators.required,]),
             titleEn: new FormControl('', [Validators.required,]),
+            status: new FormControl('active'),
           });
         } else {
           alert(res.statusText);
@@ -275,6 +280,7 @@ export class AddCategoryComponent implements OnInit {
       titleAr: new FormControl('', [Validators.required,]),
       titleEn: new FormControl('', [Validators.required,]),
       code: new FormControl('', [Validators.required,]),
+      status: new FormControl('active'),
       priority: new FormControl('', [Validators.required,]),
     });
     this.categoriesForm = new FormGroup({
@@ -282,6 +288,7 @@ export class AddCategoryComponent implements OnInit {
       titleEn: new FormControl('', [Validators.required,]),
       code: new FormControl('', [Validators.required,]),
       priority: new FormControl('', [Validators.required,]),
+      status: new FormControl('active'),
     });
     if (this.id != undefined) {
       this.api.get('/categories').subscribe((data: any) => {
@@ -295,6 +302,8 @@ export class AddCategoryComponent implements OnInit {
                 titleEn: new FormControl(man.titleEn, [Validators.required,]),
                 code: new FormControl(man.code, [Validators.required,]),
                 priority: new FormControl(man.priority, [Validators.required,]),
+                status: new FormControl(man.status),
+
               });
             }
           });
@@ -304,7 +313,7 @@ export class AddCategoryComponent implements OnInit {
       this.api.get('/categories/' + this.id + '/subCategories').subscribe((data: any) => {
         if (data.ok) {
           let res = JSON.parse(data._body);
-          let temp = {'parentId': this.id, 'value': res, 'visible': false, 'cols': res.length > 0 ? Object.keys(res[0]) : []};
+          let temp = { 'parentId': this.id, 'value': res, 'visible': false, 'cols': res.length > 0 ? Object.keys(res[0]) : [] };
           this.subCategories = temp;
           console.log(temp.cols);
 
