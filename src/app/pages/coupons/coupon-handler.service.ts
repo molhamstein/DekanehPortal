@@ -19,9 +19,9 @@ export class CouponHandlerService {
         let param = new URLSearchParams();
         var filter = {}
         if (status != "")
-            filter = { where: { status: status }, order: "creationDate<DESC>", limit: + perPage, skip: (currentPage - 1) * perPage }
+            filter = { where: { status: status }, "include": ["user"], order: "creationDate DESC", limit: + perPage, skip: (currentPage - 1) * perPage }
         else
-            filter = { order: "creationDate<DESC>", limit: + perPage, skip: (currentPage - 1) * perPage }
+            filter = { order: "creationDate DESC", "include": ["user"], limit: + perPage, skip: (currentPage - 1) * perPage }
 
         let rolesString = '';
         param.append('filter', JSON.stringify(filter));

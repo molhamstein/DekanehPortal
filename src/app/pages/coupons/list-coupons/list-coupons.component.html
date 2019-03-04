@@ -53,7 +53,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let coupon of allCoupon">
-      <td>{{coupon.shopName}}</td>
+      <td>{{coupon.user.shopName}}</td>
       <td>{{coupon.code}}</td>
       <td>{{coupon.userId}}</td>
       <td>{{coupon.value}}<span *ngIf="coupon.type=='percent'">%</span></td>

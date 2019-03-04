@@ -80,10 +80,10 @@ export class ListCouponsComponent implements OnInit {
 
         }
         if (this.shopNameOrderDir) {
-            this.allCoupon.sort((a, b) => a.shopName.toLowerCase() < b.shopName.toLowerCase() ? -1 : 1);
+            this.allCoupon.sort((a, b) => a['user'].shopName.toLowerCase() < b['user'].shopName.toLowerCase() ? -1 : 1);
 
         } else {
-            this.allCoupon.sort((a, b) => a.shopName.toLowerCase() > b.shopName.toLowerCase() ? -1 : 1);
+            this.allCoupon.sort((a, b) => a['user'].shopName.toLowerCase() > b['user'].shopName.toLowerCase() ? -1 : 1);
         }
         this.shopNameOrderDir = !this.shopNameOrderDir;
     }
@@ -199,20 +199,20 @@ export class ListCouponsComponent implements OnInit {
 
         })
             .subscribe(data => {
-                let t: Coupon[] = [];
-                for (let c of data) {
-                    if (c.userId != undefined && c.userId != '') {
-                        // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
-                        this.couponHandler.getUsersById(c.userId).finally(() => {
-                            t.push(c);
-                        }).subscribe(data => {
-                            c.userId = data.ownerName;
-                            c.shopName = data.shopName;
-                        }, errorCode => this.showError());
-                    } else {
-                        t.push(c);
-                    }
-                }
+                // let t: Coupon[] = [];
+                // for (let c of data) {
+                //     if (c.userId != undefined && c.userId != '') {
+                //         // c.expireDate=new Date(c.expireDate).toISOString().slice(0, 16);
+                //         this.couponHandler.getUsersById(c.userId).finally(() => {
+                //             t.push(c);
+                //         }).subscribe(data => {
+                //             c.userId = data.ownerName;
+                //             c.shopName = data.shopName;
+                //         }, errorCode => this.showError());
+                //     } else {
+                //         t.push(c);
+                //     }
+                // }
                 this.allCoupon = data;
             }
                 , errorCode => this.showError());
