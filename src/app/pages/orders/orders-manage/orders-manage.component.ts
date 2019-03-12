@@ -83,6 +83,7 @@ export class OrdersManageComponent implements OnInit {
   editIndex;
   addError;
   editError;
+  editErrorNameProd;
   modalRef: BsModalRef;
   couponNotfound: boolean;
   hoveredIndex;
@@ -310,7 +311,7 @@ export class OrdersManageComponent implements OnInit {
       setTimeout(() => {
         this.IOusers = this.ul;
       }, 100);
-    }, errorCode => this.showError()
+    }, errorCode => { this.showError() }
     );
     if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
 
@@ -615,7 +616,7 @@ export class OrdersManageComponent implements OnInit {
   searchEditProducts(str) {
     this.tP = [];
     if (str != '') {
-      this.productHandler.search(str)
+      this.productHandler.searchByUser(str,this.OrderToEdit.clientType)
         .subscribe(data => {
           for (let pro of data) {
             this.tP.push({ label: pro.nameAr, value: pro._id });
@@ -664,11 +665,12 @@ export class OrdersManageComponent implements OnInit {
         // this.cancelOrder();
       }).subscribe(data => {
         this.router.navigate(['/orders/management']);
-
       }, errorCode => {
-        if (errorCode == 602) {
+        console.log(errorCode);
+        if (errorCode.statusCode == 611) {
           this.editError = true;
-        } else this.showError();
+          this.editErrorNameProd = errorCode.data[0].nameAr
+        } else { this.showError(); }
       });
     }
   }

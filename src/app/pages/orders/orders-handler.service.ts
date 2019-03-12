@@ -37,7 +37,7 @@ export class OrdersHandlerService {
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.put('/orders/' + order.id + '/editOrder', { "data": body }, options)
             .map(success => success.status)
-            .catch(this.handleError);
+            .catch(this.handleErrorSec);
     }
 
     downloadBill(orderId) {
@@ -136,5 +136,9 @@ export class OrdersHandlerService {
     private handleError(error: Response | any) {
         console.error(error.message || error);
         return Observable.throw(error.status);
+    }
+    private handleErrorSec(error: Response | any) {
+        console.error(error.message || error);
+        return Observable.throw(JSON.parse(error._body).error);
     }
 }
