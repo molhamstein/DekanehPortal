@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { Order } from './order';
 import { Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { UserModel } from '../user-model';
 import { ConstService } from '../../services/const.service';
+import { SupplierOrder } from './Supplier-order';
 
 @Injectable()
-export class OrdersHandlerService {
+export class SupplierOrdersHandlerService {
     constructor(private apiService: ApiService) {
     }
 
     roleIds = ConstService.STAFF_ROLES;
     roleWearIds = ConstService.WEAR_ROLES;
 
-    createOrder(order: Order) {
+    createSupplierOrder(order: SupplierOrder) {
         let body = order;
-        body["isAdmin"] = true
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/orders', JSON.stringify(body), options).
+        return this.apiService.post('/supplies', JSON.stringify(body), options).
             map(this.extractData)
             .catch(this.handleErrorSec);
 
@@ -35,12 +34,11 @@ export class OrdersHandlerService {
 
     }
 
-    updateOrder(order: Order) {
+    updateOrder(order: SupplierOrder) {
         let body = order;
-        body["isAdmin"] = true
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.put('/orders/' + order.id + '/editOrder', { "data": body }, options)
+        return this.apiService.put('/supplies/' + order.id + '/edit', body, options)
             .map(success => success.status)
             .catch(this.handleErrorSec);
     }
@@ -110,26 +108,28 @@ export class OrdersHandlerService {
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/orders/' + id + '/assignCancel', {}, options).map(this.extractData).catch(this.handleError);
     }
-    getOrders(perPage: number, currentPage: number, delMemID?): Observable<Order[]> {
+    getOrders(perPage: number, currentPage: number, where = {}): Observable<SupplierOrder[]> {
         let param = new URLSearchParams();
-        if (delMemID != undefined) {
-            param.append('filter', '{"where":{"deliveryMemberId":"' + delMemID + '"},"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
-
-        } else {
-            param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
-
-        }
-        return this.apiService.get('/orders', param).map(this.extractData).catch(this.handleError);
+        where['order'] = "orderDate DESC"
+        where['limit'] = perPage
+        where['skip'] = (currentPage - 1) * perPage
+        console.log(where);
+        param.append('filter', JSON.stringify(where));
+        return this.apiService.get('/supplies', param).map(this.extractData).catch(this.handleError);
+    }
+    getOrder(id): Observable<any> {
+        return this.apiService.get('/supplies/' + id).map(this.extractData).catch(this.handleError);
     }
 
-    getOrdersCount(delMemID?): Observable<number> {
-        if (delMemID != undefined) {
-            let param = new URLSearchParams();
-            param.append('where', '{"deliveryMemberId":"' + delMemID + '"}');
-            return this.apiService.get('/orders/count', param)
-                .map(this.extractData).catch(this.handleError);
-        }
-        return this.apiService.get('/orders/count')
+    cancelSupplierOrder(id) {
+        return this.apiService.put('/supplies/' + id + "/cancel", {}).map(this.extractData).catch(this.handleError);
+    }
+    deliverSupplierOrder(id) {
+        return this.apiService.put('/supplies/' + id + "/deliver", {}).map(this.extractData).catch(this.handleError);
+    }
+
+    getOrdersCount(where = {}): Observable<number> {
+        return this.apiService.get('/supplies/count?filter=' + JSON.stringify(where))
             .map(this.extractData).catch(this.handleError);
     }
     getNewOrdersCount(): Observable<number> {

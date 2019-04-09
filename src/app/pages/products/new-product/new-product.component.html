@@ -1,346 +1,408 @@
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.addBarcode'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <form [formGroup]="prodBarcodeForm">
+      <div class="form-group">
+        <label for="notes">{{"modal.code"|translate}}</label>
+        <input class="form-control" formControlName="code" id="notes" placeholder="{{'modal.code'|translate}}">
+        <label *ngIf="prodBarcodeForm.get('code').invalid && submiteddAddBarcode" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="expireDate">{{"modal.createdAt"|translate}}</label>
+        <input class="form-control" formControlName="createdAt" id="expireDate" placeholder="{{'modal.createdAt'|translate}}"
+          type="datetime-local">
+        <label *ngIf="prodBarcodeForm.get('createdAt').invalid && submiteddAddBarcode" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light" (click)="addBarcode(modalDefault)">{{'modal.add'|translate}}</button>
+  </div>
+</app-modal-basic>
 <form (ngSubmit)="onProductFormSubmit()" [formGroup]="ProductForm" class="ProductForm">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label for="nameAr">{{"product.form.controls.prodName"|translate}}</label>
-                    <input class="form-control" formControlName="nameAr" id="nameAr"
-                           placeholder="{{'product.form.placeholders.prodName'|translate}}" type="text">
-                    <label *ngIf="ProductForm.get('nameAr').invalid && processValidation"
-                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                </div>
-                <div class="form-group">
-                    <label for="pack">{{"product.form.controls.pack"|translate}}</label>
-                    <input class="form-control" formControlName="pack" id="pack"
-                           placeholder="{{'product.form.placeholders.pack'|translate}}" type="text">
-                    <label *ngIf="ProductForm.get('pack').invalid && processValidation"
-                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                </div>
-                <div class="form-group">
-                    <label for="sku">{{"product.form.controls.sku"|translate}}</label>
-                    <input class="form-control" formControlName="sku" id="sku"
-                           placeholder="{{'product.form.placeholders.sku'|translate}}" type="text">
-                    <!--<label *ngIf="ProductForm.get('sku').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
-                    <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
-                </div>
-                <div class="form-group">
-                    <label for="code">{{"product.form.controls.code"|translate}}</label>
-                    <input class="form-control" formControlName="code" id="code"
-                           placeholder="{{'product.form.placeholders.code'|translate}}" type="text">
-                    <!--<label *ngIf="ProductForm.get('code').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
-                    <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
-                </div>
-
-                <div class="form-group">
-
-                    <label for="offers">{{'product.form.controls.offers'|translate}}</label>
-                    <ng-select (filterInputChanged)="searchOffers($event)" (selected)="offerSelected($event)" [(ngModel)]="offersIds" [multiple]="true"
-                               [options]="IOoffers" formControlName="offersIds" id="offers">
-                    </ng-select>
-                  <div class="row">
-                    <div class="col-sm">
-                      <table class="table  table-striped ">
-                        <tbody>
-                        <tr *ngFor="let off of offersTable">
-                          <td style="width: 35px">
-                            <img *ngIf="off.media" src="{{off.media.thumbnail}}"
-                                 style="max-width: 34px;max-height: 34px;">
-                          </td>
-                          <td>{{off.nameAr}}</td>
-                          <td style="text-align: center">
-
-                            <span class="functions-btn pull-left text-danger"
-                                  (click)="removeOffer(off.id)"><i
-                              class="fa fa-remove fa-lg"></i></span>
-                          </td>
-                          <!--<td style="text-align: center">-->
-                          <!---->
-                          <!--</td>-->
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                    <!--<select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>-->
-                    <!--<option *ngFor="let option of alloffers" [value]="option.id">-->
-                    <!--{{option.nameAr}}-->
-                    <!--</option>-->
-                    <!--</select>-->
-                </div>
-                <div class="form-group">
-                    <label for="availableTo">{{'product.form.controls.availableTo'|translate}}</label>
-                    <select [(ngModel)]="availableTo" class="form-control" formControlName="availableTo"
-                            id="availableTo">
-                        <option *ngFor="let option of availableList" [value]="option">
-                            {{"product.form.controls." + option|translate}}
-                        </option>
-                    </select>
-
-                </div>
-                <div class="form-group">
-                    <label for="status">{{"product.form.controls.status"|translate}}</label>
-                    <select [(ngModel)]="status" class="form-control" formControlName="status" id="status">
-                        <option *ngFor="let option of allStatus" [value]="option">
-                          {{"product.status." + option|translate}}
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="categories">{{'product.form.controls.cat'|translate}}</label>
-                    <select (change)="setCat($event)" [(ngModel)]="categoryId" class="form-control" formControlName="categoryId"
-                            id="categories">
-                        <option disabled selected style="display: none" value=""></option>
-                        <option *ngFor="let cat of cats" [value]="cat.id">
-                            {{cat.titleAr}}
-                        </option>
-                    </select>
-                    <label *ngIf="ProductForm.get('categoryId').invalid && processValidation"
-                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-
-                </div>
-                <div *ngIf="categoryId!=''" class="form-group">
-                    <label for="subcategories">{{'product.form.controls.subcat'|translate}}</label>
-                    <select [(ngModel)]="subCategoryId" class="form-control" formControlName="subCategoryId"
-                            id="subcategories">
-                        <option disabled selected style="display: none" value=""></option>
-
-                        <option *ngFor="let cat of subcats" [value]="cat.id">
-                            {{cat.titleAr}}
-                        </option>
-                    </select>
-                    <label *ngIf="ProductForm.get('subCategoryId').invalid && processValidation"
-                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-
-                </div>
-                <div class="form-group">
-                    <label for="manufacturerId">{{'product.form.controls.man'|translate}}</label>
-                    <select [(ngModel)]="manufacturerId" class="form-control" formControlName="manufacturerId"
-                            id="manufacturerId">
-                        <option disabled selected style="display: none" value=""></option>
-
-                        <option *ngFor="let man of mans" [value]="man.id">
-                            {{man.nameAr}}
-                        </option>
-                    </select>
-                    <label *ngIf="ProductForm.get('manufacturerId').invalid && processValidation"
-                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-
-                </div>
-                <div class="form-group">
-                    <label for="description">{{"product.form.controls.desc"|translate}}</label>
-                    <textarea class="form-control" formControlName="description" id="description" placeholder="{{'product.form.placeholders.desc'|translate}}"
-                              rows="6"></textarea>
-                </div>
-
-            </div>
-            <div class="col-sm-6">
-                <div class="col-sm-offset-3 img-uploader">
-                    <div id="preview">
-                        <img [src]="imgSrc" alt="">
-                    </div>
-                    <input #fileInput (change)="onFileChanged($event)" style="display: none" type="file">
-                    <button (click)="fileInput.click()" class="select-file btn btn-success" type="button">
-                        {{'product.addImg'|translate}}
-                    </button>
-                    <br>
-                    <label *ngIf="imgBlankError"
-                           class="text-danger">{{'product.form.validations.imgBlank'|translate}}</label>
-
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="marketOfficialPrice">{{"product.form.controls.marketOfficialPrice"|translate}}</label>
-                            <input class="form-control" formControlName="marketOfficialPrice" id="marketOfficialPrice"
-                                   placeholder="{{'product.form.placeholders.marketOfficialPrice'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('marketOfficialPrice').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-                        <div class="form-group">
-                            <label for="horecaPrice">{{"product.form.controls.horecaPrice"|translate}}</label>
-                            <input class="form-control" formControlName="horecaPrice" id="horecaPrice"
-                                   placeholder="{{'product.form.placeholders.horecaPrice'|translate}}" type="number">
-                            <label *ngIf="ProductForm.get('horecaPrice').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-                        <div class="form-group">
-                            <label for="horecaPriceDiscount">{{"product.form.controls.horecaPriceDiscount"|translate}}</label>
-                            <input class="form-control" formControlName="horecaPriceDiscount" id="horecaPriceDiscount"
-                                   placeholder="{{'product.form.placeholders.horecaPriceDiscount'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('horecaPriceDiscount').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-
-                        <div class="form-group">
-                            <label for="wholeSaleMarketPrice">{{"product.form.controls.wholeSaleMarketPrice"|translate}}</label>
-                            <input class="form-control" formControlName="wholeSaleMarketPrice" id="wholeSaleMarketPrice"
-                                   placeholder="{{'product.form.placeholders.wholeSaleMarketPrice'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('wholeSaleMarketPrice').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="wholeSalePrice">{{"product.form.controls.wholeSalePrice"|translate}}</label>
-                            <input class="form-control" formControlName="wholeSalePrice" id="wholeSalePrice"
-                                   placeholder="{{'product.form.placeholders.wholeSalePrice'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('wholeSalePrice').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-                        <div class="form-group">
-
-                            <label for="dockanBuyingPrice">{{"product.form.controls.dockanBuyingPrice"|translate}}</label>
-                            <input class="form-control" formControlName="dockanBuyingPrice" id="dockanBuyingPrice"
-                                   placeholder="{{'product.form.placeholders.dockanBuyingPrice'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('dockanBuyingPrice').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="wholeSalePriceDiscount">{{"product.form.controls.wholeSalePriceDiscount"|translate}}</label>
-                            <input class="form-control" formControlName="wholeSalePriceDiscount" id="wholeSalePriceDiscount"
-                                   placeholder="{{'product.form.placeholders.wholeSalePriceDiscount'|translate}}"
-                                   type="number">
-                            <label *ngIf="ProductForm.get('wholeSalePriceDiscount').invalid && processValidation"
-                                   class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-                            <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="offer">{{"product.form.controls.offer"|translate}}</label>
-                                    <br>
-                                    <label class="switch">
-                                        <input [(ngModel)]="isOffer" formControlName="isOffer" id="offer"
-                                               type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="isFeatured">{{"product.form.controls.featured"|translate}}</label>
-                                    <br>
-                                    <label class="switch">
-                                        <input [(ngModel)]="isFeatured" formControlName="isFeatured" id="isFeatured"
-                                               type="checkbox">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label for="tags">{{'product.form.controls.tags'|translate}}</label>
-
-                            <tag-input [(ngModel)]="tags" [placeholder]="'product.form.placeholders.addTag'|translate" [secondaryPlaceholder]="'product.form.placeholders.addTags'|translate"
-                                       formControlName="tagsIds"
-                                       id="tags"></tag-input>
-                        </div>
-                      <div class="form-group">
-                        <label for="offerMaxQuantity">{{"product.form.controls.offerMaxQuantity"|translate}}</label>
-                        <input class="form-control" formControlName="offerMaxQuantity" id="offerMaxQuantity"
-                               placeholder="{{'product.form.placeholders.offerMaxQuantity'|translate}}"
-                               type="number">
-                        <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
-                        <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
-                      </div>
-                    </div>
-                </div>
-                <div *ngIf="isOffer" class="offer-things">
-                    <div class="form-group">
-                        <label for="offerSource">{{'product.form.controls.offerSource'|translate}}</label>
-                        <select [(ngModel)]="offerSource" class="form-control" formControlName="offerSource"
-                                id="offerSource">
-                            <option disabled selected style="display: none" value=""></option>
-                            <option *ngFor="let option of offerSourceList" [value]="option">
-                                {{"product.form.controls." + option|translate}}
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="offerProducts">{{"product.form.controls.offerProducts"|translate}}</label>
-
-                        <ng-select (deselected)="productDeSelected($event)" (filterInputChanged)="searchProducts($event)"
-                                   (selected)="productSelected($event)"
-                                   [multiple]="false" [options]="IOproducts"
-                                   id="offerProducts">
-                        </ng-select>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm products-div">
-                            <table class="table  table-striped ">
-                                <tbody>
-                                <tr *ngFor="let product of offerProducts  ">
-                                  <td style="width: 35px"><img *ngIf="findselecttedProduct(product.productId)?.media"
-                                                               src="{{findselecttedProduct(product.productId)?.media.thumbnail}}"
-                                                               style="max-width: 34px;max-height: 34px;">
-                                    </td>
-                                  <td>{{findselecttedProduct(product.productId).nameAr}}</td>
-                                    <td style="text-align: center">
-                                        <span>{{"product.form.controls.quantity"|translate}} </span><input
-                                      [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" style="max-width: 20%"
-                                      type="number">
-                                      <span class="functions-btn pull-left text-danger"
-                                            (click)="productDeSelected(product.productId)"><i
-                                        class="fa fa-remove fa-lg"></i></span>
-                                    </td>
-                                  <!--<td style="text-align: center">-->
-                                  <!---->
-                                  <!--</td>-->
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-sm submit-col">
-                <button *ngIf="newPro" [disabled]="submitted" class="btn btn-success" type="submit">
-                    {{"staff.buttons.add"|translate}}
-                </button>
-                <i *ngIf="!ProductForm.invalid&&submitted"
-                   class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
-                <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
-                    {{"staff.buttons.edit"|translate}}
-                </button>
-                <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()"
-                        type="button">
-                    {{"staff.buttons.back"|translate}}
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="nameAr">{{"product.form.controls.prodName"|translate}}</label>
+          <input class="form-control" formControlName="nameAr" id="nameAr"
+            placeholder="{{'product.form.placeholders.prodName'|translate}}" type="text">
+          <label *ngIf="ProductForm.get('nameAr').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+        <div class="form-group">
+          <label for="pack">{{"product.form.controls.pack"|translate}}</label>
+          <input class="form-control" formControlName="pack" id="pack"
+            placeholder="{{'product.form.placeholders.pack'|translate}}" type="text">
+          <label *ngIf="ProductForm.get('pack').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+        <div class="form-group">
+          <label for="sku">{{"product.form.controls.sku"|translate}}</label>
+          <input class="form-control" formControlName="sku" id="sku"
+            placeholder="{{'product.form.placeholders.sku'|translate}}" type="text">
+          <!--<label *ngIf="ProductForm.get('sku').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
+          <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+
+        </div>
+        <div class="form-group">
+          <label for="code">{{"product.form.controls.code"|translate}}</label>
+          <input class="form-control" formControlName="code" id="code"
+            placeholder="{{'product.form.placeholders.code'|translate}}" type="text">
+          <!--<label *ngIf="ProductForm.get('code').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
+          <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="offers">{{'product.form.controls.offers'|translate}}</label>
+          <ng-select (filterInputChanged)="searchOffers($event)" (selected)="offerSelected($event)"
+            [(ngModel)]="offersIds" [multiple]="true" [options]="IOoffers" formControlName="offersIds" id="offers">
+          </ng-select>
+          <div class="row">
+            <div class="col-sm">
+              <table class="table  table-striped ">
+                <tbody>
+                  <tr *ngFor="let off of offersTable">
+                    <td style="width: 35px">
+                      <img *ngIf="off.media" src="{{off.media.thumbnail}}" style="max-width: 34px;max-height: 34px;">
+                    </td>
+                    <td>{{off.nameAr}}</td>
+                    <td style="text-align: center">
+
+                      <span class="functions-btn pull-left text-danger" (click)="removeOffer(off.id)"><i
+                          class="fa fa-remove fa-lg"></i></span>
+                    </td>
+                    <!--<td style="text-align: center">-->
+                    <!---->
+                    <!--</td>-->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--<select class="form-control" formControlName="offersIds" id="offers" [(ngModel)]="offersIds" multiple>-->
+          <!--<option *ngFor="let option of alloffers" [value]="option.id">-->
+          <!--{{option.nameAr}}-->
+          <!--</option>-->
+          <!--</select>-->
+        </div>
+        <div class="form-group">
+          <label for="availableTo">{{'product.form.controls.availableTo'|translate}}</label>
+          <select [(ngModel)]="availableTo" class="form-control" formControlName="availableTo" id="availableTo">
+            <option *ngFor="let option of availableList" [value]="option">
+              {{"product.form.controls." + option|translate}}
+            </option>
+          </select>
+
+        </div>
+        <div class="form-group">
+          <label for="status">{{"product.form.controls.status"|translate}}</label>
+          <select [(ngModel)]="status" class="form-control" formControlName="status" id="status">
+            <option *ngFor="let option of allStatus" [value]="option">
+              {{"product.status." + option|translate}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="abstracts">{{'product.form.controls.abs'|translate}}</label>
+          <select [(ngModel)]="productAbstractId" class="form-control" formControlName="productAbstractId"
+            id="abstracts">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let absProduct of absProducts" [value]="absProduct.id">
+              {{absProduct.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('categoryId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="categories">{{'product.form.controls.cat'|translate}}</label>
+          <select (change)="setCat($event)" [(ngModel)]="categoryId" class="form-control" formControlName="categoryId"
+            id="categories">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let cat of cats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('categoryId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div *ngIf="categoryId!=''" class="form-group">
+          <label for="subcategories">{{'product.form.controls.subcat'|translate}}</label>
+          <select [(ngModel)]="subCategoryId" class="form-control" formControlName="subCategoryId" id="subcategories">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let cat of subcats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('subCategoryId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="manufacturerId">{{'product.form.controls.man'|translate}}</label>
+          <select [(ngModel)]="manufacturerId" class="form-control" formControlName="manufacturerId"
+            id="manufacturerId">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let man of mans" [value]="man.id">
+              {{man.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('manufacturerId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="description">{{"product.form.controls.desc"|translate}}</label>
+          <textarea class="form-control" formControlName="description" id="description"
+            placeholder="{{'product.form.placeholders.desc'|translate}}" rows="6"></textarea>
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="col-sm-offset-3 img-uploader">
+          <div id="preview">
+            <img [src]="imgSrc" alt="">
+          </div>
+          <input #fileInput (change)="onFileChanged($event)" style="display: none" type="file">
+          <button (click)="fileInput.click()" class="select-file btn btn-success" type="button">
+            {{'product.addImg'|translate}}
+          </button>
+          <br>
+          <label *ngIf="imgBlankError" class="text-danger">{{'product.form.validations.imgBlank'|translate}}</label>
+
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="marketOfficialPrice">{{"product.form.controls.marketOfficialPrice"|translate}}</label>
+              <input class="form-control" formControlName="marketOfficialPrice" id="marketOfficialPrice"
+                placeholder="{{'product.form.placeholders.marketOfficialPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('marketOfficialPrice').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+            <div class="form-group">
+              <label for="horecaPrice">{{"product.form.controls.horecaPrice"|translate}}</label>
+              <input class="form-control" formControlName="horecaPrice" id="horecaPrice"
+                placeholder="{{'product.form.placeholders.horecaPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('horecaPrice').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+            <div class="form-group">
+              <label for="horecaPriceDiscount">{{"product.form.controls.horecaPriceDiscount"|translate}}</label>
+              <input class="form-control" formControlName="horecaPriceDiscount" id="horecaPriceDiscount"
+                placeholder="{{'product.form.placeholders.horecaPriceDiscount'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('horecaPriceDiscount').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+
+            <div class="form-group">
+              <label for="wholeSaleMarketPrice">{{"product.form.controls.wholeSaleMarketPrice"|translate}}</label>
+              <input class="form-control" formControlName="wholeSaleMarketPrice" id="wholeSaleMarketPrice"
+                placeholder="{{'product.form.placeholders.wholeSaleMarketPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('wholeSaleMarketPrice').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="wholeSalePrice">{{"product.form.controls.wholeSalePrice"|translate}}</label>
+              <input class="form-control" formControlName="wholeSalePrice" id="wholeSalePrice"
+                placeholder="{{'product.form.placeholders.wholeSalePrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('wholeSalePrice').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+            <div class="form-group">
+
+              <label for="dockanBuyingPrice">{{"product.form.controls.dockanBuyingPrice"|translate}}</label>
+              <input class="form-control" formControlName="dockanBuyingPrice" id="dockanBuyingPrice"
+                placeholder="{{'product.form.placeholders.dockanBuyingPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('dockanBuyingPrice').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="wholeSalePriceDiscount">{{"product.form.controls.wholeSalePriceDiscount"|translate}}</label>
+              <input class="form-control" formControlName="wholeSalePriceDiscount" id="wholeSalePriceDiscount"
+                placeholder="{{'product.form.placeholders.wholeSalePriceDiscount'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('wholeSalePriceDiscount').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="offer">{{"product.form.controls.offer"|translate}}</label>
+                  <br>
+                  <label class="switch">
+                    <input [(ngModel)]="isOffer" formControlName="isOffer" id="offer" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="isFeatured">{{"product.form.controls.featured"|translate}}</label>
+                  <br>
+                  <label class="switch">
+                    <input [(ngModel)]="isFeatured" formControlName="isFeatured" id="isFeatured" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label for="parentCount">{{"product.form.controls.parentCount"|translate}}</label>
+              <input class="form-control" formControlName="parentCount" id="parentCount"
+                placeholder="{{'product.form.placeholders.parentCount'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('parentCount').invalid && processValidation"
+                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+            </div>
+            <div class="form-group">
+              <label for="tags">{{'product.form.controls.tags'|translate}}</label>
+
+              <tag-input [(ngModel)]="tags" [placeholder]="'product.form.placeholders.addTag'|translate"
+                [secondaryPlaceholder]="'product.form.placeholders.addTags'|translate" formControlName="tagsIds"
+                id="tags"></tag-input>
+            </div>
+            <div class="form-group">
+              <label for="offerMaxQuantity">{{"product.form.controls.offerMaxQuantity"|translate}}</label>
+              <input class="form-control" formControlName="offerMaxQuantity" id="offerMaxQuantity"
+                placeholder="{{'product.form.placeholders.offerMaxQuantity'|translate}}" type="number">
+              <!--<label *ngIf="ProductForm.get('prodName').invalid && processValidation" class="text-danger">{{'product.form.validations.blank'|translate}}</label>-->
+              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isOffer" class="offer-things">
+          <div class="form-group">
+            <label for="offerSource">{{'product.form.controls.offerSource'|translate}}</label>
+            <select [(ngModel)]="offerSource" class="form-control" formControlName="offerSource" id="offerSource">
+              <option disabled selected style="display: none" value=""></option>
+              <option *ngFor="let option of offerSourceList" [value]="option">
+                {{"product.form.controls." + option|translate}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="offerProducts">{{"product.form.controls.offerProducts"|translate}}</label>
+
+            <ng-select (deselected)="productDeSelected($event)" (filterInputChanged)="searchProducts($event)"
+              (selected)="productSelected($event)" [multiple]="false" [options]="IOproducts" id="offerProducts">
+            </ng-select>
+          </div>
+
+          <div class="row">
+            <div class="col-sm products-div">
+              <table class="table  table-striped ">
+                <tbody>
+                  <tr *ngFor="let product of offerProducts  ">
+                    <td style="width: 35px"><img *ngIf="findselecttedProduct(product.productId)?.media"
+                        src="{{findselecttedProduct(product.productId)?.media.thumbnail}}"
+                        style="max-width: 34px;max-height: 34px;">
+                    </td>
+                    <td>{{findselecttedProduct(product.productId).nameAr}}</td>
+                    <td style="text-align: center">
+                      <span>{{"product.form.controls.quantity"|translate}} </span><input [(ngModel)]="product.quantity"
+                        [ngModelOptions]="{standalone: true}" style="max-width: 20%" type="number">
+                      <span class="functions-btn pull-left text-danger"
+                        (click)="productDeSelected(product.productId)"><i class="fa fa-remove fa-lg"></i></span>
+                    </td>
+                    <!--<td style="text-align: center">-->
+                    <!---->
+                    <!--</td>-->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newPro" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"staff.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!ProductForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"staff.buttons.edit"|translate}}
+        </button>
+        <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()" type="button">
+          {{"staff.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
 
 </form>
+<div class="col-sm">
+  <div class="notesDiv" *ngIf="!newPro">
+    <div class="title">
+      <label>{{"product.form.controls.barcodes"|translate}}</label>
+    </div>
+    <div class="body">
+      <div class="oneNote" *ngFor="let onebarcode of barcodes; let i = index">
+        <p>{{onebarcode.code}}</p>
+        <div class="actions">
+          <span>{{onebarcode.createdAt | date:'medium'}}</span>
+          <div class="button">
+            <button class="btn btn-danger" (click)="deleteBarcode(onebarcode.id,index)" style="margin-left: 15px;" type="button">
+              {{"client.buttons.delete"|translate}}
+            </button>
+
+          
+
+          </div>
+        </div>
+      </div>
+      <div class="flowButton" (click)="open(modalDefault)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+
+      </div>
+    </div>
+  </div>
+ 
+
+
+</div>

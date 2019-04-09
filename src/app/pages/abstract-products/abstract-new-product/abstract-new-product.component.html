@@ -1,0 +1,175 @@
+<form (ngSubmit)="onProductFormSubmit()" [formGroup]="ProductForm" class="ProductForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="nameAr">{{"product.form.controls.prodName"|translate}}</label>
+          <input class="form-control" formControlName="nameAr" id="nameAr"
+            placeholder="{{'product.form.placeholders.prodName'|translate}}" type="text">
+          <label *ngIf="ProductForm.get('nameAr').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="categories">{{'product.form.controls.cat'|translate}}</label>
+          <select (change)="setCat($event)" [(ngModel)]="categoryId" class="form-control" formControlName="categoryId"
+            id="categories">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let cat of cats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('categoryId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div *ngIf="categoryId!=''" class="form-group">
+          <label for="subcategories">{{'product.form.controls.subcat'|translate}}</label>
+          <select [(ngModel)]="subCategoryId" class="form-control" formControlName="subCategoryId" id="subcategories">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let cat of subcats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('subCategoryId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="manufacturerId">{{'product.form.controls.man'|translate}}</label>
+          <select [(ngModel)]="manufacturerId" class="form-control" formControlName="manufacturerId"
+            id="manufacturerId">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let man of mans" [value]="man.id">
+              {{man.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="ProductForm.get('manufacturerId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="col-sm-offset-3 img-uploader">
+          <div id="preview">
+            <img [src]="imgSrc" alt="">
+          </div>
+          <input #fileInput (change)="onFileChanged($event)" style="display: none" type="file">
+          <button (click)="fileInput.click()" class="select-file btn btn-success" type="button">
+            {{'abstractProduct.addImg'|translate}}
+          </button>
+          <br>
+          <label *ngIf="imgBlankError"
+            class="text-danger">{{'abstractProduct.form.validations.imgBlank'|translate}}</label>
+
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label
+                for="officialConsumerPrice">{{"abstractProduct.form.controls.officialConsumerPrice"|translate}}</label>
+              <input class="form-control" formControlName="officialConsumerPrice" id="officialConsumerPrice"
+                placeholder="{{'abstractProduct.form.placeholders.officialConsumerPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('officialConsumerPrice').invalid && processValidation"
+                class="text-danger">{{'abstractProduct.form.validations.blank'|translate}}</label>
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label
+                for="officialMassMarketPrice">{{"abstractProduct.form.controls.officialMassMarketPrice"|translate}}</label>
+              <input class="form-control" formControlName="officialMassMarketPrice" id="officialMassMarketPrice"
+                placeholder="{{'abstractProduct.form.placeholders.officialMassMarketPrice'|translate}}" type="number">
+              <label *ngIf="ProductForm.get('officialMassMarketPrice').invalid && processValidation"
+                class="text-danger">{{'abstractProduct.form.validations.blank'|translate}}</label>
+            </div>
+          </div>
+          <div class="col-sm-6" *ngIf="newPro">
+            <div class="form-group">
+              <label for="threshold">{{"abstractProduct.form.controls.threshold"|translate}}</label>
+              <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="threshold" id="threshold"
+                placeholder="{{'abstractProduct.form.placeholders.threshold'|translate}}" type="number">
+            </div>
+          </div>
+          <div class="col-sm-6" *ngIf="newPro">
+            <div class="form-group">
+              <label for="threshold">{{"abstractProduct.form.controls.warningThreshold"|translate}}</label>
+              <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="warningThreshold"
+                id="threshold" placeholder="{{'abstractProduct.form.placeholders.warningThreshold'|translate}}"
+                type="number">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newPro" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"staff.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!ProductForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"staff.buttons.edit"|translate}}
+        </button>
+        <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()" type="button">
+          {{"staff.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</form>
+<div class="container" style="padding-top: 50px;">
+
+  <div class="row" *ngIf="!newPro">
+    <!-- <div class="col-sm-6">
+
+      <div class="form-group">
+        <label for="manufacturerId">{{'abstractProduct.form.controls.warehouse'|translate}}</label>
+        <select [(ngModel)]="warehouse" class="form-control" id="manufacturerId">
+          <option disabled selected style="display: none" value=""></option>
+
+          <option *ngFor="let warehouseProduct of warehouseProducts" [value]="warehouseProduct">
+            {{warehouseProduct.warehouse.nameAr}}
+          </option>
+        </select>
+      </div>
+    </div> -->
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="threshold">{{"abstractProduct.form.controls.threshold"|translate}}</label>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="threshold" id="threshold"
+          placeholder="{{'abstractProduct.form.placeholders.threshold'|translate}}" type="number">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="threshold">{{"abstractProduct.form.controls.warningThreshold"|translate}}</label>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="warningThreshold" id="threshold"
+          placeholder="{{'abstractProduct.form.placeholders.warningThreshold'|translate}}" type="number">
+      </div>
+    </div>
+
+  </div>
+  <div class="row" *ngIf="!newPro">
+    <div class="col-sm submit-col">
+
+      <button class=" btn btn-success" (click)="editWarehouse()">
+        {{"staff.buttons.edit"|translate}}
+      </button>
+    </div>
+  </div>
+
+</div>

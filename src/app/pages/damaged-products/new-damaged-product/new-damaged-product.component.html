@@ -1,0 +1,126 @@
+<form (ngSubmit)="onProductFormSubmit()" [formGroup]="damagedProductForm" class="damagedProductForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="abstracts">{{'damaged.form.controls.abs'|translate}}</label>
+          <select class="form-control" formControlName="abstractProductId" id="abstracts">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let absProduct of absProducts" [value]="absProduct.id">
+              {{absProduct.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="damagedProductForm.get('abstractProductId').invalid && processValidation"
+            class="text-danger">{{'damaged.form.validations.blank'|translate}}</label>
+
+        </div>
+
+        <div class="form-group">
+          <label for="expireDate">{{"modal.createdAt"|translate}}</label>
+          <input class="form-control" formControlName="date" id="expireDate"
+            placeholder="{{'modal.createdAt'|translate}}" type="datetime-local">
+          <label *ngIf="damagedProductForm.get('date').invalid && submiteddAddBarcode"
+            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+        </div>
+
+
+
+
+
+        <!-- <div class="form-group">
+          <label for="categories">{{'damaged.form.controls.cat'|translate}}</label>
+          <select (change)="setCat($event)" [(ngModel)]="categoryId" class="form-control" formControlName="categoryId"
+            id="categories">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let cat of cats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="damagedProductForm.get('categoryId').invalid && processValidation"
+            class="text-danger">{{'damaged.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div *ngIf="categoryId!=''" class="form-group">
+          <label for="subcategories">{{'damaged.form.controls.subcat'|translate}}</label>
+          <select [(ngModel)]="subCategoryId" class="form-control" formControlName="subCategoryId" id="subcategories">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let cat of subcats" [value]="cat.id">
+              {{cat.titleAr}}
+            </option>
+          </select>
+          <label *ngIf="damagedProductForm.get('subCategoryId').invalid && processValidation"
+            class="text-danger">{{'damaged.form.validations.blank'|translate}}</label>
+
+        </div>
+        <div class="form-group">
+          <label for="manufacturerId">{{'damaged.form.controls.man'|translate}}</label>
+          <select [(ngModel)]="manufacturerId" class="form-control" formControlName="manufacturerId"
+            id="manufacturerId">
+            <option disabled selected style="display: none" value=""></option>
+
+            <option *ngFor="let man of mans" [value]="man.id">
+              {{man.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="damagedProductForm.get('manufacturerId').invalid && processValidation"
+            class="text-danger">{{'damaged.form.validations.blank'|translate}}</label>
+
+        </div> -->
+
+      </div>
+      <div class="col-sm-6">
+
+        <div class="form-group">
+          <label for="reason">{{"damaged.form.controls.reason"|translate}}</label>
+          <select class="form-control" formControlName="reason" id="reason">
+            <option *ngFor="let option of allStatus" [value]="option">
+              {{"damaged.reason." + option|translate}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="newPro">
+          <label for="count">{{"damaged.form.controls.count"|translate}}</label>
+          <input class="form-control" formControlName="count" id="count"
+            placeholder="{{'damaged.form.placeholders.count'|translate}}" type="number">
+          <label *ngIf="damagedProductForm.get('count').invalid && processValidation"
+            class="text-danger">{{'damaged.form.validations.blank'|translate}}</label>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div class="form-group">
+          <label for="description">{{"damaged.form.controls.note"|translate}}</label>
+          <textarea class="form-control" formControlName="note" id="description"
+            placeholder="{{'damaged.form.placeholders.note'|translate}}" rows="6"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newPro" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"staff.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!damagedProductForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"staff.buttons.edit"|translate}}
+        </button>
+        <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()" type="button">
+          {{"staff.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</form>

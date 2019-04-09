@@ -1,3 +1,6 @@
+import { NewSupplierComponent } from './../../pages/supplier/new-supplier/new-supplier.component';
+import { SupplierOrdersListComponent } from './../../pages/supplier-order/supplier-order-list/supplier-order-list.component';
+import { AbstractProductListComponent } from './../../pages/abstract-products/abstract-product-list/abstract-product-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -44,6 +47,12 @@ import { AuthGuardService } from '../../services/auth-guard.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { OrdersFromSuppliersComponent } from '../../pages/orders/orders-from-suppliers/orders-from-suppliers.component';
 import { AddNotificationsComponent } from '../../pages/notifications/add-notifications/add-notifications.component';
+import { AbstractNewProductComponent } from '../../pages/abstract-products/abstract-new-product/abstract-new-product.component';
+import { WarningReportComponent } from '../../pages/reports/warning-report/warning-report.component';
+import { DamagedProductListComponent } from '../../pages/damaged-products/damaged-product-list/damaged-product-list.component';
+import { NewDamagedProductComponent } from '../../pages/damaged-products/new-damaged-product/new-damaged-product.component';
+import { NewSupplierOrderComponent } from '../../pages/supplier-order/new-supplier-order/new-supplier-order.component';
+import { ListSuppliersComponent } from '../../pages/supplier/list-suppliers/list-suppliers.component';
 
 const AppRoutes = [
     {
@@ -92,6 +101,24 @@ const AppRoutes = [
                     }
                 ]
             },
+            {
+                path: 'suppliers',
+                children: [
+                    {
+                        path: 'add',
+                        component: NewSupplierComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewSupplierComponent,
+                    },
+                    {
+                        path: 'list',
+                        component: ListSuppliersComponent,
+                    }
+                ]
+            },
+            
             {
                 path: 'topSlider', children: [
                     {
@@ -189,6 +216,46 @@ const AppRoutes = [
                 ],
             },
             {
+                path: 'reports', children: [
+                    {
+                        path: 'warning',
+                        component: WarningReportComponent,
+                    }
+                ],
+            },
+            {
+                path: 'abstract-products', children: [
+                    {
+                        path: 'list',
+                        component: AbstractProductListComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: AbstractNewProductComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: AbstractNewProductComponent,
+                    },
+                ],
+            },
+            {
+                path: 'damaged', children: [
+                    {
+                        path: 'list',
+                        component: DamagedProductListComponent,
+                    },
+                    {
+                        path: 'add',
+                        component: NewDamagedProductComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewDamagedProductComponent,
+                    },
+                ],
+            },
+            {
                 path: 'ratings', children: [
                     {
                         path: 'list',
@@ -218,6 +285,23 @@ const AppRoutes = [
                     }
                 ]
             },
+            {
+                path: 'supplier-orders',
+                children: [
+                    {
+                        path: 'new',
+                        component: NewSupplierOrderComponent,
+                    },
+                    {
+                        path: 'list',
+                        component: SupplierOrdersListComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewSupplierOrderComponent,
+                    }
+                ]
+            }
         ],
     },
 ];

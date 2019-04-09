@@ -11,62 +11,73 @@
     <form [formGroup]="userNotForm">
       <div class="form-group">
         <label for="notes">{{"modal.note"|translate}}</label>
-        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}" rows="4"></textarea>
-        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}"
+          rows="4"></textarea>
+        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
 
       </div>
 
 
       <div class="form-group">
         <label for="expireDate">{{"modal.createdAt"|translate}}</label>
-        <input class="form-control" formControlName="createdAt" id="expireDate" placeholder="{{'modal.createdAt'|translate}}"
-          type="datetime-local">
-        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+        <input class="form-control" formControlName="createdAt" id="expireDate"
+          placeholder="{{'modal.createdAt'|translate}}" type="datetime-local">
+        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
 
       </div>
 
     </form>
   </div>
   <div class="app-modal-footer">
-    <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
-    <button type="button" class="btn btn-primary waves-effect waves-light" (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
   </div>
 </app-modal-basic>
 
 <div class="row">
   <div class="col-sm-12 center-div">
-    <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();" class="btn btn-icon btn-info add-order-btn"
-      [tooltip]="'orders.new.btn'|translate" placement="bottom"><i class="fa fa-plus fa-2x"></i></button>
+    <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();"
+      class="btn btn-icon btn-info add-order-btn" [tooltip]="'orders.new.btn'|translate" placement="bottom"><i
+        class="fa fa-plus fa-2x"></i></button>
   </div>
 </div>
-<div *ngIf="addNew" id="new-order" [@rightEnterLeftLeaveAnimation] (@rightEnterLeftLeaveAnimation.done)="showNewBtn=!showNewBtn">
+<div *ngIf="addNew" id="new-order" [@rightEnterLeftLeaveAnimation]
+  (@rightEnterLeftLeaveAnimation.done)="showNewBtn=!showNewBtn">
   <form (ngSubmit)="onOrderFormSubmit()" [formGroup]="orderForm" class="CouponForm">
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
           <label for="clientId">{{'orders.new.shopeName'|translate}}</label>
-          <ng-select (filterInputChanged)="searchUsers($event)" (selected)="userSelected($event,newOrder)" [(ngModel)]="newOrder.clientId"
-            [multiple]="false" [options]="IOusers" formControlName="clientId" id="clientId">
+          <ng-select (filterInputChanged)="searchUsers($event)" (selected)="userSelected($event,newOrder)"
+            [(ngModel)]="newOrder.clientId" [multiple]="false" [options]="IOusers" formControlName="clientId"
+            id="clientId">
           </ng-select>
 
-          <label *ngIf="orderForm.get('clientId').invalid && isSubmitted" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+          <label *ngIf="orderForm.get('clientId').invalid && isSubmitted"
+            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
         </div>
         <div class="form-group">
           <label for="couponId">{{"orders.new.coupon"|translate}}</label>
-          <input class="form-control" [(ngModel)]="newOrder.couponCode" [ngModelOptions]="{standalone: true}" id="couponId"
-            placeholder="{{'orders.new.couponPlaceHolder'|translate}}" type="text">
+          <input class="form-control" [(ngModel)]="newOrder.couponCode" [ngModelOptions]="{standalone: true}"
+            id="couponId" placeholder="{{'orders.new.couponPlaceHolder'|translate}}" type="text">
         </div>
         <div class="form-group">
           <label for="couponId">{{"staff.form.controls.notes"|translate}}</label>
-          <textarea class="form-control" id="notes" [(ngModel)]="newOrder.note" [ngModelOptions]="{standalone: true}"></textarea>
+          <textarea class="form-control" id="notes" [(ngModel)]="newOrder.note"
+            [ngModelOptions]="{standalone: true}"></textarea>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group no-margin">
           <label for="products">{{"orders.new.products"|translate}}</label>
-          <ng-select (filterInputChanged)="searchProducts($event,newOrder.clientId)" (selected)="productSelected($event)"
-            [disabled]="orderUser==undefined" [multiple]="true" [options]="IOproducts" [placeholder]="'orders.searchPro'|translate"
-            [(ngModel)]="selectedProductsIds" [ngModelOptions]="{standalone: true}" id="products">
+          <ng-select (filterInputChanged)="searchProducts($event,newOrder.clientId)"
+            (selected)="productSelected($event)" [disabled]="orderUser==undefined" [multiple]="true"
+            [options]="IOproducts" [placeholder]="'orders.searchPro'|translate" [(ngModel)]="selectedProductsIds"
+            [ngModelOptions]="{standalone: true}" id="products">
           </ng-select>
         </div>
 
@@ -75,25 +86,29 @@
             <table class="table table-striped add-order-tabel">
               <tbody>
                 <tr *ngFor="let product of selectedProducts">
-                  <td style="width: 35px"><img *ngIf="findProduct(product.productId).media!=undefined" src="{{findProduct(product.productId).media.thumbnail}}"
+                  <td style="width: 35px"><img *ngIf="findProduct(product.productId).media!=undefined"
+                      src="{{findProduct(product.productId).media.thumbnail}}"
                       style="max-width: 34px;max-height: 34px;">
 
                   </td>
                   <td>{{findProduct(product.productId).nameAr}}</td>
                   <td style="text-align: center">
-                    <span>{{"orders.table.count"|translate}} </span><input (change)="priceCalculate(product.productId,product.count)"
-                      [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
+                    <span>{{"orders.table.count"|translate}} </span><input
+                      (change)="priceCalculate(product.productId,product.count)" [(ngModel)]="product.count"
+                      [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
                   <td style="text-align: center">
                     <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
                   </td>
                   <td style="text-align: center">
-                    <span class="functions-btn text-danger" (click)="productDeSelected(product.productId)"><i class="fa fa-remove fa-lg"></i></span>
+                    <span class="functions-btn text-danger" (click)="productDeSelected(product.productId)"><i
+                        class="fa fa-remove fa-lg"></i></span>
                   </td>
                 </tr>
               </tbody>
             </table>
+            {{addErrorProd | json}}
             <p *ngIf="addError" class="text-danger">
-              {{"orders.table.totalError"|translate}}
+              {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}} {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
 
             </p>
             <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
@@ -105,14 +120,16 @@
     </div>
     <div class="row">
       <div class="col-sm submit-col">
-        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" (click)="addNew=!addNew" class="btn btn-action"
-          type="button">
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" (click)="addNew=!addNew"
+          class="btn btn-action" type="button">
           {{"client.buttons.back"|translate}}
         </button>
-        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" class="btn btn-success" type="submit">
+        <button [disabled]="orderForm.invalid==false&&isSubmitted==true&&!addError" class="btn btn-success"
+          type="submit">
           {{"client.buttons.add"|translate}}
         </button>
-        <i *ngIf="!orderForm.invalid&&isSubmitted&&!addError" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <i *ngIf="!orderForm.invalid&&isSubmitted&&!addError"
+          class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
       </div>
     </div>
   </form>
@@ -124,7 +141,7 @@
   <table class="table table-bordered " (mouseleave)="hoveredIndex=null">
     <thead>
       <tr class="">
-        <td class="title-td" align="center" colspan="7">
+        <td class="title-td" align="center" colspan="8">
           <div class="filter-sec">
             <span>{{"orders.deliveryFilter"|translate}}</span>
 
@@ -132,7 +149,8 @@
               [ngModelOptions]="{standalone: true}" [multiple]="false" [options]="IOdeusers" (selected)="filterByDel()">
             </ng-select>
 
-            <button *ngIf="delMemFilter!=undefined" type="button" (click)="emptyFilter()" class="btn btn-danger empty-filter">
+            <button *ngIf="delMemFilter!=undefined" type="button" (click)="emptyFilter()"
+              class="btn btn-danger empty-filter">
               {{"product.cancel"|translate}}
             </button>
           </div>
@@ -148,6 +166,9 @@
         </th>
         <th>
           {{'orders.table.code'|translate}}
+        </th>
+        <th>
+          {{'orders.table.packagedTap'|translate}}
         </th>
         <th>
           {{'orders.table.deliveredTap'|translate}}
@@ -169,9 +190,10 @@
       <ng-container *ngFor="let order of orders; let index=index;">
         <tr class="group-row" *ngIf="findDateByIndex(index)!=undefined ">
 
-          <td *ngIf="viewDate==toDay" align="center" colspan="7">{{"orders.table.today"|translate}}</td>
+          <td *ngIf="viewDate==toDay" align="center" colspan="8">{{"orders.table.today"|translate}}</td>
 
-          <td *ngIf="viewDate!=toDay" align="center" colspan="7">{{c.formatDate(findDateByIndex(index), 'nohours')}}</td>
+          <td *ngIf="viewDate!=toDay" align="center" colspan="8">{{c.formatDate(findDateByIndex(index), 'nohours')}}
+          </td>
         </tr>
         <tr *ngIf="index!=editIndex" (mouseover)="hoveredIndex=index">
           <td class="no-padding-td">
@@ -186,21 +208,26 @@
                 <span class="badge badge-danger" style="font-size: 14px">{{order.client.ownerName}}</span>
               </li>
               <li class="table-li">
-                <span class="badge client-type" [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
+                <span class="badge client-type"
+                  [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
                   + order.clientType|translate}}</span>
               </li>
               <li>
-                <span style="font-size: 14px" class="badge badge-dark" *ngIf="getTimer(order.orderDate)!=undefined&&order.status!='delivered'">{{getTimer(order.orderDate)}}</span>
+                <span style="font-size: 14px" class="badge badge-dark"
+                  *ngIf="getTimer(order.orderDate)!=undefined&&order.status!='delivered'">{{getTimer(order.orderDate)}}</span>
               </li>
 
             </ul>
           </td>
-          <td class="no-padding-td" (click)="viewProduct[index]=false" [ngClass]="{'productCol': viewProduct[index]==false}">
+          <td class="no-padding-td" (click)="viewProduct[index]=false"
+            [ngClass]="{'productCol': viewProduct[index]==false}">
             <ul class=" list-group table-ul">
-              <li *ngFor="let product of order.orderProducts" class="list-group-item" style="text-align: right;padding: .75rem 0.25rem;">
+              <li *ngFor="let product of order.orderProducts" class="list-group-item"
+                style="text-align: right;padding: .75rem 0.25rem;">
                 <span>{{product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
                 <strong class="badge badge-info">{{product.count}}</strong>
-                {{"orders.table.price"|translate}} : <strong style="float: left;font-size: 13px;margin-top: 3px;" class="badge badge-success">{{product.price}}</strong>
+                {{"orders.table.price"|translate}} : <strong style="float: left;font-size: 13px;margin-top: 3px;"
+                  class="badge badge-success">{{product.price}}</strong>
               </li>
               <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
                   : </strong>{{order.totalPrice}}</li>
@@ -209,7 +236,8 @@
 
             </ul>
           </td>
-          <td class="no-padding-td" (click)="viewProduct[index]=true" [ngClass]="{'productCol': viewProduct[index]==true}">
+          <td class="no-padding-td" (click)="viewProduct[index]=true"
+            [ngClass]="{'productCol': viewProduct[index]==true}">
             <ul class=" list-group table-ul">
               <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
                   : </strong>{{order.totalPrice}}</li>
@@ -225,6 +253,12 @@
 
           <td class="no-padding-td">
             <ul class="list-group table-ul">
+              <li><span class="list-group-item ">{{c.formatDate(order.packDate)}}</span></li>
+              <li><span class="list-group-item ">{{order.packagerMember?.username}}</span></li>
+            </ul>
+          </td>
+          <td class="no-padding-td">
+            <ul class="list-group table-ul">
               <li><span class="list-group-item ">{{c.formatDate(order.deliveredDate)}}</span></li>
               <li><span class="list-group-item ">{{c.formatDate(order.assignedDate)}}</span></li>
               <li><span class="list-group-item ">{{order.deliveryMember?.username}}</span></li>
@@ -234,19 +268,24 @@
             <span *ngIf="order.coupon">{{order.coupon.value}}<span *ngIf="order.coupon.type=='percent'">%</span></span>
           </td>
           <td>
-            <span class="badge" [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
+            <span class="badge"
+              [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
               + order.status|translate}}</span>
           </td>
           <td class="no-padding-td">
             <ul class="list-group table-ul">
               <li>
                 <p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
-                  <span *ngIf="order?.status=='inDelivery'" class="functions-btn text-success" (click)="openDeliveredModal(tawseel,order)"><i
-                      class="fa fa-check-circle fa-lg"></i></span>
-                  <span class="functions-btn text-info" (click)="editOrder(order,index)"><i class="fa fa-edit fa-lg"></i></span>
-                  <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i class="fa fa-remove fa-lg"></i></span>
-                  <span class="functions-btn text-danger" (click)="open(modalDefault,order.id,order.clientId)"><i class="fa fa-plus-square-o fa-lg"></i></span>
-                  <span class="functions-btn text-success" (click)="download(order.id)"><i class="fa fa-download fa-lg"></i></span>
+                  <span *ngIf="order?.status=='inDelivery'" class="functions-btn text-success"
+                    (click)="openDeliveredModal(tawseel,order)"><i class="fa fa-check-circle fa-lg"></i></span>
+                  <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
+                      class="fa fa-edit fa-lg"></i></span>
+                  <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
+                      class="fa fa-remove fa-lg"></i></span>
+                  <span class="functions-btn text-danger" (click)="open(modalDefault,order.id,order.clientId)"><i
+                      class="fa fa-plus-square-o fa-lg"></i></span>
+                  <span class="functions-btn text-success" (click)="download(order.id)"><i
+                      class="fa fa-download fa-lg"></i></span>
                   <!-- <button type="button" class="btn btn-default waves-effect" (click)="open(modalDefault,orderId)">Static</button> -->
 
                 </p>
@@ -255,13 +294,14 @@
             </ul>
           </td>
         </tr>
-        <tr class="note-row" *ngIf="order.client.notes!=undefined&&order.client.notes!=''&&order.client.notes!=null&&index!=editIndex">
+        <tr class="note-row"
+          *ngIf="order.client.notes!=undefined&&order.client.notes!=''&&order.client.notes!=null&&index!=editIndex">
 
-          <td align="center" colspan="7">{{"orders.table.usernotes"|translate}} : {{order.client.notes}}</td>
+          <td align="center" colspan="8">{{"orders.table.usernotes"|translate}} : {{order.client.notes}}</td>
         </tr>
         <tr class="note-row" *ngIf="order.note!=undefined&&order.note!=''&&order.note!=null&&index!=editIndex">
 
-          <td align="center" colspan="7">{{"staff.form.controls.notes"|translate}} : {{order.note}}</td>
+          <td align="center" colspan="8">{{"staff.form.controls.notes"|translate}} : {{order.note}}</td>
         </tr>
 
         <!--edit section-->
@@ -271,14 +311,15 @@
               <ul class="list-group table-ul">
                 <li class="list-group-item ">
                   <ng-select #select (filterInputChanged)="searchUsers($event)" [(ngModel)]="OrderToEdit.clientId"
-                    [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="userSelected($event,OrderToEdit)"
-                    [options]="IOusers">
+                    [ngModelOptions]="{standalone: true}" [multiple]="false"
+                    (selected)="userSelected($event,OrderToEdit)" [options]="IOusers">
 
                   </ng-select>
                 </li>
 
                 <li class="list-group-item ">
-                  <span class="badge client-type" [ngClass]="OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
+                  <span class="badge client-type"
+                    [ngClass]="OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
                     + OrderToEdit.clientType|translate}}</span>
                 </li>
               </ul>
@@ -289,8 +330,8 @@
                 <div>
                   <!--<label for="products">{{"orders.new.products"|translate}}</label>-->
                   <ng-select (filterInputChanged)="searchEditProducts($event)" (selected)="productEditSelected($event)"
-                    [placeholder]="'orders.searchPro'|translate" [multiple]="true" [options]="IOproducts" [(ngModel)]="selectedEditProductsIds"
-                    [ngModelOptions]="{standalone: true}">
+                    [placeholder]="'orders.searchPro'|translate" [multiple]="true" [options]="IOproducts"
+                    [(ngModel)]="selectedEditProductsIds" [ngModelOptions]="{standalone: true}">
                   </ng-select>
                 </div>
                 <div class="row">
@@ -300,25 +341,27 @@
 
                         <tr *ngFor="let product of selectedEditProducts">
                           <td style="width: 35px"><img *ngIf="findEditProduct(product.productId).media!=undefined"
-                              [src]="findEditProduct(product.productId).media.thumbnail" style="max-width: 34px;max-height: 34px;">
+                              [src]="findEditProduct(product.productId).media.thumbnail"
+                              style="max-width: 34px;max-height: 34px;">
                           </td>
                           <td>{{findEditProduct(product.productId).nameAr}}</td>
                           <td style="text-align: center;">
-                            <span>{{"orders.table.count"|translate}} </span><input (change)="priceEditCalculate(product.productId,product.count)"
-                              [(ngModel)]="product.count" [ngModelOptions]="{standalone: true}" style="width: 49px"
-                              type="number"></td>
+                            <span>{{"orders.table.count"|translate}} </span><input
+                              (change)="priceEditCalculate(product.productId,product.count)" [(ngModel)]="product.count"
+                              [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
                           <td style="text-align: center">
                             <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
                           </td>
                           <td style="text-align: center">
-                            <span class="functions-btn text-danger" (click)="productEditDeSelected(product.productId)"><i
+                            <span class="functions-btn text-danger"
+                              (click)="productEditDeSelected(product.productId)"><i
                                 class="fa fa-remove fa-lg"></i></span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                     <p *ngIf="editError" class="text-danger">
-                      {{editErrorNameProd}}  {{"orders.table.unavailableProd"|translate}}
+                      {{editErrorNameProd}} {{"orders.table.unavailableProd"|translate}}
 
                     </p>
                     <!--<p class="total-price bg-primary text-white">-->
@@ -333,19 +376,32 @@
             </td>
             <td class="no-padding-td">
               <ul class="list-group table-ul">
+                <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.packDate)}}</span></li>
+                <li><span class="list-group-item ">
+                    <ng-select #select  (filterInputChanged)="searchWearUsers($event)"
+                      [(ngModel)]="OrderToEdit.packagerMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+                      (selected)="WearuserSelected($event,OrderToEdit)" [options]="IOweausers">
+                    </ng-select>
+                  </span></li>
+              </ul>
+            </td>
+            <td class="no-padding-td">
+              <ul class="list-group table-ul">
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>
                 <li><span class="list-group-item ">
-                    <ng-select #select (filterInputChanged)="searchDeUsers($event)" [(ngModel)]="OrderToEdit.deliveryMemberId"
-                      [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="DeuserSelected($event,OrderToEdit)"
-                      [options]="IOdeusers">
+                    <ng-select #select [disabled]="c.packagerMemberId==null"
+                      (filterInputChanged)="searchDeUsers($event)" [(ngModel)]="OrderToEdit.deliveryMemberId"
+                      [ngModelOptions]="{standalone: true}" [multiple]="false"
+                      (selected)="DeuserSelected($event,OrderToEdit)" [options]="IOdeusers">
                     </ng-select>
                   </span></li>
               </ul>
             </td>
             <td>
-              <input style="width: 85px" [(ngModel)]="OrderToEdit.couponCode" class="form-control" placeholder="{{'orders.new.couponPlaceHolder'|translate}}"
-                type="text" [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
+              <input style="width: 85px" [(ngModel)]="OrderToEdit.couponCode" class="form-control"
+                placeholder="{{'orders.new.couponPlaceHolder'|translate}}" type="text"
+                [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
 
 
             </td>
@@ -362,8 +418,10 @@
               <ul class="list-group table-ul">
                 <li>
                   <p *ngIf="OrderToEdit!=undefined" [@enterAnimation]>
-                    <span (click)="editOrderApi(OrderToEdit)" class="functions-btn text-info"><i class="fa fa-check-circle fa-lg"></i></span>
-                    <span class="functions-btn text-danger" (click)="cancelOrder(true)"><i class="fa fa-remove fa-lg"></i></span>
+                    <span (click)="editOrderApi(OrderToEdit)" class="functions-btn text-info"><i
+                        class="fa fa-check-circle fa-lg"></i></span>
+                    <span class="functions-btn text-danger" (click)="cancelOrder(true)"><i
+                        class="fa fa-remove fa-lg"></i></span>
                   </p>
                 </li>
                 <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>
@@ -372,11 +430,11 @@
           </tr>
           <tr class="note-row">
 
-            <td align="center" colspan="7">
+            <td align="center" colspan="8">
               <div class="form-group">
                 <label for="notes">{{"client.form.controls.notes"|translate}}</label>
-                <textarea class="form-control" id="edit_notes" [(ngModel)]="OrderToEdit.note" placeholder="{{'client.form.placeholders.notes'|translate}}"
-                  rows="4"></textarea>
+                <textarea class="form-control" id="edit_notes" [(ngModel)]="OrderToEdit.note"
+                  placeholder="{{'client.form.placeholders.notes'|translate}}" rows="4"></textarea>
               </div>
             </td>
           </tr>
@@ -387,9 +445,9 @@
 </div>
 <app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
 <div [hidden]="spinnerFlag||unpage" class="row">
-  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
-    lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7" [rotate]="false"
-    [boundaryLinks]="true"></pagination>
+  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
   <div class="per-page-sec">
     <span>{{"client.perPage"|translate}}</span>
     <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
@@ -399,14 +457,16 @@
 <ng-template #template>
   <div class="modal-body text-center">
     <p>{{'system.modal.message'|translate}}</p>
-    <button type="button" class="btn btn-danger modal-confirm" (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-danger modal-confirm"
+      (click)="confirm()">{{'system.modal.confirm'|translate}}</button>
     <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
   </div>
 </ng-template>
 <ng-template #tawseel>
   <div class="modal-body text-center">
     <p>{{'system.modal.delivered'|translate}}</p>
-    <button type="button" class="btn btn-success modal-confirm" (click)="confirmDelivered()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-success modal-confirm"
+      (click)="confirmDelivered()">{{'system.modal.confirm'|translate}}</button>
     <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
   </div>
 </ng-template>

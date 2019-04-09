@@ -7,9 +7,13 @@ export class ConstService {
     }
 
     private static _STAFF_ROLES = ['5be62ecb744a6b07b29b4262'];
+    private static _WEARHOUS_ROLES = ['5c98dc7284d4bc7edd632d54'];
 
     public static get STAFF_ROLES(): string[] {
         return this._STAFF_ROLES;
+    }
+    public static get WEAR_ROLES(): string[] {
+        return this._WEARHOUS_ROLES;
     }
 
     formatDate(str,hours?) {

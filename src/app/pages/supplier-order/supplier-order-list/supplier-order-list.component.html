@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="from"
+      placeholder="{{'SupplierOrder.from'|translate}}">
+
+
+
+  </div>
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="to"
+      placeholder="{{'SupplierOrder.to'|translate}}">
+
+  </div>
+
+  <div class="col-sm-6">
+    <div class="filter-btns">
+      <select class="btn btn-action" [(ngModel)]="supplier">
+        <option value="1" disabled selected>{{'SupplierOrder.Supplier'|translate}}</option>
+        <option *ngFor="let oneSup of suppliers" [value]="oneSup.id">
+          {{oneSup.nameAr}}
+        </option>
+      </select>
+
+      <select class="btn btn-action" [(ngModel)]="status">
+        <option value="1" disabled selected>{{'SupplierOrder.status'|translate}}</option>
+        <option *ngFor="let oneStatus of statuses" [value]="oneStatus">
+          {{"SupplierOrder.statusText."+oneStatus |translate}}
+        </option>
+      </select>
+
+
+
+
+      <button type="button" (click)="setFilters()" class="btn btn-success">
+        {{"abstractProduct.apply"|translate}}
+      </button>
+      <button type="button" (click)="emptyFields()" class="btn btn-danger">
+        {{"abstractProduct.cancel"|translate}}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped ">
+    <thead>
+      <tr>
+
+        <th class="clickable-th">
+          {{"SupplierOrder.totalPrice"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"SupplierOrder.supplier"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"SupplierOrder.createDate"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"SupplierOrder.status"|translate}}
+        </th>
+        <th>
+          <!--{{"product.actions"|translate}}-->#
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
+
+      <tr *ngFor="let order of returnedArray  ">
+        <td>{{order.totalPrice}}</td>
+        <td>{{order.supplier?.nameAr}}</td>
+        <td>{{c.formatDate(order.createDate)}}</td>
+        <td>{{"SupplierOrder.statusText."+order.status |translate}}</td>
+        <td>
+          <button type="button"*ngIf="order.status=='pending'" class="btn btn-primary" (click)="editSupllierOrder(order.id)">
+            {{"client.buttons.edit"|translate}}
+          </button>
+          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary" (click)="openModal(confirmCanceled,order.id)">
+            {{"SupplierOrder.buttons.cancel"|translate}}
+          </button>
+          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary" (click)="openModal(confirmDelivered,order.id)">
+            {{"SupplierOrder.buttons.deliver"|translate}}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<div [hidden]="spinnerFlag||unpage" class="row">
+  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+
+</div>
+
+<ng-template #confirmCanceled>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.cancelMessage'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="canselSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>
+<ng-template #confirmDelivered>
+    <div class="modal-body text-center">
+        <p>{{'system.modal.deliverMessage'|translate}}</p>
+        <button type="button" class="btn btn-danger modal-confirm"
+                (click)="deliverSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+    </div>
+</ng-template>

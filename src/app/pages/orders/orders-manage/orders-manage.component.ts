@@ -71,9 +71,11 @@ export class OrdersManageComponent implements OnInit {
   IOproducts: Array<IOption> = [];
   IOusers: Array<IOption> = [];
   IOdeusers: Array<IOption> = [];
+  IOweausers: Array<IOption> = [];
   tP: Array<IOption> = [];
   ul: Array<IOption> = [];
   deul: Array<IOption> = [];
+  wearul: Array<IOption> = [];
   products: any[] = [];
   newProducts: any[] = [];
   delMan: any;
@@ -84,6 +86,7 @@ export class OrdersManageComponent implements OnInit {
   addError;
   editError;
   editErrorNameProd;
+  addErrorProd;
   modalRef: BsModalRef;
   couponNotfound: boolean;
   hoveredIndex;
@@ -101,6 +104,7 @@ export class OrdersManageComponent implements OnInit {
     clientId: new FormControl('', Validators.required),
   });
   delstatus = ['pending', 'canceled'];
+  math = Math;
 
   constructor(private modalService: BsModalService,
     private datePipe: DatePipe,
@@ -313,6 +317,23 @@ export class OrdersManageComponent implements OnInit {
       }, 100);
     }, errorCode => { this.showError() }
     );
+    // if (order.warehouseId != undefined && order.warehouseId != '') {
+
+    //   this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
+
+    //     this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
+    //       this.deul = [];
+    //       for (let u of data) {
+    //         this.deul.push({ label: u.username, value: u.id });
+    //       }
+    //       setTimeout(() => {
+    //         this.IOdeusers = this.deul;
+    //       }, 100);
+    //     }, errorCode => this.showError()
+    //     );
+    //   }).subscribe(d => this.delMan = d, errorCode => this.showError());
+    // }
+
     if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
 
       this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
@@ -381,7 +402,6 @@ export class OrdersManageComponent implements OnInit {
       this.productError = true;
     } else {
       this.productError = false;
-
     }
   }
 
@@ -539,7 +559,10 @@ export class OrdersManageComponent implements OnInit {
 
   DeuserSelected(u, order) {
     order.status = 'inDelivery';
+  }
 
+  WearuserSelected(u, order) {
+    order.status = 'packed';
   }
 
   searchUsers(str) {
@@ -570,6 +593,18 @@ export class OrdersManageComponent implements OnInit {
     );
   }
 
+  searchWearUsers(str) {
+    this.Handler.getUserWearByString(str).subscribe(data => {
+      this.wearul = [];
+      for (let u of data) {
+        this.wearul.push({ label: u.ownerName, value: u.id });
+      }
+      setTimeout(() => {
+        this.IOweausers = this.wearul;
+      }, 100);
+    }, errorCode => this.showError()
+    );
+  }
 
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true); //third parameter
@@ -616,7 +651,7 @@ export class OrdersManageComponent implements OnInit {
   searchEditProducts(str) {
     this.tP = [];
     if (str != '') {
-      this.productHandler.searchByUser(str,this.OrderToEdit.clientType)
+      this.productHandler.searchByUser(str, this.OrderToEdit.clientType)
         .subscribe(data => {
           for (let pro of data) {
             this.tP.push({ label: pro.nameAr, value: pro._id });
@@ -641,9 +676,11 @@ export class OrdersManageComponent implements OnInit {
 
       this.router.navigate(['/orders/management']);
     }, errorCode => {
-      if (errorCode == 602) {
+      if (errorCode.statusCode == 612) {
         this.addError = true;
-      } else this.showError();
+        this.addErrorProd = errorCode.data[0]
+      }
+      else this.showError();
     });
   }
 
@@ -657,9 +694,18 @@ export class OrdersManageComponent implements OnInit {
       }, errorCode => this.showError());
     } else {
       this.editError = false;
-      this.Handler.updateOrder(order).finally(() => {
+      var tempOrder = Object.assign({}, order);
+      if (order.status == 'packed') {
+        tempOrder.status = "inWarehouse"
+        delete tempOrder.packagerMemberId
+      }
+      this.Handler.updateOrder(tempOrder).finally(() => {
         if (order.status == 'inDelivery') {
           this.Handler.assignDelivery({ 'userId': order.deliveryMemberId }, order.id).subscribe(() => {
+          }, errorCode => this.showError());
+        }
+        else if (order.status == 'packed') {
+          this.Handler.assignPack({ 'userId': order.packagerMemberId }, order.id).subscribe(() => {
           }, errorCode => this.showError());
         }
         // this.cancelOrder();
@@ -670,6 +716,9 @@ export class OrdersManageComponent implements OnInit {
         if (errorCode.statusCode == 611) {
           this.editError = true;
           this.editErrorNameProd = errorCode.data[0].nameAr
+        } else if (errorCode.statusCode == 612) {
+          this.addError = true;
+          this.addErrorProd = errorCode.data[0]
         } else { this.showError(); }
       });
     }

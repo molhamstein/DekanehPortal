@@ -22,13 +22,15 @@ export class ProductModel {
     public creationDate: string;
     public categoryId: string;
     public subCategoryId: string;
+    public productAbstractId: string;
+    public parentCount: number
     public manufacturerId: string;
     public offersIds: string[];
     public tagsIds: string[];
     public media: Media;
     public offerProducts: OfferProducts[];
 
-    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, wholeSaleMarketPrice: number, marketOfficialPrice: number, dockanBuyingPrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string) {
+    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, wholeSaleMarketPrice: number, marketOfficialPrice: number, dockanBuyingPrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string, productAbstractId: string, parentCount: number) {
         this.nameAr = nameAr;
         this.nameEn = nameEn;
         this.pack = pack;
@@ -55,12 +57,14 @@ export class ProductModel {
         this.media = media;
         this.offerProducts = offerProducts;
         this.manufacturerId = manufacturerId;
+        this.productAbstractId = productAbstractId || ""
+        this.parentCount = parentCount || 0
     }
 }
 
 export class Media {
     public url: string;
-  public jpgUrl: string;
+    public jpgUrl: string;
     public thumbnail: string;
     public id: string;
 }

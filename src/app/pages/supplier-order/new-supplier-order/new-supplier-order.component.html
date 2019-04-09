@@ -1,0 +1,85 @@
+<form (ngSubmit)="onProductFormSubmit()" [formGroup]="supplierOrderForm" class="ProductForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
+          <select [(ngModel)]="supplierId" class="form-control" formControlName="supplierId"
+            id="abstracts">
+            <option disabled selected style="display: none" value=""></option>
+            <option *ngFor="let oneSupplier of suppliers" [value]="oneSupplier.id">
+              {{oneSupplier.nameAr}}
+            </option>
+          </select>
+          <label *ngIf="supplierOrderForm.get('supplierId').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+        </div>
+
+        <div class="form-group">
+          <label for="offerProducts">{{"SupplierOrder.form.controls.absProducts"|translate}}</label>
+          <ng-select (deselected)="productDeSelected($event)" (filterInputChanged)="searchProducts($event)"
+            (selected)="absproductSelected($event)" [multiple]="false" [options]="IOproducts" id="offerProducts">
+          </ng-select>
+        </div>
+
+        <div class="row">
+          <div class="col-sm products-div">
+            <table class="table  table-striped ">
+              <tbody>
+                <tr *ngFor="let product of offerProducts  ">
+                  <td style="width: 35px"><img *ngIf="findselecttedProduct(product.productAbstractId)?.media"
+                      src="{{findselecttedProduct(product.productAbstractId)?.media.thumbnail}}"
+                      style="max-width: 34px;max-height: 34px;">
+                  </td>
+                  <td>{{findselecttedProduct(product.productAbstractId).nameAr}}</td>
+                  <td style="text-align: center">
+                    <span>{{"SupplierOrder.form.controls.quantity"|translate}} </span><input [(ngModel)]="product.count"
+                      [ngModelOptions]="{standalone: true}" style="max-width: 20%" type="number">
+                  </td>
+                  <td style="text-align: center">
+                    <span>{{"SupplierOrder.form.controls.price"|translate}} </span><input
+                      [(ngModel)]="product.buyingPrice" [ngModelOptions]="{standalone: true}" style="max-width: 20%"
+                      type="number">
+                    <span class="functions-btn pull-left text-danger"
+                      (click)="productDeSelected(product.productAbstractId)"><i class="fa fa-remove fa-lg"></i></span>
+                  </td>
+                  <!--<td style="text-align: center">-->
+                  <!---->
+                  <!--</td>-->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <textarea class="form-control" formControlName="note" id="description"
+            placeholder="{{'damaged.form.placeholders.note'|translate}}" rows="6"></textarea>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newPro" [disabled]="offerProducts.length>0&& submitted" class="btn btn-success" type="submit">
+          {{"staff.buttons.add"|translate}}
+        </button>
+        <i *ngIf="offerProducts.length>0&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newPro" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"staff.buttons.edit"|translate}}
+        </button>
+        <button *ngIf="!newPro" [disabled]="submitted" class="btn btn-action" (click)="goProducts()" type="button">
+          {{"staff.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</form>

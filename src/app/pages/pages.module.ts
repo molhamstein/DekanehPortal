@@ -1,3 +1,6 @@
+import { SupplierModule } from './supplier/supplier.module';
+import { DamagedProductModule } from './damaged-products/damaged-products.module';
+import { AbstractProductsModule } from './abstract-products/abstract-products.module';
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -30,6 +33,8 @@ import { RatingsModule } from './ratings/ratings.module';
 import { NotificationModule } from './notifications/notifications.module';
 import { OrdersModule } from './orders/orders.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReportModule } from './reports/reports.module';
+import { SupplierOrdersModule } from './supplier-order/supplier-orders.module';
 
 @NgModule({
     imports: [
@@ -51,11 +56,16 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         RatingsModule,
         NotificationModule,
         ProductsModule,
+        AbstractProductsModule,
         SelectModule,
         AreasModule,
         TopSliderModule,
         OrdersModule,
-        CouponsModule
+        CouponsModule,
+        ReportModule,
+        DamagedProductModule,
+        SupplierOrdersModule,
+        SupplierModule
     ],
     exports: [
         DataFilterPipe,

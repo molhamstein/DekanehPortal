@@ -1,0 +1,173 @@
+<div class="row">
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" [value]="searchString" (keyup)="filterBox($event)"
+      placeholder="{{'client.search'|translate}}....">
+  </div>
+  <div class="col-sm-9">
+    <div class="filter-btns">
+      <select class="btn btn-action" (change)="setCatFilter($event)" [(ngModel)]="cat">
+        <option value='1' disabled style="display: none" selected>{{'product.form.controls.cat'|translate}}</option>
+        <option *ngFor="let cat of cats" [value]="cat.id">
+          {{cat.titleAr}}
+        </option>
+      </select>
+
+      <select class="btn btn-action" [(ngModel)]="subcat">
+        <option value="1" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
+        <option *ngFor="let sub of subcats" [value]="sub.id">
+          {{sub.titleAr}}
+        </option>
+      </select>
+
+      <select class="btn btn-action" [(ngModel)]="man">
+        <option value="1" disabled selected>{{'product.form.controls.man'|translate}}</option>
+        <option *ngFor="let man of mans" [value]="man.id">
+          {{man.nameAr}}
+        </option>
+      </select>
+
+
+
+
+      <button type="button" (click)="setFilters()" class="btn btn-success">
+        {{"abstractProduct.apply"|translate}}
+      </button>
+      <button type="button" (click)="emptyFields()" class="btn btn-danger">
+        {{"abstractProduct.cancel"|translate}}
+      </button>
+      <button type="button" *ngIf="!isWarningView" (click)="getWarningProd()" class="btn btn-danger">
+        {{"abstractProduct.viewWarningProd"|translate}}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped ">
+    <thead>
+      <tr>
+        <th>
+          {{"abstractProduct.image"|translate}}
+
+
+        </th>
+        <th class="clickable-th" (click)="orderByName()">
+          {{"abstractProduct.name"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+        <th class="clickable-th" (click)="orderByMan()">
+          {{"abstractProduct.man"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+        <th class="clickable-th" (click)="orderByofficialMassMarketPrice()">
+          {{"abstractProduct.officialMassMarketPrice"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="officialMassMarketPrice === undefined? '' : (officialMassMarketPrice? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+
+        <th class="clickable-th" (click)="orderByOfficialConsumerPrice()">
+          {{"abstractProduct.officialConsumerPrice"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="officialConsumerPriceDir === undefined? '' : (officialConsumerPriceDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+
+        </th>
+        <th class="clickable-th" (click)="orderByThreshold()">
+          {{"abstractProduct.threshold"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="thresholdDir === undefined? '' : (thresholdDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+        <th class="clickable-th" (click)="orderByWarningThresholdDir()">
+          {{"abstractProduct.warningThreshold"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="warningThresholdDir === undefined? '' : (warningThresholdDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+        <th class="clickable-th" (click)="orderByTotalCount()">
+          {{"abstractProduct.totalCount"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="totalCountDir === undefined? '' : (totalCountDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+
+        <th class="clickable-th" (click)="orderByExpectedCount()">
+          {{"abstractProduct.expectedCount"|translate}}
+          <i class="fa-sort fa "
+            [ngClass]="expectedCountDir === undefined? '' : (expectedCountDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+
+        </th>
+
+        <th>
+          <!--{{"product.actions"|translate}}-->#
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[] && isWarningView==false">
+
+      <tr *ngFor="let product of returnedArray  ">
+        <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
+        <td>{{product.nameAr}}</td>
+        <td>{{product.manufacturer.nameAr}}</td>
+        <td>{{product.officialMassMarketPrice}}</td>
+        <td>{{product.officialConsumerPrice}}</td>
+        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].threshold}}</td>
+        <td *ngIf="product.warehouseProducts[0]==null"></td>
+        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].warningThreshold}}</td>
+        <td *ngIf="product.warehouseProducts[0]==null"></td>
+        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].totalCount}}</td>
+        <td *ngIf="product.warehouseProducts[0]==null"></td>
+        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].expectedCount}}</td>
+        <td *ngIf="product.warehouseProducts[0]==null"></td>
+
+
+        <td>
+          <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
+            {{"client.buttons.edit"|translate}}
+          </button>
+          <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
+          <!--{{"product.buttons.delete"|translate}}-->
+          <!--</button>-->
+        </td>
+      </tr>
+    </tbody>
+    <tbody [hidden]="spinnerFlag" *ngIf="isWarningView">
+
+      <tr *ngFor="let product of warningData  ">
+        <td><img *ngIf="product.productAbstract.media" class="product-img" src="{{product.productAbstract.media.thumbnail}}"></td>
+        <td>{{product.productAbstract.nameAr}}</td>
+        <td>{{product.manufacturer.nameAr}}</td>
+        <td>{{product.productAbstract.officialMassMarketPrice}}</td>
+        <td>{{product.productAbstract.officialConsumerPrice}}</td>
+        <td>{{product.threshold}}</td>
+        <td>{{product.warningThreshold}}</td>
+        <td>{{product.totalCount}}</td>
+        <td>{{product.expectedCount}}</td>
+
+        <td>
+          <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
+            {{"client.buttons.edit"|translate}}
+          </button>
+          <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
+          <!--{{"product.buttons.delete"|translate}}-->
+          <!--</button>-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<div [hidden]="spinnerFlag||unpage" class="row">
+  <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+
+</div>

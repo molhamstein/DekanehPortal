@@ -92,13 +92,30 @@ export class MenuItems {
                     type: 'sub',
                     icon: 'ti-layers',
                     children: [
-                        {
-                            state: 'from-supplier',
-                            name: 'mainMenu.Orders.fromSupplier'
-                        },
+                        // {
+                        //     state: 'from-supplier',
+                        //     name: 'mainMenu.Orders.fromSupplier'
+                        // },
                         {
                             state: 'management',
                             name: 'mainMenu.Orders.Management'
+                        }
+                    ]
+                },
+                {
+                    state: 'supplier-orders',
+                    short_label: 'O',
+                    name: 'mainMenu.SupplierOrders.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'list',
+                            name: 'mainMenu.SupplierOrders.viewAll'
+                        },
+                        {
+                            state: 'new',
+                            name: 'mainMenu.SupplierOrders.add'
                         }
                     ]
                 },
@@ -115,6 +132,22 @@ export class MenuItems {
                         }, {
                             state: 'list',
                             name: 'mainMenu.Products.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'abstract-products',
+                    short_label: 'F',
+                    name: 'mainMenu.AbstractProducts.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.AbstractProducts.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.AbstractProducts.viewAll'
                         }
                     ]
                 },
@@ -187,6 +220,23 @@ export class MenuItems {
                     ]
                 },
                 {
+                    state: 'suppliers',
+                    short_label: 'F',
+                    name: 'mainMenu.Supplier.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'add',
+                            name: 'mainMenu.Supplier.add'
+                        },
+                        {
+                            state: 'list',
+                            name: 'mainMenu.Supplier.viewAll'
+                        }
+                    ]
+                },
+                {
                     state: 'ratings',
                     short_label: 'F',
                     name: 'mainMenu.Ratings.main',
@@ -212,6 +262,36 @@ export class MenuItems {
                         },
                     ]
                 },
+                {
+                    state: 'reports',
+                    short_label: 'F',
+                    name: 'mainMenu.Reports.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'warning',
+                            name: 'mainMenu.Reports.warning'
+                        },
+                    ]
+                },
+                {
+                    state: 'damaged',
+                    short_label: 'F',
+                    name: 'mainMenu.Damaged.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'list',
+                            name: 'mainMenu.Damaged.viewAll'
+                        },
+                        {
+                            state: 'add',
+                            name: 'mainMenu.Damaged.add'
+                        },
+                    ]
+                }
             ]
         },
     ];

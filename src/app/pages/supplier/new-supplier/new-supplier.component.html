@@ -1,0 +1,43 @@
+<form (ngSubmit)="onsupplierFormSubmit()" [formGroup]="supplierForm" class="supplierForm">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="nameAr">{{"supplier.nameAr"|translate}}</label>
+                    <input [(ngModel)]="nameAr" class="form-control" formControlName="nameAr" id="nameAr"
+                           placeholder="{{'supplier.nameAr'|translate}}" type="text">
+                    <label *ngIf="supplierForm.get('nameAr').invalid && processValidation"
+                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+                </div>
+                <div class="form-group">
+                    <label for="nameEn">{{"supplier.nameEn"|translate}}</label>
+                    <input [(ngModel)]="nameEn" class="form-control" formControlName="nameEn" id="nameEn"
+                           placeholder="{{'supplier.nameEn'|translate}}" type="text">
+                    <label *ngIf="supplierForm.get('nameEn').invalid && processValidation"
+                           class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm submit-col">
+                <button *ngIf="newSupplier" [disabled]="submitted" class="btn btn-success" type="submit">
+                    {{"supplier.buttons.add"|translate}}
+                </button>
+                <i *ngIf="!supplierForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+                <button *ngIf="!newSupplier" [disabled]="submitted" class=" btn btn-success" type="submit">
+                    {{"supplier.buttons.edit"|translate}}
+                </button>
+                <button (click)="goHome()" *ngIf="!newSupplier" [disabled]="submitted" class="btn btn-action" type="button">
+                    {{"supplier.buttons.back"|translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>

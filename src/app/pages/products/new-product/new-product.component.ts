@@ -34,6 +34,7 @@ export class NewProductComponent implements OnInit {
   jpgUrl = '';
   mans = [];
   man = '';
+  absProducts = []
   tags = [];
   id: string;
   subCategoryId = '';
@@ -43,12 +44,16 @@ export class NewProductComponent implements OnInit {
   selectedOffers = []
   offerSource = '';
   manufacturerId = '';
+  productAbstractId = "";
   isFeatured: boolean = false;
   statusCode: number;
   requestProcess = false;
   cats = [];
   subcats = [];
   newPro = true;
+  submiteddAddBarcode=false
+  prodBarcodeId = ""
+  barcodes=[]
   media = {
     'url': '',
     'type': 'image',
@@ -70,6 +75,8 @@ export class NewProductComponent implements OnInit {
     offerMaxQuantity: new FormControl(0),
     isFeatured: new FormControl(''),
     manufacturerId: new FormControl('', Validators.required),
+    productAbstractId: new FormControl('', Validators.required),
+    parentCount: new FormControl('', Validators.required),
     categoryId: new FormControl('', Validators.required),
     subCategoryId: new FormControl('', Validators.required),
     status: new FormControl(''),
@@ -105,14 +112,17 @@ export class NewProductComponent implements OnInit {
 
     this.getAllCats();
     this.getAllMans();
-
+    this.getAllAbs()
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     if (this.id != undefined) {
+      this.Handler.getBarcodeProdById(this.id).subscribe(barcodes => {
+        this.barcodes = barcodes
+      })
       this.newPro = false;
       this.Handler.getProductById(this.id).subscribe(product => {
-        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.wholeSaleMarketPrice, product.marketOfficialPrice, product.dockanBuyingPrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId);
+        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.wholeSaleMarketPrice, product.marketOfficialPrice, product.dockanBuyingPrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount);
         this.product.creationDate = product.creationDate;
         this.product.id = product.id;
         this.product.offerProducts = this.offerProducts = product.offerProducts;
@@ -149,6 +159,47 @@ export class NewProductComponent implements OnInit {
       this.offerProducts = [];
 
     }
+  }
+
+
+  prodBarcodeForm = new FormGroup({
+    createdAt: new FormControl(new Date(), Validators.required),
+    code: new FormControl("", Validators.required),
+  });
+  open(modal, id) {
+    this.prodBarcodeForm = new FormGroup({
+      createdAt: new FormControl(new Date, Validators.required),
+      code: new FormControl("", Validators.required),
+    });
+    this.prodBarcodeId = id
+    modal.show()
+  }
+
+  deleteBarcode(id, index) {
+    this.Handler.deleteBarcode(id).subscribe(res => {
+        this.Handler.getBarcodeProdById(this.id).subscribe(barcodes => {
+            this.barcodes = barcodes
+        })
+
+    })
+
+}
+  addBarcode(modal) {
+    if (this.prodBarcodeForm.valid == false) {
+      this.submiteddAddBarcode = true;
+      return
+    }
+    var data = this.prodBarcodeForm.value;
+    data["productId"] = this.id;
+    this.Handler.addbarcode(data).subscribe(
+      successCode => {
+        modal.hide();
+        this.Handler.getBarcodeProdById(this.id).subscribe(barcodes => {
+          this.barcodes = barcodes
+        })
+      },
+      errorCode => this.showError()
+    )
   }
 
   removeOffer(id) {
@@ -201,6 +252,14 @@ export class NewProductComponent implements OnInit {
 
         , errorCode => this.showError());
   }
+  getAllAbs() {
+    this.Handler.getAllAbs()
+      .subscribe(data =>
+        this.absProducts = data
+
+        , errorCode => this.showError());
+  }
+
 
   searchOffers(str) {
     this.offers = []

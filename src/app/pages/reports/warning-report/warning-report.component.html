@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
+      <select [(ngModel)]="supplierId" class="form-control" id="abstracts">
+        <option disabled selected style="display: none" value=""></option>
+        <option *ngFor="let oneSupplier of suppliers" [value]="oneSupplier.id">
+          {{oneSupplier.nameAr}}
+        </option>
+      </select>
+      <label *ngIf="supplierId==null && processValidation"
+        class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="products">{{"orders.new.products"|translate}}</label>
+      <ng-select (filterInputChanged)="searchProducts($event)" (selected)="productSelected($event)" [multiple]="true"
+        [options]="IOproducts" [placeholder]="'orders.searchPro'|translate" [(ngModel)]="selectedProductsIds"
+        [ngModelOptions]="{standalone: true}" id="products">
+      </ng-select>
+      <label *ngIf="selectedProducts.length==0 && processValidation"
+      class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+    </div>
+  </div>
+</div>
+<div class="col-sm-12">
+
+  <div class="row">
+    <div class="col-sm products-div">
+      <table class="table table-striped add-order-tabel">
+        <tbody>
+          <tr *ngFor="let product of selectedProducts">
+            <td style="width: 35px"><img *ngIf="findProduct(product.productAbstractId).media!=undefined"
+                src="{{findProduct(product.productAbstractId).media.thumbnail}}"
+                style="max-width: 34px;max-height: 34px;">
+
+            </td>
+            <td>{{findProduct(product.productAbstractId).nameAr}}</td>
+            <td style="text-align: center">
+              <span>{{"orders.table.count"|translate}} </span><input [(ngModel)]="product.count"
+                [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
+            <td style="text-align: center">
+              <span>{{"orders.table.price"|translate}} </span><input [(ngModel)]="product.buyingPrice"
+                [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
+            <td style="text-align: center">
+              <span class="functions-btn text-danger" (click)="productDeSelected(product.productAbstractId)"><i
+                  class="fa fa-remove fa-lg"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {{addErrorProd | json}}
+      <p *ngIf="addError" class="text-danger">
+        {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}}
+        {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
+
+      </p>
+      <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
+      <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
+      <!--</p>-->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm submit-col">
+      <button  [disabled]="submitted" (click)="createSupplierOrder()" class="btn btn-success" >
+        {{"staff.buttons.add"|translate}}
+      </button>
+      
+    </div>
+  </div>

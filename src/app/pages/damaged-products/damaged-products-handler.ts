@@ -2,18 +2,26 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { ApiService } from '../../services/api.service';
-import { ProductModel } from './product-model';
+import { DamagedProductModel } from './damaged-products-model';
 
 @Injectable()
-export class ProductHandler {
+export class DamagedProductHandler {
 
     constructor(private apiService: ApiService) {
     }
 
     getAllProducts() {
-        return this.apiService.get('/products')
+        var filter = { "include": "manufacturer" }
+        return this.apiService.get('/productAbstracts?[filter][include]=manufacturer')
             .map(this.extractData).catch(this.handleError);
     }
+
+    getWarningProd() {
+        var filter = { "include": "manufacturer" }
+        return this.apiService.get('/productAbstracts/warnings')
+            .map(this.extractData).catch(this.handleError);
+    }
+
 
     getManById(id: string): Observable<any> {
         let param = new URLSearchParams();
@@ -22,7 +30,7 @@ export class ProductHandler {
     }
 
     getProductsCount(): Observable<number> {
-        return this.apiService.get('/products/count')
+        return this.apiService.get('/productAbstracts/count')
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -35,15 +43,15 @@ export class ProductHandler {
             }
             query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
         }
-        param.append('filter', '{"where":{"and": [ ' + query + ']}}');
-        return this.apiService.get('/products', param)
+        param.append('filter', '{ "include":  "manufacturer","where":{"and": [ ' + query + ']}}');
+        return this.apiService.get('/productAbstracts', param)
             .map(this.extractData).catch(this.handleError);
     }
 
     getPerPageProducts(perPage: number, currentPage: number) {
         let param = new URLSearchParams();
-        param.append('filter', '{"order": "creationDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
-        return this.apiService.get('/products', param)
+        param.append('filter', '{"include":  "manufacturer", "order": "creationDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
+        return this.apiService.get('/productAbstracts', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -55,7 +63,7 @@ export class ProductHandler {
     }
 
     getProductById(id: string): Observable<any> {
-        return this.apiService.get('/products/' + id)
+        return this.apiService.get('/productAbstracts/' + id + '?[filter][include]=manufacturer')
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -65,34 +73,6 @@ export class ProductHandler {
         return this.apiService.get('/manufacturers')
             .map(this.extractData).catch(this.handleError);
     }
-    getAllAbs(): Observable<any[]> {
-        let param = new URLSearchParams();
-        return this.apiService.get('/productAbstracts')
-            .map(this.extractData).catch(this.handleError);
-    }
-
-    addbarcode(data) {
-        let body = JSON.stringify(data);
-        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/barcodes', body, options)
-            .map(success => success.status)
-            .catch(this.handleError);
-
-    }
-    deleteBarcode(barcodeId) {
-        return this.apiService.delete('/barcodes', barcodeId)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
-    getBarcodeProdById(ClientUserId: string) {
-        var filter = { "where": { "productId": ClientUserId }, "order": 'createdAt DESC' }
-        return this.apiService.get('/barcodes?filter=' + JSON.stringify(filter))
-            .map(this.extractData)
-            .catch(this.handleError);
-
-    }
 
     getSubCats(id: string): Observable<any[]> {
         let param = new URLSearchParams();
@@ -100,12 +80,12 @@ export class ProductHandler {
             .map(this.extractData).catch(this.handleError);
     }
 
-    searchByisOffer(para: string, isO?: boolean): Observable<ProductModel[]> {
+    searchByisOffer(para: string, isO?: boolean): Observable<DamagedProductModel[]> {
         let param = new URLSearchParams();
         param.append('string', para);
         param.append('isOffer', String(isO));
         param.append('limit', String(10));
-        return this.apiService.get('/products/search', param)
+        return this.apiService.get('/productAbstracts/search', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -113,7 +93,7 @@ export class ProductHandler {
         let param = new URLSearchParams();
         param.append('string', para);
         param.append('limit', String(50));
-        return this.apiService.get('/products/search', param)
+        return this.apiService.get('/productAbstracts/search', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -124,7 +104,7 @@ export class ProductHandler {
         param.append('string', para);
         param.append('limit', String(50));
         param.append('clientType', clientType);
-        return this.apiService.get('/products/search', param)
+        return this.apiService.get('/productAbstracts/search', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -132,14 +112,14 @@ export class ProductHandler {
         let param = new URLSearchParams();
         param.append('string', para);
         param.append('limit', '10');
-        return this.apiService.get('/products/searchClient/' + id, param)
+        return this.apiService.get('/productAbstracts/searchClient/' + id, param)
             .map(this.extractData).catch(this.handleError);
     }
 
-    getPureProducts(): Observable<ProductModel[]> {
+    getPureProducts(): Observable<DamagedProductModel[]> {
         let param = new URLSearchParams();
         param.append('filter', '{"where":{"isOffer":false}}');
-        return this.apiService.get('/products', param)
+        return this.apiService.get('/productAbstracts', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -149,23 +129,31 @@ export class ProductHandler {
         return this.apiService.post('/attachments/images/upload', formData).map(this.extractData).catch(this.handleError);
     }
 
-    createProduct(Product: ProductModel): Observable<number> {
-        let body = JSON.stringify(Product);
+    createProduct(Product: DamagedProductModel): Observable<number> {
+        let data = Object.assign({}, Product);
+        let body = JSON.stringify(data);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/products', body, options)
+        return this.apiService.post('/productAbstracts', body, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
 
-    updateProduct(product: ProductModel): Observable<number> {
+    updateProduct(product: DamagedProductModel): Observable<number> {
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.put('/products/' + product.id, product, options)
+        return this.apiService.put('/productAbstracts/' + product.id, product, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
 
+    updateWhearhouseProduct(id, data): Observable<number> {
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.put('/warehouseProducts/' + id, data, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+    }
     private extractData(response: Response) {
         let body = response.json();
         return body;

@@ -6,15 +6,38 @@
       "delivered": "هل انت متاكد من وصول الطلب؟",
       "confirm": "تأكيد",
       "cancel": "إلفاء",
-      "message": "هل انت متاكد من الحذف؟"
+      "message": "هل انت متاكد من الحذف؟",
+      "cancelMessage": "هل انت متاكد من إلفاء الطلب؟",
+      "deliverMessage":"هل انت متاكد من توصيل الطلب؟"
     }
   },
   "mainMenu": {
     "main": "القائمة الرئيسية",
+    
     "Manufacturers": {
       "main": "المصانع",
       "add": "إضافة مصنع جديد",
       "viewAll": "عرض جميع المصانع"
+    },
+    "Supplier": {
+      "main": "الموردين",
+      "add": "إضافة مورد جديد",
+      "viewAll": "عرض جميع الموردين"
+    },
+    "Reports": {
+      "main": "التقرير",
+      "warning": "التنبيهات",
+      "viewAll": "عرض جميع المصانع"
+    },
+    "Damaged": {
+      "main": "المتلفات",
+      "add": "إضافة عملية إتلاف",
+      "viewAll": "عرض جميع الإتلافات"
+    },
+    "SupplierOrders": {
+      "main": "الطلبات الخارجية",
+      "add": "إضافة طلب",
+      "viewAll": "عرض الطلبات"
     },
     "topSlider": {
       "main": "الشريط الاعلاني",
@@ -31,6 +54,11 @@
       "viewAll": "عرض جميع الطلبات",
       "fromSupplier": "طلبات من المورد",
       "Management": "إدارة الطلبات"
+    },
+    "AbstractProducts": {
+      "main": "المنتجات الرئيسية",
+      "add": "إضافة منتج رئيسي جديد",
+      "viewAll": "عرض جميع المنتجات الرئيسية"
     },
     "Products": {
       "main": "المنتجات",
@@ -86,7 +114,9 @@
     "close": "إغلاق",
     "add": "إضافة",
     "note": "ملاحظة",
-    "createdAt": "تاريخ الانشاء"
+    "createdAt": "تاريخ الانشاء",
+    "addBarcode": "إضافة شيفرة",
+    "code": "الرمز"
   },
   "Manufactures": {
     "creationDate": "تاريخ الاضافة",
@@ -265,6 +295,18 @@
       "back": "إلغاء"
     }
   },
+  "supplier": {
+    "nameAr": "الاسم بالعربي",
+    "nameEn": "الاسم بالنكليزي",
+    "createdAt": "تاريخ الانشاء",
+    "actions": "عمليات",
+    "buttons": {
+      "edit": "تعديل",
+      "delete": "حذف",
+      "add": "اضافة",
+      "back": "إلغاء"
+    }
+  },
   "client": {
     "perPage": "عدد العناصر في الصفحة",
     "shopName": "اسم المتجر",
@@ -396,6 +438,37 @@
       "sad": "سيئ"
     }
   },
+  "damaged": {
+    "reason": "السبب",
+    "date": "التاريخ",
+    "count": "الكمية",
+    "abs": "المنتج الرئيسي",
+    "apply": "تطبيق",
+    "cancel": "تفريغ",
+    "form": {
+      "controls": {
+        "reason": "السبب",
+        "date": "التاريخ",
+        "abs": "المنتج الرئيسي",
+        "count": "الكمية",
+        "note": "ملاحظة"
+      },
+      "placeholders": {
+        "reason": "ادخل السبب",
+        "abs": "أدخل المنتج الرئيسي",
+        "date": "ادخل التاريخ",
+        "count": "ادخل الكمية",
+        "note": "ادخل ملاحظة"
+      },
+      "validations": {
+        "blank": "هذا الحقل لا يجب ان يكون فارغاً",
+        "imgBlank": "الرجاء إضافة صورة"
+      },
+      "errors": {
+        "pack": "حزمة"
+      }
+    }
+  },
   "product": {
     "addImg": "اختر صورة",
     "name": "الاسم",
@@ -422,6 +495,7 @@
         "sku": "sku",
         "quantity": "الكمية",
         "code": "code",
+        "barcodes": "الشيفرات",
         "horecaPrice": "السعر للمنشأت",
         "horecaPriceDiscount": "السعر للمنشأت بعد الخصم",
         "wholeSalePrice": "السعر للدكاكين",
@@ -437,6 +511,8 @@
         "horeca": "منشآت",
         "wholesale": "دكان",
         "cat": "تصنيف",
+        "abs": "المنتج الرئيسي",
+        "parentCount": "عدد القطع من الاب",
         "subcat": "تصنيف فرعي",
         "man": "الشركة المصنعة",
         "tags": "كلمات مفتاحية",
@@ -467,6 +543,7 @@
         "offerMaxQuantity": "كميه الطلب العظمى",
         "addTags": "اضف كلمات مفتاحية",
         "addTag": "اضف المزيد",
+        "parentCount": "أدخل عدد القطع من الاب",
         "code": "code",
         "horecaPrice": "ادخل السعر للمنشأت",
         "horecaPriceDiscount": "ادخل السعر للمنشأت بعد الخصم",
@@ -487,6 +564,109 @@
       }
     }
   },
+  "SupplierOrder": {
+    "totalPrice": "السعر الإجمالي",
+    "Supplier": "المورد",
+    "createDate": "تاريخ الإنشاء",
+    "supplier": "المورد",
+    "status": "الحالة",
+    "from":"من",
+    "to":"إلى",
+    "statusText": {
+      "pending": "معلق",
+      "canceled":"ملغاة",
+      "delivered":"تم التوصيل"
+    },
+    "buttons":{
+      "deliver":"التوصيل",
+      "cancel":"إلغاء"
+    },
+
+    "form": {
+      "controls": {
+        "supplier": "المورد",
+        "note": "ملاحظات",
+        "price": "السعر",
+        "quantity": "الكمية",
+        "absProducts": "المنتجات الرئيسية"
+      },
+      "hints": {
+        "pack": "حزمة"
+      },
+      "placeholders": {
+        "prodName": "ادخل اسم المنتج",
+        "sku": "sku",
+        "offerMaxQuantity": "كميه الطلب العظمى",
+        "addTags": "اضف كلمات مفتاحية",
+        "addTag": "اضف المزيد",
+        "parentCount": "أدخل عدد القطع من الاب",
+        "code": "code",
+        "horecaPrice": "ادخل السعر للمنشأت",
+        "horecaPriceDiscount": "ادخل السعر للمنشأت بعد الخصم",
+        "wholeSalePrice": "ادخل السعر للدكاكين",
+        "wholeSalePriceDiscount": "ادخل السعر للدكاكين بعد الخصم",
+        "marketOfficialPrice": "ادخل السعر الرسمي",
+        "dockanBuyingPrice": "ادخل سعر شراء دكان",
+        "wholeSaleMarketPrice": "ادخل سعر توزيع الشركه",
+        "desc": "ادخل الوصف",
+        "pack": "ادخل الحزمة"
+      },
+      "validations": {
+        "blank": "هذا الحقل لا يجب ان يكون فارغاً",
+        "imgBlank": "الرجاء إضافة صورة"
+      },
+      "errors": {
+        "pack": "حزمة"
+      }
+    }
+  },
+
+  "abstractProduct": {
+    "addImg": "اختر صورة",
+    "name": "الاسم",
+    "man": "المصنع",
+    "officialConsumerPrice": "سعر المستهلك",
+    "officialMassMarketPrice": "سعر التوزيع",
+    "threshold": "العتبة",
+    "warningThreshold": " عتبة التحذير",
+    "totalCount": "العدد الكلي",
+    "expectedCount": "العدد المتوقع",
+    "image": "الصورة",
+    "apply": "تطبيق",
+    "cancel": "تفريغ",
+    "viewWarningProd": "عرض المنتجات القليلة",
+    "form": {
+      "controls": {
+        "prodName": "اسم المنتج",
+        "cat": "تصنيف",
+        "subcat": "تصنيف فرعي",
+        "man": "الشركة المصنعة",
+        "warehouse": "المستودع",
+        "officialConsumerPrice": "سعر المستهلك",
+        "officialMassMarketPrice": "سعر التوزيع",
+        "expectedCount": "العدد المتوقع",
+        "totalCount": "العدد الكلي",
+        "threshold": "العتبة",
+        "warningThreshold": " عتبة التحذير"
+
+      },
+      "placeholders": {
+        "prodName": "ادخل اسم المنتج",
+        "officialConsumerPrice": "ادخل سعر المستهلك",
+        "warningThreshold": " عتبة التحذير",
+        "threshold": "أدخل العتبة",
+        "officialMassMarketPrice": "ادخل سعر التوزيع"
+      },
+      "validations": {
+        "blank": "هذا الحقل لا يجب ان يكون فارغاً",
+        "imgBlank": "الرجاء إضافة صورة"
+      },
+      "errors": {
+        "pack": "حزمة"
+      }
+    }
+  },
+
   "orders": {
     "deliveryFilter": "فلترة حسب موظف التوصيل",
     "searchPro": "ابحث عن منتج",
@@ -519,19 +699,24 @@
         "pending": "قيد المعالجة",
         "inDelivery": "جاري التوصيل",
         "delivered": "تم التوصيل",
-        "canceled": "ملغاة"
+        "canceled": "ملغاة",
+        "packed": "تم التعبئة",
+        "inWarehouse": "تم اسناده لمستودع"
       },
       "countTotal": "العدد الكلي للمنتجات",
       "total": "القيمة الإجمالية",
       "totalError": "الحد الادنى للقيمة الاجمالية هو 20000",
-      "unavailableProd":" غير متوفر حاليا",
+      "unavailableProd": " غير متوفر حاليا",
+      "unavailableThisCountProd": " غير متوفر هذا العدد , يوجد فقط",
       "product": "المنتج",
       "count": "الكمية",
       "price": "السعر",
+      "priceOne": "سعر القطعة",
       "userTap": "الزبون",
       "code": "الكود",
       "productsTap": "المنتجات",
       "deliveredTap": "معلومات التوصيل",
+      "packagedTap": "معلومات التعبئة",
       "coupon": "قسيمة",
       "status": "الحالة",
       "dates": "تاريخ انشاء الطلب"
