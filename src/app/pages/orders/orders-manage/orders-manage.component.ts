@@ -358,7 +358,7 @@ export class OrdersManageComponent implements OnInit {
       this.tP.push({ label: pro.nameAr, value: pro.productId });
       this.selectedEditProducts.push({
         'count': pro.count,
-        'price': pro.price,
+        'sellingPrice': pro.price,
         'productId': pro.productId,
 
       });
@@ -378,7 +378,7 @@ export class OrdersManageComponent implements OnInit {
 
     this.selectedProducts.push({
       'count': 0,
-      'price': 0,
+      'sellingPrice': 0,
       'productId': product._id,
     });
     this.newOrder.orderProducts = this.selectedProducts;
@@ -500,7 +500,7 @@ export class OrdersManageComponent implements OnInit {
       }
 
     }
-    this.selectedProducts.find(x => x.productId == id).price = price;
+    this.selectedProducts.find(x => x.productId == id).sellingPrice = price;
     this.totalPriceCalculate(this.selectedProducts);
 
   }

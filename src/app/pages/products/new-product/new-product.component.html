@@ -197,14 +197,6 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="form-group">
-              <label for="marketOfficialPrice">{{"product.form.controls.marketOfficialPrice"|translate}}</label>
-              <input class="form-control" formControlName="marketOfficialPrice" id="marketOfficialPrice"
-                placeholder="{{'product.form.placeholders.marketOfficialPrice'|translate}}" type="number">
-              <label *ngIf="ProductForm.get('marketOfficialPrice').invalid && processValidation"
-                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-            </div>
-            <div class="form-group">
               <label for="horecaPrice">{{"product.form.controls.horecaPrice"|translate}}</label>
               <input class="form-control" formControlName="horecaPrice" id="horecaPrice"
                 placeholder="{{'product.form.placeholders.horecaPrice'|translate}}" type="number">
@@ -221,14 +213,6 @@
               <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
             </div>
 
-            <div class="form-group">
-              <label for="wholeSaleMarketPrice">{{"product.form.controls.wholeSaleMarketPrice"|translate}}</label>
-              <input class="form-control" formControlName="wholeSaleMarketPrice" id="wholeSaleMarketPrice"
-                placeholder="{{'product.form.placeholders.wholeSaleMarketPrice'|translate}}" type="number">
-              <label *ngIf="ProductForm.get('wholeSaleMarketPrice').invalid && processValidation"
-                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-            </div>
 
           </div>
           <div class="col-sm-6">
@@ -240,16 +224,7 @@
                 class="text-danger">{{'product.form.validations.blank'|translate}}</label>
               <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
             </div>
-            <div class="form-group">
-
-              <label for="dockanBuyingPrice">{{"product.form.controls.dockanBuyingPrice"|translate}}</label>
-              <input class="form-control" formControlName="dockanBuyingPrice" id="dockanBuyingPrice"
-                placeholder="{{'product.form.placeholders.dockanBuyingPrice'|translate}}" type="number">
-              <label *ngIf="ProductForm.get('dockanBuyingPrice').invalid && processValidation"
-                class="text-danger">{{'product.form.validations.blank'|translate}}</label>
-              <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
-
-            </div>
+            
 
 
             <div class="form-group">

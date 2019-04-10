@@ -97,7 +97,7 @@
                       (change)="priceCalculate(product.productId,product.count)" [(ngModel)]="product.count"
                       [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
                   <td style="text-align: center">
-                    <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                    <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>
                   </td>
                   <td style="text-align: center">
                     <span class="functions-btn text-danger" (click)="productDeSelected(product.productId)"><i
@@ -108,7 +108,8 @@
             </table>
             {{addErrorProd | json}}
             <p *ngIf="addError" class="text-danger">
-              {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}} {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
+              {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}}
+              {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
 
             </p>
             <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
@@ -224,10 +225,10 @@
             <ul class=" list-group table-ul">
               <li *ngFor="let product of order.orderProducts" class="list-group-item"
                 style="text-align: right;padding: .75rem 0.25rem;">
-                <span>{{product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+                <span>{{product.productSnapshot.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
                 <strong class="badge badge-info">{{product.count}}</strong>
                 {{"orders.table.price"|translate}} : <strong style="float: left;font-size: 13px;margin-top: 3px;"
-                  class="badge badge-success">{{product.price}}</strong>
+                  class="badge badge-success">{{product.sellingPrice}}</strong>
               </li>
               <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
                   : </strong>{{order.totalPrice}}</li>
@@ -350,7 +351,7 @@
                               (change)="priceEditCalculate(product.productId,product.count)" [(ngModel)]="product.count"
                               [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
                           <td style="text-align: center">
-                            <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.price}}</span>
+                            <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>
                           </td>
                           <td style="text-align: center">
                             <span class="functions-btn text-danger"
@@ -378,9 +379,9 @@
               <ul class="list-group table-ul">
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.packDate)}}</span></li>
                 <li><span class="list-group-item ">
-                    <ng-select #select  (filterInputChanged)="searchWearUsers($event)"
-                      [(ngModel)]="OrderToEdit.packagerMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
-                      (selected)="WearuserSelected($event,OrderToEdit)" [options]="IOweausers">
+                    <ng-select #select (filterInputChanged)="searchWearUsers($event)"
+                      [(ngModel)]="OrderToEdit.packagerMemberId" [ngModelOptions]="{standalone: true}"
+                      [multiple]="false" (selected)="WearuserSelected($event,OrderToEdit)" [options]="IOweausers">
                     </ng-select>
                   </span></li>
               </ul>

@@ -85,9 +85,6 @@ export class NewProductComponent implements OnInit {
     description: new FormControl(''),
     horecaPrice: new FormControl('', Validators.required),
     wholeSalePrice: new FormControl('', Validators.required),
-    wholeSaleMarketPrice: new FormControl('', Validators.required),
-    marketOfficialPrice: new FormControl('', Validators.required),
-    dockanBuyingPrice: new FormControl('', Validators.required),
     tagsIds: new FormControl(''),
     offerProducts: new FormControl(''),
     horecaPriceDiscount: new FormControl('', Validators.required),
@@ -122,7 +119,7 @@ export class NewProductComponent implements OnInit {
       })
       this.newPro = false;
       this.Handler.getProductById(this.id).subscribe(product => {
-        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.wholeSaleMarketPrice, product.marketOfficialPrice, product.dockanBuyingPrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount);
+        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount);
         this.product.creationDate = product.creationDate;
         this.product.id = product.id;
         this.product.offerProducts = this.offerProducts = product.offerProducts;

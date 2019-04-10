@@ -5,9 +5,6 @@ export class ProductModel {
     public description: string;
     public horecaPrice: number;
     public wholeSalePrice: number;
-    public wholeSaleMarketPrice: number;
-    public marketOfficialPrice: number;
-    public dockanBuyingPrice: number;
     public horecaPriceDiscount: number;
     public wholeSalePriceDiscount: number;
     public isFeatured: boolean;
@@ -30,16 +27,13 @@ export class ProductModel {
     public media: Media;
     public offerProducts: OfferProducts[];
 
-    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, wholeSaleMarketPrice: number, marketOfficialPrice: number, dockanBuyingPrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string, productAbstractId: string, parentCount: number) {
+    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number,   horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string, productAbstractId: string, parentCount: number) {
         this.nameAr = nameAr;
         this.nameEn = nameEn;
         this.pack = pack;
         this.description = description;
         this.horecaPrice = horecaPrice;
         this.wholeSalePrice = wholeSalePrice;
-        this.wholeSaleMarketPrice = wholeSaleMarketPrice;
-        this.marketOfficialPrice = marketOfficialPrice;
-        this.dockanBuyingPrice = dockanBuyingPrice;
         this.horecaPriceDiscount = horecaPriceDiscount;
         this.wholeSalePriceDiscount = wholeSalePriceDiscount;
         this.isFeatured = isFeatured;

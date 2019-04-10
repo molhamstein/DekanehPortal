@@ -23,7 +23,7 @@ export class Order {
 }
 export class OrderProduct {
     count: number;
-    price: number;
+    sellingPrice: number;
 
     productId: string
 }
