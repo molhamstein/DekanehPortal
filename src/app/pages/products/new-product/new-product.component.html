@@ -7,6 +7,7 @@
   </div>
   <div class="app-modal-body">
     <form [formGroup]="prodBarcodeForm">
+      {{prodBarcodeForm.value | json}}
       <div class="form-group">
         <label for="notes">{{"modal.code"|translate}}</label>
         <input class="form-control" formControlName="code" id="notes" placeholder="{{'modal.code'|translate}}">
@@ -358,7 +359,7 @@
     </div>
     <div class="body">
       <div class="oneNote" *ngFor="let onebarcode of barcodes; let i = index">
-        <p>{{onebarcode.code}}</p>
+        <span class="code">{{onebarcode.code}}</span>
         <div class="actions">
           <span>{{onebarcode.createdAt | date:'medium'}}</span>
           <div class="button">

@@ -97,7 +97,7 @@ export class OrdersHandlerService {
         let param = new URLSearchParams();
         let rolesString = '';
         for (let role of this.roleWearIds) {
-            rolesString = rolesString + '{"roleIds":"' + role + '"},';
+            rolesString = rolesString + '{"roleIds":{"like":"' + role + '"}},';
         }
         // param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
         param.append('filter', '{"where":{"and":[' + rolesString + ' {"ownerName": {"like": "' + str + '"}}]},"limit":"10"}');

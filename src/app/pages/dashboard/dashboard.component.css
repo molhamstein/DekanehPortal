@@ -1,0 +1,46 @@
+.tableOrder {
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tableOrder .item {
+  width: calc(100% - 40px);
+  height: 50px;
+  margin: 10px 20px;
+  padding: 3px 3px;
+  /* border: 1px solid #4680ff; */
+  border-radius: 3px;
+  box-shadow: 1px 0px 4px 0px #928f8f4a, -1px 0px 4px 0px #928f8f4a, 0px 1px 4px 0px #928f8f4a, 0px -1px 4px 0px #928f8f4a
+}
+
+.tableOrder .item .details {
+  width: 100%;
+}
+
+.tableOrder .item .details .col {
+  width: 50%;
+  font-size: 18px;
+  float: left;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tableOrder .item .name {
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.card .custom-card-block-small {
+  padding: 15px 0px;
+}
+
+.card .custom-card-block-small .custom-span {
+  padding: 0px 20px
+}
+
+.card .custom-card-block-small h4 {
+  padding: 0px 20px
+}

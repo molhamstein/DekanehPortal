@@ -43,9 +43,11 @@
                 <div class="form-group">
 
                     <label for="userId">{{'coupon.form.controls.owner'|translate}}</label>
-                    <ng-select #select (filterInputChanged)="searchUsers($event)" [(ngModel)]="coupon.userId" [multiple]="false"
+                    <ng-select #select (filterInputChanged)="searchUsers($event)"formControlName="userId" [(ngModel)]="coupon.userId" [multiple]="false"
                                [options]="IOusers" formControlName="userId" id="userId">
                     </ng-select>
+                    <label *ngIf="CouponForm.get('userId').invalid && processValidation"
+                    class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
 
                 </div>
             </div>

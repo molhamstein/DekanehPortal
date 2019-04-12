@@ -34,7 +34,7 @@ export class NewCouponComponent implements OnInit {
         status: new FormControl('',),
         numberOfTimes: new FormControl('',),
         numberOfUsed: new FormControl('',),
-        userId: new FormControl('',),
+        userId: new FormControl('',Validators.required),
         type: new FormControl('',),
 
     });

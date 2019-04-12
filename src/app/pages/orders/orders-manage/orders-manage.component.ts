@@ -455,11 +455,13 @@ export class OrdersManageComponent implements OnInit {
   }
 
   findEditProduct(id) {
+    console.log("this.editProducts");
+    console.log(this.editProducts);
     if (this.editProducts.find(x => x.productId === id) == undefined) {
-      return this.editProducts.find(x => x._id === id);
+      return this.editProducts.find(x => x._id === id).product;
 
     } else {
-      return this.editProducts.find(x => x.productId === id);
+      return this.editProducts.find(x => x.productId === id).product;
 
     }
   }
@@ -699,6 +701,11 @@ export class OrdersManageComponent implements OnInit {
         tempOrder.status = "inWarehouse"
         delete tempOrder.packagerMemberId
       }
+      else if (order.status == 'inDelivery') {
+        tempOrder.status = "packed"
+        delete tempOrder.deliveryMemberId
+      }
+
       this.Handler.updateOrder(tempOrder).finally(() => {
         if (order.status == 'inDelivery') {
           this.Handler.assignDelivery({ 'userId': order.deliveryMemberId }, order.id).subscribe(() => {

@@ -13,6 +13,7 @@ export class AbstractProductListComponent implements OnInit {
   unpage = false;
   spinnerFlag: boolean;
   nameOrderDir;
+  searchKey;
   officialMassMarketPriceDir;
   cat = '1';
   subcat = '1';
@@ -70,6 +71,18 @@ export class AbstractProductListComponent implements OnInit {
         this.router.navigated = false;
       }
     });
+
+  }
+
+  keyUp() {
+    var lastSearch = ""
+    var mainThis = this
+    lastSearch = mainThis.searchKey
+    setTimeout(function () {
+      if (lastSearch == mainThis.searchKey) {
+        mainThis.filterBox()
+      }
+    }, 700);
 
   }
 
@@ -238,9 +251,9 @@ export class AbstractProductListComponent implements OnInit {
     return f;
   }
 
-  filterBox(event) {
+  filterBox() {
     this.isWarningView=false;
-    let value = event.target.value;
+    let value = this.searchKey;
     if (value == '') {
       this.getAllProducts();
       localStorage.removeItem('search');

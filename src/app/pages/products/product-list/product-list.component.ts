@@ -11,6 +11,7 @@ import { AlertService } from '../../../services/alert.service';
 })
 export class ProductListComponent implements OnInit {
   unpage = false;
+  searchKey;
   spinnerFlag: boolean;
   nameOrderDir;
   packOrderDir;
@@ -46,6 +47,18 @@ export class ProductListComponent implements OnInit {
 
   showError() {
     this.alert.showToast.next({ type: 'error' });
+  }
+
+  keyUp() {
+    var lastSearch = ""
+    var mainThis = this
+    lastSearch = mainThis.searchKey
+    setTimeout(function () {
+      if (lastSearch == mainThis.searchKey) {
+        mainThis.filterBox()
+      }
+    }, 700);
+
   }
 
   private eventOptions: boolean | { capture?: boolean, passive?: boolean };
@@ -205,8 +218,8 @@ export class ProductListComponent implements OnInit {
     return f;
   }
 
-  filterBox(event) {
-    let value = event.target.value;
+  filterBox() {
+    let value = this.searchKey;
     if (value == '') {
       this.getAllProducts();
       localStorage.removeItem('search');

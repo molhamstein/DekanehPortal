@@ -51,9 +51,9 @@ export class NewProductComponent implements OnInit {
   cats = [];
   subcats = [];
   newPro = true;
-  submiteddAddBarcode=false
+  submiteddAddBarcode = false
   prodBarcodeId = ""
-  barcodes=[]
+  barcodes = []
   media = {
     'url': '',
     'type': 'image',
@@ -160,12 +160,16 @@ export class NewProductComponent implements OnInit {
 
 
   prodBarcodeForm = new FormGroup({
-    createdAt: new FormControl(new Date(), Validators.required),
+    createdAt: new FormControl("2019-5-3", Validators.required),
     code: new FormControl("", Validators.required),
   });
   open(modal, id) {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
     this.prodBarcodeForm = new FormGroup({
-      createdAt: new FormControl(new Date, Validators.required),
+      createdAt: new FormControl(yyyy + "-" + mm + "-" + dd + "T01:00", Validators.required),
       code: new FormControl("", Validators.required),
     });
     this.prodBarcodeId = id
@@ -174,13 +178,13 @@ export class NewProductComponent implements OnInit {
 
   deleteBarcode(id, index) {
     this.Handler.deleteBarcode(id).subscribe(res => {
-        this.Handler.getBarcodeProdById(this.id).subscribe(barcodes => {
-            this.barcodes = barcodes
-        })
+      this.Handler.getBarcodeProdById(this.id).subscribe(barcodes => {
+        this.barcodes = barcodes
+      })
 
     })
 
-}
+  }
   addBarcode(modal) {
     if (this.prodBarcodeForm.valid == false) {
       this.submiteddAddBarcode = true;

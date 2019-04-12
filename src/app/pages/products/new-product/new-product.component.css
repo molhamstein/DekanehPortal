@@ -1,176 +1,179 @@
 .ProductForm {
-    direction: rtl;
-    text-align: right;
-    font-size: 15px;
+  direction: rtl;
+  text-align: right;
+  font-size: 15px;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 48px;
-    height: 24px;
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 2px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
 }
 
 .img-uploader {
-    text-align: center;
-    margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-#preview > img {
-    /*width: 200px;*/
-    height: 200px;
-    margin-bottom: 15px;
+#preview>img {
+  /*width: 200px;*/
+  height: 200px;
+  margin-bottom: 15px;
 }
 
-input:checked + .slider {
-    background-color: #2196F3;
+input:checked+.slider {
+  background-color: #2196F3;
 }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 button[disabled] {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .spinner-submit {
-    vertical-align: middle;
-    color: gray;
+  vertical-align: middle;
+  color: gray;
 }
 
 @media (min-width: 768px) {
-    .products-div {
-        overflow-y: auto;
-        height: 200px;
-    }
+  .products-div {
+    overflow-y: auto;
+    height: 200px;
+  }
 }
 
 .notesDiv {
-    width: 100%;
-    margin-bottom: 50px;
-    height: 400px;
-    margin-top: 5px;
-    border-radius: 5px;
-    background-color: white;
-  }
-  
-  .notesDiv .title {
-    width: 100%;
-    height: 30px;
-  
-    background-color: rgba(234, 234, 234, 0.78);
-    border-radius: 3px 3px 0px 0px;
-    /* border-bottom: 2px solid black; */
-    text-align: center;
-  }
-  
-  .notesDiv .title label {
-    font-size: 20px;
-  }
-  
-  .notesDiv .body {
-    overflow-y: auto;
-    width: 100%;
-    position: relative;
-    height: calc(100% - 30px);
-  }
-  
-  .notesDiv .body .oneNote {
-    width: 100%;
-    padding: 10px;
-    border-bottom: 2px solid #d8d8d8;
-  }
-  
-  .notesDiv .body .oneNote p {
-    font-size: 15px;
-  }
-  
-  .notesDiv .body .oneNote .actions {
-    width: 100%;
-    height: 30px;
-  }
-  
-  .notesDiv .body .oneNote .actions span {
-    float: left;
-    padding-top: 4px;
-    color: darkgray;
-  }
-  
-  .notesDiv .body .oneNote .actions .button {
-    width: 200px;
-    float: right;
-  }
-  
-  .notesDiv .body .oneNote .actions .button button {
-    float: right;
-    margin-left: 8px;
-    font-size: 10px;
-    padding: 8px 15px;
-  }
-  
-  .notesDiv .body .flowButton {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #4680ff;
-    border-radius: 50%;
-    padding: 3px 10px;
-    font-size: 25px;
-    bottom: 15px;
-    left: 15px;
-  }
-  
-  .notesDiv .body .flowButton:hover {
-    cursor: pointer;
-    background-color: #1961fd;
-  
-  }
-  
-  .notesDiv .body .flowButton i {
-    color: white;
-  }
+  width: 100%;
+  margin-bottom: 50px;
+  height: 400px;
+  margin-top: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.notesDiv .title {
+  width: 100%;
+  height: 30px;
+
+  background-color: rgba(234, 234, 234, 0.78);
+  border-radius: 3px 3px 0px 0px;
+  /* border-bottom: 2px solid black; */
+  text-align: center;
+}
+
+.notesDiv .title label {
+  font-size: 20px;
+}
+
+.notesDiv .body {
+  overflow-y: auto;
+  width: 100%;
+  position: relative;
+  height: calc(100% - 30px);
+}
+
+.notesDiv .body .oneNote {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid #d8d8d8;
+}
+
+.notesDiv .body .oneNote .code {
+  float: left;
+  padding-top: 5px;
+  padding-right: 20px;
+  font-size: 15px;
+}
+
+.notesDiv .body .oneNote .actions {
+  width: 100%;
+  height: 30px;
+}
+
+.notesDiv .body .oneNote .actions span {
+  float: left;
+  padding-top: 5px;
+  color: darkgray;
+}
+
+.notesDiv .body .oneNote .actions .button {
+  width: 200px;
+  float: right;
+}
+
+.notesDiv .body .oneNote .actions .button button {
+  float: right;
+  margin-left: 8px;
+  font-size: 10px;
+  padding: 8px 15px;
+}
+
+.notesDiv .body .flowButton {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #4680ff;
+  border-radius: 50%;
+  padding: 3px 10px;
+  font-size: 25px;
+  bottom: 15px;
+  left: 15px;
+}
+
+.notesDiv .body .flowButton:hover {
+  cursor: pointer;
+  background-color: #1961fd;
+
+}
+
+.notesDiv .body .flowButton i {
+  color: white;
+}

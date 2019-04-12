@@ -384,6 +384,9 @@
                       [multiple]="false" (selected)="WearuserSelected($event,OrderToEdit)" [options]="IOweausers">
                     </ng-select>
                   </span></li>
+                <!-- <li *ngIf="OrderToEdit.status!='inWarehouse'"><span class="list-group-item ">
+                    {{OrderToEdit.packagerMember.ownerName}}
+                  </span></li> -->
               </ul>
             </td>
             <td class="no-padding-td">
@@ -391,7 +394,7 @@
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>
                 <li><span class="list-group-item ">
-                    <ng-select #select [disabled]="c.packagerMemberId==null"
+                    <ng-select #select
                       (filterInputChanged)="searchDeUsers($event)" [(ngModel)]="OrderToEdit.deliveryMemberId"
                       [ngModelOptions]="{standalone: true}" [multiple]="false"
                       (selected)="DeuserSelected($event,OrderToEdit)" [options]="IOdeusers">

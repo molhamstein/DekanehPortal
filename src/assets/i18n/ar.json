@@ -11,6 +11,15 @@
       "deliverMessage":"هل انت متاكد من توصيل الطلب؟"
     }
   },
+  "dashbored":{
+    "finished":"out of stock",
+    "worning":"low stock",
+    "totalCount":"in stock",
+    "pendingOrder":"الطلبات المعلقة",
+    "wherhouseOrder":"الطلبات في المستودع",
+    "diliveryOrder":"الطلبات في التوصيل",
+    "finishOrder":"الطلبات انتهت"    
+  },
   "mainMenu": {
     "main": "القائمة الرئيسية",
     
@@ -495,7 +504,7 @@
         "sku": "sku",
         "quantity": "الكمية",
         "code": "code",
-        "barcodes": "الشيفرات",
+        "barcodes": "Barcodes",
         "horecaPrice": "السعر للمنشأت",
         "horecaPriceDiscount": "السعر للمنشأت بعد الخصم",
         "wholeSalePrice": "السعر للدكاكين",

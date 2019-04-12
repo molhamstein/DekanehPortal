@@ -53,6 +53,7 @@ import { DamagedProductListComponent } from '../../pages/damaged-products/damage
 import { NewDamagedProductComponent } from '../../pages/damaged-products/new-damaged-product/new-damaged-product.component';
 import { NewSupplierOrderComponent } from '../../pages/supplier-order/new-supplier-order/new-supplier-order.component';
 import { ListSuppliersComponent } from '../../pages/supplier/list-suppliers/list-suppliers.component';
+import { DashboardHandlerService } from '../../pages/dashboard/dashboard-handler.service';
 
 const AppRoutes = [
     {
@@ -328,7 +329,7 @@ const AppRoutes = [
         // AddManufacturerComponent,
         // AuthComponent,
         TitleComponent,
-    ], providers: [AuthGuardService, NotificationsService]
+    ], providers: [AuthGuardService, NotificationsService,DashboardHandlerService]
 })
 export class AdminModule {
 
