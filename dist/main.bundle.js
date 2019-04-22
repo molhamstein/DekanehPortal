@@ -14687,104 +14687,105 @@ var MenuItems = (function () {
     function MenuItems(constant) {
         this.constant = constant;
         this.MENUITEMS = [
-            {
-                label: '',
-                main: [
-                    {
-                        state: 'manufacturers',
-                        short_label: 'M',
-                        name: 'mainMenu.Manufacturers.main',
-                        type: 'custom',
-                        icon: 'ti-user',
-                        children: []
-                    }
-                ]
-            },
+            // {
+            //     label: '',
+            //     main: [
+            //         {
+            //             state: 'manufacturers',
+            //             short_label: 'M',
+            //             name: 'mainMenu.Manufacturers.main',
+            //             type: 'custom',
+            //             icon: 'ti-user',
+            //             children: [
+            //             ]
+            //         }
+            //     ]
+            // },
             {
                 label: 'mainMenu.main',
                 main: [
-                    {
-                        state: 'manufacturers',
-                        short_label: 'M',
-                        name: 'mainMenu.Manufacturers.main',
-                        type: 'sub',
-                        icon: 'ti-user',
-                        children: [
-                            {
-                                state: 'add',
-                                name: 'mainMenu.Manufacturers.add'
-                            }, {
-                                state: 'view',
-                                name: 'mainMenu.Manufacturers.viewAll'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'topSlider',
-                        short_label: 'F',
-                        name: 'mainMenu.topSlider.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'new',
-                                name: 'mainMenu.topSlider.add'
-                            }, {
-                                state: 'list',
-                                name: 'mainMenu.topSlider.viewAll'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'client',
-                        short_label: 'F',
-                        name: 'mainMenu.Clients.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'new',
-                                name: 'mainMenu.Clients.add'
-                            }, {
-                                state: 'list',
-                                name: 'mainMenu.Clients.viewAll'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'orders',
-                        short_label: 'O',
-                        name: 'mainMenu.Orders.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            // {
-                            //     state: 'from-supplier',
-                            //     name: 'mainMenu.Orders.fromSupplier'
-                            // },
-                            {
-                                state: 'management',
-                                name: 'mainMenu.Orders.Management'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'supplier-orders',
-                        short_label: 'O',
-                        name: 'mainMenu.SupplierOrders.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'list',
-                                name: 'mainMenu.SupplierOrders.viewAll'
-                            },
-                            {
-                                state: 'new',
-                                name: 'mainMenu.SupplierOrders.add'
-                            }
-                        ]
-                    },
+                    // {
+                    //     state: 'manufacturers',
+                    //     short_label: 'M',
+                    //     name: 'mainMenu.Manufacturers.main',
+                    //     type: 'sub',
+                    //     icon: 'ti-user',
+                    //     children: [
+                    //         {
+                    //             state: 'add',
+                    //             name: 'mainMenu.Manufacturers.add'
+                    //         }, {
+                    //             state: 'view',
+                    //             name: 'mainMenu.Manufacturers.viewAll'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     state: 'topSlider',
+                    //     short_label: 'F',
+                    //     name: 'mainMenu.topSlider.main',
+                    //     type: 'sub',
+                    //     icon: 'ti-layers',
+                    //     children: [
+                    //         {
+                    //             state: 'new',
+                    //             name: 'mainMenu.topSlider.add'
+                    //         }, {
+                    //             state: 'list',
+                    //             name: 'mainMenu.topSlider.viewAll'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     state: 'client',
+                    //     short_label: 'F',
+                    //     name: 'mainMenu.Clients.main',
+                    //     type: 'sub',
+                    //     icon: 'ti-layers',
+                    //     children: [
+                    //         {
+                    //             state: 'new',
+                    //             name: 'mainMenu.Clients.add'
+                    //         }, {
+                    //             state: 'list',
+                    //             name: 'mainMenu.Clients.viewAll'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     state: 'orders',
+                    //     short_label: 'O',
+                    //     name: 'mainMenu.Orders.main',
+                    //     type: 'sub',
+                    //     icon: 'ti-layers',
+                    //     children: [
+                    //         // {
+                    //         //     state: 'from-supplier',
+                    //         //     name: 'mainMenu.Orders.fromSupplier'
+                    //         // },
+                    //         {
+                    //             state: 'management',
+                    //             name: 'mainMenu.Orders.Management'
+                    //         }
+                    //     ]
+                    // },
+                    // {
+                    //     state: 'supplier-orders',
+                    //     short_label: 'O',
+                    //     name: 'mainMenu.SupplierOrders.main',
+                    //     type: 'sub',
+                    //     icon: 'ti-layers',
+                    //     children: [
+                    //         {
+                    //             state: 'list',
+                    //             name: 'mainMenu.SupplierOrders.viewAll'
+                    //         },
+                    //         {
+                    //             state: 'new',
+                    //             name: 'mainMenu.SupplierOrders.add'
+                    //         }
+                    //     ]
+                    // },
                     {
                         state: 'products',
                         short_label: 'F',
@@ -14817,151 +14818,6 @@ var MenuItems = (function () {
                             }
                         ]
                     },
-                    {
-                        state: 'categories',
-                        short_label: 'F',
-                        name: 'mainMenu.Categories.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'add',
-                                name: 'mainMenu.Categories.add'
-                            },
-                            {
-                                state: 'viewAll',
-                                name: 'mainMenu.Categories.viewAll'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'areas',
-                        short_label: 'F',
-                        name: 'mainMenu.areas.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'new',
-                                name: 'mainMenu.areas.add'
-                            },
-                            {
-                                state: 'list',
-                                name: 'mainMenu.areas.viewAll'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'coupons',
-                        short_label: 'F',
-                        name: 'mainMenu.coupons.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'new',
-                                name: 'mainMenu.coupons.add'
-                            },
-                            {
-                                state: 'list',
-                                name: 'mainMenu.coupons.viewAll'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'staff',
-                        short_label: 'F',
-                        name: 'mainMenu.Staff.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'add-on',
-                                name: 'mainMenu.Staff.add'
-                            },
-                            {
-                                state: 'list',
-                                name: 'mainMenu.Staff.viewAll'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'suppliers',
-                        short_label: 'F',
-                        name: 'mainMenu.Supplier.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'add',
-                                name: 'mainMenu.Supplier.add'
-                            },
-                            {
-                                state: 'list',
-                                name: 'mainMenu.Supplier.viewAll'
-                            }
-                        ]
-                    },
-                    {
-                        state: 'ratings',
-                        short_label: 'F',
-                        name: 'mainMenu.Ratings.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'list',
-                                name: 'mainMenu.Ratings.viewAll'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'notifications',
-                        short_label: 'F',
-                        name: 'mainMenu.Notifications.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'add',
-                                name: 'mainMenu.Notifications.viewAll'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'reports',
-                        short_label: 'F',
-                        name: 'mainMenu.Reports.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'warning',
-                                name: 'mainMenu.Reports.warning'
-                            },
-                        ]
-                    },
-                    {
-                        state: 'damaged',
-                        short_label: 'F',
-                        name: 'mainMenu.Damaged.main',
-                        type: 'sub',
-                        icon: 'ti-layers',
-                        children: [
-                            {
-                                state: 'list',
-                                name: 'mainMenu.Damaged.viewAll'
-                            },
-                            {
-                                state: 'add',
-                                name: 'mainMenu.Damaged.add'
-                            },
-                            {
-                                state: 'report',
-                                name: 'mainMenu.Damaged.report'
-                            },
-                        ]
-                    }
                 ]
             },
         ];
@@ -17284,10 +17140,10 @@ AmCharts.maps.worldLow={"svg":{"defs":{"amcharts:ammap":{"projection":"mercator"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    baseUrl: 'http://dockaan.com:3033/api'
+    // baseUrl: 'http://dockaan.com:3033/api'
     // baseUrl: 'http://localhost:3000/api'
     // baseUrl: 'http://104.217.253.15:3030/api',
-    // baseUrl: 'http://192.168.1.2:3033/api'
+    baseUrl: 'http://192.168.1.2:3033/api'
 };
 //# sourceMappingURL=environment.prod.js.map
 
