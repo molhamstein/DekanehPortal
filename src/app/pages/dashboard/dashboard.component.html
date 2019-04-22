@@ -89,8 +89,9 @@
         <span class="text-c-blue custom-span">{{'dashbored.diliveryOrder'|translate}}</span>
         <h4 *ngIf="orderStatistics['delivery']">{{orderStatistics['delivery'].length}}</h4>
         <div class="tableOrder">
-          <div class="item" *ngFor="let pendingOrder of orderStatistics['delivery']">
+          <div class="item long" *ngFor="let pendingOrder of orderStatistics['delivery']">
             <p class="name">{{pendingOrder.client.shopName}}</p>
+            <p class="name">{{pendingOrder.deliveryMember.ownerName}}</p>
             <div class="details">
               <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
               <span class="col">{{pendingOrder.totalPrice}}</span>
@@ -114,11 +115,10 @@
         <span class="text-c-blue custom-span">{{'dashbored.finishOrder'|translate}}</span>
         <h4 *ngIf="orderStatistics['done']">{{orderStatistics['done'].length}}</h4>
         <div class="tableOrder">
-          <div class="item" *ngFor="let pendingOrder of orderStatistics['done']">
+          <div class="item long" *ngFor="let pendingOrder of orderStatistics['done']">
             <p class="name">{{pendingOrder.client.shopName}}</p>
+            <p class="name"> {{c.formatDate(pendingOrder.deliveredDate)}}</p>
             <div class="details">
-              <span class="col" style="padding: 5px 0px;font-size: 11px;">
-                {{c.formatDate(pendingOrder.deliveredDate)}}</span>
               <span class="col">{{pendingOrder.totalPrice}}</span>
             </div>
           </div>

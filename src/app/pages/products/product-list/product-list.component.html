@@ -49,6 +49,12 @@
           {{"product.status." + option|translate}}
         </option>
       </select>
+      <select class="btn btn-action" id="status" [(ngModel)]="hasProductAbstract">
+        <option value="1" disabled selected>{{'product.hasProductAbstract'|translate}}</option>
+        <option *ngFor="let option of hasProductAbstractList" [value]="option">
+          {{"product.hasProductAbstractList." + option|translate}}
+        </option>
+      </select>
       <button type="button" (click)="setFilters()" class="btn btn-success">
         {{"product.apply"|translate}}
       </button>
@@ -126,7 +132,13 @@
     <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
 
       <tr *ngFor="let product of returnedArray  ">
-        <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
+        <td style="position: relative;"><img *ngIf="product.media" class="product-img"
+            src="{{product.media.thumbnail}}">
+          <div class="worningProd" *ngIf="product.productAbstract==null"> <i
+              [tooltip]="'product.warningAbstractProd'|translate" class="fa fa-exclamation-triangle"
+              aria-hidden="true"></i>
+          </div>
+        </td>
         <td>{{product.nameAr}}</td>
         <td>{{product.pack}}</td>
         <td>{{product.manufacturer.nameAr}}</td>

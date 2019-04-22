@@ -1,28 +1,23 @@
 <div class="row">
   <div class="col-sm-3">
-    <input class="form-control search-box" type="text" [value]="searchString" (keyup)="filterBox($event)"
-      placeholder="{{'client.search'|translate}}....">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="from"
+      placeholder="{{'SupplierOrder.from'|translate}}">
+
+
+
   </div>
-  <div class="col-sm-9">
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="to"
+      placeholder="{{'SupplierOrder.to'|translate}}">
+
+  </div>
+
+  <div class="col-sm-6">
     <div class="filter-btns">
-      <select class="btn btn-action" (change)="setCatFilter($event)" [(ngModel)]="cat">
-        <option value='1' disabled style="display: none" selected>{{'product.form.controls.cat'|translate}}</option>
-        <option *ngFor="let cat of cats" [value]="cat.id">
-          {{cat.titleAr}}
-        </option>
-      </select>
-
-      <select class="btn btn-action" [(ngModel)]="subcat">
-        <option value="1" disabled selected>{{'product.form.controls.subcat'|translate}}</option>
-        <option *ngFor="let sub of subcats" [value]="sub.id">
-          {{sub.titleAr}}
-        </option>
-      </select>
-
-      <select class="btn btn-action" [(ngModel)]="man">
-        <option value="1" disabled selected>{{'product.form.controls.man'|translate}}</option>
-        <option *ngFor="let man of mans" [value]="man.id">
-          {{man.nameAr}}
+      <select class="btn btn-action" [(ngModel)]="reason">
+        <option value="1" disabled selected>{{'damaged.form.controls.reason'|translate}}</option>
+        <option *ngFor="let option of allReason" [value]="option">
+          {{"damaged.reasonList." + option|translate}}
         </option>
       </select>
 
@@ -35,9 +30,6 @@
       <button type="button" (click)="emptyFields()" class="btn btn-danger">
         {{"abstractProduct.cancel"|translate}}
       </button>
-      <button type="button" *ngIf="!isWarningView" (click)="getWarningProd()" class="btn btn-danger">
-        {{"abstractProduct.viewWarningProd"|translate}}
-      </button>
     </div>
   </div>
 </div>
@@ -46,115 +38,27 @@
     <thead>
       <tr>
         <th>
-          {{"abstractProduct.image"|translate}}
+          {{"damaged.form.controls.reason"|translate}}
 
 
         </th>
-        <th class="clickable-th" (click)="orderByName()">
-          {{"abstractProduct.name"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
+        <th class="clickable-th">
+          {{"damaged.form.controls.date"|translate}}
         </th>
-        <th class="clickable-th" (click)="orderByMan()">
-          {{"abstractProduct.man"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-        <th class="clickable-th" (click)="orderByofficialMassMarketPrice()">
-          {{"abstractProduct.officialMassMarketPrice"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="officialMassMarketPrice === undefined? '' : (officialMassMarketPrice? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-
-        <th class="clickable-th" (click)="orderByOfficialConsumerPrice()">
-          {{"abstractProduct.officialConsumerPrice"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="officialConsumerPriceDir === undefined? '' : (officialConsumerPriceDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-
-        </th>
-        <th class="clickable-th" (click)="orderByThreshold()">
-          {{"abstractProduct.threshold"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="thresholdDir === undefined? '' : (thresholdDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-        <th class="clickable-th" (click)="orderByWarningThresholdDir()">
-          {{"abstractProduct.warningThreshold"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="warningThresholdDir === undefined? '' : (warningThresholdDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-        <th class="clickable-th" (click)="orderByTotalCount()">
-          {{"abstractProduct.totalCount"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="totalCountDir === undefined? '' : (totalCountDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-
-        <th class="clickable-th" (click)="orderByExpectedCount()">
-          {{"abstractProduct.expectedCount"|translate}}
-          <i class="fa-sort fa "
-            [ngClass]="expectedCountDir === undefined? '' : (expectedCountDir? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-
-        </th>
-
         <th>
           <!--{{"product.actions"|translate}}-->#
         </th>
       </tr>
     </thead>
-    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[] && isWarningView==false">
+    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
 
-      <tr *ngFor="let product of returnedArray  ">
-        <td><img *ngIf="product.media" class="product-img" src="{{product.media.thumbnail}}"></td>
-        <td>{{product.nameAr}}</td>
-        <td>{{product.manufacturer.nameAr}}</td>
-        <td>{{product.officialMassMarketPrice}}</td>
-        <td>{{product.officialConsumerPrice}}</td>
-        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].threshold}}</td>
-        <td *ngIf="product.warehouseProducts[0]==null"></td>
-        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].warningThreshold}}</td>
-        <td *ngIf="product.warehouseProducts[0]==null"></td>
-        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].totalCount}}</td>
-        <td *ngIf="product.warehouseProducts[0]==null"></td>
-        <td *ngIf="product.warehouseProducts[0]">{{product.warehouseProducts[0].expectedCount}}</td>
-        <td *ngIf="product.warehouseProducts[0]==null"></td>
-
-
+      <tr *ngFor="let product of returnedArray">
+        <td>{{"damaged.reasonList."+product.reason |translate}}</td>
+        <td>{{c.formatDate(product.date)}}</td>
         <td>
           <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
             {{"client.buttons.edit"|translate}}
           </button>
-          <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
-          <!--{{"product.buttons.delete"|translate}}-->
-          <!--</button>-->
-        </td>
-      </tr>
-    </tbody>
-    <tbody [hidden]="spinnerFlag" *ngIf="isWarningView">
-
-      <tr *ngFor="let product of warningData  ">
-        <td><img *ngIf="product.productAbstract.media" class="product-img" src="{{product.productAbstract.media.thumbnail}}"></td>
-        <td>{{product.productAbstract.nameAr}}</td>
-        <td>{{product.manufacturer.nameAr}}</td>
-        <td>{{product.productAbstract.officialMassMarketPrice}}</td>
-        <td>{{product.productAbstract.officialConsumerPrice}}</td>
-        <td>{{product.threshold}}</td>
-        <td>{{product.warningThreshold}}</td>
-        <td>{{product.totalCount}}</td>
-        <td>{{product.expectedCount}}</td>
-
-        <td>
-          <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
-            {{"client.buttons.edit"|translate}}
-          </button>
-          <!--<button class="btn btn-danger" type="button" (click)="deleteClient(product.id)">-->
-          <!--{{"product.buttons.delete"|translate}}-->
-          <!--</button>-->
         </td>
       </tr>
     </tbody>

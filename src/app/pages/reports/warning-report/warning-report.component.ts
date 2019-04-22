@@ -23,6 +23,8 @@ export class WarningReportComponent implements OnInit {
   selectedProductsIds: string[];
   suppliers = []
   supplierId;
+  thresholdList = ["threshold", "warning", "only-warning"]
+  threshold = "threshold"
   constructor(private router: Router, private productHandler: AbstractProductHandler, private SupplierOrder: SupplierOrdersHandlerService, private supplierHandler: SupplierHandlerService,
     private alert: AlertService) {
 
@@ -52,10 +54,26 @@ export class WarningReportComponent implements OnInit {
       },
         errorCode => this.showError());
   }
+
+  changeThreshold() {
+    this.productHandler.getWarningProd(this.threshold).finally(() => {
+    }).finally(() => {
+
+    }).subscribe(data => {
+      data.forEach(element => {
+        this.newProducts.push(element.productAbstract)
+        this.selectedProducts.push({
+          'count': 0,
+          'buyingPrice': 0,
+          'productAbstractId': element.productAbstractId
+        });
+      });
+    }, errorCode => this.showError());
+  }
   ngOnInit() {
 
     this.getAllSupplier();
-    this.productHandler.getWarningProd().finally(() => {
+    this.productHandler.getWarningProd(this.threshold).finally(() => {
     }).finally(() => {
 
     }).subscribe(data => {

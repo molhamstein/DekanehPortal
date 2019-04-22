@@ -41,7 +41,6 @@ export class SlideListingComponent implements OnInit {
                 }
             }
 
-            console.table(this.allSlides);
         }).subscribe(data => {
             t = data;
         },errorCode => this.showError());

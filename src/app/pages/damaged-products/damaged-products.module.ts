@@ -10,6 +10,7 @@ import {SelectOptionService} from '../../shared/element/select-option.service';
 import {SharedModule} from '../../shared/shared.module';
 import { DamagedProductHandler } from './damaged-products-handler';
 import { NewDamagedProductComponent } from './new-damaged-product/new-damaged-product.component';
+import { ReportDamagedComponent } from './damaged-report/damaged-report.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { NewDamagedProductComponent } from './new-damaged-product/new-damaged-pr
     ],
     declarations: [
         DamagedProductListComponent,
-        NewDamagedProductComponent
+        NewDamagedProductComponent,
+        ReportDamagedComponent
     ], providers: [
         SelectOptionService,
         DamagedProductHandler,

@@ -1,3 +1,4 @@
+import { ConstService } from './../../../services/const.service';
 import { DamagedProductHandler } from './../damaged-products-handler';
 import { DamagedProductModel } from './../damaged-products-model';
 import { Component, NgZone, OnInit } from '@angular/core';
@@ -10,6 +11,14 @@ import { AlertService } from '../../../services/alert.service';
   styleUrls: ['./damaged-product-list.component.css']
 })
 export class DamagedProductListComponent implements OnInit {
+
+
+  allReason = ['expired', 'damaged', 'other']
+  reason = '1'
+  from
+  to
+
+
   unpage = false;
   spinnerFlag: boolean;
   nameOrderDir;
@@ -57,7 +66,7 @@ export class DamagedProductListComponent implements OnInit {
 
   private eventOptions: boolean | { capture?: boolean, passive?: boolean };
 
-  constructor(private DamagedProductHandler: DamagedProductHandler, private router: Router, private alert: AlertService, private ngZone: NgZone) {
+  constructor(private c: ConstService, private DamagedProductHandler: DamagedProductHandler, private router: Router, private alert: AlertService, private ngZone: NgZone) {
     this.getAllCats();
     // this.getAllMans();
 
@@ -81,7 +90,7 @@ export class DamagedProductListComponent implements OnInit {
   }
 
   editProduct(id: string) {
-    this.router.navigate(['/abstract-products/edit/' + id]);
+    this.router.navigate(['/damaged/edit/' + id]);
   }
 
 
@@ -221,7 +230,7 @@ export class DamagedProductListComponent implements OnInit {
   }
 
   filterBox(event) {
-    this.isWarningView=false;
+    this.isWarningView = false;
     let value = event.target.value;
     if (value == '') {
       this.getAllProducts();
@@ -321,32 +330,19 @@ export class DamagedProductListComponent implements OnInit {
   }
 
   setFilters() {
-    this.isWarningView=false;
     this.spinnerFlag = true;
     let filters = [];
 
 
-    if (this.cat != '1') {
-      filters.push({ name: 'categoryId', value: this.cat });
+    if (this.reason != '1') {
+      filters.push({ name: 'reason', value: this.reason });
     }
-    if (this.subcat != '1') {
-      filters.push({ name: 'subCategoryId', value: this.subcat });
-    }
-    if (this.man != '1') {
-      filters.push({ name: 'manufacturerId', value: this.man });
-    }
-    if (this.availableTo != '1') {
-      filters.push({ name: 'availableTo', value: this.availableTo });
-    }
-    if (this.status != '1') {
-      filters.push({ name: 'status', value: this.status });
-    }
-    if (this.isOffer != undefined) {
-      filters.push({ name: 'isOffer', value: this.isOffer });
-    }
-    if (this.isFeatured != undefined) {
-      filters.push({ name: 'isFeatured', value: this.isFeatured });
-    }
+    if (this.from)
+      filters.push({ name: "date", value: { gt: new Date(this.from) } })
+    if (this.to)
+      filters.push({ name: "date", value: { lt: new Date(this.to) } })
+
+
     localStorage.setItem('filters', JSON.stringify(filters));
     localStorage.removeItem('search');
     if (filters != [] && filters.length != 0) {
@@ -372,7 +368,7 @@ export class DamagedProductListComponent implements OnInit {
 
   emptyFields() {
     localStorage.removeItem('filters');
-    this.isWarningView=false;
+    this.isWarningView = false;
     localStorage.removeItem('search');
     this.router.navigate(['/abstract-products/list']);
   }

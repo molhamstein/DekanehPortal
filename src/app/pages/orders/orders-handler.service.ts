@@ -58,11 +58,18 @@ export class OrdersHandlerService {
         return this.apiService.post('/orders/' + orderId + '/assignDelivery', body, options).map(this.extractData).catch(this.handleError);
     }
 
-    assignPack(user, orderId) {
+    assignWarehouseKeeper(user, orderId) {
         let body = JSON.stringify(user);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/orders/' + orderId + '/assignPack', body, options).map(this.extractData).catch(this.handleError);
+        return this.apiService.post('/orders/' + orderId + '/assignWarehouse', body, options).map(this.extractData).catch(this.handleError);
+    }
+
+
+    assignPack(orderId) {
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignPack', {}, options).map(this.extractData).catch(this.handleError);
     }
 
 
@@ -93,6 +100,28 @@ export class OrdersHandlerService {
             .map(this.extractData).catch(this.handleError);
     }
 
+
+    getKeeperByString(str: string): Observable<UserModel[]> {
+        let param = new URLSearchParams();
+        let rolesString = '';
+        for (let role of this.roleIds) {
+            rolesString = rolesString + '{"roleIds":{"like":"' + role + '"}},';
+        }
+        // param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
+        param.append('filter', '{"where":{"and":[' + rolesString + ' {"username": {"like": "' + str + '"}}]},"limit":"10"}');
+        return this.apiService.get('/users', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
+
+    getUserByString(type, str) {
+        let param = new URLSearchParams();
+        param.append('type', type);
+        param.append('name', str);
+        return this.apiService.get('/users/type', param)
+            .map(this.extractData).catch(this.handleError);
+
+    }
     getUserWearByString(str: string): Observable<UserModel[]> {
         let param = new URLSearchParams();
         let rolesString = '';

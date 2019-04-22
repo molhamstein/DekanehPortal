@@ -35,6 +35,21 @@ export interface Menu {
 export class MenuItems {
     MENUITEMS = [
         {
+            label: '',
+            main: [
+                {
+                    state: 'manufacturers',
+                    short_label: 'M',
+                    name: 'mainMenu.Manufacturers.main',
+                    type: 'custom',
+                    icon: 'ti-user',
+                    children: [
+
+                    ]
+                }
+            ]
+        },
+        {
             label: 'mainMenu.main',
             main: [
                 {
@@ -289,6 +304,10 @@ export class MenuItems {
                         {
                             state: 'add',
                             name: 'mainMenu.Damaged.add'
+                        },
+                        {
+                            state: 'report',
+                            name: 'mainMenu.Damaged.report'
                         },
                     ]
                 }

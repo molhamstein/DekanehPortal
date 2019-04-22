@@ -16,9 +16,11 @@ export class AbstractProductHandler {
             .map(this.extractData).catch(this.handleError);
     }
 
-    getWarningProd() {
+    getWarningProd(threshold) {
         var filter = { "include": "manufacturer" }
-        return this.apiService.get('/productAbstracts/warnings')
+        let param = new URLSearchParams();
+        param.append('threshold', threshold);
+        return this.apiService.get('/productAbstracts/under', param)
             .map(this.extractData).catch(this.handleError);
     }
 

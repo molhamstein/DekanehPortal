@@ -1,56 +1,64 @@
 table {
-    direction: rtl;
+  direction: rtl;
 }
 
 .btn {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 .btn:first-child {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
-td, th {
-    text-align: center;
+td,
+th {
+  text-align: center;
 }
 
 .badge {
-    padding: 6px 9px;
-    font-size: 13px;
-    font-weight: 600;
+  padding: 6px 9px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .clickable-th {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .search-box {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .per-page-sec {
-    float: right;
-    margin-right: 20px;
+  float: right;
+  margin-right: 20px;
 }
 
 #perpage {
-    display: inline-block;
-    width: 80px;
-    margin-right: 10px;
+  display: inline-block;
+  width: 80px;
+  margin-right: 10px;
 }
 
 .product-img {
-    height: 64px;
-    max-width: 90px;
+  height: 64px;
+  max-width: 90px;
 }
 
 .filter-btns {
-    direction: rtl;
-    text-align: right;
-    margin-bottom: 20px;
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 20px;
 }
 
-.filter-btns > .btn {
-    margin-left: 10px;
-    padding: 7px 11px;
+.filter-btns>.btn {
+  margin-left: 10px;
+  padding: 7px 11px;
+}
+
+.worningProd {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  color: #fc6180;
 }

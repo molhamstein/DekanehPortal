@@ -8,21 +8,25 @@
       "cancel": "إلفاء",
       "message": "هل انت متاكد من الحذف؟",
       "cancelMessage": "هل انت متاكد من إلفاء الطلب؟",
-      "deliverMessage":"هل انت متاكد من توصيل الطلب؟"
+      "deliverMessage": "هل انت متاكد من توصيل الطلب؟"
     }
   },
-  "dashbored":{
-    "finished":"out of stock",
-    "worning":"low stock",
-    "totalCount":"in stock",
-    "pendingOrder":"الطلبات المعلقة",
-    "wherhouseOrder":"الطلبات في المستودع",
-    "diliveryOrder":"الطلبات في التوصيل",
-    "finishOrder":"الطلبات انتهت"    
+  "dashbored": {
+    "finished": "out of stock",
+    "worning": "low stock",
+    "totalCount": "in stock",
+    "pendingOrder": "الطلبات المعلقة",
+    "wherhouseOrder": "الطلبات في المستودع",
+    "diliveryOrder": "الطلبات في التوصيل",
+    "finishOrder": "الطلبات انتهت"
   },
   "mainMenu": {
     "main": "القائمة الرئيسية",
-    
+    "customItem":{
+      "products":"المنتجات",
+      "abstractProducts":"المنتجات الرئيسية",
+      "orders":"الطلبات"
+    },
     "Manufacturers": {
       "main": "المصانع",
       "add": "إضافة مصنع جديد",
@@ -41,7 +45,8 @@
     "Damaged": {
       "main": "المتلفات",
       "add": "إضافة عملية إتلاف",
-      "viewAll": "عرض جميع الإتلافات"
+      "viewAll": "عرض جميع الإتلافات",
+      "report": "تقرير"
     },
     "SupplierOrders": {
       "main": "الطلبات الخارجية",
@@ -125,7 +130,17 @@
     "note": "ملاحظة",
     "createdAt": "تاريخ الانشاء",
     "addBarcode": "إضافة شيفرة",
-    "code": "الرمز"
+    "code": "الرمز",
+    "modalStatus": {
+      "edit": "تعديل",
+      "picked": "عملية التعبئة",
+      "toWherhouseKeeper": "امين المتسودع",
+      "toWherhouse": "عملية التعبئة",
+      "dilivery": "عملية توصيل",
+      "submitKeeper": "تثبيت امين المستودع",
+      "submitPikker": "تثبيت التعبئة",
+      "submitDilivery": "تثبيت التوصيل"
+    }
   },
   "Manufactures": {
     "creationDate": "تاريخ الاضافة",
@@ -195,11 +210,17 @@
       "activated": "مفعل",
       "deactivated": "غير مفعل"
     },
+    "clientTypes": {
+      "all": "الكل",
+      "horeca": "منشآت",
+      "wholesale": "دكان"
+    },
     "listing": {
       "target": "الرابط/المنتج",
       "type": "النوع",
       "image": "الصورة",
-      "status": "الحالة"
+      "status": "الحالة",
+      "clientType": "نوع الزبون"
     },
     "types": {
       "product": "منتج",
@@ -217,6 +238,7 @@
         "image": "ادخل رابط الاعلان"
       },
       "validations": {
+        "clientType": "نوع الزبون",
         "image": "الرجاء ادخال رابط صحيح للاعلان",
         "product": "الرجاء اختيار المنتج"
       }
@@ -449,6 +471,12 @@
   },
   "damaged": {
     "reason": "السبب",
+    "reasonList": {
+      "expired": "نتهاء الصلاحية",
+      "damaged": "تلف",
+      "other": "سبب أخر"
+
+    },
     "date": "التاريخ",
     "count": "الكمية",
     "abs": "المنتج الرئيسي",
@@ -479,6 +507,7 @@
     }
   },
   "product": {
+    "warningAbstractProd": "لا يوجد منتج رئيسي",
     "addImg": "اختر صورة",
     "name": "الاسم",
     "pack": "الحزمة",
@@ -493,6 +522,11 @@
     "statustext": "الحالة",
     "apply": "تطبيق",
     "cancel": "تفريغ",
+    "hasProductAbstract": "تملك منتج رئيسي",
+    "hasProductAbstractList": {
+      "yes": "نعم",
+      "no": "لا"
+    },
     "status": {
       "pending": "معلق",
       "available": "متوفر",
@@ -579,16 +613,16 @@
     "createDate": "تاريخ الإنشاء",
     "supplier": "المورد",
     "status": "الحالة",
-    "from":"من",
-    "to":"إلى",
+    "from": "من",
+    "to": "إلى",
     "statusText": {
       "pending": "معلق",
-      "canceled":"ملغاة",
-      "delivered":"تم التوصيل"
+      "canceled": "ملغاة",
+      "delivered": "تم التوصيل"
     },
-    "buttons":{
-      "deliver":"التوصيل",
-      "cancel":"إلغاء"
+    "buttons": {
+      "deliver": "التوصيل",
+      "cancel": "إلغاء"
     },
 
     "form": {
@@ -639,11 +673,17 @@
     "threshold": "العتبة",
     "warningThreshold": " عتبة التحذير",
     "totalCount": "العدد الكلي",
+    "totalCost": "التكلفة الكلية",
     "expectedCount": "العدد المتوقع",
     "image": "الصورة",
     "apply": "تطبيق",
     "cancel": "تفريغ",
     "viewWarningProd": "عرض المنتجات القليلة",
+    "thresholdList": {
+      "threshold": "out of stock",
+      "warning": "low stock",
+      "only-warning": "low stock only"
+    },
     "form": {
       "controls": {
         "prodName": "اسم المنتج",
@@ -712,6 +752,11 @@
         "packed": "تم التعبئة",
         "inWarehouse": "تم اسناده لمستودع"
       },
+      "officials": "المسؤولون",
+      "officialWarehouseKeeper": "أمين المستودع",
+      "officialPackagerMember": "عملية التعبئة",
+      "officialDeliveryMember": "مسؤول عملية التوصيل",
+      "officialDelivery": "عملية التسليم",
       "countTotal": "العدد الكلي للمنتجات",
       "total": "القيمة الإجمالية",
       "totalError": "الحد الادنى للقيمة الاجمالية هو 20000",

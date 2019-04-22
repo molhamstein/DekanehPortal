@@ -7,7 +7,6 @@
   </div>
   <div class="app-modal-body">
     <form [formGroup]="prodBarcodeForm">
-      {{prodBarcodeForm.value | json}}
       <div class="form-group">
         <label for="notes">{{"modal.code"|translate}}</label>
         <input class="form-control" formControlName="code" id="notes" placeholder="{{'modal.code'|translate}}">

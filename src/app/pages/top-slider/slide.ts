@@ -5,7 +5,7 @@ export class Slide {
     status: string;
     creationDate: string;
     id: string;
-
+    clientType:string
     constructor() {
 
     }

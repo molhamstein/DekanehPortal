@@ -29,8 +29,17 @@ export class DamagedProductHandler {
             .map(this.extractData).catch(this.handleError);
     }
 
+    getReportDaily(from, to): Observable<any> {
+        let param = new URLSearchParams();
+        param.append("from", new Date(from).toString())
+        param.append("to", new Date(to).toString())
+        return this.apiService.get('/damages/daily', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
+
     getProductsCount(): Observable<number> {
-        return this.apiService.get('/productAbstracts/count')
+        return this.apiService.get('/damages/count')
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -41,17 +50,21 @@ export class DamagedProductHandler {
             if (query != '') {
                 query = query + ',';
             }
-            query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
+            if (filter['name'] == 'date') {
+                query = query + '{"' + filter['name'] + '":' + JSON.stringify(filter['value']) + '}';
+            }
+            else
+                query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
         }
-        param.append('filter', '{ "include":  "manufacturer","where":{"and": [ ' + query + ']}}');
-        return this.apiService.get('/productAbstracts', param)
+        param.append('filter', '{"where":{"and": [ ' + query + ']}}');
+        return this.apiService.get('/damages', param)
             .map(this.extractData).catch(this.handleError);
     }
 
     getPerPageProducts(perPage: number, currentPage: number) {
         let param = new URLSearchParams();
-        param.append('filter', '{"include":  "manufacturer", "order": "creationDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
-        return this.apiService.get('/productAbstracts', param)
+        param.append('filter', '{"order": "creationDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + '}');
+        return this.apiService.get('/damages', param)
             .map(this.extractData).catch(this.handleError);
     }
 
@@ -63,7 +76,7 @@ export class DamagedProductHandler {
     }
 
     getProductById(id: string): Observable<any> {
-        return this.apiService.get('/productAbstracts/' + id + '?[filter][include]=manufacturer')
+        return this.apiService.get('/damages/' + id)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -134,7 +147,7 @@ export class DamagedProductHandler {
         let body = JSON.stringify(data);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/productAbstracts', body, options)
+        return this.apiService.post('/damages', body, options)
             .map(success => success.status)
             .catch(this.handleError);
     }
@@ -142,7 +155,7 @@ export class DamagedProductHandler {
     updateProduct(product: DamagedProductModel): Observable<number> {
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.put('/productAbstracts/' + product.id, product, options)
+        return this.apiService.put('/damages/' + product.id, product, options)
             .map(success => success.status)
             .catch(this.handleError);
     }

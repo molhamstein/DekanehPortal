@@ -1,4 +1,14 @@
 <div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <!-- <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label> -->
+      <select [(ngModel)]="threshold" (change)="changeThreshold()" class="form-control" id="abstracts">
+        <option *ngFor="let threshold of thresholdList" [value]="threshold">
+          {{'abstractProduct.thresholdList.'+threshold|translate}}
+        </option>
+      </select>
+    </div>
+  </div>
   <div class="col-sm-6">
     <div class="form-group">
       <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
@@ -20,7 +30,7 @@
         [ngModelOptions]="{standalone: true}" id="products">
       </ng-select>
       <label *ngIf="selectedProducts.length==0 && processValidation"
-      class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        class="text-danger">{{'product.form.validations.blank'|translate}}</label>
     </div>
   </div>
 </div>
@@ -64,10 +74,10 @@
 </div>
 
 <div class="row">
-    <div class="col-sm submit-col">
-      <button  [disabled]="submitted" (click)="createSupplierOrder()" class="btn btn-success" >
-        {{"staff.buttons.add"|translate}}
-      </button>
-      
-    </div>
+  <div class="col-sm submit-col">
+    <button [disabled]="submitted" (click)="createSupplierOrder()" class="btn btn-success">
+      {{"staff.buttons.add"|translate}}
+    </button>
+
   </div>
+</div>

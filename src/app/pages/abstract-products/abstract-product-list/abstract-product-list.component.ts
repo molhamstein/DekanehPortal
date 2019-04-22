@@ -98,23 +98,25 @@ export class AbstractProductListComponent implements OnInit {
   }
 
   getWarningProd() {
-    this.isWarningView = true;
-    let as: AbstractProductModel[] = [];
-    this.abstractProductHandler.getWarningProd().finally(() => {
-      this.unpage = true;
-      this.allProduct = as;
-      this.returnedArray = as;
+    this.router.navigate(['/reports/warning']);
 
-    }).finally(() => {
-      if (localStorage.getItem('productsScreenY')) {
-        setTimeout(() => {
-          window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+    // this.isWarningView = true;
+    // let as: AbstractProductModel[] = [];
+    // this.abstractProductHandler.getWarningProd().finally(() => {
+    //   this.unpage = true;
+    //   this.allProduct = as;
+    //   this.returnedArray = as;
 
-        }, 1000);
-      }
-    }).subscribe(data => {
-      this.warningData = data;
-    }, errorCode => this.showError());
+    // }).finally(() => {
+    //   if (localStorage.getItem('productsScreenY')) {
+    //     setTimeout(() => {
+    //       window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+
+    //     }, 1000);
+    //   }
+    // }).subscribe(data => {
+    //   this.warningData = data;
+    // }, errorCode => this.showError());
   }
 
   orderByName() {
@@ -252,7 +254,7 @@ export class AbstractProductListComponent implements OnInit {
   }
 
   filterBox() {
-    this.isWarningView=false;
+    this.isWarningView = false;
     let value = this.searchKey;
     if (value == '') {
       this.getAllProducts();
@@ -352,7 +354,7 @@ export class AbstractProductListComponent implements OnInit {
   }
 
   setFilters() {
-    this.isWarningView=false;
+    this.isWarningView = false;
     this.spinnerFlag = true;
     let filters = [];
 
@@ -403,7 +405,7 @@ export class AbstractProductListComponent implements OnInit {
 
   emptyFields() {
     localStorage.removeItem('filters');
-    this.isWarningView=false;
+    this.isWarningView = false;
     localStorage.removeItem('search');
     this.router.navigate(['/abstract-products/list']);
   }

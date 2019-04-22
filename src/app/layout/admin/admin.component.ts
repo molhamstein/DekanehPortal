@@ -1,13 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
-import {MenuItems} from '../../shared/menu-items/menu-items';
-import {ApiService} from '../../services/api.service';
-import {Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
-import {Observable} from 'rxjs/Observable';
-import {NotificationsService} from '../../services/notifications.service';
-import {ConstService} from '../../services/const.service';
-import {not} from 'rxjs/util/not';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
+import { MenuItems } from '../../shared/menu-items/menu-items';
+import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { NotificationsService } from '../../services/notifications.service';
+import { ConstService } from '../../services/const.service';
+import { not } from 'rxjs/util/not';
 
 @Component({
     selector: 'app-admin',
@@ -51,12 +51,12 @@ import {not} from 'rxjs/util/not';
         ]),
         trigger('fadeInOutTranslate', [
             transition(':enter', [
-                style({opacity: 0}),
-                animate('400ms ease-in-out', style({opacity: 1}))
+                style({ opacity: 0 }),
+                animate('400ms ease-in-out', style({ opacity: 1 }))
             ]),
             transition(':leave', [
-                style({transform: 'translate(0)'}),
-                animate('400ms ease-in-out', style({opacity: 0}))
+                style({ transform: 'translate(0)' }),
+                animate('400ms ease-in-out', style({ opacity: 0 }))
             ])
         ])
     ]
@@ -150,19 +150,19 @@ export class AdminComponent implements OnInit {
         this.innerHeight = scrollHeight + 'px';
         this.windowWidth = window.innerWidth;
         this.setMenuAttributes(this.windowWidth);
-      setTimeout(() => {
-        this.getNewNotiCount();
-        this.getNewNoti().subscribe(data => {
-          this.newNoti = data;
-        });
-      }, 3000);
+        setTimeout(() => {
+            this.getNewNotiCount();
+            this.getNewNoti().subscribe(data => {
+                this.newNoti = data;
+            });
+        }, 3000);
     }
 
-  getNewNotiCount(sound?) {
+    getNewNotiCount(sound?) {
         return this.NotiHandler.getNewNotiCount().subscribe(data => {
-          if ((this.notiCount < data['count'])) {
-            this.playAudio();
-          }
+            if ((this.notiCount < data['count'])) {
+                this.playAudio();
+            }
             this.notiCount = data['count'];
 
         });
@@ -173,21 +173,21 @@ export class AdminComponent implements OnInit {
 
     }
 
-  playAudio() {
-    let audio = new Audio();
-    audio.src = '../../../assets/audio/noty.mp3';
-    audio.load();
-    audio.play();
-  }
+    playAudio() {
+        let audio = new Audio();
+        audio.src = '../../../assets/audio/noty.mp3';
+        audio.load();
+        audio.play();
+    }
     ngOnInit() {
         this.username = localStorage.getItem('username');
 
         this.setBackgroundPattern('pattern2');
-      this.subscr = Observable.interval(30000)
+        this.subscr = Observable.interval(30000)
             .flatMap(() => this.getNewNoti())
             .subscribe(data => {
                 this.newNoti = data;
-              this.getNewNotiCount(true);
+                this.getNewNotiCount(true);
 
             });
 
@@ -201,7 +201,9 @@ export class AdminComponent implements OnInit {
     }
 
     goToHell(noty) {
-        if (noty.type == 'order') {
+        if (noty.type == null)
+            this.router.navigate([noty]);
+        else if (noty.type == 'order') {
             this.router.navigate(['/orders/management']);
 
         } else if (noty.type == 'client') {
@@ -211,7 +213,7 @@ export class AdminComponent implements OnInit {
             this.router.navigate(['/ratings/list']);
 
         } else if (noty.type == 'forgetPassword') {
-          this.router.navigate(['/client/edit/' + noty.clientId]);
+            this.router.navigate(['/client/edit/' + noty.clientId]);
 
         }
     }

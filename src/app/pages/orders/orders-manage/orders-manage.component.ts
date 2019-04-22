@@ -75,6 +75,8 @@ export class OrdersManageComponent implements OnInit {
   tP: Array<IOption> = [];
   ul: Array<IOption> = [];
   deul: Array<IOption> = [];
+  deulwarehousePackager: Array<IOption> = [];
+  deulwarehouseKeeper: Array<IOption> = [];
   wearul: Array<IOption> = [];
   products: any[] = [];
   newProducts: any[] = [];
@@ -147,7 +149,75 @@ export class OrdersManageComponent implements OnInit {
     this.clientIdAddNote = clientId
     modal.show()
   }
+  orderModel
+  statusModel(order, modal) {
+    this.orderModel = Object.assign({}, order);
+    if (order.warehouseKeeperId != undefined && order.warehouseKeeperId != '') {
+      var name = ""
+      if (this.orderModel.warehouseKeeper.ownerName)
+        name = this.orderModel.warehouseKeeper.ownerName
+      else
+        name = this.orderModel.warehouseKeeper.username
 
+      this.Handler.getUserByString('warehouseKeeper', name).subscribe(data => {
+        this.deulwarehouseKeeper = [];
+        for (let u of data) {
+          if (u.ownerName)
+            this.deulwarehouseKeeper.push({ label: u.ownerName, value: u.id });
+          else
+            this.deulwarehouseKeeper.push({ label: u.username, value: u.id });
+        }
+        setTimeout(() => {
+          this.IOdewarehouseKeeper = this.deulwarehouseKeeper;
+        }, 100);
+      }, errorCode => this.showError()
+      );
+    }
+    if (order.packagerMemberId != undefined && order.packagerMemberId != '') {
+      var name = ""
+      if (this.orderModel.packagerMember.ownerName)
+        name = this.orderModel.packagerMember.ownerName
+      else
+        name = this.orderModel.packagerMember.username
+
+      this.Handler.getUserByString('warehousePackager', name).subscribe(data => {
+        this.deulwarehousePackager = [];
+        for (let u of data) {
+          if (u.ownerName)
+            this.deulwarehousePackager.push({ label: u.ownerName, value: u.id });
+          else
+            this.deulwarehousePackager.push({ label: u.username, value: u.id });
+
+        }
+        setTimeout(() => {
+          this.IOPickedUser = this.deulwarehousePackager;
+        }, 100);
+      }, errorCode => this.showError()
+      );
+    }
+    if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
+      var name = ""
+      if (this.orderModel.deliveryMember.ownerName)
+        name = this.orderModel.deliveryMember.ownerName
+      else
+        name = this.orderModel.deliveryMember.username
+      this.Handler.getUserByString('deliverer', name).subscribe(data => {
+        this.deul = [];
+        for (let u of data) {
+          if (u.ownerName)
+            this.deul.push({ label: u.ownerName, value: u.id });
+          else
+            this.deul.push({ label: u.username, value: u.id });
+        }
+        setTimeout(() => {
+          this.IOdeusers = this.deul;
+        }, 100);
+      }, errorCode => this.showError()
+      );
+
+    }
+    modal.show()
+  }
   download(orederId) {
     this.Handler.downloadBill(orederId).subscribe(
       successCode => {
@@ -317,39 +387,8 @@ export class OrdersManageComponent implements OnInit {
       }, 100);
     }, errorCode => { this.showError() }
     );
-    // if (order.warehouseId != undefined && order.warehouseId != '') {
 
-    //   this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
 
-    //     this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
-    //       this.deul = [];
-    //       for (let u of data) {
-    //         this.deul.push({ label: u.username, value: u.id });
-    //       }
-    //       setTimeout(() => {
-    //         this.IOdeusers = this.deul;
-    //       }, 100);
-    //     }, errorCode => this.showError()
-    //     );
-    //   }).subscribe(d => this.delMan = d, errorCode => this.showError());
-    // }
-
-    if (order.deliveryMemberId != undefined && order.deliveryMemberId != '') {
-
-      this.userHandler.getStaffUserById(order.deliveryMemberId).finally(() => {
-
-        this.Handler.getٍStaffByString(this.delMan.username).subscribe(data => {
-          this.deul = [];
-          for (let u of data) {
-            this.deul.push({ label: u.username, value: u.id });
-          }
-          setTimeout(() => {
-            this.IOdeusers = this.deul;
-          }, 100);
-        }, errorCode => this.showError()
-        );
-      }).subscribe(d => this.delMan = d, errorCode => this.showError());
-    }
     this.tP = [];
 
     this.selectedEditProductsIds = [];
@@ -582,11 +621,80 @@ export class OrdersManageComponent implements OnInit {
     );
   }
 
-  searchDeUsers(str) {
-    this.Handler.getٍStaffByString(str).subscribe(data => {
+  IOdewarehouseKeeper: Array<IOption> = [];
+
+  submitKeeper(model) {
+    this.Handler.assignWarehouseKeeper({ 'userId': this.orderModel.warehouseKeeperId }, this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
+
+    }, errorCode => this.showError());
+  }
+
+  submitPikker(model) {
+    this.Handler.assignPack(this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
+
+    }, errorCode => this.showError());
+  }
+
+  submitDilivery(model) {
+    this.Handler.assignDelivery({ 'userId': this.orderModel.deliveryMemberId }, this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
+
+    }, errorCode => this.showError());
+  }
+
+
+  searchWearKeper(str) {
+    this.Handler.getUserByString('warehouseKeeper', str).subscribe(data => {
       this.deul = [];
       for (let u of data) {
-        this.deul.push({ label: u.username, value: u.id });
+        if (u.ownerName)
+          this.deul.push({ label: u.ownerName, value: u.id });
+        else
+          this.deul.push({ label: u.username, value: u.id });
+
+      }
+      setTimeout(() => {
+        this.IOdewarehouseKeeper = this.deul;
+      }, 100);
+    }, errorCode => this.showError()
+    );
+  }
+
+  IOPickedUser: Array<IOption> = [];
+
+  searchPicked(str) {
+    this.Handler.getUserByString('warehousePackager', str).subscribe(data => {
+      this.deul = [];
+      for (let u of data) {
+        if (u.ownerName)
+          this.deul.push({ label: u.ownerName, value: u.id });
+        else
+          this.deul.push({ label: u.username, value: u.id });
+
+
+      }
+      setTimeout(() => {
+        this.IOPickedUser = this.deul;
+      }, 100);
+    }, errorCode => this.showError()
+    );
+  }
+
+
+  searchDeliver(str) {
+    this.Handler.getUserByString('deliverer', str).subscribe(data => {
+      this.deul = [];
+      for (let u of data) {
+        if (u.ownerName)
+          this.deul.push({ label: u.ownerName, value: u.id });
+        else
+          this.deul.push({ label: u.username, value: u.id });
+
       }
       setTimeout(() => {
         this.IOdeusers = this.deul;
@@ -599,7 +707,11 @@ export class OrdersManageComponent implements OnInit {
     this.Handler.getUserWearByString(str).subscribe(data => {
       this.wearul = [];
       for (let u of data) {
-        this.wearul.push({ label: u.ownerName, value: u.id });
+        if (u.ownerName)
+          this.wearul.push({ label: u.ownerName, value: u.id });
+        else
+          this.wearul.push({ label: u.username, value: u.id });
+
       }
       setTimeout(() => {
         this.IOweausers = this.wearul;
@@ -626,7 +738,7 @@ export class OrdersManageComponent implements OnInit {
   searchProducts(str, id) {
     this.tP = [];
     if (str != '') {
-      this.productHandler.searchByUser(str, this.orderUser.clientType)
+      this.productHandler.searchByUser(str, this.orderUser.clientType, "true")
         .subscribe(data => {
           for (let pro of data) {
             this.tP.push({ label: pro.nameAr, value: pro._id });
@@ -712,7 +824,7 @@ export class OrdersManageComponent implements OnInit {
           }, errorCode => this.showError());
         }
         else if (order.status == 'packed') {
-          this.Handler.assignPack({ 'userId': order.packagerMemberId }, order.id).subscribe(() => {
+          this.Handler.assignPack(order.id).subscribe(() => {
           }, errorCode => this.showError());
         }
         // this.cancelOrder();

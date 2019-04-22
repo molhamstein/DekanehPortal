@@ -22,8 +22,10 @@ export class ProductListComponent implements OnInit {
   status = '1';
   isOffer;
   isFeatured;
+  hasProductAbstract="1"
   availableList = ['both', 'retailCostumer', 'wholesale', 'horeca'];
   statusList = ['available', 'unavailable', 'pending'];
+  hasProductAbstractList = ['yes', 'no'];
   offerList = ['both', 'product', 'offer'];
   featuredList = ['both', 'isFeatured', 'notFeatured'];
   manOrderDir;
@@ -322,6 +324,9 @@ export class ProductListComponent implements OnInit {
     let filters = [];
 
 
+    if (this.hasProductAbstract != '1') {
+      filters.push({ name: 'productAbstractId', value: this.hasProductAbstract });
+    }
     if (this.cat != '1') {
       filters.push({ name: 'categoryId', value: this.cat });
     }

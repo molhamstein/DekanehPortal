@@ -38,6 +38,74 @@
   </div>
 </app-modal-basic>
 
+<app-modal-basic #modalStatus>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.modalStatus.edit'|translate}}</h4>
+    <!-- <h4 class="modal-title">{{'modal.modalStatus.picked'|translate}}</h4>
+    <h4 class="modal-title">{{'modal.modalStatus.dilivery'|translate}}</h4> -->
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalStatus.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <div class="row" style="padding: 5px 10px">
+      <label for="expireDate">{{"modal.modalStatus.toWherhouseKeeper"|translate}}</label>
+      <i *ngIf="orderModel && orderModel.status!='pending'" class="fa fa-check-circle fa-2x cheackStep"></i>
+      <ng-select #select (filterInputChanged)="searchWearKeper($event)" *ngIf="orderModel"
+        [(ngModel)]="orderModel.warehouseKeeperId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+        [options]="IOdewarehouseKeeper">
+      </ng-select>
+      <button *ngIf="orderModel" [disabled]="orderModel.warehouseKeeperId==undefined"
+        style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+        (click)="submitKeeper(modalStatus)">{{'modal.modalStatus.submitKeeper'|translate}}</button>
+
+    </div>
+
+    <div class="separator" *ngIf="orderModel && orderModel.status!='pending'"></div>
+
+    <div class="row" *ngIf="orderModel && orderModel.status!='pending'" style="padding: 5px 10px">
+
+      <label for="expireDate">{{"modal.modalStatus.picked"|translate}}</label>
+      <i class="fa fa-check-circle fa-2x cheackStep"
+        *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"></i>
+      <!-- <ng-select #select (filterInputChanged)="searchPicked($event)" *ngIf="orderModel"
+        [(ngModel)]="orderModel.packagerMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+        [options]="IOPickedUser">
+      </ng-select> -->
+      <div style="width: 100%;">
+        <button *ngIf="orderModel" style="margin: 5px 0px;padding: 2px 5px;" type="button"
+          class="btn btn-primary waves-effect waves-light"
+          (click)="submitPikker(modalStatus)">{{'modal.modalStatus.submitPikker'|translate}}</button>
+      </div>
+    </div>
+
+    <div class="separator" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"></div>
+
+    <div class="row" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"
+      style="padding: 5px 10px">
+      <label for="expireDate">{{"modal.modalStatus.dilivery"|translate}}</label>
+      <i class="fa fa-check-circle fa-2x cheackStep"
+        *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='packed'"></i>
+      <ng-select #select (filterInputChanged)="searchDeliver($event)" *ngIf="orderModel"
+        [(ngModel)]="orderModel.deliveryMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+        (selected)="DeuserSelected($event,OrderToEdit)" [options]="IOdeusers">
+      </ng-select>
+      <button *ngIf="orderModel" [disabled]="orderModel.deliveryMemberId==undefined"
+        style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+        (click)="submitDilivery(modalStatus)">{{'modal.modalStatus.submitDilivery'|translate}}</button>
+
+    </div>
+
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalStatus.hide()">{{'modal.close'|translate}}</button>
+    <!-- <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addNote(modalStatus)">{{'modal.add'|translate}}</button> -->
+  </div>
+</app-modal-basic>
+
 <div class="row">
   <div class="col-sm-12 center-div">
     <button *ngIf="!addNew&&showNewBtn" (click)="addNew=!addNew;cancelOrder();"
@@ -168,11 +236,11 @@
         <th>
           {{'orders.table.code'|translate}}
         </th>
-        <th>
+        <!-- <th>
           {{'orders.table.packagedTap'|translate}}
-        </th>
+        </th> -->
         <th>
-          {{'orders.table.deliveredTap'|translate}}
+          {{'orders.table.officials'|translate}}
         </th>
         <th>
           {{'orders.table.coupon'|translate}}
@@ -252,24 +320,55 @@
             {{order.code}}
           </td>
 
-          <td class="no-padding-td">
+          <!-- <td class="no-padding-td">
             <ul class="list-group table-ul">
               <li><span class="list-group-item ">{{c.formatDate(order.packDate)}}</span></li>
               <li><span class="list-group-item ">{{order.packagerMember?.username}}</span></li>
             </ul>
-          </td>
+          </td> -->
           <td class="no-padding-td">
-            <ul class="list-group table-ul">
-              <li><span class="list-group-item ">{{c.formatDate(order.deliveredDate)}}</span></li>
-              <li><span class="list-group-item ">{{c.formatDate(order.assignedDate)}}</span></li>
-              <li><span class="list-group-item ">{{order.deliveryMember?.username}}</span></li>
-            </ul>
+            <p style="margin: 0px;font-weight: bold" *ngIf="order.warehouseKeeperId">
+              {{"orders.table.officialWarehouseKeeper"|translate}}
+            </p>
+            <p style="margin: 0px;" *ngIf="order.warehouseKeeperId">
+              <span class="badge badge-success">
+
+                {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>
+            </p>
+            <p *ngIf="order.warehouseKeeperId">{{c.formatDate(order.warehouseDate)}}</p>
+
+
+
+            <p style="margin: 0px;font-weight: bold" *ngIf="order.packDate">
+              {{"orders.table.officialPackagerMember"|translate}}
+            </p>
+            <!-- <p style="margin: 0px;" *ngIf="order.packagerMemberId">{{order.packagerMember.ownerName}}</p> -->
+            <p *ngIf="order.packDate">{{c.formatDate(order.packDate)}}</p>
+
+
+
+            <p style="margin: 0px;font-weight: bold" *ngIf="order.deliveryMemberId">
+              {{"orders.table.officialDeliveryMember"|translate}}
+            </p>
+            <p style="margin: 0px;" *ngIf="order.deliveryMemberId">
+              <span class="badge badge-success">
+                {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>
+            </p>
+            <p *ngIf="order.deliveryMemberId">{{c.formatDate(order.assignedDate)}}</p>
+
+            <p style="margin: 0px;font-weight: bold" *ngIf="order.deliveredDate">
+              {{"orders.table.officialDelivery"|translate}}
+            </p>
+            <!-- <p style="margin: 0px;" *ngIf="order.packagerMemberId">{{order.packagerMember.ownerName}}</p> -->
+            <p *ngIf="order.deliveredDate">{{c.formatDate(order.deliveredDate)}}</p>
+
+
           </td>
           <td>
             <span *ngIf="order.coupon">{{order.coupon.value}}<span *ngIf="order.coupon.type=='percent'">%</span></span>
           </td>
           <td>
-            <span class="badge"
+            <span (click)="statusModel(order,modalStatus)" class="badge"
               [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
               + order.status|translate}}</span>
           </td>
@@ -375,7 +474,7 @@
             <td>
               {{OrderToEdit.code}}
             </td>
-            <td class="no-padding-td">
+            <!-- <td class="no-padding-td">
               <ul class="list-group table-ul">
                 <li><span class="list-group-item ">{{c.formatDate(OrderToEdit.packDate)}}</span></li>
                 <li><span class="list-group-item ">
@@ -384,9 +483,6 @@
                       [multiple]="false" (selected)="WearuserSelected($event,OrderToEdit)" [options]="IOweausers">
                     </ng-select>
                   </span></li>
-                <!-- <li *ngIf="OrderToEdit.status!='inWarehouse'"><span class="list-group-item ">
-                    {{OrderToEdit.packagerMember.ownerName}}
-                  </span></li> -->
               </ul>
             </td>
             <td class="no-padding-td">
@@ -401,7 +497,46 @@
                     </ng-select>
                   </span></li>
               </ul>
+            </td> -->
+            <td class="no-padding-td">
+              <p style="margin: 0px;font-weight: bold" *ngIf="order.warehouseKeeperId">
+                {{"orders.table.officialWarehouseKeeper"|translate}}
+              </p>
+              <p style="margin: 0px;" *ngIf="order.warehouseKeeperId">
+                <span class="badge badge-success">
+
+                  {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>
+              </p>
+              <p *ngIf="order.warehouseKeeperId">{{c.formatDate(order.warehouseDate)}}</p>
+
+
+
+              <p style="margin: 0px;font-weight: bold" *ngIf="order.packDate">
+                {{"orders.table.officialPackagerMember"|translate}}
+              </p>
+              <!-- <p style="margin: 0px;" *ngIf="order.packagerMemberId">{{order.packagerMember.ownerName}}</p> -->
+              <p *ngIf="order.packDate">{{c.formatDate(order.packDate)}}</p>
+
+
+
+              <p style="margin: 0px;font-weight: bold" *ngIf="order.deliveryMemberId">
+                {{"orders.table.officialDeliveryMember"|translate}}
+              </p>
+              <p style="margin: 0px;" *ngIf="order.deliveryMemberId">
+                <span class="badge badge-success">
+                  {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>
+              </p>
+              <p *ngIf="order.deliveryMemberId">{{c.formatDate(order.assignedDate)}}</p>
+
+              <p style="margin: 0px;font-weight: bold" *ngIf="order.deliveredDate">
+                {{"orders.table.officialDelivery"|translate}}
+              </p>
+              <!-- <p style="margin: 0px;" *ngIf="order.packagerMemberId">{{order.packagerMember.ownerName}}</p> -->
+              <p *ngIf="order.deliveredDate">{{c.formatDate(order.deliveredDate)}}</p>
+
+
             </td>
+
             <td>
               <input style="width: 85px" [(ngModel)]="OrderToEdit.couponCode" class="form-control"
                 placeholder="{{'orders.new.couponPlaceHolder'|translate}}" type="text"

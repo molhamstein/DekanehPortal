@@ -54,6 +54,8 @@ import { NewDamagedProductComponent } from '../../pages/damaged-products/new-dam
 import { NewSupplierOrderComponent } from '../../pages/supplier-order/new-supplier-order/new-supplier-order.component';
 import { ListSuppliersComponent } from '../../pages/supplier/list-suppliers/list-suppliers.component';
 import { DashboardHandlerService } from '../../pages/dashboard/dashboard-handler.service';
+import { ReportDamagedComponent } from '../../pages/damaged-products/damaged-report/damaged-report.component';
+import { TooltipModule } from 'ngx-bootstrap';
 
 const AppRoutes = [
     {
@@ -254,6 +256,10 @@ const AppRoutes = [
                         path: 'edit/:id',
                         component: NewDamagedProductComponent,
                     },
+                    {
+                        path: 'report',
+                        component: ReportDamagedComponent,
+                    },
                 ],
             },
             {
@@ -315,6 +321,7 @@ const AppRoutes = [
         PagesModule,
         SharedModule,
         FormsModule,
+        TooltipModule,
         // BrowserModule,
         BrowserAnimationsModule,
         ClickOutsideModule,

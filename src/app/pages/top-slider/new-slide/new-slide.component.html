@@ -48,7 +48,7 @@
 
               </div>
 
-                <div class="form-group">
+              <div class="form-group">
                     <label for="status">{{"client.statustext"|translate}}</label>
                     <select [(ngModel)]="slide.status" class="form-control" formControlName="status" id="status">
                         <option *ngFor="let option of statusEnum" [value]="option">
@@ -56,7 +56,16 @@
                         </option>
                     </select>
                 </div>
-            </div>
+
+                <div class="form-group">
+                        <label for="status">{{"slide.form.validations.clientType"|translate}}</label>
+                        <select [(ngModel)]="slide.clientType" class="form-control" formControlName="clientType" id="status">
+                            <option *ngFor="let option of clientTypes" [value]="option">
+                                {{"slide.clientTypes." + option|translate}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
             <div class="col-sm-6">
                 <div class="col-sm-offset-3 img-uploader">
                     <div id="preview">

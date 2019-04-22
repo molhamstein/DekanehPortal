@@ -1,0 +1,70 @@
+<div class="col-md-12 col-xl-12">
+  <app-card [title]="'Email sent'" [cardClass]="'email-sent-card'">
+    <div class="row">
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="datetime-local" [(ngModel)]="from"
+          placeholder="{{'SupplierOrder.from'|translate}}">
+
+
+
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="datetime-local" [(ngModel)]="to"
+          placeholder="{{'SupplierOrder.to'|translate}}">
+
+      </div>
+
+      <button type="button" (click)="getData()" class="btn btn-success">
+        {{"abstractProduct.apply"|translate}}
+      </button>
+    </div>
+
+    <div id="email-sent" style="max-width:100%;height:400px;"></div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped ">
+        <thead>
+          <tr>
+            <th>
+              {{"abstractProduct.image"|translate}}
+
+
+            </th>
+            <th class="clickable-th" (click)="orderByName()">
+              {{"abstractProduct.name"|translate}}
+            
+            </th>
+            <th class="clickable-th" (click)="orderByofficialMassMarketPrice()">
+              {{"abstractProduct.officialMassMarketPrice"|translate}}
+             
+            </th>
+
+            <th class="clickable-th" (click)="orderByOfficialConsumerPrice()">
+              {{"abstractProduct.officialConsumerPrice"|translate}}
+            </th>
+            <th class="clickable-th" (click)="orderByTotalCount()">
+              {{"abstractProduct.totalCount"|translate}}
+            </th>
+
+            <th class="clickable-th" (click)="orderByExpectedCount()">
+              {{"abstractProduct.totalCost"|translate}}
+            </th>
+          </tr>
+        </thead>
+        <tbody [hidden]="" *ngIf="products!=[]">
+
+          <tr *ngFor="let product of products">
+            <td><img *ngIf="product.media" class="product-img" src="{{product.productAbstractSnapshot.media.thumbnail}}"></td>
+            <td>{{product.productAbstractSnapshot.nameAr}}</td>
+            <td>{{product.productAbstractSnapshot.officialMassMarketPrice}}</td>
+            <td>{{product.productAbstractSnapshot.officialConsumerPrice}}</td>
+            <td>{{product.count}}</td>
+            <td>{{product.cost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </app-card>
+
+</div>

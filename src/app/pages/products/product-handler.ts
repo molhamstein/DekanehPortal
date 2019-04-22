@@ -33,7 +33,16 @@ export class ProductHandler {
             if (query != '') {
                 query = query + ',';
             }
-            query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
+            if (filter['name'] != 'productAbstractId')
+                query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
+            else {
+                if (filter['value'] == "no") {
+                    query = query + '{"' + filter['name'] + '":{"eq":null}}';
+                }
+                else
+                    query = query + '{"' + filter['name'] + '":{"neq":null}}';
+
+            }
         }
         param.append('filter', '{"where":{"and": [ ' + query + ']}}');
         return this.apiService.get('/products', param)
@@ -119,9 +128,10 @@ export class ProductHandler {
 
 
 
-    searchByUser(para: string, clientType: string): Observable<any[]> {
+    searchByUser(para: string, clientType: string, isOrder = "false"): Observable<any[]> {
         let param = new URLSearchParams();
         param.append('string', para);
+        param.append('isOrder', isOrder);
         param.append('limit', String(50));
         param.append('clientType', clientType);
         return this.apiService.get('/products/search', param)
