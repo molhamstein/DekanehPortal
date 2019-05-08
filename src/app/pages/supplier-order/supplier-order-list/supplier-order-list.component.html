@@ -57,26 +57,58 @@
         <th class="clickable-th">
           {{"SupplierOrder.status"|translate}}
         </th>
-        <th>
+        <th *ngIf="c.cheachRole('supplier-orders','edit')">
           <!--{{"product.actions"|translate}}-->#
         </th>
       </tr>
     </thead>
     <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
 
-      <tr *ngFor="let order of returnedArray  ">
-        <td>{{order.totalPrice}}</td>
+      <tr *ngFor="let order of returnedArray ; let index=index; ">
+
+        <td class="no-padding-td" (click)="viewProduct[index]=false"
+          [ngClass]="{'productCol': viewProduct[index]==false}">
+          <ul class=" list-group table-ul">
+            <li *ngFor="let product of order.supplyProducts" class="list-group-item"
+              style="text-align: right;padding: .75rem 0.25rem;">
+              <span>{{product.productAbstractSnapshot.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+              <strong class="badge badge-info">{{product.count}}</strong>
+              {{"orders.table.price"|translate}} : <strong style="float: left;font-size: 13px;margin-top: 3px;"
+                class="badge badge-success">{{product.buyingPrice}}</strong>
+            </li>
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
+                : </strong>{{order.totalPrice}}</li>
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.countTotal"|translate}}
+                : </strong>{{CountProduct[index]}}</li>
+
+          </ul>
+        </td>
+        <td class="no-padding-td" (click)="viewProduct[index]=true"
+          [ngClass]="{'productCol': viewProduct[index]==true}">
+          <ul class=" list-group table-ul">
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
+                : </strong>{{order.totalPrice}}</li>
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.countTotal"|translate}}
+                : </strong>{{CountProduct[index]}}</li>
+
+          </ul>
+        </td>
+
+        <!-- <td>{{order.totalPrice}}</td> -->
         <td>{{order.supplier?.nameAr}}</td>
         <td>{{c.formatDate(order.createDate)}}</td>
         <td>{{"SupplierOrder.statusText."+order.status |translate}}</td>
-        <td>
-          <button type="button"*ngIf="order.status=='pending'" class="btn btn-primary" (click)="editSupllierOrder(order.id)">
+        <td *ngIf="c.cheachRole('supplier-orders','edit')">
+          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+            (click)="editSupllierOrder(order.id)">
             {{"client.buttons.edit"|translate}}
           </button>
-          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary" (click)="openModal(confirmCanceled,order.id)">
+          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+            (click)="openModal(confirmCanceled,order.id)">
             {{"SupplierOrder.buttons.cancel"|translate}}
           </button>
-          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary" (click)="openModal(confirmDelivered,order.id)">
+          <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+            (click)="openModal(confirmDelivered,order.id)">
             {{"SupplierOrder.buttons.deliver"|translate}}
           </button>
         </td>
@@ -97,18 +129,18 @@
 </div>
 
 <ng-template #confirmCanceled>
-    <div class="modal-body text-center">
-        <p>{{'system.modal.cancelMessage'|translate}}</p>
-        <button type="button" class="btn btn-danger modal-confirm"
-                (click)="canselSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
-    </div>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.cancelMessage'|translate}}</p>
+    <button type="button" class="btn btn-danger modal-confirm"
+      (click)="canselSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
 </ng-template>
 <ng-template #confirmDelivered>
-    <div class="modal-body text-center">
-        <p>{{'system.modal.deliverMessage'|translate}}</p>
-        <button type="button" class="btn btn-danger modal-confirm"
-                (click)="deliverSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
-        <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
-    </div>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.deliverMessage'|translate}}</p>
+    <button type="button" class="btn btn-danger modal-confirm"
+      (click)="deliverSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
 </ng-template>

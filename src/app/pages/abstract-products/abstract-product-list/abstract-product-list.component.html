@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-3">
-    <input class="form-control search-box" type="text" [value]="searchString" [(ngModel)]="searchKey"  (keyup)="keyUp()"
+    <input class="form-control search-box" type="text" [value]="searchString" [(ngModel)]="searchKey" (keyup)="keyUp()"
       placeholder="{{'client.search'|translate}}....">
   </div>
   <div class="col-sm-9">
@@ -102,7 +102,7 @@
 
         </th>
 
-        <th>
+        <th *ngIf="c.cheachRole('abstract-products','edit')">
           <!--{{"product.actions"|translate}}-->#
         </th>
       </tr>
@@ -125,7 +125,7 @@
         <td *ngIf="product.warehouseProducts[0]==null"></td>
 
 
-        <td>
+        <td *ngIf="c.cheachRole('abstract-products','edit')">
           <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
             {{"client.buttons.edit"|translate}}
           </button>
@@ -138,7 +138,8 @@
     <tbody [hidden]="spinnerFlag" *ngIf="isWarningView">
 
       <tr *ngFor="let product of warningData  ">
-        <td><img *ngIf="product.productAbstract.media" class="product-img" src="{{product.productAbstract.media.thumbnail}}"></td>
+        <td><img *ngIf="product.productAbstract.media" class="product-img"
+            src="{{product.productAbstract.media.thumbnail}}"></td>
         <td>{{product.productAbstract.nameAr}}</td>
         <td>{{product.manufacturer.nameAr}}</td>
         <td>{{product.productAbstract.officialMassMarketPrice}}</td>

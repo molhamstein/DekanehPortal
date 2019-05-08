@@ -1,10 +1,10 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {Router} from '@angular/router';
-import {ApiService} from '../../../services/api.service';
-import {ConstService} from '../../../services/const.service';
-import {URLSearchParams} from '@angular/http';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {animate, style, transition, trigger} from '@angular/animations';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../../../services/api.service';
+import { ConstService } from '../../../services/const.service';
+import { URLSearchParams } from '@angular/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-view-all-categories',
@@ -14,12 +14,12 @@ import {animate, style, transition, trigger} from '@angular/animations';
     trigger(
       'enterAnimation', [
         transition(':enter', [
-          style({transform: 'translateY(0)', opacity: 0}),
-          animate('200ms', style({transform: 'translateY(100%)', opacity: 1}))
+          style({ transform: 'translateY(0)', opacity: 0 }),
+          animate('200ms', style({ transform: 'translateY(100%)', opacity: 1 }))
         ]),
         transition(':leave', [
-          style({transform: 'translateY(100%)', opacity: 1}),
-          animate('200ms', style({transform: 'translateY(0)', opacity: 0}))
+          style({ transform: 'translateY(100%)', opacity: 1 }),
+          animate('200ms', style({ transform: 'translateY(0)', opacity: 0 }))
         ])
       ]
     )
@@ -34,7 +34,7 @@ export class ViewAllCategoriesComponent implements OnInit {
   catTodelete: string;
 
   constructor(private router: Router, private api: ApiService, public c: ConstService, private modalService: BsModalService) {
-    this.orderDir = {'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0,};
+    this.orderDir = { 'code': 0, 'titleAr': 0, 'titleEn': 0, 'creationDate': 0, 'icon': 0, 'id': 0, 'parentCategoryId': 0, };
     //
     let param = new URLSearchParams();
     param.append('filter', '{"where":{"parentCategoryId" : {"exists" : false}},"include":"subCategories","order": "creationDate DESC"}');
@@ -81,7 +81,7 @@ export class ViewAllCategoriesComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, category) {
     this.catTodelete = category;
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm', backdrop: true, ignoreBackdropClick: true});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
   }
 
   confirm(): void {
@@ -113,11 +113,11 @@ export class ViewAllCategoriesComponent implements OnInit {
   }
 
   editCat(category) {
-    this.router.navigate(['categories', category.id, 'edit']);
+    this.router.navigate(['categories', 'edit', category.id]);
   }
 
   deleteCat(category) {
-    this.api.delete('/categories', category.id,).finally(() => {
+    this.api.delete('/categories', category.id).finally(() => {
       this.modalRef.hide();
     }).subscribe(
       (res: any) => {

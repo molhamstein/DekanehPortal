@@ -89,6 +89,8 @@ export class NewProductComponent implements OnInit {
     offerProducts: new FormControl(''),
     horecaPriceDiscount: new FormControl('', Validators.required),
     wholeSalePriceDiscount: new FormControl('', Validators.required),
+    consumerPrice: new FormControl('', Validators.required),
+    consumerPriceDiscount: new FormControl('', Validators.required),
     code: new FormControl(''),
     sku: new FormControl(''),
 
@@ -119,7 +121,7 @@ export class NewProductComponent implements OnInit {
       })
       this.newPro = false;
       this.Handler.getProductById(this.id).subscribe(product => {
-        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount);
+        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount, product.consumerPrice, product.consumerPriceDiscount);
         this.product.creationDate = product.creationDate;
         this.product.id = product.id;
         this.product.offerProducts = this.offerProducts = product.offerProducts;

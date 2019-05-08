@@ -1,0 +1,264 @@
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.pickProduct'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    {{'modal.haveAllTheCount'|translate}}
+    <span class="badge badge-info">{{oneProduct.count}}</span>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.no'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="yes(modalDefault,modalPacked)">{{'modal.yes'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+<app-modal-basic #modalPacked>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.packed'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalPacked.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    {{'modal.confirmPack'|translate}}
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalPacked.hide()">{{'modal.no'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="yesPacked(modalPacked)">{{'modal.yes'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+<app-modal-basic #modalConfirmLogin>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.confirm'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalConfirmLogin.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body" *ngIf="curentState=='in'">
+    {{'modal.confirmLogin'|translate}}
+  </div>
+  <div class="app-modal-body" *ngIf="curentState=='out'">
+    {{'modal.confirmLogout'|translate}}
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalConfirmLogin.hide()">{{'modal.no'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="yesChange(modalConfirmLogin)">{{'modal.yes'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+
+<div class="row">
+  <button type="button" style="margin: 0px 15px 15px 15px;" *ngIf="meObject.state=='out'" (click)="changeState('in',modalConfirmLogin)" class="btn btn-success">
+    {{"Home.login"|translate}}
+  </button>
+  <button type="button" style="margin: 0px 15px 15px 15px;" *ngIf="meObject.state=='in'" (click)="changeState('out',modalConfirmLogin)" class="btn btn-danger">
+    {{"Home.logout"|translate}}
+  </button>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="from"
+      placeholder="{{'SupplierOrder.from'|translate}}">
+  </div>
+
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="to"
+      placeholder="{{'SupplierOrder.to'|translate}}">
+  </div>
+
+  <div class="col-sm-6">
+    <div class="filter-btns">
+      <select class="btn btn-action" [(ngModel)]="status">
+        <option value="1" disabled selected>{{'SupplierOrder.status'|translate}}</option>
+        <option *ngFor="let oneStatus of statuses" [value]="oneStatus">
+          {{"orders.table.delStatus."+oneStatus |translate}}
+        </option>
+      </select>
+
+      <button type="button" (click)="setFilters()" class="btn btn-success">
+        {{"abstractProduct.apply"|translate}}
+      </button>
+
+      <button type="button" (click)="emptyFields()" class="btn btn-danger">
+        {{"abstractProduct.cancel"|translate}}
+      </button>
+
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped ">
+    <thead>
+      <tr>
+        <th class="clickable-th">
+          {{'Home.table.userTap'|translate}}
+        </th>
+
+
+        <th class="clickable-th">
+          {{"SupplierOrder.totalPrice"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"SupplierOrder.createDate"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"SupplierOrder.status"|translate}}
+        </th>
+        <th>
+          #
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="spinnerFlag" *ngIf="returnedArray!=[]">
+
+      <tr *ngFor="let order of returnedArray ; let index=index; ">
+        <td class="no-padding-td">
+          <ul class="table-ul">
+            <li class="table-li">
+              <span>{{order.client.shopName}}</span>
+            </li>
+            <!--<li class="table-li">-->
+            <!--<span class="badge badge-light">{{order.client.area}}</span>-->
+            <!--</li>  -->
+            <li class="table-li">
+              <span class="badge badge-danger" style="font-size: 14px">{{order.client.ownerName}}</span>
+            </li>
+            <li class="table-li">
+              <span class="badge client-type" [ngClass]="order.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
+                      + order.clientType|translate}}</span>
+            </li>
+            <li>
+              <span style="font-size: 14px" class="badge badge-dark"
+                *ngIf="getTimer(order.orderDate)!=undefined&&order.status!='delivered'">{{getTimer(order.orderDate)}}</span>
+            </li>
+
+          </ul>
+        </td>
+
+        <td class="no-padding-td" [ngClass]="{'productCol': viewProduct[index]==false}">
+          <ul class=" list-group table-ul">
+            <li (click)="viewProduct[index]=false" *ngFor="let product of order.orderProducts" class="list-group-item"
+              style="text-align: right;padding: .75rem 0.25rem;">
+              <span>{{product.product.nameAr|slice:0:25}}</span> {{"orders.table.count"|translate}} :
+              <strong class="badge badge-info">{{product.count}}</strong>
+              {{"orders.table.price"|translate}} : <strong style="float: left;font-size: 13px;margin-top: 3px;"
+                class="badge badge-success">{{product.sellingPrice}}</strong>
+              <strong *ngIf="product.checked==false && order.status=='pending'"
+                style="float: right;font-size: 13px;margin-top: 3px;margin-left: 5px;" class=""><i
+                  class="fa  fa-check-circle fa-lg"></i></strong>
+
+
+              <strong *ngIf="product.checked==true || order.status!='pending'"
+                style="float: right;font-size: 13px;margin-top: 3px;margin-left: 5px;color: green;" class=""><i
+                  class="fa  fa-check-circle fa-lg"></i></strong>
+
+            </li>
+            <li class="list-group-item" *ngIf="order.status=='pending'">
+              <input type="text" [(ngModel)]="barcodes[index]">
+              <button type="button" style="font-size: 14px;padding: 3px 6px;margin-top: -4px"
+                (click)="submitBarcode(index,modalDefault)" class="btn btn-primary">
+                {{"Home.table.readBarcode"|translate}}
+              </button>
+            </li>
+            <li (click)="viewProduct[index]=false" class="list-group-item list-group-item-info">
+              <strong>{{"orders.table.total"|translate}}
+                : </strong>{{order.totalPrice}}</li>
+
+            <li (click)="viewProduct[index]=false" class="list-group-item list-group-item-info">
+              <strong>{{"orders.table.countTotal"|translate}}
+                : </strong>{{CountProduct[index]}}
+            </li>
+
+          </ul>
+        </td>
+
+        <td class="no-padding-td" (click)="viewProduct[index]=true"
+          [ngClass]="{'productCol': viewProduct[index]==true}">
+          <ul class=" list-group table-ul">
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.total"|translate}}
+                : </strong>{{order.totalPrice}}</li>
+            <li class="list-group-item list-group-item-info"><strong>{{"orders.table.countTotal"|translate}}
+                : </strong>{{CountProduct[index]}}</li>
+
+          </ul>
+        </td>
+        <td>
+          <p style="margin-bottom: 0px">{{c.formatDate(order.orderDate)}}</p>
+        </td>
+        <td>
+          <span (click)="statusModel(order,modalStatus)" class="badge"
+            [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
+              + order.status|translate}}</span>
+        </td>
+
+        <td>
+          <button type="button" *ngIf="order.status!='packed' && cheackProductOrder(index)" class="btn btn-primary"
+            (click)="submitPikker(order.id)">
+            {{"modal.modalStatus.submitPikker"|translate}}
+          </button>
+        </td>
+        <!-- 
+         
+  
+          <td>{{order.supplier?.nameAr}}</td>
+          <td>{{c.formatDate(order.createDate)}}</td>
+          <td>{{"SupplierOrder.statusText."+order.status |translate}}</td>
+          <td *ngIf="c.cheachRole('supplier-orders','edit')">
+            <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+              (click)="editSupllierOrder(order.id)">
+              {{"client.buttons.edit"|translate}}
+            </button>
+            <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+              (click)="openModal(confirmCanceled,order.id)">
+              {{"SupplierOrder.buttons.cancel"|translate}}
+            </button>
+            <button type="button" *ngIf="order.status=='pending'" class="btn btn-primary"
+              (click)="openModal(confirmDelivered,order.id)">
+              {{"SupplierOrder.buttons.deliver"|translate}}
+            </button>
+          </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<!-- <div [hidden]="spinnerFlag||unpage" class="row">
+    <pagination [totalItems]="productsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+      firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+      [rotate]="false" [boundaryLinks]="true"></pagination>
+    <div class="per-page-sec">
+      <span>{{"client.perPage"|translate}}</span>
+      <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+    </div>
+  
+  </div> -->
+
+<ng-template #confirmCanceled>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.cancelMessage'|translate}}</p>
+    <button type="button" class="btn btn-danger modal-confirm"
+      (click)="canselSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
+</ng-template>
+<ng-template #confirmDelivered>
+  <div class="modal-body text-center">
+    <p>{{'system.modal.deliverMessage'|translate}}</p>
+    <button type="button" class="btn btn-danger modal-confirm"
+      (click)="deliverSupllierOrder()">{{'system.modal.confirm'|translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">{{'system.modal.cancel'|translate}}</button>
+  </div>
+</ng-template>

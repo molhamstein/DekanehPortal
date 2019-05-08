@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { SupplierModule } from './supplier/supplier.module';
 import { DamagedProductModule } from './damaged-products/damaged-products.module';
 import { AbstractProductsModule } from './abstract-products/abstract-products.module';
@@ -79,6 +80,7 @@ import { SupplierOrdersModule } from './supplier-order/supplier-orders.module';
         CategoriesComponent,
         ViewAllCategoriesComponent,
         DashboardComponent,
+        HomeComponent,
         OrdersComponent,
         ViewOrdersComponent
     ],

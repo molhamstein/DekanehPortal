@@ -24,6 +24,15 @@ export class SupplierOrdersHandlerService {
 
     }
 
+    getReportDaily(from, to): Observable<any> {
+        let param = new URLSearchParams();
+        param.append("from", new Date(from).toString())
+        param.append("to", new Date(to).toString())
+    return this.apiService.get('/supplies/dailySupply', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
+
     addNote(data) {
         let body = JSON.stringify(data);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });

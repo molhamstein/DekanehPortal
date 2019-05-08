@@ -48,61 +48,125 @@
     </button>
   </div>
   <div class="app-modal-body">
-    <div class="row" style="padding: 5px 10px">
-      <label for="expireDate">{{"modal.modalStatus.toWherhouseKeeper"|translate}}</label>
-      <i *ngIf="orderModel && orderModel.status!='pending'" class="fa fa-check-circle fa-2x cheackStep"></i>
-      <ng-select #select (filterInputChanged)="searchWearKeper($event)" *ngIf="orderModel"
-        [(ngModel)]="orderModel.warehouseKeeperId" [ngModelOptions]="{standalone: true}" [multiple]="false"
-        [options]="IOdewarehouseKeeper">
-      </ng-select>
-      <button *ngIf="orderModel" [disabled]="orderModel.warehouseKeeperId==undefined"
-        style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
-        (click)="submitKeeper(modalStatus)">{{'modal.modalStatus.submitKeeper'|translate}}</button>
 
-    </div>
+    <div style="max-height: 400px;padding:0px 15px;margin-left: -15px;overflow-y: auto;">
 
-    <div class="separator" *ngIf="orderModel && orderModel.status!='pending'"></div>
+      <!-- diliverMan -->
+      <div class="row" style="padding: 5px 10px;position:relative">
+        <label for="expireDate">{{"modal.modalStatus.diliveryMan"|translate}}</label>
+        <ng-select #select (filterInputChanged)="searchDeliver($event)" *ngIf="orderModel"
+          [(ngModel)]="orderModel.deliveryMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+          (selected)="DeuserSelected($event,OrderToEdit)" [options]="IOdeusers">
+        </ng-select>
+        <button *ngIf="orderModel" [disabled]="orderModel.deliveryMemberId==undefined"
+          style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+          (click)="changeDilivery(modalStatus)">{{'modal.modalStatus.changeDiliveryMan'|translate}}</button>
 
-    <div class="row" *ngIf="orderModel && orderModel.status!='pending'" style="padding: 5px 10px">
-
-      <label for="expireDate">{{"modal.modalStatus.picked"|translate}}</label>
-      <i class="fa fa-check-circle fa-2x cheackStep"
-        *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"></i>
-      <!-- <ng-select #select (filterInputChanged)="searchPicked($event)" *ngIf="orderModel"
-        [(ngModel)]="orderModel.packagerMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
-        [options]="IOPickedUser">
-      </ng-select> -->
-      <div style="width: 100%;">
-        <button *ngIf="orderModel" style="margin: 5px 0px;padding: 2px 5px;" type="button"
-          class="btn btn-primary waves-effect waves-light"
-          (click)="submitPikker(modalStatus)">{{'modal.modalStatus.submitPikker'|translate}}</button>
       </div>
+      <div class="separator"></div>
+
+
+      <!-- submitKeeper -->
+
+      <div class="row" style="padding: 5px 10px;position:relative">
+        <label for="expireDate">{{"modal.modalStatus.toWherhouseKeeper"|translate}}</label>
+        <i *ngIf="orderModel && orderModel.status!='pending'" class="fa fa-check-circle fa-2x cheackStep"></i>
+        <ng-select #select (filterInputChanged)="searchWearKeper($event)" *ngIf="orderModel"
+          [(ngModel)]="orderModel.warehouseKeeperId" [ngModelOptions]="{standalone: true}" [multiple]="false"
+          [options]="IOdewarehouseKeeper">
+        </ng-select>
+        <button *ngIf="orderModel" [disabled]="orderModel.warehouseKeeperId==undefined || orderModel.status!='pending'"
+          style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+          (click)="submitKeeper(modalStatus)">{{'modal.modalStatus.submitKeeper'|translate}}</button>
+
+      </div>
+
+      <div class="separator" *ngIf="orderModel && orderModel.status!='pending'"></div>
+
+
+      <!-- submitPikker -->
+      <div class="row" *ngIf="orderModel && orderModel.status!='pending'" style="padding: 5px 10px;position:relative">
+
+        <label for="expireDate">{{"modal.modalStatus.picked"|translate}}</label>
+        <i class="fa fa-check-circle fa-2x cheackStep"
+          *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"></i>
+        <div style="width: 100%;">
+          <button *ngIf="orderModel" [disabled]="orderModel.status!='pending' && orderModel.status!='inWarehouse'"
+            style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+            (click)="submitPikker(modalStatus)">{{'modal.modalStatus.submitPikker'|translate}}</button>
+        </div>
+      </div>
+
+      <div class="separator" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'">
+      </div>
+
+
+      <div class="row" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"
+        style="padding: 5px 10px;position:relative">
+
+        <label for="expireDate">{{"modal.modalStatus.pendingDelivery"|translate}}</label>
+        <i class="fa fa-check-circle fa-2x cheackStep"
+          *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'"></i>
+        <ng-select #select (filterInputChanged)="searchDeliver($event)"
+          *ngIf="orderModel && orderModel.status=='packed'" [(ngModel)]="orderModel.deliveryMemberId"
+          [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="DeuserSelected($event,OrderToEdit)"
+          [options]="IOdeusers">
+        </ng-select>
+        <div style="width: 100%;">
+          <button *ngIf="orderModel"
+            [disabled]="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'"
+            style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+            (click)="submitPendingDelivery(modalStatus)">{{'modal.modalStatus.submitPendingDelivery'|translate}}</button>
+        </div>
+      </div>
+      <div class="separator" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'">
+      </div>
+
+      <div class="row"
+        *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='packed' && orderModel.status!='inWarehouse'"
+        style="padding: 5px 10px;position:relative">
+
+        <label for="expireDate">{{"modal.modalStatus.inDelivery"|translate}}</label>
+        <i class="fa fa-check-circle fa-2x cheackStep"
+          *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'&& orderModel.status!='pendingDelivery'"></i>
+
+        <div style="width: 100%;">
+          <button *ngIf="orderModel"
+            [disabled]="orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'&& orderModel.status!='pendingDelivery'"
+            style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+            (click)="submitInDelivery(modalStatus)">{{'modal.modalStatus.submit'|translate}}</button>
+        </div>
+      </div>
+
+      <!-- <div class="separator" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'">
+      </div>
+
+      <div class="row" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='pendingDelivery'"
+        style="padding: 5px 10px;position:relative">
+        <label for="expireDate">{{"modal.modalStatus.dilivery"|translate}}</label>
+        <i class="fa fa-check-circle fa-2x cheackStep"
+          *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='packed'&& orderModel.status!='pendingDelivery'"></i>
+        <ng-select #select (filterInputChanged)="searchDeliver($event)"
+          *ngIf="orderModel && orderModel.status=='packed'" [(ngModel)]="orderModel.deliveryMemberId"
+          [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="DeuserSelected($event,OrderToEdit)"
+          [options]="IOdeusers">
+        </ng-select>
+        <div style="width: 100%;">
+
+          <button *ngIf="orderModel" [disabled]="orderModel.deliveryMemberId==undefined"
+            style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
+            (click)="submitDilivery(modalStatus)">{{'modal.modalStatus.submitDilivery'|translate}}</button>
+        </div>
+      </div> -->
+
     </div>
-
-    <div class="separator" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"></div>
-
-    <div class="row" *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'"
-      style="padding: 5px 10px">
-      <label for="expireDate">{{"modal.modalStatus.dilivery"|translate}}</label>
-      <i class="fa fa-check-circle fa-2x cheackStep"
-        *ngIf="orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='packed'"></i>
-      <ng-select #select (filterInputChanged)="searchDeliver($event)" *ngIf="orderModel"
-        [(ngModel)]="orderModel.deliveryMemberId" [ngModelOptions]="{standalone: true}" [multiple]="false"
-        (selected)="DeuserSelected($event,OrderToEdit)" [options]="IOdeusers">
-      </ng-select>
-      <button *ngIf="orderModel" [disabled]="orderModel.deliveryMemberId==undefined"
-        style="margin: 5px 0px;padding: 2px 5px;" type="button" class="btn btn-primary waves-effect waves-light"
-        (click)="submitDilivery(modalStatus)">{{'modal.modalStatus.submitDilivery'|translate}}</button>
-
-    </div>
-
 
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default waves-effect"
       (click)="modalStatus.hide()">{{'modal.close'|translate}}</button>
-    <!-- <button type="button" class="btn btn-primary waves-effect waves-light"
-      (click)="addNote(modalStatus)">{{'modal.add'|translate}}</button> -->
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="submitCancelOrder(modalStatus)">{{'modal.cancelOrder'|translate}}</button>
   </div>
 </app-modal-basic>
 
@@ -211,18 +275,72 @@
     <thead>
       <tr class="">
         <td class="title-td" align="center" colspan="8">
-          <div class="filter-sec">
-            <span>{{"orders.deliveryFilter"|translate}}</span>
+          <div class="row">
+            <!-- <select [(ngModel)]="statusFilter" class="col-sm-3">
+              <option [value]="-1" disabled selected>{{'orders.statusFilter' | translate}}</option>
 
-            <ng-select id="delFilter" (filterInputChanged)="searchDeUsers($event)" [(ngModel)]="delMemFilter"
-              [ngModelOptions]="{standalone: true}" [multiple]="false" [options]="IOdeusers" (selected)="filterByDel()">
+              <option *ngFor="let oneStatus of statusList; let index=index;" [value]="oneStatus">
+                {{"orders.table.delStatus."+ oneStatus|translate}}
+              </option>
+            </select> -->
+            <ng-select #select class="col-sm-3" [placeholder]="'orders.deliveryFilter'|translate"
+              (filterInputChanged)="searchDeliver($event,true)" [(ngModel)]="delMemFilter"
+              [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="DeuserSelected($event,OrderToEdit)"
+              [options]="IOdeusersFilter">
+            </ng-select>
+            <ng-select #select class="col-sm-3" [placeholder]="'orders.keeperFilter'|translate"
+              (filterInputChanged)="searchWearKeper($event,true)" [(ngModel)]="keeperMemFilter"
+              [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="DeuserSelected($event,OrderToEdit)"
+              [options]="IOdeusersFilter">
+            </ng-select>
+            <ng-select #select class="col-sm-3" [placeholder]="'orders.shopeNameFilter' | translate"
+              (filterInputChanged)="searchUsers($event,true)" (selected)="userSelected($event,newOrder)"
+              [(ngModel)]="shopeMemFilter" [multiple]="false" [options]="IOusersFilter">
             </ng-select>
 
-            <button *ngIf="delMemFilter!=undefined" type="button" (click)="emptyFilter()"
-              class="btn btn-danger empty-filter">
-              {{"product.cancel"|translate}}
-            </button>
+            <div class="col-sm-2">
+              <button type="button" (click)="emptyFilter()" class="btn btn-danger empty-filter">
+                {{"product.cancel"|translate}}
+              </button>
+            </div>
+
+
+
           </div>
+
+
+
+          <div class="row" style="height: 32px;margin-top: 15px;">
+            <div class="col-sm-3" style="padding: 0px 15px;height: 100%;">
+              <select [(ngModel)]="statusFilter" style="width: 100%;height: 100%;">
+                <option [value]="-1" disabled selected>{{'orders.statusFilter' | translate}}</option>
+
+                <option *ngFor="let oneStatus of statusList; let index=index;" [value]="oneStatus">
+                  {{"orders.table.delStatus."+ oneStatus|translate}}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-sm-3" style="padding: 0px 15px;height: 100%;">
+              <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')"
+                [(ngModel)]="fromFilter" style="width: 100%;height: 100%;"
+                placeholder="{{'SupplierOrder.from'|translate}}">
+            </div>
+
+            <div class="col-sm-3" style="padding: 0px 15px;height: 100%;">
+              <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')"
+                [(ngModel)]="toFilter" style="width: 100%;height: 100%;" placeholder="{{'SupplierOrder.to'|translate}}">
+            </div>
+
+            <div class="col-sm-2">
+              <button type="button" (click)="filter()" class="btn btn-success empty-filter">
+                {{"product.apply"|translate}}
+              </button>
+            </div>
+
+
+          </div>
+
         </td>
       </tr>
       <tr>
@@ -248,6 +366,10 @@
         <th>
           {{'orders.table.status'|translate}}
         </th>
+        <th>
+          {{'orders.table.printable'|translate}}
+        </th>
+
         <th>
           {{'orders.table.dates'|translate}}
         </th>
@@ -372,6 +494,9 @@
               [ngClass]="order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
               + order.status|translate}}</span>
           </td>
+          <td>{{"orders.table.printables." + order.printable|translate}}</td>
+
+
           <td class="no-padding-td">
             <ul class="list-group table-ul">
               <li>
@@ -545,9 +670,18 @@
 
             </td>
             <td>
-              <select [(ngModel)]="OrderToEdit.status" class="form-control" id="status">
-                <option *ngFor="let option of delstatus" [value]="option">
-                  {{"orders.table.delStatus." + option|translate}}
+              <span (click)="statusModel(OrderToEdit,modalStatus)" class="badge"
+                [ngClass]="OrderToEdit.status=='pending'? 'badge-warning ': ( OrderToEdit.status=='inDelivery' ?'badge-info' :( OrderToEdit.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
+              + OrderToEdit.status|translate}}</span>
+            </td>
+
+            <td>
+              <select [(ngModel)]="OrderToEdit.printable" class="form-control" id="status">
+                <option [value]="true">
+                  {{"orders.table.printables.true"|translate}}
+                </option>
+                <option [value]="false">
+                  {{"orders.table.printables.false"|translate}}
                 </option>
               </select>
 

@@ -9,7 +9,7 @@
       </select>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6" *ngIf="c.cheachRole('supplier-orders','new')">
     <div class="form-group">
       <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
       <select [(ngModel)]="supplierId" class="form-control" id="abstracts">
@@ -22,7 +22,7 @@
         class="text-danger">{{'product.form.validations.blank'|translate}}</label>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6" *ngIf="c.cheachRole('supplier-orders','new')">
     <div class="form-group">
       <label for="products">{{"orders.new.products"|translate}}</label>
       <ng-select (filterInputChanged)="searchProducts($event)" (selected)="productSelected($event)" [multiple]="true"
@@ -47,13 +47,13 @@
 
             </td>
             <td>{{findProduct(product.productAbstractId).nameAr}}</td>
-            <td style="text-align: center">
+            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
               <span>{{"orders.table.count"|translate}} </span><input [(ngModel)]="product.count"
                 [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
-            <td style="text-align: center">
+            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
               <span>{{"orders.table.price"|translate}} </span><input [(ngModel)]="product.buyingPrice"
                 [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
-            <td style="text-align: center">
+            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
               <span class="functions-btn text-danger" (click)="productDeSelected(product.productAbstractId)"><i
                   class="fa fa-remove fa-lg"></i></span>
             </td>
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="c.cheachRole('supplier-orders','new')">
   <div class="col-sm submit-col">
     <button [disabled]="submitted" (click)="createSupplierOrder()" class="btn btn-success">
       {{"staff.buttons.add"|translate}}

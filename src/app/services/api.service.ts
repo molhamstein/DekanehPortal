@@ -14,6 +14,7 @@ export class ApiService {
         }
     }
     get(name, params?: URLSearchParams) {
+        console.log(this.header);
         if (params) {
             return this.http.get(this.api + name, { params: params, headers: this.header });
         }

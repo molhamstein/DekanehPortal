@@ -57,14 +57,32 @@ export class OrdersHandlerService {
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/orders/' + orderId + '/assignDelivery', body, options).map(this.extractData).catch(this.handleError);
     }
+    changeDilivery(user, orderId) {
+        let body = JSON.stringify(user);
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignOrderDeliverer', body, options).map(this.extractData).catch(this.handleError);
 
+    }
     assignWarehouseKeeper(user, orderId) {
         let body = JSON.stringify(user);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/orders/' + orderId + '/assignWarehouse', body, options).map(this.extractData).catch(this.handleError);
     }
+    submitPendingDelivery(user, orderId) {
+        let body = JSON.stringify(user);
 
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignPendingDelivery', body, options).map(this.extractData).catch(this.handleError);
+    }
+
+    submitInDelivery(orderId) {
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignInDelivery', {}, options).map(this.extractData).catch(this.handleError);
+    }
 
     assignPack(orderId) {
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
@@ -77,7 +95,7 @@ export class OrdersHandlerService {
 
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
-        return this.apiService.post('/orders/' + orderId + '/delivered', options).map(this.extractData).catch(this.handleError);
+        return this.apiService.post('/orders/' + orderId + '/assignDelivered', options).map(this.extractData).catch(this.handleError);
     }
 
     deleteOrder(id) {
@@ -139,10 +157,10 @@ export class OrdersHandlerService {
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/orders/' + id + '/assignCancel', {}, options).map(this.extractData).catch(this.handleError);
     }
-    getOrders(perPage: number, currentPage: number, delMemID?): Observable<Order[]> {
+    getOrders(perPage: number, currentPage: number, where?): Observable<Order[]> {
         let param = new URLSearchParams();
-        if (delMemID != undefined) {
-            param.append('filter', '{"where":{"deliveryMemberId":"' + delMemID + '"},"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
+        if (where != undefined && where["and"].length != 0) {
+            param.append('filter', '{"where":' + JSON.stringify(where) + ',"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
 
         } else {
             param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
@@ -151,10 +169,10 @@ export class OrdersHandlerService {
         return this.apiService.get('/orders', param).map(this.extractData).catch(this.handleError);
     }
 
-    getOrdersCount(delMemID?): Observable<number> {
-        if (delMemID != undefined) {
+    getOrdersCount(where?): Observable<number> {
+        if (where != undefined && where["and"].length != 0) {
             let param = new URLSearchParams();
-            param.append('where', '{"deliveryMemberId":"' + delMemID + '"}');
+            param.append('where', JSON.stringify(where));
             return this.apiService.get('/orders/count', param)
                 .map(this.extractData).catch(this.handleError);
         }
@@ -194,5 +212,13 @@ export class OrdersHandlerService {
     private handleErrorSec(error: Response | any) {
         console.error(error.message || error);
         return Observable.throw(JSON.parse(error._body).error);
+    }
+
+    getReportDaily(from, to): Observable<any> {
+        let param = new URLSearchParams();
+        param.append("from", new Date(from).toString())
+        param.append("to", new Date(to).toString())
+        return this.apiService.get('/orders/dailyOrder', param)
+            .map(this.extractData).catch(this.handleError);
     }
 }

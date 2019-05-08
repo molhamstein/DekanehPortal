@@ -34,14 +34,14 @@
               {{"abstractProduct.name"|translate}}
             
             </th>
-            <th class="clickable-th" (click)="orderByofficialMassMarketPrice()">
+            <!-- <th class="clickable-th" (click)="orderByofficialMassMarketPrice()">
               {{"abstractProduct.officialMassMarketPrice"|translate}}
              
             </th>
 
             <th class="clickable-th" (click)="orderByOfficialConsumerPrice()">
               {{"abstractProduct.officialConsumerPrice"|translate}}
-            </th>
+            </th> -->
             <th class="clickable-th" (click)="orderByTotalCount()">
               {{"abstractProduct.totalCount"|translate}}
             </th>
@@ -54,10 +54,10 @@
         <tbody [hidden]="" *ngIf="products!=[]">
 
           <tr *ngFor="let product of products">
-            <td><img *ngIf="product.media" class="product-img" src="{{product.productAbstractSnapshot.media.thumbnail}}"></td>
-            <td>{{product.productAbstractSnapshot.nameAr}}</td>
-            <td>{{product.productAbstractSnapshot.officialMassMarketPrice}}</td>
-            <td>{{product.productAbstractSnapshot.officialConsumerPrice}}</td>
+            <td><img *ngIf="product.media" class="product-img" src="{{product.productSnapshot.media.thumbnail}}"></td>
+            <td>{{product.productSnapshot.nameAr}}</td>
+            <!-- <td>{{product.productSnapshot.officialMassMarketPrice}}</td>
+            <td>{{product.productSnapshot.officialConsumerPrice}}</td> -->
             <td>{{product.count}}</td>
             <td>{{product.cost}}</td>
           </tr>

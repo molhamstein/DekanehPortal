@@ -1,3 +1,4 @@
+import { ConstService } from './../../../services/const.service';
 import { SupplierOrder } from './../../supplier-order/Supplier-order';
 import { AbstractProductHandler } from './../../abstract-products/abstract-product-handler';
 import { IOption } from 'ng-select';
@@ -26,7 +27,7 @@ export class WarningReportComponent implements OnInit {
   thresholdList = ["threshold", "warning", "only-warning"]
   threshold = "threshold"
   constructor(private router: Router, private productHandler: AbstractProductHandler, private SupplierOrder: SupplierOrdersHandlerService, private supplierHandler: SupplierHandlerService,
-    private alert: AlertService) {
+    private alert: AlertService, private c: ConstService) {
 
 
   }
@@ -143,6 +144,6 @@ export class WarningReportComponent implements OnInit {
   }
 
   findProduct(id) {
-    return this.newProducts.find(x => x._id === id);
+    return this.newProducts.find(x => x.id === id);
   }
 }

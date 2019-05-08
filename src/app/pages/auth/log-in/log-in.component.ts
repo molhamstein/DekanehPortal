@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {ApiService} from '../../../services/api.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
     selector: 'app-log-in',
@@ -20,6 +20,8 @@ export class LogInComponent implements OnInit {
 
             localStorage.setItem('username', JSON.parse(data['_body']).user.username);
             localStorage.setItem('token', JSON.parse(data['_body']).id);
+            localStorage.setItem('clientType', JSON.parse(data['_body']).user.roles[0].nameAr);
+            localStorage.setItem('userId', JSON.parse(data['_body']).user.id);
             this.router.navigate(['']);
         }, (err) => {
 

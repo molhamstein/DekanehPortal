@@ -64,13 +64,29 @@ export class OrdersManageComponent implements OnInit {
   productsCount;
   pages = 20;
   delMemFilter;
+  keeperMemFilter;
+  shopeMemFilter;
+  statusFilter = -1;
+  statusList = [
+    "pending",
+    "inDelivery",
+    "delivered",
+    "canceled",
+    "pendingDelivery",
+    "packed",
+    "inWarehouse"
+  ]
+  fromFilter;
+  toFilter
   viewDate;
   orderTodelete;
   orderTodeliver;
   onEdit = false;
   IOproducts: Array<IOption> = [];
   IOusers: Array<IOption> = [];
+  IOusersFilter: Array<IOption> = [];
   IOdeusers: Array<IOption> = [];
+  IOdeusersFilter: Array<IOption> = [];
   IOweausers: Array<IOption> = [];
   tP: Array<IOption> = [];
   ul: Array<IOption> = [];
@@ -105,7 +121,6 @@ export class OrdersManageComponent implements OnInit {
   orderForm = new FormGroup({
     clientId: new FormControl('', Validators.required),
   });
-  delstatus = ['pending', 'canceled'];
   math = Math;
 
   constructor(private modalService: BsModalService,
@@ -151,6 +166,8 @@ export class OrdersManageComponent implements OnInit {
   }
   orderModel
   statusModel(order, modal) {
+    if (order.status == 'canceled')
+      return
     this.orderModel = Object.assign({}, order);
     if (order.warehouseKeeperId != undefined && order.warehouseKeeperId != '') {
       var name = ""
@@ -217,6 +234,7 @@ export class OrdersManageComponent implements OnInit {
 
     }
     modal.show()
+
   }
   download(orederId) {
     this.Handler.downloadBill(orederId).subscribe(
@@ -248,6 +266,11 @@ export class OrdersManageComponent implements OnInit {
 
   emptyFilter() {
     this.delMemFilter = undefined;
+    this.keeperMemFilter = undefined;
+    this.shopeMemFilter = undefined;
+    this.statusFilter = -1;
+    this.fromFilter = undefined;
+    this.toFilter = undefined;
     this.getOrders();
   }
 
@@ -283,7 +306,7 @@ export class OrdersManageComponent implements OnInit {
     }
   }
 
-  filterByDel() {
+  filter() {
     this.getOrders();
   }
 
@@ -310,8 +333,25 @@ export class OrdersManageComponent implements OnInit {
   getOrders() {
     this.spinnerFlag = true;
     this.orders = [];
-    this.Handler.getOrdersCount(this.delMemFilter).finally(() => {
-      this.Handler.getOrders(this.pages, this.currentPage, this.delMemFilter)
+    var where = {}
+    where["and"] = []
+    if (this.delMemFilter)
+      where["and"].push({ "deliveryMemberId": this.delMemFilter })
+    if (this.keeperMemFilter)
+      where["and"].push({ "warehouseKeeperId": this.keeperMemFilter })
+    if (this.statusFilter!=-1)
+      where["and"].push({ "status": this.statusFilter })
+    if (this.shopeMemFilter)
+      where["and"].push({ "clientId": this.shopeMemFilter })
+    if (this.fromFilter)
+      where["and"].push({ "orderDate": { "gt": new Date(this.fromFilter) } })
+    if (this.toFilter)
+      where["and"].push({ "orderDate": { "lt": new Date(this.toFilter) } })
+
+    console.log("where");
+    console.log(where);
+    this.Handler.getOrdersCount(where).finally(() => {
+      this.Handler.getOrders(this.pages, this.currentPage, where)
         .finally(() => {
           this.getOrdersFinilaize();
         }).subscribe(data => {
@@ -397,7 +437,7 @@ export class OrdersManageComponent implements OnInit {
       this.tP.push({ label: pro.nameAr, value: pro.productId });
       this.selectedEditProducts.push({
         'count': pro.count,
-        'sellingPrice': pro.price,
+        'sellingPrice': pro.sellingPrice,
         'productId': pro.productId,
 
       });
@@ -427,10 +467,12 @@ export class OrdersManageComponent implements OnInit {
   }
 
   productEditSelected(IOproduct) {
+    console.log("IOproduct");
+    console.log(IOproduct);
     let product = this.findEditProduct(IOproduct.value);
     this.selectedEditProducts.push({
       'count': 0,
-      'price': 0,
+      'price': product.sellingPrice,
       'productId': product._id,
     });
     this.selectedEditProductsIds = [];
@@ -442,6 +484,14 @@ export class OrdersManageComponent implements OnInit {
     } else {
       this.productError = false;
     }
+  }
+
+  submitCancelOrder(model) {
+    this.Handler.cancelOrder(this.orderModel.id).subscribe(() => {
+      model.hide();
+      this.router.navigate(['/orders/management']);
+    }, errorCode => this.showError());
+
   }
 
   cancelOrder(full?) {
@@ -497,7 +547,7 @@ export class OrdersManageComponent implements OnInit {
     console.log("this.editProducts");
     console.log(this.editProducts);
     if (this.editProducts.find(x => x.productId === id) == undefined) {
-      return this.editProducts.find(x => x._id === id).product;
+      return this.editProducts.find(x => x._id === id);
 
     } else {
       return this.editProducts.find(x => x.productId === id).product;
@@ -548,29 +598,29 @@ export class OrdersManageComponent implements OnInit {
 
   priceEditCalculate(id, count) {
 
-    let price: number;
+    let sellingPrice: number;
 
     this.productHandler.getProductById(id).subscribe(p => {
 
 
       if (this.OrderToEdit.clientType == 'horeca') {
         if (p.horecaPriceDiscount != 0) {
-          price = p.horecaPriceDiscount * count;
+          sellingPrice = p.horecaPriceDiscount * count;
 
         } else {
-          price = p.horecaPrice * count;
+          sellingPrice = p.horecaPrice * count;
 
         }
       } else if (this.OrderToEdit.clientType == 'wholesale' || this.orderUser.clientType == 'retailCostumer') {
         if (p.wholeSalePriceDiscount != 0) {
-          price = p.wholeSalePriceDiscount * count;
+          sellingPrice = p.wholeSalePriceDiscount * count;
 
         } else {
-          price = p.wholeSalePrice * count;
+          sellingPrice = p.wholeSalePrice * count;
         }
 
       }
-      this.selectedEditProducts.find(x => x.productId == id).price = price;
+      this.selectedEditProducts.find(x => x.productId == id).sellingPrice = sellingPrice;
       this.totalPriceCalculate(this.selectedEditProducts);
 
     }, errorCode => this.showError());
@@ -606,22 +656,29 @@ export class OrdersManageComponent implements OnInit {
     order.status = 'packed';
   }
 
-  searchUsers(str) {
+  searchUsers(str, isFilter) {
     this.CouponHandler.getUsersByShope(str).subscribe(data => {
       this.ul = [];
       for (let u of data) {
-        this.ul.push({ label: u.shopName, value: u.id });
+        this.ul.push({ label: u.shopName + " / " + u.ownerName, value: u.id });
       }
       this.users = data;
 
       setTimeout(() => {
-        this.IOusers = this.ul;
+        if (isFilter){
+          console.log(this.IOusersFilter)
+          this.IOusersFilter = this.ul;
+        }
+        else
+          this.IOusers = this.ul;
       }, 50);
     }, errorCode => this.showError()
     );
   }
 
   IOdewarehouseKeeper: Array<IOption> = [];
+  IOdewarehouseKeeperFilter: Array<IOption> = [];
+
 
   submitKeeper(model) {
     this.Handler.assignWarehouseKeeper({ 'userId': this.orderModel.warehouseKeeperId }, this.orderModel.id).subscribe(() => {
@@ -647,8 +704,30 @@ export class OrdersManageComponent implements OnInit {
     }, errorCode => this.showError());
   }
 
+  submitInDelivery(model) {
+    this.Handler.submitInDelivery(this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
 
-  searchWearKeper(str) {
+    }, errorCode => this.showError());
+  }
+
+  changeDilivery(model) {
+    this.Handler.changeDilivery({ 'userId': this.orderModel.deliveryMemberId }, this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
+
+    }, errorCode => this.showError());
+  }
+
+  submitPendingDelivery(model) {
+    this.Handler.submitPendingDelivery({ 'userId': this.orderModel.deliveryMemberId }, this.orderModel.id).subscribe(() => {
+      model.hide()
+      this.router.navigate(['/orders/management']);
+
+    }, errorCode => this.showError());
+  }
+  searchWearKeper(str, isFilter) {
     this.Handler.getUserByString('warehouseKeeper', str).subscribe(data => {
       this.deul = [];
       for (let u of data) {
@@ -659,7 +738,12 @@ export class OrdersManageComponent implements OnInit {
 
       }
       setTimeout(() => {
-        this.IOdewarehouseKeeper = this.deul;
+        if (isFilter)
+
+          this.IOdewarehouseKeeperFilter = this.deul;
+
+        else
+          this.IOdewarehouseKeeper = this.deul;
       }, 100);
     }, errorCode => this.showError()
     );
@@ -684,9 +768,9 @@ export class OrdersManageComponent implements OnInit {
     }, errorCode => this.showError()
     );
   }
+  whereFilter = {};
 
-
-  searchDeliver(str) {
+  searchDeliver(str, isFilter) {
     this.Handler.getUserByString('deliverer', str).subscribe(data => {
       this.deul = [];
       for (let u of data) {
@@ -697,7 +781,12 @@ export class OrdersManageComponent implements OnInit {
 
       }
       setTimeout(() => {
-        this.IOdeusers = this.deul;
+        if (isFilter)
+
+          this.IOdeusersFilter = this.deul;
+
+        else
+          this.IOdeusers = this.deul;
       }, 100);
     }, errorCode => this.showError()
     );

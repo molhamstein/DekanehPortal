@@ -1,3 +1,4 @@
+import { ConstService } from './../../../services/const.service';
 import { AbstractProductModel } from './../abstract-product-model';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
@@ -58,7 +59,7 @@ export class AbstractProductListComponent implements OnInit {
 
   private eventOptions: boolean | { capture?: boolean, passive?: boolean };
 
-  constructor(private abstractProductHandler: AbstractProductHandler, private router: Router, private alert: AlertService, private ngZone: NgZone) {
+  constructor(private abstractProductHandler: AbstractProductHandler, private router: Router, private alert: AlertService, private ngZone: NgZone, private c: ConstService) {
     this.getAllCats();
     // this.getAllMans();
 

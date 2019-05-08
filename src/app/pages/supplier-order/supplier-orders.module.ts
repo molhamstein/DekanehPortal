@@ -8,6 +8,7 @@ import { SelectModule } from 'ng-select';
 import { PaginationModule, TooltipModule } from 'ngx-bootstrap';
 import { SupplierOrdersHandlerService } from './supplier-order-handler.service';
 import { NewSupplierOrderComponent } from './new-supplier-order/new-supplier-order.component';
+import { ReportSupplierOrderComponent } from './supplier-order-report/supplier-order-report.component';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { NewSupplierOrderComponent } from './new-supplier-order/new-supplier-ord
     ],
     declarations: [
         NewSupplierOrderComponent,
-        SupplierOrdersListComponent
+        SupplierOrdersListComponent,
+        ReportSupplierOrderComponent
         ]
 })
 export class SupplierOrdersModule {

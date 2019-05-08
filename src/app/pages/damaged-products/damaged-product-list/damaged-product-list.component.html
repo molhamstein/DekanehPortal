@@ -45,7 +45,7 @@
         <th class="clickable-th">
           {{"damaged.form.controls.date"|translate}}
         </th>
-        <th>
+        <th *ngIf="c.cheachRole('damaged','edit')">
           <!--{{"product.actions"|translate}}-->#
         </th>
       </tr>
@@ -55,7 +55,7 @@
       <tr *ngFor="let product of returnedArray">
         <td>{{"damaged.reasonList."+product.reason |translate}}</td>
         <td>{{c.formatDate(product.date)}}</td>
-        <td>
+        <td *ngIf="c.cheachRole('damaged','edit')">
           <button type="button" class="btn btn-primary" (click)="editProduct(product.id)">
             {{"client.buttons.edit"|translate}}
           </button>

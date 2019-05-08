@@ -560,65 +560,70 @@ var _a, _b, _c, _d, _e, _f;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_supplier_new_supplier_new_supplier_component__ = __webpack_require__("../../../../../src/app/pages/supplier/new-supplier/new-supplier.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_supplier_order_supplier_order_list_supplier_order_list_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-list/supplier-order-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_abstract_products_abstract_product_list_abstract_product_list_component__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-list/abstract-product-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__admin_component__ = __webpack_require__("../../../../../src/app/layout/admin/admin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_pages_module__ = __webpack_require__("../../../../../src/app/pages/pages.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__breadcrumbs_breadcrumbs_component__ = __webpack_require__("../../../../../src/app/layout/admin/breadcrumbs/breadcrumbs.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__title_title_component__ = __webpack_require__("../../../../../src/app/layout/admin/title/title.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__utils_utils_module__ = __webpack_require__("../../../../../src/app/utils/utils.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng_click_outside__ = __webpack_require__("../../../../ng-click-outside/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng_click_outside___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_ng_click_outside__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_manufacturers_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/manufacturers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_manufacturers_view_manufacturers_view_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_manufacturers_add_manufacturer_add_manufacturer_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_staff_staff_list_staff_list_component__ = __webpack_require__("../../../../../src/app/pages/staff/staff-list/staff-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_staff_new_staff_new_staff_component__ = __webpack_require__("../../../../../src/app/pages/staff/new-staff/new-staff.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_clients_client_list_client_list_component__ = __webpack_require__("../../../../../src/app/pages/clients/client-list/client-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_clients_new_client_new_client_component__ = __webpack_require__("../../../../../src/app/pages/clients/new-client/new-client.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_categories_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_categories_view_all_categories_view_all_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/view-all-categories/view-all-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_categories_add_category_add_category_component__ = __webpack_require__("../../../../../src/app/pages/categories/add-category/add-category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_products_product_list_product_list_component__ = __webpack_require__("../../../../../src/app/pages/products/product-list/product-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_products_new_product_new_product_component__ = __webpack_require__("../../../../../src/app/pages/products/new-product/new-product.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_orders_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_areas_new_area_new_area_component__ = __webpack_require__("../../../../../src/app/pages/areas/new-area/new-area.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_coupons_new_coupon_new_coupon_component__ = __webpack_require__("../../../../../src/app/pages/coupons/new-coupon/new-coupon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_areas_list_areas_list_areas_component__ = __webpack_require__("../../../../../src/app/pages/areas/list-areas/list-areas.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_coupons_list_coupons_list_coupons_component__ = __webpack_require__("../../../../../src/app/pages/coupons/list-coupons/list-coupons.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_top_slider_slide_listing_slide_listing_component__ = __webpack_require__("../../../../../src/app/pages/top-slider/slide-listing/slide-listing.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_top_slider_new_slide_new_slide_component__ = __webpack_require__("../../../../../src/app/pages/top-slider/new-slide/new-slide.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_ratings_rates_list_rates_list_component__ = __webpack_require__("../../../../../src/app/pages/ratings/rates-list/rates-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_orders_orders_manage_orders_manage_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders-manage/orders-manage.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__services_auth_guard_service__ = __webpack_require__("../../../../../src/app/services/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_notifications_service__ = __webpack_require__("../../../../../src/app/services/notifications.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_orders_orders_from_suppliers_orders_from_suppliers_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders-from-suppliers/orders-from-suppliers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_notifications_add_notifications_add_notifications_component__ = __webpack_require__("../../../../../src/app/pages/notifications/add-notifications/add-notifications.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_abstract_products_abstract_new_product_abstract_new_product_component__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-new-product/abstract-new-product.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_reports_warning_report_warning_report_component__ = __webpack_require__("../../../../../src/app/pages/reports/warning-report/warning-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_damaged_products_damaged_product_list_damaged_product_list_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-product-list/damaged-product-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_damaged_products_new_damaged_product_new_damaged_product_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/new-damaged-product/new-damaged-product.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_supplier_order_new_supplier_order_new_supplier_order_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/new-supplier-order/new-supplier-order.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_supplier_list_suppliers_list_suppliers_component__ = __webpack_require__("../../../../../src/app/pages/supplier/list-suppliers/list-suppliers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_dashboard_dashboard_handler_service__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard-handler.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_damaged_products_damaged_report_damaged_report_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-report/damaged-report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_supplier_new_supplier_new_supplier_component__ = __webpack_require__("../../../../../src/app/pages/supplier/new-supplier/new-supplier.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_supplier_order_supplier_order_list_supplier_order_list_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-list/supplier-order-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_abstract_products_abstract_product_list_abstract_product_list_component__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-list/abstract-product-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__admin_component__ = __webpack_require__("../../../../../src/app/layout/admin/admin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_pages_module__ = __webpack_require__("../../../../../src/app/pages/pages.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__breadcrumbs_breadcrumbs_component__ = __webpack_require__("../../../../../src/app/layout/admin/breadcrumbs/breadcrumbs.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__title_title_component__ = __webpack_require__("../../../../../src/app/layout/admin/title/title.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__utils_utils_module__ = __webpack_require__("../../../../../src/app/utils/utils.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng_click_outside__ = __webpack_require__("../../../../ng-click-outside/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ng_click_outside___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_ng_click_outside__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_manufacturers_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/manufacturers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_manufacturers_view_manufacturers_view_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_manufacturers_add_manufacturer_add_manufacturer_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_staff_staff_list_staff_list_component__ = __webpack_require__("../../../../../src/app/pages/staff/staff-list/staff-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_staff_new_staff_new_staff_component__ = __webpack_require__("../../../../../src/app/pages/staff/new-staff/new-staff.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_clients_client_list_client_list_component__ = __webpack_require__("../../../../../src/app/pages/clients/client-list/client-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_clients_new_client_new_client_component__ = __webpack_require__("../../../../../src/app/pages/clients/new-client/new-client.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_categories_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_categories_view_all_categories_view_all_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/view-all-categories/view-all-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_categories_add_category_add_category_component__ = __webpack_require__("../../../../../src/app/pages/categories/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_products_product_list_product_list_component__ = __webpack_require__("../../../../../src/app/pages/products/product-list/product-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_products_new_product_new_product_component__ = __webpack_require__("../../../../../src/app/pages/products/new-product/new-product.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_orders_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_areas_new_area_new_area_component__ = __webpack_require__("../../../../../src/app/pages/areas/new-area/new-area.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_coupons_new_coupon_new_coupon_component__ = __webpack_require__("../../../../../src/app/pages/coupons/new-coupon/new-coupon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_areas_list_areas_list_areas_component__ = __webpack_require__("../../../../../src/app/pages/areas/list-areas/list-areas.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_coupons_list_coupons_list_coupons_component__ = __webpack_require__("../../../../../src/app/pages/coupons/list-coupons/list-coupons.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_top_slider_slide_listing_slide_listing_component__ = __webpack_require__("../../../../../src/app/pages/top-slider/slide-listing/slide-listing.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_top_slider_new_slide_new_slide_component__ = __webpack_require__("../../../../../src/app/pages/top-slider/new-slide/new-slide.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_ratings_rates_list_rates_list_component__ = __webpack_require__("../../../../../src/app/pages/ratings/rates-list/rates-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_orders_orders_manage_orders_manage_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders-manage/orders-manage.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__services_auth_guard_service__ = __webpack_require__("../../../../../src/app/services/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__services_notifications_service__ = __webpack_require__("../../../../../src/app/services/notifications.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_orders_orders_from_suppliers_orders_from_suppliers_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders-from-suppliers/orders-from-suppliers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_notifications_add_notifications_add_notifications_component__ = __webpack_require__("../../../../../src/app/pages/notifications/add-notifications/add-notifications.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_abstract_products_abstract_new_product_abstract_new_product_component__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-new-product/abstract-new-product.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_reports_warning_report_warning_report_component__ = __webpack_require__("../../../../../src/app/pages/reports/warning-report/warning-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_damaged_products_damaged_product_list_damaged_product_list_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-product-list/damaged-product-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_damaged_products_new_damaged_product_new_damaged_product_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/new-damaged-product/new-damaged-product.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_supplier_order_new_supplier_order_new_supplier_order_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/new-supplier-order/new-supplier-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_supplier_list_suppliers_list_suppliers_component__ = __webpack_require__("../../../../../src/app/pages/supplier/list-suppliers/list-suppliers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_dashboard_dashboard_handler_service__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pages_damaged_products_damaged_report_damaged_report_component__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-report/damaged-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__pages_home_home_handler_service__ = __webpack_require__("../../../../../src/app/pages/home/home-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__pages_orders_order_report_order_report_component__ = __webpack_require__("../../../../../src/app/pages/orders/order-report/order-report.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__pages_supplier_order_supplier_order_report_supplier_order_report_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -676,50 +681,57 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var AppRoutes = [
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_7__admin_component__["a" /* AdminComponent */],
-        canActivate: [__WEBPACK_IMPORTED_MODULE_39__services_auth_guard_service__["a" /* AuthGuardService */]],
-        canActivateChild: [__WEBPACK_IMPORTED_MODULE_39__services_auth_guard_service__["a" /* AuthGuardService */]],
+        component: __WEBPACK_IMPORTED_MODULE_8__admin_component__["a" /* AdminComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_40__services_auth_guard_service__["a" /* AuthGuardService */]],
+        canActivateChild: [__WEBPACK_IMPORTED_MODULE_40__services_auth_guard_service__["a" /* AuthGuardService */]],
         children: [
             {
                 path: '',
-                component: __WEBPACK_IMPORTED_MODULE_8__pages_dashboard_dashboard_component__["a" /* DashboardComponent */],
+                component: __WEBPACK_IMPORTED_MODULE_9__pages_dashboard_dashboard_component__["a" /* DashboardComponent */],
+            },
+            {
+                path: 'home',
+                component: __WEBPACK_IMPORTED_MODULE_0__pages_home_home_component__["a" /* HomeComponent */],
             },
             {
                 path: 'categories',
-                component: __WEBPACK_IMPORTED_MODULE_25__pages_categories_categories_component__["a" /* CategoriesComponent */],
+                component: __WEBPACK_IMPORTED_MODULE_26__pages_categories_categories_component__["a" /* CategoriesComponent */],
                 children: [
                     {
                         path: 'viewAll',
-                        component: __WEBPACK_IMPORTED_MODULE_26__pages_categories_view_all_categories_view_all_categories_component__["a" /* ViewAllCategoriesComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_27__pages_categories_view_all_categories_view_all_categories_component__["a" /* ViewAllCategoriesComponent */],
                     },
                     {
                         path: 'add',
-                        component: __WEBPACK_IMPORTED_MODULE_27__pages_categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_28__pages_categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
                     },
                     {
-                        path: ':id/edit',
-                        component: __WEBPACK_IMPORTED_MODULE_27__pages_categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
+                        path: 'edit/:id',
+                        component: __WEBPACK_IMPORTED_MODULE_28__pages_categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
                     },
                 ],
             },
             {
                 path: 'manufacturers',
-                component: __WEBPACK_IMPORTED_MODULE_18__pages_manufacturers_manufacturers_component__["a" /* ManufacturersComponent */],
+                component: __WEBPACK_IMPORTED_MODULE_19__pages_manufacturers_manufacturers_component__["a" /* ManufacturersComponent */],
                 children: [
                     {
                         path: 'add',
-                        component: __WEBPACK_IMPORTED_MODULE_20__pages_manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_21__pages_manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
                     },
                     {
-                        path: ':id/edit',
-                        component: __WEBPACK_IMPORTED_MODULE_20__pages_manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
+                        path: 'edit/:id',
+                        component: __WEBPACK_IMPORTED_MODULE_21__pages_manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
                     },
                     {
                         path: 'view',
-                        component: __WEBPACK_IMPORTED_MODULE_19__pages_manufacturers_view_manufacturers_view_manufacturers_component__["a" /* ViewManufacturersComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_20__pages_manufacturers_view_manufacturers_view_manufacturers_component__["a" /* ViewManufacturersComponent */],
                     }
                 ]
             },
@@ -728,15 +740,15 @@ var AppRoutes = [
                 children: [
                     {
                         path: 'add',
-                        component: __WEBPACK_IMPORTED_MODULE_0__pages_supplier_new_supplier_new_supplier_component__["a" /* NewSupplierComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_1__pages_supplier_new_supplier_new_supplier_component__["a" /* NewSupplierComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_0__pages_supplier_new_supplier_new_supplier_component__["a" /* NewSupplierComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_1__pages_supplier_new_supplier_new_supplier_component__["a" /* NewSupplierComponent */],
                     },
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_48__pages_supplier_list_suppliers_list_suppliers_component__["a" /* ListSuppliersComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_49__pages_supplier_list_suppliers_list_suppliers_component__["a" /* ListSuppliersComponent */],
                     }
                 ]
             },
@@ -744,15 +756,15 @@ var AppRoutes = [
                 path: 'topSlider', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_35__pages_top_slider_slide_listing_slide_listing_component__["a" /* SlideListingComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_36__pages_top_slider_slide_listing_slide_listing_component__["a" /* SlideListingComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_36__pages_top_slider_new_slide_new_slide_component__["a" /* NewSlideComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_37__pages_top_slider_new_slide_new_slide_component__["a" /* NewSlideComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_36__pages_top_slider_new_slide_new_slide_component__["a" /* NewSlideComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_37__pages_top_slider_new_slide_new_slide_component__["a" /* NewSlideComponent */],
                     },
                 ],
             },
@@ -760,15 +772,15 @@ var AppRoutes = [
                 path: 'staff', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_21__pages_staff_staff_list_staff_list_component__["a" /* StaffListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_22__pages_staff_staff_list_staff_list_component__["a" /* StaffListComponent */],
                     },
                     {
                         path: 'add-on',
-                        component: __WEBPACK_IMPORTED_MODULE_22__pages_staff_new_staff_new_staff_component__["a" /* NewStaffComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_23__pages_staff_new_staff_new_staff_component__["a" /* NewStaffComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_22__pages_staff_new_staff_new_staff_component__["a" /* NewStaffComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_23__pages_staff_new_staff_new_staff_component__["a" /* NewStaffComponent */],
                     },
                 ],
             },
@@ -776,15 +788,15 @@ var AppRoutes = [
                 path: 'client', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_23__pages_clients_client_list_client_list_component__["a" /* ClientListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_24__pages_clients_client_list_client_list_component__["a" /* ClientListComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_24__pages_clients_new_client_new_client_component__["a" /* NewClientComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_25__pages_clients_new_client_new_client_component__["a" /* NewClientComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_24__pages_clients_new_client_new_client_component__["a" /* NewClientComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_25__pages_clients_new_client_new_client_component__["a" /* NewClientComponent */],
                     },
                 ],
             },
@@ -792,15 +804,15 @@ var AppRoutes = [
                 path: 'areas', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_33__pages_areas_list_areas_list_areas_component__["a" /* ListAreasComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_34__pages_areas_list_areas_list_areas_component__["a" /* ListAreasComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_31__pages_areas_new_area_new_area_component__["a" /* NewAreaComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_32__pages_areas_new_area_new_area_component__["a" /* NewAreaComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_31__pages_areas_new_area_new_area_component__["a" /* NewAreaComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_32__pages_areas_new_area_new_area_component__["a" /* NewAreaComponent */],
                     },
                 ],
             },
@@ -808,15 +820,15 @@ var AppRoutes = [
                 path: 'coupons', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_34__pages_coupons_list_coupons_list_coupons_component__["a" /* ListCouponsComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_35__pages_coupons_list_coupons_list_coupons_component__["a" /* ListCouponsComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_32__pages_coupons_new_coupon_new_coupon_component__["a" /* NewCouponComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_33__pages_coupons_new_coupon_new_coupon_component__["a" /* NewCouponComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_32__pages_coupons_new_coupon_new_coupon_component__["a" /* NewCouponComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_33__pages_coupons_new_coupon_new_coupon_component__["a" /* NewCouponComponent */],
                     },
                 ],
             },
@@ -824,15 +836,15 @@ var AppRoutes = [
                 path: 'products', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_28__pages_products_product_list_product_list_component__["a" /* ProductListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_29__pages_products_product_list_product_list_component__["a" /* ProductListComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_29__pages_products_new_product_new_product_component__["a" /* NewProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_30__pages_products_new_product_new_product_component__["a" /* NewProductComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_29__pages_products_new_product_new_product_component__["a" /* NewProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_30__pages_products_new_product_new_product_component__["a" /* NewProductComponent */],
                     },
                 ],
             },
@@ -840,7 +852,7 @@ var AppRoutes = [
                 path: 'reports', children: [
                     {
                         path: 'warning',
-                        component: __WEBPACK_IMPORTED_MODULE_44__pages_reports_warning_report_warning_report_component__["a" /* WarningReportComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_45__pages_reports_warning_report_warning_report_component__["a" /* WarningReportComponent */],
                     }
                 ],
             },
@@ -848,15 +860,15 @@ var AppRoutes = [
                 path: 'abstract-products', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_2__pages_abstract_products_abstract_product_list_abstract_product_list_component__["a" /* AbstractProductListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_3__pages_abstract_products_abstract_product_list_abstract_product_list_component__["a" /* AbstractProductListComponent */],
                     },
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_43__pages_abstract_products_abstract_new_product_abstract_new_product_component__["a" /* AbstractNewProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_44__pages_abstract_products_abstract_new_product_abstract_new_product_component__["a" /* AbstractNewProductComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_43__pages_abstract_products_abstract_new_product_abstract_new_product_component__["a" /* AbstractNewProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_44__pages_abstract_products_abstract_new_product_abstract_new_product_component__["a" /* AbstractNewProductComponent */],
                     },
                 ],
             },
@@ -864,19 +876,19 @@ var AppRoutes = [
                 path: 'damaged', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_45__pages_damaged_products_damaged_product_list_damaged_product_list_component__["a" /* DamagedProductListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_46__pages_damaged_products_damaged_product_list_damaged_product_list_component__["a" /* DamagedProductListComponent */],
                     },
                     {
                         path: 'add',
-                        component: __WEBPACK_IMPORTED_MODULE_46__pages_damaged_products_new_damaged_product_new_damaged_product_component__["a" /* NewDamagedProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_47__pages_damaged_products_new_damaged_product_new_damaged_product_component__["a" /* NewDamagedProductComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_46__pages_damaged_products_new_damaged_product_new_damaged_product_component__["a" /* NewDamagedProductComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_47__pages_damaged_products_new_damaged_product_new_damaged_product_component__["a" /* NewDamagedProductComponent */],
                     },
                     {
                         path: 'report',
-                        component: __WEBPACK_IMPORTED_MODULE_50__pages_damaged_products_damaged_report_damaged_report_component__["a" /* ReportDamagedComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_51__pages_damaged_products_damaged_report_damaged_report_component__["a" /* ReportDamagedComponent */],
                     },
                 ],
             },
@@ -884,7 +896,7 @@ var AppRoutes = [
                 path: 'ratings', children: [
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_37__pages_ratings_rates_list_rates_list_component__["a" /* RatesListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_38__pages_ratings_rates_list_rates_list_component__["a" /* RatesListComponent */],
                     },
                 ],
             },
@@ -892,21 +904,25 @@ var AppRoutes = [
                 path: 'notifications', children: [
                     {
                         path: 'add',
-                        component: __WEBPACK_IMPORTED_MODULE_42__pages_notifications_add_notifications_add_notifications_component__["a" /* AddNotificationsComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_43__pages_notifications_add_notifications_add_notifications_component__["a" /* AddNotificationsComponent */],
                     },
                 ],
             },
             {
                 path: 'orders',
-                component: __WEBPACK_IMPORTED_MODULE_30__pages_orders_orders_component__["a" /* OrdersComponent */],
+                component: __WEBPACK_IMPORTED_MODULE_31__pages_orders_orders_component__["a" /* OrdersComponent */],
                 children: [
                     {
                         path: 'from-supplier',
-                        component: __WEBPACK_IMPORTED_MODULE_41__pages_orders_orders_from_suppliers_orders_from_suppliers_component__["a" /* OrdersFromSuppliersComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_42__pages_orders_orders_from_suppliers_orders_from_suppliers_component__["a" /* OrdersFromSuppliersComponent */],
+                    },
+                    {
+                        path: 'report',
+                        component: __WEBPACK_IMPORTED_MODULE_54__pages_orders_order_report_order_report_component__["a" /* ReportOrderComponent */],
                     },
                     {
                         path: 'management',
-                        component: __WEBPACK_IMPORTED_MODULE_38__pages_orders_orders_manage_orders_manage_component__["a" /* OrdersManageComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_39__pages_orders_orders_manage_orders_manage_component__["a" /* OrdersManageComponent */],
                     }
                 ]
             },
@@ -915,15 +931,19 @@ var AppRoutes = [
                 children: [
                     {
                         path: 'new',
-                        component: __WEBPACK_IMPORTED_MODULE_47__pages_supplier_order_new_supplier_order_new_supplier_order_component__["a" /* NewSupplierOrderComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_48__pages_supplier_order_new_supplier_order_new_supplier_order_component__["a" /* NewSupplierOrderComponent */],
+                    },
+                    {
+                        path: 'report',
+                        component: __WEBPACK_IMPORTED_MODULE_55__pages_supplier_order_supplier_order_report_supplier_order_report_component__["a" /* ReportSupplierOrderComponent */],
                     },
                     {
                         path: 'list',
-                        component: __WEBPACK_IMPORTED_MODULE_1__pages_supplier_order_supplier_order_list_supplier_order_list_component__["a" /* SupplierOrdersListComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_2__pages_supplier_order_supplier_order_list_supplier_order_list_component__["a" /* SupplierOrdersListComponent */],
                     },
                     {
                         path: 'edit/:id',
-                        component: __WEBPACK_IMPORTED_MODULE_47__pages_supplier_order_new_supplier_order_new_supplier_order_component__["a" /* NewSupplierOrderComponent */],
+                        component: __WEBPACK_IMPORTED_MODULE_48__pages_supplier_order_new_supplier_order_new_supplier_order_component__["a" /* NewSupplierOrderComponent */],
                     }
                 ]
             }
@@ -936,30 +956,30 @@ var AdminModule = (function () {
     return AdminModule;
 }());
 AdminModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["NgModule"])({
+    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__["b" /* TranslateModule */].forChild(),
-            __WEBPACK_IMPORTED_MODULE_6__angular_router__["g" /* RouterModule */].forChild(AppRoutes),
-            __WEBPACK_IMPORTED_MODULE_9__pages_pages_module__["a" /* PagesModule */],
-            __WEBPACK_IMPORTED_MODULE_12__shared_shared_module__["a" /* SharedModule */],
-            __WEBPACK_IMPORTED_MODULE_13__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_51_ngx_bootstrap__["c" /* TooltipModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["b" /* TranslateModule */].forChild(),
+            __WEBPACK_IMPORTED_MODULE_7__angular_router__["g" /* RouterModule */].forChild(AppRoutes),
+            __WEBPACK_IMPORTED_MODULE_10__pages_pages_module__["a" /* PagesModule */],
+            __WEBPACK_IMPORTED_MODULE_13__shared_shared_module__["a" /* SharedModule */],
+            __WEBPACK_IMPORTED_MODULE_14__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_52_ngx_bootstrap__["c" /* TooltipModule */],
             // BrowserModule,
-            __WEBPACK_IMPORTED_MODULE_16__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_17_ng_click_outside__["ClickOutsideModule"],
-            __WEBPACK_IMPORTED_MODULE_14__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_15__utils_utils_module__["a" /* UtilsModule */],
-            __WEBPACK_IMPORTED_MODULE_9__pages_pages_module__["a" /* PagesModule */],
-            __WEBPACK_IMPORTED_MODULE_13__angular_forms__["ReactiveFormsModule"]
+            __WEBPACK_IMPORTED_MODULE_17__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_18_ng_click_outside__["ClickOutsideModule"],
+            __WEBPACK_IMPORTED_MODULE_15__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_16__utils_utils_module__["a" /* UtilsModule */],
+            __WEBPACK_IMPORTED_MODULE_10__pages_pages_module__["a" /* PagesModule */],
+            __WEBPACK_IMPORTED_MODULE_14__angular_forms__["ReactiveFormsModule"]
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_7__admin_component__["a" /* AdminComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__breadcrumbs_breadcrumbs_component__["a" /* BreadcrumbsComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__admin_component__["a" /* AdminComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__breadcrumbs_breadcrumbs_component__["a" /* BreadcrumbsComponent */],
             // AddManufacturerComponent,
             // AuthComponent,
-            __WEBPACK_IMPORTED_MODULE_11__title_title_component__["a" /* TitleComponent */],
-        ], providers: [__WEBPACK_IMPORTED_MODULE_39__services_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_40__services_notifications_service__["a" /* NotificationsService */], __WEBPACK_IMPORTED_MODULE_49__pages_dashboard_dashboard_handler_service__["a" /* DashboardHandlerService */]]
+            __WEBPACK_IMPORTED_MODULE_12__title_title_component__["a" /* TitleComponent */],
+        ], providers: [__WEBPACK_IMPORTED_MODULE_40__services_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_41__services_notifications_service__["a" /* NotificationsService */], __WEBPACK_IMPORTED_MODULE_50__pages_dashboard_dashboard_handler_service__["a" /* DashboardHandlerService */], __WEBPACK_IMPORTED_MODULE_53__pages_home_home_handler_service__["a" /* HomeHandlerService */]]
     })
 ], AdminModule);
 
@@ -1631,7 +1651,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/abstract-products/abstract-product-list/abstract-product-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" [value]=\"searchString\" [(ngModel)]=\"searchKey\"  (keyup)=\"keyUp()\"\r\n      placeholder=\"{{'client.search'|translate}}....\">\r\n  </div>\r\n  <div class=\"col-sm-9\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" (change)=\"setCatFilter($event)\" [(ngModel)]=\"cat\">\r\n        <option value='1' disabled style=\"display: none\" selected>{{'product.form.controls.cat'|translate}}</option>\r\n        <option *ngFor=\"let cat of cats\" [value]=\"cat.id\">\r\n          {{cat.titleAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"subcat\">\r\n        <option value=\"1\" disabled selected>{{'product.form.controls.subcat'|translate}}</option>\r\n        <option *ngFor=\"let sub of subcats\" [value]=\"sub.id\">\r\n          {{sub.titleAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"man\">\r\n        <option value=\"1\" disabled selected>{{'product.form.controls.man'|translate}}</option>\r\n        <option *ngFor=\"let man of mans\" [value]=\"man.id\">\r\n          {{man.nameAr}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n      <button type=\"button\" *ngIf=\"!isWarningView\" (click)=\"getWarningProd()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.viewWarningProd\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n          {{\"abstractProduct.name\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByMan()\">\r\n          {{\"abstractProduct.man\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n          {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"officialMassMarketPrice === undefined? '' : (officialMassMarketPrice? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n          {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"officialConsumerPriceDir === undefined? '' : (officialConsumerPriceDir ? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByThreshold()\">\r\n          {{\"abstractProduct.threshold\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"thresholdDir === undefined? '' : (thresholdDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByWarningThresholdDir()\">\r\n          {{\"abstractProduct.warningThreshold\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"warningThresholdDir === undefined? '' : (warningThresholdDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n          {{\"abstractProduct.totalCount\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"totalCountDir === undefined? '' : (totalCountDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n          {{\"abstractProduct.expectedCount\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"expectedCountDir === undefined? '' : (expectedCountDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th>\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[] && isWarningView==false\">\r\n\r\n      <tr *ngFor=\"let product of returnedArray  \">\r\n        <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.media.thumbnail}}\"></td>\r\n        <td>{{product.nameAr}}</td>\r\n        <td>{{product.manufacturer.nameAr}}</td>\r\n        <td>{{product.officialMassMarketPrice}}</td>\r\n        <td>{{product.officialConsumerPrice}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].threshold}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].warningThreshold}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].totalCount}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].expectedCount}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n\r\n\r\n        <td>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <!--<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteClient(product.id)\">-->\r\n          <!--{{\"product.buttons.delete\"|translate}}-->\r\n          <!--</button>-->\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"isWarningView\">\r\n\r\n      <tr *ngFor=\"let product of warningData  \">\r\n        <td><img *ngIf=\"product.productAbstract.media\" class=\"product-img\" src=\"{{product.productAbstract.media.thumbnail}}\"></td>\r\n        <td>{{product.productAbstract.nameAr}}</td>\r\n        <td>{{product.manufacturer.nameAr}}</td>\r\n        <td>{{product.productAbstract.officialMassMarketPrice}}</td>\r\n        <td>{{product.productAbstract.officialConsumerPrice}}</td>\r\n        <td>{{product.threshold}}</td>\r\n        <td>{{product.warningThreshold}}</td>\r\n        <td>{{product.totalCount}}</td>\r\n        <td>{{product.expectedCount}}</td>\r\n\r\n        <td>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <!--<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteClient(product.id)\">-->\r\n          <!--{{\"product.buttons.delete\"|translate}}-->\r\n          <!--</button>-->\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" [value]=\"searchString\" [(ngModel)]=\"searchKey\" (keyup)=\"keyUp()\"\r\n      placeholder=\"{{'client.search'|translate}}....\">\r\n  </div>\r\n  <div class=\"col-sm-9\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" (change)=\"setCatFilter($event)\" [(ngModel)]=\"cat\">\r\n        <option value='1' disabled style=\"display: none\" selected>{{'product.form.controls.cat'|translate}}</option>\r\n        <option *ngFor=\"let cat of cats\" [value]=\"cat.id\">\r\n          {{cat.titleAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"subcat\">\r\n        <option value=\"1\" disabled selected>{{'product.form.controls.subcat'|translate}}</option>\r\n        <option *ngFor=\"let sub of subcats\" [value]=\"sub.id\">\r\n          {{sub.titleAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"man\">\r\n        <option value=\"1\" disabled selected>{{'product.form.controls.man'|translate}}</option>\r\n        <option *ngFor=\"let man of mans\" [value]=\"man.id\">\r\n          {{man.nameAr}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n      <button type=\"button\" *ngIf=\"!isWarningView\" (click)=\"getWarningProd()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.viewWarningProd\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n          {{\"abstractProduct.name\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByMan()\">\r\n          {{\"abstractProduct.man\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"manOrderDir === undefined? '' : (manOrderDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n          {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"officialMassMarketPrice === undefined? '' : (officialMassMarketPrice? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n          {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"officialConsumerPriceDir === undefined? '' : (officialConsumerPriceDir ? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByThreshold()\">\r\n          {{\"abstractProduct.threshold\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"thresholdDir === undefined? '' : (thresholdDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByWarningThresholdDir()\">\r\n          {{\"abstractProduct.warningThreshold\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"warningThresholdDir === undefined? '' : (warningThresholdDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n        <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n          {{\"abstractProduct.totalCount\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"totalCountDir === undefined? '' : (totalCountDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n          {{\"abstractProduct.expectedCount\"|translate}}\r\n          <i class=\"fa-sort fa \"\r\n            [ngClass]=\"expectedCountDir === undefined? '' : (expectedCountDir? 'fa-sort-desc' : 'fa-sort-asc')\"></i>\r\n\r\n        </th>\r\n\r\n        <th *ngIf=\"c.cheachRole('abstract-products','edit')\">\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[] && isWarningView==false\">\r\n\r\n      <tr *ngFor=\"let product of returnedArray  \">\r\n        <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.media.thumbnail}}\"></td>\r\n        <td>{{product.nameAr}}</td>\r\n        <td>{{product.manufacturer.nameAr}}</td>\r\n        <td>{{product.officialMassMarketPrice}}</td>\r\n        <td>{{product.officialConsumerPrice}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].threshold}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].warningThreshold}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].totalCount}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n        <td *ngIf=\"product.warehouseProducts[0]\">{{product.warehouseProducts[0].expectedCount}}</td>\r\n        <td *ngIf=\"product.warehouseProducts[0]==null\"></td>\r\n\r\n\r\n        <td *ngIf=\"c.cheachRole('abstract-products','edit')\">\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <!--<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteClient(product.id)\">-->\r\n          <!--{{\"product.buttons.delete\"|translate}}-->\r\n          <!--</button>-->\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"isWarningView\">\r\n\r\n      <tr *ngFor=\"let product of warningData  \">\r\n        <td><img *ngIf=\"product.productAbstract.media\" class=\"product-img\"\r\n            src=\"{{product.productAbstract.media.thumbnail}}\"></td>\r\n        <td>{{product.productAbstract.nameAr}}</td>\r\n        <td>{{product.manufacturer.nameAr}}</td>\r\n        <td>{{product.productAbstract.officialMassMarketPrice}}</td>\r\n        <td>{{product.productAbstract.officialConsumerPrice}}</td>\r\n        <td>{{product.threshold}}</td>\r\n        <td>{{product.warningThreshold}}</td>\r\n        <td>{{product.totalCount}}</td>\r\n        <td>{{product.expectedCount}}</td>\r\n\r\n        <td>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <!--<button class=\"btn btn-danger\" type=\"button\" (click)=\"deleteClient(product.id)\">-->\r\n          <!--{{\"product.buttons.delete\"|translate}}-->\r\n          <!--</button>-->\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1640,10 +1660,11 @@ module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <inpu
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AbstractProductListComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__abstract_product_handler__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-handler.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_const_service__ = __webpack_require__("../../../../../src/app/services/const.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__abstract_product_handler__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-handler.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1657,13 +1678,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AbstractProductListComponent = (function () {
-    function AbstractProductListComponent(abstractProductHandler, router, alert, ngZone) {
+    function AbstractProductListComponent(abstractProductHandler, router, alert, ngZone, c) {
         var _this = this;
         this.abstractProductHandler = abstractProductHandler;
         this.router = router;
         this.alert = alert;
         this.ngZone = ngZone;
+        this.c = c;
         this.unpage = false;
         this.cat = '1';
         this.subcat = '1';
@@ -1696,7 +1719,7 @@ var AbstractProductListComponent = (function () {
             return false;
         };
         this.router.events.subscribe(function (evt) {
-            if (evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* NavigationEnd */]) {
+            if (evt instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* NavigationEnd */]) {
                 _this.router.navigated = false;
             }
         });
@@ -2086,15 +2109,15 @@ var AbstractProductListComponent = (function () {
     return AbstractProductListComponent;
 }());
 AbstractProductListComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-abstract-product-list',
         template: __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-list/abstract-product-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-list/abstract-product-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__abstract_product_handler__["a" /* AbstractProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__abstract_product_handler__["a" /* AbstractProductHandler */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_alert_service__["a" /* AlertService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__abstract_product_handler__["a" /* AbstractProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__abstract_product_handler__["a" /* AbstractProductHandler */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgZone"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgZone"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__services_const_service__["a" /* ConstService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_const_service__["a" /* ConstService */]) === "function" && _e || Object])
 ], AbstractProductListComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=abstract-product-list.component.js.map
 
 /***/ }),
@@ -2732,6 +2755,8 @@ var LogInComponent = (function () {
         this.api.post('/users/staffLogin', form.value).subscribe(function (data) {
             localStorage.setItem('username', JSON.parse(data['_body']).user.username);
             localStorage.setItem('token', JSON.parse(data['_body']).id);
+            localStorage.setItem('clientType', JSON.parse(data['_body']).user.roles[0].nameAr);
+            localStorage.setItem('userId', JSON.parse(data['_body']).user.id);
             _this.router.navigate(['']);
         }, function (err) {
             console.log('ERR');
@@ -3313,7 +3338,7 @@ var ViewAllCategoriesComponent = (function () {
             return;
     };
     ViewAllCategoriesComponent.prototype.editCat = function (category) {
-        this.router.navigate(['categories', category.id, 'edit']);
+        this.router.navigate(['categories', 'edit', category.id]);
     };
     ViewAllCategoriesComponent.prototype.deleteCat = function (category) {
         var _this = this;
@@ -4910,7 +4935,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/damaged-products/damaged-product-list/damaged-product-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"from\"\r\n      placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n  </div>\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"to\"\r\n      placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"reason\">\r\n        <option value=\"1\" disabled selected>{{'damaged.form.controls.reason'|translate}}</option>\r\n        <option *ngFor=\"let option of allReason\" [value]=\"option\">\r\n          {{\"damaged.reasonList.\" + option|translate}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          {{\"damaged.form.controls.reason\"|translate}}\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"damaged.form.controls.date\"|translate}}\r\n        </th>\r\n        <th>\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[]\">\r\n\r\n      <tr *ngFor=\"let product of returnedArray\">\r\n        <td>{{\"damaged.reasonList.\"+product.reason |translate}}</td>\r\n        <td>{{c.formatDate(product.date)}}</td>\r\n        <td>\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"from\"\r\n      placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n  </div>\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"to\"\r\n      placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"reason\">\r\n        <option value=\"1\" disabled selected>{{'damaged.form.controls.reason'|translate}}</option>\r\n        <option *ngFor=\"let option of allReason\" [value]=\"option\">\r\n          {{\"damaged.reasonList.\" + option|translate}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n        <th>\r\n          {{\"damaged.form.controls.reason\"|translate}}\r\n\r\n\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"damaged.form.controls.date\"|translate}}\r\n        </th>\r\n        <th *ngIf=\"c.cheachRole('damaged','edit')\">\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[]\">\r\n\r\n      <tr *ngFor=\"let product of returnedArray\">\r\n        <td>{{\"damaged.reasonList.\"+product.reason |translate}}</td>\r\n        <td>{{c.formatDate(product.date)}}</td>\r\n        <td *ngIf=\"c.cheachRole('damaged','edit')\">\r\n          <button type=\"button\" class=\"btn btn-primary\" (click)=\"editProduct(product.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -5614,7 +5639,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/damaged-products/damaged-report/damaged-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12 col-xl-12\">\r\n  <app-card [title]=\"'Email sent'\" [cardClass]=\"'email-sent-card'\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"from\"\r\n          placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n      </div>\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"to\"\r\n          placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n      </div>\r\n\r\n      <button type=\"button\" (click)=\"getData()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n    </div>\r\n\r\n    <div id=\"email-sent\" style=\"max-width:100%;height:400px;\"></div>\r\n\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-striped \">\r\n        <thead>\r\n          <tr>\r\n            <th>\r\n              {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n              {{\"abstractProduct.name\"|translate}}\r\n            \r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n              {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n             \r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n              {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n              {{\"abstractProduct.totalCount\"|translate}}\r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n              {{\"abstractProduct.totalCost\"|translate}}\r\n            </th>\r\n          </tr>\r\n        </thead>\r\n        <tbody [hidden]=\"\" *ngIf=\"products!=[]\">\r\n\r\n          <tr *ngFor=\"let product of products\">\r\n            <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.productAbstractSnapshot.media.thumbnail}}\"></td>\r\n            <td>{{product.productAbstractSnapshot.nameAr}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialMassMarketPrice}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialConsumerPrice}}</td>\r\n            <td>{{product.count}}</td>\r\n            <td>{{product.cost}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n\r\n  </app-card>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"col-md-12 col-xl-12\">\r\n  <app-card [title]=\"''\" [cardClass]=\"'email-sent-card'\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"from\"\r\n          placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n      </div>\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"to\"\r\n          placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n      </div>\r\n\r\n      <button type=\"button\" (click)=\"getData()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n    </div>\r\n\r\n    <div id=\"email-sent\" style=\"max-width:100%;height:400px;\"></div>\r\n\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-striped \">\r\n        <thead>\r\n          <tr>\r\n            <th>\r\n              {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n              {{\"abstractProduct.name\"|translate}}\r\n            \r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n              {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n             \r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n              {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n              {{\"abstractProduct.totalCount\"|translate}}\r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n              {{\"abstractProduct.totalCost\"|translate}}\r\n            </th>\r\n          </tr>\r\n        </thead>\r\n        <tbody [hidden]=\"\" *ngIf=\"products!=[]\">\r\n\r\n          <tr *ngFor=\"let product of products\">\r\n            <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.productAbstractSnapshot.media.thumbnail}}\"></td>\r\n            <td>{{product.productAbstractSnapshot.nameAr}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialMassMarketPrice}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialConsumerPrice}}</td>\r\n            <td>{{product.count}}</td>\r\n            <td>{{product.cost}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n\r\n  </app-card>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6208,6 +6233,408 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/pages/home/home-handler.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeHandlerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_service__ = __webpack_require__("../../../../../src/app/services/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var HomeHandlerService = (function () {
+    function HomeHandlerService(apiService) {
+        this.apiService = apiService;
+    }
+    HomeHandlerService.prototype.getMe = function () {
+        return this.apiService.get('/users/me')
+            .map(this.extractData).catch(this.handleError);
+    };
+    HomeHandlerService.prototype.login = function (warehousesId) {
+        return this.apiService.post('/warehouses/' + warehousesId + '/login', {})
+            .map(this.extractData).catch(this.handleError);
+    };
+    HomeHandlerService.prototype.logout = function (warehousesId) {
+        return this.apiService.post('/warehouses/' + warehousesId + '/logout', {})
+            .map(this.extractData).catch(this.handleError);
+    };
+    HomeHandlerService.prototype.getWorkerOrder = function (where) {
+        var param = "";
+        if (where.from) {
+            param += "from=" + new Date(where.from) + "&";
+        }
+        if (where.to)
+            param += "to=" + new Date(where.to) + "&";
+        if (where.status)
+            param += "status=" + where.status;
+        return this.apiService.get('/orders/warehouseKeeperOrders?' + param)
+            .map(this.extractData).catch(this.handleError);
+    };
+    HomeHandlerService.prototype.getOrderStatistics = function () {
+        return this.apiService.get('/orders/list')
+            .map(this.extractData).catch(this.handleError);
+    };
+    HomeHandlerService.prototype.getArea = function (id) {
+        return this.apiService.get('/areas/' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    HomeHandlerService.prototype.updateArea = function (area) {
+        var cpHeaders = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
+        return this.apiService.put('/areas/' + area.id, area, options)
+            .map(function (success) { return success.status; })
+            .catch(this.handleError);
+    };
+    HomeHandlerService.prototype.createArea = function (area) {
+        var body = JSON.stringify(area);
+        var cpHeaders = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
+        // console.log(ClientUser);
+        return this.apiService.post('/areas', body, options)
+            .map(function (success) { return success.status; })
+            .catch(this.handleError);
+    };
+    HomeHandlerService.prototype.extractData = function (response) {
+        var body = response.json();
+        return body;
+    };
+    HomeHandlerService.prototype.handleError = function (error) {
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(error.status);
+    };
+    HomeHandlerService.prototype.getProductBybarcode = function (barcod) {
+        var where = { "where": { "code": barcod } };
+        return this.apiService.get('/barcodes?filter=' + JSON.stringify(where))
+            .map(this.extractData).catch(this.handleError);
+    };
+    return HomeHandlerService;
+}());
+HomeHandlerService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_api_service__["a" /* ApiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_api_service__["a" /* ApiService */]) === "function" && _a || Object])
+], HomeHandlerService);
+
+var _a;
+//# sourceMappingURL=home-handler.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".tableOrder {\r\n  width: 100%;\r\n  height: 200px;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n}\r\n\r\n.productCol {\r\n  display: none;\r\n}\r\n\r\ntable {\r\n  direction: rtl;\r\n}\r\n\r\nth {\r\n  text-align: center;\r\n}\r\n\r\ntd {\r\n  text-align: center;\r\n  vertical-align: middle;\r\n}\r\n\r\n.tableOrder .item {\r\n  width: calc(100% - 40px);\r\n  height: 50px;\r\n  margin: 10px 20px;\r\n  padding: 3px 3px;\r\n  /* border: 1px solid #4680ff; */\r\n  border-radius: 3px;\r\n  box-shadow: 1px 0px 4px 0px #928f8f4a, -1px 0px 4px 0px #928f8f4a, 0px 1px 4px 0px #928f8f4a, 0px -1px 4px 0px #928f8f4a;\r\n  box-shadow: 0px 0px 11px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.tableOrder .item.long {\r\n  height: 75px;\r\n}\r\n\r\n.tableOrder .item .details {\r\n  width: 100%;\r\n}\r\n\r\n.tableOrder .item .details .col {\r\n  width: 50%;\r\n  font-size: 18px;\r\n  float: left;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n}\r\n\r\n.tableOrder .item .name {\r\n  width: 100%;\r\n  font-size: 15px;\r\n  margin-bottom: 2px;\r\n}\r\n\r\n.card .custom-card-block-small {\r\n  padding: 15px 0px;\r\n}\r\n\r\n.card .custom-card-block-small .custom-span {\r\n  padding: 0px 20px\r\n}\r\n\r\n.card .custom-card-block-small h4 {\r\n  padding: 0px 20px\r\n}\r\n\r\n.tableOrder::-webkit-scrollbar-track\r\n{\r\n\t-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\r\n\tborder-radius: 10px;\r\n\tbackground-color: #F5F5F5;\r\n}\r\n\r\n.tableOrder::-webkit-scrollbar\r\n{\r\n\twidth: 5px;\r\n\tbackground-color: #F5F5F5;\r\n}\r\n\r\n.tableOrder::-webkit-scrollbar-thumb\r\n{\r\n\tborder-radius: 10px;\r\n\t-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);\r\n\tbackground-color: #555;\r\n}\r\n\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-modal-basic #modalDefault>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.pickProduct'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalDefault.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    {{'modal.haveAllTheCount'|translate}}\r\n    <span class=\"badge badge-info\">{{oneProduct.count}}</span>\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalDefault.hide()\">{{'modal.no'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"yes(modalDefault,modalPacked)\">{{'modal.yes'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<app-modal-basic #modalPacked>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.packed'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalPacked.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    {{'modal.confirmPack'|translate}}\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalPacked.hide()\">{{'modal.no'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"yesPacked(modalPacked)\">{{'modal.yes'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<app-modal-basic #modalConfirmLogin>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.confirm'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalConfirmLogin.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\" *ngIf=\"curentState=='in'\">\r\n    {{'modal.confirmLogin'|translate}}\r\n  </div>\r\n  <div class=\"app-modal-body\" *ngIf=\"curentState=='out'\">\r\n    {{'modal.confirmLogout'|translate}}\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalConfirmLogin.hide()\">{{'modal.no'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"yesChange(modalConfirmLogin)\">{{'modal.yes'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n\r\n<div class=\"row\">\r\n  <button type=\"button\" style=\"margin: 0px 15px 15px 15px;\" *ngIf=\"meObject.state=='out'\" (click)=\"changeState('in',modalConfirmLogin)\" class=\"btn btn-success\">\r\n    {{\"Home.login\"|translate}}\r\n  </button>\r\n  <button type=\"button\" style=\"margin: 0px 15px 15px 15px;\" *ngIf=\"meObject.state=='in'\" (click)=\"changeState('out',modalConfirmLogin)\" class=\"btn btn-danger\">\r\n    {{\"Home.logout\"|translate}}\r\n  </button>\r\n\r\n</div>\r\n\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"from\"\r\n      placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n  </div>\r\n\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"to\"\r\n      placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n  </div>\r\n\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"status\">\r\n        <option value=\"1\" disabled selected>{{'SupplierOrder.status'|translate}}</option>\r\n        <option *ngFor=\"let oneStatus of statuses\" [value]=\"oneStatus\">\r\n          {{\"orders.table.delStatus.\"+oneStatus |translate}}\r\n        </option>\r\n      </select>\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n        <th class=\"clickable-th\">\r\n          {{'Home.table.userTap'|translate}}\r\n        </th>\r\n\r\n\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.totalPrice\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.createDate\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.status\"|translate}}\r\n        </th>\r\n        <th>\r\n          #\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[]\">\r\n\r\n      <tr *ngFor=\"let order of returnedArray ; let index=index; \">\r\n        <td class=\"no-padding-td\">\r\n          <ul class=\"table-ul\">\r\n            <li class=\"table-li\">\r\n              <span>{{order.client.shopName}}</span>\r\n            </li>\r\n            <!--<li class=\"table-li\">-->\r\n            <!--<span class=\"badge badge-light\">{{order.client.area}}</span>-->\r\n            <!--</li>  -->\r\n            <li class=\"table-li\">\r\n              <span class=\"badge badge-danger\" style=\"font-size: 14px\">{{order.client.ownerName}}</span>\r\n            </li>\r\n            <li class=\"table-li\">\r\n              <span class=\"badge client-type\" [ngClass]=\"order.clientType=='wholesale'? 'badge-warning ':'badge-info'\">{{\"client.form.controls.\"\r\n                      + order.clientType|translate}}</span>\r\n            </li>\r\n            <li>\r\n              <span style=\"font-size: 14px\" class=\"badge badge-dark\"\r\n                *ngIf=\"getTimer(order.orderDate)!=undefined&&order.status!='delivered'\">{{getTimer(order.orderDate)}}</span>\r\n            </li>\r\n\r\n          </ul>\r\n        </td>\r\n\r\n        <td class=\"no-padding-td\" [ngClass]=\"{'productCol': viewProduct[index]==false}\">\r\n          <ul class=\" list-group table-ul\">\r\n            <li (click)=\"viewProduct[index]=false\" *ngFor=\"let product of order.orderProducts\" class=\"list-group-item\"\r\n              style=\"text-align: right;padding: .75rem 0.25rem;\">\r\n              <span>{{product.product.nameAr|slice:0:25}}</span> {{\"orders.table.count\"|translate}} :\r\n              <strong class=\"badge badge-info\">{{product.count}}</strong>\r\n              {{\"orders.table.price\"|translate}} : <strong style=\"float: left;font-size: 13px;margin-top: 3px;\"\r\n                class=\"badge badge-success\">{{product.sellingPrice}}</strong>\r\n              <strong *ngIf=\"product.checked==false && order.status=='pending'\"\r\n                style=\"float: right;font-size: 13px;margin-top: 3px;margin-left: 5px;\" class=\"\"><i\r\n                  class=\"fa  fa-check-circle fa-lg\"></i></strong>\r\n\r\n\r\n              <strong *ngIf=\"product.checked==true || order.status!='pending'\"\r\n                style=\"float: right;font-size: 13px;margin-top: 3px;margin-left: 5px;color: green;\" class=\"\"><i\r\n                  class=\"fa  fa-check-circle fa-lg\"></i></strong>\r\n\r\n            </li>\r\n            <li class=\"list-group-item\" *ngIf=\"order.status=='pending'\">\r\n              <input type=\"text\" [(ngModel)]=\"barcodes[index]\">\r\n              <button type=\"button\" style=\"font-size: 14px;padding: 3px 6px;margin-top: -4px\"\r\n                (click)=\"submitBarcode(index,modalDefault)\" class=\"btn btn-primary\">\r\n                {{\"Home.table.readBarcode\"|translate}}\r\n              </button>\r\n            </li>\r\n            <li (click)=\"viewProduct[index]=false\" class=\"list-group-item list-group-item-info\">\r\n              <strong>{{\"orders.table.total\"|translate}}\r\n                : </strong>{{order.totalPrice}}</li>\r\n\r\n            <li (click)=\"viewProduct[index]=false\" class=\"list-group-item list-group-item-info\">\r\n              <strong>{{\"orders.table.countTotal\"|translate}}\r\n                : </strong>{{CountProduct[index]}}\r\n            </li>\r\n\r\n          </ul>\r\n        </td>\r\n\r\n        <td class=\"no-padding-td\" (click)=\"viewProduct[index]=true\"\r\n          [ngClass]=\"{'productCol': viewProduct[index]==true}\">\r\n          <ul class=\" list-group table-ul\">\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                : </strong>{{order.totalPrice}}</li>\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                : </strong>{{CountProduct[index]}}</li>\r\n\r\n          </ul>\r\n        </td>\r\n        <td>\r\n          <p style=\"margin-bottom: 0px\">{{c.formatDate(order.orderDate)}}</p>\r\n        </td>\r\n        <td>\r\n          <span (click)=\"statusModel(order,modalStatus)\" class=\"badge\"\r\n            [ngClass]=\"order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))\">{{\"orders.table.delStatus.\"\r\n              + order.status|translate}}</span>\r\n        </td>\r\n\r\n        <td>\r\n          <button type=\"button\" *ngIf=\"order.status!='packed' && cheackProductOrder(index)\" class=\"btn btn-primary\"\r\n            (click)=\"submitPikker(order.id)\">\r\n            {{\"modal.modalStatus.submitPikker\"|translate}}\r\n          </button>\r\n        </td>\r\n        <!-- \r\n         \r\n  \r\n          <td>{{order.supplier?.nameAr}}</td>\r\n          <td>{{c.formatDate(order.createDate)}}</td>\r\n          <td>{{\"SupplierOrder.statusText.\"+order.status |translate}}</td>\r\n          <td *ngIf=\"c.cheachRole('supplier-orders','edit')\">\r\n            <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n              (click)=\"editSupllierOrder(order.id)\">\r\n              {{\"client.buttons.edit\"|translate}}\r\n            </button>\r\n            <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n              (click)=\"openModal(confirmCanceled,order.id)\">\r\n              {{\"SupplierOrder.buttons.cancel\"|translate}}\r\n            </button>\r\n            <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n              (click)=\"openModal(confirmDelivered,order.id)\">\r\n              {{\"SupplierOrder.buttons.deliver\"|translate}}\r\n            </button>\r\n          </td> -->\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<!-- <div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n    <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n      firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n      [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n    <div class=\"per-page-sec\">\r\n      <span>{{\"client.perPage\"|translate}}</span>\r\n      <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n    </div>\r\n  \r\n  </div> -->\r\n\r\n<ng-template #confirmCanceled>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.cancelMessage'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"canselSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n<ng-template #confirmDelivered>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.deliverMessage'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"deliverSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/home/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__orders_orders_handler_service__ = __webpack_require__("../../../../../src/app/pages/orders/orders-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap_modal__ = __webpack_require__("../../../../ngx-bootstrap/modal/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_const_service__ = __webpack_require__("../../../../../src/app/services/const.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_charts_amchart_amcharts__ = __webpack_require__("../../../../../src/assets/charts/amchart/amcharts.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__assets_charts_amchart_amcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__assets_charts_amchart_amcharts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__assets_charts_amchart_gauge_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/gauge.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__assets_charts_amchart_gauge_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__assets_charts_amchart_gauge_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_charts_amchart_pie_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/pie.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__assets_charts_amchart_pie_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__assets_charts_amchart_pie_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__assets_charts_amchart_serial_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/serial.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__assets_charts_amchart_serial_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__assets_charts_amchart_serial_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__assets_charts_amchart_light_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/light.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__assets_charts_amchart_light_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__assets_charts_amchart_light_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__assets_charts_amchart_ammap_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/ammap.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__assets_charts_amchart_ammap_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__assets_charts_amchart_ammap_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__assets_charts_amchart_worldLow_js__ = __webpack_require__("../../../../../src/assets/charts/amchart/worldLow.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__assets_charts_amchart_worldLow_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__assets_charts_amchart_worldLow_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__home_handler_service__ = __webpack_require__("../../../../../src/app/pages/home/home-handler.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var HomeComponent = (function () {
+    function HomeComponent(modalService, Handler, homeHandler, router, alert, c) {
+        var _this = this;
+        this.modalService = modalService;
+        this.Handler = Handler;
+        this.homeHandler = homeHandler;
+        this.router = router;
+        this.alert = alert;
+        this.c = c;
+        this.unpage = false;
+        this.viewProduct = [];
+        this.CountProduct = [];
+        this.barcodes = [];
+        this.requestProcess = false;
+        this.allOreder = [];
+        this.currentPage = 1;
+        this.returnedArray = [];
+        this.pages = 20;
+        this.searchString = '';
+        this.meObject = {};
+        this.suppliers = [];
+        this.statuses = ["pending", "packed", "pendingDelivery"];
+        this.supplier = 1;
+        this.status = 1;
+        this.scroll = function () {
+            if (window.pageYOffset.toString() != '0') {
+                localStorage.setItem('productsScreenY', window.pageYOffset.toString());
+            }
+        };
+        this.oneProduct = {};
+        this.orderIndex = "";
+        this.getAllProducts();
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
+        this.router.events.subscribe(function (evt) {
+            if (evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* NavigationEnd */]) {
+                _this.router.navigated = false;
+            }
+        });
+    }
+    HomeComponent.prototype.changeState = function (newState, model) {
+        this.curentState = newState;
+        model.show();
+    };
+    HomeComponent.prototype.yesChange = function (modal) {
+        var _this = this;
+        if (this.curentState == 'in') {
+            this.homeHandler.login(this.meObject['warehouseId'])
+                .finally(function () {
+            })
+                .subscribe(function (data) {
+                modal.hide();
+                _this.meObject['state'] = 'in';
+            }, function (errorCode) { return _this.showError(); });
+        }
+        else {
+            this.homeHandler.logout(this.meObject['warehouseId'])
+                .finally(function () {
+            })
+                .subscribe(function (data) {
+                modal.hide();
+                _this.meObject['state'] = 'out';
+            }, function (errorCode) { return _this.showError(); });
+        }
+    };
+    HomeComponent.prototype.showError = function () {
+        this.alert.showToast.next({ type: 'error' });
+    };
+    HomeComponent.prototype.openModal = function (template, id) {
+        this.confirmId = id;
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
+    };
+    HomeComponent.prototype.pageChanged = function (event) {
+        var _this = this;
+        setTimeout(function () {
+            _this.getAllProducts();
+        }, 50);
+    };
+    HomeComponent.prototype.editSupllierOrder = function (id) {
+        this.router.navigate(['/supplier-orders/edit/' + id]);
+    };
+    HomeComponent.prototype.decline = function () {
+        this.modalRef.hide();
+    };
+    HomeComponent.prototype.setFilters = function () {
+        var where = {};
+        if (this.from)
+            where['from'] = new Date(this.from);
+        if (this.to)
+            where['to'] = new Date(this.to);
+        if (this.status != 1)
+            where['status'] = this.status;
+        console.log("where");
+        console.log(where);
+        this.getAllProducts(where);
+    };
+    HomeComponent.prototype.emptyFields = function () {
+        this.from = null;
+        this.to = null;
+        this.status = 1;
+        this.getAllProducts();
+    };
+    HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.homeHandler.getMe()
+            .finally(function () {
+        })
+            .subscribe(function (data) {
+            _this.meObject = data;
+        }, function (errorCode) { return _this.showError(); });
+    };
+    HomeComponent.prototype.getTimer = function (date) {
+        var nowDate = new Date().getTime();
+        var time = ((new Date(date).getTime() + 60 * 60 * 24 * 1000) - nowDate) / (60 * 60 * 1000);
+        if (time > 0) {
+            var hours = Math.floor(time);
+            var minuets = Math.floor((time - hours) * 60);
+            var seconeds = Math.floor(((time - hours) * 60 - minuets) * 60);
+            return seconeds + ' : ' + minuets + ' : ' + hours;
+        }
+        else
+            return undefined;
+    };
+    HomeComponent.prototype.submitPikker = function (index, modal) {
+        this.orderIndex = index;
+        modal.show();
+    };
+    HomeComponent.prototype.getAllProducts = function (where) {
+        var _this = this;
+        if (where === void 0) { where = {}; }
+        this.spinnerFlag = true;
+        this.homeHandler.getWorkerOrder(where)
+            .finally(function () {
+            _this.returnedArray = _this.allOreder;
+            for (var i = 0; i < _this.returnedArray.length; ++i) {
+                _this.barcodes[i] = "";
+                _this.viewProduct[i] = false;
+                _this.CountProduct[i] = 0;
+                _this.returnedArray[i].orderProducts.forEach(function (element) {
+                    _this.CountProduct[i] += element.count;
+                    element.checked = false;
+                });
+            }
+            _this.spinnerFlag = false;
+            _this.unpage = false;
+            if (localStorage.getItem('productsScreenY')) {
+                setTimeout(function () {
+                    window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+                }, 100);
+            }
+        })
+            .subscribe(function (data) {
+            _this.allOreder = data;
+        }, function (errorCode) { return _this.showError(); });
+    };
+    HomeComponent.prototype.changepages = function (event) {
+        var _this = this;
+        this.pages = event.target.value;
+        setTimeout(function () {
+            _this.currentPage = 1;
+        }, 50);
+        this.getAllProducts();
+    };
+    HomeComponent.prototype.ngOnDestroy = function () {
+        window.removeEventListener('scroll', this.scroll, true);
+    };
+    HomeComponent.prototype.preConfig = function () {
+        this.statusCode = null;
+        this.requestProcess = true;
+    };
+    HomeComponent.prototype.submitBarcode = function (index, modal) {
+        var _this = this;
+        var mainThis = this;
+        this.homeHandler.getProductBybarcode(this.barcodes[index])
+            .finally(function () {
+        })
+            .subscribe(function (data) {
+            _this.barcodes[index] = "";
+            _this.orderIndex = index;
+            _this.allOreder[index].orderProducts.forEach(function (element) {
+                if (element.productId == data[0].productId) {
+                    modal.show();
+                    mainThis.oneProduct = element;
+                }
+            });
+        }, function (errorCode) { return _this.showError(); });
+    };
+    HomeComponent.prototype.yes = function (modal, confirmModel) {
+        modal.hide();
+        this.oneProduct['checked'] = true;
+        if (this.cheackProductOrder(this.orderIndex)) {
+            this.submitPikker(this.orderIndex, confirmModel);
+        }
+    };
+    HomeComponent.prototype.yesPacked = function (modal) {
+        var _this = this;
+        modal.hide();
+        this.Handler.assignPack(this.allOreder[this.orderIndex].id).subscribe(function () {
+            _this.router.navigate(['/orders/management']);
+        }, function (errorCode) { return _this.showError(); });
+    };
+    HomeComponent.prototype.cheackProductOrder = function (orderIndex) {
+        for (var index = 0; index < this.allOreder[orderIndex].orderProducts.length; index++) {
+            var element_1 = this.allOreder[orderIndex].orderProducts[index];
+            if (element_1['checked'] == false) {
+                return false;
+            }
+            if (index == this.allOreder[orderIndex].orderProducts.length - 1)
+                return true;
+        }
+    };
+    return HomeComponent;
+}());
+HomeComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["Component"])({
+        selector: 'app-home',
+        template: __webpack_require__("../../../../../src/app/pages/home/home.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/home/home.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap_modal__["a" /* BsModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ngx_bootstrap_modal__["a" /* BsModalService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__orders_orders_handler_service__["a" /* OrdersHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__orders_orders_handler_service__["a" /* OrdersHandlerService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_13__home_handler_service__["a" /* HomeHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__home_handler_service__["a" /* HomeHandlerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__services_const_service__["a" /* ConstService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_const_service__["a" /* ConstService */]) === "function" && _f || Object])
+], HomeComponent);
+
+var _a, _b, _c, _d, _e, _f;
+//# sourceMappingURL=home.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6499,7 +6926,7 @@ var ViewManufacturersComponent = (function () {
         this.modalRef.hide();
     };
     ViewManufacturersComponent.prototype.editManufacturer = function (item) {
-        this.router.navigate(['manufacturers', item.id, 'edit']);
+        this.router.navigate(['manufacturers', 'edit', item.id]);
     };
     ViewManufacturersComponent.prototype.deleteManufacturer = function (item) {
         var _this = this;
@@ -6782,6 +7209,184 @@ NotificationModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/pages/orders/order-report/order-report.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".ProductForm {\r\n  direction: rtl;\r\n  text-align: right;\r\n  font-size: 15px;\r\n}\r\n\r\n.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 48px;\r\n  height: 24px;\r\n}\r\n\r\n.switch input {\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.slider {\r\n  position: absolute;\r\n  cursor: pointer;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  transition: .4s;\r\n}\r\n\r\n.slider:before {\r\n  position: absolute;\r\n  content: \"\";\r\n  height: 18px;\r\n  width: 18px;\r\n  left: 2px;\r\n  bottom: 3px;\r\n  background-color: white;\r\n  transition: .4s;\r\n}\r\n\r\n.img-uploader {\r\n  text-align: center;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#preview>img {\r\n  /*width: 200px;*/\r\n  height: 200px;\r\n  margin-bottom: 15px;\r\n}\r\n\r\ninput:checked+.slider {\r\n  background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.slider {\r\n  box-shadow: 0 0 1px #2196F3;\r\n}\r\n\r\ninput:checked+.slider:before {\r\n  -webkit-transform: translateX(26px);\r\n  transform: translateX(26px);\r\n}\r\n\r\n/* Rounded sliders */\r\n.slider.round {\r\n  border-radius: 34px;\r\n}\r\n\r\n.slider.round:before {\r\n  border-radius: 50%;\r\n}\r\n\r\nbutton[disabled] {\r\n  cursor: not-allowed;\r\n}\r\n\r\n.spinner-submit {\r\n  vertical-align: middle;\r\n  color: gray;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n  .products-div {\r\n    overflow-y: auto;\r\n    height: 200px;\r\n  }\r\n}\r\n\r\n\r\ntext {\r\n  direction: initial;\r\n}\r\n\r\n\r\nsvg:not(:root) {\r\n  overflow: scroll;\r\n  right: 0;\r\n}\r\n\r\n.card .card-header {\r\n  padding-bottom: 0px;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/orders/order-report/order-report.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-12 col-xl-12\">\r\n  <app-card [title]=\"''\" [cardClass]=\"'email-sent-card'\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"from\"\r\n          placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n      </div>\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"to\"\r\n          placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n      </div>\r\n\r\n      <button type=\"button\" (click)=\"getData()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n    </div>\r\n\r\n    <div id=\"email-sent\" style=\"max-width:100%;height:400px;\"></div>\r\n\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-striped \">\r\n        <thead>\r\n          <tr>\r\n            <th>\r\n              {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n              {{\"abstractProduct.name\"|translate}}\r\n            \r\n            </th>\r\n            <!-- <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n              {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n             \r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n              {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n            </th> -->\r\n            <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n              {{\"abstractProduct.totalCount\"|translate}}\r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n              {{\"abstractProduct.totalCost\"|translate}}\r\n            </th>\r\n          </tr>\r\n        </thead>\r\n        <tbody [hidden]=\"\" *ngIf=\"products!=[]\">\r\n\r\n          <tr *ngFor=\"let product of products\">\r\n            <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.productSnapshot.media.thumbnail}}\"></td>\r\n            <td>{{product.productSnapshot.nameAr}}</td>\r\n            <!-- <td>{{product.productSnapshot.officialMassMarketPrice}}</td>\r\n            <td>{{product.productSnapshot.officialConsumerPrice}}</td> -->\r\n            <td>{{product.count}}</td>\r\n            <td>{{product.cost}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n\r\n  </app-card>\r\n\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/orders/order-report/order-report.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportOrderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_product_handler__ = __webpack_require__("../../../../../src/app/pages/products/product-handler.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__orders_handler_service__ = __webpack_require__("../../../../../src/app/pages/orders/orders-handler.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ReportOrderComponent = (function () {
+    function ReportOrderComponent(Handler, prodHandler, router, route, alert) {
+        this.Handler = Handler;
+        this.prodHandler = prodHandler;
+        this.router = router;
+        this.route = route;
+        this.alert = alert;
+        this.today = new Date();
+        this.from = this.today.getFullYear() + "-" + String(this.today.getMonth()).padStart(2, '0') + "-" + String(this.today.getDate()).padStart(2, '0') + "T" + String(this.today.getHours()).padStart(2, '0') + ":" + String(this.today.getMinutes()).padStart(2, '0');
+        this.to = this.today.getFullYear() + "-" + String(this.today.getMonth() + 1).padStart(2, '0') + "-" + String(this.today.getDate()).padStart(2, '0') + "T" + String(this.today.getHours()).padStart(2, '0') + ":" + String(this.today.getMinutes()).padStart(2, '0');
+        this.products = [];
+        this.dailyReportData = [];
+    }
+    ReportOrderComponent.prototype.showError = function () {
+        this.alert.showToast.next({ type: 'error' });
+    };
+    ReportOrderComponent.prototype.getData = function () {
+        this.getChart();
+    };
+    ReportOrderComponent.prototype.getChart = function () {
+        var _this = this;
+        this.Handler.getReportDaily(this.from, this.to).subscribe(function (data) {
+            _this.products = data['products'];
+            data['result'].forEach(function (element) {
+                _this.dailyReportData.push({
+                    "date": element._id.year + "-" + String(element._id.month).padStart(2, '0') + "-" + String(element._id.day).padStart(2, '0'),
+                    "count": element.count,
+                    "cost": element.cost
+                });
+            });
+            AmCharts.makeChart('email-sent', {
+                'type': 'serial',
+                'theme': 'light',
+                'hideCredits': true,
+                'dataDateFormat': 'YYYY-MM-DD',
+                'precision': 2,
+                'valueAxes': [{
+                        'id': 'v1',
+                        'title': '',
+                        'position': 'left',
+                        'autoGridCount': false,
+                        'labelFunction': function (value) {
+                            return Math.round(value);
+                        }
+                    }, {
+                        'id': 'v2',
+                        'title': '',
+                        'gridAlpha': 0,
+                        'fontSize': 0,
+                        'axesAlpha': 0,
+                        'position': 'left',
+                        'autoGridCount': false
+                    }],
+                'graphs': [{
+                        'id': 'g3',
+                        'valueAxis': 'v1',
+                        'lineColor': '#4680ff',
+                        'fillColors': '#4680ff',
+                        'fillAlphas': 1,
+                        'type': 'column',
+                        'title': 'Cost',
+                        'valueField': 'cost',
+                        'clustered': true,
+                        'columnWidth': 0.2,
+                        'legendValueText': '$[[value]]',
+                        'balloonText': '[[title]]<br /><b style="font-size: 130%">$[[value]]</b>'
+                    }, {
+                        'id': 'g4',
+                        'valueAxis': 'v1',
+                        'lineColor': '#FC6180',
+                        'fillColors': '#FC6180',
+                        'fillAlphas': 1,
+                        'type': 'column',
+                        'title': 'Count',
+                        'valueField': 'count',
+                        'clustered': true,
+                        'columnWidth': 0.2,
+                        'legendValueText': '[[value]]',
+                        'balloonText': '[[title]]<br /><b style="font-size: 130%">[[value]]</b>'
+                    }],
+                'chartCursor': {
+                    'pan': true,
+                    'valueLineEnabled': true,
+                    'valueLineBalloonEnabled': true,
+                    'cursorAlpha': 0,
+                    'valueLineAlpha': 0.2
+                },
+                'categoryField': 'date',
+                'categoryAxis': {
+                    'parseDates': true,
+                    'dashLength': 0,
+                    'axisAlpha': 0,
+                    'GridAlpha': 0,
+                    'minorGridEnabled': true
+                },
+                'legend': {
+                    'useGraphSettings': true,
+                    'position': 'top'
+                },
+                'balloon': {
+                    'borderThickness': 1,
+                    'shadowAlpha': 0
+                },
+                'export': {
+                    'enabled': true
+                },
+                'dataProvider': _this.dailyReportData
+            });
+        }, function (errorCode) { return _this.showError(); });
+    };
+    ReportOrderComponent.prototype.ngOnInit = function () {
+        this.getChart();
+    };
+    return ReportOrderComponent;
+}());
+ReportOrderComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'app-order-report',
+        template: __webpack_require__("../../../../../src/app/pages/orders/order-report/order-report.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/orders/order-report/order-report.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__orders_handler_service__["a" /* OrdersHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__orders_handler_service__["a" /* OrdersHandlerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__products_product_handler__["a" /* ProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__products_product_handler__["a" /* ProductHandler */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_alert_service__["a" /* AlertService */]) === "function" && _e || Object])
+], ReportOrderComponent);
+
+var _a, _b, _c, _d, _e;
+//# sourceMappingURL=order-report.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/pages/orders/order.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7027,11 +7632,28 @@ var OrdersHandlerService = (function () {
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
         return this.apiService.post('/orders/' + orderId + '/assignDelivery', body, options).map(this.extractData).catch(this.handleError);
     };
+    OrdersHandlerService.prototype.changeDilivery = function (user, orderId) {
+        var body = JSON.stringify(user);
+        var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignOrderDeliverer', body, options).map(this.extractData).catch(this.handleError);
+    };
     OrdersHandlerService.prototype.assignWarehouseKeeper = function (user, orderId) {
         var body = JSON.stringify(user);
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
         return this.apiService.post('/orders/' + orderId + '/assignWarehouse', body, options).map(this.extractData).catch(this.handleError);
+    };
+    OrdersHandlerService.prototype.submitPendingDelivery = function (user, orderId) {
+        var body = JSON.stringify(user);
+        var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignPendingDelivery', body, options).map(this.extractData).catch(this.handleError);
+    };
+    OrdersHandlerService.prototype.submitInDelivery = function (orderId) {
+        var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
+        return this.apiService.post('/orders/' + orderId + '/assignInDelivery', {}, options).map(this.extractData).catch(this.handleError);
     };
     OrdersHandlerService.prototype.assignPack = function (orderId) {
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
@@ -7041,7 +7663,7 @@ var OrdersHandlerService = (function () {
     OrdersHandlerService.prototype.SetDelivered = function (orderId) {
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
-        return this.apiService.post('/orders/' + orderId + '/delivered', options).map(this.extractData).catch(this.handleError);
+        return this.apiService.post('/orders/' + orderId + '/assignDelivered', options).map(this.extractData).catch(this.handleError);
     };
     OrdersHandlerService.prototype.deleteOrder = function (id) {
         // let cpHeaders = new Headers({'Content-Type': 'application/json'});
@@ -7098,20 +7720,20 @@ var OrdersHandlerService = (function () {
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: cpHeaders });
         return this.apiService.post('/orders/' + id + '/assignCancel', {}, options).map(this.extractData).catch(this.handleError);
     };
-    OrdersHandlerService.prototype.getOrders = function (perPage, currentPage, delMemID) {
+    OrdersHandlerService.prototype.getOrders = function (perPage, currentPage, where) {
         var param = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* URLSearchParams */]();
-        if (delMemID != undefined) {
-            param.append('filter', '{"where":{"deliveryMemberId":"' + delMemID + '"},"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
+        if (where != undefined && where["and"].length != 0) {
+            param.append('filter', '{"where":' + JSON.stringify(where) + ',"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
         }
         else {
             param.append('filter', '{"order": "orderDate DESC","limit":' + perPage + ',"skip":' + (currentPage - 1) * perPage + ',"include":"coupon"}');
         }
         return this.apiService.get('/orders', param).map(this.extractData).catch(this.handleError);
     };
-    OrdersHandlerService.prototype.getOrdersCount = function (delMemID) {
-        if (delMemID != undefined) {
+    OrdersHandlerService.prototype.getOrdersCount = function (where) {
+        if (where != undefined && where["and"].length != 0) {
             var param = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* URLSearchParams */]();
-            param.append('where', '{"deliveryMemberId":"' + delMemID + '"}');
+            param.append('where', JSON.stringify(where));
             return this.apiService.get('/orders/count', param)
                 .map(this.extractData).catch(this.handleError);
         }
@@ -7148,6 +7770,13 @@ var OrdersHandlerService = (function () {
         console.error(error.message || error);
         return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(JSON.parse(error._body).error);
     };
+    OrdersHandlerService.prototype.getReportDaily = function (from, to) {
+        var param = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* URLSearchParams */]();
+        param.append("from", new Date(from).toString());
+        param.append("to", new Date(to).toString());
+        return this.apiService.get('/orders/dailyOrder', param)
+            .map(this.extractData).catch(this.handleError);
+    };
     return OrdersHandlerService;
 }());
 OrdersHandlerService = __decorate([
@@ -7168,7 +7797,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "table {\r\n  direction: rtl;\r\n}\r\n\r\nth {\r\n  text-align: center;\r\n}\r\n\r\ntd {\r\n  text-align: center;\r\n  vertical-align: middle;\r\n}\r\n\r\n.productCol {\r\n  display: none;\r\n}\r\n\r\n.table-ul {\r\n  padding: 0px;\r\n}\r\n\r\n.table-li {\r\n  padding: 10px;\r\n}\r\n\r\n.no-padding-td {\r\n  padding: 0px;\r\n}\r\n\r\n.add-order-btn {\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 0px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.add-order-tabel {\r\n  margin-bottom: 0px;\r\n}\r\n\r\n.add-order-btn>i {\r\n  margin: 0px;\r\n}\r\n\r\n.no-margin {\r\n  margin: 0px;\r\n}\r\n\r\n.center-div {\r\n  text-align: center;\r\n}\r\n\r\n.client-type {\r\n  font-size: 16px;\r\n}\r\n\r\n.new-order,\r\n.form-group {\r\n  direction: rtl;\r\n  text-align: right;\r\n}\r\n\r\n.total-price {\r\n  padding: 10px 0px;\r\n  text-align: center;\r\n}\r\n\r\n.submit-col {\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\nbutton[disabled] {\r\n  cursor: not-allowed;\r\n}\r\n\r\n.spinner-submit {\r\n  vertical-align: middle;\r\n  color: gray;\r\n}\r\n\r\n.functions-btn:last-child {\r\n  margin-left: 0px;\r\n\r\n}\r\n\r\n.functions-btn {\r\n  margin-left: 10px;\r\n}\r\n\r\n.functions-btn:hover {\r\n  cursor: pointer;\r\n}\r\n\r\n.functions-btn {\r\n  font-size: 14px;\r\n}\r\n\r\n.edit-order-btn:first-child {\r\n  margin-left: 50px;\r\n}\r\n\r\n.edit-order-div {\r\n  text-align: center;\r\n  display: -webkit-inline-box;\r\n  display: -ms-inline-flexbox;\r\n  display: inline-flex;\r\n}\r\n\r\n.per-page-sec {\r\n  float: right;\r\n  margin-right: 20px;\r\n}\r\n\r\n#perpage {\r\n  display: inline-block;\r\n  width: 80px;\r\n  margin-right: 10px;\r\n}\r\n\r\n.group-row {\r\n  background: #e9ecef;\r\n  font-weight: 600;\r\n}\r\n\r\n.note-row {\r\n  background: #ffffff;\r\n}\r\n\r\n/*.filter-sec{*/\r\n/*display: flex;*/\r\n/*margin-bottom: 10px;*/\r\n/*}*/\r\n#delFilter {\r\n  max-width: 200px;\r\n  display: inline-block;\r\n  margin-right: 10px;\r\n  margin-left: 10px;\r\n}\r\n\r\n.empty-filter {\r\n  padding: 6px 19px;\r\n}\r\n\r\n.separator {\r\n  display: block;\r\n  height: 0px;\r\n  border: 0;\r\n  box-shadow: 0px 0px 3px 1px #8080808a;\r\n  /* border-top: 1px solid #ccc; */\r\n  margin: 1em 0;\r\n  padding: 0;\r\n}\r\n\r\n.cheackStep{\r\n  position: absolute;\r\n  left: 10px;\r\n  padding-top: 7px;\r\n  font-size: 18px;\r\n  color: green;\r\n}\r\n", ""]);
+exports.push([module.i, "table {\r\n  direction: rtl;\r\n}\r\n\r\nth {\r\n  text-align: center;\r\n}\r\n\r\ntd {\r\n  text-align: center;\r\n  vertical-align: middle;\r\n}\r\n\r\n.productCol {\r\n  display: none;\r\n}\r\n\r\n.table-ul {\r\n  padding: 0px;\r\n}\r\n\r\n.table-li {\r\n  padding: 10px;\r\n}\r\n\r\n.no-padding-td {\r\n  padding: 0px;\r\n}\r\n\r\n.add-order-btn {\r\n  width: 60px;\r\n  height: 60px;\r\n  line-height: 0px;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.add-order-tabel {\r\n  margin-bottom: 0px;\r\n}\r\n\r\n.add-order-btn>i {\r\n  margin: 0px;\r\n}\r\n\r\n.no-margin {\r\n  margin: 0px;\r\n}\r\n\r\n.center-div {\r\n  text-align: center;\r\n}\r\n\r\n.client-type {\r\n  font-size: 16px;\r\n}\r\n\r\n.new-order,\r\n.form-group {\r\n  direction: rtl;\r\n  text-align: right;\r\n}\r\n\r\n.total-price {\r\n  padding: 10px 0px;\r\n  text-align: center;\r\n}\r\n\r\n.submit-col {\r\n  text-align: center;\r\n  margin-bottom: 20px;\r\n}\r\n\r\nbutton[disabled] {\r\n  cursor: not-allowed;\r\n}\r\n\r\n.spinner-submit {\r\n  vertical-align: middle;\r\n  color: gray;\r\n}\r\n\r\n.functions-btn:last-child {\r\n  margin-left: 0px;\r\n\r\n}\r\n\r\n.functions-btn {\r\n  margin-left: 10px;\r\n}\r\n\r\n.functions-btn:hover {\r\n  cursor: pointer;\r\n}\r\n\r\n.functions-btn {\r\n  font-size: 14px;\r\n}\r\n\r\n.edit-order-btn:first-child {\r\n  margin-left: 50px;\r\n}\r\n\r\n.edit-order-div {\r\n  text-align: center;\r\n  display: -webkit-inline-box;\r\n  display: -ms-inline-flexbox;\r\n  display: inline-flex;\r\n}\r\n\r\n.per-page-sec {\r\n  float: right;\r\n  margin-right: 20px;\r\n}\r\n\r\n#perpage {\r\n  display: inline-block;\r\n  width: 80px;\r\n  margin-right: 10px;\r\n}\r\n\r\n.group-row {\r\n  background: #e9ecef;\r\n  font-weight: 600;\r\n}\r\n\r\n.note-row {\r\n  background: #ffffff;\r\n}\r\n\r\n/*.filter-sec{*/\r\n/*display: flex;*/\r\n/*margin-bottom: 10px;*/\r\n/*}*/\r\n#delFilter {\r\n  max-width: 200px;\r\n  display: inline-block;\r\n  margin-right: 10px;\r\n  margin-left: 10px;\r\n}\r\n\r\n.empty-filter {\r\n  padding: 6px 19px;\r\n}\r\n\r\n.separator {\r\n  display: block;\r\n  height: 0px;\r\n  border: 0;\r\n  box-shadow: 0px 0px 3px 1px #8080808a;\r\n  /* border-top: 1px solid #ccc; */\r\n  margin: 1em 0;\r\n  padding: 0;\r\n}\r\n\r\n.cheackStep {\r\n  position: absolute;\r\n  left: 10px;\r\n  padding-top: 7px;\r\n  font-size: 18px;\r\n  color: green;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -7181,7 +7810,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/orders/orders-manage/orders-manage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-orders-statistics></app-orders-statistics>\r\n<!-- <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"modalDefault.show()\">Static</button> -->\r\n<app-modal-basic #modalDefault>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.addNote'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalDefault.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    <form [formGroup]=\"userNotForm\">\r\n      <div class=\"form-group\">\r\n        <label for=\"notes\">{{\"modal.note\"|translate}}</label>\r\n        <textarea class=\"form-control\" formControlName=\"note\" id=\"notes\" placeholder=\"{{'modal.note'|translate}}\"\r\n          rows=\"4\"></textarea>\r\n        <label *ngIf=\"userNotForm.get('note').invalid && submiteddAddNote\"\r\n          class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"form-group\">\r\n        <label for=\"expireDate\">{{\"modal.createdAt\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"createdAt\" id=\"expireDate\"\r\n          placeholder=\"{{'modal.createdAt'|translate}}\" type=\"datetime-local\">\r\n        <label *ngIf=\"userNotForm.get('createdAt').invalid && submiteddAddNote\"\r\n          class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalDefault.hide()\">{{'modal.close'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"addNote(modalDefault)\">{{'modal.add'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<app-modal-basic #modalStatus>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.modalStatus.edit'|translate}}</h4>\r\n    <!-- <h4 class=\"modal-title\">{{'modal.modalStatus.picked'|translate}}</h4>\r\n    <h4 class=\"modal-title\">{{'modal.modalStatus.dilivery'|translate}}</h4> -->\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalStatus.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    <div class=\"row\" style=\"padding: 5px 10px\">\r\n      <label for=\"expireDate\">{{\"modal.modalStatus.toWherhouseKeeper\"|translate}}</label>\r\n      <i *ngIf=\"orderModel && orderModel.status!='pending'\" class=\"fa fa-check-circle fa-2x cheackStep\"></i>\r\n      <ng-select #select (filterInputChanged)=\"searchWearKeper($event)\" *ngIf=\"orderModel\"\r\n        [(ngModel)]=\"orderModel.warehouseKeeperId\" [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n        [options]=\"IOdewarehouseKeeper\">\r\n      </ng-select>\r\n      <button *ngIf=\"orderModel\" [disabled]=\"orderModel.warehouseKeeperId==undefined\"\r\n        style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n        (click)=\"submitKeeper(modalStatus)\">{{'modal.modalStatus.submitKeeper'|translate}}</button>\r\n\r\n    </div>\r\n\r\n    <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending'\"></div>\r\n\r\n    <div class=\"row\" *ngIf=\"orderModel && orderModel.status!='pending'\" style=\"padding: 5px 10px\">\r\n\r\n      <label for=\"expireDate\">{{\"modal.modalStatus.picked\"|translate}}</label>\r\n      <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n        *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\"></i>\r\n      <!-- <ng-select #select (filterInputChanged)=\"searchPicked($event)\" *ngIf=\"orderModel\"\r\n        [(ngModel)]=\"orderModel.packagerMemberId\" [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n        [options]=\"IOPickedUser\">\r\n      </ng-select> -->\r\n      <div style=\"width: 100%;\">\r\n        <button *ngIf=\"orderModel\" style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\"\r\n          class=\"btn btn-primary waves-effect waves-light\"\r\n          (click)=\"submitPikker(modalStatus)\">{{'modal.modalStatus.submitPikker'|translate}}</button>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\"></div>\r\n\r\n    <div class=\"row\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\"\r\n      style=\"padding: 5px 10px\">\r\n      <label for=\"expireDate\">{{\"modal.modalStatus.dilivery\"|translate}}</label>\r\n      <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n        *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='packed'\"></i>\r\n      <ng-select #select (filterInputChanged)=\"searchDeliver($event)\" *ngIf=\"orderModel\"\r\n        [(ngModel)]=\"orderModel.deliveryMemberId\" [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n        (selected)=\"DeuserSelected($event,OrderToEdit)\" [options]=\"IOdeusers\">\r\n      </ng-select>\r\n      <button *ngIf=\"orderModel\" [disabled]=\"orderModel.deliveryMemberId==undefined\"\r\n        style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n        (click)=\"submitDilivery(modalStatus)\">{{'modal.modalStatus.submitDilivery'|translate}}</button>\r\n\r\n    </div>\r\n\r\n\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalStatus.hide()\">{{'modal.close'|translate}}</button>\r\n    <!-- <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"addNote(modalStatus)\">{{'modal.add'|translate}}</button> -->\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12 center-div\">\r\n    <button *ngIf=\"!addNew&&showNewBtn\" (click)=\"addNew=!addNew;cancelOrder();\"\r\n      class=\"btn btn-icon btn-info add-order-btn\" [tooltip]=\"'orders.new.btn'|translate\" placement=\"bottom\"><i\r\n        class=\"fa fa-plus fa-2x\"></i></button>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"addNew\" id=\"new-order\" [@rightEnterLeftLeaveAnimation]\r\n  (@rightEnterLeftLeaveAnimation.done)=\"showNewBtn=!showNewBtn\">\r\n  <form (ngSubmit)=\"onOrderFormSubmit()\" [formGroup]=\"orderForm\" class=\"CouponForm\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group\">\r\n          <label for=\"clientId\">{{'orders.new.shopeName'|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchUsers($event)\" (selected)=\"userSelected($event,newOrder)\"\r\n            [(ngModel)]=\"newOrder.clientId\" [multiple]=\"false\" [options]=\"IOusers\" formControlName=\"clientId\"\r\n            id=\"clientId\">\r\n          </ng-select>\r\n\r\n          <label *ngIf=\"orderForm.get('clientId').invalid && isSubmitted\"\r\n            class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"couponId\">{{\"orders.new.coupon\"|translate}}</label>\r\n          <input class=\"form-control\" [(ngModel)]=\"newOrder.couponCode\" [ngModelOptions]=\"{standalone: true}\"\r\n            id=\"couponId\" placeholder=\"{{'orders.new.couponPlaceHolder'|translate}}\" type=\"text\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"couponId\">{{\"staff.form.controls.notes\"|translate}}</label>\r\n          <textarea class=\"form-control\" id=\"notes\" [(ngModel)]=\"newOrder.note\"\r\n            [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group no-margin\">\r\n          <label for=\"products\">{{\"orders.new.products\"|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchProducts($event,newOrder.clientId)\"\r\n            (selected)=\"productSelected($event)\" [disabled]=\"orderUser==undefined\" [multiple]=\"true\"\r\n            [options]=\"IOproducts\" [placeholder]=\"'orders.searchPro'|translate\" [(ngModel)]=\"selectedProductsIds\"\r\n            [ngModelOptions]=\"{standalone: true}\" id=\"products\">\r\n          </ng-select>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm products-div\">\r\n            <table class=\"table table-striped add-order-tabel\">\r\n              <tbody>\r\n                <tr *ngFor=\"let product of selectedProducts\">\r\n                  <td style=\"width: 35px\"><img *ngIf=\"findProduct(product.productId).media!=undefined\"\r\n                      src=\"{{findProduct(product.productId).media.thumbnail}}\"\r\n                      style=\"max-width: 34px;max-height: 34px;\">\r\n\r\n                  </td>\r\n                  <td>{{findProduct(product.productId).nameAr}}</td>\r\n                  <td style=\"text-align: center\">\r\n                    <span>{{\"orders.table.count\"|translate}} </span><input\r\n                      (change)=\"priceCalculate(product.productId,product.count)\" [(ngModel)]=\"product.count\"\r\n                      [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n                  <td style=\"text-align: center\">\r\n                    <strong>{{\"orders.table.price\"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>\r\n                  </td>\r\n                  <td style=\"text-align: center\">\r\n                    <span class=\"functions-btn text-danger\" (click)=\"productDeSelected(product.productId)\"><i\r\n                        class=\"fa fa-remove fa-lg\"></i></span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            {{addErrorProd | json}}\r\n            <p *ngIf=\"addError\" class=\"text-danger\">\r\n              {{addErrorProd.nameAr}} {{\"orders.table.unavailableThisCountProd\"|translate}}\r\n              {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}\r\n\r\n            </p>\r\n            <!--<p *ngIf=\"totalPrice!=0\" class=\"total-price bg-primary text-white\">-->\r\n            <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n            <!--</p>-->\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm submit-col\">\r\n        <button [disabled]=\"orderForm.invalid==false&&isSubmitted==true&&!addError\" (click)=\"addNew=!addNew\"\r\n          class=\"btn btn-action\" type=\"button\">\r\n          {{\"client.buttons.back\"|translate}}\r\n        </button>\r\n        <button [disabled]=\"orderForm.invalid==false&&isSubmitted==true&&!addError\" class=\"btn btn-success\"\r\n          type=\"submit\">\r\n          {{\"client.buttons.add\"|translate}}\r\n        </button>\r\n        <i *ngIf=\"!orderForm.invalid&&isSubmitted&&!addError\"\r\n          class=\"fa fa-circle-o-notch fa-2x fa-spin spinner-submit\"></i>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n<div class=\"row\">\r\n\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered \" (mouseleave)=\"hoveredIndex=null\">\r\n    <thead>\r\n      <tr class=\"\">\r\n        <td class=\"title-td\" align=\"center\" colspan=\"8\">\r\n          <div class=\"filter-sec\">\r\n            <span>{{\"orders.deliveryFilter\"|translate}}</span>\r\n\r\n            <ng-select id=\"delFilter\" (filterInputChanged)=\"searchDeUsers($event)\" [(ngModel)]=\"delMemFilter\"\r\n              [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\" [options]=\"IOdeusers\" (selected)=\"filterByDel()\">\r\n            </ng-select>\r\n\r\n            <button *ngIf=\"delMemFilter!=undefined\" type=\"button\" (click)=\"emptyFilter()\"\r\n              class=\"btn btn-danger empty-filter\">\r\n              {{\"product.cancel\"|translate}}\r\n            </button>\r\n          </div>\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <th>\r\n          {{'orders.table.userTap'|translate}}\r\n\r\n        </th>\r\n        <th>\r\n          {{'orders.table.productsTap'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.code'|translate}}\r\n        </th>\r\n        <!-- <th>\r\n          {{'orders.table.packagedTap'|translate}}\r\n        </th> -->\r\n        <th>\r\n          {{'orders.table.officials'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.coupon'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.status'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.dates'|translate}}\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n\r\n\r\n    <tbody>\r\n      <ng-container *ngFor=\"let order of orders; let index=index;\">\r\n        <tr class=\"group-row\" *ngIf=\"findDateByIndex(index)!=undefined \">\r\n\r\n          <td *ngIf=\"viewDate==toDay\" align=\"center\" colspan=\"8\">{{\"orders.table.today\"|translate}}</td>\r\n\r\n          <td *ngIf=\"viewDate!=toDay\" align=\"center\" colspan=\"8\">{{c.formatDate(findDateByIndex(index), 'nohours')}}\r\n          </td>\r\n        </tr>\r\n        <tr *ngIf=\"index!=editIndex\" (mouseover)=\"hoveredIndex=index\">\r\n          <td class=\"no-padding-td\">\r\n            <ul class=\"table-ul\">\r\n              <li class=\"table-li\">\r\n                <span>{{order.client.shopName}}</span>\r\n              </li>\r\n              <!--<li class=\"table-li\">-->\r\n              <!--<span class=\"badge badge-light\">{{order.client.area}}</span>-->\r\n              <!--</li>  -->\r\n              <li class=\"table-li\">\r\n                <span class=\"badge badge-danger\" style=\"font-size: 14px\">{{order.client.ownerName}}</span>\r\n              </li>\r\n              <li class=\"table-li\">\r\n                <span class=\"badge client-type\"\r\n                  [ngClass]=\"order.clientType=='wholesale'? 'badge-warning ':'badge-info'\">{{\"client.form.controls.\"\r\n                  + order.clientType|translate}}</span>\r\n              </li>\r\n              <li>\r\n                <span style=\"font-size: 14px\" class=\"badge badge-dark\"\r\n                  *ngIf=\"getTimer(order.orderDate)!=undefined&&order.status!='delivered'\">{{getTimer(order.orderDate)}}</span>\r\n              </li>\r\n\r\n            </ul>\r\n          </td>\r\n          <td class=\"no-padding-td\" (click)=\"viewProduct[index]=false\"\r\n            [ngClass]=\"{'productCol': viewProduct[index]==false}\">\r\n            <ul class=\" list-group table-ul\">\r\n              <li *ngFor=\"let product of order.orderProducts\" class=\"list-group-item\"\r\n                style=\"text-align: right;padding: .75rem 0.25rem;\">\r\n                <span>{{product.productSnapshot.nameAr|slice:0:25}}</span> {{\"orders.table.count\"|translate}} :\r\n                <strong class=\"badge badge-info\">{{product.count}}</strong>\r\n                {{\"orders.table.price\"|translate}} : <strong style=\"float: left;font-size: 13px;margin-top: 3px;\"\r\n                  class=\"badge badge-success\">{{product.sellingPrice}}</strong>\r\n              </li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                  : </strong>{{order.totalPrice}}</li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                  : </strong>{{CountProduct[index]}}</li>\r\n\r\n            </ul>\r\n          </td>\r\n          <td class=\"no-padding-td\" (click)=\"viewProduct[index]=true\"\r\n            [ngClass]=\"{'productCol': viewProduct[index]==true}\">\r\n            <ul class=\" list-group table-ul\">\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                  : </strong>{{order.totalPrice}}</li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                  : </strong>{{CountProduct[index]}}</li>\r\n\r\n            </ul>\r\n          </td>\r\n\r\n          <td>\r\n            {{order.code}}\r\n          </td>\r\n\r\n          <!-- <td class=\"no-padding-td\">\r\n            <ul class=\"list-group table-ul\">\r\n              <li><span class=\"list-group-item \">{{c.formatDate(order.packDate)}}</span></li>\r\n              <li><span class=\"list-group-item \">{{order.packagerMember?.username}}</span></li>\r\n            </ul>\r\n          </td> -->\r\n          <td class=\"no-padding-td\">\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.warehouseKeeperId\">\r\n              {{\"orders.table.officialWarehouseKeeper\"|translate}}\r\n            </p>\r\n            <p style=\"margin: 0px;\" *ngIf=\"order.warehouseKeeperId\">\r\n              <span class=\"badge badge-success\">\r\n\r\n                {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>\r\n            </p>\r\n            <p *ngIf=\"order.warehouseKeeperId\">{{c.formatDate(order.warehouseDate)}}</p>\r\n\r\n\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.packDate\">\r\n              {{\"orders.table.officialPackagerMember\"|translate}}\r\n            </p>\r\n            <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n            <p *ngIf=\"order.packDate\">{{c.formatDate(order.packDate)}}</p>\r\n\r\n\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveryMemberId\">\r\n              {{\"orders.table.officialDeliveryMember\"|translate}}\r\n            </p>\r\n            <p style=\"margin: 0px;\" *ngIf=\"order.deliveryMemberId\">\r\n              <span class=\"badge badge-success\">\r\n                {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>\r\n            </p>\r\n            <p *ngIf=\"order.deliveryMemberId\">{{c.formatDate(order.assignedDate)}}</p>\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveredDate\">\r\n              {{\"orders.table.officialDelivery\"|translate}}\r\n            </p>\r\n            <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n            <p *ngIf=\"order.deliveredDate\">{{c.formatDate(order.deliveredDate)}}</p>\r\n\r\n\r\n          </td>\r\n          <td>\r\n            <span *ngIf=\"order.coupon\">{{order.coupon.value}}<span *ngIf=\"order.coupon.type=='percent'\">%</span></span>\r\n          </td>\r\n          <td>\r\n            <span (click)=\"statusModel(order,modalStatus)\" class=\"badge\"\r\n              [ngClass]=\"order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))\">{{\"orders.table.delStatus.\"\r\n              + order.status|translate}}</span>\r\n          </td>\r\n          <td class=\"no-padding-td\">\r\n            <ul class=\"list-group table-ul\">\r\n              <li>\r\n                <p *ngIf=\"OrderToEdit==undefined&&index==hoveredIndex\" [@enterAnimation]>\r\n                  <span *ngIf=\"order?.status=='inDelivery'\" class=\"functions-btn text-success\"\r\n                    (click)=\"openDeliveredModal(tawseel,order)\"><i class=\"fa fa-check-circle fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-info\" (click)=\"editOrder(order,index)\"><i\r\n                      class=\"fa fa-edit fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-danger\" (click)=\"openModal(template,order.id)\"><i\r\n                      class=\"fa fa-remove fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-danger\" (click)=\"open(modalDefault,order.id,order.clientId)\"><i\r\n                      class=\"fa fa-plus-square-o fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-success\" (click)=\"download(order.id)\"><i\r\n                      class=\"fa fa-download fa-lg\"></i></span>\r\n                  <!-- <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"open(modalDefault,orderId)\">Static</button> -->\r\n\r\n                </p>\r\n                <p style=\"margin-bottom: 0px\">{{c.formatDate(order.orderDate)}}</p>\r\n              </li>\r\n            </ul>\r\n          </td>\r\n        </tr>\r\n        <tr class=\"note-row\"\r\n          *ngIf=\"order.client.notes!=undefined&&order.client.notes!=''&&order.client.notes!=null&&index!=editIndex\">\r\n\r\n          <td align=\"center\" colspan=\"8\">{{\"orders.table.usernotes\"|translate}} : {{order.client.notes}}</td>\r\n        </tr>\r\n        <tr class=\"note-row\" *ngIf=\"order.note!=undefined&&order.note!=''&&order.note!=null&&index!=editIndex\">\r\n\r\n          <td align=\"center\" colspan=\"8\">{{\"staff.form.controls.notes\"|translate}} : {{order.note}}</td>\r\n        </tr>\r\n\r\n        <!--edit section-->\r\n        <ng-container *ngIf=\"OrderToEdit!=undefined&&index==editIndex\">\r\n          <tr>\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li class=\"list-group-item \">\r\n                  <ng-select #select (filterInputChanged)=\"searchUsers($event)\" [(ngModel)]=\"OrderToEdit.clientId\"\r\n                    [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n                    (selected)=\"userSelected($event,OrderToEdit)\" [options]=\"IOusers\">\r\n\r\n                  </ng-select>\r\n                </li>\r\n\r\n                <li class=\"list-group-item \">\r\n                  <span class=\"badge client-type\"\r\n                    [ngClass]=\"OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'\">{{\"client.form.controls.\"\r\n                    + OrderToEdit.clientType|translate}}</span>\r\n                </li>\r\n              </ul>\r\n            </td>\r\n\r\n            <td class=\"no-padding-td\">\r\n              <div>\r\n                <div>\r\n                  <!--<label for=\"products\">{{\"orders.new.products\"|translate}}</label>-->\r\n                  <ng-select (filterInputChanged)=\"searchEditProducts($event)\" (selected)=\"productEditSelected($event)\"\r\n                    [placeholder]=\"'orders.searchPro'|translate\" [multiple]=\"true\" [options]=\"IOproducts\"\r\n                    [(ngModel)]=\"selectedEditProductsIds\" [ngModelOptions]=\"{standalone: true}\">\r\n                  </ng-select>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-sm products-div\">\r\n                    <table class=\"table table-striped \">\r\n                      <tbody>\r\n\r\n                        <tr *ngFor=\"let product of selectedEditProducts\">\r\n                          <td style=\"width: 35px\"><img *ngIf=\"findEditProduct(product.productId).media!=undefined\"\r\n                              [src]=\"findEditProduct(product.productId).media.thumbnail\"\r\n                              style=\"max-width: 34px;max-height: 34px;\">\r\n                          </td>\r\n                          <td>{{findEditProduct(product.productId).nameAr}}</td>\r\n                          <td style=\"text-align: center;\">\r\n                            <span>{{\"orders.table.count\"|translate}} </span><input\r\n                              (change)=\"priceEditCalculate(product.productId,product.count)\" [(ngModel)]=\"product.count\"\r\n                              [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n                          <td style=\"text-align: center\">\r\n                            <strong>{{\"orders.table.price\"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>\r\n                          </td>\r\n                          <td style=\"text-align: center\">\r\n                            <span class=\"functions-btn text-danger\"\r\n                              (click)=\"productEditDeSelected(product.productId)\"><i\r\n                                class=\"fa fa-remove fa-lg\"></i></span>\r\n                          </td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                    <p *ngIf=\"editError\" class=\"text-danger\">\r\n                      {{editErrorNameProd}} {{\"orders.table.unavailableProd\"|translate}}\r\n\r\n                    </p>\r\n                    <!--<p class=\"total-price bg-primary text-white\">-->\r\n                    <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n                    <!--</p>-->\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </td>\r\n            <td>\r\n              {{OrderToEdit.code}}\r\n            </td>\r\n            <!-- <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.packDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">\r\n                    <ng-select #select (filterInputChanged)=\"searchWearUsers($event)\"\r\n                      [(ngModel)]=\"OrderToEdit.packagerMemberId\" [ngModelOptions]=\"{standalone: true}\"\r\n                      [multiple]=\"false\" (selected)=\"WearuserSelected($event,OrderToEdit)\" [options]=\"IOweausers\">\r\n                    </ng-select>\r\n                  </span></li>\r\n              </ul>\r\n            </td>\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">\r\n                    <ng-select #select\r\n                      (filterInputChanged)=\"searchDeUsers($event)\" [(ngModel)]=\"OrderToEdit.deliveryMemberId\"\r\n                      [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n                      (selected)=\"DeuserSelected($event,OrderToEdit)\" [options]=\"IOdeusers\">\r\n                    </ng-select>\r\n                  </span></li>\r\n              </ul>\r\n            </td> -->\r\n            <td class=\"no-padding-td\">\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.warehouseKeeperId\">\r\n                {{\"orders.table.officialWarehouseKeeper\"|translate}}\r\n              </p>\r\n              <p style=\"margin: 0px;\" *ngIf=\"order.warehouseKeeperId\">\r\n                <span class=\"badge badge-success\">\r\n\r\n                  {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>\r\n              </p>\r\n              <p *ngIf=\"order.warehouseKeeperId\">{{c.formatDate(order.warehouseDate)}}</p>\r\n\r\n\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.packDate\">\r\n                {{\"orders.table.officialPackagerMember\"|translate}}\r\n              </p>\r\n              <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n              <p *ngIf=\"order.packDate\">{{c.formatDate(order.packDate)}}</p>\r\n\r\n\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveryMemberId\">\r\n                {{\"orders.table.officialDeliveryMember\"|translate}}\r\n              </p>\r\n              <p style=\"margin: 0px;\" *ngIf=\"order.deliveryMemberId\">\r\n                <span class=\"badge badge-success\">\r\n                  {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>\r\n              </p>\r\n              <p *ngIf=\"order.deliveryMemberId\">{{c.formatDate(order.assignedDate)}}</p>\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveredDate\">\r\n                {{\"orders.table.officialDelivery\"|translate}}\r\n              </p>\r\n              <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n              <p *ngIf=\"order.deliveredDate\">{{c.formatDate(order.deliveredDate)}}</p>\r\n\r\n\r\n            </td>\r\n\r\n            <td>\r\n              <input style=\"width: 85px\" [(ngModel)]=\"OrderToEdit.couponCode\" class=\"form-control\"\r\n                placeholder=\"{{'orders.new.couponPlaceHolder'|translate}}\" type=\"text\"\r\n                [value]=\"OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code\">\r\n\r\n\r\n            </td>\r\n            <td>\r\n              <select [(ngModel)]=\"OrderToEdit.status\" class=\"form-control\" id=\"status\">\r\n                <option *ngFor=\"let option of delstatus\" [value]=\"option\">\r\n                  {{\"orders.table.delStatus.\" + option|translate}}\r\n                </option>\r\n              </select>\r\n\r\n            </td>\r\n\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li>\r\n                  <p *ngIf=\"OrderToEdit!=undefined\" [@enterAnimation]>\r\n                    <span (click)=\"editOrderApi(OrderToEdit)\" class=\"functions-btn text-info\"><i\r\n                        class=\"fa fa-check-circle fa-lg\"></i></span>\r\n                    <span class=\"functions-btn text-danger\" (click)=\"cancelOrder(true)\"><i\r\n                        class=\"fa fa-remove fa-lg\"></i></span>\r\n                  </p>\r\n                </li>\r\n                <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>\r\n              </ul>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"note-row\">\r\n\r\n            <td align=\"center\" colspan=\"8\">\r\n              <div class=\"form-group\">\r\n                <label for=\"notes\">{{\"client.form.controls.notes\"|translate}}</label>\r\n                <textarea class=\"form-control\" id=\"edit_notes\" [(ngModel)]=\"OrderToEdit.note\"\r\n                  placeholder=\"{{'client.form.placeholders.notes'|translate}}\" rows=\"4\"></textarea>\r\n              </div>\r\n            </td>\r\n          </tr>\r\n        </ng-container>\r\n      </ng-container>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n<ng-template #template>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.message'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"confirm()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n<ng-template #tawseel>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.delivered'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-success modal-confirm\"\r\n      (click)=\"confirmDelivered()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n"
+module.exports = "<app-orders-statistics></app-orders-statistics>\r\n<!-- <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"modalDefault.show()\">Static</button> -->\r\n<app-modal-basic #modalDefault>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.addNote'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalDefault.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    <form [formGroup]=\"userNotForm\">\r\n      <div class=\"form-group\">\r\n        <label for=\"notes\">{{\"modal.note\"|translate}}</label>\r\n        <textarea class=\"form-control\" formControlName=\"note\" id=\"notes\" placeholder=\"{{'modal.note'|translate}}\"\r\n          rows=\"4\"></textarea>\r\n        <label *ngIf=\"userNotForm.get('note').invalid && submiteddAddNote\"\r\n          class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"form-group\">\r\n        <label for=\"expireDate\">{{\"modal.createdAt\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"createdAt\" id=\"expireDate\"\r\n          placeholder=\"{{'modal.createdAt'|translate}}\" type=\"datetime-local\">\r\n        <label *ngIf=\"userNotForm.get('createdAt').invalid && submiteddAddNote\"\r\n          class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalDefault.hide()\">{{'modal.close'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"addNote(modalDefault)\">{{'modal.add'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<app-modal-basic #modalStatus>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.modalStatus.edit'|translate}}</h4>\r\n    <!-- <h4 class=\"modal-title\">{{'modal.modalStatus.picked'|translate}}</h4>\r\n    <h4 class=\"modal-title\">{{'modal.modalStatus.dilivery'|translate}}</h4> -->\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalStatus.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n\r\n    <div style=\"max-height: 400px;padding:0px 15px;margin-left: -15px;overflow-y: auto;\">\r\n\r\n      <!-- diliverMan -->\r\n      <div class=\"row\" style=\"padding: 5px 10px;position:relative\">\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.diliveryMan\"|translate}}</label>\r\n        <ng-select #select (filterInputChanged)=\"searchDeliver($event)\" *ngIf=\"orderModel\"\r\n          [(ngModel)]=\"orderModel.deliveryMemberId\" [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n          (selected)=\"DeuserSelected($event,OrderToEdit)\" [options]=\"IOdeusers\">\r\n        </ng-select>\r\n        <button *ngIf=\"orderModel\" [disabled]=\"orderModel.deliveryMemberId==undefined\"\r\n          style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n          (click)=\"changeDilivery(modalStatus)\">{{'modal.modalStatus.changeDiliveryMan'|translate}}</button>\r\n\r\n      </div>\r\n      <div class=\"separator\"></div>\r\n\r\n\r\n      <!-- submitKeeper -->\r\n\r\n      <div class=\"row\" style=\"padding: 5px 10px;position:relative\">\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.toWherhouseKeeper\"|translate}}</label>\r\n        <i *ngIf=\"orderModel && orderModel.status!='pending'\" class=\"fa fa-check-circle fa-2x cheackStep\"></i>\r\n        <ng-select #select (filterInputChanged)=\"searchWearKeper($event)\" *ngIf=\"orderModel\"\r\n          [(ngModel)]=\"orderModel.warehouseKeeperId\" [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n          [options]=\"IOdewarehouseKeeper\">\r\n        </ng-select>\r\n        <button *ngIf=\"orderModel\" [disabled]=\"orderModel.warehouseKeeperId==undefined || orderModel.status!='pending'\"\r\n          style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n          (click)=\"submitKeeper(modalStatus)\">{{'modal.modalStatus.submitKeeper'|translate}}</button>\r\n\r\n      </div>\r\n\r\n      <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending'\"></div>\r\n\r\n\r\n      <!-- submitPikker -->\r\n      <div class=\"row\" *ngIf=\"orderModel && orderModel.status!='pending'\" style=\"padding: 5px 10px;position:relative\">\r\n\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.picked\"|translate}}</label>\r\n        <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n          *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\"></i>\r\n        <div style=\"width: 100%;\">\r\n          <button *ngIf=\"orderModel\" [disabled]=\"orderModel.status!='pending' && orderModel.status!='inWarehouse'\"\r\n            style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n            (click)=\"submitPikker(modalStatus)\">{{'modal.modalStatus.submitPikker'|translate}}</button>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\">\r\n      </div>\r\n\r\n\r\n      <div class=\"row\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\"\r\n        style=\"padding: 5px 10px;position:relative\">\r\n\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.pendingDelivery\"|translate}}</label>\r\n        <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n          *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'\"></i>\r\n        <ng-select #select (filterInputChanged)=\"searchDeliver($event)\"\r\n          *ngIf=\"orderModel && orderModel.status=='packed'\" [(ngModel)]=\"orderModel.deliveryMemberId\"\r\n          [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\" (selected)=\"DeuserSelected($event,OrderToEdit)\"\r\n          [options]=\"IOdeusers\">\r\n        </ng-select>\r\n        <div style=\"width: 100%;\">\r\n          <button *ngIf=\"orderModel\"\r\n            [disabled]=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'\"\r\n            style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n            (click)=\"submitPendingDelivery(modalStatus)\">{{'modal.modalStatus.submitPendingDelivery'|translate}}</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\">\r\n      </div>\r\n\r\n      <div class=\"row\"\r\n        *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='packed' && orderModel.status!='inWarehouse'\"\r\n        style=\"padding: 5px 10px;position:relative\">\r\n\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.inDelivery\"|translate}}</label>\r\n        <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n          *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'&& orderModel.status!='pendingDelivery'\"></i>\r\n\r\n        <div style=\"width: 100%;\">\r\n          <button *ngIf=\"orderModel\"\r\n            [disabled]=\"orderModel.status!='pending' && orderModel.status!='inWarehouse' && orderModel.status!='packed'&& orderModel.status!='pendingDelivery'\"\r\n            style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n            (click)=\"submitInDelivery(modalStatus)\">{{'modal.modalStatus.submit'|translate}}</button>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <div class=\"separator\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'\">\r\n      </div>\r\n\r\n      <div class=\"row\" *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='pendingDelivery'\"\r\n        style=\"padding: 5px 10px;position:relative\">\r\n        <label for=\"expireDate\">{{\"modal.modalStatus.dilivery\"|translate}}</label>\r\n        <i class=\"fa fa-check-circle fa-2x cheackStep\"\r\n          *ngIf=\"orderModel && orderModel.status!='pending' && orderModel.status!='inWarehouse'&& orderModel.status!='packed'&& orderModel.status!='pendingDelivery'\"></i>\r\n        <ng-select #select (filterInputChanged)=\"searchDeliver($event)\"\r\n          *ngIf=\"orderModel && orderModel.status=='packed'\" [(ngModel)]=\"orderModel.deliveryMemberId\"\r\n          [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\" (selected)=\"DeuserSelected($event,OrderToEdit)\"\r\n          [options]=\"IOdeusers\">\r\n        </ng-select>\r\n        <div style=\"width: 100%;\">\r\n\r\n          <button *ngIf=\"orderModel\" [disabled]=\"orderModel.deliveryMemberId==undefined\"\r\n            style=\"margin: 5px 0px;padding: 2px 5px;\" type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n            (click)=\"submitDilivery(modalStatus)\">{{'modal.modalStatus.submitDilivery'|translate}}</button>\r\n        </div>\r\n      </div> -->\r\n\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\"\r\n      (click)=\"modalStatus.hide()\">{{'modal.close'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\"\r\n      (click)=\"submitCancelOrder(modalStatus)\">{{'modal.cancelOrder'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-sm-12 center-div\">\r\n    <button *ngIf=\"!addNew&&showNewBtn\" (click)=\"addNew=!addNew;cancelOrder();\"\r\n      class=\"btn btn-icon btn-info add-order-btn\" [tooltip]=\"'orders.new.btn'|translate\" placement=\"bottom\"><i\r\n        class=\"fa fa-plus fa-2x\"></i></button>\r\n  </div>\r\n</div>\r\n<div *ngIf=\"addNew\" id=\"new-order\" [@rightEnterLeftLeaveAnimation]\r\n  (@rightEnterLeftLeaveAnimation.done)=\"showNewBtn=!showNewBtn\">\r\n  <form (ngSubmit)=\"onOrderFormSubmit()\" [formGroup]=\"orderForm\" class=\"CouponForm\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group\">\r\n          <label for=\"clientId\">{{'orders.new.shopeName'|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchUsers($event)\" (selected)=\"userSelected($event,newOrder)\"\r\n            [(ngModel)]=\"newOrder.clientId\" [multiple]=\"false\" [options]=\"IOusers\" formControlName=\"clientId\"\r\n            id=\"clientId\">\r\n          </ng-select>\r\n\r\n          <label *ngIf=\"orderForm.get('clientId').invalid && isSubmitted\"\r\n            class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"couponId\">{{\"orders.new.coupon\"|translate}}</label>\r\n          <input class=\"form-control\" [(ngModel)]=\"newOrder.couponCode\" [ngModelOptions]=\"{standalone: true}\"\r\n            id=\"couponId\" placeholder=\"{{'orders.new.couponPlaceHolder'|translate}}\" type=\"text\">\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"couponId\">{{\"staff.form.controls.notes\"|translate}}</label>\r\n          <textarea class=\"form-control\" id=\"notes\" [(ngModel)]=\"newOrder.note\"\r\n            [ngModelOptions]=\"{standalone: true}\"></textarea>\r\n        </div>\r\n      </div>\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group no-margin\">\r\n          <label for=\"products\">{{\"orders.new.products\"|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchProducts($event,newOrder.clientId)\"\r\n            (selected)=\"productSelected($event)\" [disabled]=\"orderUser==undefined\" [multiple]=\"true\"\r\n            [options]=\"IOproducts\" [placeholder]=\"'orders.searchPro'|translate\" [(ngModel)]=\"selectedProductsIds\"\r\n            [ngModelOptions]=\"{standalone: true}\" id=\"products\">\r\n          </ng-select>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm products-div\">\r\n            <table class=\"table table-striped add-order-tabel\">\r\n              <tbody>\r\n                <tr *ngFor=\"let product of selectedProducts\">\r\n                  <td style=\"width: 35px\"><img *ngIf=\"findProduct(product.productId).media!=undefined\"\r\n                      src=\"{{findProduct(product.productId).media.thumbnail}}\"\r\n                      style=\"max-width: 34px;max-height: 34px;\">\r\n\r\n                  </td>\r\n                  <td>{{findProduct(product.productId).nameAr}}</td>\r\n                  <td style=\"text-align: center\">\r\n                    <span>{{\"orders.table.count\"|translate}} </span><input\r\n                      (change)=\"priceCalculate(product.productId,product.count)\" [(ngModel)]=\"product.count\"\r\n                      [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n                  <td style=\"text-align: center\">\r\n                    <strong>{{\"orders.table.price\"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>\r\n                  </td>\r\n                  <td style=\"text-align: center\">\r\n                    <span class=\"functions-btn text-danger\" (click)=\"productDeSelected(product.productId)\"><i\r\n                        class=\"fa fa-remove fa-lg\"></i></span>\r\n                  </td>\r\n                </tr>\r\n              </tbody>\r\n            </table>\r\n            {{addErrorProd | json}}\r\n            <p *ngIf=\"addError\" class=\"text-danger\">\r\n              {{addErrorProd.nameAr}} {{\"orders.table.unavailableThisCountProd\"|translate}}\r\n              {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}\r\n\r\n            </p>\r\n            <!--<p *ngIf=\"totalPrice!=0\" class=\"total-price bg-primary text-white\">-->\r\n            <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n            <!--</p>-->\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm submit-col\">\r\n        <button [disabled]=\"orderForm.invalid==false&&isSubmitted==true&&!addError\" (click)=\"addNew=!addNew\"\r\n          class=\"btn btn-action\" type=\"button\">\r\n          {{\"client.buttons.back\"|translate}}\r\n        </button>\r\n        <button [disabled]=\"orderForm.invalid==false&&isSubmitted==true&&!addError\" class=\"btn btn-success\"\r\n          type=\"submit\">\r\n          {{\"client.buttons.add\"|translate}}\r\n        </button>\r\n        <i *ngIf=\"!orderForm.invalid&&isSubmitted&&!addError\"\r\n          class=\"fa fa-circle-o-notch fa-2x fa-spin spinner-submit\"></i>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n<div class=\"row\">\r\n\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered \" (mouseleave)=\"hoveredIndex=null\">\r\n    <thead>\r\n      <tr class=\"\">\r\n        <td class=\"title-td\" align=\"center\" colspan=\"8\">\r\n          <div class=\"row\">\r\n            <!-- <select [(ngModel)]=\"statusFilter\" class=\"col-sm-3\">\r\n              <option [value]=\"-1\" disabled selected>{{'orders.statusFilter' | translate}}</option>\r\n\r\n              <option *ngFor=\"let oneStatus of statusList; let index=index;\" [value]=\"oneStatus\">\r\n                {{\"orders.table.delStatus.\"+ oneStatus|translate}}\r\n              </option>\r\n            </select> -->\r\n            <ng-select #select class=\"col-sm-3\" [placeholder]=\"'orders.deliveryFilter'|translate\"\r\n              (filterInputChanged)=\"searchDeliver($event,true)\" [(ngModel)]=\"delMemFilter\"\r\n              [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\" (selected)=\"DeuserSelected($event,OrderToEdit)\"\r\n              [options]=\"IOdeusersFilter\">\r\n            </ng-select>\r\n            <ng-select #select class=\"col-sm-3\" [placeholder]=\"'orders.keeperFilter'|translate\"\r\n              (filterInputChanged)=\"searchWearKeper($event,true)\" [(ngModel)]=\"keeperMemFilter\"\r\n              [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\" (selected)=\"DeuserSelected($event,OrderToEdit)\"\r\n              [options]=\"IOdeusersFilter\">\r\n            </ng-select>\r\n            <ng-select #select class=\"col-sm-3\" [placeholder]=\"'orders.shopeNameFilter' | translate\"\r\n              (filterInputChanged)=\"searchUsers($event,true)\" (selected)=\"userSelected($event,newOrder)\"\r\n              [(ngModel)]=\"shopeMemFilter\" [multiple]=\"false\" [options]=\"IOusersFilter\">\r\n            </ng-select>\r\n\r\n            <div class=\"col-sm-2\">\r\n              <button type=\"button\" (click)=\"emptyFilter()\" class=\"btn btn-danger empty-filter\">\r\n                {{\"product.cancel\"|translate}}\r\n              </button>\r\n            </div>\r\n\r\n\r\n\r\n          </div>\r\n\r\n\r\n\r\n          <div class=\"row\" style=\"height: 32px;margin-top: 15px;\">\r\n            <div class=\"col-sm-3\" style=\"padding: 0px 15px;height: 100%;\">\r\n              <select [(ngModel)]=\"statusFilter\" style=\"width: 100%;height: 100%;\">\r\n                <option [value]=\"-1\" disabled selected>{{'orders.statusFilter' | translate}}</option>\r\n\r\n                <option *ngFor=\"let oneStatus of statusList; let index=index;\" [value]=\"oneStatus\">\r\n                  {{\"orders.table.delStatus.\"+ oneStatus|translate}}\r\n                </option>\r\n              </select>\r\n            </div>\r\n\r\n            <div class=\"col-sm-3\" style=\"padding: 0px 15px;height: 100%;\">\r\n              <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\"\r\n                [(ngModel)]=\"fromFilter\" style=\"width: 100%;height: 100%;\"\r\n                placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n            </div>\r\n\r\n            <div class=\"col-sm-3\" style=\"padding: 0px 15px;height: 100%;\">\r\n              <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\"\r\n                [(ngModel)]=\"toFilter\" style=\"width: 100%;height: 100%;\" placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n            </div>\r\n\r\n            <div class=\"col-sm-2\">\r\n              <button type=\"button\" (click)=\"filter()\" class=\"btn btn-success empty-filter\">\r\n                {{\"product.apply\"|translate}}\r\n              </button>\r\n            </div>\r\n\r\n\r\n          </div>\r\n\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <th>\r\n          {{'orders.table.userTap'|translate}}\r\n\r\n        </th>\r\n        <th>\r\n          {{'orders.table.productsTap'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.code'|translate}}\r\n        </th>\r\n        <!-- <th>\r\n          {{'orders.table.packagedTap'|translate}}\r\n        </th> -->\r\n        <th>\r\n          {{'orders.table.officials'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.coupon'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.status'|translate}}\r\n        </th>\r\n        <th>\r\n          {{'orders.table.printable'|translate}}\r\n        </th>\r\n\r\n        <th>\r\n          {{'orders.table.dates'|translate}}\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n\r\n\r\n    <tbody>\r\n      <ng-container *ngFor=\"let order of orders; let index=index;\">\r\n        <tr class=\"group-row\" *ngIf=\"findDateByIndex(index)!=undefined \">\r\n\r\n          <td *ngIf=\"viewDate==toDay\" align=\"center\" colspan=\"8\">{{\"orders.table.today\"|translate}}</td>\r\n\r\n          <td *ngIf=\"viewDate!=toDay\" align=\"center\" colspan=\"8\">{{c.formatDate(findDateByIndex(index), 'nohours')}}\r\n          </td>\r\n        </tr>\r\n        <tr *ngIf=\"index!=editIndex\" (mouseover)=\"hoveredIndex=index\">\r\n          <td class=\"no-padding-td\">\r\n            <ul class=\"table-ul\">\r\n              <li class=\"table-li\">\r\n                <span>{{order.client.shopName}}</span>\r\n              </li>\r\n              <!--<li class=\"table-li\">-->\r\n              <!--<span class=\"badge badge-light\">{{order.client.area}}</span>-->\r\n              <!--</li>  -->\r\n              <li class=\"table-li\">\r\n                <span class=\"badge badge-danger\" style=\"font-size: 14px\">{{order.client.ownerName}}</span>\r\n              </li>\r\n              <li class=\"table-li\">\r\n                <span class=\"badge client-type\"\r\n                  [ngClass]=\"order.clientType=='wholesale'? 'badge-warning ':'badge-info'\">{{\"client.form.controls.\"\r\n                  + order.clientType|translate}}</span>\r\n              </li>\r\n              <li>\r\n                <span style=\"font-size: 14px\" class=\"badge badge-dark\"\r\n                  *ngIf=\"getTimer(order.orderDate)!=undefined&&order.status!='delivered'\">{{getTimer(order.orderDate)}}</span>\r\n              </li>\r\n\r\n            </ul>\r\n          </td>\r\n          <td class=\"no-padding-td\" (click)=\"viewProduct[index]=false\"\r\n            [ngClass]=\"{'productCol': viewProduct[index]==false}\">\r\n            <ul class=\" list-group table-ul\">\r\n              <li *ngFor=\"let product of order.orderProducts\" class=\"list-group-item\"\r\n                style=\"text-align: right;padding: .75rem 0.25rem;\">\r\n                <span>{{product.productSnapshot.nameAr|slice:0:25}}</span> {{\"orders.table.count\"|translate}} :\r\n                <strong class=\"badge badge-info\">{{product.count}}</strong>\r\n                {{\"orders.table.price\"|translate}} : <strong style=\"float: left;font-size: 13px;margin-top: 3px;\"\r\n                  class=\"badge badge-success\">{{product.sellingPrice}}</strong>\r\n              </li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                  : </strong>{{order.totalPrice}}</li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                  : </strong>{{CountProduct[index]}}</li>\r\n\r\n            </ul>\r\n          </td>\r\n          <td class=\"no-padding-td\" (click)=\"viewProduct[index]=true\"\r\n            [ngClass]=\"{'productCol': viewProduct[index]==true}\">\r\n            <ul class=\" list-group table-ul\">\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                  : </strong>{{order.totalPrice}}</li>\r\n              <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                  : </strong>{{CountProduct[index]}}</li>\r\n\r\n            </ul>\r\n          </td>\r\n\r\n          <td>\r\n            {{order.code}}\r\n          </td>\r\n\r\n          <!-- <td class=\"no-padding-td\">\r\n            <ul class=\"list-group table-ul\">\r\n              <li><span class=\"list-group-item \">{{c.formatDate(order.packDate)}}</span></li>\r\n              <li><span class=\"list-group-item \">{{order.packagerMember?.username}}</span></li>\r\n            </ul>\r\n          </td> -->\r\n          <td class=\"no-padding-td\">\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.warehouseKeeperId\">\r\n              {{\"orders.table.officialWarehouseKeeper\"|translate}}\r\n            </p>\r\n            <p style=\"margin: 0px;\" *ngIf=\"order.warehouseKeeperId\">\r\n              <span class=\"badge badge-success\">\r\n\r\n                {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>\r\n            </p>\r\n            <p *ngIf=\"order.warehouseKeeperId\">{{c.formatDate(order.warehouseDate)}}</p>\r\n\r\n\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.packDate\">\r\n              {{\"orders.table.officialPackagerMember\"|translate}}\r\n            </p>\r\n            <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n            <p *ngIf=\"order.packDate\">{{c.formatDate(order.packDate)}}</p>\r\n\r\n\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveryMemberId\">\r\n              {{\"orders.table.officialDeliveryMember\"|translate}}\r\n            </p>\r\n            <p style=\"margin: 0px;\" *ngIf=\"order.deliveryMemberId\">\r\n              <span class=\"badge badge-success\">\r\n                {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>\r\n            </p>\r\n            <p *ngIf=\"order.deliveryMemberId\">{{c.formatDate(order.assignedDate)}}</p>\r\n\r\n            <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveredDate\">\r\n              {{\"orders.table.officialDelivery\"|translate}}\r\n            </p>\r\n            <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n            <p *ngIf=\"order.deliveredDate\">{{c.formatDate(order.deliveredDate)}}</p>\r\n\r\n\r\n          </td>\r\n          <td>\r\n            <span *ngIf=\"order.coupon\">{{order.coupon.value}}<span *ngIf=\"order.coupon.type=='percent'\">%</span></span>\r\n          </td>\r\n          <td>\r\n            <span (click)=\"statusModel(order,modalStatus)\" class=\"badge\"\r\n              [ngClass]=\"order.status=='pending'? 'badge-warning ': ( order.status=='inDelivery' ?'badge-info' :( order.status=='delivered' ?'badge-success' :'badge-danger'))\">{{\"orders.table.delStatus.\"\r\n              + order.status|translate}}</span>\r\n          </td>\r\n          <td>{{\"orders.table.printables.\" + order.printable|translate}}</td>\r\n\r\n\r\n          <td class=\"no-padding-td\">\r\n            <ul class=\"list-group table-ul\">\r\n              <li>\r\n                <p *ngIf=\"OrderToEdit==undefined&&index==hoveredIndex\" [@enterAnimation]>\r\n                  <span *ngIf=\"order?.status=='inDelivery'\" class=\"functions-btn text-success\"\r\n                    (click)=\"openDeliveredModal(tawseel,order)\"><i class=\"fa fa-check-circle fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-info\" (click)=\"editOrder(order,index)\"><i\r\n                      class=\"fa fa-edit fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-danger\" (click)=\"openModal(template,order.id)\"><i\r\n                      class=\"fa fa-remove fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-danger\" (click)=\"open(modalDefault,order.id,order.clientId)\"><i\r\n                      class=\"fa fa-plus-square-o fa-lg\"></i></span>\r\n                  <span class=\"functions-btn text-success\" (click)=\"download(order.id)\"><i\r\n                      class=\"fa fa-download fa-lg\"></i></span>\r\n                  <!-- <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"open(modalDefault,orderId)\">Static</button> -->\r\n\r\n                </p>\r\n                <p style=\"margin-bottom: 0px\">{{c.formatDate(order.orderDate)}}</p>\r\n              </li>\r\n            </ul>\r\n          </td>\r\n        </tr>\r\n        <tr class=\"note-row\"\r\n          *ngIf=\"order.client.notes!=undefined&&order.client.notes!=''&&order.client.notes!=null&&index!=editIndex\">\r\n\r\n          <td align=\"center\" colspan=\"8\">{{\"orders.table.usernotes\"|translate}} : {{order.client.notes}}</td>\r\n        </tr>\r\n        <tr class=\"note-row\" *ngIf=\"order.note!=undefined&&order.note!=''&&order.note!=null&&index!=editIndex\">\r\n\r\n          <td align=\"center\" colspan=\"8\">{{\"staff.form.controls.notes\"|translate}} : {{order.note}}</td>\r\n        </tr>\r\n\r\n        <!--edit section-->\r\n        <ng-container *ngIf=\"OrderToEdit!=undefined&&index==editIndex\">\r\n          <tr>\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li class=\"list-group-item \">\r\n                  <ng-select #select (filterInputChanged)=\"searchUsers($event)\" [(ngModel)]=\"OrderToEdit.clientId\"\r\n                    [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n                    (selected)=\"userSelected($event,OrderToEdit)\" [options]=\"IOusers\">\r\n\r\n                  </ng-select>\r\n                </li>\r\n\r\n                <li class=\"list-group-item \">\r\n                  <span class=\"badge client-type\"\r\n                    [ngClass]=\"OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'\">{{\"client.form.controls.\"\r\n                    + OrderToEdit.clientType|translate}}</span>\r\n                </li>\r\n              </ul>\r\n            </td>\r\n\r\n            <td class=\"no-padding-td\">\r\n              <div>\r\n                <div>\r\n                  <!--<label for=\"products\">{{\"orders.new.products\"|translate}}</label>-->\r\n                  <ng-select (filterInputChanged)=\"searchEditProducts($event)\" (selected)=\"productEditSelected($event)\"\r\n                    [placeholder]=\"'orders.searchPro'|translate\" [multiple]=\"true\" [options]=\"IOproducts\"\r\n                    [(ngModel)]=\"selectedEditProductsIds\" [ngModelOptions]=\"{standalone: true}\">\r\n                  </ng-select>\r\n                </div>\r\n                <div class=\"row\">\r\n                  <div class=\"col-sm products-div\">\r\n                    <table class=\"table table-striped \">\r\n                      <tbody>\r\n\r\n                        <tr *ngFor=\"let product of selectedEditProducts\">\r\n                          <td style=\"width: 35px\"><img *ngIf=\"findEditProduct(product.productId).media!=undefined\"\r\n                              [src]=\"findEditProduct(product.productId).media.thumbnail\"\r\n                              style=\"max-width: 34px;max-height: 34px;\">\r\n                          </td>\r\n                          <td>{{findEditProduct(product.productId).nameAr}}</td>\r\n                          <td style=\"text-align: center;\">\r\n                            <span>{{\"orders.table.count\"|translate}} </span><input\r\n                              (change)=\"priceEditCalculate(product.productId,product.count)\" [(ngModel)]=\"product.count\"\r\n                              [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n                          <td style=\"text-align: center\">\r\n                            <strong>{{\"orders.table.price\"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>\r\n                          </td>\r\n                          <td style=\"text-align: center\">\r\n                            <span class=\"functions-btn text-danger\"\r\n                              (click)=\"productEditDeSelected(product.productId)\"><i\r\n                                class=\"fa fa-remove fa-lg\"></i></span>\r\n                          </td>\r\n                        </tr>\r\n                      </tbody>\r\n                    </table>\r\n                    <p *ngIf=\"editError\" class=\"text-danger\">\r\n                      {{editErrorNameProd}} {{\"orders.table.unavailableProd\"|translate}}\r\n\r\n                    </p>\r\n                    <!--<p class=\"total-price bg-primary text-white\">-->\r\n                    <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n                    <!--</p>-->\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </td>\r\n            <td>\r\n              {{OrderToEdit.code}}\r\n            </td>\r\n            <!-- <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.packDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">\r\n                    <ng-select #select (filterInputChanged)=\"searchWearUsers($event)\"\r\n                      [(ngModel)]=\"OrderToEdit.packagerMemberId\" [ngModelOptions]=\"{standalone: true}\"\r\n                      [multiple]=\"false\" (selected)=\"WearuserSelected($event,OrderToEdit)\" [options]=\"IOweausers\">\r\n                    </ng-select>\r\n                  </span></li>\r\n              </ul>\r\n            </td>\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.deliveredDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">{{c.formatDate(OrderToEdit.assignedDate)}}</span></li>\r\n                <li><span class=\"list-group-item \">\r\n                    <ng-select #select\r\n                      (filterInputChanged)=\"searchDeUsers($event)\" [(ngModel)]=\"OrderToEdit.deliveryMemberId\"\r\n                      [ngModelOptions]=\"{standalone: true}\" [multiple]=\"false\"\r\n                      (selected)=\"DeuserSelected($event,OrderToEdit)\" [options]=\"IOdeusers\">\r\n                    </ng-select>\r\n                  </span></li>\r\n              </ul>\r\n            </td> -->\r\n            <td class=\"no-padding-td\">\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.warehouseKeeperId\">\r\n                {{\"orders.table.officialWarehouseKeeper\"|translate}}\r\n              </p>\r\n              <p style=\"margin: 0px;\" *ngIf=\"order.warehouseKeeperId\">\r\n                <span class=\"badge badge-success\">\r\n\r\n                  {{order.warehouseKeeper.ownerName? order.warehouseKeeper.ownerName : order.warehouseKeeper.username}}</span>\r\n              </p>\r\n              <p *ngIf=\"order.warehouseKeeperId\">{{c.formatDate(order.warehouseDate)}}</p>\r\n\r\n\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.packDate\">\r\n                {{\"orders.table.officialPackagerMember\"|translate}}\r\n              </p>\r\n              <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n              <p *ngIf=\"order.packDate\">{{c.formatDate(order.packDate)}}</p>\r\n\r\n\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveryMemberId\">\r\n                {{\"orders.table.officialDeliveryMember\"|translate}}\r\n              </p>\r\n              <p style=\"margin: 0px;\" *ngIf=\"order.deliveryMemberId\">\r\n                <span class=\"badge badge-success\">\r\n                  {{order.deliveryMember.ownerName?order.deliveryMember.ownerName : order.deliveryMember.username}}</span>\r\n              </p>\r\n              <p *ngIf=\"order.deliveryMemberId\">{{c.formatDate(order.assignedDate)}}</p>\r\n\r\n              <p style=\"margin: 0px;font-weight: bold\" *ngIf=\"order.deliveredDate\">\r\n                {{\"orders.table.officialDelivery\"|translate}}\r\n              </p>\r\n              <!-- <p style=\"margin: 0px;\" *ngIf=\"order.packagerMemberId\">{{order.packagerMember.ownerName}}</p> -->\r\n              <p *ngIf=\"order.deliveredDate\">{{c.formatDate(order.deliveredDate)}}</p>\r\n\r\n\r\n            </td>\r\n\r\n            <td>\r\n              <input style=\"width: 85px\" [(ngModel)]=\"OrderToEdit.couponCode\" class=\"form-control\"\r\n                placeholder=\"{{'orders.new.couponPlaceHolder'|translate}}\" type=\"text\"\r\n                [value]=\"OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code\">\r\n\r\n\r\n            </td>\r\n            <td>\r\n              <span (click)=\"statusModel(OrderToEdit,modalStatus)\" class=\"badge\"\r\n                [ngClass]=\"OrderToEdit.status=='pending'? 'badge-warning ': ( OrderToEdit.status=='inDelivery' ?'badge-info' :( OrderToEdit.status=='delivered' ?'badge-success' :'badge-danger'))\">{{\"orders.table.delStatus.\"\r\n              + OrderToEdit.status|translate}}</span>\r\n            </td>\r\n\r\n            <td>\r\n              <select [(ngModel)]=\"OrderToEdit.printable\" class=\"form-control\" id=\"status\">\r\n                <option [value]=\"true\">\r\n                  {{\"orders.table.printables.true\"|translate}}\r\n                </option>\r\n                <option [value]=\"false\">\r\n                  {{\"orders.table.printables.false\"|translate}}\r\n                </option>\r\n              </select>\r\n\r\n            </td>\r\n\r\n            <td class=\"no-padding-td\">\r\n              <ul class=\"list-group table-ul\">\r\n                <li>\r\n                  <p *ngIf=\"OrderToEdit!=undefined\" [@enterAnimation]>\r\n                    <span (click)=\"editOrderApi(OrderToEdit)\" class=\"functions-btn text-info\"><i\r\n                        class=\"fa fa-check-circle fa-lg\"></i></span>\r\n                    <span class=\"functions-btn text-danger\" (click)=\"cancelOrder(true)\"><i\r\n                        class=\"fa fa-remove fa-lg\"></i></span>\r\n                  </p>\r\n                </li>\r\n                <li>{{c.formatDate(OrderToEdit.orderDate)}}</li>\r\n              </ul>\r\n            </td>\r\n          </tr>\r\n          <tr class=\"note-row\">\r\n\r\n            <td align=\"center\" colspan=\"8\">\r\n              <div class=\"form-group\">\r\n                <label for=\"notes\">{{\"client.form.controls.notes\"|translate}}</label>\r\n                <textarea class=\"form-control\" id=\"edit_notes\" [(ngModel)]=\"OrderToEdit.note\"\r\n                  placeholder=\"{{'client.form.placeholders.notes'|translate}}\" rows=\"4\"></textarea>\r\n              </div>\r\n            </td>\r\n          </tr>\r\n        </ng-container>\r\n      </ng-container>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n<ng-template #template>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.message'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"confirm()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n<ng-template #tawseel>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.delivered'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-success modal-confirm\"\r\n      (click)=\"confirmDelivered()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -7246,10 +7875,22 @@ var OrdersManageComponent = (function () {
         this.totalPrice = 0;
         this.unpage = false;
         this.pages = 20;
+        this.statusFilter = -1;
+        this.statusList = [
+            "pending",
+            "inDelivery",
+            "delivered",
+            "canceled",
+            "pendingDelivery",
+            "packed",
+            "inWarehouse"
+        ];
         this.onEdit = false;
         this.IOproducts = [];
         this.IOusers = [];
+        this.IOusersFilter = [];
         this.IOdeusers = [];
+        this.IOdeusersFilter = [];
         this.IOweausers = [];
         this.tP = [];
         this.ul = [];
@@ -7268,14 +7909,15 @@ var OrdersManageComponent = (function () {
         this.orderForm = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormGroup"]({
             clientId: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required),
         });
-        this.delstatus = ['pending', 'canceled'];
         this.math = Math;
         this.userNotForm = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormGroup"]({
             createdAt: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormControl"](new Date(), __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required),
             note: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormControl"]("", __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required),
         });
         this.IOdewarehouseKeeper = [];
+        this.IOdewarehouseKeeperFilter = [];
         this.IOPickedUser = [];
+        this.whereFilter = {};
         this.scroll = function () {
             if (window.pageYOffset.toString() != '0') {
                 localStorage.setItem('ordersScreenY', window.pageYOffset.toString());
@@ -7304,6 +7946,8 @@ var OrdersManageComponent = (function () {
     };
     OrdersManageComponent.prototype.statusModel = function (order, modal) {
         var _this = this;
+        if (order.status == 'canceled')
+            return;
         this.orderModel = Object.assign({}, order);
         if (order.warehouseKeeperId != undefined && order.warehouseKeeperId != '') {
             var name = "";
@@ -7390,6 +8034,11 @@ var OrdersManageComponent = (function () {
     };
     OrdersManageComponent.prototype.emptyFilter = function () {
         this.delMemFilter = undefined;
+        this.keeperMemFilter = undefined;
+        this.shopeMemFilter = undefined;
+        this.statusFilter = -1;
+        this.fromFilter = undefined;
+        this.toFilter = undefined;
         this.getOrders();
     };
     OrdersManageComponent.prototype.getTimer = function (date) {
@@ -7420,7 +8069,7 @@ var OrdersManageComponent = (function () {
             return this.viewDate;
         }
     };
-    OrdersManageComponent.prototype.filterByDel = function () {
+    OrdersManageComponent.prototype.filter = function () {
         this.getOrders();
     };
     OrdersManageComponent.prototype.getOrdersFinilaize = function () {
@@ -7446,8 +8095,24 @@ var OrdersManageComponent = (function () {
         var _this = this;
         this.spinnerFlag = true;
         this.orders = [];
-        this.Handler.getOrdersCount(this.delMemFilter).finally(function () {
-            _this.Handler.getOrders(_this.pages, _this.currentPage, _this.delMemFilter)
+        var where = {};
+        where["and"] = [];
+        if (this.delMemFilter)
+            where["and"].push({ "deliveryMemberId": this.delMemFilter });
+        if (this.keeperMemFilter)
+            where["and"].push({ "warehouseKeeperId": this.keeperMemFilter });
+        if (this.statusFilter != -1)
+            where["and"].push({ "status": this.statusFilter });
+        if (this.shopeMemFilter)
+            where["and"].push({ "clientId": this.shopeMemFilter });
+        if (this.fromFilter)
+            where["and"].push({ "orderDate": { "gt": new Date(this.fromFilter) } });
+        if (this.toFilter)
+            where["and"].push({ "orderDate": { "lt": new Date(this.toFilter) } });
+        console.log("where");
+        console.log(where);
+        this.Handler.getOrdersCount(where).finally(function () {
+            _this.Handler.getOrders(_this.pages, _this.currentPage, where)
                 .finally(function () {
                 _this.getOrdersFinilaize();
             }).subscribe(function (data) {
@@ -7517,7 +8182,7 @@ var OrdersManageComponent = (function () {
             this.tP.push({ label: pro.nameAr, value: pro.productId });
             this.selectedEditProducts.push({
                 'count': pro.count,
-                'sellingPrice': pro.price,
+                'sellingPrice': pro.sellingPrice,
                 'productId': pro.productId,
             });
         }
@@ -7538,10 +8203,12 @@ var OrdersManageComponent = (function () {
         this.productCheck();
     };
     OrdersManageComponent.prototype.productEditSelected = function (IOproduct) {
+        console.log("IOproduct");
+        console.log(IOproduct);
         var product = this.findEditProduct(IOproduct.value);
         this.selectedEditProducts.push({
             'count': 0,
-            'price': 0,
+            'price': product.sellingPrice,
             'productId': product._id,
         });
         this.selectedEditProductsIds = [];
@@ -7553,6 +8220,13 @@ var OrdersManageComponent = (function () {
         else {
             this.productError = false;
         }
+    };
+    OrdersManageComponent.prototype.submitCancelOrder = function (model) {
+        var _this = this;
+        this.Handler.cancelOrder(this.orderModel.id).subscribe(function () {
+            model.hide();
+            _this.router.navigate(['/orders/management']);
+        }, function (errorCode) { return _this.showError(); });
     };
     OrdersManageComponent.prototype.cancelOrder = function (full) {
         this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
@@ -7601,7 +8275,7 @@ var OrdersManageComponent = (function () {
         console.log("this.editProducts");
         console.log(this.editProducts);
         if (this.editProducts.find(function (x) { return x.productId === id; }) == undefined) {
-            return this.editProducts.find(function (x) { return x._id === id; }).product;
+            return this.editProducts.find(function (x) { return x._id === id; });
         }
         else {
             return this.editProducts.find(function (x) { return x.productId === id; }).product;
@@ -7647,25 +8321,25 @@ var OrdersManageComponent = (function () {
     };
     OrdersManageComponent.prototype.priceEditCalculate = function (id, count) {
         var _this = this;
-        var price;
+        var sellingPrice;
         this.productHandler.getProductById(id).subscribe(function (p) {
             if (_this.OrderToEdit.clientType == 'horeca') {
                 if (p.horecaPriceDiscount != 0) {
-                    price = p.horecaPriceDiscount * count;
+                    sellingPrice = p.horecaPriceDiscount * count;
                 }
                 else {
-                    price = p.horecaPrice * count;
+                    sellingPrice = p.horecaPrice * count;
                 }
             }
             else if (_this.OrderToEdit.clientType == 'wholesale' || _this.orderUser.clientType == 'retailCostumer') {
                 if (p.wholeSalePriceDiscount != 0) {
-                    price = p.wholeSalePriceDiscount * count;
+                    sellingPrice = p.wholeSalePriceDiscount * count;
                 }
                 else {
-                    price = p.wholeSalePrice * count;
+                    sellingPrice = p.wholeSalePrice * count;
                 }
             }
-            _this.selectedEditProducts.find(function (x) { return x.productId == id; }).price = price;
+            _this.selectedEditProducts.find(function (x) { return x.productId == id; }).sellingPrice = sellingPrice;
             _this.totalPriceCalculate(_this.selectedEditProducts);
         }, function (errorCode) { return _this.showError(); });
     };
@@ -7695,17 +8369,22 @@ var OrdersManageComponent = (function () {
     OrdersManageComponent.prototype.WearuserSelected = function (u, order) {
         order.status = 'packed';
     };
-    OrdersManageComponent.prototype.searchUsers = function (str) {
+    OrdersManageComponent.prototype.searchUsers = function (str, isFilter) {
         var _this = this;
         this.CouponHandler.getUsersByShope(str).subscribe(function (data) {
             _this.ul = [];
             for (var _i = 0, data_5 = data; _i < data_5.length; _i++) {
                 var u = data_5[_i];
-                _this.ul.push({ label: u.shopName, value: u.id });
+                _this.ul.push({ label: u.shopName + " / " + u.ownerName, value: u.id });
             }
             _this.users = data;
             setTimeout(function () {
-                _this.IOusers = _this.ul;
+                if (isFilter) {
+                    console.log(_this.IOusersFilter);
+                    _this.IOusersFilter = _this.ul;
+                }
+                else
+                    _this.IOusers = _this.ul;
             }, 50);
         }, function (errorCode) { return _this.showError(); });
     };
@@ -7730,7 +8409,28 @@ var OrdersManageComponent = (function () {
             _this.router.navigate(['/orders/management']);
         }, function (errorCode) { return _this.showError(); });
     };
-    OrdersManageComponent.prototype.searchWearKeper = function (str) {
+    OrdersManageComponent.prototype.submitInDelivery = function (model) {
+        var _this = this;
+        this.Handler.submitInDelivery(this.orderModel.id).subscribe(function () {
+            model.hide();
+            _this.router.navigate(['/orders/management']);
+        }, function (errorCode) { return _this.showError(); });
+    };
+    OrdersManageComponent.prototype.changeDilivery = function (model) {
+        var _this = this;
+        this.Handler.changeDilivery({ 'userId': this.orderModel.deliveryMemberId }, this.orderModel.id).subscribe(function () {
+            model.hide();
+            _this.router.navigate(['/orders/management']);
+        }, function (errorCode) { return _this.showError(); });
+    };
+    OrdersManageComponent.prototype.submitPendingDelivery = function (model) {
+        var _this = this;
+        this.Handler.submitPendingDelivery({ 'userId': this.orderModel.deliveryMemberId }, this.orderModel.id).subscribe(function () {
+            model.hide();
+            _this.router.navigate(['/orders/management']);
+        }, function (errorCode) { return _this.showError(); });
+    };
+    OrdersManageComponent.prototype.searchWearKeper = function (str, isFilter) {
         var _this = this;
         this.Handler.getUserByString('warehouseKeeper', str).subscribe(function (data) {
             _this.deul = [];
@@ -7742,7 +8442,10 @@ var OrdersManageComponent = (function () {
                     _this.deul.push({ label: u.username, value: u.id });
             }
             setTimeout(function () {
-                _this.IOdewarehouseKeeper = _this.deul;
+                if (isFilter)
+                    _this.IOdewarehouseKeeperFilter = _this.deul;
+                else
+                    _this.IOdewarehouseKeeper = _this.deul;
             }, 100);
         }, function (errorCode) { return _this.showError(); });
     };
@@ -7762,7 +8465,7 @@ var OrdersManageComponent = (function () {
             }, 100);
         }, function (errorCode) { return _this.showError(); });
     };
-    OrdersManageComponent.prototype.searchDeliver = function (str) {
+    OrdersManageComponent.prototype.searchDeliver = function (str, isFilter) {
         var _this = this;
         this.Handler.getUserByString('deliverer', str).subscribe(function (data) {
             _this.deul = [];
@@ -7774,7 +8477,10 @@ var OrdersManageComponent = (function () {
                     _this.deul.push({ label: u.username, value: u.id });
             }
             setTimeout(function () {
-                _this.IOdeusers = _this.deul;
+                if (isFilter)
+                    _this.IOdeusersFilter = _this.deul;
+                else
+                    _this.IOdeusers = _this.deul;
             }, 100);
         }, function (errorCode) { return _this.showError(); });
     };
@@ -8030,12 +8736,14 @@ OrdersComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__statistics_statistics_component__ = __webpack_require__("../../../../../src/app/pages/orders/statistics/statistics.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__orders_from_suppliers_orders_from_suppliers_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders-from-suppliers/orders-from-suppliers.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__orders_from_suppliers_suppliers_service__ = __webpack_require__("../../../../../src/app/pages/orders/orders-from-suppliers/suppliers.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__order_report_order_report_component__ = __webpack_require__("../../../../../src/app/pages/orders/order-report/order-report.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -8070,6 +8778,7 @@ OrdersModule = __decorate([
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_2__orders_manage_orders_manage_component__["a" /* OrdersManageComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__order_report_order_report_component__["a" /* ReportOrderComponent */],
             __WEBPACK_IMPORTED_MODULE_9__statistics_statistics_component__["a" /* StatisticsComponent */],
             __WEBPACK_IMPORTED_MODULE_10__orders_from_suppliers_orders_from_suppliers_component__["a" /* OrdersFromSuppliersComponent */]
         ]
@@ -8267,45 +8976,46 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagesModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__supplier_supplier_module__ = __webpack_require__("../../../../../src/app/pages/supplier/supplier.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__damaged_products_damaged_products_module__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-products.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__abstract_products_abstract_products_module__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-products.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__auth_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/pages/auth/log-in/log-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angular2_chartjs__ = __webpack_require__("../../../../angular2-chartjs/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angular2_chartjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_angular2_chartjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__manufacturers_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/manufacturers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__manufacturers_add_manufacturer_add_manufacturer_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__manufacturers_view_manufacturers_view_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angular2_datatable__ = __webpack_require__("../../../../angular2-datatable/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angular2_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_angular2_datatable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_element_data_filter_pipe__ = __webpack_require__("../../../../../src/app/shared/element/data-filter.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__staff_staff_module__ = __webpack_require__("../../../../../src/app/pages/staff/staff.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__clients_clients_module__ = __webpack_require__("../../../../../src/app/pages/clients/clients.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__categories_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__categories_view_all_categories_view_all_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/view-all-categories/view-all-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__categories_add_category_add_category_component__ = __webpack_require__("../../../../../src/app/pages/categories/add-category/add-category.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__products_products_module__ = __webpack_require__("../../../../../src/app/pages/products/products.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_ng_select__ = __webpack_require__("../../../../ng-select/ng-select.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__orders_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__orders_view_orders_view_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/view-orders/view-orders.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__areas_areas_module__ = __webpack_require__("../../../../../src/app/pages/areas/areas.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__coupons_coupons_module__ = __webpack_require__("../../../../../src/app/pages/coupons/coupons.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__top_slider_top_slider_module__ = __webpack_require__("../../../../../src/app/pages/top-slider/top-slider.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__ratings_ratings_module__ = __webpack_require__("../../../../../src/app/pages/ratings/ratings.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__notifications_notifications_module__ = __webpack_require__("../../../../../src/app/pages/notifications/notifications.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__orders_orders_module__ = __webpack_require__("../../../../../src/app/pages/orders/orders.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_ngx_bootstrap_modal__ = __webpack_require__("../../../../ngx-bootstrap/modal/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__reports_reports_module__ = __webpack_require__("../../../../../src/app/pages/reports/reports.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__supplier_order_supplier_orders_module__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-orders.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home_component__ = __webpack_require__("../../../../../src/app/pages/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__supplier_supplier_module__ = __webpack_require__("../../../../../src/app/pages/supplier/supplier.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__damaged_products_damaged_products_module__ = __webpack_require__("../../../../../src/app/pages/damaged-products/damaged-products.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__abstract_products_abstract_products_module__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-products.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_core__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__auth_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/pages/auth/log-in/log-in.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular2_chartjs__ = __webpack_require__("../../../../angular2-chartjs/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular2_chartjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angular2_chartjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__manufacturers_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/manufacturers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__manufacturers_add_manufacturer_add_manufacturer_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/add-manufacturer/add-manufacturer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__manufacturers_view_manufacturers_view_manufacturers_component__ = __webpack_require__("../../../../../src/app/pages/manufacturers/view-manufacturers/view-manufacturers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_datatable__ = __webpack_require__("../../../../angular2-datatable/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_angular2_datatable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_element_data_filter_pipe__ = __webpack_require__("../../../../../src/app/shared/element/data-filter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__staff_staff_module__ = __webpack_require__("../../../../../src/app/pages/staff/staff.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__clients_clients_module__ = __webpack_require__("../../../../../src/app/pages/clients/clients.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__categories_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__categories_view_all_categories_view_all_categories_component__ = __webpack_require__("../../../../../src/app/pages/categories/view-all-categories/view-all-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/pages/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__categories_add_category_add_category_component__ = __webpack_require__("../../../../../src/app/pages/categories/add-category/add-category.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__products_products_module__ = __webpack_require__("../../../../../src/app/pages/products/products.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ng_select__ = __webpack_require__("../../../../ng-select/ng-select.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__orders_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/orders.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__orders_view_orders_view_orders_component__ = __webpack_require__("../../../../../src/app/pages/orders/view-orders/view-orders.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__areas_areas_module__ = __webpack_require__("../../../../../src/app/pages/areas/areas.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__coupons_coupons_module__ = __webpack_require__("../../../../../src/app/pages/coupons/coupons.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__top_slider_top_slider_module__ = __webpack_require__("../../../../../src/app/pages/top-slider/top-slider.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__ratings_ratings_module__ = __webpack_require__("../../../../../src/app/pages/ratings/ratings.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__notifications_notifications_module__ = __webpack_require__("../../../../../src/app/pages/notifications/notifications.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__orders_orders_module__ = __webpack_require__("../../../../../src/app/pages/orders/orders.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_ngx_bootstrap_modal__ = __webpack_require__("../../../../ngx-bootstrap/modal/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__reports_reports_module__ = __webpack_require__("../../../../../src/app/pages/reports/reports.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__supplier_order_supplier_orders_module__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-orders.module.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8349,59 +9059,61 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var PagesModule = (function () {
     function PagesModule() {
     }
     return PagesModule;
 }());
 PagesModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["NgModule"])({
+    Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_22__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"],
-            __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_6__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__["b" /* TranslateModule */].forChild(),
-            __WEBPACK_IMPORTED_MODULE_6__angular_forms__["ReactiveFormsModule"],
-            __WEBPACK_IMPORTED_MODULE_5__angular_router__["g" /* RouterModule */],
-            __WEBPACK_IMPORTED_MODULE_9_angular2_chartjs__["ChartModule"],
-            __WEBPACK_IMPORTED_MODULE_13__shared_shared_module__["a" /* SharedModule */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_15__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_14_angular2_datatable__["DataTableModule"],
-            __WEBPACK_IMPORTED_MODULE_34_ngx_bootstrap_modal__["b" /* ModalModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_17__staff_staff_module__["a" /* StaffModule */],
-            __WEBPACK_IMPORTED_MODULE_18__clients_clients_module__["a" /* ClientsModule */],
-            __WEBPACK_IMPORTED_MODULE_31__ratings_ratings_module__["a" /* RatingsModule */],
-            __WEBPACK_IMPORTED_MODULE_32__notifications_notifications_module__["a" /* NotificationModule */],
-            __WEBPACK_IMPORTED_MODULE_24__products_products_module__["a" /* ProductsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__abstract_products_abstract_products_module__["a" /* AbstractProductsModule */],
-            __WEBPACK_IMPORTED_MODULE_25_ng_select__["a" /* SelectModule */],
-            __WEBPACK_IMPORTED_MODULE_28__areas_areas_module__["a" /* AreasModule */],
-            __WEBPACK_IMPORTED_MODULE_30__top_slider_top_slider_module__["a" /* TopSliderModule */],
-            __WEBPACK_IMPORTED_MODULE_33__orders_orders_module__["a" /* OrdersModule */],
-            __WEBPACK_IMPORTED_MODULE_29__coupons_coupons_module__["a" /* CouponsModule */],
-            __WEBPACK_IMPORTED_MODULE_35__reports_reports_module__["a" /* ReportModule */],
-            __WEBPACK_IMPORTED_MODULE_1__damaged_products_damaged_products_module__["a" /* DamagedProductModule */],
-            __WEBPACK_IMPORTED_MODULE_36__supplier_order_supplier_orders_module__["a" /* SupplierOrdersModule */],
-            __WEBPACK_IMPORTED_MODULE_0__supplier_supplier_module__["a" /* SupplierModule */]
+            __WEBPACK_IMPORTED_MODULE_23__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_8__ngx_translate_core__["b" /* TranslateModule */].forChild(),
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["ReactiveFormsModule"],
+            __WEBPACK_IMPORTED_MODULE_6__angular_router__["g" /* RouterModule */],
+            __WEBPACK_IMPORTED_MODULE_10_angular2_chartjs__["ChartModule"],
+            __WEBPACK_IMPORTED_MODULE_14__shared_shared_module__["a" /* SharedModule */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_16__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_15_angular2_datatable__["DataTableModule"],
+            __WEBPACK_IMPORTED_MODULE_35_ngx_bootstrap_modal__["b" /* ModalModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_18__staff_staff_module__["a" /* StaffModule */],
+            __WEBPACK_IMPORTED_MODULE_19__clients_clients_module__["a" /* ClientsModule */],
+            __WEBPACK_IMPORTED_MODULE_32__ratings_ratings_module__["a" /* RatingsModule */],
+            __WEBPACK_IMPORTED_MODULE_33__notifications_notifications_module__["a" /* NotificationModule */],
+            __WEBPACK_IMPORTED_MODULE_25__products_products_module__["a" /* ProductsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__abstract_products_abstract_products_module__["a" /* AbstractProductsModule */],
+            __WEBPACK_IMPORTED_MODULE_26_ng_select__["a" /* SelectModule */],
+            __WEBPACK_IMPORTED_MODULE_29__areas_areas_module__["a" /* AreasModule */],
+            __WEBPACK_IMPORTED_MODULE_31__top_slider_top_slider_module__["a" /* TopSliderModule */],
+            __WEBPACK_IMPORTED_MODULE_34__orders_orders_module__["a" /* OrdersModule */],
+            __WEBPACK_IMPORTED_MODULE_30__coupons_coupons_module__["a" /* CouponsModule */],
+            __WEBPACK_IMPORTED_MODULE_36__reports_reports_module__["a" /* ReportModule */],
+            __WEBPACK_IMPORTED_MODULE_2__damaged_products_damaged_products_module__["a" /* DamagedProductModule */],
+            __WEBPACK_IMPORTED_MODULE_37__supplier_order_supplier_orders_module__["a" /* SupplierOrdersModule */],
+            __WEBPACK_IMPORTED_MODULE_1__supplier_supplier_module__["a" /* SupplierModule */]
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_16__shared_element_data_filter_pipe__["a" /* DataFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_17__shared_element_data_filter_pipe__["a" /* DataFilterPipe */],
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_8__auth_log_in_log_in_component__["a" /* LogInComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__manufacturers_manufacturers_component__["a" /* ManufacturersComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__manufacturers_view_manufacturers_view_manufacturers_component__["a" /* ViewManufacturersComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__categories_categories_component__["a" /* CategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__categories_view_all_categories_view_all_categories_component__["a" /* ViewAllCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__dashboard_dashboard_component__["a" /* DashboardComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__orders_orders_component__["a" /* OrdersComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__orders_view_orders_view_orders_component__["a" /* ViewOrdersComponent */]
+            __WEBPACK_IMPORTED_MODULE_9__auth_log_in_log_in_component__["a" /* LogInComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__manufacturers_manufacturers_component__["a" /* ManufacturersComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__manufacturers_add_manufacturer_add_manufacturer_component__["a" /* AddManufacturerComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__categories_add_category_add_category_component__["a" /* AddCategoryComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__manufacturers_view_manufacturers_view_manufacturers_component__["a" /* ViewManufacturersComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__categories_categories_component__["a" /* CategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__categories_view_all_categories_view_all_categories_component__["a" /* ViewAllCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__dashboard_dashboard_component__["a" /* DashboardComponent */],
+            __WEBPACK_IMPORTED_MODULE_0__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__orders_orders_component__["a" /* OrdersComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__orders_view_orders_view_orders_component__["a" /* ViewOrdersComponent */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__angular_common__["DatePipe"]]
+        providers: [__WEBPACK_IMPORTED_MODULE_5__angular_common__["DatePipe"]]
     })
 ], PagesModule);
 
@@ -8430,7 +9142,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/products/new-product/new-product.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-modal-basic #modalDefault>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.addBarcode'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalDefault.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    <form [formGroup]=\"prodBarcodeForm\">\r\n      <div class=\"form-group\">\r\n        <label for=\"notes\">{{\"modal.code\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"code\" id=\"notes\" placeholder=\"{{'modal.code'|translate}}\">\r\n        <label *ngIf=\"prodBarcodeForm.get('code').invalid && submiteddAddBarcode\" class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"form-group\">\r\n        <label for=\"expireDate\">{{\"modal.createdAt\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"createdAt\" id=\"expireDate\" placeholder=\"{{'modal.createdAt'|translate}}\"\r\n          type=\"datetime-local\">\r\n        <label *ngIf=\"prodBarcodeForm.get('createdAt').invalid && submiteddAddBarcode\" class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"modalDefault.hide()\">{{'modal.close'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\" (click)=\"addBarcode(modalDefault)\">{{'modal.add'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n<form (ngSubmit)=\"onProductFormSubmit()\" [formGroup]=\"ProductForm\" class=\"ProductForm\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm\">\r\n\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group\">\r\n          <label for=\"nameAr\">{{\"product.form.controls.prodName\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"nameAr\" id=\"nameAr\"\r\n            placeholder=\"{{'product.form.placeholders.prodName'|translate}}\" type=\"text\">\r\n          <label *ngIf=\"ProductForm.get('nameAr').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"pack\">{{\"product.form.controls.pack\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"pack\" id=\"pack\"\r\n            placeholder=\"{{'product.form.placeholders.pack'|translate}}\" type=\"text\">\r\n          <label *ngIf=\"ProductForm.get('pack').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"sku\">{{\"product.form.controls.sku\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"sku\" id=\"sku\"\r\n            placeholder=\"{{'product.form.placeholders.sku'|translate}}\" type=\"text\">\r\n          <!--<label *ngIf=\"ProductForm.get('sku').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n          <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"code\">{{\"product.form.controls.code\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"code\" id=\"code\"\r\n            placeholder=\"{{'product.form.placeholders.code'|translate}}\" type=\"text\">\r\n          <!--<label *ngIf=\"ProductForm.get('code').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n          <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n\r\n          <label for=\"offers\">{{'product.form.controls.offers'|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchOffers($event)\" (selected)=\"offerSelected($event)\"\r\n            [(ngModel)]=\"offersIds\" [multiple]=\"true\" [options]=\"IOoffers\" formControlName=\"offersIds\" id=\"offers\">\r\n          </ng-select>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm\">\r\n              <table class=\"table  table-striped \">\r\n                <tbody>\r\n                  <tr *ngFor=\"let off of offersTable\">\r\n                    <td style=\"width: 35px\">\r\n                      <img *ngIf=\"off.media\" src=\"{{off.media.thumbnail}}\" style=\"max-width: 34px;max-height: 34px;\">\r\n                    </td>\r\n                    <td>{{off.nameAr}}</td>\r\n                    <td style=\"text-align: center\">\r\n\r\n                      <span class=\"functions-btn pull-left text-danger\" (click)=\"removeOffer(off.id)\"><i\r\n                          class=\"fa fa-remove fa-lg\"></i></span>\r\n                    </td>\r\n                    <!--<td style=\"text-align: center\">-->\r\n                    <!---->\r\n                    <!--</td>-->\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n          <!--<select class=\"form-control\" formControlName=\"offersIds\" id=\"offers\" [(ngModel)]=\"offersIds\" multiple>-->\r\n          <!--<option *ngFor=\"let option of alloffers\" [value]=\"option.id\">-->\r\n          <!--{{option.nameAr}}-->\r\n          <!--</option>-->\r\n          <!--</select>-->\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"availableTo\">{{'product.form.controls.availableTo'|translate}}</label>\r\n          <select [(ngModel)]=\"availableTo\" class=\"form-control\" formControlName=\"availableTo\" id=\"availableTo\">\r\n            <option *ngFor=\"let option of availableList\" [value]=\"option\">\r\n              {{\"product.form.controls.\" + option|translate}}\r\n            </option>\r\n          </select>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"status\">{{\"product.form.controls.status\"|translate}}</label>\r\n          <select [(ngModel)]=\"status\" class=\"form-control\" formControlName=\"status\" id=\"status\">\r\n            <option *ngFor=\"let option of allStatus\" [value]=\"option\">\r\n              {{\"product.status.\" + option|translate}}\r\n            </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"abstracts\">{{'product.form.controls.abs'|translate}}</label>\r\n          <select [(ngModel)]=\"productAbstractId\" class=\"form-control\" formControlName=\"productAbstractId\"\r\n            id=\"abstracts\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n            <option *ngFor=\"let absProduct of absProducts\" [value]=\"absProduct.id\">\r\n              {{absProduct.nameAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('categoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"categories\">{{'product.form.controls.cat'|translate}}</label>\r\n          <select (change)=\"setCat($event)\" [(ngModel)]=\"categoryId\" class=\"form-control\" formControlName=\"categoryId\"\r\n            id=\"categories\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n            <option *ngFor=\"let cat of cats\" [value]=\"cat.id\">\r\n              {{cat.titleAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('categoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div *ngIf=\"categoryId!=''\" class=\"form-group\">\r\n          <label for=\"subcategories\">{{'product.form.controls.subcat'|translate}}</label>\r\n          <select [(ngModel)]=\"subCategoryId\" class=\"form-control\" formControlName=\"subCategoryId\" id=\"subcategories\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n\r\n            <option *ngFor=\"let cat of subcats\" [value]=\"cat.id\">\r\n              {{cat.titleAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('subCategoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"manufacturerId\">{{'product.form.controls.man'|translate}}</label>\r\n          <select [(ngModel)]=\"manufacturerId\" class=\"form-control\" formControlName=\"manufacturerId\"\r\n            id=\"manufacturerId\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n\r\n            <option *ngFor=\"let man of mans\" [value]=\"man.id\">\r\n              {{man.nameAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('manufacturerId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"description\">{{\"product.form.controls.desc\"|translate}}</label>\r\n          <textarea class=\"form-control\" formControlName=\"description\" id=\"description\"\r\n            placeholder=\"{{'product.form.placeholders.desc'|translate}}\" rows=\"6\"></textarea>\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"col-sm-offset-3 img-uploader\">\r\n          <div id=\"preview\">\r\n            <img [src]=\"imgSrc\" alt=\"\">\r\n          </div>\r\n          <input #fileInput (change)=\"onFileChanged($event)\" style=\"display: none\" type=\"file\">\r\n          <button (click)=\"fileInput.click()\" class=\"select-file btn btn-success\" type=\"button\">\r\n            {{'product.addImg'|translate}}\r\n          </button>\r\n          <br>\r\n          <label *ngIf=\"imgBlankError\" class=\"text-danger\">{{'product.form.validations.imgBlank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6\">\r\n            <div class=\"form-group\">\r\n              <label for=\"horecaPrice\">{{\"product.form.controls.horecaPrice\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"horecaPrice\" id=\"horecaPrice\"\r\n                placeholder=\"{{'product.form.placeholders.horecaPrice'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('horecaPrice').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"horecaPriceDiscount\">{{\"product.form.controls.horecaPriceDiscount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"horecaPriceDiscount\" id=\"horecaPriceDiscount\"\r\n                placeholder=\"{{'product.form.placeholders.horecaPriceDiscount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('horecaPriceDiscount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n\r\n\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <div class=\"form-group\">\r\n              <label for=\"wholeSalePrice\">{{\"product.form.controls.wholeSalePrice\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"wholeSalePrice\" id=\"wholeSalePrice\"\r\n                placeholder=\"{{'product.form.placeholders.wholeSalePrice'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('wholeSalePrice').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            \r\n\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"wholeSalePriceDiscount\">{{\"product.form.controls.wholeSalePriceDiscount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"wholeSalePriceDiscount\" id=\"wholeSalePriceDiscount\"\r\n                placeholder=\"{{'product.form.placeholders.wholeSalePriceDiscount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('wholeSalePriceDiscount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"row\">\r\n              <div class=\"col-sm-6\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"offer\">{{\"product.form.controls.offer\"|translate}}</label>\r\n                  <br>\r\n                  <label class=\"switch\">\r\n                    <input [(ngModel)]=\"isOffer\" formControlName=\"isOffer\" id=\"offer\" type=\"checkbox\">\r\n                    <span class=\"slider round\"></span>\r\n                  </label>\r\n                </div>\r\n              </div>\r\n              <div class=\"col-sm-6\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"isFeatured\">{{\"product.form.controls.featured\"|translate}}</label>\r\n                  <br>\r\n                  <label class=\"switch\">\r\n                    <input [(ngModel)]=\"isFeatured\" formControlName=\"isFeatured\" id=\"isFeatured\" type=\"checkbox\">\r\n                    <span class=\"slider round\"></span>\r\n                  </label>\r\n                </div>\r\n              </div>\r\n\r\n            </div>\r\n\r\n          </div>\r\n          <div class=\"col-sm\">\r\n            <div class=\"form-group\">\r\n              <label for=\"parentCount\">{{\"product.form.controls.parentCount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"parentCount\" id=\"parentCount\"\r\n                placeholder=\"{{'product.form.placeholders.parentCount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('parentCount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"tags\">{{'product.form.controls.tags'|translate}}</label>\r\n\r\n              <tag-input [(ngModel)]=\"tags\" [placeholder]=\"'product.form.placeholders.addTag'|translate\"\r\n                [secondaryPlaceholder]=\"'product.form.placeholders.addTags'|translate\" formControlName=\"tagsIds\"\r\n                id=\"tags\"></tag-input>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"offerMaxQuantity\">{{\"product.form.controls.offerMaxQuantity\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"offerMaxQuantity\" id=\"offerMaxQuantity\"\r\n                placeholder=\"{{'product.form.placeholders.offerMaxQuantity'|translate}}\" type=\"number\">\r\n              <!--<label *ngIf=\"ProductForm.get('prodName').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"isOffer\" class=\"offer-things\">\r\n          <div class=\"form-group\">\r\n            <label for=\"offerSource\">{{'product.form.controls.offerSource'|translate}}</label>\r\n            <select [(ngModel)]=\"offerSource\" class=\"form-control\" formControlName=\"offerSource\" id=\"offerSource\">\r\n              <option disabled selected style=\"display: none\" value=\"\"></option>\r\n              <option *ngFor=\"let option of offerSourceList\" [value]=\"option\">\r\n                {{\"product.form.controls.\" + option|translate}}\r\n              </option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"offerProducts\">{{\"product.form.controls.offerProducts\"|translate}}</label>\r\n\r\n            <ng-select (deselected)=\"productDeSelected($event)\" (filterInputChanged)=\"searchProducts($event)\"\r\n              (selected)=\"productSelected($event)\" [multiple]=\"false\" [options]=\"IOproducts\" id=\"offerProducts\">\r\n            </ng-select>\r\n          </div>\r\n\r\n          <div class=\"row\">\r\n            <div class=\"col-sm products-div\">\r\n              <table class=\"table  table-striped \">\r\n                <tbody>\r\n                  <tr *ngFor=\"let product of offerProducts  \">\r\n                    <td style=\"width: 35px\"><img *ngIf=\"findselecttedProduct(product.productId)?.media\"\r\n                        src=\"{{findselecttedProduct(product.productId)?.media.thumbnail}}\"\r\n                        style=\"max-width: 34px;max-height: 34px;\">\r\n                    </td>\r\n                    <td>{{findselecttedProduct(product.productId).nameAr}}</td>\r\n                    <td style=\"text-align: center\">\r\n                      <span>{{\"product.form.controls.quantity\"|translate}} </span><input [(ngModel)]=\"product.quantity\"\r\n                        [ngModelOptions]=\"{standalone: true}\" style=\"max-width: 20%\" type=\"number\">\r\n                      <span class=\"functions-btn pull-left text-danger\"\r\n                        (click)=\"productDeSelected(product.productId)\"><i class=\"fa fa-remove fa-lg\"></i></span>\r\n                    </td>\r\n                    <!--<td style=\"text-align: center\">-->\r\n                    <!---->\r\n                    <!--</td>-->\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm submit-col\">\r\n        <button *ngIf=\"newPro\" [disabled]=\"submitted\" class=\"btn btn-success\" type=\"submit\">\r\n          {{\"staff.buttons.add\"|translate}}\r\n        </button>\r\n        <i *ngIf=\"!ProductForm.invalid&&submitted\" class=\"fa fa-circle-o-notch fa-2x fa-spin spinner-submit\"></i>\r\n        <button *ngIf=\"!newPro\" [disabled]=\"submitted\" class=\" btn btn-success\" type=\"submit\">\r\n          {{\"staff.buttons.edit\"|translate}}\r\n        </button>\r\n        <button *ngIf=\"!newPro\" [disabled]=\"submitted\" class=\"btn btn-action\" (click)=\"goProducts()\" type=\"button\">\r\n          {{\"staff.buttons.back\"|translate}}\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</form>\r\n<div class=\"col-sm\">\r\n  <div class=\"notesDiv\" *ngIf=\"!newPro\">\r\n    <div class=\"title\">\r\n      <label>{{\"product.form.controls.barcodes\"|translate}}</label>\r\n    </div>\r\n    <div class=\"body\">\r\n      <div class=\"oneNote\" *ngFor=\"let onebarcode of barcodes; let i = index\">\r\n        <span class=\"code\">{{onebarcode.code}}</span>\r\n        <div class=\"actions\">\r\n          <span>{{onebarcode.createdAt | date:'medium'}}</span>\r\n          <div class=\"button\">\r\n            <button class=\"btn btn-danger\" (click)=\"deleteBarcode(onebarcode.id,index)\" style=\"margin-left: 15px;\" type=\"button\">\r\n              {{\"client.buttons.delete\"|translate}}\r\n            </button>\r\n\r\n          \r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"flowButton\" (click)=\"open(modalDefault)\">\r\n        <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n \r\n\r\n\r\n</div>\r\n"
+module.exports = "<app-modal-basic #modalDefault>\r\n  <div class=\"app-modal-header\">\r\n    <h4 class=\"modal-title\">{{'modal.addBarcode'|translate}}</h4>\r\n    <button type=\"button\" class=\"close basic-close\" style=\"left: 20px;\" (click)=\"modalDefault.hide()\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"app-modal-body\">\r\n    <form [formGroup]=\"prodBarcodeForm\">\r\n      <div class=\"form-group\">\r\n        <label for=\"notes\">{{\"modal.code\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"code\" id=\"notes\" placeholder=\"{{'modal.code'|translate}}\">\r\n        <label *ngIf=\"prodBarcodeForm.get('code').invalid && submiteddAddBarcode\" class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n\r\n      <div class=\"form-group\">\r\n        <label for=\"expireDate\">{{\"modal.createdAt\"|translate}}</label>\r\n        <input class=\"form-control\" formControlName=\"createdAt\" id=\"expireDate\" placeholder=\"{{'modal.createdAt'|translate}}\"\r\n          type=\"datetime-local\">\r\n        <label *ngIf=\"prodBarcodeForm.get('createdAt').invalid && submiteddAddBarcode\" class=\"text-danger\">{{'coupon.form.validations.blank'|translate}}</label>\r\n\r\n      </div>\r\n\r\n    </form>\r\n  </div>\r\n  <div class=\"app-modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-default waves-effect\" (click)=\"modalDefault.hide()\">{{'modal.close'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary waves-effect waves-light\" (click)=\"addBarcode(modalDefault)\">{{'modal.add'|translate}}</button>\r\n  </div>\r\n</app-modal-basic>\r\n<form (ngSubmit)=\"onProductFormSubmit()\" [formGroup]=\"ProductForm\" class=\"ProductForm\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm\">\r\n\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"form-group\">\r\n          <label for=\"nameAr\">{{\"product.form.controls.prodName\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"nameAr\" id=\"nameAr\"\r\n            placeholder=\"{{'product.form.placeholders.prodName'|translate}}\" type=\"text\">\r\n          <label *ngIf=\"ProductForm.get('nameAr').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"pack\">{{\"product.form.controls.pack\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"pack\" id=\"pack\"\r\n            placeholder=\"{{'product.form.placeholders.pack'|translate}}\" type=\"text\">\r\n          <label *ngIf=\"ProductForm.get('pack').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"sku\">{{\"product.form.controls.sku\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"sku\" id=\"sku\"\r\n            placeholder=\"{{'product.form.placeholders.sku'|translate}}\" type=\"text\">\r\n          <!--<label *ngIf=\"ProductForm.get('sku').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n          <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"code\">{{\"product.form.controls.code\"|translate}}</label>\r\n          <input class=\"form-control\" formControlName=\"code\" id=\"code\"\r\n            placeholder=\"{{'product.form.placeholders.code'|translate}}\" type=\"text\">\r\n          <!--<label *ngIf=\"ProductForm.get('code').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n          <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n\r\n          <label for=\"offers\">{{'product.form.controls.offers'|translate}}</label>\r\n          <ng-select (filterInputChanged)=\"searchOffers($event)\" (selected)=\"offerSelected($event)\"\r\n            [(ngModel)]=\"offersIds\" [multiple]=\"true\" [options]=\"IOoffers\" formControlName=\"offersIds\" id=\"offers\">\r\n          </ng-select>\r\n          <div class=\"row\">\r\n            <div class=\"col-sm\">\r\n              <table class=\"table  table-striped \">\r\n                <tbody>\r\n                  <tr *ngFor=\"let off of offersTable\">\r\n                    <td style=\"width: 35px\">\r\n                      <img *ngIf=\"off.media\" src=\"{{off.media.thumbnail}}\" style=\"max-width: 34px;max-height: 34px;\">\r\n                    </td>\r\n                    <td>{{off.nameAr}}</td>\r\n                    <td style=\"text-align: center\">\r\n\r\n                      <span class=\"functions-btn pull-left text-danger\" (click)=\"removeOffer(off.id)\"><i\r\n                          class=\"fa fa-remove fa-lg\"></i></span>\r\n                    </td>\r\n                    <!--<td style=\"text-align: center\">-->\r\n                    <!---->\r\n                    <!--</td>-->\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n          <!--<select class=\"form-control\" formControlName=\"offersIds\" id=\"offers\" [(ngModel)]=\"offersIds\" multiple>-->\r\n          <!--<option *ngFor=\"let option of alloffers\" [value]=\"option.id\">-->\r\n          <!--{{option.nameAr}}-->\r\n          <!--</option>-->\r\n          <!--</select>-->\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"availableTo\">{{'product.form.controls.availableTo'|translate}}</label>\r\n          <select [(ngModel)]=\"availableTo\" class=\"form-control\" formControlName=\"availableTo\" id=\"availableTo\">\r\n            <option *ngFor=\"let option of availableList\" [value]=\"option\">\r\n              {{\"product.form.controls.\" + option|translate}}\r\n            </option>\r\n          </select>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"status\">{{\"product.form.controls.status\"|translate}}</label>\r\n          <select [(ngModel)]=\"status\" class=\"form-control\" formControlName=\"status\" id=\"status\">\r\n            <option *ngFor=\"let option of allStatus\" [value]=\"option\">\r\n              {{\"product.status.\" + option|translate}}\r\n            </option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"abstracts\">{{'product.form.controls.abs'|translate}}</label>\r\n          <select [(ngModel)]=\"productAbstractId\" class=\"form-control\" formControlName=\"productAbstractId\"\r\n            id=\"abstracts\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n            <option *ngFor=\"let absProduct of absProducts\" [value]=\"absProduct.id\">\r\n              {{absProduct.nameAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('categoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"categories\">{{'product.form.controls.cat'|translate}}</label>\r\n          <select (change)=\"setCat($event)\" [(ngModel)]=\"categoryId\" class=\"form-control\" formControlName=\"categoryId\"\r\n            id=\"categories\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n            <option *ngFor=\"let cat of cats\" [value]=\"cat.id\">\r\n              {{cat.titleAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('categoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div *ngIf=\"categoryId!=''\" class=\"form-group\">\r\n          <label for=\"subcategories\">{{'product.form.controls.subcat'|translate}}</label>\r\n          <select [(ngModel)]=\"subCategoryId\" class=\"form-control\" formControlName=\"subCategoryId\" id=\"subcategories\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n\r\n            <option *ngFor=\"let cat of subcats\" [value]=\"cat.id\">\r\n              {{cat.titleAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('subCategoryId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"manufacturerId\">{{'product.form.controls.man'|translate}}</label>\r\n          <select [(ngModel)]=\"manufacturerId\" class=\"form-control\" formControlName=\"manufacturerId\"\r\n            id=\"manufacturerId\">\r\n            <option disabled selected style=\"display: none\" value=\"\"></option>\r\n\r\n            <option *ngFor=\"let man of mans\" [value]=\"man.id\">\r\n              {{man.nameAr}}\r\n            </option>\r\n          </select>\r\n          <label *ngIf=\"ProductForm.get('manufacturerId').invalid && processValidation\"\r\n            class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <label for=\"description\">{{\"product.form.controls.desc\"|translate}}</label>\r\n          <textarea class=\"form-control\" formControlName=\"description\" id=\"description\"\r\n            placeholder=\"{{'product.form.placeholders.desc'|translate}}\" rows=\"6\"></textarea>\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"col-sm-6\">\r\n        <div class=\"col-sm-offset-3 img-uploader\">\r\n          <div id=\"preview\">\r\n            <img [src]=\"imgSrc\" alt=\"\">\r\n          </div>\r\n          <input #fileInput (change)=\"onFileChanged($event)\" style=\"display: none\" type=\"file\">\r\n          <button (click)=\"fileInput.click()\" class=\"select-file btn btn-success\" type=\"button\">\r\n            {{'product.addImg'|translate}}\r\n          </button>\r\n          <br>\r\n          <label *ngIf=\"imgBlankError\" class=\"text-danger\">{{'product.form.validations.imgBlank'|translate}}</label>\r\n\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-6\">\r\n            <div class=\"form-group\">\r\n              <label for=\"horecaPrice\">{{\"product.form.controls.horecaPrice\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"horecaPrice\" id=\"horecaPrice\"\r\n                placeholder=\"{{'product.form.placeholders.horecaPrice'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('horecaPrice').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"horecaPriceDiscount\">{{\"product.form.controls.horecaPriceDiscount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"horecaPriceDiscount\" id=\"horecaPriceDiscount\"\r\n                placeholder=\"{{'product.form.placeholders.horecaPriceDiscount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('horecaPriceDiscount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"consumerPrice\">{{\"product.form.controls.consumerPrice\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"consumerPrice\" id=\"consumerPrice\"\r\n                placeholder=\"{{'product.form.placeholders.consumerPrice'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('consumerPrice').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <div class=\"form-group\">\r\n              <label for=\"wholeSalePrice\">{{\"product.form.controls.wholeSalePrice\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"wholeSalePrice\" id=\"wholeSalePrice\"\r\n                placeholder=\"{{'product.form.placeholders.wholeSalePrice'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('wholeSalePrice').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            \r\n\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"wholeSalePriceDiscount\">{{\"product.form.controls.wholeSalePriceDiscount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"wholeSalePriceDiscount\" id=\"wholeSalePriceDiscount\"\r\n                placeholder=\"{{'product.form.placeholders.wholeSalePriceDiscount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('wholeSalePriceDiscount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n              <label for=\"consumerPriceDiscount\">{{\"product.form.controls.consumerPriceDiscount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"consumerPriceDiscount\" id=\"consumerPriceDiscount\"\r\n                placeholder=\"{{'product.form.placeholders.consumerPriceDiscount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('consumerPriceDiscount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"row\">\r\n              <div class=\"col-sm-6\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"offer\">{{\"product.form.controls.offer\"|translate}}</label>\r\n                  <br>\r\n                  <label class=\"switch\">\r\n                    <input [(ngModel)]=\"isOffer\" formControlName=\"isOffer\" id=\"offer\" type=\"checkbox\">\r\n                    <span class=\"slider round\"></span>\r\n                  </label>\r\n                </div>\r\n              </div>\r\n              <div class=\"col-sm-6\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"isFeatured\">{{\"product.form.controls.featured\"|translate}}</label>\r\n                  <br>\r\n                  <label class=\"switch\">\r\n                    <input [(ngModel)]=\"isFeatured\" formControlName=\"isFeatured\" id=\"isFeatured\" type=\"checkbox\">\r\n                    <span class=\"slider round\"></span>\r\n                  </label>\r\n                </div>\r\n              </div>\r\n\r\n            </div>\r\n\r\n          </div>\r\n          \r\n          <div class=\"col-sm\">\r\n            <div class=\"form-group\">\r\n              <label for=\"parentCount\">{{\"product.form.controls.parentCount\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"parentCount\" id=\"parentCount\"\r\n                placeholder=\"{{'product.form.placeholders.parentCount'|translate}}\" type=\"number\">\r\n              <label *ngIf=\"ProductForm.get('parentCount').invalid && processValidation\"\r\n                class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"tags\">{{'product.form.controls.tags'|translate}}</label>\r\n\r\n              <tag-input [(ngModel)]=\"tags\" [placeholder]=\"'product.form.placeholders.addTag'|translate\"\r\n                [secondaryPlaceholder]=\"'product.form.placeholders.addTags'|translate\" formControlName=\"tagsIds\"\r\n                id=\"tags\"></tag-input>\r\n            </div>\r\n            <div class=\"form-group\">\r\n              <label for=\"offerMaxQuantity\">{{\"product.form.controls.offerMaxQuantity\"|translate}}</label>\r\n              <input class=\"form-control\" formControlName=\"offerMaxQuantity\" id=\"offerMaxQuantity\"\r\n                placeholder=\"{{'product.form.placeholders.offerMaxQuantity'|translate}}\" type=\"number\">\r\n              <!--<label *ngIf=\"ProductForm.get('prodName').invalid && processValidation\" class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>-->\r\n              <!--<label *ngIf=\"nameError\" [ngClass]=\"'text-danger'\">{{'product.form.errors.prodName'|translate}}</label>-->\r\n\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"isOffer\" class=\"offer-things\">\r\n          <div class=\"form-group\">\r\n            <label for=\"offerSource\">{{'product.form.controls.offerSource'|translate}}</label>\r\n            <select [(ngModel)]=\"offerSource\" class=\"form-control\" formControlName=\"offerSource\" id=\"offerSource\">\r\n              <option disabled selected style=\"display: none\" value=\"\"></option>\r\n              <option *ngFor=\"let option of offerSourceList\" [value]=\"option\">\r\n                {{\"product.form.controls.\" + option|translate}}\r\n              </option>\r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"form-group\">\r\n            <label for=\"offerProducts\">{{\"product.form.controls.offerProducts\"|translate}}</label>\r\n\r\n            <ng-select (deselected)=\"productDeSelected($event)\" (filterInputChanged)=\"searchProducts($event)\"\r\n              (selected)=\"productSelected($event)\" [multiple]=\"false\" [options]=\"IOproducts\" id=\"offerProducts\">\r\n            </ng-select>\r\n          </div>\r\n\r\n          <div class=\"row\">\r\n            <div class=\"col-sm products-div\">\r\n              <table class=\"table  table-striped \">\r\n                <tbody>\r\n                  <tr *ngFor=\"let product of offerProducts  \">\r\n                    <td style=\"width: 35px\"><img *ngIf=\"findselecttedProduct(product.productId)?.media\"\r\n                        src=\"{{findselecttedProduct(product.productId)?.media.thumbnail}}\"\r\n                        style=\"max-width: 34px;max-height: 34px;\">\r\n                    </td>\r\n                    <td>{{findselecttedProduct(product.productId).nameAr}}</td>\r\n                    <td style=\"text-align: center\">\r\n                      <span>{{\"product.form.controls.quantity\"|translate}} </span><input [(ngModel)]=\"product.quantity\"\r\n                        [ngModelOptions]=\"{standalone: true}\" style=\"max-width: 20%\" type=\"number\">\r\n                      <span class=\"functions-btn pull-left text-danger\"\r\n                        (click)=\"productDeSelected(product.productId)\"><i class=\"fa fa-remove fa-lg\"></i></span>\r\n                    </td>\r\n                    <!--<td style=\"text-align: center\">-->\r\n                    <!---->\r\n                    <!--</td>-->\r\n                  </tr>\r\n                </tbody>\r\n              </table>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm submit-col\">\r\n        <button *ngIf=\"newPro\" [disabled]=\"submitted\" class=\"btn btn-success\" type=\"submit\">\r\n          {{\"staff.buttons.add\"|translate}}\r\n        </button>\r\n        <i *ngIf=\"!ProductForm.invalid&&submitted\" class=\"fa fa-circle-o-notch fa-2x fa-spin spinner-submit\"></i>\r\n        <button *ngIf=\"!newPro\" [disabled]=\"submitted\" class=\" btn btn-success\" type=\"submit\">\r\n          {{\"staff.buttons.edit\"|translate}}\r\n        </button>\r\n        <button *ngIf=\"!newPro\" [disabled]=\"submitted\" class=\"btn btn-action\" (click)=\"goProducts()\" type=\"button\">\r\n          {{\"staff.buttons.back\"|translate}}\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</form>\r\n<div class=\"col-sm\">\r\n  <div class=\"notesDiv\" *ngIf=\"!newPro\">\r\n    <div class=\"title\">\r\n      <label>{{\"product.form.controls.barcodes\"|translate}}</label>\r\n    </div>\r\n    <div class=\"body\">\r\n      <div class=\"oneNote\" *ngFor=\"let onebarcode of barcodes; let i = index\">\r\n        <span class=\"code\">{{onebarcode.code}}</span>\r\n        <div class=\"actions\">\r\n          <span>{{onebarcode.createdAt | date:'medium'}}</span>\r\n          <div class=\"button\">\r\n            <button class=\"btn btn-danger\" (click)=\"deleteBarcode(onebarcode.id,index)\" style=\"margin-left: 15px;\" type=\"button\">\r\n              {{\"client.buttons.delete\"|translate}}\r\n            </button>\r\n\r\n          \r\n\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"flowButton\" (click)=\"open(modalDefault)\">\r\n        <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n \r\n\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -8537,6 +9249,8 @@ var NewProductComponent = (function () {
             offerProducts: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"](''),
             horecaPriceDiscount: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required),
             wholeSalePriceDiscount: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required),
+            consumerPrice: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required),
+            consumerPriceDiscount: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required),
             code: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"](''),
             sku: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"](''),
         });
@@ -8565,7 +9279,7 @@ var NewProductComponent = (function () {
             });
             this.newPro = false;
             this.Handler.getProductById(this.id).subscribe(function (product) {
-                _this.product = new __WEBPACK_IMPORTED_MODULE_4__product_model__["a" /* ProductModel */](product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount);
+                _this.product = new __WEBPACK_IMPORTED_MODULE_4__product_model__["a" /* ProductModel */](product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount, product.consumerPrice, product.consumerPriceDiscount);
                 _this.product.creationDate = product.creationDate;
                 _this.product.id = product.id;
                 _this.product.offerProducts = _this.offerProducts = product.offerProducts;
@@ -9571,7 +10285,7 @@ var _a, _b, _c, _d;
 /* unused harmony export Media */
 /* unused harmony export OfferProducts */
 var ProductModel = (function () {
-    function ProductModel(nameAr, nameEn, pack, description, horecaPrice, wholeSalePrice, horecaPriceDiscount, wholeSalePriceDiscount, isFeatured, isOffer, availableTo, status, offerSource, offerMaxQuantity, code, sku, categoryId, subCategoryId, offersIds, tagsIds, media, offerProducts, manufacturerId, productAbstractId, parentCount) {
+    function ProductModel(nameAr, nameEn, pack, description, horecaPrice, wholeSalePrice, horecaPriceDiscount, wholeSalePriceDiscount, isFeatured, isOffer, availableTo, status, offerSource, offerMaxQuantity, code, sku, categoryId, subCategoryId, offersIds, tagsIds, media, offerProducts, manufacturerId, productAbstractId, parentCount, consumerPrice, consumerPriceDiscount) {
         this.nameAr = nameAr;
         this.nameEn = nameEn;
         this.pack = pack;
@@ -9597,6 +10311,8 @@ var ProductModel = (function () {
         this.manufacturerId = manufacturerId;
         this.productAbstractId = productAbstractId || "";
         this.parentCount = parentCount || 0;
+        this.consumerPriceDiscount = consumerPriceDiscount || 0;
+        this.consumerPrice = consumerPrice || 0;
     }
     return ProductModel;
 }());
@@ -10182,7 +10898,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/reports/warning-report/warning-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-12\">\r\n    <div class=\"form-group\">\r\n      <!-- <label for=\"abstracts\">{{'SupplierOrder.Supplier'|translate}}</label> -->\r\n      <select [(ngModel)]=\"threshold\" (change)=\"changeThreshold()\" class=\"form-control\" id=\"abstracts\">\r\n        <option *ngFor=\"let threshold of thresholdList\" [value]=\"threshold\">\r\n          {{'abstractProduct.thresholdList.'+threshold|translate}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"form-group\">\r\n      <label for=\"abstracts\">{{'SupplierOrder.Supplier'|translate}}</label>\r\n      <select [(ngModel)]=\"supplierId\" class=\"form-control\" id=\"abstracts\">\r\n        <option disabled selected style=\"display: none\" value=\"\"></option>\r\n        <option *ngFor=\"let oneSupplier of suppliers\" [value]=\"oneSupplier.id\">\r\n          {{oneSupplier.nameAr}}\r\n        </option>\r\n      </select>\r\n      <label *ngIf=\"supplierId==null && processValidation\"\r\n        class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"form-group\">\r\n      <label for=\"products\">{{\"orders.new.products\"|translate}}</label>\r\n      <ng-select (filterInputChanged)=\"searchProducts($event)\" (selected)=\"productSelected($event)\" [multiple]=\"true\"\r\n        [options]=\"IOproducts\" [placeholder]=\"'orders.searchPro'|translate\" [(ngModel)]=\"selectedProductsIds\"\r\n        [ngModelOptions]=\"{standalone: true}\" id=\"products\">\r\n      </ng-select>\r\n      <label *ngIf=\"selectedProducts.length==0 && processValidation\"\r\n        class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"col-sm-12\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm products-div\">\r\n      <table class=\"table table-striped add-order-tabel\">\r\n        <tbody>\r\n          <tr *ngFor=\"let product of selectedProducts\">\r\n            <td style=\"width: 35px\"><img *ngIf=\"findProduct(product.productAbstractId).media!=undefined\"\r\n                src=\"{{findProduct(product.productAbstractId).media.thumbnail}}\"\r\n                style=\"max-width: 34px;max-height: 34px;\">\r\n\r\n            </td>\r\n            <td>{{findProduct(product.productAbstractId).nameAr}}</td>\r\n            <td style=\"text-align: center\">\r\n              <span>{{\"orders.table.count\"|translate}} </span><input [(ngModel)]=\"product.count\"\r\n                [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n            <td style=\"text-align: center\">\r\n              <span>{{\"orders.table.price\"|translate}} </span><input [(ngModel)]=\"product.buyingPrice\"\r\n                [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n            <td style=\"text-align: center\">\r\n              <span class=\"functions-btn text-danger\" (click)=\"productDeSelected(product.productAbstractId)\"><i\r\n                  class=\"fa fa-remove fa-lg\"></i></span>\r\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      {{addErrorProd | json}}\r\n      <p *ngIf=\"addError\" class=\"text-danger\">\r\n        {{addErrorProd.nameAr}} {{\"orders.table.unavailableThisCountProd\"|translate}}\r\n        {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}\r\n\r\n      </p>\r\n      <!--<p *ngIf=\"totalPrice!=0\" class=\"total-price bg-primary text-white\">-->\r\n      <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n      <!--</p>-->\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-sm submit-col\">\r\n    <button [disabled]=\"submitted\" (click)=\"createSupplierOrder()\" class=\"btn btn-success\">\r\n      {{\"staff.buttons.add\"|translate}}\r\n    </button>\r\n\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-12\">\r\n    <div class=\"form-group\">\r\n      <!-- <label for=\"abstracts\">{{'SupplierOrder.Supplier'|translate}}</label> -->\r\n      <select [(ngModel)]=\"threshold\" (change)=\"changeThreshold()\" class=\"form-control\" id=\"abstracts\">\r\n        <option *ngFor=\"let threshold of thresholdList\" [value]=\"threshold\">\r\n          {{'abstractProduct.thresholdList.'+threshold|translate}}\r\n        </option>\r\n      </select>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-6\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n    <div class=\"form-group\">\r\n      <label for=\"abstracts\">{{'SupplierOrder.Supplier'|translate}}</label>\r\n      <select [(ngModel)]=\"supplierId\" class=\"form-control\" id=\"abstracts\">\r\n        <option disabled selected style=\"display: none\" value=\"\"></option>\r\n        <option *ngFor=\"let oneSupplier of suppliers\" [value]=\"oneSupplier.id\">\r\n          {{oneSupplier.nameAr}}\r\n        </option>\r\n      </select>\r\n      <label *ngIf=\"supplierId==null && processValidation\"\r\n        class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-6\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n    <div class=\"form-group\">\r\n      <label for=\"products\">{{\"orders.new.products\"|translate}}</label>\r\n      <ng-select (filterInputChanged)=\"searchProducts($event)\" (selected)=\"productSelected($event)\" [multiple]=\"true\"\r\n        [options]=\"IOproducts\" [placeholder]=\"'orders.searchPro'|translate\" [(ngModel)]=\"selectedProductsIds\"\r\n        [ngModelOptions]=\"{standalone: true}\" id=\"products\">\r\n      </ng-select>\r\n      <label *ngIf=\"selectedProducts.length==0 && processValidation\"\r\n        class=\"text-danger\">{{'product.form.validations.blank'|translate}}</label>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"col-sm-12\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm products-div\">\r\n      <table class=\"table table-striped add-order-tabel\">\r\n        <tbody>\r\n          <tr *ngFor=\"let product of selectedProducts\">\r\n            <td style=\"width: 35px\"><img *ngIf=\"findProduct(product.productAbstractId).media!=undefined\"\r\n                src=\"{{findProduct(product.productAbstractId).media.thumbnail}}\"\r\n                style=\"max-width: 34px;max-height: 34px;\">\r\n\r\n            </td>\r\n            <td>{{findProduct(product.productAbstractId).nameAr}}</td>\r\n            <td style=\"text-align: center\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n              <span>{{\"orders.table.count\"|translate}} </span><input [(ngModel)]=\"product.count\"\r\n                [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n            <td style=\"text-align: center\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n              <span>{{\"orders.table.price\"|translate}} </span><input [(ngModel)]=\"product.buyingPrice\"\r\n                [ngModelOptions]=\"{standalone: true}\" style=\"width: 49px\" type=\"number\"></td>\r\n            <td style=\"text-align: center\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n              <span class=\"functions-btn text-danger\" (click)=\"productDeSelected(product.productAbstractId)\"><i\r\n                  class=\"fa fa-remove fa-lg\"></i></span>\r\n            </td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      {{addErrorProd | json}}\r\n      <p *ngIf=\"addError\" class=\"text-danger\">\r\n        {{addErrorProd.nameAr}} {{\"orders.table.unavailableThisCountProd\"|translate}}\r\n        {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}\r\n\r\n      </p>\r\n      <!--<p *ngIf=\"totalPrice!=0\" class=\"total-price bg-primary text-white\">-->\r\n      <!--{{\"orders.table.total\"|translate}} : {{totalPrice}}-->\r\n      <!--</p>-->\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\" *ngIf=\"c.cheachRole('supplier-orders','new')\">\r\n  <div class=\"col-sm submit-col\">\r\n    <button [disabled]=\"submitted\" (click)=\"createSupplierOrder()\" class=\"btn btn-success\">\r\n      {{\"staff.buttons.add\"|translate}}\r\n    </button>\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -10191,13 +10907,14 @@ module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-12\">\r\n    <div
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WarningReportComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__supplier_order_Supplier_order__ = __webpack_require__("../../../../../src/app/pages/supplier-order/Supplier-order.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__abstract_products_abstract_product_handler__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-handler.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__supplier_supplier_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier/supplier-handler.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__supplier_order_supplier_order_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_const_service__ = __webpack_require__("../../../../../src/app/services/const.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__supplier_order_Supplier_order__ = __webpack_require__("../../../../../src/app/pages/supplier-order/Supplier-order.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__abstract_products_abstract_product_handler__ = __webpack_require__("../../../../../src/app/pages/abstract-products/abstract-product-handler.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__supplier_supplier_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier/supplier-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__supplier_order_supplier_order_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-handler.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10214,13 +10931,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var WarningReportComponent = (function () {
-    function WarningReportComponent(router, productHandler, SupplierOrder, supplierHandler, alert) {
+    function WarningReportComponent(router, productHandler, SupplierOrder, supplierHandler, alert, c) {
         this.router = router;
         this.productHandler = productHandler;
         this.SupplierOrder = SupplierOrder;
         this.supplierHandler = supplierHandler;
         this.alert = alert;
+        this.c = c;
         this.submitted = false;
         this.processValidation = false;
         this.tP = [];
@@ -10244,7 +10963,7 @@ var WarningReportComponent = (function () {
         var tempSup = {};
         tempSup['products'] = this.selectedProducts;
         tempSup['supplierId'] = this.supplierId;
-        var sub = new __WEBPACK_IMPORTED_MODULE_0__supplier_order_Supplier_order__["a" /* SupplierOrder */](tempSup);
+        var sub = new __WEBPACK_IMPORTED_MODULE_1__supplier_order_Supplier_order__["a" /* SupplierOrder */](tempSup);
         // let t = [];
         this.SupplierOrder.createSupplierOrder(sub).finally(function () {
             _this.router.navigate(['/supplier-orders/list']);
@@ -10327,20 +11046,20 @@ var WarningReportComponent = (function () {
         }, function (errorCode) { return _this.showError(); });
     };
     WarningReportComponent.prototype.findProduct = function (id) {
-        return this.newProducts.find(function (x) { return x._id === id; });
+        return this.newProducts.find(function (x) { return x.id === id; });
     };
     return WarningReportComponent;
 }());
 WarningReportComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
         selector: 'app-warning-report',
         template: __webpack_require__("../../../../../src/app/pages/reports/warning-report/warning-report.component.html"),
         styles: [__webpack_require__("../../../../../src/app/pages/reports/warning-report/warning-report.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["f" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__abstract_products_abstract_product_handler__["a" /* AbstractProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__abstract_products_abstract_product_handler__["a" /* AbstractProductHandler */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__supplier_order_supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__supplier_order_supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__supplier_supplier_handler_service__["a" /* SupplierHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__supplier_supplier_handler_service__["a" /* SupplierHandlerService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["f" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__abstract_products_abstract_product_handler__["a" /* AbstractProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__abstract_products_abstract_product_handler__["a" /* AbstractProductHandler */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7__supplier_order_supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__supplier_order_supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__supplier_supplier_handler_service__["a" /* SupplierHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__supplier_supplier_handler_service__["a" /* SupplierHandlerService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_alert_service__["a" /* AlertService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_0__services_const_service__["a" /* ConstService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_const_service__["a" /* ConstService */]) === "function" && _f || Object])
 ], WarningReportComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=warning-report.component.js.map
 
 /***/ }),
@@ -11244,6 +11963,13 @@ var SupplierOrdersHandlerService = (function () {
             map(this.extractData)
             .catch(this.handleErrorSec);
     };
+    SupplierOrdersHandlerService.prototype.getReportDaily = function (from, to) {
+        var param = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["e" /* URLSearchParams */]();
+        param.append("from", new Date(from).toString());
+        param.append("to", new Date(to).toString());
+        return this.apiService.get('/supplies/dailySupply', param)
+            .map(this.extractData).catch(this.handleError);
+    };
     SupplierOrdersHandlerService.prototype.addNote = function (data) {
         var body = JSON.stringify(data);
         var cpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
@@ -11403,7 +12129,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/supplier-order/supplier-order-list/supplier-order-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"from\"\r\n      placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n  </div>\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"to\"\r\n      placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"supplier\">\r\n        <option value=\"1\" disabled selected>{{'SupplierOrder.Supplier'|translate}}</option>\r\n        <option *ngFor=\"let oneSup of suppliers\" [value]=\"oneSup.id\">\r\n          {{oneSup.nameAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"status\">\r\n        <option value=\"1\" disabled selected>{{'SupplierOrder.status'|translate}}</option>\r\n        <option *ngFor=\"let oneStatus of statuses\" [value]=\"oneStatus\">\r\n          {{\"SupplierOrder.statusText.\"+oneStatus |translate}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.totalPrice\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.supplier\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.createDate\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.status\"|translate}}\r\n        </th>\r\n        <th>\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[]\">\r\n\r\n      <tr *ngFor=\"let order of returnedArray  \">\r\n        <td>{{order.totalPrice}}</td>\r\n        <td>{{order.supplier?.nameAr}}</td>\r\n        <td>{{c.formatDate(order.createDate)}}</td>\r\n        <td>{{\"SupplierOrder.statusText.\"+order.status |translate}}</td>\r\n        <td>\r\n          <button type=\"button\"*ngIf=\"order.status=='pending'\" class=\"btn btn-primary\" (click)=\"editSupllierOrder(order.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\" (click)=\"openModal(confirmCanceled,order.id)\">\r\n            {{\"SupplierOrder.buttons.cancel\"|translate}}\r\n          </button>\r\n          <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\" (click)=\"openModal(confirmDelivered,order.id)\">\r\n            {{\"SupplierOrder.buttons.deliver\"|translate}}\r\n          </button>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n\r\n<ng-template #confirmCanceled>\r\n    <div class=\"modal-body text-center\">\r\n        <p>{{'system.modal.cancelMessage'|translate}}</p>\r\n        <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n                (click)=\"canselSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n    </div>\r\n</ng-template>\r\n<ng-template #confirmDelivered>\r\n    <div class=\"modal-body text-center\">\r\n        <p>{{'system.modal.deliverMessage'|translate}}</p>\r\n        <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n                (click)=\"deliverSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n    </div>\r\n</ng-template>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"from\"\r\n      placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n  </div>\r\n  <div class=\"col-sm-3\">\r\n    <input class=\"form-control search-box\" type=\"text\" onfocus=\"(this.type='datetime-local')\" [(ngModel)]=\"to\"\r\n      placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n  </div>\r\n\r\n  <div class=\"col-sm-6\">\r\n    <div class=\"filter-btns\">\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"supplier\">\r\n        <option value=\"1\" disabled selected>{{'SupplierOrder.Supplier'|translate}}</option>\r\n        <option *ngFor=\"let oneSup of suppliers\" [value]=\"oneSup.id\">\r\n          {{oneSup.nameAr}}\r\n        </option>\r\n      </select>\r\n\r\n      <select class=\"btn btn-action\" [(ngModel)]=\"status\">\r\n        <option value=\"1\" disabled selected>{{'SupplierOrder.status'|translate}}</option>\r\n        <option *ngFor=\"let oneStatus of statuses\" [value]=\"oneStatus\">\r\n          {{\"SupplierOrder.statusText.\"+oneStatus |translate}}\r\n        </option>\r\n      </select>\r\n\r\n\r\n\r\n\r\n      <button type=\"button\" (click)=\"setFilters()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n      <button type=\"button\" (click)=\"emptyFields()\" class=\"btn btn-danger\">\r\n        {{\"abstractProduct.cancel\"|translate}}\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"table-responsive\">\r\n  <table class=\"table table-bordered table-striped \">\r\n    <thead>\r\n      <tr>\r\n\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.totalPrice\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.supplier\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.createDate\"|translate}}\r\n        </th>\r\n        <th class=\"clickable-th\">\r\n          {{\"SupplierOrder.status\"|translate}}\r\n        </th>\r\n        <th *ngIf=\"c.cheachRole('supplier-orders','edit')\">\r\n          <!--{{\"product.actions\"|translate}}-->#\r\n        </th>\r\n      </tr>\r\n    </thead>\r\n    <tbody [hidden]=\"spinnerFlag\" *ngIf=\"returnedArray!=[]\">\r\n\r\n      <tr *ngFor=\"let order of returnedArray ; let index=index; \">\r\n\r\n        <td class=\"no-padding-td\" (click)=\"viewProduct[index]=false\"\r\n          [ngClass]=\"{'productCol': viewProduct[index]==false}\">\r\n          <ul class=\" list-group table-ul\">\r\n            <li *ngFor=\"let product of order.supplyProducts\" class=\"list-group-item\"\r\n              style=\"text-align: right;padding: .75rem 0.25rem;\">\r\n              <span>{{product.productAbstractSnapshot.nameAr|slice:0:25}}</span> {{\"orders.table.count\"|translate}} :\r\n              <strong class=\"badge badge-info\">{{product.count}}</strong>\r\n              {{\"orders.table.price\"|translate}} : <strong style=\"float: left;font-size: 13px;margin-top: 3px;\"\r\n                class=\"badge badge-success\">{{product.buyingPrice}}</strong>\r\n            </li>\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                : </strong>{{order.totalPrice}}</li>\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                : </strong>{{CountProduct[index]}}</li>\r\n\r\n          </ul>\r\n        </td>\r\n        <td class=\"no-padding-td\" (click)=\"viewProduct[index]=true\"\r\n          [ngClass]=\"{'productCol': viewProduct[index]==true}\">\r\n          <ul class=\" list-group table-ul\">\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.total\"|translate}}\r\n                : </strong>{{order.totalPrice}}</li>\r\n            <li class=\"list-group-item list-group-item-info\"><strong>{{\"orders.table.countTotal\"|translate}}\r\n                : </strong>{{CountProduct[index]}}</li>\r\n\r\n          </ul>\r\n        </td>\r\n\r\n        <!-- <td>{{order.totalPrice}}</td> -->\r\n        <td>{{order.supplier?.nameAr}}</td>\r\n        <td>{{c.formatDate(order.createDate)}}</td>\r\n        <td>{{\"SupplierOrder.statusText.\"+order.status |translate}}</td>\r\n        <td *ngIf=\"c.cheachRole('supplier-orders','edit')\">\r\n          <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n            (click)=\"editSupllierOrder(order.id)\">\r\n            {{\"client.buttons.edit\"|translate}}\r\n          </button>\r\n          <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n            (click)=\"openModal(confirmCanceled,order.id)\">\r\n            {{\"SupplierOrder.buttons.cancel\"|translate}}\r\n          </button>\r\n          <button type=\"button\" *ngIf=\"order.status=='pending'\" class=\"btn btn-primary\"\r\n            (click)=\"openModal(confirmDelivered,order.id)\">\r\n            {{\"SupplierOrder.buttons.deliver\"|translate}}\r\n          </button>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>\r\n<app-secondary-spinner *ngIf=\"spinnerFlag\"></app-secondary-spinner>\r\n<div [hidden]=\"spinnerFlag||unpage\" class=\"row\">\r\n  <pagination [totalItems]=\"productsCount\" [itemsPerPage]=\"pages\" previousText=\"&lsaquo;\" nextText=\"&rsaquo;\"\r\n    firstText=\"&laquo;\" lastText=\"&raquo;\" [(ngModel)]=\"currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=\"7\"\r\n    [rotate]=\"false\" [boundaryLinks]=\"true\"></pagination>\r\n  <div class=\"per-page-sec\">\r\n    <span>{{\"client.perPage\"|translate}}</span>\r\n    <input id=\"perpage\" class=\"form-control\" type=\"number\" (change)=\"changepages($event)\" [value]=\"pages\">\r\n  </div>\r\n\r\n</div>\r\n\r\n<ng-template #confirmCanceled>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.cancelMessage'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"canselSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n<ng-template #confirmDelivered>\r\n  <div class=\"modal-body text-center\">\r\n    <p>{{'system.modal.deliverMessage'|translate}}</p>\r\n    <button type=\"button\" class=\"btn btn-danger modal-confirm\"\r\n      (click)=\"deliverSupllierOrder()\">{{'system.modal.confirm'|translate}}</button>\r\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"decline()\">{{'system.modal.cancel'|translate}}</button>\r\n  </div>\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -11445,6 +12171,8 @@ var SupplierOrdersListComponent = (function () {
         this.alert = alert;
         this.c = c;
         this.unpage = false;
+        this.viewProduct = [];
+        this.CountProduct = [];
         this.requestProcess = false;
         this.allSupplierOreder = [];
         this.currentPage = 1;
@@ -11645,6 +12373,13 @@ var SupplierOrdersListComponent = (function () {
             _this.SupplierOrdersHandler.getOrders(_this.pages, _this.currentPage, where)
                 .finally(function () {
                 _this.returnedArray = _this.allSupplierOreder;
+                for (var i = 0; i < _this.returnedArray.length; ++i) {
+                    _this.viewProduct[i] = false;
+                    _this.CountProduct[i] = 0;
+                    _this.returnedArray[i].supplyProducts.forEach(function (element) {
+                        _this.CountProduct[i] += element.count;
+                    });
+                }
                 _this.spinnerFlag = false;
                 _this.unpage = false;
                 if (localStorage.getItem('productsScreenY')) {
@@ -11714,6 +12449,184 @@ var _a, _b, _c, _d, _e, _f;
 
 /***/ }),
 
+/***/ "../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".ProductForm {\r\n  direction: rtl;\r\n  text-align: right;\r\n  font-size: 15px;\r\n}\r\n\r\n.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 48px;\r\n  height: 24px;\r\n}\r\n\r\n.switch input {\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.slider {\r\n  position: absolute;\r\n  cursor: pointer;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  transition: .4s;\r\n}\r\n\r\n.slider:before {\r\n  position: absolute;\r\n  content: \"\";\r\n  height: 18px;\r\n  width: 18px;\r\n  left: 2px;\r\n  bottom: 3px;\r\n  background-color: white;\r\n  transition: .4s;\r\n}\r\n\r\n.img-uploader {\r\n  text-align: center;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n#preview>img {\r\n  /*width: 200px;*/\r\n  height: 200px;\r\n  margin-bottom: 15px;\r\n}\r\n\r\ninput:checked+.slider {\r\n  background-color: #2196F3;\r\n}\r\n\r\ninput:focus+.slider {\r\n  box-shadow: 0 0 1px #2196F3;\r\n}\r\n\r\ninput:checked+.slider:before {\r\n  -webkit-transform: translateX(26px);\r\n  transform: translateX(26px);\r\n}\r\n\r\n/* Rounded sliders */\r\n.slider.round {\r\n  border-radius: 34px;\r\n}\r\n\r\n.slider.round:before {\r\n  border-radius: 50%;\r\n}\r\n\r\nbutton[disabled] {\r\n  cursor: not-allowed;\r\n}\r\n\r\n.spinner-submit {\r\n  vertical-align: middle;\r\n  color: gray;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n  .products-div {\r\n    overflow-y: auto;\r\n    height: 200px;\r\n  }\r\n}\r\n\r\n\r\ntext {\r\n  direction: initial;\r\n}\r\n\r\n\r\nsvg:not(:root) {\r\n  overflow: scroll;\r\n  right: 0;\r\n}\r\n\r\n.card .card-header {\r\n  padding-bottom: 0px;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-12 col-xl-12\">\r\n  <app-card [title]=\"''\" [cardClass]=\"'email-sent-card'\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"from\"\r\n          placeholder=\"{{'SupplierOrder.from'|translate}}\">\r\n\r\n\r\n\r\n      </div>\r\n      <div class=\"col-sm-3\">\r\n        <input class=\"form-control search-box\" type=\"datetime-local\" [(ngModel)]=\"to\"\r\n          placeholder=\"{{'SupplierOrder.to'|translate}}\">\r\n\r\n      </div>\r\n\r\n      <button type=\"button\" (click)=\"getData()\" class=\"btn btn-success\">\r\n        {{\"abstractProduct.apply\"|translate}}\r\n      </button>\r\n    </div>\r\n\r\n    <div id=\"email-sent\" style=\"max-width:100%;height:400px;\"></div>\r\n\r\n    <div class=\"table-responsive\">\r\n      <table class=\"table table-bordered table-striped \">\r\n        <thead>\r\n          <tr>\r\n            <th>\r\n              {{\"abstractProduct.image\"|translate}}\r\n\r\n\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByName()\">\r\n              {{\"abstractProduct.name\"|translate}}\r\n            \r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByofficialMassMarketPrice()\">\r\n              {{\"abstractProduct.officialMassMarketPrice\"|translate}}\r\n             \r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByOfficialConsumerPrice()\">\r\n              {{\"abstractProduct.officialConsumerPrice\"|translate}}\r\n            </th>\r\n            <th class=\"clickable-th\" (click)=\"orderByTotalCount()\">\r\n              {{\"abstractProduct.totalCount\"|translate}}\r\n            </th>\r\n\r\n            <th class=\"clickable-th\" (click)=\"orderByExpectedCount()\">\r\n              {{\"abstractProduct.totalCost\"|translate}}\r\n            </th>\r\n          </tr>\r\n        </thead>\r\n        <tbody [hidden]=\"\" *ngIf=\"products!=[]\">\r\n\r\n          <tr *ngFor=\"let product of products\">\r\n            <td><img *ngIf=\"product.media\" class=\"product-img\" src=\"{{product.productAbstractSnapshot.media.thumbnail}}\"></td>\r\n            <td>{{product.productAbstractSnapshot.nameAr}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialMassMarketPrice}}</td>\r\n            <td>{{product.productAbstractSnapshot.officialConsumerPrice}}</td>\r\n            <td>{{product.count}}</td>\r\n            <td>{{product.cost}}</td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n    </div>\r\n\r\n  </app-card>\r\n\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportSupplierOrderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__supplier_order_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-handler.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__products_product_handler__ = __webpack_require__("../../../../../src/app/pages/products/product-handler.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_alert_service__ = __webpack_require__("../../../../../src/app/services/alert.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ReportSupplierOrderComponent = (function () {
+    function ReportSupplierOrderComponent(Handler, prodHandler, router, route, alert) {
+        this.Handler = Handler;
+        this.prodHandler = prodHandler;
+        this.router = router;
+        this.route = route;
+        this.alert = alert;
+        this.today = new Date();
+        this.from = this.today.getFullYear() + "-" + String(this.today.getMonth()).padStart(2, '0') + "-" + String(this.today.getDate()).padStart(2, '0') + "T" + String(this.today.getHours()).padStart(2, '0') + ":" + String(this.today.getMinutes()).padStart(2, '0');
+        this.to = this.today.getFullYear() + "-" + String(this.today.getMonth() + 1).padStart(2, '0') + "-" + String(this.today.getDate()).padStart(2, '0') + "T" + String(this.today.getHours()).padStart(2, '0') + ":" + String(this.today.getMinutes()).padStart(2, '0');
+        this.products = [];
+        this.dailyReportData = [];
+    }
+    ReportSupplierOrderComponent.prototype.showError = function () {
+        this.alert.showToast.next({ type: 'error' });
+    };
+    ReportSupplierOrderComponent.prototype.getData = function () {
+        this.getChart();
+    };
+    ReportSupplierOrderComponent.prototype.getChart = function () {
+        var _this = this;
+        this.Handler.getReportDaily(this.from, this.to).subscribe(function (data) {
+            _this.products = data['products'];
+            data['result'].forEach(function (element) {
+                _this.dailyReportData.push({
+                    "date": element._id.year + "-" + String(element._id.month).padStart(2, '0') + "-" + String(element._id.day).padStart(2, '0'),
+                    "count": element.count,
+                    "cost": element.cost
+                });
+            });
+            AmCharts.makeChart('email-sent', {
+                'type': 'serial',
+                'theme': 'light',
+                'hideCredits': true,
+                'dataDateFormat': 'YYYY-MM-DD',
+                'precision': 2,
+                'valueAxes': [{
+                        'id': 'v1',
+                        'title': '',
+                        'position': 'left',
+                        'autoGridCount': false,
+                        'labelFunction': function (value) {
+                            return Math.round(value);
+                        }
+                    }, {
+                        'id': 'v2',
+                        'title': '',
+                        'gridAlpha': 0,
+                        'fontSize': 0,
+                        'axesAlpha': 0,
+                        'position': 'left',
+                        'autoGridCount': false
+                    }],
+                'graphs': [{
+                        'id': 'g3',
+                        'valueAxis': 'v1',
+                        'lineColor': '#4680ff',
+                        'fillColors': '#4680ff',
+                        'fillAlphas': 1,
+                        'type': 'column',
+                        'title': 'Cost',
+                        'valueField': 'cost',
+                        'clustered': true,
+                        'columnWidth': 0.2,
+                        'legendValueText': '$[[value]]',
+                        'balloonText': '[[title]]<br /><b style="font-size: 130%">$[[value]]</b>'
+                    }, {
+                        'id': 'g4',
+                        'valueAxis': 'v1',
+                        'lineColor': '#FC6180',
+                        'fillColors': '#FC6180',
+                        'fillAlphas': 1,
+                        'type': 'column',
+                        'title': 'Count',
+                        'valueField': 'count',
+                        'clustered': true,
+                        'columnWidth': 0.2,
+                        'legendValueText': '[[value]]',
+                        'balloonText': '[[title]]<br /><b style="font-size: 130%">[[value]]</b>'
+                    }],
+                'chartCursor': {
+                    'pan': true,
+                    'valueLineEnabled': true,
+                    'valueLineBalloonEnabled': true,
+                    'cursorAlpha': 0,
+                    'valueLineAlpha': 0.2
+                },
+                'categoryField': 'date',
+                'categoryAxis': {
+                    'parseDates': true,
+                    'dashLength': 0,
+                    'axisAlpha': 0,
+                    'GridAlpha': 0,
+                    'minorGridEnabled': true
+                },
+                'legend': {
+                    'useGraphSettings': true,
+                    'position': 'top'
+                },
+                'balloon': {
+                    'borderThickness': 1,
+                    'shadowAlpha': 0
+                },
+                'export': {
+                    'enabled': true
+                },
+                'dataProvider': _this.dailyReportData
+            });
+        }, function (errorCode) { return _this.showError(); });
+    };
+    ReportSupplierOrderComponent.prototype.ngOnInit = function () {
+        this.getChart();
+    };
+    return ReportSupplierOrderComponent;
+}());
+ReportSupplierOrderComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+        selector: 'app-supplier-order-report',
+        template: __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__supplier_order_handler_service__["a" /* SupplierOrdersHandlerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__products_product_handler__["a" /* ProductHandler */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__products_product_handler__["a" /* ProductHandler */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["f" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_alert_service__["a" /* AlertService */]) === "function" && _e || Object])
+], ReportSupplierOrderComponent);
+
+var _a, _b, _c, _d, _e;
+//# sourceMappingURL=supplier-order-report.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/pages/supplier-order/supplier-orders.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11729,12 +12642,14 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__supplier_order_handler_service__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-handler.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__new_supplier_order_new_supplier_order_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/new-supplier-order/new-supplier-order.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__supplier_order_report_supplier_order_report_component__ = __webpack_require__("../../../../../src/app/pages/supplier-order/supplier-order-report/supplier-order-report.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -11766,7 +12681,8 @@ SupplierOrdersModule = __decorate([
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_9__new_supplier_order_new_supplier_order_component__["a" /* NewSupplierOrderComponent */],
-            __WEBPACK_IMPORTED_MODULE_0__supplier_order_list_supplier_order_list_component__["a" /* SupplierOrdersListComponent */]
+            __WEBPACK_IMPORTED_MODULE_0__supplier_order_list_supplier_order_list_component__["a" /* SupplierOrdersListComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__supplier_order_report_supplier_order_report_component__["a" /* ReportSupplierOrderComponent */]
         ]
     })
 ], SupplierOrdersModule);
@@ -12828,6 +13744,7 @@ var ApiService = (function () {
         }
     }
     ApiService.prototype.get = function (name, params) {
+        console.log(this.header);
         if (params) {
             return this.http.get(this.api + name, { params: params, headers: this.header });
         }
@@ -12867,8 +13784,9 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuardService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_service__ = __webpack_require__("../../../../../src/app/services/const.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12880,16 +13798,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AuthGuardService = (function () {
-    function AuthGuardService(router) {
+    function AuthGuardService(router, constSer) {
         this.router = router;
+        this.constSer = constSer;
     }
     AuthGuardService.prototype.canActivateChild = function (childRoute, state) {
         return this.canActivate(childRoute, state);
     };
     AuthGuardService.prototype.canActivate = function (route, state) {
         if (localStorage.getItem('token'))
-            return true;
+            if (localStorage.getItem('clientType') != null) {
+                var url = state.url.split('/');
+                console.log(url);
+                if (url[1] == "" && localStorage.getItem('clientType') == 'warehouseKeeper') {
+                    this.router.navigate(['home']);
+                    return true;
+                }
+                else if (url[1] == "home" && localStorage.getItem('clientType') != 'warehouseKeeper') {
+                    this.router.navigate(['']);
+                    return true;
+                }
+                else if ((url[1] == "home" && localStorage.getItem('clientType') == 'warehouseKeeper') || (url[1] == "" && localStorage.getItem('clientType') != 'warehouseKeeper')) {
+                    return true;
+                }
+                else if (this.constSer.cheachRole(url[1], url[2]) == true)
+                    return true;
+                else {
+                    this.router.navigate(['']);
+                    return false;
+                }
+            }
+            else
+                return true;
         if (!localStorage.getItem('token')) {
             this.router.navigate(['auth/login']);
             return false;
@@ -12898,11 +13840,11 @@ var AuthGuardService = (function () {
     return AuthGuardService;
 }());
 AuthGuardService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["f" /* Router */]) === "function" && _a || Object])
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["f" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__const_service__["a" /* ConstService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__const_service__["a" /* ConstService */]) === "function" && _b || Object])
 ], AuthGuardService);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=auth-guard.service.js.map
 
 /***/ }),
@@ -12928,6 +13870,242 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ConstService = (function () {
     function ConstService(translate) {
         this.translate = translate;
+        this.roles = {
+            "admin": {
+                "categories": {
+                    "viewAll": true,
+                    "add": true,
+                    "edit": true
+                },
+                "manufacturers": {
+                    "view": true,
+                    "add": true,
+                    "edit": true
+                },
+                "suppliers": {
+                    "list": true,
+                    "add": true,
+                    "edit": true
+                },
+                "topSlider": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "staff": {
+                    "list": true,
+                    "add-on": true,
+                    "edit": true
+                },
+                "client": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "areas": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "coupons": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "products": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "reports": {
+                    "warning": true
+                },
+                "abstract-products": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "damaged": {
+                    "list": true,
+                    "add": true,
+                    "edit": true,
+                    "report": true
+                },
+                "ratings": {
+                    "list": true,
+                },
+                "notifications": {
+                    "add": true
+                },
+                "orders": {
+                    "management": true,
+                    "print": true,
+                    "report": true
+                },
+                "supplier-orders": {
+                    "list": true,
+                    "report": true,
+                    "new": true,
+                    "edit": true
+                },
+            },
+            "sales": {
+                "categories": {
+                    "viewAll": true,
+                    "add": true,
+                    "edit": true
+                },
+                "manufacturers": {
+                    "view": true,
+                    "add": true,
+                    "edit": true
+                },
+                "suppliers": {
+                    "list": true,
+                    "add": true,
+                    "edit": true
+                },
+                "topSlider": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "staff": {
+                    "list": true,
+                    "add-on": false,
+                    "edit": false
+                },
+                "client": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "areas": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "coupons": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "products": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "reports": {
+                    "warning": true
+                },
+                "abstract-products": {
+                    "list": true,
+                    "new": true,
+                    "edit": true
+                },
+                "damaged": {
+                    "list": true,
+                    "add": true,
+                    "edit": true,
+                    "report": true
+                },
+                "ratings": {
+                    "list": true,
+                },
+                "notifications": {
+                    "add": true
+                },
+                "orders": {
+                    "management": true,
+                    "print": true,
+                    "report": true
+                },
+                "supplier-orders": {
+                    "list": true,
+                    "report": true,
+                    "new": true,
+                    "edit": true
+                },
+            },
+            "warehouseKeeper": {
+                "categories": {
+                    "viewAll": false,
+                    "add": false,
+                    "edit": false
+                },
+                "manufacturers": {
+                    "view": false,
+                    "add": false,
+                    "edit": false
+                },
+                "suppliers": {
+                    "list": false,
+                    "add": false,
+                    "edit": false
+                },
+                "topSlider": {
+                    "list": false,
+                    "new": false,
+                    "edit": false
+                },
+                "staff": {
+                    "list": false,
+                    "add-on": false,
+                    "edit": false
+                },
+                "client": {
+                    "list": false,
+                    "new": false,
+                    "edit": false
+                },
+                "areas": {
+                    "list": false,
+                    "new": false,
+                    "edit": false
+                },
+                "coupons": {
+                    "list": false,
+                    "new": false,
+                    "edit": false
+                },
+                "products": {
+                    "list": false,
+                    "new": false,
+                    "edit": false
+                },
+                "reports": {
+                    "warning": true
+                },
+                "abstract-products": {
+                    "list": true,
+                    "new": false,
+                    "edit": false
+                },
+                "damaged": {
+                    "list": true,
+                    "add": false,
+                    "edit": false,
+                    "report": true
+                },
+                "ratings": {
+                    "list": false,
+                },
+                "notifications": {
+                    "add": false
+                },
+                "orders": {
+                    "management": false,
+                    "print": false,
+                    "report": false
+                },
+                "supplier-orders": {
+                    "list": true,
+                    "new": false,
+                    "edit": false,
+                    "report": false
+                }
+            }
+        };
     }
     Object.defineProperty(ConstService, "STAFF_ROLES", {
         get: function () {
@@ -12972,6 +14150,10 @@ var ConstService = (function () {
             temp = str;
         });
         return temp;
+    };
+    ConstService.prototype.cheachRole = function (first, seconde) {
+        var clientType = localStorage.getItem('clientType');
+        return this.roles[clientType][first][seconde];
     };
     return ConstService;
 }());
@@ -14060,732 +15242,111 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MenuItems = (function () {
-    //   [
-    //   {
-    //     label: 'Navigation',
-    //     main: [
-    //       {
-    //         state: 'dashboard',
-    //         short_label: 'D',
-    //         name: 'Dashboard',
-    //         type: 'sub',
-    //         icon: 'ti-home',
-    //         children: [
-    //           {
-    //             state: 'default',
-    //             name: 'Default'
-    //           },
-    //           {
-    //             state: 'ecommerce',
-    //             name: 'Ecommerce'
-    //           },
-    //           {
-    //             state: 'crm',
-    //             name: 'CRM'
-    //           },
-    //           {
-    //             state: 'analytics',
-    //             name: 'Analytics',
-    //             badge: [
-    //               {
-    //                 type: 'info',
-    //                 value: 'NEW'
-    //               }
-    //             ]
-    //           },
-    //           {
-    //             state: 'project',
-    //             name: 'Project'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'widget',
-    //         short_label: 'W',
-    //         name: 'Widget',
-    //         type: 'sub',
-    //         icon: 'ti-view-grid',
-    //         badge: [
-    //           {
-    //             type: 'danger',
-    //             value: '100+'
-    //           }
-    //         ],
-    //         children: [
-    //           {
-    //             state: 'static',
-    //             name: 'Widget Statistic'
-    //           },
-    //           {
-    //             state: 'data',
-    //             name: 'Widget Data'
-    //           },
-    //           {
-    //             state: 'chart',
-    //             name: 'Widget Chart'
-    //           },
-    //           {
-    //             state: 'advanced',
-    //             name: 'Widget Chart Advcance'
-    //           }
-    //         ]
-    //       }
-    //     ],
-    //   },
-    //   {
-    //     label: 'UI Element',
-    //     main: [
-    //       {
-    //         state: 'basic',
-    //         short_label: 'B',
-    //         name: 'Basic Components',
-    //         type: 'sub',
-    //         icon: 'ti-layout-grid2-alt',
-    //         children: [
-    //           {
-    //             state: 'alert',
-    //             name: 'Alert'
-    //           },
-    //           {
-    //             state: 'breadcrumb',
-    //             name: 'Breadcrumbs'
-    //           },
-    //           {
-    //             state: 'button',
-    //             name: 'Button'
-    //           },
-    //           {
-    //             state: 'accordion',
-    //             name: 'Accordion'
-    //           },
-    //           {
-    //             state: 'generic-class',
-    //             name: 'Generic Class'
-    //           },
-    //           {
-    //             state: 'tabs',
-    //             name: 'Tabs'
-    //           },
-    //           {
-    //             state: 'label-badge',
-    //             name: 'Label Badge'
-    //           },
-    //           {
-    //             state: 'typography',
-    //             name: 'Typography'
-    //           },
-    //           {
-    //             state: 'other',
-    //             name: 'Other'
-    //           },
-    //         ]
-    //       },
-    //       {
-    //         state: 'advance',
-    //         short_label: 'A',
-    //         name: 'Advance Components',
-    //         type: 'sub',
-    //         icon: 'ti-crown',
-    //         children: [
-    //           {
-    //             state: 'modal',
-    //             name: 'Modal'
-    //           },
-    //           {
-    //             state: 'notifications',
-    //             name: 'Notifications'
-    //           },
-    //           {
-    //             state: 'notify',
-    //             name: 'PNOTIFY',
-    //             badge: [
-    //               {
-    //                 type: 'info',
-    //                 value: 'New'
-    //               }
-    //             ]
-    //           },
-    //         ]
-    //       },
-    //       {
-    //         state: 'animations',
-    //         short_label: 'A',
-    //         name: 'Animations',
-    //         type: 'link',
-    //         icon: 'ti-reload rotate-refresh'
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Forms',
-    //     main: [
-    //       {
-    //         state: 'forms',
-    //         short_label: 'F',
-    //         name: 'Form Components',
-    //         type: 'sub',
-    //         icon: 'ti-layers',
-    //         children: [
-    //           {
-    //             state: 'basic-elements',
-    //             name: 'Form Components'
-    //           }, {
-    //             state: 'add-on',
-    //             name: 'Form-Elements-Add-On'
-    //           }, {
-    //             state: 'advance-elements',
-    //             name: 'Form-Elements-Advance'
-    //           }, {
-    //             state: 'form-validation',
-    //             name: 'Form Validation'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'picker',
-    //         short_label: 'P',
-    //         main_state: 'forms',
-    //         name: 'Form Picker',
-    //         type: 'link',
-    //         icon: 'ti-pencil-alt',
-    //         badge: [
-    //           {
-    //             type: 'warning',
-    //             value: 'New'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'select',
-    //         short_label: 'S',
-    //         main_state: 'forms',
-    //         name: 'Form Select',
-    //         type: 'link',
-    //         icon: 'ti-shortcode'
-    //       },
-    //       {
-    //         state: 'masking',
-    //         short_label: 'M',
-    //         main_state: 'forms',
-    //         name: 'Form Masking',
-    //         type: 'link',
-    //         icon: 'ti-write'
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Tables',
-    //     main: [
-    //       {
-    //         state: 'bootstrap-table',
-    //         short_label: 'B',
-    //         name: 'Bootstrap Table',
-    //         type: 'sub',
-    //         icon: 'ti-receipt',
-    //         children: [
-    //           {
-    //             state: 'basic',
-    //             name: 'Basic Table'
-    //           }, {
-    //             state: 'sizing',
-    //             name: 'Sizing Table'
-    //           }, {
-    //             state: 'border',
-    //             name: 'Border Table'
-    //           }, {
-    //             state: 'styling',
-    //             name: 'Styling Table'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'data-table',
-    //         short_label: 'D',
-    //         name: 'Data Table',
-    //         type: 'sub',
-    //         icon: 'ti-widgetized',
-    //         children: [
-    //           {
-    //             state: 'basic',
-    //             name: 'Basic Table'
-    //           }, {
-    //             state: 'editable',
-    //             name: 'Editable'
-    //           }, {
-    //             state: 'row-details',
-    //             name: 'Row Details Table'
-    //           }, {
-    //             state: 'paging',
-    //             name: 'Paging Table'
-    //           }, {
-    //             state: 'selection',
-    //             name: 'Selection Table'
-    //           }, {
-    //             state: 'other',
-    //             name: 'Other Table'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Chart And Map',
-    //     main: [
-    //       {
-    //         state: 'charts',
-    //         short_label: 'C',
-    //         name: 'Charts',
-    //         type: 'sub',
-    //         icon: 'ti-bar-chart-alt',
-    //         children: [
-    //           {
-    //             state: 'google',
-    //             name: 'Google'
-    //           }, {
-    //             state: 'echart',
-    //             name: 'E-Chart'
-    //           }, {
-    //             state: 'chart-js',
-    //             name: 'ChartJS'
-    //           }, {
-    //             state: 'knob',
-    //             name: 'Knob'
-    //           }, {
-    //             state: 'peity',
-    //             name: 'Peity'
-    //           }, {
-    //             state: 'radial',
-    //             name: 'Radial'
-    //           }, {
-    //             state: 'sparklines',
-    //             name: 'Sparklines'
-    //           }, {
-    //             state: 'c3-js',
-    //             name: 'C3 JS'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'map',
-    //         short_label: 'M',
-    //         name: 'Maps',
-    //         type: 'sub',
-    //         icon: 'ti-map-alt',
-    //         children: [
-    //           {
-    //             state: 'google',
-    //             name: 'Google'
-    //           }, {
-    //             state: 'vector',
-    //             name: 'Vector'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'landing',
-    //         short_label: 'L',
-    //         external: 'http://html.codedthemes.com/guru-able/default/landingpage',
-    //         name: 'Landing Page',
-    //         type: 'external',
-    //         icon: 'ti-mobile',
-    //         target: true
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Pages',
-    //     main: [
-    //       {
-    //         state: 'authentication',
-    //         short_label: 'A',
-    //         name: 'Authentication',
-    //         type: 'sub',
-    //         icon: 'ti-id-badge',
-    //         children: [
-    //           {
-    //             state: 'login',
-    //             type: 'sub',
-    //             name: 'Login Pages',
-    //             children: [
-    //               {
-    //                 state: 'with-bg-image',
-    //                 name: 'With BG Image',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-header-footer',
-    //                 name: 'With Header Footer',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-social',
-    //                 name: 'With Social Icon',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-social-header-footer',
-    //                 name: 'Social With Header Footer',
-    //                 target: true
-    //               }
-    //             ]
-    //           }, {
-    //             state: 'registration',
-    //             type: 'sub',
-    //             name: 'Registration Pages',
-    //             children: [
-    //               {
-    //                 state: 'with-bg-image',
-    //                 name: 'With BG Image',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-header-footer',
-    //                 name: 'With Header Footer',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-social',
-    //                 name: 'With Social Icon',
-    //                 target: true
-    //               }, {
-    //                 state: 'with-social-header-footer',
-    //                 name: 'Social With Header Footer',
-    //                 target: true
-    //               }, {
-    //                 state: 'multi-step',
-    //                 name: 'Multi Step',
-    //                 target: true
-    //               }
-    //             ]
-    //           },
-    //           {
-    //             state: 'forgot',
-    //             name: 'Forgot Password',
-    //             target: true
-    //           },
-    //           {
-    //             state: 'lock-screen',
-    //             name: 'Lock Screen',
-    //             target: true
-    //           },
-    //         ]
-    //       },
-    //       {
-    //         state: 'maintenance',
-    //         short_label: 'A',
-    //         name: 'Maintenance',
-    //         type: 'sub',
-    //         icon: 'ti-settings',
-    //         children: [
-    //           {
-    //             state: 'error',
-    //             name: 'Error'
-    //           },
-    //           {
-    //             state: 'coming-soon',
-    //             name: 'Coming Soon'
-    //           },
-    //           {
-    //             state: 'offline-ui',
-    //             name: 'Offline UI',
-    //             target: true
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'user',
-    //         short_label: 'U',
-    //         name: 'User Profile',
-    //         type: 'sub',
-    //         icon: 'ti-user',
-    //         children: [
-    //           {
-    //             state: 'profile',
-    //             name: 'User Profile'
-    //           }, {
-    //             state: 'card',
-    //             name: 'User Card'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'App',
-    //     main: [
-    //       {
-    //         state: 'crm-contact',
-    //         short_label: 'C',
-    //         name: 'CRM Contact',
-    //         type: 'link',
-    //         icon: 'ti-layout-list-thumb'
-    //       },
-    //       {
-    //         state: 'task',
-    //         short_label: 'T',
-    //         name: 'Task',
-    //         type: 'sub',
-    //         icon: 'ti-check-box',
-    //         children: [
-    //           {
-    //             state: 'list',
-    //             name: 'Task List'
-    //           }, {
-    //             state: 'board',
-    //             name: 'Task Board'
-    //           }, {
-    //             state: 'details',
-    //             name: 'Task Details'
-    //           }, {
-    //             state: 'issue',
-    //             name: 'Issue List'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Extension',
-    //     main: [
-    //       {
-    //         state: 'editor',
-    //         short_label: 'E',
-    //         name: 'Editor',
-    //         type: 'sub',
-    //         icon: 'ti-pencil-alt',
-    //         children: [
-    //           {
-    //             state: 'froala',
-    //             name: 'Froala WYSIWYG'
-    //           }, {
-    //             state: 'quill',
-    //             name: 'Quill'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'invoice',
-    //         short_label: 'I',
-    //         name: 'Invoice',
-    //         type: 'sub',
-    //         icon: 'ti-layout-media-right',
-    //         children: [
-    //           {
-    //             state: 'basic',
-    //             name: 'Invoice'
-    //           }, {
-    //             state: 'summary',
-    //             name: 'Invoice Summary'
-    //           }, {
-    //             state: 'list',
-    //             name: 'Invoice List'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'file-upload',
-    //         short_label: 'F',
-    //         name: 'File Upload',
-    //         type: 'link',
-    //         icon: 'ti-cloud-up'
-    //       },
-    //       {
-    //         state: 'change-log',
-    //         short_label: 'C',
-    //         name: 'Change Log',
-    //         type: 'link',
-    //         icon: 'ti-list',
-    //         badge: [
-    //           {
-    //             type: 'warning',
-    //             value: '1.0'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Other',
-    //     main: [
-    //       {
-    //         state: '',
-    //         short_label: 'M',
-    //         name: 'Menu Levels',
-    //         type: 'sub',
-    //         icon: 'ti-direction-alt',
-    //         children: [
-    //           {
-    //             state: '',
-    //             name: 'Menu Level 2.1',
-    //             target: true
-    //           }, {
-    //             state: '',
-    //             name: 'Menu Level 2.2',
-    //             type: 'sub',
-    //             children: [
-    //               {
-    //                 state: '',
-    //                 name: 'Menu Level 2.2.1',
-    //                 target: true
-    //               },
-    //               {
-    //                 state: '',
-    //                 name: 'Menu Level 2.2.2',
-    //                 target: true
-    //               }
-    //             ]
-    //           }, {
-    //             state: '',
-    //             name: 'Menu Level 2.3',
-    //             target: true
-    //           }, {
-    //             state: '',
-    //             name: 'Menu Level 2.4',
-    //             type: 'sub',
-    //             children: [
-    //               {
-    //                 state: '',
-    //                 name: 'Menu Level 2.4.1',
-    //                 target: true
-    //               },
-    //               {
-    //                 state: '',
-    //                 name: 'Menu Level 2.4.2',
-    //                 target: true
-    //               }
-    //             ]
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         state: 'simple-page',
-    //         short_label: 'S',
-    //         name: 'Simple Page',
-    //         type: 'link',
-    //         icon: 'ti-layout-sidebar-left'
-    //       }
-    //     ]
-    //   }, {
-    //     label: 'Support',
-    //     main: [/*
-    //       {
-    //         state: 'documentation',
-    //         short_label: 'D',
-    //         name: 'Documentation',
-    //         external: 'http://html.codedthemes.com/guru-able/doc-angular-4',
-    //         type: 'external',
-    //         icon: 'ti-file',
-    //         target: true
-    //       },*/
-    //       {
-    //         state: 'submit-issue',
-    //         short_label: 'S',
-    //         external: 'https://codedthemes.com/submit-ticket/',
-    //         name: 'Submit Issue',
-    //         type: 'external',
-    //         icon: 'ti-layout-list-post',
-    //         target: true
-    //       }
-    //     ]
-    //   }
-    // ];
     function MenuItems(constant) {
         this.constant = constant;
-        this.MENUITEMS = [
-            // {
-            //     label: '',
-            //     main: [
-            //         {
-            //             state: 'manufacturers',
-            //             short_label: 'M',
-            //             name: 'mainMenu.Manufacturers.main',
-            //             type: 'custom',
-            //             icon: 'ti-user',
-            //             children: [
-            //             ]
-            //         }
-            //     ]
-            // },
+        this.wholesaleMENUITEMS = [
+            {
+                label: '',
+                main: [
+                    {
+                        state: 'manufacturers',
+                        short_label: 'M',
+                        name: 'mainMenu.Manufacturers.main',
+                        type: 'custom',
+                        icon: 'ti-user',
+                        children: []
+                    }
+                ]
+            },
             {
                 label: 'mainMenu.main',
                 main: [
-                    // {
-                    //     state: 'manufacturers',
-                    //     short_label: 'M',
-                    //     name: 'mainMenu.Manufacturers.main',
-                    //     type: 'sub',
-                    //     icon: 'ti-user',
-                    //     children: [
-                    //         {
-                    //             state: 'add',
-                    //             name: 'mainMenu.Manufacturers.add'
-                    //         }, {
-                    //             state: 'view',
-                    //             name: 'mainMenu.Manufacturers.viewAll'
-                    //         }
-                    //     ]
-                    // },
-                    // {
-                    //     state: 'topSlider',
-                    //     short_label: 'F',
-                    //     name: 'mainMenu.topSlider.main',
-                    //     type: 'sub',
-                    //     icon: 'ti-layers',
-                    //     children: [
-                    //         {
-                    //             state: 'new',
-                    //             name: 'mainMenu.topSlider.add'
-                    //         }, {
-                    //             state: 'list',
-                    //             name: 'mainMenu.topSlider.viewAll'
-                    //         }
-                    //     ]
-                    // },
-                    // {
-                    //     state: 'client',
-                    //     short_label: 'F',
-                    //     name: 'mainMenu.Clients.main',
-                    //     type: 'sub',
-                    //     icon: 'ti-layers',
-                    //     children: [
-                    //         {
-                    //             state: 'new',
-                    //             name: 'mainMenu.Clients.add'
-                    //         }, {
-                    //             state: 'list',
-                    //             name: 'mainMenu.Clients.viewAll'
-                    //         }
-                    //     ]
-                    // },
-                    // {
-                    //     state: 'orders',
-                    //     short_label: 'O',
-                    //     name: 'mainMenu.Orders.main',
-                    //     type: 'sub',
-                    //     icon: 'ti-layers',
-                    //     children: [
-                    //         // {
-                    //         //     state: 'from-supplier',
-                    //         //     name: 'mainMenu.Orders.fromSupplier'
-                    //         // },
-                    //         {
-                    //             state: 'management',
-                    //             name: 'mainMenu.Orders.Management'
-                    //         }
-                    //     ]
-                    // },
-                    // {
-                    //     state: 'supplier-orders',
-                    //     short_label: 'O',
-                    //     name: 'mainMenu.SupplierOrders.main',
-                    //     type: 'sub',
-                    //     icon: 'ti-layers',
-                    //     children: [
-                    //         {
-                    //             state: 'list',
-                    //             name: 'mainMenu.SupplierOrders.viewAll'
-                    //         },
-                    //         {
-                    //             state: 'new',
-                    //             name: 'mainMenu.SupplierOrders.add'
-                    //         }
-                    //     ]
-                    // },
+                    {
+                        state: 'manufacturers',
+                        short_label: 'M',
+                        name: 'mainMenu.Manufacturers.main',
+                        type: 'sub',
+                        icon: 'ti-user',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Manufacturers.add'
+                            }, {
+                                state: 'view',
+                                name: 'mainMenu.Manufacturers.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'topSlider',
+                        short_label: 'F',
+                        name: 'mainMenu.topSlider.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.topSlider.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.topSlider.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'client',
+                        short_label: 'F',
+                        name: 'mainMenu.Clients.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.Clients.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.Clients.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'orders',
+                        short_label: 'O',
+                        name: 'mainMenu.Orders.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'report',
+                                name: 'mainMenu.Orders.report'
+                            },
+                            {
+                                state: 'management',
+                                name: 'mainMenu.Orders.Management'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'supplier-orders',
+                        short_label: 'O',
+                        name: 'mainMenu.SupplierOrders.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.SupplierOrders.viewAll'
+                            },
+                            {
+                                state: 'report',
+                                name: 'mainMenu.SupplierOrders.report'
+                            },
+                            {
+                                state: 'new',
+                                name: 'mainMenu.SupplierOrders.add'
+                            }
+                        ]
+                    },
                     {
                         state: 'products',
                         short_label: 'F',
@@ -14818,12 +15379,505 @@ var MenuItems = (function () {
                             }
                         ]
                     },
+                    {
+                        state: 'categories',
+                        short_label: 'F',
+                        name: 'mainMenu.Categories.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Categories.add'
+                            },
+                            {
+                                state: 'viewAll',
+                                name: 'mainMenu.Categories.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'areas',
+                        short_label: 'F',
+                        name: 'mainMenu.areas.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.areas.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.areas.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'coupons',
+                        short_label: 'F',
+                        name: 'mainMenu.coupons.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.coupons.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.coupons.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'staff',
+                        short_label: 'F',
+                        name: 'mainMenu.Staff.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add-on',
+                                name: 'mainMenu.Staff.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Staff.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'suppliers',
+                        short_label: 'F',
+                        name: 'mainMenu.Supplier.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Supplier.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Supplier.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'ratings',
+                        short_label: 'F',
+                        name: 'mainMenu.Ratings.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Ratings.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'notifications',
+                        short_label: 'F',
+                        name: 'mainMenu.Notifications.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Notifications.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'reports',
+                        short_label: 'F',
+                        name: 'mainMenu.Reports.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'warning',
+                                name: 'mainMenu.Reports.warning'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'damaged',
+                        short_label: 'F',
+                        name: 'mainMenu.Damaged.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Damaged.viewAll'
+                            },
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Damaged.add'
+                            },
+                            {
+                                state: 'report',
+                                name: 'mainMenu.Damaged.report'
+                            },
+                        ]
+                    }
+                ]
+            },
+        ];
+        this.salesMENUITEMS = [
+            {
+                label: '',
+                main: [
+                    {
+                        state: 'manufacturers',
+                        short_label: 'M',
+                        name: 'mainMenu.Manufacturers.main',
+                        type: 'custom',
+                        icon: 'ti-user',
+                        children: []
+                    }
+                ]
+            },
+            {
+                label: 'mainMenu.main',
+                main: [
+                    {
+                        state: 'manufacturers',
+                        short_label: 'M',
+                        name: 'mainMenu.Manufacturers.main',
+                        type: 'sub',
+                        icon: 'ti-user',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Manufacturers.add'
+                            }, {
+                                state: 'view',
+                                name: 'mainMenu.Manufacturers.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'topSlider',
+                        short_label: 'F',
+                        name: 'mainMenu.topSlider.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.topSlider.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.topSlider.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'client',
+                        short_label: 'F',
+                        name: 'mainMenu.Clients.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.Clients.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.Clients.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'orders',
+                        short_label: 'O',
+                        name: 'mainMenu.Orders.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'report',
+                                name: 'mainMenu.Orders.report'
+                            },
+                            {
+                                state: 'management',
+                                name: 'mainMenu.Orders.Management'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'supplier-orders',
+                        short_label: 'O',
+                        name: 'mainMenu.SupplierOrders.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.SupplierOrders.viewAll'
+                            },
+                            {
+                                state: 'report',
+                                name: 'mainMenu.SupplierOrders.report'
+                            },
+                            {
+                                state: 'new',
+                                name: 'mainMenu.SupplierOrders.add'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'products',
+                        short_label: 'F',
+                        name: 'mainMenu.Products.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.Products.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.Products.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'abstract-products',
+                        short_label: 'F',
+                        name: 'mainMenu.AbstractProducts.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.AbstractProducts.add'
+                            }, {
+                                state: 'list',
+                                name: 'mainMenu.AbstractProducts.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'categories',
+                        short_label: 'F',
+                        name: 'mainMenu.Categories.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Categories.add'
+                            },
+                            {
+                                state: 'viewAll',
+                                name: 'mainMenu.Categories.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'areas',
+                        short_label: 'F',
+                        name: 'mainMenu.areas.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.areas.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.areas.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'coupons',
+                        short_label: 'F',
+                        name: 'mainMenu.coupons.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'new',
+                                name: 'mainMenu.coupons.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.coupons.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'staff',
+                        short_label: 'F',
+                        name: 'mainMenu.Staff.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Staff.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'suppliers',
+                        short_label: 'F',
+                        name: 'mainMenu.Supplier.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Supplier.add'
+                            },
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Supplier.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'ratings',
+                        short_label: 'F',
+                        name: 'mainMenu.Ratings.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Ratings.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'notifications',
+                        short_label: 'F',
+                        name: 'mainMenu.Notifications.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Notifications.viewAll'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'reports',
+                        short_label: 'F',
+                        name: 'mainMenu.Reports.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'warning',
+                                name: 'mainMenu.Reports.warning'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'damaged',
+                        short_label: 'F',
+                        name: 'mainMenu.Damaged.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Damaged.viewAll'
+                            },
+                            {
+                                state: 'add',
+                                name: 'mainMenu.Damaged.add'
+                            },
+                            {
+                                state: 'report',
+                                name: 'mainMenu.Damaged.report'
+                            },
+                        ]
+                    }
+                ]
+            },
+        ];
+        this.wareHouseMENUITEMS = [
+            {
+                label: 'mainMenu.main',
+                main: [
+                    {
+                        state: 'supplier-orders',
+                        short_label: 'O',
+                        name: 'mainMenu.SupplierOrders.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.SupplierOrders.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'abstract-products',
+                        short_label: 'F',
+                        name: 'mainMenu.AbstractProducts.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.AbstractProducts.viewAll'
+                            }
+                        ]
+                    },
+                    {
+                        state: 'reports',
+                        short_label: 'F',
+                        name: 'mainMenu.Reports.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'warning',
+                                name: 'mainMenu.Reports.warning'
+                            },
+                        ]
+                    },
+                    {
+                        state: 'damaged',
+                        short_label: 'F',
+                        name: 'mainMenu.Damaged.main',
+                        type: 'sub',
+                        icon: 'ti-layers',
+                        children: [
+                            {
+                                state: 'list',
+                                name: 'mainMenu.Damaged.viewAll'
+                            },
+                            {
+                                state: 'report',
+                                name: 'mainMenu.Damaged.report'
+                            },
+                        ]
+                    }
                 ]
             },
         ];
     }
     MenuItems.prototype.getAll = function () {
-        return this.MENUITEMS;
+        if (localStorage.getItem('clientType') == 'admin')
+            return this.wholesaleMENUITEMS;
+        else if (localStorage.getItem('clientType') == 'sales')
+            return this.salesMENUITEMS;
+        else if (localStorage.getItem('clientType') == 'warehouseKeeper') {
+            return this.wareHouseMENUITEMS;
+        }
     };
     return MenuItems;
 }());
@@ -17143,7 +18197,7 @@ var environment = {
     baseUrl: 'http://dockaan.com:3033/api'
     // baseUrl: 'http://localhost:3000/api'
     // baseUrl: 'http://104.217.253.15:3030/api',
-    // baseUrl: 'http://192.168.1.2:3033/api'
+    // baseUrl: 'http://192.168.1.8:3033/api'
 };
 //# sourceMappingURL=environment.prod.js.map
 

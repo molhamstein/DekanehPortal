@@ -26,6 +26,8 @@ import { SupplierOrdersHandlerService } from '../supplier-order-handler.service'
 export class SupplierOrdersListComponent implements OnInit {
   unpage = false;
   spinnerFlag: boolean;
+  viewProduct = []
+  CountProduct=[]
   nameOrderDir;
   dateDir
   totalCountDir
@@ -301,6 +303,13 @@ export class SupplierOrdersListComponent implements OnInit {
       this.SupplierOrdersHandler.getOrders(this.pages, this.currentPage, where)
         .finally(() => {
           this.returnedArray = this.allSupplierOreder;
+          for (var i = 0; i < this.returnedArray.length; ++i) {
+            this.viewProduct[i] = false;
+            this.CountProduct[i] = 0;
+            this.returnedArray[i].supplyProducts.forEach(element => {
+              this.CountProduct[i] += element.count
+            });
+          }
           this.spinnerFlag = false;
           this.unpage = false;
 

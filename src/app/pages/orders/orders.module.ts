@@ -1,15 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {OrdersManageComponent} from './orders-manage/orders-manage.component';
-import {OrdersHandlerService} from './orders-handler.service';
-import {TranslateModule} from '@ngx-translate/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SharedModule} from '../../shared/shared.module';
-import {SelectModule} from 'ng-select';
-import {PaginationModule, TooltipModule} from 'ngx-bootstrap';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { OrdersManageComponent } from './orders-manage/orders-manage.component';
+import { OrdersHandlerService } from './orders-handler.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
+import { SelectModule } from 'ng-select';
+import { PaginationModule, TooltipModule } from 'ngx-bootstrap';
 import { StatisticsComponent } from './statistics/statistics.component';
-import {OrdersFromSuppliersComponent} from './orders-from-suppliers/orders-from-suppliers.component';
-import {SuppliersService} from './orders-from-suppliers/suppliers.service';
+import { OrdersFromSuppliersComponent } from './orders-from-suppliers/orders-from-suppliers.component';
+import { SuppliersService } from './orders-from-suppliers/suppliers.service';
+import { ReportOrderComponent } from './order-report/order-report.component';
 
 @NgModule({
     imports: [
@@ -23,14 +24,15 @@ import {SuppliersService} from './orders-from-suppliers/suppliers.service';
         SelectModule
 
     ], providers: [
-    OrdersHandlerService,
-    SuppliersService
+        OrdersHandlerService,
+        SuppliersService
 
-  ],
+    ],
     declarations: [
         OrdersManageComponent,
-      StatisticsComponent,
-      OrdersFromSuppliersComponent]
+        ReportOrderComponent,
+        StatisticsComponent,
+        OrdersFromSuppliersComponent]
 })
 export class OrdersModule {
 }

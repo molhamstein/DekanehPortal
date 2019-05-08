@@ -1,3 +1,4 @@
+import { HomeComponent } from './../../pages/home/home.component';
 import { NewSupplierComponent } from './../../pages/supplier/new-supplier/new-supplier.component';
 import { SupplierOrdersListComponent } from './../../pages/supplier-order/supplier-order-list/supplier-order-list.component';
 import { AbstractProductListComponent } from './../../pages/abstract-products/abstract-product-list/abstract-product-list.component';
@@ -56,6 +57,9 @@ import { ListSuppliersComponent } from '../../pages/supplier/list-suppliers/list
 import { DashboardHandlerService } from '../../pages/dashboard/dashboard-handler.service';
 import { ReportDamagedComponent } from '../../pages/damaged-products/damaged-report/damaged-report.component';
 import { TooltipModule } from 'ngx-bootstrap';
+import { HomeHandlerService } from '../../pages/home/home-handler.service';
+import { ReportOrderComponent } from '../../pages/orders/order-report/order-report.component';
+import { ReportSupplierOrderComponent } from '../../pages/supplier-order/supplier-order-report/supplier-order-report.component';
 
 const AppRoutes = [
     {
@@ -67,6 +71,10 @@ const AppRoutes = [
             {
                 path: '',
                 component: DashboardComponent,
+            },
+            {
+                path: 'home',
+                component:HomeComponent,
             },
             {
                 path: 'categories',
@@ -81,7 +89,7 @@ const AppRoutes = [
                         component: AddCategoryComponent,
                     },
                     {
-                        path: ':id/edit',
+                        path: 'edit/:id',
                         component: AddCategoryComponent,
                     },
                 ],
@@ -95,7 +103,7 @@ const AppRoutes = [
                         component: AddManufacturerComponent,
                     },
                     {
-                        path: ':id/edit',
+                        path: 'edit/:id',
                         component: AddManufacturerComponent,
                     },
                     {
@@ -287,6 +295,10 @@ const AppRoutes = [
                         component: OrdersFromSuppliersComponent,
                     },
                     {
+                        path: 'report',
+                        component: ReportOrderComponent,
+                    },
+                    {
                         path: 'management',
                         component: OrdersManageComponent,
                     }
@@ -298,6 +310,10 @@ const AppRoutes = [
                     {
                         path: 'new',
                         component: NewSupplierOrderComponent,
+                    },
+                    {
+                        path: 'report',
+                        component: ReportSupplierOrderComponent,
                     },
                     {
                         path: 'list',
@@ -336,7 +352,7 @@ const AppRoutes = [
         // AddManufacturerComponent,
         // AuthComponent,
         TitleComponent,
-    ], providers: [AuthGuardService, NotificationsService,DashboardHandlerService]
+    ], providers: [AuthGuardService, NotificationsService,DashboardHandlerService,HomeHandlerService]
 })
 export class AdminModule {
 

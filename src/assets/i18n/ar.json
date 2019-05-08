@@ -20,12 +20,20 @@
     "diliveryOrder": "الطلبات في التوصيل",
     "finishOrder": "الطلبات انتهت"
   },
+  "Home": {
+    "table": {
+      "userTap": "الزبون",
+      "readBarcode":"Barcode"
+    },
+    "login":"دخول",
+    "logout":"خروج"
+  },
   "mainMenu": {
     "main": "القائمة الرئيسية",
-    "customItem":{
-      "products":"المنتجات",
-      "abstractProducts":"المنتجات الرئيسية",
-      "orders":"الطلبات"
+    "customItem": {
+      "products": "المنتجات",
+      "abstractProducts": "المنتجات الرئيسية",
+      "orders": "الطلبات"
     },
     "Manufacturers": {
       "main": "المصانع",
@@ -51,7 +59,8 @@
     "SupplierOrders": {
       "main": "الطلبات الخارجية",
       "add": "إضافة طلب",
-      "viewAll": "عرض الطلبات"
+      "viewAll": "عرض الطلبات",
+      "report": "تقرير"
     },
     "topSlider": {
       "main": "الشريط الاعلاني",
@@ -67,7 +76,8 @@
       "main": "الطلبات",
       "viewAll": "عرض جميع الطلبات",
       "fromSupplier": "طلبات من المورد",
-      "Management": "إدارة الطلبات"
+      "Management": "إدارة الطلبات",
+      "report":"تقرير"
     },
     "AbstractProducts": {
       "main": "المنتجات الرئيسية",
@@ -124,10 +134,20 @@
     "users": "أختر المستخدمين (الأفتراضي كل المستخدمين)"
   },
   "modal": {
+    "confirm":"تأكيد",
+    "confirmLogin":"هل انت متاكد من تسجيل الدخول اليوم",
+    "confirmLogout":"هل انت متاكد من تسجيل الخروج اليوم",
     "addNote": "إضافة ملاحظة",
     "close": "إغلاق",
+    "pickProduct":"تعبئة منتج",
+    "haveAllTheCount":"هل يوجد لديك الكمية المطلوبة",
+    "packed":"تعبئة",
+    "confirmPack":"هل تريد تعبئة الطلب ؟",
     "add": "إضافة",
+    "yes":"نعم",
+    "no":"لا",
     "note": "ملاحظة",
+    "cancelOrder":"إلغاء الطلب",
     "createdAt": "تاريخ الانشاء",
     "addBarcode": "إضافة شيفرة",
     "code": "الرمز",
@@ -139,7 +159,13 @@
       "dilivery": "عملية توصيل",
       "submitKeeper": "تثبيت امين المستودع",
       "submitPikker": "تثبيت التعبئة",
-      "submitDilivery": "تثبيت التوصيل"
+      "changeDiliveryMan": "تغيير السائق",
+      "pendingDelivery": "تسليم للسائق",
+      "submitPendingDelivery": "تثبيت تسليم للسائق",
+      "diliveryMan": "السائق",
+      "submitDilivery": "تثبيت التوصيل",
+      "inDelivery": "جاري التوصيل",
+      "submit": "تثبيت"
     }
   },
   "Manufactures": {
@@ -543,6 +569,8 @@
         "horecaPriceDiscount": "السعر للمنشأت بعد الخصم",
         "wholeSalePrice": "السعر للدكاكين",
         "wholeSalePriceDiscount": "السعر للدكاكين بعد الخصم",
+        "consumerPrice": "سعر المبيع للمستهلك",
+        "consumerPriceDiscount": "سعر المبيع للمستهلك بعد الخصم",
         "marketOfficialPrice": "السعر الرسمي",
         "dockanBuyingPrice": "سعر شراء دكان",
         "wholeSaleMarketPrice": "سعر توزيع الشركه",
@@ -718,6 +746,9 @@
 
   "orders": {
     "deliveryFilter": "فلترة حسب موظف التوصيل",
+    "keeperFilter": "فلترة حسب موظف المستودع",
+    "shopeNameFilter": "فلترة حسب المتجر",
+    "statusFilter": "فلترة حسب الحالة",
     "searchPro": "ابحث عن منتج",
     "buttons": {
       "edit": "تعديل",
@@ -744,11 +775,17 @@
     "table": {
       "usernotes": "ملاحظات عن الزبون",
       "today": "اليوم",
+      "printable": "إمكانية الطباعة",
+      "printables": {
+        "true": "نعم",
+        "false": "لا"
+      },
       "delStatus": {
         "pending": "قيد المعالجة",
         "inDelivery": "جاري التوصيل",
         "delivered": "تم التوصيل",
         "canceled": "ملغاة",
+        "pendingDelivery": "تسليم للسائق",
         "packed": "تم التعبئة",
         "inWarehouse": "تم اسناده لمستودع"
       },
