@@ -81,6 +81,7 @@ export class AdminComponent implements OnInit {
     innerHeight: string;
     windowWidth: number;
     username = '';
+    clientType = ""
     toggleOn: boolean;
 
     headerFixedMargin: string;
@@ -181,6 +182,7 @@ export class AdminComponent implements OnInit {
     }
     ngOnInit() {
         this.username = localStorage.getItem('username');
+        this.clientType = localStorage.getItem('clientType');
 
         this.setBackgroundPattern('pattern2');
         this.subscr = Observable.interval(30000)

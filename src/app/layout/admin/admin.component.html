@@ -27,11 +27,11 @@
                 <div class="sidebar_toggle"><a (click)="toggleOpened()" href="javascript:;"><i
                       class="ti-menu f-18"></i></a></div>
               </li>
-              <li>
+              <!-- <li>
                 <a appToggleFullscreen href="javascript:;">
                   <i class="ti-fullscreen"></i>
                 </a>
-              </li>
+              </li> -->
               <!--<li class="mega-menu-top">-->
               <!--<a href="javascript:;">-->
               <!--Mega-->
@@ -155,7 +155,7 @@
             <ul [@mobileMenuTop]="isCollapsedMobile" [ngClass]="isCollapsedMobile" class="nav-right"
               (mouseleave)="seeMePlz()">
               <li class="header-notification">
-                <a href="javascript:;">
+                <a  href="javascript:;" *ngIf="clientType!='warehouseKeeper'">
                   <i class="ti-bell"></i>
                   <span *ngIf="notiCount!=0" class="badge bg-c-pink">{{notiCount}}</span>
                 </a>
