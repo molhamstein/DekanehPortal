@@ -1,18 +1,20 @@
-import {Injectable} from '@angular/core';
-import {Headers, RequestOptions, Response, URLSearchParams} from '@angular/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Headers, RequestOptions, Response, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {ApiService} from '../../services/api.service';
-import {ConstService} from '../../services/const.service';
-import {UserModel} from '../user-model';
+import { ApiService } from '../../services/api.service';
+import { ConstService } from '../../services/const.service';
+import { UserModel } from '../user-model';
 
 
 @Injectable()
 export class StaffHandler {
 
     roleIds = ConstService.STAFF_ROLES;
-
+    wherehouseKeeperRoleIds = ConstService.WEAR_KEEPER_ROLES;
+    wherehouseRoleIds = ConstService.WEAR_ROLES;
+    
     constructor(private apiService: ApiService) {
 
     }
@@ -23,7 +25,17 @@ export class StaffHandler {
         for (let role of this.roleIds) {
             rolesString = rolesString + '{"roleIds":"' + role + '"},';
         }
-        param.append('filter', '{"where":{"and":[' + rolesString + '{}]}}');
+        for (let role of this.wherehouseRoleIds) {
+            rolesString = rolesString + '{"roleIds":"' + role + '"},';
+        }
+        for (let role of this.wherehouseKeeperRoleIds) {
+            rolesString = rolesString + '{"roleIds":"' + role + '"},';
+        }
+        
+        if (rolesString != '') {
+            rolesString = rolesString.substr(0, rolesString.length - 1)
+        }
+        param.append('filter', '{"where":{"or":[' + rolesString + ']}}');
         return this.apiService.get('/users', param)
             .map(this.extractData).catch(this.handleError);
 
@@ -38,8 +50,8 @@ export class StaffHandler {
 
     createStaffUser(StaffUser: UserModel): Observable<number> {
         let body = JSON.stringify(StaffUser);
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         // console.log(StaffUser);
         return this.apiService.post('/users', body, options)
             .map(success => success.status)
@@ -78,8 +90,8 @@ export class StaffHandler {
     }
 
     updateStaffUser(StaffUser: UserModel): Observable<number> {
-        let cpHeaders = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers: cpHeaders});
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.put('/users/' + StaffUser.id, StaffUser, options)
             .map(success => success.status)
             .catch(this.handleError);

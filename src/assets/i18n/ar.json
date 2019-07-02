@@ -23,10 +23,10 @@
   "Home": {
     "table": {
       "userTap": "الزبون",
-      "readBarcode":"Barcode"
+      "readBarcode": "Barcode"
     },
-    "login":"دخول",
-    "logout":"خروج"
+    "login": "دخول",
+    "logout": "خروج"
   },
   "mainMenu": {
     "main": "القائمة الرئيسية",
@@ -77,12 +77,22 @@
       "viewAll": "عرض جميع الطلبات",
       "fromSupplier": "طلبات من المورد",
       "Management": "إدارة الطلبات",
-      "report":"تقرير"
+      "report": "تقرير"
     },
     "AbstractProducts": {
       "main": "المنتجات الرئيسية",
       "add": "إضافة منتج رئيسي جديد",
       "viewAll": "عرض جميع المنتجات الرئيسية"
+    },
+    "Awards": {
+      "main": "الجوائز",
+      "add": "إضافة جائزة جديدة",
+      "viewAll": "عرض جميع الجوائز"
+    },
+    "Levels": {
+      "main": "المستويات",
+      "add": "إضافة مستوى جديدة",
+      "viewAll": "عرض جميع المستويات"
     },
     "Products": {
       "main": "المنتجات",
@@ -134,20 +144,23 @@
     "users": "أختر المستخدمين (الأفتراضي كل المستخدمين)"
   },
   "modal": {
-    "confirm":"تأكيد",
-    "confirmLogin":"هل انت متاكد من تسجيل الدخول اليوم",
-    "confirmLogout":"هل انت متاكد من تسجيل الخروج اليوم",
+    "confirm": "تأكيد",
+    "confirmLogin": "هل انت متاكد من تسجيل الدخول اليوم",
+    "confirmLogout": "هل انت متاكد من تسجيل الخروج اليوم",
+    "confirmChangeStaatusSystem": "هل انت متاكد من تغيير حالة النظام ",
     "addNote": "إضافة ملاحظة",
+    "viewAward": "عرض جائزة",
+    "changeStatusSystem": "تغيير حالة النظام",
     "close": "إغلاق",
-    "pickProduct":"تعبئة منتج",
-    "haveAllTheCount":"هل يوجد لديك الكمية المطلوبة",
-    "packed":"تعبئة",
-    "confirmPack":"هل تريد تعبئة الطلب ؟",
+    "pickProduct": "تعبئة منتج",
+    "haveAllTheCount": "هل يوجد لديك الكمية المطلوبة",
+    "packed": "تعبئة",
+    "confirmPack": "هل تريد تعبئة الطلب ؟",
     "add": "إضافة",
-    "yes":"نعم",
-    "no":"لا",
+    "yes": "نعم",
+    "no": "لا",
     "note": "ملاحظة",
-    "cancelOrder":"إلغاء الطلب",
+    "cancelOrder": "إلغاء الطلب",
     "createdAt": "تاريخ الانشاء",
     "addBarcode": "إضافة شيفرة",
     "code": "الرمز",
@@ -532,6 +545,93 @@
       }
     }
   },
+  "award": {
+    "name": "الاسم",
+    "occurrenceType": "نوع التكرار",
+    "occurrenceTypes": {
+      "monthly": "شهري",
+      "weekly": "اسبوعي",
+      "daily": "يومي"
+    },
+    "status": {
+      "activated": "مفعل",
+      "deactivated": "غير مفعل"
+    },
+    "occurrence": "مدة التكرار",
+    "times": "عدد الاستخدامات",
+    "from": "من",
+    "to": "إلى",
+    "form": {
+      "placeholders": {
+        "awardName": "اسم الجائزة",
+        "from": "من",
+        "to": "إلى",
+        "occurrenceType": "نوع التكرار",
+        "occurrence": "مدة التكرار",
+        "times": "عدد الاستخدامات",
+        "count": " عدد الاستخدامات حتى الأن",
+        "countLimit": " عدد الاستخدامات الاعلى",
+        "details": "التفاصيل",
+        "coupon": "القسائم",
+        "clientTypes": "انواع الزبائن",
+        "areas": "المناطق",
+        "action": "الحدث",
+        "levels": "المستويات",
+        "target": "الهدف",
+        "products": "المنتجات"
+      },
+      "controls": {
+        "complete":"انتهت",
+        "awardName": "اسم الجائزة",
+        "from": "من",
+        "to": "إلى",
+        "createdAt": "تاريخ الانشاء",
+        "occurrenceType": "نوع التكرار",
+        "occurrence": "مدة التكرار",
+        "times": " عدد الاستخدامات",
+        "count": " الاستخدامات حتى الأن",
+        "countLimit": " عدد الاستخدامات الاعلى",
+        "details": "التفاصيل",
+        "levels": "المستويات",
+        "coupon": "القسائم",
+        "clientTypes": "انواع الزبائن",
+        "areas": "المناطق",
+        "action": "الحدث",
+        "target": "الهدف",
+        "products": "المنتجات",
+        "status": "الحالة",
+        "manufacturer": "المصنع",
+        "type": {
+          "price": "السعر",
+          "count": "الكمية",
+          "products-price": "سعر منتج محدد",
+          "products-count": "كمية منتج محدد",
+          "company-price": "سعر محدد ضمن شركة",
+          "company-count": "كمية محدد ضمن شركة"
+        }
+      }
+    }
+  },
+  "level": {
+    "form": {
+      "controls": {
+        "nameAr": "الاسم العربي",
+        "limit": "الحد الأعلى",
+        "clientType": "نوع الزبون",
+        "count": "العدد",
+        "clientTypes": {
+          "horeca": "منشآت",
+          "wholesale": "دكان",
+          "consumer": "مستهلك"
+        }
+      },
+      "placeholders": {
+        "nameAr": "الاسم العربي",
+        "limit": "الحد الأعلى",
+        "clientType": "نوع الزبون"
+      }
+    }
+  },
   "product": {
     "warningAbstractProd": "لا يوجد منتج رئيسي",
     "addImg": "اختر صورة",
@@ -609,6 +709,8 @@
         "pack": "حزمة"
       },
       "placeholders": {
+        "consumerPrice": "سعر المبيع للمستهلك",
+        "consumerPriceDiscount": "سعر المبيع للمستهلك بعد الخصم",
         "prodName": "ادخل اسم المنتج",
         "sku": "sku",
         "offerMaxQuantity": "كميه الطلب العظمى",

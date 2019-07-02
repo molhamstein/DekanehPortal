@@ -1,0 +1,183 @@
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.viewAward'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-12">
+        <span style="font-weight: bold;font-size: 15">{{awardView.nameAr}} : </span>
+        <span style="font-size: 15">{{awardView.details}}</span>
+      </div>
+    </div>
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.from"|translate}} : </b>
+        <span style="font-size: 15">{{c.formatDate(awardView.from)}}</span>
+      </div>
+
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.to"|translate}} : </b>
+        <span style="font-size: 15">{{c.formatDate(awardView.to)}}</span>
+      </div>
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.createdAt"|translate}} : </b>
+        <span style="font-size: 15">{{c.formatDate(awardView.createdAt)}}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.times"|translate}} : </b>
+        <span style="font-size: 15">{{awardView.times}}</span>
+      </div>
+
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.count"|translate}} : </b>
+        <span style="font-size: 15">{{awardView.count}}</span>
+      </div>
+
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.countLimit"|translate}} : </b>
+        <span style="font-size: 15">{{awardView.countLimit}}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-3">
+        <b style="font-size: 15"> {{"award.form.controls.occurrenceType"|translate}} : </b>
+        <span style="font-size: 15">{{"award.occurrenceTypes."+awardView.occurrenceType|translate}}</span>
+      </div>
+
+      <div class="col-sm-3">
+        <b style="font-size: 15"> {{"award.form.controls.occurrence"|translate}} : </b>
+        <span style="font-size: 15">{{awardView.occurrence}}</span>
+      </div>
+
+      <div class="col-sm-3">
+        <b style="font-size: 15"> {{"award.form.controls.status"|translate}} : </b>
+        <span class="badge "
+          [ngClass]="[awardView.status=='activated' ? 'badge-success' : '',  awardView.status=='deactived' ? 'badge-danger' : '']">
+          {{"award.status."+ awardView.status|translate}}</span>
+      </div>
+
+      <div class="col-sm-3">
+          <b style="font-size: 15"> {{"award.form.controls.complete"|translate}} : </b>
+          <i class="fa fa-check-circle" *ngIf="awardView.complete" aria-hidden="true"></i>
+          <i class="fa fa-close" *ngIf="!awardView.complete" aria-hidden="true"></i>
+
+        </div>
+  
+
+    
+    </div>
+
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light">{{'modal.add'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+
+<div class="row">
+  <div class="col-sm-3">
+    <input class="form-control search-box" type="text" [value]="searchString" [(ngModel)]="searchKey" (keyup)="keyUp()"
+      placeholder="{{'client.search'|translate}}....">
+  </div>
+  <div class="col-sm-9">
+    <div class="filter-btns">
+      <select class="btn btn-action" [(ngModel)]="status">
+        <option value='1' disabled style="display: none" selected>{{'level.form.controls.status'|translate}}</option>
+        <option *ngFor="let oneStatus of statusList" [value]="oneStatus.value">
+          {{oneStatus.label}}
+        </option>
+      </select>
+
+      <select class="btn btn-action" [(ngModel)]="clientType">
+        <option value='1' disabled style="display: none" selected>{{'award.form.controls.clientTypes'|translate}}
+        </option>
+        <option *ngFor="let oneClient of clientTypes" [value]="oneClient.value">
+          {{"level.form.controls.clientTypes."+oneClient.label|translate}}
+        </option>
+      </select>
+
+
+
+      <select class="btn btn-action" [(ngModel)]="level">
+        <option value='1' disabled style="display: none" selected>{{'award.form.controls.levels'|translate}}
+        </option>
+        <option *ngFor="let oneLevel of levels" [value]="oneLevel.id">
+          {{oneLevel.nameAr}}
+        </option>
+      </select>
+
+
+
+
+      <button type="button" (click)="setFilters()" class="btn btn-success">
+        {{"abstractProduct.apply"|translate}}
+      </button>
+      <button type="button" (click)="emptyFields()" class="btn btn-danger">
+        {{"abstractProduct.cancel"|translate}}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped ">
+    <thead>
+      <tr>
+        <th class="clickable-th">
+          {{"award.name"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"award.from"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"award.to"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"award.occurrenceType"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"award.occurrence"|translate}}
+        </th>
+        <th class="clickable-th">
+          {{"award.times"|translate}}
+        </th>
+        <!-- <th class="clickable-th">
+          {{"award.status"|translate}}
+        </th> -->
+      </tr>
+    </thead>
+    <tbody [hidden]="spinnerFlag">
+
+      <tr *ngFor="let oneAward of allAwards" (click)="openModal(modalDefault,oneAward)">
+        <td>{{oneAward.nameAr}}</td>
+        <td>{{c.formatDate(oneAward.from)}}</td>
+        <td>{{c.formatDate(oneAward.to)}}</td>
+        <td>
+          {{"award.occurrenceTypes."+oneAward.occurrenceType|translate}}
+        </td>
+        <td>{{oneAward.occurrence}}</td>
+        <td>{{oneAward.times}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-secondary-spinner *ngIf="spinnerFlag"></app-secondary-spinner>
+<div [hidden]="spinnerFlag||unpage" class="row">
+  <pagination [totalItems]="awardsCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+
+</div>

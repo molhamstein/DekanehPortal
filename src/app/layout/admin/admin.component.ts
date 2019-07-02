@@ -82,6 +82,7 @@ export class AdminComponent implements OnInit {
     windowWidth: number;
     username = '';
     clientType = ""
+    systemStatus = false;
     toggleOn: boolean;
 
     headerFixedMargin: string;
@@ -111,6 +112,11 @@ export class AdminComponent implements OnInit {
 
     /*  @ViewChild('toggleButton') toggle_button: ElementRef;
       @ViewChild('sideMenu') side_menu: ElementRef;*/
+
+
+    toggleSystem(modal) {
+        modal.show()
+    }
 
     constructor(public menuItems: MenuItems, public api: ApiService, private router: Router, private NotiHandler: NotificationsService, private c: ConstService) {
         this.menuItems;
@@ -157,6 +163,11 @@ export class AdminComponent implements OnInit {
                 this.newNoti = data;
             });
         }, 3000);
+        this.NotiHandler.getSystemStatus().subscribe(data => {
+
+            // this.systemStatus = data;
+
+        });
     }
 
     getNewNotiCount(sound?) {
@@ -169,9 +180,17 @@ export class AdminComponent implements OnInit {
         });
     }
 
+    changeStatusSystem(model) {
+        this.NotiHandler.changeStatusSystem().subscribe(() => {
+            this.systemStatus=!this.systemStatus;
+            model.hide();
+        });
+
+
+    }
+
     getNewNoti() {
         return this.NotiHandler.getNewNoti();
-
     }
 
     playAudio() {
@@ -207,18 +226,17 @@ export class AdminComponent implements OnInit {
             this.router.navigate([noty]);
         else if (noty.type == 'order') {
             this.router.navigate(['/orders/management']);
-
         } else if (noty.type == 'client') {
             this.router.navigate(['/client/edit/' + noty.clientId]);
-
         } else if (noty.type == 'rating') {
             this.router.navigate(['/ratings/list']);
-
         } else if (noty.type == 'forgetPassword') {
             this.router.navigate(['/client/edit/' + noty.clientId]);
-
         }
     }
+
+
+    
     onResize(event) {
         this.innerHeight = event.target.innerHeight + 'px';
         /* menu responsive */

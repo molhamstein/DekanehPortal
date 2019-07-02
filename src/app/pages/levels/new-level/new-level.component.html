@@ -1,0 +1,52 @@
+<form (ngSubmit)="onCouponFormSubmit()" [formGroup]="levelForm" class="levelForm">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm">
+
+        <div class="form-group">
+          <label for="numberOfTimes">{{"level.form.controls.nameAr"|translate}}</label>
+          <input class="form-control" formControlName="nameAr" id="numberOfTimes"
+            placeholder="{{'level.form.placeholders.nameAr'|translate}}">
+
+        </div>
+
+        <div class="form-group">
+          <label for="type">{{'level.form.controls.clientType'|translate}}</label>
+          <select formControlName="clientType" class="form-control" id="type">
+            <option *ngFor="let t of types" [selected]="" [value]="t.value">
+              {{"level.form.controls.clientTypes."+t.label|translate}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm">
+
+        <div class="form-group">
+          <label for="numberOfTimes">{{"level.form.controls.limit"|translate}}</label>
+          <input type="number" class="form-control" formControlName="limit" id="numberOfTimes"
+            placeholder="{{'level.form.placeholders.limit'|translate}}">
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newLevel" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"client.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!levelForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newLevel" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"client.buttons.edit"|translate}}
+        </button>
+        <button (click)="goHome()" *ngIf="!newLevel" [disabled]="submitted" class="btn btn-action" type="button">
+          {{"client.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>

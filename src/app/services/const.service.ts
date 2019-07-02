@@ -8,12 +8,17 @@ export class ConstService {
 
     private static _STAFF_ROLES = ['5be62ecb744a6b07b29b4262'];
     private static _WEARHOUS_ROLES = ['5c98dc7284d4bc7edd632d54'];
+    private static _WEARHOUSKEEPER_ROLES = ['5cbf2be3c22839025168f5d1'];
 
     public static get STAFF_ROLES(): string[] {
         return this._STAFF_ROLES;
     }
     public static get WEAR_ROLES(): string[] {
         return this._WEARHOUS_ROLES;
+    }
+
+    public static get WEAR_KEEPER_ROLES(): string[] {
+        return this._WEARHOUSKEEPER_ROLES;
     }
 
     formatDate(str, hours?) {
@@ -103,6 +108,16 @@ export class ConstService {
                 "new": true,
                 "edit": true
             },
+            "awards": {
+                "list": true,
+                "new": true,
+                "edit": true
+            },
+            "levels": {
+                "list": true,
+                "new": true,
+                "edit": true
+            },
             "damaged": {
                 "list": true,
                 "add": true,
@@ -117,14 +132,17 @@ export class ConstService {
             },
             "orders": {
                 "management": true,
-                "print":true,
-                "report":true
+                "print": true,
+                "report": true
             },
             "supplier-orders": {
                 "list": true,
-                "report":true,
+                "report": true,
                 "new": true,
                 "edit": true
+            },
+            "global": {
+                "changeStatus": true
             },
         },
         "sales": {
@@ -181,6 +199,16 @@ export class ConstService {
                 "new": true,
                 "edit": true
             },
+            "awards": {
+                "list": false,
+                "new": false,
+                "edit": false
+            },
+            "levels": {
+                "list": false,
+                "new": false,
+                "edit": false
+            },
             "damaged": {
                 "list": true,
                 "add": true,
@@ -195,15 +223,18 @@ export class ConstService {
             },
             "orders": {
                 "management": true,
-                "print":true,
-                "report":true
+                "print": true,
+                "report": true
             },
             "supplier-orders": {
                 "list": true,
-                "report":true,
+                "report": true,
                 "new": true,
                 "edit": true
             },
+            "global": {
+                "changeStatus": false
+            }
         },
         "warehouseKeeper": {
             "categories": {
@@ -259,6 +290,16 @@ export class ConstService {
                 "new": false,
                 "edit": false
             },
+            "awards": {
+                "list": false,
+                "new": false,
+                "edit": false
+            },
+            "levels": {
+                "list": false,
+                "new": false,
+                "edit": false
+            },
             "damaged": {
                 "list": true,
                 "add": false,
@@ -273,15 +314,18 @@ export class ConstService {
             },
             "orders": {
                 "management": false,
-                "print":false,
-                "report":false
-                
+                "print": false,
+                "report": false
+
             },
             "supplier-orders": {
                 "list": true,
                 "new": false,
                 "edit": false,
-                "report":false
+                "report": false
+            },
+            "global": {
+                "changeStatus": false
             }
         }
     }

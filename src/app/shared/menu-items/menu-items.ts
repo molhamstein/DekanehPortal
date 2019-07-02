@@ -314,6 +314,38 @@ export class MenuItems {
                             name: 'mainMenu.Damaged.report'
                         },
                     ]
+                },
+                {
+                    state: 'awards',
+                    short_label: 'F',
+                    name: 'mainMenu.Awards.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.Awards.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.Awards.viewAll'
+                        }
+                    ]
+                },
+                {
+                    state: 'levels',
+                    short_label: 'F',
+                    name: 'mainMenu.Levels.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [
+                        {
+                            state: 'new',
+                            name: 'mainMenu.Levels.add'
+                        }, {
+                            state: 'list',
+                            name: 'mainMenu.Levels.viewAll'
+                        }
+                    ]
                 }
             ]
         },

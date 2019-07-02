@@ -14,6 +14,16 @@ export class NotificationsService {
             .map(this.extractData).catch(this.handleError);
     }
 
+    getSystemStatus(): Observable<boolean> {
+        return this.api.get('/notifications/count')
+            .map(this.extractData).catch(this.handleError);
+    }
+
+
+    changeStatusSystem(){
+        return this.api.put('/notifications/makeAllRead', []).map(this.extractData).catch(this.handleError);
+    }
+
     getNewNotiCount(): Observable<number> {
         let param = new URLSearchParams();
         param.append('where', '{"isSeen":"false"}');

@@ -11,7 +11,6 @@ export class AppComponent {
     title = 'app';
     constructor(private translate: TranslateService, private router: Router) {
         translate.setDefaultLang('ar');
-
     }
 
 }

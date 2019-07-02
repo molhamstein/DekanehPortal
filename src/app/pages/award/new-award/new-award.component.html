@@ -1,0 +1,409 @@
+<form (ngSubmit)="onProductFormSubmit()" [formGroup]="awoardForm" class="awoardForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="nameAr">{{"award.form.controls.awardName"|translate}}</label>
+          <input class="form-control" formControlName="nameAr" id="nameAr"
+            placeholder="{{'award.form.placeholders.awardName'|translate}}" type="text">
+          <label *ngIf="awoardForm.get('nameAr').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="from">{{"award.form.controls.from"|translate}}</label>
+          <input class="form-control" formControlName="from" id="expireDate"
+            placeholder="{{'award.form.placeholders.from'|translate}}" type="date">
+          <label *ngIf="awoardForm.get('from').invalid && processValidation"
+            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+        </div>
+
+        <div class="form-group">
+          <label for="manufacturerId">{{'award.form.controls.occurrenceType'|translate}}</label>
+          <select class="form-control" formControlName="occurrenceType">
+            <option value="daily">يومي</option>
+            <option value="weekly">اسبوعي</option>
+            <option value="monthly">شهري</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nameAr">{{"award.form.controls.times"|translate}}</label>
+          <input class="form-control" formControlName="times" id="nameAr"
+            placeholder="{{'award.form.placeholders.times'|translate}}" type="text">
+          <label *ngIf="awoardForm.get('times').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+        <div class="form-group">
+          <label for="manufacturerId">{{'award.form.controls.areas'|translate}}</label>
+          <ng-select [ngClass]="'ng-select'" style="height: 35px;" formControlName="areaIds"
+            placeholder="{{'award.form.placeholders.areas'|translate}}" [options]="areas" [multiple]="true"></ng-select>
+        </div>
+
+        <div class="form-group">
+          <label for="nameAr">{{"award.form.controls.target"|translate}}</label>
+          <input class="form-control" type="number" [(ngModel)]="action.target" [ngModelOptions]="{standalone: true}"
+            id="occurrence" placeholder="{{'award.form.placeholders.target'|translate}}">
+        </div>
+
+
+
+      </div>
+
+
+
+      <div class="col-sm-6">
+
+        <div class="form-group">
+          <label for="nameAr">{{"award.form.controls.details"|translate}}</label>
+          <input class="form-control" formControlName="details" id="details"
+            placeholder="{{'award.form.placeholders.details'|translate}}" type="text">
+          <label *ngIf="awoardForm.get('details').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="expireDate">{{"award.form.controls.to"|translate}}</label>
+          <input class="form-control" formControlName="to" id="expireDate"
+            placeholder="{{'award.form.placeholders.to'|translate}}" type="date">
+          <label *ngIf="awoardForm.get('to').invalid && processValidation"
+            class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+        </div>
+
+        <div class="form-group">
+          <label for="nameAr">{{"award.form.controls.occurrence"|translate}}</label>
+          <input class="form-control" type="number" formControlName="occurrence" id="occurrence"
+            placeholder="{{'award.form.placeholders.occurrence'|translate}}">
+          <label *ngIf="awoardForm.get('occurrence').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+        </div>
+
+
+        <!-- <h4 class="sub-title">Multi Select</h4> -->
+
+        <!-- <div class="form-group">
+          <label for="manufacturerId">{{'award.form.controls.clientTypes'|translate}}</label>
+          <ng-select [ngClass]="'ng-select'" style="height: 35px;" formControlName="clientTypes"
+            placeholder="{{'award.form.placeholders.clientTypes'|translate}}" [options]="sibmpleOption"
+            [multiple]="true"></ng-select>
+        </div> -->
+
+        <div class="form-group">
+          <label for="manufacturerId">{{'award.form.controls.levels'|translate}}</label>
+          <ng-select [ngClass]="'ng-select'" style="height: 35px;" formControlName="levelIds"
+            placeholder="{{'award.form.placeholders.levels'|translate}}" [options]="levels" [multiple]="true"></ng-select>
+        </div>
+
+        <div class="form-group">
+          <label for="manufacturerId">{{'award.form.controls.action'|translate}}</label>
+          <select class="form-control" [(ngModel)]="action.type" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="type" *ngFor="let type of awardActionTypes">
+              {{'award.form.controls.type.'+type|translate}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="action.type=='company-price'|| action.type=='company-count'">
+          <label for="manufacturerId">{{'award.form.controls.manufacturer'|translate}}</label>
+          <select class="form-control" [(ngModel)]="action.manufacturerId" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="oneManufacturer.id" *ngFor="let oneManufacturer of manufacturers">
+              {{oneManufacturer.nameAr}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="action.type=='products-price'|| action.type=='products-count'">
+
+          <label for="abstract">{{'award.form.controls.products'|translate}}</label>
+          <ng-select [(ngModel)]="targetProductIds" [ngModelOptions]="{standalone: true}"
+            (filterInputChanged)="searchProductTarget($event)" (selected)="targetProductSelected($event)"
+            [multiple]="true" [options]="IOProductsTarget" id="abstract">
+          </ng-select>
+          <div class="row">
+            <div class="col-sm">
+              <table class="table  table-striped ">
+                <tbody>
+                  <tr *ngFor="let off of targetProductTable;let i = index">
+                    <td style="width: 35px">
+                      <img *ngIf="off.media" src="{{off.media.thumbnail}}" style="max-width: 34px;max-height: 34px;">
+                    </td>
+                    <td>{{off.nameAr}}</td>
+
+                    <td style="text-align: center">
+                      <span class="functions-btn pull-left text-danger" *ngIf="newAward"
+                        (click)="removeProduct(off.productAbstractId)"><i class="fa fa-remove fa-lg"></i></span>
+                    </td>
+                    <!--<td style="text-align: center">-->
+                    <!---->
+                    <!--</td>-->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="col-sm-6">
+        <div class="col-sm-offset-3 img-uploader">
+          <div id="preview">
+            <img [src]="imgSrc" alt="">
+          </div>
+          <input #fileInput (change)="onFileChanged($event)" style="display: none" type="file">
+          <button (click)="fileInput.click()" class="select-file btn btn-success" type="button">
+            {{'abstractProduct.addImg'|translate}}
+          </button>
+          <br>
+          <label *ngIf="imgBlankError"
+            class="text-danger">{{'abstractProduct.form.validations.imgBlank'|translate}}</label>
+
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label
+                for="officialConsumerPrice">{{"abstractProduct.form.controls.officialConsumerPrice"|translate}}</label>
+              <input class="form-control" formControlName="officialConsumerPrice" id="officialConsumerPrice"
+                placeholder="{{'abstractProduct.form.placeholders.officialConsumerPrice'|translate}}" type="number">
+              <label *ngIf="awoardForm.get('officialConsumerPrice').invalid && processValidation"
+                class="text-danger">{{'abstractProduct.form.validations.blank'|translate}}</label>
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label
+                for="officialMassMarketPrice">{{"abstractProduct.form.controls.officialMassMarketPrice"|translate}}</label>
+              <input class="form-control" formControlName="officialMassMarketPrice" id="officialMassMarketPrice"
+                placeholder="{{'abstractProduct.form.placeholders.officialMassMarketPrice'|translate}}" type="number">
+              <label *ngIf="awoardForm.get('officialMassMarketPrice').invalid && processValidation"
+                class="text-danger">{{'abstractProduct.form.validations.blank'|translate}}</label>
+            </div>
+          </div>
+          <div class="col-sm-6" *ngIf="newAward">
+            <div class="form-group">
+              <label for="threshold">{{"abstractProduct.form.controls.threshold"|translate}}</label>
+              <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="threshold" id="threshold"
+                placeholder="{{'abstractProduct.form.placeholders.threshold'|translate}}" type="number">
+            </div>
+          </div>
+          <div class="col-sm-6" *ngIf="newAward">
+            <div class="form-group">
+              <label for="threshold">{{"abstractProduct.form.controls.warningThreshold"|translate}}</label>
+              <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="warningThreshold"
+                id="threshold" placeholder="{{'abstractProduct.form.placeholders.warningThreshold'|translate}}"
+                type="number">
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+    <div class="row">
+      <div class="notesDiv">
+        <div class="title">
+          <label>{{"award.form.controls.coupon"|translate}}</label>
+        </div>
+        <div class="body">
+          <div class="row">
+            <div class="form-group col-sm-2">
+              <label for="type">{{'coupon.form.controls.type'|translate}}</label>
+              <select [(ngModel)]="coupon.type" [ngModelOptions]="{standalone: true}" class="form-control" id="type">
+                <option *ngFor="let t of types" [selected]="" [value]="t">
+                  {{'coupon.type.' + t|translate}}
+
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group col-sm-2">
+              <label for="value">{{"coupon.form.controls.value"|translate}}</label>
+              <input [(ngModel)]="coupon.value" [ngModelOptions]="{standalone: true}" class="form-control" id="value"
+                placeholder="{{'coupon.form.placeholders.value'|translate}}" type="number">
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="value">{{"coupon.form.controls.numberOfTimes"|translate}}</label>
+              <input [(ngModel)]="coupon.numberOfTimes" [ngModelOptions]="{standalone: true}" class="form-control"
+                id="value" placeholder="{{'coupon.form.placeholders.numberOfTimes'|translate}}" type="number">
+            </div>
+
+            <div class="form-group col-sm-4">
+              <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
+              <input [(ngModel)]="coupon.expireDate" [ngModelOptions]="{standalone: true}" class="form-control"
+                id="expireDate" placeholder="{{'coupon.form.placeholders.expireDate'|translate}}" type="datetime-local">
+            </div>
+            <div class="form-group col-sm-2" style="padding-top: 29px;">
+              <button class="btn btn-success" type="button" (click)="addCoupon()">
+                {{"staff.buttons.add"|translate}}
+              </button>
+
+            </div>
+          </div>
+          <div class="oneNote" *ngFor="let oneCoupon of couponList; let i = index">
+            <div class="row">
+              <div class="form-group col-sm-2">
+                <label for="type">{{'coupon.form.controls.type'|translate}}</label>
+                <select disabled="true" [(ngModel)]="oneCoupon.type" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="type">
+                  <option *ngFor="let t of types" [selected]="" [value]="t">
+                    {{'coupon.type.' + t|translate}}
+
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="value">{{"coupon.form.controls.value"|translate}}</label>
+                <input disabled="true" [(ngModel)]="oneCoupon.value" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="value" placeholder="{{'coupon.form.placeholders.value'|translate}}"
+                  type="number">
+                <!-- <label *ngIf="CouponForm.get('value').invalid && processValidation"
+                               class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+                        <label *ngIf="valuePerError"
+                               class="text-danger">{{'coupon.form.validations.maxmin'|translate}}</label> -->
+              </div>
+
+              <div class="form-group col-sm-2">
+                <label for="value">{{"coupon.form.controls.numberOfTimes"|translate}}</label>
+                <input disabled="true" [(ngModel)]="coupon.numberOfTimes" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="value" placeholder="{{'coupon.form.placeholders.numberOfTimes'|translate}}"
+                  type="number">
+              </div>
+
+              <div class="form-group col-sm-4">
+                <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
+                <input disabled="true" [(ngModel)]="oneCoupon.expireDate" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="expireDate" placeholder="{{'coupon.form.placeholders.expireDate'|translate}}"
+                  type="datetime-local">
+                <!-- <label *ngIf="CouponForm.get('expireDate').invalid && processValidation"
+                               class="text-danger">{{'coupon.form.validations.blank'|translate}}</label> -->
+              </div>
+              <div class="form-group col-sm-2" style="padding-top: 29px;">
+                <button class="btn btn-danger" type="button" (click)="deleteCoupon(index)">
+                  {{"client.buttons.delete"|translate}}
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="notesDiv">
+        <div class="title">
+          <label>{{"award.form.controls.products"|translate}}</label>
+        </div>
+        <div class="body">
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="type">{{'product.form.controls.prodName'|translate}}</label>
+              <ng-select [(ngModel)]="prize.productId" [ngModelOptions]="{standalone: true}"
+                (filterInputChanged)="searchProduct($event)" [options]="IOProducts" id="abstract">
+              </ng-select>
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="value">{{"product.form.controls.quantity"|translate}}</label>
+              <input [(ngModel)]="prize.count" [ngModelOptions]="{standalone: true}" class="form-control" id="value"
+                placeholder="{{'coupon.form.placeholders.value'|translate}}" type="number">
+            </div>
+            <div class="form-group col-sm-4" style="padding-top: 29px;">
+              <button class="btn btn-success" type="button" (click)="addPrize()">
+                {{"staff.buttons.add"|translate}}
+              </button>
+
+            </div>
+          </div>
+          <div class="oneNote" *ngFor="let onePrize of prizeList; let i = index">
+            <div class="row">
+              <div class="form-group col-sm-4">
+                <h5 style="padding-top: 8px;">{{onePrize.nameAr}}</h5>
+              </div>
+              <div class="form-group col-sm-4">
+                <h5 style="padding-top: 8px;">{{onePrize.count}}</h5>
+
+              </div>
+              <div class="form-group col-sm-4">
+                <button class="btn btn-danger" type="button" (click)="deletePrize(index)">
+                  {{"client.buttons.delete"|translate}}
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm submit-col">
+        <button *ngIf="newAward" [disabled]="submitted" class="btn btn-success" type="submit">
+          {{"staff.buttons.add"|translate}}
+        </button>
+        <i *ngIf="!awoardForm.invalid&&submitted" class="fa fa-circle-o-notch fa-2x fa-spin spinner-submit"></i>
+        <button *ngIf="!newAward" [disabled]="submitted" class=" btn btn-success" type="submit">
+          {{"staff.buttons.edit"|translate}}
+        </button>
+        <button *ngIf="!newAward" [disabled]="submitted" class="btn btn-action" (click)="goProducts()" type="button">
+          {{"staff.buttons.back"|translate}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</form>
+<div class="container" style="padding-top: 50px;">
+
+  <div class="row" *ngIf="!newAward">
+    <!-- <div class="col-sm-6">
+
+      <div class="form-group">
+        <label for="manufacturerId">{{'abstractProduct.form.controls.warehouse'|translate}}</label>
+        <select [(ngModel)]="warehouse" class="form-control" id="manufacturerId">
+          <option disabled selected style="display: none" value=""></option>
+
+          <option *ngFor="let warehouseProduct of warehouseProducts" [value]="warehouseProduct">
+            {{warehouseProduct.warehouse.nameAr}}
+          </option>
+        </select>
+      </div>
+    </div> -->
+    <!-- <div class="col-sm-6">
+      <div class="form-group">
+        <label for="threshold">{{"abstractProduct.form.controls.threshold"|translate}}</label>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="threshold" id="threshold"
+          placeholder="{{'abstractProduct.form.placeholders.threshold'|translate}}" type="number">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="threshold">{{"abstractProduct.form.controls.warningThreshold"|translate}}</label>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="warningThreshold" id="threshold"
+          placeholder="{{'abstractProduct.form.placeholders.warningThreshold'|translate}}" type="number">
+      </div>
+    </div> -->
+
+  </div>
+  <div class="row" *ngIf="!newAward">
+    <div class="col-sm submit-col">
+
+      <button class=" btn btn-success" (click)="editWarehouse()">
+        {{"staff.buttons.edit"|translate}}
+      </button>
+    </div>
+  </div>
+
+</div>

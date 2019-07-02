@@ -1,3 +1,4 @@
+import { AwardListComponent } from './../../pages/award/award-list/award-list.component';
 import { HomeComponent } from './../../pages/home/home.component';
 import { NewSupplierComponent } from './../../pages/supplier/new-supplier/new-supplier.component';
 import { SupplierOrdersListComponent } from './../../pages/supplier-order/supplier-order-list/supplier-order-list.component';
@@ -60,6 +61,9 @@ import { TooltipModule } from 'ngx-bootstrap';
 import { HomeHandlerService } from '../../pages/home/home-handler.service';
 import { ReportOrderComponent } from '../../pages/orders/order-report/order-report.component';
 import { ReportSupplierOrderComponent } from '../../pages/supplier-order/supplier-order-report/supplier-order-report.component';
+import { NewAwardComponent } from '../../pages/award/new-award/new-award.component';
+import { NewLevelComponent } from '../../pages/levels/new-level/new-level.component';
+import { ListLevelsComponent } from '../../pages/levels/list-levels/list-levels.component';
 
 const AppRoutes = [
     {
@@ -74,7 +78,7 @@ const AppRoutes = [
             },
             {
                 path: 'home',
-                component:HomeComponent,
+                component: HomeComponent,
             },
             {
                 path: 'categories',
@@ -129,7 +133,7 @@ const AppRoutes = [
                     }
                 ]
             },
-            
+
             {
                 path: 'topSlider', children: [
                     {
@@ -251,6 +255,34 @@ const AppRoutes = [
                 ],
             },
             {
+                path: 'awards', children: [
+                    {
+                        path: 'list',
+                        component: AwardListComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewAwardComponent,
+                    }
+                ],
+            },
+            {
+                path: 'levels', children: [
+                    {
+                        path: 'list',
+                        component: ListLevelsComponent,
+                    },
+                    {
+                        path: 'new',
+                        component: NewLevelComponent,
+                    },
+                    {
+                        path: 'edit/:id',
+                        component: NewLevelComponent,
+                    }
+                ],
+            },
+            {
                 path: 'damaged', children: [
                     {
                         path: 'list',
@@ -352,7 +384,7 @@ const AppRoutes = [
         // AddManufacturerComponent,
         // AuthComponent,
         TitleComponent,
-    ], providers: [AuthGuardService, NotificationsService,DashboardHandlerService,HomeHandlerService]
+    ], providers: [AuthGuardService, NotificationsService, DashboardHandlerService, HomeHandlerService]
 })
 export class AdminModule {
 

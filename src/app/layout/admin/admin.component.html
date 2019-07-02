@@ -1,3 +1,23 @@
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.changeStatusSystem'|translate}}</h4>
+    <button type="button" class="close basic-close" style="right:20px;" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <span>
+        {{'modal.confirmChangeStaatusSystem'|translate}}
+    </span>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.no'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="changeStatusSystem(modalDefault)">{{'modal.yes'|translate}}</button>
+  </div>
+</app-modal-basic>
+
 <div (window:resize)="onResize($event)" [attr.layout-type]="layoutType" [attr.nav-type]="navType"
   [attr.pcoded-device-type]="deviceType" [attr.theme-layout]="themeLayout" [attr.vertical-effect]="verticalEffect"
   [attr.vertical-layout]="verticalLayout" [attr.vertical-nav-type]="verticalNavType"
@@ -27,11 +47,16 @@
                 <div class="sidebar_toggle"><a (click)="toggleOpened()" href="javascript:;"><i
                       class="ti-menu f-18"></i></a></div>
               </li>
-              <!-- <li>
-                <a appToggleFullscreen href="javascript:;">
-                  <i class="ti-fullscreen"></i>
-                </a>
-              </li> -->
+              <!-- <li> -->
+              <div class="offSystem" *ngIf="systemStatus==false && c.cheachRole('global','changeStatus')" (click)="toggleSystem(modalDefault)">
+                <i class="ti-power-off"></i>
+                التطبيق متوقف حاليا
+              </div>
+              <div class="onSystem" *ngIf="systemStatus==true && c.cheachRole('global','changeStatus')" (click)="toggleSystem(modalDefault)">
+                <i class="ti-power-off"></i>
+                التطبيق نشط
+              </div>
+              <!-- </li> -->
               <!--<li class="mega-menu-top">-->
               <!--<a href="javascript:;">-->
               <!--Mega-->
@@ -155,7 +180,7 @@
             <ul [@mobileMenuTop]="isCollapsedMobile" [ngClass]="isCollapsedMobile" class="nav-right"
               (mouseleave)="seeMePlz()">
               <li class="header-notification">
-                <a  href="javascript:;" *ngIf="clientType!='warehouseKeeper'">
+                <a href="javascript:;" *ngIf="clientType!='warehouseKeeper'">
                   <i class="ti-bell"></i>
                   <span *ngIf="notiCount!=0" class="badge bg-c-pink">{{notiCount}}</span>
                 </a>
@@ -465,7 +490,8 @@
                       <i class="oneCutomItem icofont icofont-box bg-c-yellow card1-icon"></i>
                     </div>
                     <div class="col-sm-4 divOneCutomItem" placement="right"
-                      [tooltip]="'mainMenu.customItem.abstractProducts'|translate" (click)="goToHell('/abstract-products/list')">
+                      [tooltip]="'mainMenu.customItem.abstractProducts'|translate"
+                      (click)="goToHell('/abstract-products/list')">
                       <i class="oneCutomItem icofont icofont-ui-home bg-c-blue card1-icon"></i>
                     </div>
                     <div class="col-sm-4 divOneCutomItem" placement="left"

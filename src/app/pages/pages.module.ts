@@ -1,3 +1,4 @@
+import { AwardModule } from './award/award.module';
 import { HomeComponent } from './home/home.component';
 import { SupplierModule } from './supplier/supplier.module';
 import { DamagedProductModule } from './damaged-products/damaged-products.module';
@@ -36,6 +37,7 @@ import { OrdersModule } from './orders/orders.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReportModule } from './reports/reports.module';
 import { SupplierOrdersModule } from './supplier-order/supplier-orders.module';
+import { LevelsModule } from './levels/levels.module';
 
 @NgModule({
     imports: [
@@ -58,6 +60,8 @@ import { SupplierOrdersModule } from './supplier-order/supplier-orders.module';
         NotificationModule,
         ProductsModule,
         AbstractProductsModule,
+        AwardModule,
+        LevelsModule,
         SelectModule,
         AreasModule,
         TopSliderModule,

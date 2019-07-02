@@ -1,56 +1,57 @@
 <div class="row">
-    <div class="col-sm-4">
-        <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'staff.search'|translate}}...."
-               type="text">
-    </div>
+  <div class="col-sm-4">
+    <input (keyup)="filterBox($event)" class="form-control search-box" placeholder="{{'staff.search'|translate}}...."
+      type="text">
+  </div>
 </div>
 <table class="table table-bordered table-striped ">
 
-    <thead>
+  <thead>
     <tr>
-        <th>id</th>
-        <th class="clickable-th" (click)="orderByName()">
-            {{"staff.userName"|translate}}
-            <i class="fa-sort fa "
-               [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+      <th>
+        {{"staff.form.controls.roles"|translate}}
+      </th>
+      <th class="clickable-th" (click)="orderByName()">
+        {{"staff.userName"|translate}}
+        <i class="fa-sort fa "
+          [ngClass]="nameOrderDir === undefined? '' : (nameOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-        </th>
+      </th>
 
 
-        <th class="clickable-th" (click)="orderByEmail()">
-            {{"staff.form.controls.email"|translate}}
-            <i class="fa-sort fa "
-               [ngClass]="emailOrderDir === undefined? '' : (emailOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
-        </th>
-        <th class="clickable-th" (click)="orderByStatus()">
-            {{"staff.statustext"|translate}}
-            <i class="fa-sort fa "
-               [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+      <th class="clickable-th" (click)="orderByEmail()">
+        {{"staff.form.controls.email"|translate}}
+        <i class="fa-sort fa "
+          [ngClass]="emailOrderDir === undefined? '' : (emailOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
+      </th>
+      <th class="clickable-th" (click)="orderByStatus()">
+        {{"staff.statustext"|translate}}
+        <i class="fa-sort fa "
+          [ngClass]="statusOrderDir === undefined? '' : (statusOrderDir ? 'fa-sort-desc' : 'fa-sort-asc')"></i>
 
-        </th>
-        <th>
-            {{"staff.actions"|translate}}
-        </th>
+      </th>
+      <th>
+        {{"staff.actions"|translate}}
+      </th>
     </tr>
-    </thead>
-    <tbody>
+  </thead>
+  <tbody>
     <tr *ngFor="let staff of allStaff">
-        <td>{{staff.id}}</td>
-        <td>{{staff.username}}</td>
-        <td>{{staff.email}}</td>
+      <td>{{staff.roles[0].nameAr}}</td>
+      <td>{{staff.username}}</td>
+      <td>{{staff.email}}</td>
 
-        <td><span class="badge "
-                  [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"staff.status." + staff.status|translate}}</span>
-        </td>
-        <td>
-            <button type="button" class="btn btn-primary"
-                    (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}
-            </button>
-            <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">
-                {{"staff.buttons.delete"|translate}}
-            </button>
-        </td>
+      <td><span class="badge "
+          [ngClass]="staff.status=='activated'? 'badge-success' : (staff.status=='pending' ? 'badge-warning' : 'badge-danger')">{{"staff.status." + staff.status|translate}}</span>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="editStaff(staff.id)">{{"staff.buttons.edit"|translate}}
+        </button>
+        <button class="btn btn-danger" type="button" (click)="deleteStaff(staff.id)">
+          {{"staff.buttons.delete"|translate}}
+        </button>
+      </td>
     </tr>
     <!--[ngClass]="element.operation=='-' ? 'amount-withdraw' : 'amount-deposit'"-->
-    </tbody>
+  </tbody>
 </table>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'app-modal-basic',
@@ -20,7 +20,9 @@ export class ModalBasicComponent implements OnInit {
 
     }
 
-    public show(): void {
+    public show(customClass = ""): void {
+        if (customClass != "")
+            this.dialogClass = customClass;
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
     }
