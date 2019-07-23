@@ -32,7 +32,7 @@ export class AwardListComponent implements OnInit {
 
   levels = []
   clientTypes = [{ "value": "wholesale", "label": "wholesale" }, { "value": "horeca", "label": "horeca" }, { "value": "consumer", "label": "consumer" }]
-  statusList = [{ "value": "active", "label": "active" }, { "value": "deactive", "label": "deactive" }]
+  statusList = [{ "value": "activated", "label": "activated" }, { "value": "deactivated", "label": "deactivated" }]
 
 
 
@@ -159,14 +159,43 @@ export class AwardListComponent implements OnInit {
     }, errorCode => this.showError());
   }
 
-
-  openModal(template, award) {
+  viewAwardModel;
+  confirmModel;
+  openModal(viewAward, award, confirmModel) {
     this.awardView = award;
-    template.show("modal-lg")
+    this.viewAwardModel = viewAward;
+    this.confirmModel = confirmModel;
+    viewAward.show("modal-lg")
   }
 
+  confirmStatus() {
 
+    this.awardServices.changeAwardStatus(this.awardView)
+      .finally(() => {
+        this.returnedArray = this.allAwards;
+        this.spinnerFlag = false;
+        this.unpage = false;
 
+        if (localStorage.getItem('productsScreenY')) {
+          setTimeout(() => {
+            window.scrollTo(0, Number(localStorage.getItem('productsScreenY')));
+
+          }, 100);
+        }
+
+      })
+      .subscribe(data => {
+        this.getAllProducts();
+        this.confirmModel.hide()
+      }
+        , errorCode => this.showError());
+
+  }
+
+  changeAwardStatus() {
+    this.viewAwardModel.hide();
+    this.confirmModel.show();
+  }
 
   setFilters() {
     this.spinnerFlag = true;
@@ -174,13 +203,17 @@ export class AwardListComponent implements OnInit {
     if (this.searchKey != '') {
       filters.push({ 'nameAr': { "like": this.searchKey } });
     }
+    if (this.status != 1) {
+      filters.push({ 'status': this.status });
+    }
+
 
     if (this.clientType != 1) {
       filters.push({ 'clientTypes': { "like": this.clientType } });
     }
 
     if (this.level != 1) {
-      filters.push({ 'levelIds': { "like": this.level } });
+      filters.push({ 'levelIds': this.level });
     }
 
 
@@ -212,7 +245,7 @@ export class AwardListComponent implements OnInit {
   emptyFields() {
     localStorage.removeItem('filters');
     localStorage.removeItem('search');
-    this.router.navigate(['/abstract-products/list']);
+    this.router.navigate(['/awards/list']);
   }
 
 

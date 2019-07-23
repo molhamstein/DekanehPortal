@@ -25,7 +25,7 @@ export class NewAwardComponent implements OnInit {
   prizeList = []
 
   prize = { "productId": "", "count": 0 }
-  coupon: any = { "type": "fixed", "value": 0, "expireDate": "2019-01-01T01:00", "numberOfTimes": 1 }
+  coupon: any = { "type": "fixed", "value": 0, "duration": "0", "numberOfTimes": 1 }
   manufacturers = []
   sibmpleOption: Array<IOption> = [{ value: "wholesale", label: "wholesale" }, { value: "horeca", label: "horeca" }, { value: "consumer", label: "consumer" }].map(option => ({ value: option.value, label: option.label }));
   areas: Array<IOption>;
@@ -52,6 +52,7 @@ export class NewAwardComponent implements OnInit {
     areaIds: new FormControl([], Validators.required),
     levelIds: new FormControl([], Validators.required),
     times: new FormControl(0, Validators.required),
+    countLimit: new FormControl(0, Validators.required),
 
   });
 
@@ -162,7 +163,7 @@ export class NewAwardComponent implements OnInit {
 
   addCoupon() {
     this.couponList.push(this.coupon);
-    this.coupon = { "type": "fixed", "value": 0, "expireDate": "2019-01-01T01:00", "numberOfTimes": 1 };
+    this.coupon = { "type": "fixed", "value": 0, "duration": "0", "numberOfTimes": 1 };
   }
 
 
@@ -241,7 +242,10 @@ export class NewAwardComponent implements OnInit {
     }
     this.award.action = this.action;
     this.award.coupons = this.couponList;
-    this.award.prizes = this.prizeList
+    this.award.prizes = []
+    this.prizeList.forEach(element => {
+      this.award.prizes.push({ "count": element.count, "productId": element.productId })
+    });
     this.award.clientTypes = [];
     this.award['levelIds'].forEach(element => {
       var level = this.levels.find(function (levelElement) {
@@ -256,15 +260,15 @@ export class NewAwardComponent implements OnInit {
         this.award.clientTypes.push(level['clientType'])
     });
     console.log(this.award);
-    // this.Handler.createProduct(this.award).finally(() => {
-    //   this.router.navigate(['/awards/new']);
+    this.Handler.createProduct(this.award).finally(() => {
+      this.router.navigate(['/awards/new']);
 
 
-    // })
-    //   .subscribe(successCode => {
-    //     this.statusCode = successCode;
-    //   },
-    //     errorCode => this.showError());
+    })
+      .subscribe(successCode => {
+        this.statusCode = successCode;
+      },
+        errorCode => this.showError());
 
   }
 

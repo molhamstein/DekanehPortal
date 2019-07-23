@@ -45,6 +45,34 @@ export class ConstService {
         }
     }
 
+    inputFormatData(date) {
+        var tempDate = new Date(date);
+        var string = "";
+        // "2019-01-01T01:00"
+        string += tempDate.getFullYear() + "-";
+        if (tempDate.getMonth() + 1 > 9)
+            string += tempDate.getMonth()+1 + "-";
+        else
+            string += "0" + (tempDate.getMonth()+1) + "-";
+
+        if (tempDate.getDate() > 9)
+            string += tempDate.getDate() + "T";
+        else
+            string += "0" + tempDate.getDate() + "T";
+
+        if (tempDate.getHours() > 9)
+            string += tempDate.getHours() + ":";
+        else
+            string += "0" + tempDate.getHours() + ":";
+
+        if (tempDate.getMinutes() > 9)
+            string += tempDate.getMinutes()
+        else
+            string += "0" + tempDate.getMinutes()
+
+        return string;
+    }
+
     translateUtterance(utterance: string) {
         let temp;
         this.translate.stream(utterance).subscribe((str) => {

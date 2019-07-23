@@ -144,7 +144,12 @@
     "users": "أختر المستخدمين (الأفتراضي كل المستخدمين)"
   },
   "modal": {
+    "addInstallment": "إضافة دفعة",
+    "activated": "تفعيل",
+    "deactivated": "إلغاء تفعيل",
     "confirm": "تأكيد",
+    "confirmDeactivated": "هل انت متاكد من إلغاء التفعيل",
+    "confirmActivated": "هل انت متاكد من التفعيل",
     "confirmLogin": "هل انت متاكد من تسجيل الدخول اليوم",
     "confirmLogout": "هل انت متاكد من تسجيل الخروج اليوم",
     "confirmChangeStaatusSystem": "هل انت متاكد من تغيير حالة النظام ",
@@ -387,6 +392,10 @@
     "phoneNumber": "رقم الهاتف",
     "userName": "اسم المستخدم",
     "statustext": "الحالة",
+    "installment": "دفعة",
+    "receivedAt": "تاريخ الدفعة",
+    "amount": "قيمة الدفعة",
+    "balance": "الرصيد",
     "actions": "عمليات",
     "buttons": {
       "edit": "تعديل",
@@ -394,7 +403,9 @@
       "delete": "حذف",
       "add": "اضافة",
       "addNote": "اضافة ملاحظة",
-      "back": "إلغاء"
+      "back": "إلغاء",
+      "addInstallment": "إضافة دفعة",
+      "save": "حفظ"
     },
     "status": {
       "pending": "معلق",
@@ -469,6 +480,7 @@
         "code": "الكود",
         "shopName": "اسم المحل",
         "expireDate": "تاريخ الانتهاء",
+        "duration":"المدة (اليوم)",
         "status": "الحالة",
         "numberOfTimes": "عدد المرات",
         "numberOfUsed": "عدد القسائم المستخدمة",
@@ -558,7 +570,7 @@
       "deactivated": "غير مفعل"
     },
     "occurrence": "مدة التكرار",
-    "times": "عدد الاستخدامات",
+    "times": "الاستخدامات ضمن الفترة الواحدة",
     "from": "من",
     "to": "إلى",
     "form": {
@@ -568,7 +580,7 @@
         "to": "إلى",
         "occurrenceType": "نوع التكرار",
         "occurrence": "مدة التكرار",
-        "times": "عدد الاستخدامات",
+        "times": "الاستخدامات ضمن الفترة الواحدة",
         "count": " عدد الاستخدامات حتى الأن",
         "countLimit": " عدد الاستخدامات الاعلى",
         "details": "التفاصيل",
@@ -581,14 +593,14 @@
         "products": "المنتجات"
       },
       "controls": {
-        "complete":"انتهت",
+        "complete": "انتهت",
         "awardName": "اسم الجائزة",
         "from": "من",
         "to": "إلى",
         "createdAt": "تاريخ الانشاء",
         "occurrenceType": "نوع التكرار",
         "occurrence": "مدة التكرار",
-        "times": " عدد الاستخدامات",
+        "times": "الاستخدامات ضمن الفترة الواحدة",
         "count": " الاستخدامات حتى الأن",
         "countLimit": " عدد الاستخدامات الاعلى",
         "details": "التفاصيل",

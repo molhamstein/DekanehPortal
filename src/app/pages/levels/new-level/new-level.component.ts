@@ -83,7 +83,7 @@ export class NewLevelComponent implements OnInit {
     }
 
     goHome() {
-        this.router.navigate(['/coupons/list']);
+        this.router.navigate(['/levels/list']);
 
     }
 

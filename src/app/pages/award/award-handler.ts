@@ -25,6 +25,18 @@ export class AwardHandler {
     }
 
 
+    changeAwardStatus(award): Observable<number> {
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        var newStatus = "activated"
+        if (award.status == 'activated')
+            newStatus = "deactivated"
+        return this.apiService.patch('/awards/' + award.id, { "status": newStatus }, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+    }
+
+
     getManById(id: string): Observable<any> {
         let param = new URLSearchParams();
         return this.apiService.get('/manufacturers/' + id)

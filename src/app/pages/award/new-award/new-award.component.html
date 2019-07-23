@@ -54,6 +54,14 @@
             id="occurrence" placeholder="{{'award.form.placeholders.target'|translate}}">
         </div>
 
+        <div class="form-group">
+            <label for="nameAr">{{"award.form.controls.countLimit"|translate}}</label>
+            <input class="form-control" formControlName="countLimit" id="nameAr"
+              placeholder="{{'award.form.placeholders.countLimit'|translate}}" type="text">
+            <label *ngIf="awoardForm.get('countLimit').invalid && processValidation"
+              class="text-danger">{{'product.form.validations.blank'|translate}}</label>
+          </div>
+  
 
 
       </div>
@@ -237,9 +245,9 @@
             </div>
 
             <div class="form-group col-sm-4">
-              <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
-              <input [(ngModel)]="coupon.expireDate" [ngModelOptions]="{standalone: true}" class="form-control"
-                id="expireDate" placeholder="{{'coupon.form.placeholders.expireDate'|translate}}" type="datetime-local">
+              <label for="expireDate">{{"coupon.form.controls.duration"|translate}}</label>
+              <input [(ngModel)]="coupon.duration" [ngModelOptions]="{standalone: true}" class="form-control"
+                id="expireDate" placeholder="{{'coupon.form.placeholders.duration'|translate}}" type="number">
             </div>
             <div class="form-group col-sm-2" style="padding-top: 29px;">
               <button class="btn btn-success" type="button" (click)="addCoupon()">
@@ -279,10 +287,10 @@
               </div>
 
               <div class="form-group col-sm-4">
-                <label for="expireDate">{{"coupon.form.controls.expireDate"|translate}}</label>
-                <input disabled="true" [(ngModel)]="oneCoupon.expireDate" [ngModelOptions]="{standalone: true}"
-                  class="form-control" id="expireDate" placeholder="{{'coupon.form.placeholders.expireDate'|translate}}"
-                  type="datetime-local">
+                <label for="expireDate">{{"coupon.form.controls.duration"|translate}}</label>
+                <input disabled="true" [(ngModel)]="oneCoupon.duration" [ngModelOptions]="{standalone: true}"
+                  class="form-control" id="expireDate" placeholder="{{'coupon.form.placeholders.duration'|translate}}"
+                  type="number">
                 <!-- <label *ngIf="CouponForm.get('expireDate').invalid && processValidation"
                                class="text-danger">{{'coupon.form.validations.blank'|translate}}</label> -->
               </div>

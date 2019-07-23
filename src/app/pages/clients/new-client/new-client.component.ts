@@ -1,3 +1,4 @@
+import { ConstService } from './../../../services/const.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from '../../user-model';
@@ -33,6 +34,7 @@ export class NewClientComponent implements OnInit {
     locationPoint: any;
     processValidation = false;
     requestProcessing = false;
+    installmentCount = 0
     modalRef: BsModalRef;
     ClientForm = new FormGroup({
         phoneNumber: new FormControl('', Validators.compose(
@@ -71,7 +73,7 @@ export class NewClientComponent implements OnInit {
     };
     private user: any;
 
-    constructor(private modalService: BsModalService, private ClientHandler: ClientsHandler, private router: Router, private route: ActivatedRoute, private alert: AlertService) {
+    constructor(private modalService: BsModalService, private ClientHandler: ClientsHandler, public c: ConstService, private router: Router, private route: ActivatedRoute, private alert: AlertService) {
 
         this.route.params.subscribe(params => {
             this.id = params['id'];
@@ -86,6 +88,12 @@ export class NewClientComponent implements OnInit {
             };
             this.newUSer = true;
         } else {
+            this.ClientHandler.getInstallmentCount(this.id).finally(() => {
+                this.getInstallment();
+            }).subscribe(co => {
+                this.installmentCount = co['count'];
+            }, errorCode => this.showError());
+
             this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
                 this.notes = notes
             })
@@ -131,6 +139,31 @@ export class NewClientComponent implements OnInit {
     }
 
 
+    allInstallment = []
+    pages = 20;
+    currentPage = 1;
+    indexEditIns = -1;
+    pageChanged(event: any): void {
+
+        setTimeout(() => {
+            this.getInstallment();
+
+
+        }, 50);
+
+    }
+
+    getInstallment() {
+
+        this.ClientHandler.getInstallment(this.id, this.pages, this.currentPage).finally(() => {
+
+        })
+            .subscribe(data => {
+                this.allInstallment = data;
+            }
+                , errorCode => this.showError());
+    }
+
     deleteNote(id, index) {
         this.ClientHandler.deleteNote(id).subscribe(res => {
             this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
@@ -141,6 +174,55 @@ export class NewClientComponent implements OnInit {
 
     }
 
+    instForm = new FormGroup({
+        receivedAt: new FormControl("2019-01-01T01:00", Validators.required),
+        amount: new FormControl(0, Validators.required),
+    });
+
+    editableIns = { "amount": 0, "receivedAt": "" };
+    editInstallment(index) {
+        this.indexEditIns = index;
+
+        this.editableIns['amount'] = this.allInstallment[this.indexEditIns].amount;
+        this.editableIns['receivedAt'] = this.c.inputFormatData(this.allInstallment[this.indexEditIns].receivedAt);
+    }
+
+    saveInstallment() {
+        this.ClientHandler.updateInstallment(this.allInstallment[this.indexEditIns].id, this.editableIns).subscribe(
+            successCode => {
+                this.indexEditIns = -1
+                this.currentPage = 1;
+                this.getInstallment()
+            },
+            errorCode => this.showError()
+        )
+    }
+    openInstallmentModal(modal) {
+        this.instForm = new FormGroup({
+            receivedAt: new FormControl("2019-01-01T01:00", Validators.required),
+            amount: new FormControl(0, Validators.required),
+        });
+        modal.show()
+        // this.modalRef = this.modalService.show(modal, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
+    }
+    submiteddAddInst;
+    addInstallment(modal) {
+        if (this.instForm.valid == false) {
+            this.submiteddAddInst = true;
+            return
+        }
+        var data = this.instForm.value;
+        data["userId"] = this.id;
+        this.ClientHandler.addInstallment(data).subscribe(
+            successCode => {
+                modal.hide();
+                this.currentPage = 1;
+                this.getInstallment()
+            },
+            errorCode => this.showError()
+        )
+
+    }
 
     clientIdAddNote;
     submiteddAddNote;
@@ -148,6 +230,8 @@ export class NewClientComponent implements OnInit {
         createdAt: new FormControl(new Date(), Validators.required),
         note: new FormControl("", Validators.required),
     });
+
+
     open(modal, id) {
         this.userNotForm = new FormGroup({
             createdAt: new FormControl(new Date, Validators.required),

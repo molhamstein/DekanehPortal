@@ -14,7 +14,8 @@ export class AwardModel {
     public areaIds: string[];
     public action: {};
     public coupons: {}[];
-    public prizes:{}[]
+    public status: string;
+    public prizes: {}[]
 
     constructor(id: string, nameAr: string, nameEn: string, details: string, subCategoryId: string, manufacturerId: string, media: any, officialMassMarketPrice: number, officialConsumerPrice: number) {
         this.id = id;

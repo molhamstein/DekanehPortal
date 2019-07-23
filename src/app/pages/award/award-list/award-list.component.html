@@ -5,7 +5,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="app-modal-body">
+  <div class="app-modal-body" style="max-height: 400px;overflow-y: auto;overflow-x: hidden;">
     <div class="row" style="margin: 20px 0px">
       <div class="col-sm-12">
         <span style="font-weight: bold;font-size: 15">{{awardView.nameAr}} : </span>
@@ -59,27 +59,182 @@
       <div class="col-sm-3">
         <b style="font-size: 15"> {{"award.form.controls.status"|translate}} : </b>
         <span class="badge "
-          [ngClass]="[awardView.status=='activated' ? 'badge-success' : '',  awardView.status=='deactived' ? 'badge-danger' : '']">
+          [ngClass]="[awardView.status=='activated' ? 'badge-success' : '',  awardView.status=='deactivated' ? 'badge-danger' : '']">
           {{"award.status."+ awardView.status|translate}}</span>
       </div>
 
       <div class="col-sm-3">
-          <b style="font-size: 15"> {{"award.form.controls.complete"|translate}} : </b>
-          <i class="fa fa-check-circle" *ngIf="awardView.complete" aria-hidden="true"></i>
-          <i class="fa fa-close" *ngIf="!awardView.complete" aria-hidden="true"></i>
-
-        </div>
-  
-
-    
+        <b style="font-size: 15"> {{"award.form.controls.complete"|translate}} : </b>
+        <i class="fa fa-check-circle" *ngIf="awardView.complete" aria-hidden="true"></i>
+        <i class="fa fa-close" *ngIf="!awardView.complete" aria-hidden="true"></i>
+      </div>
     </div>
 
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-12">
+        <b style="font-size: 15"> {{"award.form.controls.clientTypes"|translate}} : </b>
+        <span style="margin: 0px 5px" *ngFor="let oneClient of awardView.clientTypes" class="badge badge-warning">
+          {{"level.form.controls.clientTypes."+ oneClient|translate}}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-12">
+        <b style="font-size: 15"> {{"award.form.controls.areas"|translate}} : </b>
+        <span style="margin: 0px 5px" *ngFor="let oneArea of awardView.areas" class="badge badge-warning">
+          {{oneArea.nameAr}}</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-12">
+        <b style="font-size: 15"> {{"award.form.controls.levels"|translate}} : </b>
+        <span style="margin: 0px 5px" *ngFor="let oneLevel of awardView.levels" class="badge badge-warning">
+          {{oneLevel.nameAr}} " {{"level.form.controls.clientTypes."+ oneLevel.clientType|translate}} "</span>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin: 20px 0px">
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.action"|translate}} : </b>
+        <span style="margin: 0px 5px" class="badge badge-warning">
+          {{'award.form.controls.type.'+awardView.action?.type|translate}}
+        </span>
+      </div>
+      <div class="col-sm-4">
+        <b style="font-size: 15"> {{"award.form.controls.target"|translate}} : </b>
+        <span style="margin: 0px 5px" class="badge badge-warning">
+          {{awardView.action?.target}}
+        </span>
+      </div>
+      <div class="col-sm-4" *ngIf="awardView.action && awardView.action.manufacturerId">
+        <b style="font-size: 15"> {{"award.form.controls.manufacturer"|translate}} : </b>
+        <span style="margin: 0px 5px" class="badge badge-warning">
+          {{awardView.action.manufacturer.nameAr}}
+        </span>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 20px 0px" *ngIf="awardView.action && awardView.action.products && awardView.action.products.length > 0">
+      <div class="col-sm-12">
+        <b style="font-size: 15"> {{"award.form.controls.products"|translate}} : </b>
+        <span style="margin: 0px 5px" class="badge badge-warning" *ngFor="let oneProduct of awardView.action.products">
+          {{oneProduct.nameAr}}
+        </span>
+      </div>
+    </div>
+
+
+    <div class="row" *ngIf="awardView.coupons && awardView.coupons.length>0">
+      <div class="notesDiv">
+        <div class="title">
+          <label>{{"award.form.controls.coupon"|translate}}</label>
+        </div>
+        <div class="body">
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="type">{{'coupon.form.controls.type'|translate}}</label>
+            </div>
+            <div class="col-sm-3">
+              <label for="value">{{"coupon.form.controls.value"|translate}}</label>
+            </div>
+
+            <div class="col-sm-3">
+              <label for="value">{{"coupon.form.controls.numberOfTimes"|translate}}</label>
+            </div>
+
+            <div class="col-sm-3">
+              <label for="value">{{"coupon.form.controls.duration"|translate}}</label>
+            </div>
+          </div>
+          <div class="oneNote" *ngFor="let oneCoupon of awardView.coupons; let i = index">
+            <div class="row">
+              <div class="col-sm-3">
+                <span for="type"> {{'coupon.type.' + oneCoupon.type|translate}}</span>
+              </div>
+              <div class="col-sm-3">
+                <span for="value">{{oneCoupon.value}}</span>
+              </div>
+
+              <div class="col-sm-3">
+                <span for="value">{{oneCoupon.numberOfTimes}}</span>
+              </div>
+              <div class="col-sm-3">
+                <span for="value">{{oneCoupon.duration}}</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" *ngIf="awardView.prizesInclude && awardView.prizesInclude.length>0">
+      <div class="notesDiv">
+        <div class="title">
+          <label>{{"award.form.controls.products"|translate}}</label>
+        </div>
+        <div class="body">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="type">{{'product.form.controls.prodName'|translate}}</label>
+            </div>
+            <div class="col-sm-6">
+              <label for="value">{{"product.form.controls.quantity"|translate}}</label>
+            </div>
+          </div>
+          <div class="oneNote" *ngFor="let onePrize of awardView.prizesInclude; let i = index">
+            <div class="row">
+              <div class="col-sm-6">
+                <span for="type"> {{ onePrize.product.nameAr}}</span>
+              </div>
+              <div class="col-sm-6">
+                <span for="value">{{onePrize.count}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default waves-effect"
       (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
-    <button type="button" class="btn btn-primary waves-effect waves-light">{{'modal.add'|translate}}</button>
+    <button type="button" (click)="changeAwardStatus()" *ngIf="awardView.status=='deactivated'"
+      class="btn btn-primary waves-effect waves-light">{{'modal.activated'|translate}}</button>
+    <button type="button" (click)="changeAwardStatus()" *ngIf="awardView.status=='activated'"
+      class="btn btn-danger waves-effect waves-light">{{'modal.deactivated'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+
+<app-modal-basic #modalConfirm>
+  <div class="app-modal-header">
+    <h4 *ngIf="awardView.status=='activated'" class="modal-title">{{'modal.deactivated'|translate}}</h4>
+    <h4 *ngIf="awardView.status=='deactivated'" class="modal-title">{{'modal.activated'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalConfirm.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <span *ngIf="awardView.status=='activated'"
+          style="font-size: 15">{{"modal.confirmDeactivated"|translate}}</span>
+        <span *ngIf="awardView.status=='deactivated'"
+          style="font-size: 15">{{"modal.confirmActivated"|translate}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalConfirm.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" (click)="confirmStatus()"
+      class="btn btn-primary waves-effect waves-light">{{'modal.confirm'|translate}}</button>
   </div>
 </app-modal-basic>
 
@@ -92,9 +247,10 @@
   <div class="col-sm-9">
     <div class="filter-btns">
       <select class="btn btn-action" [(ngModel)]="status">
-        <option value='1' disabled style="display: none" selected>{{'level.form.controls.status'|translate}}</option>
+        <option value='1' disabled style="display: none" selected>{{'award.form.controls.status'|translate}}</option>
         <option *ngFor="let oneStatus of statusList" [value]="oneStatus.value">
-          {{oneStatus.label}}
+          {{"award.status."+ oneStatus.label|translate}}
+
         </option>
       </select>
 
@@ -157,7 +313,7 @@
     </thead>
     <tbody [hidden]="spinnerFlag">
 
-      <tr *ngFor="let oneAward of allAwards" (click)="openModal(modalDefault,oneAward)">
+      <tr *ngFor="let oneAward of allAwards" (click)="openModal(modalDefault,oneAward,modalConfirm)">
         <td>{{oneAward.nameAr}}</td>
         <td>{{c.formatDate(oneAward.from)}}</td>
         <td>{{c.formatDate(oneAward.to)}}</td>

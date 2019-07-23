@@ -12,12 +12,56 @@ export class ClientsHandler {
 
     }
 
+     
+
+    getInstallment(clientId, perPage: number, currentPage: number): Observable<any[]> {
+        let param = new URLSearchParams();
+        var filter = {}
+        filter = { where: { userId: clientId }, order: "creationDate DESC", limit: + perPage, skip: (currentPage - 1) * perPage }
+
+        let rolesString = '';
+        param.append('filter', JSON.stringify(filter));
+        return this.apiService.get('/installments', param)
+            .map(this.extractData).catch(this.handleError);
+
+    }
+
+    getInstallmentCount(clientId): Observable<number> {
+        let param = new URLSearchParams();
+        var filter = {}
+        filter = { userId: clientId }
+        param.append('where', JSON.stringify(filter));
+
+        return this.apiService.get('/installments/count', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
 
     addNote(data) {
         let body = JSON.stringify(data);
         let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });
         return this.apiService.post('/userNots', body, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+
+    }
+
+    addInstallment(data) {
+        let body = JSON.stringify(data);
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.post('/installments', body, options)
+            .map(success => success.status)
+            .catch(this.handleError);
+
+    }
+
+    updateInstallment(id,data) {
+        let body = JSON.stringify(data);
+        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: cpHeaders });
+        return this.apiService.put('/installments/'+id+"/editInstallment", body, options)
             .map(success => success.status)
             .catch(this.handleError);
 

@@ -39,6 +39,14 @@ export class ApiService {
         return this.http.put(this.api + name, data, { headers: this.header });
     }
 
+    patch(name, data, options?) {
+        if (options) {
+            options.headers.append('authorization', localStorage.getItem('token'));
+            return this.http.put(this.api + name, data, options);
+        }
+        return this.http.patch(this.api + name, data, { headers: this.header });
+    }
+
     delete(name, id) {
         return this.http.delete(this.api + name + '\\' + id, { headers: this.header });
     }

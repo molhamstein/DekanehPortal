@@ -15,13 +15,13 @@ export class NotificationsService {
     }
 
     getSystemStatus(): Observable<boolean> {
-        return this.api.get('/notifications/count')
+        return this.api.get('/configs')
             .map(this.extractData).catch(this.handleError);
     }
 
 
     changeStatusSystem(){
-        return this.api.put('/notifications/makeAllRead', []).map(this.extractData).catch(this.handleError);
+        return this.api.put('/configs/running', []).map(this.extractData).catch(this.handleError);
     }
 
     getNewNotiCount(): Observable<number> {

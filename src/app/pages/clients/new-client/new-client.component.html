@@ -9,25 +9,30 @@
     <form [formGroup]="userNotForm">
       <div class="form-group">
         <label for="notes">{{"modal.note"|translate}}</label>
-        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}" rows="4"></textarea>
-        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}"
+          rows="4"></textarea>
+        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
 
       </div>
 
 
       <div class="form-group">
         <label for="expireDate">{{"modal.createdAt"|translate}}</label>
-        <input class="form-control" formControlName="createdAt" id="expireDate" placeholder="{{'modal.createdAt'|translate}}"
-          type="datetime-local">
-        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote" class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+        <input class="form-control" formControlName="createdAt" id="expireDate"
+          placeholder="{{'modal.createdAt'|translate}}" type="datetime-local">
+        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
 
       </div>
 
     </form>
   </div>
   <div class="app-modal-footer">
-    <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
-    <button type="button" class="btn btn-primary waves-effect waves-light" (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
   </div>
 </app-modal-basic>
 
@@ -39,9 +44,10 @@
       <div class="col-sm">
         <div class="form-group">
           <label for="shopname">{{"client.form.controls.shopName"|translate}}</label>
-          <input class="form-control" formControlName="shopName" id="shopname" placeholder="{{'client.form.placeholders.shopName'|translate}}"
-            type="text">
-          <label *ngIf="ClientForm.get('shopName').invalid && processValidation" class="text-danger">{{'client.form.validations.shopname'|translate}}</label>
+          <input class="form-control" formControlName="shopName" id="shopname"
+            placeholder="{{'client.form.placeholders.shopName'|translate}}" type="text">
+          <label *ngIf="ClientForm.get('shopName').invalid && processValidation"
+            class="text-danger">{{'client.form.validations.shopname'|translate}}</label>
         </div>
         <div class="form-group">
           <label for="areas">{{'client.form.controls.area'|translate}}</label>
@@ -55,20 +61,22 @@
           <label for="phone">{{"client.form.controls.phone"|translate}}</label>
           <input (change)="checkUserByPhone($event)" class="form-control" formControlName="phoneNumber" id="phone"
             placeholder="{{'client.form.placeholders.phone'|translate}}" type="text">
-          <label *ngIf="ClientForm.get('phoneNumber').invalid && processValidation" [ngClass]="'text-danger'">{{'client.form.validations.phone'|translate}}</label>
+          <label *ngIf="ClientForm.get('phoneNumber').invalid && processValidation"
+            [ngClass]="'text-danger'">{{'client.form.validations.phone'|translate}}</label>
           <label *ngIf="phoneError" [ngClass]="'text-danger'">{{'client.form.errors.phone'|translate}}</label>
           <small class="form-text text-muted" id="phoneHint">{{'client.form.validations.phoneHint'|translate}}</small>
 
         </div>
         <div class="form-group">
           <label for="ownerName">{{"client.form.controls.ownerName"|translate}}</label>
-          <input class="form-control" formControlName="ownerName" id="ownerName" placeholder="{{'client.form.placeholders.ownerName'|translate}}"
-            type="text">
+          <input class="form-control" formControlName="ownerName" id="ownerName"
+            placeholder="{{'client.form.placeholders.ownerName'|translate}}" type="text">
         </div>
         <div *ngIf="newUSer" class="form-group">
           <label for="password">{{"client.form.controls.password"|translate}}</label>
           <input [(ngModel)]="password" class="form-control" formControlName="password" id="password" type="password">
-          <label *ngIf="ClientForm.get('password').invalid && processValidation" [ngClass]="'text-danger'">{{'client.form.validations.password'|translate}}</label>
+          <label *ngIf="ClientForm.get('password').invalid && processValidation"
+            [ngClass]="'text-danger'">{{'client.form.validations.password'|translate}}</label>
 
         </div>
         <div *ngIf="newUSer" class="form-group">
@@ -97,8 +105,8 @@
           <!--</div>-->
           <div class="form-check">
             <label class="form-check-label">
-              <input (change)="onSelectionChange('wholesale')" [checked]="selectedSale=='wholesale'" class="form-check-input"
-                id="wholesale" name="optionsRadios" type="radio" value="wholesale">
+              <input (change)="onSelectionChange('wholesale')" [checked]="selectedSale=='wholesale'"
+                class="form-check-input" id="wholesale" name="optionsRadios" type="radio" value="wholesale">
               {{"client.form.controls.wholesale"|translate}}
             </label>
           </div>
@@ -113,15 +121,15 @@
         <div class="form-group">
 
           <label for="location">{{"client.form.controls.location"|translate}}</label>
-          <input class="form-control" formControlName="location" id="location" placeholder="{{'client.form.placeholders.location'|translate}}"
-            type="text">
+          <input class="form-control" formControlName="location" id="location"
+            placeholder="{{'client.form.placeholders.location'|translate}}" type="text">
         </div>
 
 
         <div class="form-group">
           <label for="notes">{{"client.form.controls.notes"|translate}}</label>
-          <textarea class="form-control" formControlName="notes" id="notes" placeholder="{{'client.form.placeholders.notes'|translate}}"
-            rows="4"></textarea>
+          <textarea class="form-control" formControlName="notes" id="notes"
+            placeholder="{{'client.form.placeholders.notes'|translate}}" rows="4"></textarea>
         </div>
 
 
@@ -137,7 +145,8 @@
               <div class="actions">
                 <span>{{oneNote.createdAt | date:'medium'}}</span>
                 <div class="button">
-                  <button class="btn btn-danger" (click)="deleteNote(oneNote.id,index)" style="margin-left: 15px;" type="button">
+                  <button class="btn btn-danger" (click)="deleteNote(oneNote.id,index)" style="margin-left: 15px;"
+                    type="button">
                     {{"client.buttons.delete"|translate}}
                   </button>
 
@@ -185,13 +194,78 @@
   </div>
 
 </form>
+<div class="row" style="margin: 10px 0px;" *ngIf="!newUSer">
+  <div class="col-sm-8">
+    <button (click)="openInstallmentModal(installmentTemplete)" class="btn btn-success" type="button">
+      {{"client.buttons.addInstallment"|translate}}
+    </button>
+  </div>
+</div>
+<table *ngIf="!newUSer" class="table table-bordered table-striped ">
+  <thead>
+    <tr>
+      <th>
+        {{"client.installment"|translate}}
+      </th>
+      <th>
+        {{"client.receivedAt"|translate}}
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let oneInstallment of allInstallment;let i = index ">
+      <td *ngIf="indexEditIns!=i">{{oneInstallment.amount}}</td>
+      <td *ngIf="indexEditIns!=i">{{c.formatDate(oneInstallment.receivedAt)}}</td>
+      <td *ngIf="indexEditIns==i">
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="editableIns.amount" id="forgotpassword" type="number">
+        </div>
+      </td>
+      <td *ngIf="indexEditIns==i">
+        <div class="form-group" >
+          <input class="form-control" [(ngModel)]="editableIns.receivedAt" id="forgotpassword" type="datetime-local">
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-warning" *ngIf="indexEditIns!=i" type="button" (click)="editInstallment(i)">
+          {{"client.buttons.edit"|translate}}
+        </button>
+        <button class="btn btn-danger" *ngIf="indexEditIns==i" type="button" (click)="indexEditIns = -1">
+          {{"client.buttons.back"|translate}}
+        </button>
+        <button class="btn btn-success" *ngIf="indexEditIns==i" type="button" (click)="saveInstallment(i)">
+          {{"client.buttons.save"|translate}}
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<div class="row" *ngIf="pageShow">
+  <!-- <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">" [(ngModel)]="currentPage"
+      (pageChanged)="pageChanged($event)"></pagination> -->
+  <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
+
+  <div class="per-page-sec">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+  </div>
+</div>
+
+
 <ng-template #templete>
   <div class="modal-body text-center">
     <form (ngSubmit)="onPassFormSubmit()" [formGroup]="PassForm" class="ClientForm">
       <div class="form-group">
         <label for="forgotpassword">{{"client.form.controls.password"|translate}}</label>
-        <input [(ngModel)]="password" class="form-control" formControlName="password" id="forgotpassword" type="password">
-        <label *ngIf="PassForm.get('password').invalid " [ngClass]="'text-danger'">{{'client.form.validations.password'|translate}}</label>
+        <input [(ngModel)]="password" class="form-control" formControlName="password" id="forgotpassword"
+          type="password">
+        <label *ngIf="PassForm.get('password').invalid "
+          [ngClass]="'text-danger'">{{'client.form.validations.password'|translate}}</label>
 
       </div>
       <div class="form-group">
@@ -208,3 +282,34 @@
   </div>
 
 </ng-template>
+
+
+<app-modal-basic #installmentTemplete>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.addInstallment'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="installmentTemplete.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <form [formGroup]="instForm">
+      <div class="form-group">
+        <label for="forgotpassword">{{"client.amount"|translate}}</label>
+        <input class="form-control" formControlName="amount" id="forgotpassword" type="number">
+        <label *ngIf="instForm.get('amount').invalid && submiteddAddInst"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+      <div class="form-group">
+        <label for="forgotrepassowrd">{{"client.receivedAt"|translate}}</label>
+        <input class="form-control" id="forgotrepassowrd" formControlName="receivedAt" type="datetime-local">
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="installmentTemplete.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addInstallment(installmentTemplete)">{{'modal.add'|translate}}</button>
+  </div>
+</app-modal-basic>

@@ -164,10 +164,12 @@ export class AdminComponent implements OnInit {
             });
         }, 3000);
         this.NotiHandler.getSystemStatus().subscribe(data => {
-
+            this.systemStatus = data[0].running
             // this.systemStatus = data;
 
         });
+
+
     }
 
     getNewNotiCount(sound?) {
@@ -181,9 +183,9 @@ export class AdminComponent implements OnInit {
     }
 
     changeStatusSystem(model) {
-        this.NotiHandler.changeStatusSystem().subscribe(() => {
-            this.systemStatus=!this.systemStatus;
+        this.NotiHandler.changeStatusSystem().subscribe((data) => {
             model.hide();
+            this.systemStatus = !this.systemStatus
         });
 
 
@@ -236,7 +238,7 @@ export class AdminComponent implements OnInit {
     }
 
 
-    
+
     onResize(event) {
         this.innerHeight = event.target.innerHeight + 'px';
         /* menu responsive */
