@@ -101,9 +101,27 @@ export class NewSupplierOrderComponent implements OnInit {
   }
 
 
+  cart = {}
   ngOnInit() {
-
-
+    this.cart = JSON.parse(localStorage.getItem('cart')) || {};
+    for (var property in this.cart) {
+      if (this.cart.hasOwnProperty(property)) {
+        // Do things here
+        console.log(this.cart[property])
+        this.selectedAbsProducts.push(this.cart[property].productAbstract);
+        this.offerProducts.push({
+          'count': 0,
+          'buyingPrice': 0,
+          'productAbstractId': this.cart[property].productAbstractId
+        });
+      }
+    }
+    // this.selectedAbsProducts.push(product);
+    // this.offerProducts.push({
+    //   'count': 0,
+    //   'buyingPrice': 0,
+    //   'productAbstractId': IOproduct.value
+    // });
   }
 
   preConfig() {
@@ -118,6 +136,7 @@ export class NewSupplierOrderComponent implements OnInit {
     console.log(sub);
     // let t = [];
     this.Handler.createSupplierOrder(sub).finally(() => {
+      this.clearCart()
       this.router.navigate(['/supplier-orders/new']);
 
 
@@ -181,6 +200,7 @@ export class NewSupplierOrderComponent implements OnInit {
     if (str != '') {
       this.abstractHandeler.search(str)
         .subscribe(data => {
+          this.tP = [];
           for (let pro of data) {
             this.tP.push({ label: pro.nameAr, value: pro.id });
           }
@@ -198,11 +218,16 @@ export class NewSupplierOrderComponent implements OnInit {
   }
 
   findProduct(id) {
+    console.log(this.pureAbsProducts)
     return this.pureAbsProducts.find(x => x.id === id);
   }
 
   absproductSelected(IOproduct) {
+    console.log("IOproduct")
+    console.log(IOproduct)
     let product = this.findProduct(IOproduct.value);
+    console.log("product")
+    console.log(product)
     this.selectedAbsProducts.push(product);
     this.offerProducts.push({
       'count': 0,
@@ -211,6 +236,9 @@ export class NewSupplierOrderComponent implements OnInit {
     });
   }
 
+  clearCart() {
+    localStorage.setItem('cart', JSON.stringify({}))
+  }
   findselecttedProduct(id) {
     return this.selectedAbsProducts.find(x => x.id === id);
   }

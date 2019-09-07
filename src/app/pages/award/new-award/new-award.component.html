@@ -46,6 +46,8 @@
           <label for="manufacturerId">{{'award.form.controls.areas'|translate}}</label>
           <ng-select [ngClass]="'ng-select'" style="height: 35px;" formControlName="areaIds"
             placeholder="{{'award.form.placeholders.areas'|translate}}" [options]="areas" [multiple]="true"></ng-select>
+            <label *ngIf="awoardForm.get('areaIds').invalid && processValidation"
+            class="text-danger">{{'product.form.validations.blank'|translate}}</label>
         </div>
 
         <div class="form-group">

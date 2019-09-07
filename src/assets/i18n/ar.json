@@ -94,6 +94,10 @@
       "add": "إضافة مستوى جديدة",
       "viewAll": "عرض جميع المستويات"
     },
+    "Complains": {
+      "main": "الشكاوي",
+      "viewAll": "عرض جميع الشكاوي"
+    },
     "Products": {
       "main": "المنتجات",
       "add": "إضافة منتج جديد",
@@ -163,6 +167,7 @@
     "confirmPack": "هل تريد تعبئة الطلب ؟",
     "add": "إضافة",
     "yes": "نعم",
+    "both": "الكل",
     "no": "لا",
     "note": "ملاحظة",
     "cancelOrder": "إلغاء الطلب",
@@ -222,6 +227,7 @@
     "image": "صور",
     "details": "التفاصيل",
     "edit": "تعديل",
+    "status": "الحالة",
     "delete": "حذف",
     "NoDataFound": "لا يوجد معطيات",
     "sub": {
@@ -301,6 +307,9 @@
       "edit": "تعديل",
       "delete": "حذف",
       "add": "اضافة",
+      "addToCart": "اضافة إلى السلة",
+      "removeFromCart": "إزالة من السلة",
+      "clearTheCart": "تفريغ السلة",
       "back": "إلغاء"
     },
     "status": {
@@ -463,6 +472,15 @@
       }
     }
   },
+  "complain": {
+    "form": {
+      "controls": {
+        "ownerName": "اسم المشتكي",
+        "prodName": "اسم المنتج",
+        "date": "التاريخ"
+      }
+    }
+  },
   "coupon": {
     "status": {
       "available": "متوفر",
@@ -480,7 +498,7 @@
         "code": "الكود",
         "shopName": "اسم المحل",
         "expireDate": "تاريخ الانتهاء",
-        "duration":"المدة (اليوم)",
+        "duration": "المدة (اليوم)",
         "status": "الحالة",
         "numberOfTimes": "عدد المرات",
         "numberOfUsed": "عدد القسائم المستخدمة",
@@ -569,7 +587,7 @@
       "activated": "مفعل",
       "deactivated": "غير مفعل"
     },
-    "occurrence": "مدة التكرار",
+    "occurrence": "عدد الفترات",
     "times": "الاستخدامات ضمن الفترة الواحدة",
     "from": "من",
     "to": "إلى",
@@ -579,7 +597,7 @@
         "from": "من",
         "to": "إلى",
         "occurrenceType": "نوع التكرار",
-        "occurrence": "مدة التكرار",
+        "occurrence": "عدد الفترات",
         "times": "الاستخدامات ضمن الفترة الواحدة",
         "count": " عدد الاستخدامات حتى الأن",
         "countLimit": " عدد الاستخدامات الاعلى",
@@ -599,7 +617,7 @@
         "to": "إلى",
         "createdAt": "تاريخ الانشاء",
         "occurrenceType": "نوع التكرار",
-        "occurrence": "مدة التكرار",
+        "occurrence": "عدد الفترات",
         "times": "الاستخدامات ضمن الفترة الواحدة",
         "count": " الاستخدامات حتى الأن",
         "countLimit": " عدد الاستخدامات الاعلى",
@@ -689,6 +707,8 @@
         "offer": "عرض",
         "offerOrProduct": "عرض / منتح",
         "featuredOrNot": "منتج مميز",
+        "featuredB2COrNot": "منتج مميز للزبون",
+        "hasMaxQuantityOrNot": "يملك حد أعظمي للطلب",
         "product": "منتج",
         "retailCostumer": "زبون مفرق",
         "horeca": "منشآت",
@@ -701,6 +721,7 @@
         "tags": "كلمات مفتاحية",
         "both": "الكل",
         "isFeatured": "مميز",
+        "featuredBtc": "مميز للزبون",
         "notFeatured": "غير مميز",
         "offerSource": "مصدر العرض",
         "offers": "عروض",
@@ -824,6 +845,7 @@
     "thresholdList": {
       "threshold": "out of stock",
       "warning": "low stock",
+      "instock": "in stock",
       "only-warning": "low stock only"
     },
     "form": {
@@ -838,6 +860,10 @@
         "expectedCount": "العدد المتوقع",
         "totalCount": "العدد الكلي",
         "threshold": "العتبة",
+        "accumulatedBuyingCountOverTime": "عدد القطع المشترات الإجمالي",
+        "accumulatedSellingCountOverTime": "عدد القطع المباعة الإجمالي",
+        "avgBuyingPrice": "متوسط سعر الشراء",
+        "avgSellingPrice": "متوسط سعر البيع",
         "warningThreshold": " عتبة التحذير"
 
       },

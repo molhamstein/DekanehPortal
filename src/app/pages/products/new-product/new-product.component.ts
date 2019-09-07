@@ -46,6 +46,7 @@ export class NewProductComponent implements OnInit {
   manufacturerId = '';
   productAbstractId = "";
   isFeatured: boolean = false;
+  featuredBtc: boolean = false;
   statusCode: number;
   requestProcess = false;
   cats = [];
@@ -74,6 +75,7 @@ export class NewProductComponent implements OnInit {
     offerSource: new FormControl(''),
     offerMaxQuantity: new FormControl(0),
     isFeatured: new FormControl(''),
+    featuredBtc: new FormControl(''),
     manufacturerId: new FormControl('', Validators.required),
     productAbstractId: new FormControl('', Validators.required),
     parentCount: new FormControl('', Validators.required),
@@ -121,7 +123,7 @@ export class NewProductComponent implements OnInit {
       })
       this.newPro = false;
       this.Handler.getProductById(this.id).subscribe(product => {
-        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount, product.consumerPrice, product.consumerPriceDiscount);
+        this.product = new ProductModel(product.nameAr, product.nameEn, product.pack, product.description, product.horecaPrice, product.wholeSalePrice, product.horecaPriceDiscount, product.wholeSalePriceDiscount, product.isFeatured,product.featuredBtc, product.isOffer, product.availableTo, product.status, product.offerSource, product.offerMaxQuantity, product.code, product.sku, product.categoryId, product.subCategoryId, product.offersIds, product.tagsIds, product.media, product.offerProducts, product.manufacturerId, product.productAbstractId, product.parentCount, product.consumerPrice, product.consumerPriceDiscount);
         this.product.creationDate = product.creationDate;
         this.product.id = product.id;
         this.product.offerProducts = this.offerProducts = product.offerProducts;

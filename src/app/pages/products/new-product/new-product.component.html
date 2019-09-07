@@ -221,6 +221,22 @@
               <!--<label *ngIf="nameError" [ngClass]="'text-danger'">{{'product.form.errors.prodName'|translate}}</label>-->
             </div>
 
+            <div class="row">
+              <div class="col-sm-6">
+               
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="featuredBtc">{{"product.form.controls.featuredBtc"|translate}}</label>
+                  <br>
+                  <label class="switch">
+                    <input [(ngModel)]="featuredBtc" formControlName="featuredBtc" id="featuredBtc" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">

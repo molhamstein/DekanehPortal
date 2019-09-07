@@ -16,11 +16,21 @@ export class AbstractProductHandler {
             .map(this.extractData).catch(this.handleError);
     }
 
-    getWarningProd(threshold) {
+    getWarningProd(threshold, perPage, currentPage) {
         var filter = { "include": "manufacturer" }
         let param = new URLSearchParams();
         param.append('threshold', threshold);
+        param.append('limit', perPage);
+        param.append('skip', ((currentPage - 1) * perPage).toString());
         return this.apiService.get('/productAbstracts/under', param)
+            .map(this.extractData).catch(this.handleError);
+    }
+
+    getWarningProdCount(threshold) {
+        var filter = { "include": "manufacturer" }
+        let param = new URLSearchParams();
+        param.append('threshold', threshold);
+        return this.apiService.get('/productAbstracts/under/count', param)
             .map(this.extractData).catch(this.handleError);
     }
 

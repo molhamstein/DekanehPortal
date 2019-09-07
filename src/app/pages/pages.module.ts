@@ -38,6 +38,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReportModule } from './reports/reports.module';
 import { SupplierOrdersModule } from './supplier-order/supplier-orders.module';
 import { LevelsModule } from './levels/levels.module';
+import { ComplainsModule } from './complains/complain.module';
+import {AngularEchartsModule} from 'ngx-echarts';
 
 @NgModule({
     imports: [
@@ -70,7 +72,10 @@ import { LevelsModule } from './levels/levels.module';
         ReportModule,
         DamagedProductModule,
         SupplierOrdersModule,
-        SupplierModule
+        SupplierModule,
+        ComplainsModule,
+        AngularEchartsModule
+        
     ],
     exports: [
         DataFilterPipe,

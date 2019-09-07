@@ -10,6 +10,7 @@ export class ProductModel {
     public consumerPriceDiscount: number
     public wholeSalePriceDiscount: number;
     public isFeatured: boolean;
+    public featuredBtc: boolean;
     public isOffer: boolean;
     public availableTo: string;
     public status: string;
@@ -29,7 +30,7 @@ export class ProductModel {
     public media: Media;
     public offerProducts: OfferProducts[];
 
-    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string, productAbstractId: string, parentCount: number,consumerPrice:number,consumerPriceDiscount:number) {
+    constructor(nameAr: string, nameEn: string, pack: string, description: string, horecaPrice: number, wholeSalePrice: number, horecaPriceDiscount: number, wholeSalePriceDiscount: number, isFeatured: boolean,featuredBtc: boolean, isOffer: boolean, availableTo: string, status: string, offerSource: string, offerMaxQuantity: number, code: string, sku: string, categoryId: string, subCategoryId: string, offersIds: string[], tagsIds: string[], media: Media, offerProducts: OfferProducts[], manufacturerId: string, productAbstractId: string, parentCount: number,consumerPrice:number,consumerPriceDiscount:number) {
         this.nameAr = nameAr;
         this.nameEn = nameEn;
         this.pack = pack;
@@ -39,6 +40,7 @@ export class ProductModel {
         this.horecaPriceDiscount = horecaPriceDiscount;
         this.wholeSalePriceDiscount = wholeSalePriceDiscount;
         this.isFeatured = isFeatured;
+        this.featuredBtc = featuredBtc;
         this.isOffer = isOffer;
         this.availableTo = availableTo;
         this.status = status;

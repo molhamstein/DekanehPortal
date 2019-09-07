@@ -43,6 +43,20 @@
           {{"product.form.controls." + option|translate}}
         </option>
       </select>
+      <select class="btn btn-action" id="featuredBtc" (change)="setFeaturedB2CFilter($event)">
+        <option value="" disabled selected>{{'product.form.controls.featuredB2COrNot'|translate}}</option>
+        <option *ngFor="let option of featuredList" [value]="option">
+          {{"product.form.controls." + option|translate}}
+        </option>
+      </select>
+
+      <select class="btn btn-action" id="hasMaxQuantity" (change)="setHasMaxQuantityFilter($event)">
+        <option value="" disabled selected>{{'product.form.controls.hasMaxQuantityOrNot'|translate}}</option>
+        <option *ngFor="let option of maxQuantityList" [value]="option">
+          {{"modal." + option|translate}}
+        </option>
+      </select>
+
       <select class="btn btn-action" id="status" [(ngModel)]="status">
         <option value="1" disabled selected>{{'product.form.controls.status'|translate}}</option>
         <option *ngFor="let option of statusList" [value]="option">
@@ -143,7 +157,7 @@
         <td>{{product.pack}}</td>
         <td>{{product.manufacturer.nameAr}}</td>
         <td>{{product.wholeSalePriceDiscount}}</td>
-        <td>{{product.marketOfficialPrice}}</td>
+        <td>{{product.productAbstract.officialConsumerPrice}}</td>
         <td>{{product.horecaPriceDiscount}}</td>
         <td>{{"product." + product.isOffer|translate}}</td>
         <td><span class="badge "

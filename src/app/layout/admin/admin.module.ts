@@ -1,3 +1,4 @@
+import { ListComplainComponent } from './../../pages/complains/list-complains/list-complains.component';
 import { AwardListComponent } from './../../pages/award/award-list/award-list.component';
 import { HomeComponent } from './../../pages/home/home.component';
 import { NewSupplierComponent } from './../../pages/supplier/new-supplier/new-supplier.component';
@@ -113,6 +114,15 @@ const AppRoutes = [
                     {
                         path: 'view',
                         component: ViewManufacturersComponent,
+                    }
+                ]
+            },
+            {
+                path: 'complains',
+                children: [
+                    {
+                        path: 'list',
+                        component: ListComplainComponent,
                     }
                 ]
             },
@@ -376,7 +386,8 @@ const AppRoutes = [
         HttpModule,
         UtilsModule,
         PagesModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        
     ],
     declarations: [
         AdminComponent,

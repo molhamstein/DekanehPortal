@@ -346,6 +346,18 @@ export class MenuItems {
                             name: 'mainMenu.Levels.viewAll'
                         }
                     ]
+                },
+                {
+                    state: 'complains',
+                    short_label: 'F',
+                    name: 'mainMenu.Complains.main',
+                    type: 'sub',
+                    icon: 'ti-layers',
+                    children: [{
+                        state: 'list',
+                        name: 'mainMenu.Complains.viewAll'
+                    }
+                    ]
                 }
             ]
         },

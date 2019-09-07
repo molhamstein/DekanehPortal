@@ -1,3 +1,4 @@
+import { TransfereService } from './services/transfere.service';
 // import { BrowserModule } from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
@@ -76,6 +77,7 @@ export function HttpLoaderFactory(http: Http) {
         TranslateService,
         // AuthGuardService,
         ApiService,
+        TransfereService,
         AlertService,
         ConstService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}

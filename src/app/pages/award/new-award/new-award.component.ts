@@ -49,7 +49,7 @@ export class NewAwardComponent implements OnInit {
     to: new FormControl('', Validators.required),
     occurrence: new FormControl('', Validators.required),
     occurrenceType: new FormControl('daily', Validators.required),
-    areaIds: new FormControl([], Validators.required),
+    areaIds: new FormControl([]),
     levelIds: new FormControl([], Validators.required),
     times: new FormControl(0, Validators.required),
     countLimit: new FormControl(0, Validators.required),

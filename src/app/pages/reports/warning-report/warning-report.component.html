@@ -9,7 +9,7 @@
       </select>
     </div>
   </div>
-  <div class="col-sm-6" *ngIf="c.cheachRole('supplier-orders','new')">
+  <!-- <div class="col-sm-6" *ngIf="c.cheachRole('supplier-orders','new')">
     <div class="form-group">
       <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
       <select [(ngModel)]="supplierId" class="form-control" id="abstracts">
@@ -32,52 +32,69 @@
       <label *ngIf="selectedProducts.length==0 && processValidation"
         class="text-danger">{{'product.form.validations.blank'|translate}}</label>
     </div>
-  </div>
+  </div> -->
 </div>
 <div class="col-sm-12">
 
-  <div class="row">
-    <div class="col-sm products-div">
+  <div class="">
+    <div class="row products-div">
       <table class="table table-striped add-order-tabel">
+        <thead>
+          <th></th>
+          <th>{{"product.form.controls.prodName"|translate}}</th>
+          <th>{{"abstractProduct.form.controls.threshold"|translate}}</th>
+          <th>{{"abstractProduct.form.controls.totalCount"|translate}}</th>
+          <th></th>
+        </thead>
         <tbody>
-          <tr *ngFor="let product of selectedProducts">
-            <td style="width: 35px"><img *ngIf="findProduct(product.productAbstractId).media!=undefined"
-                src="{{findProduct(product.productAbstractId).media.thumbnail}}"
+          <tr *ngFor="let product of data">
+            <td style="width: 35px"><img *ngIf="product.productAbstract.media!=undefined"
+                src="{{product.productAbstract.media.thumbnail}}"
                 style="max-width: 34px;max-height: 34px;">
 
             </td>
-            <td>{{findProduct(product.productAbstractId).nameAr}}</td>
-            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
-              <span>{{"orders.table.count"|translate}} </span><input [(ngModel)]="product.count"
-                [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
-            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
-              <span>{{"orders.table.price"|translate}} </span><input [(ngModel)]="product.buyingPrice"
-                [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
-            <td style="text-align: center" *ngIf="c.cheachRole('supplier-orders','new')">
-              <span class="functions-btn text-danger" (click)="productDeSelected(product.productAbstractId)"><i
-                  class="fa fa-remove fa-lg"></i></span>
-            </td>
+            <td>{{product.productAbstract.nameAr}}</td>
+            <td>{{product.threshold}}</td>
+            <td>{{product.totalCount}}</td>
+            <td>
+                <button *ngIf="cart[product.id]==null" (click)="addToCart(product)" class="btn btn-success">
+                    {{"staff.buttons.addToCart"|translate}}
+                  </button>
+                  <button *ngIf="cart[product.id]" (click)="removerFromCart(product)" class="btn btn-danger">
+                      {{"staff.buttons.removeFromCart"|translate}}
+                    </button>
+              </td>
           </tr>
         </tbody>
       </table>
-      {{addErrorProd | json}}
+      <!-- {{addErrorProd | json}}
       <p *ngIf="addError" class="text-danger">
         {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}}
         {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
 
-      </p>
+      </p> -->
       <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->
       <!--{{"orders.table.total"|translate}} : {{totalPrice}}-->
       <!--</p>-->
     </div>
+    <div [hidden]="spinnerFlag||unpage" class="row">
+      <pagination [totalItems]="count" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+        firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"
+        [maxSize]="7" [rotate]="false" [boundaryLinks]="true"></pagination>
+      <div class="per-page-sec">
+        <span>{{"client.perPage"|translate}}</span>
+        <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
+      </div>
+
+    </div>
   </div>
 </div>
 
-<div class="row" *ngIf="c.cheachRole('supplier-orders','new')">
+<!-- <div class="row" *ngIf="c.cheachRole('supplier-orders','new')">
   <div class="col-sm submit-col">
     <button [disabled]="submitted" (click)="createSupplierOrder()" class="btn btn-success">
       {{"staff.buttons.add"|translate}}
     </button>
 
   </div>
-</div>
+</div> -->

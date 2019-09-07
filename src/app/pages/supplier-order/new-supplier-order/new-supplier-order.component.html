@@ -4,8 +4,7 @@
       <div class="col-sm-12">
         <div class="form-group">
           <label for="abstracts">{{'SupplierOrder.Supplier'|translate}}</label>
-          <select [(ngModel)]="supplierId" class="form-control" formControlName="supplierId"
-            id="abstracts">
+          <select [(ngModel)]="supplierId" class="form-control" formControlName="supplierId" id="abstracts">
             <option disabled selected style="display: none" value=""></option>
             <option *ngFor="let oneSupplier of suppliers" [value]="oneSupplier.id">
               {{oneSupplier.nameAr}}
@@ -24,6 +23,15 @@
         </div>
 
         <div class="row">
+          <div class="col-sm" style="margin: 5px auto">
+
+            <button (click)="clearCart()" type="button" class="btn btn-danger">
+              {{"staff.buttons.clearTheCart"|translate}}
+            </button>
+          </div>
+        </div>
+        <div class="row">
+
           <div class="col-sm products-div">
             <table class="table  table-striped ">
               <tbody>

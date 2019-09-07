@@ -15,15 +15,14 @@ export class HomeHandlerService {
 
     }
 
-
     login(warehousesId): Observable<any> {
-        return this.apiService.post('/warehouses/'+warehousesId+'/login',{})
+        return this.apiService.post('/warehouses/' + warehousesId + '/login', {})
             .map(this.extractData).catch(this.handleError);
 
     }
 
     logout(warehousesId): Observable<any> {
-        return this.apiService.post('/warehouses/'+warehousesId+'/logout',{})
+        return this.apiService.post('/warehouses/' + warehousesId + '/logout', {})
             .map(this.extractData).catch(this.handleError);
 
     }

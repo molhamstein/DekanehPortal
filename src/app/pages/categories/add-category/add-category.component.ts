@@ -56,7 +56,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   editCat(category) {
-    this.router.navigate(['/categories/' + category.id + '/edit']);
+    this.router.navigate(['/categories/edit/' + category.id]);
   }
 
   openModal(template: TemplateRef<any>, category) {
@@ -173,9 +173,9 @@ export class AddCategoryComponent implements OnInit {
 
               } else {
                 if (this.parrent != undefined)
-                  this.router.navigate(['/categories/' + this.parrent + '/edit']);
+                  this.router.navigate(['/categories/edit/' + this.parrent]);
                 else
-                  this.router.navigate(['/categories/' + this.id + '/edit']);
+                  this.router.navigate(['/categories/edit/' + this.id]);
 
               }
             } else {

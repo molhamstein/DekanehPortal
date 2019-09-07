@@ -881,7 +881,7 @@ export class OrdersManageComponent implements OnInit {
     }, errorCode => {
       if (errorCode.statusCode == 612) {
         this.addError = true;
-        this.addErrorProd = errorCode.data[0]
+        this.addErrorProd = errorCode.data[0].product
       }
       else this.showError();
     });
@@ -926,7 +926,7 @@ export class OrdersManageComponent implements OnInit {
           this.editErrorNameProd = errorCode.data[0].nameAr
         } else if (errorCode.statusCode == 612) {
           this.addError = true;
-          this.addErrorProd = errorCode.data[0]
+          this.addErrorProd = errorCode.data[0].product
         } else { this.showError(); }
       });
     }

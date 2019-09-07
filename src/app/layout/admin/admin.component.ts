@@ -157,12 +157,12 @@ export class AdminComponent implements OnInit {
         this.innerHeight = scrollHeight + 'px';
         this.windowWidth = window.innerWidth;
         this.setMenuAttributes(this.windowWidth);
-        setTimeout(() => {
-            this.getNewNotiCount();
-            this.getNewNoti().subscribe(data => {
-                this.newNoti = data;
-            });
-        }, 3000);
+        // setTimeout(() => {
+        //     this.getNewNotiCount();
+        //     this.getNewNoti().subscribe(data => {
+        //         this.newNoti = data;
+        //     });
+        // }, 30000);
         this.NotiHandler.getSystemStatus().subscribe(data => {
             this.systemStatus = data[0].running
             // this.systemStatus = data;
@@ -206,13 +206,23 @@ export class AdminComponent implements OnInit {
         this.clientType = localStorage.getItem('clientType');
 
         this.setBackgroundPattern('pattern2');
-        this.subscr = Observable.interval(30000)
-            .flatMap(() => this.getNewNoti())
-            .subscribe(data => {
-                this.newNoti = data;
-                this.getNewNotiCount(true);
+        // this.subscr = Observable.interval(30000)
+        //     .flatMap(() => this.getNewNoti())
+        //     .subscribe(data => {
+        //         this.newNoti = data;
+        //         this.getNewNotiCount(true);
 
-            });
+        //     });
+        var self=this;
+        setInterval(function () {
+            self.getNewNoti()
+                .subscribe(data => {
+                    self.newNoti = data;
+                    self.getNewNotiCount(true);
+
+                })
+        }, 30000);
+
 
     }
 

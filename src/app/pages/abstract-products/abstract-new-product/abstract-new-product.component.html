@@ -132,7 +132,7 @@
 </form>
 <div class="container" style="padding-top: 50px;">
 
-  <div class="row" *ngIf="!newPro">
+  <div class="row" *ngIf="!newPro && warehouse.warehouse">
     <!-- <div class="col-sm-6">
 
       <div class="form-group">
@@ -146,6 +146,63 @@
         </select>
       </div>
     </div> -->
+    <div class="col-sm-12">
+      <b>
+        {{warehouse.warehouse.nameAr}}
+      </b>
+    </div>
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.accumulatedBuyingCountOverTime"|translate}}
+      </label>
+      <span>
+        {{warehouse.accumulatedBuyingCountOverTime}}
+      </span>
+    </div>
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.accumulatedSellingCountOverTime"|translate}}
+      </label>
+      <span>
+        {{warehouse.accumulatedSellingCountOverTime}}
+      </span>
+    </div>
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.avgBuyingPrice"|translate}}
+      </label>
+      <span>
+        {{warehouse.avgBuyingPrice}}
+      </span>
+    </div>
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.avgSellingPrice"|translate}}
+      </label>
+      <span>
+        {{warehouse.avgSellingPrice}}
+      </span>
+    </div>
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.expectedCount"|translate}}
+      </label>
+      <span>
+        {{warehouse.expectedCount}}
+      </span>
+    </div>
+
+    <div class="col-sm-2">
+      <label style="display: -webkit-box;">
+        {{"abstractProduct.form.controls.totalCount"|translate}}
+      </label>
+      <span>
+        {{warehouse.totalCount}}
+      </span>
+    </div>
+
+    
+
     <div class="col-sm-6">
       <div class="form-group">
         <label for="threshold">{{"abstractProduct.form.controls.threshold"|translate}}</label>

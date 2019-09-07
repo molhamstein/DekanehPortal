@@ -6,7 +6,7 @@ export class ConstService {
     constructor(private translate: TranslateService) {
     }
 
-    private static _STAFF_ROLES = ['5be62ecb744a6b07b29b4262'];
+    private static _STAFF_ROLES = ['5be62ecb744a6b07b29b4262','5cc1b24fbf0aeb3664c84831'];
     private static _WEARHOUS_ROLES = ['5c98dc7284d4bc7edd632d54'];
     private static _WEARHOUSKEEPER_ROLES = ['5cbf2be3c22839025168f5d1'];
 
@@ -146,6 +146,9 @@ export class ConstService {
                 "new": true,
                 "edit": true
             },
+            "complains":{
+                "list": true,
+            },
             "damaged": {
                 "list": true,
                 "add": true,
@@ -213,6 +216,9 @@ export class ConstService {
                 "list": true,
                 "new": true,
                 "edit": true
+            },
+            "complains":{
+                "list": false,
             },
             "products": {
                 "list": true,
@@ -294,6 +300,9 @@ export class ConstService {
                 "list": false,
                 "new": false,
                 "edit": false
+            },
+            "complains":{
+                "list": false,
             },
             "areas": {
                 "list": false,

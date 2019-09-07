@@ -3,7 +3,7 @@
 
   <!-- Statistics card start -->
   <div class="col-md-12 col-xl-4">
-    <div class="card bg-c-pink text-white widget-visitor-card">
+    <div class="card bg-c-pink text-white widget-visitor-card" (click)="gotToReport('threshold')">
       <div class="card-block-small text-center">
         <h2>{{WarehouseStatistics.stockOut}}</h2>
         <h6>{{'dashbored.finished'|translate}}</h6>
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="col-md-12 col-xl-4">
-    <div class="card bg-c-yellow text-white widget-visitor-card">
+    <div class="card bg-c-yellow text-white widget-visitor-card" (click)="gotToReport('warning')">
       <div class="card-block-small text-center">
         <h2>{{WarehouseStatistics.warning}}</h2>
         <h6>{{'dashbored.worning'|translate}}</h6>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="col-md-12 col-xl-4">
-    <div class="card bg-c-green text-white widget-visitor-card">
+    <div class="card bg-c-green text-white widget-visitor-card" (click)="gotToReport('instock')">
       <div class="card-block-small text-center">
         <h2>{{WarehouseStatistics.total}}</h2>
         <h6>{{'dashbored.totalCount'|translate}}</h6>
@@ -31,105 +31,139 @@
   </div>
   <!-- Statistics card end -->
 
-  <!-- card1 start -->
-  <div class="col-md-6 col-xl-3">
-    <div class="card widget-card-1">
-      <div class="card-block-small custom-card-block-small">
-        <i class="icofont icofont-hour-glass bg-c-blue card1-icon"></i>
-        <span class="text-c-blue custom-span">{{'dashbored.pendingOrder'|translate}}</span>
-        <h4 *ngIf="orderStatistics['pending']">{{orderStatistics['pending'].length}}</h4>
-        <div class="tableOrder">
-          <div class="item" *ngFor="let pendingOrder of orderStatistics['pending']">
-            <p class="name">{{pendingOrder.client.shopName}}</p>
-            <div class="details">
-              <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
-              <span class="col">{{pendingOrder.totalPrice}}</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <span class="f-left m-t-10 text-muted custom-span">
-            <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-          </span>
-        </div>
-      </div>
+  <div class="row customChart">
+    <div class="form-group col-md-12">
+      <label for="abstract">{{'damaged.form.controls.abs'|translate}}</label>
+      <ng-select [(ngModel)]="abstractProductIds" [ngModelOptions]="{standalone: true}"
+        (filterInputChanged)="searchAbstract($event)" [multiple]="true"
+        [options]="IOAbstractProd" id="abstract">
+      </ng-select>
     </div>
-  </div>
-  <!-- card1 end -->
-  <!-- card1 start -->
-  <div class="col-md-6 col-xl-3">
-    <div class="card widget-card-1">
-      <div class="card-block-small custom-card-block-small">
-        <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
-        <span class="text-c-blue custom-span">{{'dashbored.wherhouseOrder'|translate}}</span>
-        <h4 *ngIf="orderStatistics['warehouse']">{{orderStatistics['warehouse'].length}}</h4>
-        <div class="tableOrder">
-          <div class="item" *ngFor="let pendingOrder of orderStatistics['warehouse']">
-            <p class="name">{{pendingOrder.client.shopName}}</p>
-            <div class="details">
-              <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
-              <span class="col">{{pendingOrder.totalPrice}}</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <span class="f-left m-t-10 text-muted custom-span">
-            <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-          </span>
-        </div>
+    <div class="row" style="width: 100%;margin: 0;">
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')"
+          [(ngModel)]="fromFilter" style="width: 100%;" placeholder="{{'SupplierOrder.from'|translate}}">
       </div>
-    </div>
-  </div>
-  <!-- card1 end -->
-  <!-- card1 start -->
-  <div class="col-md-6 col-xl-3">
-    <div class="card widget-card-1">
-      <div class="card-block-small custom-card-block-small">
-        <i class="icofont icofont-ui-cart bg-c-green card1-icon"></i>
-        <span class="text-c-blue custom-span">{{'dashbored.diliveryOrder'|translate}}</span>
-        <h4 *ngIf="orderStatistics['delivery']">{{orderStatistics['delivery'].length}}</h4>
-        <div class="tableOrder">
-          <div class="item long" *ngFor="let pendingOrder of orderStatistics['delivery']">
-            <p class="name">{{pendingOrder.client.shopName}}</p>
-            <p class="name">{{pendingOrder.deliveryMember.ownerName}}</p>
-            <div class="details">
-              <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
-              <span class="col">{{pendingOrder.totalPrice}}</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <span class="f-left m-t-10 text-muted custom-span">
-            <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- card1 end -->
-  <!-- card1 start -->
-  <div class="col-md-6 col-xl-3">
-    <div class="card widget-card-1">
-      <div class="card-block-small custom-card-block-small">
-        <i class="icofont icofont-check-circled bg-c-yellow card1-icon"></i>
-        <span class="text-c-blue custom-span">{{'dashbored.finishOrder'|translate}}</span>
-        <h4 *ngIf="orderStatistics['done']">{{orderStatistics['done'].length}}</h4>
-        <div class="tableOrder">
-          <div class="item long" *ngFor="let pendingOrder of orderStatistics['done']">
-            <p class="name">{{pendingOrder.client.shopName}}</p>
-            <p class="name"> {{c.formatDate(pendingOrder.deliveredDate)}}</p>
-            <div class="details">
-              <span class="col">{{pendingOrder.totalPrice}}</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <span class="f-left m-t-10 text-muted custom-span">
-            <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
 
-</div>
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="toFilter"
+          style="width: 100%;" placeholder="{{'SupplierOrder.to'|translate}}">
+      </div>
+      <div class="form-group col-sm-3">
+        <button type="button" (click)="getwarehouseProductsDaily()" class="btn btn-success">
+          {{"abstractProduct.apply"|translate}}
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="col-md-12">
+      <app-card [title]="'Appendix'" [headerContent]="'count 1:1 / cost 1:100'">
+        <div echarts [options]="lineChartOption" style="height: 300px;"></div>
+      </app-card>
+    </div>
+
+
+    <!-- card1 start -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-card-1">
+        <div class="card-block-small custom-card-block-small">
+          <i class="icofont icofont-hour-glass bg-c-blue card1-icon"></i>
+          <span class="text-c-blue custom-span">{{'dashbored.pendingOrder'|translate}}</span>
+          <h4 *ngIf="orderStatistics['pending']">{{orderStatistics['pending'].length}}</h4>
+          <div class="tableOrder">
+            <div class="item" *ngFor="let pendingOrder of orderStatistics['pending']">
+              <p class="name">{{pendingOrder.client.shopName}}</p>
+              <div class="details">
+                <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
+                <span class="col">{{pendingOrder.totalPrice}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="f-left m-t-10 text-muted custom-span">
+              <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- card1 end -->
+    <!-- card1 start -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-card-1">
+        <div class="card-block-small custom-card-block-small">
+          <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
+          <span class="text-c-blue custom-span">{{'dashbored.wherhouseOrder'|translate}}</span>
+          <h4 *ngIf="orderStatistics['warehouse']">{{orderStatistics['warehouse'].length}}</h4>
+          <div class="tableOrder">
+            <div class="item" *ngFor="let pendingOrder of orderStatistics['warehouse']">
+              <p class="name">{{pendingOrder.client.shopName}}</p>
+              <div class="details">
+                <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
+                <span class="col">{{pendingOrder.totalPrice}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="f-left m-t-10 text-muted custom-span">
+              <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- card1 end -->
+    <!-- card1 start -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-card-1">
+        <div class="card-block-small custom-card-block-small">
+          <i class="icofont icofont-ui-cart bg-c-green card1-icon"></i>
+          <span class="text-c-blue custom-span">{{'dashbored.diliveryOrder'|translate}}</span>
+          <h4 *ngIf="orderStatistics['delivery']">{{orderStatistics['delivery'].length}}</h4>
+          <div class="tableOrder">
+            <div class="item long" *ngFor="let pendingOrder of orderStatistics['delivery']">
+              <p class="name">{{pendingOrder.client.shopName}}</p>
+              <p class="name">{{pendingOrder.deliveryMember.ownerName}}</p>
+              <div class="details">
+                <span style="font-size: 14px" class="badge badge-dark col">{{getTimer(pendingOrder.orderDate)}}</span>
+                <span class="col">{{pendingOrder.totalPrice}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="f-left m-t-10 text-muted custom-span">
+              <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- card1 end -->
+    <!-- card1 start -->
+    <div class="col-md-6 col-xl-3">
+      <div class="card widget-card-1">
+        <div class="card-block-small custom-card-block-small">
+          <i class="icofont icofont-check-circled bg-c-yellow card1-icon"></i>
+          <span class="text-c-blue custom-span">{{'dashbored.finishOrder'|translate}}</span>
+          <h4 *ngIf="orderStatistics['done']">{{orderStatistics['done'].length}}</h4>
+          <div class="tableOrder">
+            <div class="item long" *ngFor="let pendingOrder of orderStatistics['done']">
+              <p class="name">{{pendingOrder.client.shopName}}</p>
+              <p class="name"> {{c.formatDate(pendingOrder.deliveredDate)}}</p>
+              <div class="details">
+                <span class="col">{{pendingOrder.totalPrice}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="f-left m-t-10 text-muted custom-span">
+              <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -119,7 +119,7 @@ export class SupplierOrdersHandlerService {
     }
     getOrders(perPage: number, currentPage: number, where = {}): Observable<SupplierOrder[]> {
         let param = new URLSearchParams();
-        where['order'] = "orderDate DESC"
+        where['order'] = "createDate DESC"
         where['limit'] = perPage
         where['skip'] = (currentPage - 1) * perPage
         console.log(where);

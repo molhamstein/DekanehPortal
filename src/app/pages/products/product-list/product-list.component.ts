@@ -22,12 +22,15 @@ export class ProductListComponent implements OnInit {
   status = '1';
   isOffer;
   isFeatured;
-  hasProductAbstract="1"
+  featuredBtc;
+  hasMaxQuantity;
+  hasProductAbstract = "1"
   availableList = ['both', 'retailCostumer', 'wholesale', 'horeca'];
   statusList = ['available', 'unavailable', 'pending'];
   hasProductAbstractList = ['yes', 'no'];
   offerList = ['both', 'product', 'offer'];
   featuredList = ['both', 'isFeatured', 'notFeatured'];
+  maxQuantityList = ['both', 'yes', 'no'];
   manOrderDir;
   statusOrderDir;
   retailerOrderDir;
@@ -153,7 +156,7 @@ export class ProductListComponent implements OnInit {
 
   orderByOfficialPrice() {
     if (this.officialPriceOrderDir == undefined) {
-      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir =this.clientPriceOrderDir= this.officialPriceOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
+      this.manOrderDir = this.packOrderDir = this.nameOrderDir = this.statusOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.offerOrderDir = this.retailerOrderDir = this.clientPriceOrderDir = this.officialPriceOrderDir = this.retailerOrderDir = undefined;
 
 
     }
@@ -296,6 +299,27 @@ export class ProductListComponent implements OnInit {
       this.isFeatured = undefined;
     }
   }
+  setHasMaxQuantityFilter(e) {
+    let value = e.target.value;
+    if (value == 'yes') {
+      this.hasMaxQuantity = true;
+    } else if (value == 'no') {
+      this.hasMaxQuantity = false;
+    } else {
+      this.hasMaxQuantity = undefined;
+    }
+  }
+
+  setFeaturedB2CFilter(e) {
+    let value = e.target.value;
+    if (value == 'isFeatured') {
+      this.featuredBtc = true;
+    } else if (value == 'notFeatured') {
+      this.featuredBtc = false;
+    } else {
+      this.featuredBtc = undefined;
+    }
+  }
 
   setCatFilter(e) {
     this.onCatChange();
@@ -348,6 +372,13 @@ export class ProductListComponent implements OnInit {
     if (this.isFeatured != undefined) {
       filters.push({ name: 'isFeatured', value: this.isFeatured });
     }
+    if (this.hasMaxQuantity != undefined) {
+      filters.push({ name: 'offerMaxQuantity', value: this.hasMaxQuantity });
+    }
+    if (this.featuredBtc != undefined) {
+      filters.push({ name: 'featuredBtc', value: this.featuredBtc });
+    }
+
     localStorage.setItem('filters', JSON.stringify(filters));
     localStorage.removeItem('search');
     if (filters != [] && filters.length != 0) {
@@ -406,6 +437,12 @@ export class ProductListComponent implements OnInit {
           }
           if (tem.find(x => x.name == 'isFeatured')) {
             this.isFeatured = tem.find(x => x.name == 'isFeatured').value;
+          }
+          if (tem.find(x => x.name == 'offerMaxQuantity')) {
+            this.hasMaxQuantity = tem.find(x => x.name == 'offerMaxQuantity').value;
+          }
+          if (tem.find(x => x.name == 'featuredBtc')) {
+            this.featuredBtc = tem.find(x => x.name == 'featuredBtc').value;
           }
         }
         this.setFilters();

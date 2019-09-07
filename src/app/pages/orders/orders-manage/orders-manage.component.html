@@ -238,10 +238,9 @@
                 </tr>
               </tbody>
             </table>
-            {{addErrorProd | json}}
             <p *ngIf="addError" class="text-danger">
               {{addErrorProd.nameAr}} {{"orders.table.unavailableThisCountProd"|translate}}
-              {{math.round((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount)}}
+              {{math.max(math.floor((addErrorProd.productAbstract.warehouseProducts[0].expectedCount - addErrorProd.productAbstract.warehouseProducts[0].threshold)/addErrorProd.parentCount),0)}}
 
             </p>
             <!--<p *ngIf="totalPrice!=0" class="total-price bg-primary text-white">-->

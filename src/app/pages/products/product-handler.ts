@@ -33,7 +33,15 @@ export class ProductHandler {
             if (query != '') {
                 query = query + ',';
             }
-            if (filter['name'] != 'productAbstractId')
+            if (filter['name'] == 'offerMaxQuantity') {
+                if (filter['value']) {
+                    query = query + '{"' + filter['name'] + '":{"neq":0}}';
+                }
+                else
+                    query = query + '{"' + filter['name'] + '":{"eq":0}}';
+
+            }
+            else if (filter['name'] != 'productAbstractId')
                 query = query + '{"' + filter['name'] + '":"' + filter['value'] + '"}';
             else {
                 if (filter['value'] == "no") {
