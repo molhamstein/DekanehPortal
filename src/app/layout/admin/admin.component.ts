@@ -213,7 +213,13 @@ export class AdminComponent implements OnInit {
         //         this.getNewNotiCount(true);
 
         //     });
-        var self=this;
+        var self = this;
+        self.getNewNoti()
+            .subscribe(data => {
+                self.newNoti = data;
+                self.getNewNotiCount(true);
+
+            })
         setInterval(function () {
             self.getNewNoti()
                 .subscribe(data => {
@@ -244,6 +250,9 @@ export class AdminComponent implements OnInit {
             this.router.navigate(['/ratings/list']);
         } else if (noty.type == 'forgetPassword') {
             this.router.navigate(['/client/edit/' + noty.clientId]);
+        }
+        else if (noty.type == 'claim') {
+            this.router.navigate(['/complains/list/']);
         }
     }
 

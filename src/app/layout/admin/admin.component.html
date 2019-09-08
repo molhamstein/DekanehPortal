@@ -192,13 +192,15 @@
                     [ngClass]="!noty.isSeen ? 'new': ''">
                     <div class="media">
                       <i class="d-flex align-self-center "
-                        [ngClass]="noty.type=='order' ? 'ti-shopping-cart': (noty.type=='client' ? 'ti-user' : 'ti-star')"></i>
+                        [ngClass]="noty.type=='order' ? 'ti-shopping-cart': (noty.type=='client' ? 'ti-user' :  (noty.type=='claim' ? 'ti-thumb-down' : 'ti-star'))"></i>
                       <div class="media-body">
                         <p class="notification-msg">{{"notifications.messages." + noty.type|translate}}&nbsp;<span
                             *ngIf="noty.type=='order'">{{noty.order?.client?.shopName}}</span><span
                             *ngIf="noty.type=='client'">{{noty.client?.shopName}}</span><span
                             *ngIf="noty.type=='rating'">{{noty.rating?.user?.shopName}}</span>
                           <span *ngIf="noty.type=='forgetPassword'">{{noty.client?.shopName}}</span>
+                          <span *ngIf="noty.type=='claim'">{{noty.object?.product?.nameAr}}</span>
+                          
                         </p>
                         <span class="notification-time">{{c.formatDate(noty.createdAt)}}</span><label
                           *ngIf="!noty.isSeen" class="label label-danger">{{"notifications.new"|translate}}</label>
