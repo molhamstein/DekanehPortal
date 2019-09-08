@@ -31,39 +31,7 @@
   </div>
   <!-- Statistics card end -->
 
-  <div class="row customChart">
-    <div class="form-group col-md-12">
-      <label for="abstract">{{'damaged.form.controls.abs'|translate}}</label>
-      <ng-select [(ngModel)]="abstractProductIds" [ngModelOptions]="{standalone: true}"
-        (filterInputChanged)="searchAbstract($event)" [multiple]="true"
-        [options]="IOAbstractProd" id="abstract">
-      </ng-select>
-    </div>
-    <div class="row" style="width: 100%;margin: 0;">
-      <div class="col-sm-3">
-        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')"
-          [(ngModel)]="fromFilter" style="width: 100%;" placeholder="{{'SupplierOrder.from'|translate}}">
-      </div>
-
-      <div class="col-sm-3">
-        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="toFilter"
-          style="width: 100%;" placeholder="{{'SupplierOrder.to'|translate}}">
-      </div>
-      <div class="form-group col-sm-3">
-        <button type="button" (click)="getwarehouseProductsDaily()" class="btn btn-success">
-          {{"abstractProduct.apply"|translate}}
-        </button>
-      </div>
-
-    </div>
-
-
-    <div class="col-md-12">
-      <app-card [title]="'Appendix'" [headerContent]="'count 1:1 / cost 1:100'">
-        <div echarts [options]="lineChartOption" style="height: 300px;"></div>
-      </app-card>
-    </div>
-
+  <div class="  row customChart">
 
     <!-- card1 start -->
     <div class="col-md-6 col-xl-3">
@@ -165,5 +133,37 @@
         </div>
       </div>
     </div>
+    <div class="form-group col-md-12">
+      <label for="abstract">{{'damaged.form.controls.abs'|translate}}</label>
+      <ng-select [(ngModel)]="abstractProductIds" [ngModelOptions]="{standalone: true}"
+        (filterInputChanged)="searchAbstract($event)" [multiple]="true" [options]="IOAbstractProd" id="abstract">
+      </ng-select>
+    </div>
+    <div class="row" style="width: 100%;margin: 0;">
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')"
+          [(ngModel)]="fromFilter" style="width: 100%;" placeholder="{{'SupplierOrder.from'|translate}}">
+      </div>
+
+      <div class="col-sm-3">
+        <input class="form-control search-box" type="text" onfocus="(this.type='datetime-local')" [(ngModel)]="toFilter"
+          style="width: 100%;" placeholder="{{'SupplierOrder.to'|translate}}">
+      </div>
+      <div class="form-group col-sm-3">
+        <button type="button" (click)="getwarehouseProductsDaily()" class="btn btn-success">
+          {{"abstractProduct.apply"|translate}}
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="col-md-12">
+      <app-card [title]="'Appendix'" [headerContent]="'count 1:1 / cost 1:100'">
+        <div echarts [options]="lineChartOption" style="height: 300px;"></div>
+      </app-card>
+    </div>
+
+
 
   </div>
