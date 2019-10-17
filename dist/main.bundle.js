@@ -20559,9 +20559,10 @@ show:!0,x:5,y:12,textStyle:{align:"left",color:"#000",fontFamily:"Arial",fontSiz
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    // baseUrl: 'http://dockaan.com:3033/api'
+    baseUrl: 'http://dockaan.com:3033/api'
     // baseUrl: 'http://localhost:3000/api'
-    baseUrl: 'http://104.217.253.15:3033/api',
+    // baseUrl: 'http://104.217.253.15:3033/api',
+    // baseUrl: 'http://192.168.1.8:3033/api'
 };
 //# sourceMappingURL=environment.prod.js.map
 
