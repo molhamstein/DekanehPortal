@@ -70,3 +70,20 @@
 .customChart * {
   direction: ltr !important;
 }
+
+
+.label {
+  font-size: 15px;
+}
+
+.label:hover {
+  cursor: pointer;
+}
+
+.label-disabled {
+  background-color: #bfbfbf;
+}
+
+.label-disabled:hover {
+  cursor: no-drop;
+}

@@ -12,7 +12,10 @@
     }
   },
   "dashbored": {
+
     "finished": "out of stock",
+    "selles": "Sells",
+    "stock": "Stock",
     "worning": "low stock",
     "totalCount": "in stock",
     "pendingOrder": "الطلبات المعلقة",

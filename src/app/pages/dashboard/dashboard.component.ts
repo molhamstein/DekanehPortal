@@ -26,6 +26,7 @@ declare const $: any;
 })
 export class DashboardComponent implements OnInit {
 
+    currentChart="stock";
     constructor(private handler: DashboardHandlerService, private productabsHandeler: AbstractProductHandler, private router: Router, private transferSer: TransfereService, private alert: AlertService, public c: ConstService
     ) {
         this.getWarehouseStatistics();
@@ -64,6 +65,79 @@ export class DashboardComponent implements OnInit {
         this.handler.getOrderStatistics()
             .subscribe(data => {
                 this.orderStatistics = data
+            }
+                , errorCode => this.showError());
+    }
+
+    getwarehouseOrderDaily() {
+        this.handler.getwarehouseOrdersDaily(this.abstractProductIds, this.fromFilter, this.toFilter)
+            .subscribe(mainData => {
+                let days = []
+                let costs = []
+                let counts = []
+                var data = mainData.result;
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    days.push(element._id.day + "-" + element._id.month + "-" + element._id.year)
+                    costs.push(element.cost / 100)
+                    counts.push(element.count)
+                    if (index + 1 == data.length) {
+                        setTimeout(() => {
+                            this.lineChartOptionOrder = {
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    data: ['cost', 'count']
+                                },
+                                toolbox: {
+                                    show: false,
+                                    feature: {
+                                        mark: { show: true },
+                                        dataView: { show: true, readOnly: false },
+                                        magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                                        restore: { show: true },
+                                        saveAsImage: { show: true }
+                                    }
+                                },
+                                calculable: true,
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        splitLine: {
+                                            show: false
+                                        },
+                                        boundaryGap: false,
+                                        data: days
+                                    }
+                                ],
+                                color: ['rgba(165, 255, 222, 0.95)', 'rgba(26, 188, 156, 0.39)'],
+                                yAxis: [{
+                                    type: 'value',
+                                    splitLine: {
+                                        show: false
+                                    }
+                                }],
+                                series: [
+                                    {
+                                        name: 'cost',
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: { normal: { areaStyle: { type: 'macarons' } } },
+                                        data: costs
+                                    }, {
+                                        name: 'count',
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: { normal: { areaStyle: { type: 'macarons' } } },
+                                        data: counts
+                                    },
+                                ]
+                            };
+                        }, 1);
+
+                    }
+                }
             }
                 , errorCode => this.showError());
 
@@ -155,6 +229,7 @@ export class DashboardComponent implements OnInit {
         this.alert.showToast.next({ type: 'error' });
     }
     lineChartOption: any;
+    lineChartOptionOrder: any;
     IOAbstractProd: Array<IOption> = [];
     abstractProductIds = []
     abstract = []
@@ -183,6 +258,7 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
         this.getwarehouseProductsDaily()
+        this.getwarehouseOrderDaily()
     }
 
 

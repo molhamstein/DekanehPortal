@@ -5,7 +5,7 @@
         <span *ngIf="classHeader">
       <ng-content select=".code-header"></ng-content>
     </span>
-        <div class="card-header-right">
+        <!-- <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li (click)="this.isCardToggled = !this.isCardToggled" *ngIf="!isCardToggled"><i
                         class="icofont icofont-simple-left"></i></li>
@@ -20,7 +20,7 @@
                 <li *ngIf="isCardToggled"><i (click)="closeCard($event)" class="icofont icofont-error close-card"></i>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 
     <div [@cardToggle]="cardToggle">

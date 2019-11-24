@@ -150,15 +150,31 @@
           style="width: 100%;" placeholder="{{'SupplierOrder.to'|translate}}">
       </div>
       <div class="form-group col-sm-3">
-        <button type="button" (click)="getwarehouseProductsDaily()" class="btn btn-success">
+        <button type="button" (click)="ngOnInit()" class="btn btn-success">
           {{"abstractProduct.apply"|translate}}
         </button>
+      </div>
+      <div class="col-sm-3" style="text-align: right;">
+        <span (click)="currentChart='selles'" class="label"
+          [ngClass]="currentChart=='stock'? 'label-info': 'label-disabled'">
+          {{"dashbored.selles"|translate}}
+        </span>
+        <span (click)="currentChart='stock'" class="label"
+          [ngClass]="currentChart=='selles'? 'label-info': 'label-disabled'">
+          {{"dashbored.stock"|translate}}
+        </span>
       </div>
 
     </div>
 
 
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="currentChart=='selles'">
+      <app-card [title]="'Appendix'" [headerContent]="'count 1:1 / cost 1:100'">
+        <div echarts [options]="lineChartOptionOrder" style="height: 300px;"></div>
+      </app-card>
+    </div>
+
+    <div class="col-md-12" *ngIf="currentChart=='stock'">
       <app-card [title]="'Appendix'" [headerContent]="'count 1:1 / cost 1:100'">
         <div echarts [options]="lineChartOption" style="height: 300px;"></div>
       </app-card>

@@ -18,14 +18,19 @@ export class DashboardHandlerService {
 
     }
 
+    getwarehouseOrdersDaily(id, from, to) {
+        let param = new URLSearchParams();
+        param.append('productAbstractId', id);
+        param.append('from', from);
+        param.append('to', to);
+        console.log("param")
+        console.log(param)
 
+
+        return this.apiService.get('/orders/dailyOrder', param)
+            .map(this.extractData).catch(this.handleError);
+    }
     getwarehouseProductsDaily(id, from, to) {
-        // console.log("this.abstractProductIds")
-        // console.log(id)
-        // console.log("this.fromFilter")
-        // console.log(from)
-        // console.log("this.toFilter")
-        // console.log(to)
         let param = new URLSearchParams();
         param.append('productAbstractId', id);
         param.append('from', from);
