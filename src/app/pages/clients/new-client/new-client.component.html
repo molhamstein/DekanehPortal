@@ -1,41 +1,3 @@
-<app-modal-basic #modalDefault>
-  <div class="app-modal-header">
-    <h4 class="modal-title">{{'modal.addNote'|translate}}</h4>
-    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalDefault.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="app-modal-body">
-    <form [formGroup]="userNotForm">
-      <div class="form-group">
-        <label for="notes">{{"modal.note"|translate}}</label>
-        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}"
-          rows="4"></textarea>
-        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote"
-          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-
-      </div>
-
-
-      <div class="form-group">
-        <label for="expireDate">{{"modal.createdAt"|translate}}</label>
-        <input class="form-control" formControlName="createdAt" id="expireDate"
-          placeholder="{{'modal.createdAt'|translate}}" type="datetime-local">
-        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote"
-          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-
-      </div>
-
-    </form>
-  </div>
-  <div class="app-modal-footer">
-    <button type="button" class="btn btn-default waves-effect"
-      (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
-    <button type="button" class="btn btn-primary waves-effect waves-light"
-      (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
-  </div>
-</app-modal-basic>
-
 <form (ngSubmit)="onClientFormSubmit()" [formGroup]="ClientForm" class="ClientForm">
   <div class="container">
     <div class="row">
@@ -135,34 +97,7 @@
 
       </div>
       <div class="col-sm">
-        <div class="notesDiv" *ngIf="!newUSer">
-          <div class="title">
-            <label>{{"client.form.controls.notes"|translate}}</label>
-          </div>
-          <div class="body">
-            <div class="oneNote" *ngFor="let oneNote of notes; let i = index">
-              <p>{{oneNote.note}}</p>
-              <div class="actions">
-                <span>{{oneNote.createdAt | date:'medium'}}</span>
-                <div class="button">
-                  <button class="btn btn-danger" (click)="deleteNote(oneNote.id,index)" style="margin-left: 15px;"
-                    type="button">
-                    {{"client.buttons.delete"|translate}}
-                  </button>
-
-                  <!-- <button class="btn btn-warning" type="button">
-                    {{"client.buttons.addNote"|translate}}
-                  </button> -->
-
-                </div>
-              </div>
-            </div>
-            <div class="flowButton" (click)="open(modalDefault)">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-
-            </div>
-          </div>
-        </div>
+        <app-user-notes *ngIf="!newUSer" [clientIdAddNote]="id"></app-user-notes>
         <agm-map (mapClick)="mapClicked($event)" [latitude]="lat" [longitude]="lng">
           <agm-marker (dragEnd)="markerDragEnd($event)" [latitude]="marker.lat" [longitude]="marker.lng"
             [markerDraggable]="true"></agm-marker>
@@ -194,66 +129,9 @@
   </div>
 
 </form>
-<div class="row" style="margin: 10px 0px;" *ngIf="!newUSer">
-  <div class="col-sm-8">
-    <button (click)="openInstallmentModal(installmentTemplete)" class="btn btn-success" type="button">
-      {{"client.buttons.addInstallment"|translate}}
-    </button>
-  </div>
-</div>
-<table *ngIf="!newUSer" class="table table-bordered table-striped ">
-  <thead>
-    <tr>
-      <th>
-        {{"client.installment"|translate}}
-      </th>
-      <th>
-        {{"client.receivedAt"|translate}}
-      </th>
-      <th>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let oneInstallment of allInstallment;let i = index ">
-      <td *ngIf="indexEditIns!=i">{{oneInstallment.amount}}</td>
-      <td *ngIf="indexEditIns!=i">{{c.formatDate(oneInstallment.receivedAt)}}</td>
-      <td *ngIf="indexEditIns==i">
-        <div class="form-group">
-          <input class="form-control" [(ngModel)]="editableIns.amount" id="forgotpassword" type="number">
-        </div>
-      </td>
-      <td *ngIf="indexEditIns==i">
-        <div class="form-group" >
-          <input class="form-control" [(ngModel)]="editableIns.receivedAt" id="forgotpassword" type="datetime-local">
-        </div>
-      </td>
-      <td>
-        <button class="btn btn-warning" *ngIf="indexEditIns!=i" type="button" (click)="editInstallment(i)">
-          {{"client.buttons.edit"|translate}}
-        </button>
-        <button class="btn btn-danger" *ngIf="indexEditIns==i" type="button" (click)="indexEditIns = -1">
-          {{"client.buttons.back"|translate}}
-        </button>
-        <button class="btn btn-success" *ngIf="indexEditIns==i" type="button" (click)="saveInstallment(i)">
-          {{"client.buttons.save"|translate}}
-        </button>
-      </td>
 
-    </tr>
-  </tbody>
-</table>
-<div class="row" *ngIf="pageShow">
-  <!-- <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="<" nextText=">" [(ngModel)]="currentPage"
-      (pageChanged)="pageChanged($event)"></pagination> -->
-  <pagination [totalItems]="allClient.length" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
-    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
-    [rotate]="false" [boundaryLinks]="true"></pagination>
-
-  <div class="per-page-sec">
-    <span>{{"client.perPage"|translate}}</span>
-    <input id="perpage" class="form-control" type="number" (change)="changepages($event)" [value]="pages">
-  </div>
+<div *ngIf="!newUSer">
+  <app-user-payments [balance]="user.balance" [userId]="id"></app-user-payments>
 </div>
 
 
@@ -282,34 +160,3 @@
   </div>
 
 </ng-template>
-
-
-<app-modal-basic #installmentTemplete>
-  <div class="app-modal-header">
-    <h4 class="modal-title">{{'modal.addInstallment'|translate}}</h4>
-    <button type="button" class="close basic-close" style="left: 20px;" (click)="installmentTemplete.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="app-modal-body">
-    <form [formGroup]="instForm">
-      <div class="form-group">
-        <label for="forgotpassword">{{"client.amount"|translate}}</label>
-        <input class="form-control" formControlName="amount" id="forgotpassword" type="number">
-        <label *ngIf="instForm.get('amount').invalid && submiteddAddInst"
-          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
-
-      </div>
-      <div class="form-group">
-        <label for="forgotrepassowrd">{{"client.receivedAt"|translate}}</label>
-        <input class="form-control" id="forgotrepassowrd" formControlName="receivedAt" type="datetime-local">
-      </div>
-    </form>
-  </div>
-  <div class="app-modal-footer">
-    <button type="button" class="btn btn-default waves-effect"
-      (click)="installmentTemplete.hide()">{{'modal.close'|translate}}</button>
-    <button type="button" class="btn btn-primary waves-effect waves-light"
-      (click)="addInstallment(installmentTemplete)">{{'modal.add'|translate}}</button>
-  </div>
-</app-modal-basic>

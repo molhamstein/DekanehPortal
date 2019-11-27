@@ -1,3 +1,5 @@
+import { NoteAndPaymentsComponent } from './orders/note-and-payments/note-and-payments.component';
+import { UserNotesComponent } from './clients/user-notes/user-notes.component';
 import { AwardModule } from './award/award.module';
 import { HomeComponent } from './home/home.component';
 import { SupplierModule } from './supplier/supplier.module';

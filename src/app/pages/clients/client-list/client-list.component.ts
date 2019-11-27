@@ -217,9 +217,11 @@ export class ClientListComponent implements OnInit {
     }
 
     filterByfield(set: any[], field: string, value: string) {
-
-        let f = set.filter(it => it[field].toLowerCase().includes(value));
-
+        // let f = set.some(it => it[field].includes(value));
+        let f = set.filter(function (it) {
+            if (it[field] && it[field].toLowerCase().includes(value))
+                return it
+        });
         return f;
     }
 

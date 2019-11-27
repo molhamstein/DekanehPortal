@@ -17,7 +17,7 @@ export class ClientsHandler {
     getInstallment(clientId, perPage: number, currentPage: number): Observable<any[]> {
         let param = new URLSearchParams();
         var filter = {}
-        filter = { where: { userId: clientId }, order: "creationDate DESC", limit: + perPage, skip: (currentPage - 1) * perPage }
+        filter = { where: { userId: clientId }, order: "createdAt DESC", limit: + perPage, skip: (currentPage - 1) * perPage }
 
         let rolesString = '';
         param.append('filter', JSON.stringify(filter));

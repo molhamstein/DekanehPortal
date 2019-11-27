@@ -1,0 +1,91 @@
+<div class="row" style="margin: 10px 0px;">
+  <div class="col-sm-8">
+    <button (click)="openInstallmentModal(installmentTemplete)" class="btn btn-success" type="button">
+      {{"client.buttons.addInstallment"|translate}}
+    </button>
+  </div>
+  <div class="col-sm-4">{{"client.balance"|translate}} : {{balance}} </div>
+</div>
+<table class="table table-bordered table-striped ">
+  <thead>
+    <tr>
+      <th>
+        {{"client.installment"|translate}}
+      </th>
+      <th>
+        {{"client.receivedAt"|translate}}
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let oneInstallment of allInstallment;let i = index ">
+      <td *ngIf="indexEditIns!=i">{{oneInstallment.amount}}</td>
+      <td *ngIf="indexEditIns!=i">{{c.formatDate(oneInstallment.receivedAt)}}</td>
+      <td *ngIf="indexEditIns==i">
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="editableIns.amount" id="forgotpassword" type="number">
+        </div>
+      </td>
+      <td *ngIf="indexEditIns==i">
+        <div class="form-group">
+          <input class="form-control" [(ngModel)]="editableIns.receivedAt" id="forgotpassword" type="datetime-local">
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-warning" *ngIf="indexEditIns!=i" type="button" (click)="editInstallment(i)">
+          {{"client.buttons.edit"|translate}}
+        </button>
+        <button class="btn btn-danger" *ngIf="indexEditIns==i" type="button" (click)="indexEditIns = -1">
+          {{"client.buttons.back"|translate}}
+        </button>
+        <button class="btn btn-success" *ngIf="indexEditIns==i" type="button" (click)="saveInstallment(i)">
+          {{"client.buttons.save"|translate}}
+        </button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <pagination [totalItems]="installmentCount" [itemsPerPage]="pages" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [maxSize]="7"
+    [rotate]="false" [boundaryLinks]="true"></pagination>
+
+  <div class="per-page-sec" style="margin-right: 10px">
+    <span>{{"client.perPage"|translate}}</span>
+    <input id="perpage" style="display: inline-block;width: 80px;margin-right: 10px;" class="form-control" type="number"
+      (change)="changepages($event)" [value]="pages">
+  </div>
+</div>
+
+<app-modal-basic #installmentTemplete>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.addInstallment'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="installmentTemplete.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <form [formGroup]="instForm">
+      <div class="form-group">
+        <label for="forgotpassword">{{"client.amount"|translate}}</label>
+        <input class="form-control" formControlName="amount" id="forgotpassword" type="number">
+        <label *ngIf="instForm.get('amount').invalid && submiteddAddInst"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+      <div class="form-group">
+        <label for="forgotrepassowrd">{{"client.receivedAt"|translate}}</label>
+        <input class="form-control" id="forgotrepassowrd" formControlName="receivedAt" type="datetime-local">
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="installmentTemplete.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addInstallment(installmentTemplete)">{{'modal.add'|translate}}</button>
+  </div>
+</app-modal-basic>

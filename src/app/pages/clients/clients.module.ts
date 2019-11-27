@@ -1,15 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {NewClientComponent} from './new-client/new-client.component';
-import {ClientListComponent} from './client-list/client-list.component';
-import {UtilsModule} from '../../utils/utils.module';
-import {TranslateModule} from '@ngx-translate/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AgmCoreModule} from '@agm/core';
-import {ClientsHandler} from './clients-handler';
-import {PaginationModule} from 'ngx-bootstrap/pagination';
-import {SharedModule} from '../../shared/shared.module';
-import {ModalModule} from 'ngx-bootstrap/modal';
+import { UserNotesComponent } from './user-notes/user-notes.component';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NewClientComponent } from './new-client/new-client.component';
+import { ClientListComponent } from './client-list/client-list.component';
+import { UtilsModule } from '../../utils/utils.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+import { ClientsHandler } from './clients-handler';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SharedModule } from '../../shared/shared.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     imports: [

@@ -1,0 +1,67 @@
+<div class="notesDiv">
+  <div class="title">
+    <label>{{"client.form.controls.notes"|translate}}</label>
+  </div>
+  <div class="body">
+    <div class="oneNote" *ngFor="let oneNote of notes; let i = index">
+      <p>{{oneNote.note}}</p>
+      <div class="actions">
+        <span>{{oneNote.createdAt | date:'medium'}}</span>
+        <div class="button">
+          <button class="btn btn-danger" (click)="deleteNote(oneNote.id,index)" style="margin-left: 15px;"
+            type="button">
+            {{"client.buttons.delete"|translate}}
+          </button>
+
+          <!-- <button class="btn btn-warning" type="button">
+                  {{"client.buttons.addNote"|translate}}
+                </button> -->
+
+        </div>
+      </div>
+    </div>
+    <div class="flowButton" (click)="open(modalDefault)">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+
+    </div>
+  </div>
+</div>
+
+
+<app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.addNote'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <form [formGroup]="userNotForm">
+      <div class="form-group">
+        <label for="notes">{{"modal.note"|translate}}</label>
+        <textarea class="form-control" formControlName="note" id="notes" placeholder="{{'modal.note'|translate}}"
+          rows="4"></textarea>
+        <label *ngIf="userNotForm.get('note').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="expireDate">{{"modal.createdAt"|translate}}</label>
+        <input class="form-control" formControlName="createdAt" id="expireDate"
+          placeholder="{{'modal.createdAt'|translate}}" type="datetime-local">
+        <label *ngIf="userNotForm.get('createdAt').invalid && submiteddAddNote"
+          class="text-danger">{{'coupon.form.validations.blank'|translate}}</label>
+
+      </div>
+
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="modalDefault.hide()">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="addNote(modalDefault)">{{'modal.add'|translate}}</button>
+  </div>
+</app-modal-basic>

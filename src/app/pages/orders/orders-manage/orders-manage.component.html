@@ -38,6 +38,144 @@
   </div>
 </app-modal-basic>
 
+<app-modal-basic #modalEditOrder>
+  <div class="app-modal-header">
+    <h4 class="modal-title">{{'modal.modalEditOrder.editOrder'|translate}}</h4>
+    <button type="button" class="close basic-close" style="left: 20px;" (click)="modalEditOrder.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            {{'orders.table.userTap'|translate}}
+
+          </th>
+          <th>
+            {{'orders.table.productsTap'|translate}}
+          </th>
+          <th>
+            {{'orders.table.code'|translate}}
+          </th>
+          <!-- <th>
+                {{'orders.table.packagedTap'|translate}}
+              </th> -->
+
+          <th>
+            {{'orders.table.coupon'|translate}}
+          </th>
+          <th>
+            {{'orders.table.status'|translate}}
+          </th>
+          <th>
+            {{'orders.table.printable'|translate}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="OrderToEdit">
+          <td class="no-padding-td">
+            <ul class="list-group table-ul">
+              <li class="list-group-item ">
+                <ng-select #select (filterInputChanged)="searchUsers($event)" [(ngModel)]="OrderToEdit.clientId"
+                  [ngModelOptions]="{standalone: true}" [multiple]="false" (selected)="userSelected($event,OrderToEdit)"
+                  [options]="IOusers">
+                </ng-select>
+              </li>
+              <li class="list-group-item ">
+                <span class="badge client-type"
+                  [ngClass]="OrderToEdit.clientType=='wholesale'? 'badge-warning ':'badge-info'">{{"client.form.controls."
+                      + OrderToEdit.clientType|translate}}</span>
+              </li>
+            </ul>
+          </td>
+
+          <td class="no-padding-td">
+            <div>
+              <div>
+                <!--<label for="products">{{"orders.new.products"|translate}}</label>-->
+                <ng-select (filterInputChanged)="searchEditProducts($event)" (selected)="productEditSelected($event)"
+                  [placeholder]="'orders.searchPro'|translate" [multiple]="true" [options]="IOproducts"
+                  [(ngModel)]="selectedEditProductsIds" [ngModelOptions]="{standalone: true}">
+                </ng-select>
+              </div>
+              <div class="row">
+                <div class="col-sm products-div">
+                  <table class="table table-striped ">
+                    <tbody>
+
+                      <tr *ngFor="let product of selectedEditProducts">
+                        <td style="width: 35px"><img *ngIf="findEditProduct(product.productId).media!=undefined"
+                            [src]="findEditProduct(product.productId).media.thumbnail"
+                            style="max-width: 34px;max-height: 34px;">
+                        </td>
+                        <td>{{findEditProduct(product.productId).nameAr}}</td>
+                        <td style="text-align: center;">
+                          <span>{{"orders.table.count"|translate}} </span><input
+                            (change)="priceEditCalculate(product.productId,product.count)" [(ngModel)]="product.count"
+                            [ngModelOptions]="{standalone: true}" style="width: 49px" type="number"></td>
+                        <td style="text-align: center">
+                          <strong>{{"orders.table.price"|translate}}</strong>&nbsp;<span>{{product.sellingPrice}}</span>
+                        </td>
+                        <td style="text-align: center">
+                          <span class="functions-btn text-danger" (click)="productEditDeSelected(product.productId)"><i
+                              class="fa fa-remove fa-lg"></i></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p *ngIf="editError" class="text-danger">
+                    {{editErrorNameProd}} {{"orders.table.unavailableProd"|translate}}
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{OrderToEdit.code}}
+          </td>
+
+          <td>
+            <input style="width: 85px" [(ngModel)]="OrderToEdit.couponCode" class="form-control"
+              placeholder="{{'orders.new.couponPlaceHolder'|translate}}" type="text"
+              [value]="OrderToEdit.coupon==undefined ? '': OrderToEdit.coupon.code">
+
+
+          </td>
+          <td>
+            <span (click)="statusModel(OrderToEdit,modalStatus)" class="badge"
+              [ngClass]="OrderToEdit.status=='pending'? 'badge-warning ': ( OrderToEdit.status=='inDelivery' ?'badge-info' :( OrderToEdit.status=='delivered' ?'badge-success' :'badge-danger'))">{{"orders.table.delStatus."
+                + OrderToEdit.status|translate}}</span>
+          </td>
+
+          <td>
+            <select [(ngModel)]="OrderToEdit.printable" class="form-control" id="status">
+              <option [value]="true">
+                {{"orders.table.printables.true"|translate}}
+              </option>
+              <option [value]="false">
+                {{"orders.table.printables.false"|translate}}
+              </option>
+            </select>
+
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect"
+      (click)="cancelOrder(modalEditOrder,true)">{{'modal.close'|translate}}</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light"
+      (click)="editOrderApi(OrderToEdit,modalEditOrder)">{{'modal.modalEditOrder.save'|translate}}</button>
+  </div>
+</app-modal-basic>
+
+
 <app-modal-basic #modalStatus>
   <div class="app-modal-header">
     <h4 class="modal-title">{{'modal.modalStatus.edit'|translate}}</h4>
@@ -502,12 +640,14 @@
                 <p *ngIf="OrderToEdit==undefined&&index==hoveredIndex" [@enterAnimation]>
                   <span *ngIf="order?.status=='inDelivery'" class="functions-btn text-success"
                     (click)="openDeliveredModal(tawseel,order)"><i class="fa fa-check-circle fa-lg"></i></span>
-                  <span class="functions-btn text-info" (click)="editOrder(order,index)"><i
+                  <span class="functions-btn text-info" (click)="editOrder(order,index,modalEditOrder)"><i
                       class="fa fa-edit fa-lg"></i></span>
                   <span class="functions-btn text-danger" (click)="openModal(template,order.id)"><i
                       class="fa fa-remove fa-lg"></i></span>
                   <span class="functions-btn text-danger" (click)="open(modalDefault,order.id,order.clientId)"><i
                       class="fa fa-plus-square-o fa-lg"></i></span>
+                  <span class="functions-btn text-danger" (click)="viewNotes(order.clientId,order.client)"><i
+                      class="fa fa-usd fa-lg"></i></span>
                   <span class="functions-btn text-success" (click)="download(order.id)"><i
                       class="fa fa-download fa-lg"></i></span>
                   <!-- <button type="button" class="btn btn-default waves-effect" (click)="open(modalDefault,orderId)">Static</button> -->

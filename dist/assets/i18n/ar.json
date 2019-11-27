@@ -192,6 +192,10 @@
       "submitDilivery": "تثبيت التوصيل",
       "inDelivery": "جاري التوصيل",
       "submit": "تثبيت"
+    },
+    "modalEditOrder": {
+      "editOrder": "تعديل الطلب",
+      "save": "حفظ"
     }
   },
   "Manufactures": {
@@ -405,6 +409,7 @@
     "userName": "اسم المستخدم",
     "statustext": "الحالة",
     "installment": "دفعة",
+    "installments": "دفعات",
     "receivedAt": "تاريخ الدفعة",
     "amount": "قيمة الدفعة",
     "balance": "الرصيد",

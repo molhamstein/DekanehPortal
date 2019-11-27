@@ -1,0 +1,26 @@
+<div class="modal-content" style="direction: rtl;">
+  <div class="modal-header">
+    <h5 class="modal-title">{{user.ownerName}} - {{user.shopName}}</h5>
+    <button class="close basic-close" (click)="close()" style="left: 20px;" type="button">
+      <span class="" aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row" style="margin: 10px 0px;">
+      <span (click)="currentTab='note'" class="label" [ngClass]="currentTab=='inst'? 'label-default': 'label-disabled'">
+        {{"client.form.controls.notes"|translate}}
+      </span>
+      <span (click)="currentTab='inst'" class="label" [ngClass]="currentTab=='note'? 'label-default': 'label-disabled'">
+        {{"client.installments"|translate}}
+      </span>
+    </div>
+    <app-user-notes *ngIf="currentTab=='note'" [clientIdAddNote]="userId"></app-user-notes>
+    <app-user-payments [balance]="user.balance" [userId]="userId" *ngIf="currentTab=='inst'"></app-user-payments>
+
+  </div>
+  <div class="modal-footer">
+    <div class="app-modal-footer ">
+      <button class="btn btn-default waves-effect" (click)="close()" type="button">إغلاق</button>
+    </div>
+  </div>
+</div>

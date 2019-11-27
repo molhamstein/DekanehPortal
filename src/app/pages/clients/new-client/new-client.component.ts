@@ -88,15 +88,8 @@ export class NewClientComponent implements OnInit {
             };
             this.newUSer = true;
         } else {
-            this.ClientHandler.getInstallmentCount(this.id).finally(() => {
-                this.getInstallment();
-            }).subscribe(co => {
-                this.installmentCount = co['count'];
-            }, errorCode => this.showError());
+            
 
-            this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
-                this.notes = notes
-            })
             this.user = this.ClientHandler.getClientUserById(this.id).subscribe(Client => {
                 console.log(Client);
                 this.user = Client;
@@ -164,100 +157,11 @@ export class NewClientComponent implements OnInit {
                 , errorCode => this.showError());
     }
 
-    deleteNote(id, index) {
-        this.ClientHandler.deleteNote(id).subscribe(res => {
-            this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
-                this.notes = notes
-            })
-
-        })
-
-    }
-
-    instForm = new FormGroup({
-        receivedAt: new FormControl("2019-01-01T01:00", Validators.required),
-        amount: new FormControl(0, Validators.required),
-    });
-
-    editableIns = { "amount": 0, "receivedAt": "" };
-    editInstallment(index) {
-        this.indexEditIns = index;
-
-        this.editableIns['amount'] = this.allInstallment[this.indexEditIns].amount;
-        this.editableIns['receivedAt'] = this.c.inputFormatData(this.allInstallment[this.indexEditIns].receivedAt);
-    }
-
-    saveInstallment() {
-        this.ClientHandler.updateInstallment(this.allInstallment[this.indexEditIns].id, this.editableIns).subscribe(
-            successCode => {
-                this.indexEditIns = -1
-                this.currentPage = 1;
-                this.getInstallment()
-            },
-            errorCode => this.showError()
-        )
-    }
-    openInstallmentModal(modal) {
-        this.instForm = new FormGroup({
-            receivedAt: new FormControl("2019-01-01T01:00", Validators.required),
-            amount: new FormControl(0, Validators.required),
-        });
-        modal.show()
-        // this.modalRef = this.modalService.show(modal, { class: 'modal-sm', backdrop: true, ignoreBackdropClick: true });
-    }
-    submiteddAddInst;
-    addInstallment(modal) {
-        if (this.instForm.valid == false) {
-            this.submiteddAddInst = true;
-            return
-        }
-        var data = this.instForm.value;
-        data["userId"] = this.id;
-        this.ClientHandler.addInstallment(data).subscribe(
-            successCode => {
-                modal.hide();
-                this.currentPage = 1;
-                this.getInstallment()
-            },
-            errorCode => this.showError()
-        )
-
-    }
-
-    clientIdAddNote;
-    submiteddAddNote;
-    userNotForm = new FormGroup({
-        createdAt: new FormControl(new Date(), Validators.required),
-        note: new FormControl("", Validators.required),
-    });
 
 
-    open(modal, id) {
-        this.userNotForm = new FormGroup({
-            createdAt: new FormControl(new Date, Validators.required),
-            note: new FormControl("", Validators.required),
-        });
-        this.clientIdAddNote = id
-        modal.show()
-    }
 
-    addNote(modal) {
-        if (this.userNotForm.valid == false) {
-            this.submiteddAddNote = true;
-            return
-        }
-        var data = this.userNotForm.value;
-        data["userId"] = this.id;
-        this.ClientHandler.addNote(data).subscribe(
-            successCode => {
-                modal.hide();
-                this.ClientHandler.getNotClientUserById(this.id).subscribe(notes => {
-                    this.notes = notes
-                })
-            },
-            errorCode => this.showError()
-        )
-    }
+
+
 
 
     showError() {

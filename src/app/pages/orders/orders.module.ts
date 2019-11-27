@@ -1,3 +1,4 @@
+import { UserNotesComponent } from './../clients/user-notes/user-notes.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrdersManageComponent } from './orders-manage/orders-manage.component';
@@ -11,6 +12,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { OrdersFromSuppliersComponent } from './orders-from-suppliers/orders-from-suppliers.component';
 import { SuppliersService } from './orders-from-suppliers/suppliers.service';
 import { ReportOrderComponent } from './order-report/order-report.component';
+import { NoteAndPaymentsComponent } from './note-and-payments/note-and-payments.component';
 
 @NgModule({
     imports: [
@@ -28,11 +30,12 @@ import { ReportOrderComponent } from './order-report/order-report.component';
         SuppliersService
 
     ],
+
     declarations: [
         OrdersManageComponent,
         ReportOrderComponent,
         StatisticsComponent,
-        OrdersFromSuppliersComponent]
+        OrdersFromSuppliersComponent],
 })
 export class OrdersModule {
 }

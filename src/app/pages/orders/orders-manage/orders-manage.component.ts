@@ -16,6 +16,8 @@ import { DatePipe } from '@angular/common';
 import { AlertService } from '../../../services/alert.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { element } from 'protractor';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NoteAndPaymentsComponent } from '../note-and-payments/note-and-payments.component';
 
 @Component({
   selector: 'app-orders-manage',
@@ -132,8 +134,10 @@ export class OrdersManageComponent implements OnInit {
     private CouponHandler: CouponHandlerService,
     private router: Router,
     private route: ActivatedRoute,
-    private alert: AlertService
-  ) {
+    private dailogSer: NgbModal,
+    private alert: AlertService) {
+    // var modalRef = this.dailogSer.open(NoteAndPaymentsComponent)
+
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -165,6 +169,15 @@ export class OrdersManageComponent implements OnInit {
     modal.show()
   }
   orderModel
+
+  viewNotes(id,user) {
+  
+    var dialogRef = this.dailogSer.open(NoteAndPaymentsComponent,{"size":"lg"})
+    dialogRef.componentInstance.userId = id;
+    dialogRef.componentInstance.user = user;
+    
+
+  }
   statusModel(order, modal) {
     if (order.status == 'canceled')
       return
@@ -339,7 +352,7 @@ export class OrdersManageComponent implements OnInit {
       where["and"].push({ "deliveryMemberId": this.delMemFilter })
     if (this.keeperMemFilter)
       where["and"].push({ "warehouseKeeperId": this.keeperMemFilter })
-    if (this.statusFilter!=-1)
+    if (this.statusFilter != -1)
       where["and"].push({ "status": this.statusFilter })
     if (this.shopeMemFilter)
       where["and"].push({ "clientId": this.shopeMemFilter })
@@ -405,16 +418,13 @@ export class OrdersManageComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  editOrder(order, index) {
+  editOrder(order, index, modal) {
     this.addNew = false;
-    console.log(order);
-
-
     this.CouponHandler.getUsersByString(order.client.ownerName).finally(() => {
       this.OrderToEdit = order;
       this.editProducts = this.OrderToEdit.orderProducts;
       this.totalPrice = this.OrderToEdit.totalPrice;
-      this.editIndex = index;
+      // this.editIndex = index;
 
     }).subscribe(data => {
       this.ul = [];
@@ -423,6 +433,7 @@ export class OrdersManageComponent implements OnInit {
       }
       this.users = data;
       setTimeout(() => {
+        modal.show("modal-xlg")
         this.IOusers = this.ul;
       }, 100);
     }, errorCode => { this.showError() }
@@ -437,9 +448,8 @@ export class OrdersManageComponent implements OnInit {
       this.tP.push({ label: pro.nameAr, value: pro.productId });
       this.selectedEditProducts.push({
         'count': pro.count,
-        'sellingPrice': pro.sellingPrice,
+        'sellingPrice': pro.sellingPrice * pro.count,
         'productId': pro.productId,
-
       });
 
     }
@@ -494,13 +504,14 @@ export class OrdersManageComponent implements OnInit {
 
   }
 
-  cancelOrder(full?) {
+  cancelOrder(modal, full?) {
+    modal.hide()
     this.OrderToEdit = this.delMan = this.selectedEditProductsIds = this.editProducts = this.couponOrder = undefined;
     this.selectedEditProducts = [];
     this.totalPrice = 0;
     this.editIndex = undefined;
-    if (full)
-      this.router.navigate(['/orders/management']);
+    // if (full)
+    //   this.router.navigate(['/orders/management']);
 
   }
 
@@ -665,7 +676,7 @@ export class OrdersManageComponent implements OnInit {
       this.users = data;
 
       setTimeout(() => {
-        if (isFilter){
+        if (isFilter) {
           console.log(this.IOusersFilter)
           this.IOusersFilter = this.ul;
         }
@@ -887,9 +898,11 @@ export class OrdersManageComponent implements OnInit {
     });
   }
 
-  editOrderApi(order) {
-    order.orderProducts = this.selectedEditProducts;
-    order.totalPrice = this.totalPrice;
+  editOrderApi(order, modal) {
+    modal.hide()
+
+    // order.orderProducts = this.selectedEditProducts;
+    // order.totalPrice = this.totalPrice;
     console.log(order);
     if (order.status === 'canceled') {
       this.Handler.cancelOrder(order.id).subscribe(() => {
@@ -898,6 +911,8 @@ export class OrdersManageComponent implements OnInit {
     } else {
       this.editError = false;
       var tempOrder = Object.assign({}, order);
+      tempOrder.orderProducts = this.selectedEditProducts;
+      tempOrder.totalPrice = this.totalPrice;
       if (order.status == 'packed') {
         tempOrder.status = "inWarehouse"
         delete tempOrder.packagerMemberId
